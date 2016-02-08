@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "SpaceBar/SpaceBar.h"
 
 @interface ViewController : UIViewController
 
+@property UIButton *myButton;
+@property MKMapView *mapView;
+
+@property SpaceBar *spaceBar;
 
 @end
 
