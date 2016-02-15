@@ -7,6 +7,7 @@
 //
 
 #import "POI.h"
+#import "Constants.h"
 
 @implementation POI
 
@@ -22,12 +23,107 @@
 //----------------
 // initialization
 //----------------
-- (id) initPOI{
+- (id) init{
     self = [super init];
     if (self){
         _latLon = CLLocationCoordinate2DMake(0, 0);
+        [self resetButton];
+        
+        [self registerButtonEvents];
     }
     return self;
+}
+
+- (void) registerButtonEvents{
+    [self addTarget:self
+               action:@selector(buttonUp:)
+     forControlEvents:UIControlEventTouchUpInside];
+                
+    [self addTarget:self
+               action:@selector(buttonDown:)
+     forControlEvents:UIControlEventTouchDown];
+    
+    
+    [self addTarget:self
+               action:@selector(buttonDragging: forEvent:)
+     forControlEvents:UIControlEventTouchDragInside];
+}
+
+//-----------
+// reattach to a superview
+//-----------
+- (void) resetButton{
+    self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
+    
+    [self setTitle:@"SpaceMark" forState:UIControlStateNormal];
+    self.frame = CGRectMake(0, 20.0, 60.0, 20.0);
+    self.titleLabel.font = [UIFont systemFontOfSize:12];
+    [self setBackgroundColor:[UIColor grayColor]];
+    [self setTitleColor: [UIColor whiteColor]
+               forState: UIControlStateNormal];
+}
+
+//-----------
+// button methods
+//-----------
+- (void) buttonDown:(id)sender {
+    NSLog(@"Touch down!");
+    self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
+    
+    NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
+        object:self userInfo:nil];
+    [[ NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+- (void) buttonUp:(id)sender {
+    NSLog(@"Touch up!");
+
+    NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
+        object:self userInfo:nil];
+    [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    if ([self.hasReportedDraggingEvent boolValue]){
+        self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
+        [self removeFromSuperview];
+    }
+}
+
+- (void) buttonDragging:(UIControl *)sender forEvent: (UIEvent *)event {
+    //    NSLog(@"Button dragging!");
+    //    UIButton *bt = (UIButton *) sender;
+
+    UITouch *touch = [[event allTouches] anyObject];
+
+    CGPoint locationInView = [touch locationInView:self.superview];
+    CGPoint previousLoationInView = [touch previousLocationInView:self.superview];
+    CGPoint locationInButton = [touch locationInView:self];
+    
+    // Threshold the x position to distiguish wheather the button is dragged or clicked
+    if ((self.superview.frame.size.width - locationInView.x) < 0.1 * self.superview.frame.size.width)
+    {
+        // Do nothing if the SpaceMark is not dragged far out enough
+        return;
+    }else{
+
+        if (![self.hasReportedDraggingEvent boolValue]){
+            // This is to make sure AddToDraggingSet notification is only sent once.
+            self.hasReportedDraggingEvent = [NSNumber numberWithBool:YES];
+            NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
+                                                                         object:self userInfo:nil];
+            [[ NSNotificationCenter defaultCenter] postNotification:notification];
+            
+            // Change the style of the dragging tocken
+            self.titleLabel.font = [UIFont systemFontOfSize:20];
+            [self setBackgroundColor:[UIColor clearColor]];
+            [self setTitleColor: [UIColor redColor]
+                       forState: UIControlStateNormal];
+        }
+        
+        //    bt.center = [[[event allTouches] anyObject] locationInView:self.view];
+        self.center = CGPointMake
+        (self.center.x + locationInView.x - previousLoationInView.x,
+         self.center.y + locationInView.y - previousLoationInView.y);
+    }
 }
 
 @end

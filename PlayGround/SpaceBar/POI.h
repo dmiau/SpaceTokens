@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-
 //-------------------
 // POI
 //-------------------
@@ -18,9 +17,12 @@
 
 //---properties
 @property CLLocationCoordinate2D latLon;
-
+@property CGPoint mapViewXY;
+@property MKMapPoint mapPoint;
+@property NSNumber *hasReportedDraggingEvent;
 
 //---methods
 - (id) initPOI;
+- (void) resetButton;
 
 @end
