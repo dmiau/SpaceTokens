@@ -15,6 +15,8 @@
 //@property UIView *ca nvas;
 @property (weak) MKMapView *mapView;
 
+@property UIView *canvas;
+
 @property NSMutableArray *POIArray;
 @property NSMutableArray *SpaceMarkArray;
 

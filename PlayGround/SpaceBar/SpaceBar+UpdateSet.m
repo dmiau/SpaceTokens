@@ -22,11 +22,10 @@
     [aSpaceMark resetButton];
     [aSpaceMark setTitle:name forState:UIControlStateNormal];
     aSpaceMark.latLon = latlon;
-    aSpaceMark.mapPoint = MKMapPointForCoordinate(latlon);
     
     if (aSpaceMark){
         // Add to the canvas
-        [self.mapView addSubview:aSpaceMark];
+        [self.canvas addSubview:aSpaceMark];
         [self.displaySet addObject:aSpaceMark];
     }else{
         // error
@@ -63,7 +62,6 @@
         [self addSpaceMarkWithName: aPOI.titleLabel.text LatLon:aPOI.latLon];
 
         [self.draggingSet addObject:aPOI];
-
     }
 }
 
@@ -84,4 +82,35 @@
     }
     
 }
+
+
+//----------------
+// order the POIs and SpaceMarks on the track
+//----------------
+- (void) orderPOIs{
+    //    // count the number of POIs on the track
+    //    NSPredicate *aPredicate = [NSPredicate predicateWithFormat:
+    //                               @"self.superview != nil"];
+    //
+    //    NSArray *visibleSpaceMarks = [self.SpaceMarkArray filteredArrayUsingPredicate:aPredicate];
+    
+    //TODO: this function needs to be refactored later
+    
+    // equally distribute the POIs
+    if ([self.displaySet count] > 0){
+        CGFloat barHeight = self.mapView.frame.size.height;
+        CGFloat viewWidth = self.mapView.frame.size.width;
+        
+        CGFloat gap = barHeight / ([self.displaySet count] + 1);
+        
+        int i = 0;
+        for (POI *aPOI in self.displaySet){
+            aPOI.frame = CGRectMake(viewWidth - aPOI.frame.size.width,
+                                    gap * (i+1), aPOI.frame.size.width,
+                                    aPOI.frame.size.height);
+            i++;
+        }
+    }
+}
+
 @end

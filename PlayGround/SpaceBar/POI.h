@@ -18,7 +18,6 @@
 //---properties
 @property CLLocationCoordinate2D latLon;
 @property CGPoint mapViewXY;
-@property MKMapPoint mapPoint;
 @property NSNumber *hasReportedDraggingEvent;
 
 //---methods

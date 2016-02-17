@@ -33,17 +33,17 @@
         
 
         // Initialize the map
-        self.mapView = myMapView;
+        self.mapView = myMapView;    
         
-//        // Add an UIView on top of the mapView
-//        _canvas = [[UIView alloc] initWithFrame:
-//                   CGRectMake(0, 0,
-//                _mapView.frame.size.width, _mapView.frame.size.height)];
-//        
-//        _canvas.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-//        _canvas.opaque = NO;
-//
-//        [_mapView addSubview: _canvas];
+        // Add an UIView on top of the mapView
+        _canvas = [[UIView alloc] initWithFrame:
+                   CGRectMake(0, 0,
+                _mapView.frame.size.width, _mapView.frame.size.height)];
+        
+        _canvas.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        _canvas.opaque = NO;
+
+        [_mapView addSubview: _canvas];
         
     }
     return self;
@@ -122,38 +122,6 @@
         if ([self.touchingSet count] > 0){
         [self zoomMapToFitTouchSet];
     }    
-}
-
-
-
-
-//----------------
-// order the POIs and SpaceMarks on the track
-//----------------
-- (void) orderPOIs{
-//    // count the number of POIs on the track
-//    NSPredicate *aPredicate = [NSPredicate predicateWithFormat:
-//                               @"self.superview != nil"];
-//    
-//    NSArray *visibleSpaceMarks = [self.SpaceMarkArray filteredArrayUsingPredicate:aPredicate];
-    
-    //TODO: this function needs to be refactored later
-    
-    // equally distribute the POIs
-    if ([self.displaySet count] > 0){
-        CGFloat barHeight = self.mapView.frame.size.height;
-        CGFloat viewWidth = self.mapView.frame.size.width;
-        
-        CGFloat gap = barHeight / ([self.displaySet count] + 1);
-        
-        int i = 0;
-        for (POI *aPOI in self.displaySet){
-            aPOI.frame = CGRectMake(viewWidth - aPOI.frame.size.width,
-                                     gap * (i+1), aPOI.frame.size.width,
-                                     aPOI.frame.size.height);
-            i++;
-        }
-    }
 }
 
 

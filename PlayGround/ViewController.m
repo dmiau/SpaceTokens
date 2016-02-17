@@ -34,12 +34,21 @@
     
     
     // Add several SpaceMarks
-    [self.spaceBar addSpaceMarkWithName:@"New York" LatLon:
+    [self.spaceBar addSpaceMarkWithName:@"NY Downtown" LatLon:
      CLLocationCoordinate2DMake(40.712784, -74.005941)];
+    
+    [self.spaceBar addSpaceMarkWithName:@"Columbia U." LatLon:
+     CLLocationCoordinate2DMake(40.807722, -73.964110)];
+
+    [self.spaceBar addSpaceMarkWithName:@"San Francisco" LatLon:
+     CLLocationCoordinate2DMake(37.774929, -122.419416)];
+
+
+    [self.spaceBar addSpaceMarkWithName:@"Boston" LatLon:
+     CLLocationCoordinate2DMake(42.360082, -71.058880)];
 
     [self.spaceBar addSpaceMarkWithName:@"Tokyo" LatLon:
      CLLocationCoordinate2DMake(35.689487, 139.691706)];
-    
     
 
 //    // Run the test
