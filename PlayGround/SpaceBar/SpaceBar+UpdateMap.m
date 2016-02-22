@@ -17,14 +17,25 @@
     }
 }
 
+- (void) fillMapXYsForSet: (NSSet*) aSet{
+    for (POI* aPOI in aSet){
+        aPOI.mapViewXY = [self.mapView convertCoordinate:aPOI.latLon
+                                           toPointToView:self.mapView];
+    }
+}
+
 - (void) zoomMapToFitTouchSet{
     // Assume there are at most two touched
     
     if ([self.touchingSet count] == 1){
-        POI *aPOI = [self.touchingSet anyObject];
-        aPOI.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
-        
+        SpaceMark *aSpaceMark = [self.touchingSet anyObject];
+        aSpaceMark.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
         [self updateMapToFitPOIs:self.touchingSet];
+        
+//        // Draw a line
+//        [self drawLineFromSpaceMark:aSpaceMark
+//                            toPoint:CGPointMake(self.mapView.frame.size.width/2,
+//                                                self.mapView.frame.size.height/2)];
         
     }else if ([self.touchingSet count] > 1){
         // Goal: find minMapPointX, maxMapPOintX,
@@ -42,6 +53,8 @@
             maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
             minMapPointY = MIN(minMapPointY, tempMapPoint.y);
             maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
+            
+            NSLog(@"MapPointX: %f, %f", tempMapPoint.x, tempMapPoint.y);
         }
         
         
@@ -165,4 +178,17 @@
     }
 }
 
+// Draw a line from pointA to pointB (with timer)
+- (void) drawLineFromSpaceMark: (SpaceMark*) aSpaceMark toPoint: (CGPoint) pointA{
+    // draw the line
+    UIBezierPath *linePath=[UIBezierPath bezierPath];
+    [linePath moveToPoint: aSpaceMark.center];
+    [linePath addLineToPoint: pointA];
+    
+    aSpaceMark.lineLayer.path=linePath.CGPath;
+    aSpaceMark.lineLayer.fillColor = nil;
+    aSpaceMark.lineLayer.opacity = 1.0;
+    aSpaceMark.lineLayer.strokeColor = [UIColor blueColor].CGColor;
+    [self.mapView.layer addSublayer:aSpaceMark.lineLayer];
+}
 @end

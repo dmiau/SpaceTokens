@@ -18,7 +18,6 @@
 //---properties
 @property CLLocationCoordinate2D latLon;
 @property CGPoint mapViewXY;
-@property NSNumber *hasReportedDraggingEvent;
 
 //---methods
 - (id) initPOI;

@@ -53,7 +53,12 @@
 // --------------
 // Implement in updateMap category
 // --------------
+
+// copy the button centroid to the dragged button's mapXY
 - (void) fillDraggingMapXYs;
+
+// update the (x, y) coordinates for each POI in the set
+- (void) fillMapXYsForSet: (NSSet*) aSet;
 - (void) zoomMapToFitTouchSet;
 - (void) updateMapToFitPOIs: (NSMutableSet*) poiSet;
 

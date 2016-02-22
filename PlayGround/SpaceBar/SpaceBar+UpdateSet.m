@@ -53,15 +53,15 @@
         [self.touchingSet addObject:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
         
-        POI *aPOI = aNotification.object;
-        NSNotification *notification = [NSNotification notificationWithName:RemoveFromDisplaySetNotification
-                                                                     object:aPOI userInfo:nil];
-        [[ NSNotificationCenter defaultCenter] postNotification:notification];
-        
+        // remove from the display set
+        SpaceMark *currentSpaceMark = aNotification.object;
+        [self.displaySet removeObject:currentSpaceMark];
         // Duplicate the button
-        [self addSpaceMarkWithName: aPOI.titleLabel.text LatLon:aPOI.latLon];
+        SpaceMark* newSpaceMark = [self addSpaceMarkWithName: currentSpaceMark.titleLabel.text
+                                                    LatLon:currentSpaceMark.latLon];
+        currentSpaceMark.counterPart = newSpaceMark;
 
-        [self.draggingSet addObject:aPOI];
+        [self.draggingSet addObject:currentSpaceMark];
     }
 }
 
@@ -88,14 +88,6 @@
 // order the POIs and SpaceMarks on the track
 //----------------
 - (void) orderPOIs{
-    //    // count the number of POIs on the track
-    //    NSPredicate *aPredicate = [NSPredicate predicateWithFormat:
-    //                               @"self.superview != nil"];
-    //
-    //    NSArray *visibleSpaceMarks = [self.SpaceMarkArray filteredArrayUsingPredicate:aPredicate];
-    
-    //TODO: this function needs to be refactored later
-    
     // equally distribute the POIs
     if ([self.displaySet count] > 0){
         CGFloat barHeight = self.mapView.frame.size.height;
@@ -103,12 +95,35 @@
         
         CGFloat gap = barHeight / ([self.displaySet count] + 1);
         
-        int i = 0;
-        for (POI *aPOI in self.displaySet){
+        // Sort the POIs
+        [self fillMapXYsForSet:self.displaySet];
+
+        //sort by block
+        //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
+        
+        NSArray *sortedArray =
+        [[self.displaySet allObjects]
+         sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            POI *first = (POI*)a;
+            POI *second = (POI*)b;
+            
+            if (first.mapViewXY.y < second.mapViewXY.y) {
+                return NSOrderedAscending;
+            }
+            else if (first.mapViewXY.y > second.mapViewXY.y) {
+                return NSOrderedDescending;
+            }else{
+                return NSOrderedSame;
+            }
+         }];
+
+        
+        // Position the SpaceMark
+        for (int i = 0; i < [sortedArray count]; i++){
+            POI *aPOI = sortedArray[i];
             aPOI.frame = CGRectMake(viewWidth - aPOI.frame.size.width,
                                     gap * (i+1), aPOI.frame.size.width,
                                     aPOI.frame.size.height);
-            i++;
         }
     }
 }

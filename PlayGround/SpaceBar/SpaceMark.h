@@ -10,4 +10,11 @@
 
 @interface SpaceMark : POI
 
+
+@property NSNumber *hasReportedDraggingEvent;
+@property CAShapeLayer *circleLayer;
+@property CAShapeLayer *lineLayer;
+
+@property (weak) SpaceMark *counterPart;
+- (void) resetButton;
 @end
