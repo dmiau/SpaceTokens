@@ -26,8 +26,6 @@
 - (id)initWithMapView: (MKMapView *) myMapView {
     self = [super init];
     if (self) {
-
-
         // This part is common for all display types
         [self initializeCommon];
         
@@ -35,15 +33,30 @@
         // Initialize the map
         self.mapView = myMapView;    
         
-        // Add an UIView on top of the mapView
-        _canvas = [[UIView alloc] initWithFrame:
-                   CGRectMake(0, 0,
-                _mapView.frame.size.width, _mapView.frame.size.height)];
+//        // Add an UIView on top of the mapView
+//        _canvas = [[UIView alloc] initWithFrame:
+//                   CGRectMake(0, 0,
+//                _mapView.frame.size.width, _mapView.frame.size.height)];
+//        
+//        _canvas.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+//        _canvas.opaque = NO;
+//
+//        [_mapView addSubview: _canvas];
         
-        _canvas.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-        _canvas.opaque = NO;
+        // Add the range track
+        NSUInteger margin = 20;
+        CGRect sliderFrame = CGRectMake(self.mapView.frame.size.width - 30, 0,
+                                        30,
+                                        self.mapView.frame.size.height);
+        
+        self.rangeSlider = [[CERangeSlider alloc] initWithFrame:sliderFrame];
 
-        [_mapView addSubview: _canvas];
+        [self.mapView addSubview:_rangeSlider];
+        
+//        [self.rangeSlider addTarget:self
+//                         action:@selector(slideValueChanged:)
+//               forControlEvents:UIControlEventValueChanged];
+        self.rangeSlider.curvatiousness = 0.0;
         
     }
     return self;

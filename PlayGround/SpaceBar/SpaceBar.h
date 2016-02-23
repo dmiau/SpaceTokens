@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "SpaceMark.h"
+#import "CERangeSlider.h"
 
 @interface SpaceBar : NSObject
 
 //@property UIView *ca nvas;
 @property (weak) MKMapView *mapView;
 
-@property UIView *canvas;
+//@property UIView *canvas;
+
+@property CERangeSlider* rangeSlider;
 
 @property NSMutableArray *POIArray;
 @property NSMutableArray *SpaceMarkArray;

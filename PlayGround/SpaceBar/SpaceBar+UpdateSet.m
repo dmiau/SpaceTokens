@@ -25,7 +25,7 @@
     
     if (aSpaceMark){
         // Add to the canvas
-        [self.canvas addSubview:aSpaceMark];
+        [self.mapView addSubview:aSpaceMark];
         [self.displaySet addObject:aSpaceMark];
     }else{
         // error
