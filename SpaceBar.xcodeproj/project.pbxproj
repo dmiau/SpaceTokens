@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
+		9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
+		9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
+		9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
+		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
+		9A5301431C5AD6A6008D584B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
+		9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301451C5AD6A6008D584B /* AppDelegate.m */; };
+		9A5301491C5AD6A6008D584B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.m */; };
+		9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A53014A1C5AD6A6008D584B /* Main.storyboard */; };
+		9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
+		9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
+		9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
+		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
+		9A836D391C69372C007D9520 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
+		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
+		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
+		9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
+		9AC36DC61C5FF4690037210F /* SpaceBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.m */; };
+		9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
+		9AC36DCF1C6008660037210F /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DCE1C6008660037210F /* POI.m */; };
+		9AC36DD21C60087B0037210F /* SpaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceMark.m */; };
+		9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
+		9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
+		9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
+		9AD0F4341C7CF71800AEF928 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.m */; };
+		9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301451C5AD6A6008D584B /* AppDelegate.m */; };
+		9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
+		9AD0F4371C7CF71800AEF928 /* SpaceBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.m */; };
+		9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
+		9AD0F4391C7CF71800AEF928 /* SpaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceMark.m */; };
+		9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
+		9AD0F43B1C7CF71800AEF928 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
+		9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
+		9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
+		9AD0F43E1C7CF71800AEF928 /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DCE1C6008660037210F /* POI.m */; };
+		9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
+		9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
+		9AD0F4421C7CF71800AEF928 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
+		9AD0F4441C7CF71800AEF928 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
+		9AD0F4451C7CF71800AEF928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
+		9AD0F4461C7CF71800AEF928 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A53014A1C5AD6A6008D584B /* Main.storyboard */; };
+		9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
+		9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
+		9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */; };
+		9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9A26CB181C7BC4DE00E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
+		9A26CB1D1C7BCBF400E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
+		9A26CB231C7BCCE500E46662 /* CERangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSlider.h; path = SpaceBar/RangeSlider/CERangeSlider.h; sourceTree = "<group>"; };
+		9A26CB241C7BCCE500E46662 /* CERangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSlider.m; path = SpaceBar/RangeSlider/CERangeSlider.m; sourceTree = "<group>"; };
+		9A26CB251C7BCCE500E46662 /* CERangeSliderKnobLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSliderKnobLayer.h; path = SpaceBar/RangeSlider/CERangeSliderKnobLayer.h; sourceTree = "<group>"; };
+		9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderKnobLayer.m; path = SpaceBar/RangeSlider/CERangeSliderKnobLayer.m; sourceTree = "<group>"; };
+		9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSliderTrackLayer.h; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.h; sourceTree = "<group>"; };
+		9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderTrackLayer.m; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
+		9A53013E1C5AD6A6008D584B /* SpaceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A5301421C5AD6A6008D584B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9A5301441C5AD6A6008D584B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9A5301451C5AD6A6008D584B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9A5301471C5AD6A6008D584B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9A5301481C5AD6A6008D584B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9A53014B1C5AD6A6008D584B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A53014E1C5AD6A6008D584B /* PlayGround.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlayGround.xcdatamodel; sourceTree = "<group>"; };
+		9A5301501C5AD6A6008D584B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A5301531C5AD6A6008D584B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
+		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
+		9A836D371C69372C007D9520 /* tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tester.h; path = tester/tester.h; sourceTree = "<group>"; };
+		9A836D381C69372C007D9520 /* tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tester.m; path = tester/tester.m; sourceTree = "<group>"; };
+		9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+UpdateSet.h"; path = "SpaceBar/SpaceBar+UpdateSet.h"; sourceTree = "<group>"; };
+		9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+UpdateSet.m"; path = "SpaceBar/SpaceBar+UpdateSet.m"; sourceTree = "<group>"; };
+		9A8413671C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+UpdateMap.h"; path = "SpaceBar/SpaceBar+UpdateMap.h"; sourceTree = "<group>"; };
+		9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+UpdateMap.m"; path = "SpaceBar/SpaceBar+UpdateMap.m"; sourceTree = "<group>"; };
+		9A84136C1C6FB39B004DF8D1 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = SpaceBar/Constants.m; sourceTree = "<group>"; };
+		9A84136E1C6FB3B4004DF8D1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = SpaceBar/Constants.h; sourceTree = "<group>"; };
+		9AC36DC41C5FF4690037210F /* SpaceBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceBar.h; path = SpaceBar/SpaceBar.h; sourceTree = "<group>"; };
+		9AC36DC51C5FF4690037210F /* SpaceBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceBar.m; path = SpaceBar/SpaceBar.m; sourceTree = "<group>"; };
+		9AC36DC71C5FF9660037210F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9AC36DCD1C6008660037210F /* POI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POI.h; path = SpaceBar/POI.h; sourceTree = "<group>"; };
+		9AC36DCE1C6008660037210F /* POI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POI.m; path = SpaceBar/POI.m; sourceTree = "<group>"; };
+		9AC36DD01C60087B0037210F /* SpaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceMark.h; path = SpaceBar/SpaceMark.h; sourceTree = "<group>"; };
+		9AC36DD11C60087B0037210F /* SpaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceMark.m; path = SpaceBar/SpaceMark.m; sourceTree = "<group>"; };
+		9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceBar iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBar copy-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBar copy-Info.plist"; sourceTree = "<absolute>"; };
+		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
+		9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Extensions.h"; path = "SpaceBar/UIButton+Extensions.h"; sourceTree = "<group>"; };
+		9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Extensions.m"; path = "SpaceBar/UIButton+Extensions.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A53013B1C5AD6A6008D584B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AD0F4411C7CF71800AEF928 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD0F4421C7CF71800AEF928 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A26CB2C1C7BCCF400E46662 /* CERange */ = {
+			isa = PBXGroup;
+			children = (
+				9A26CB231C7BCCE500E46662 /* CERangeSlider.h */,
+				9A26CB241C7BCCE500E46662 /* CERangeSlider.m */,
+				9A26CB251C7BCCE500E46662 /* CERangeSliderKnobLayer.h */,
+				9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */,
+				9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */,
+				9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */,
+			);
+			name = CERange;
+			sourceTree = "<group>";
+		};
+		9A5301351C5AD6A6008D584B = {
+			isa = PBXGroup;
+			children = (
+				9AC36DC71C5FF9660037210F /* MapKit.framework */,
+				9A5301401C5AD6A6008D584B /* PlayGround */,
+				9A53013F1C5AD6A6008D584B /* Products */,
+				9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		9A53013F1C5AD6A6008D584B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A53013E1C5AD6A6008D584B /* SpaceBar.app */,
+				9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A5301401C5AD6A6008D584B /* PlayGround */ = {
+			isa = PBXGroup;
+			children = (
+				9A836D361C6933B6007D9520 /* Tests */,
+				9AC36DC31C5FF2220037210F /* SpaceBar */,
+				9AC36DC91C5FFBE30037210F /* View */,
+				9AC36DD31C60098A0037210F /* Controller */,
+				9A5301451C5AD6A6008D584B /* AppDelegate.m */,
+				9A5301441C5AD6A6008D584B /* AppDelegate.h */,
+				9A5301501C5AD6A6008D584B /* Assets.xcassets */,
+				9A5301551C5AD6A6008D584B /* Info.plist */,
+				9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */,
+				9A5301411C5AD6A6008D584B /* Supporting Files */,
+			);
+			path = PlayGround;
+			sourceTree = "<group>";
+		};
+		9A5301411C5AD6A6008D584B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A5301421C5AD6A6008D584B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A836D361C6933B6007D9520 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9A836D371C69372C007D9520 /* tester.h */,
+				9A836D381C69372C007D9520 /* tester.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		9AC36DC31C5FF2220037210F /* SpaceBar */ = {
+			isa = PBXGroup;
+			children = (
+				9A26CB2C1C7BCCF400E46662 /* CERange */,
+				9AC36DC41C5FF4690037210F /* SpaceBar.h */,
+				9AC36DC51C5FF4690037210F /* SpaceBar.m */,
+				9A8413671C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.h */,
+				9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */,
+				9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */,
+				9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */,
+				9AC36DCD1C6008660037210F /* POI.h */,
+				9AC36DCE1C6008660037210F /* POI.m */,
+				9AC36DD01C60087B0037210F /* SpaceMark.h */,
+				9AC36DD11C60087B0037210F /* SpaceMark.m */,
+				9A62F1E21C62C6BF00A39DAF /* Tools.h */,
+				9A62F1E31C62C6BF00A39DAF /* Tools.m */,
+				9A84136C1C6FB39B004DF8D1 /* Constants.m */,
+				9A84136E1C6FB3B4004DF8D1 /* Constants.h */,
+				9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */,
+				9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */,
+			);
+			name = SpaceBar;
+			sourceTree = "<group>";
+		};
+		9AC36DC91C5FFBE30037210F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A53014A1C5AD6A6008D584B /* Main.storyboard */,
+				9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */,
+				9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9AC36DD31C60098A0037210F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A5301471C5AD6A6008D584B /* ViewController.h */,
+				9A5301481C5AD6A6008D584B /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A53013D1C5AD6A6008D584B /* SpaceBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A5301581C5AD6A6008D584B /* Build configuration list for PBXNativeTarget "SpaceBar" */;
+			buildPhases = (
+				9A53013A1C5AD6A6008D584B /* Sources */,
+				9A53013B1C5AD6A6008D584B /* Frameworks */,
+				9A53013C1C5AD6A6008D584B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpaceBar;
+			productName = PlayGround;
+			productReference = 9A53013E1C5AD6A6008D584B /* SpaceBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9AD0F42E1C7CF71800AEF928 /* SpaceBar iPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AD0F4491C7CF71800AEF928 /* Build configuration list for PBXNativeTarget "SpaceBar iPad" */;
+			buildPhases = (
+				9AD0F42F1C7CF71800AEF928 /* Sources */,
+				9AD0F4411C7CF71800AEF928 /* Frameworks */,
+				9AD0F4431C7CF71800AEF928 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SpaceBar iPad";
+			productName = PlayGround;
+			productReference = 9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A5301361C5AD6A6008D584B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = dmiau;
+				TargetAttributes = {
+					9A53013D1C5AD6A6008D584B = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = T8L89L97Z5;
+					};
+				};
+			};
+			buildConfigurationList = 9A5301391C5AD6A6008D584B /* Build configuration list for PBXProject "SpaceBar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A5301351C5AD6A6008D584B;
+			productRefGroup = 9A53013F1C5AD6A6008D584B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A53013D1C5AD6A6008D584B /* SpaceBar */,
+				9AD0F42E1C7CF71800AEF928 /* SpaceBar iPad */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A53013C1C5AD6A6008D584B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
+				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
+				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
+				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
+				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AD0F4431C7CF71800AEF928 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD0F4441C7CF71800AEF928 /* LaunchScreen.storyboard in Resources */,
+				9AD0F4451C7CF71800AEF928 /* Assets.xcassets in Resources */,
+				9AD0F4461C7CF71800AEF928 /* Main.storyboard in Resources */,
+				9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */,
+				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
+				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A53013A1C5AD6A6008D584B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
+				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
+				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
+				9A5301491C5AD6A6008D584B /* ViewController.m in Sources */,
+				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
+				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
+				9AC36DC61C5FF4690037210F /* SpaceBar.m in Sources */,
+				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
+				9AC36DD21C60087B0037210F /* SpaceMark.m in Sources */,
+				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
+				9A5301431C5AD6A6008D584B /* main.m in Sources */,
+				9A836D391C69372C007D9520 /* tester.m in Sources */,
+				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
+				9AC36DCF1C6008660037210F /* POI.m in Sources */,
+				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
+				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AD0F42F1C7CF71800AEF928 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
+				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
+				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
+				9AD0F4341C7CF71800AEF928 /* ViewController.m in Sources */,
+				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
+				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
+				9AD0F4371C7CF71800AEF928 /* SpaceBar.m in Sources */,
+				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
+				9AD0F4391C7CF71800AEF928 /* SpaceMark.m in Sources */,
+				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
+				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
+				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
+				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
+				9AD0F43E1C7CF71800AEF928 /* POI.m in Sources */,
+				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
+				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9A53014A1C5AD6A6008D584B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A53014B1C5AD6A6008D584B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A5301531C5AD6A6008D584B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AD0F44F1C7CF7F100AEF928 /* Base */,
+			);
+			name = iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A5301561C5AD6A6008D584B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A5301571C5AD6A6008D584B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A5301591C5AD6A6008D584B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PlayGround/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		9A53015A1C5AD6A6008D584B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PlayGround/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		9AD0F44A1C7CF71800AEF928 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		9AD0F44B1C7CF71800AEF928 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A5301391C5AD6A6008D584B /* Build configuration list for PBXProject "SpaceBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A5301561C5AD6A6008D584B /* Debug */,
+				9A5301571C5AD6A6008D584B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A5301581C5AD6A6008D584B /* Build configuration list for PBXNativeTarget "SpaceBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A5301591C5AD6A6008D584B /* Debug */,
+				9A53015A1C5AD6A6008D584B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AD0F4491C7CF71800AEF928 /* Build configuration list for PBXNativeTarget "SpaceBar iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AD0F44A1C7CF71800AEF928 /* Debug */,
+				9AD0F44B1C7CF71800AEF928 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9A53014E1C5AD6A6008D584B /* PlayGround.xcdatamodel */,
+			);
+			currentVersion = 9A53014E1C5AD6A6008D584B /* PlayGround.xcdatamodel */;
+			path = PlayGround.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9A5301361C5AD6A6008D584B /* Project object */;
+}

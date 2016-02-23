@@ -17,6 +17,9 @@
 
 //---properties
 @property CLLocationCoordinate2D latLon;
+
+// mapViewXY caches the Mercator (x, y) coordinates
+// corrresponding to latlon
 @property CGPoint mapViewXY;
 
 //---methods

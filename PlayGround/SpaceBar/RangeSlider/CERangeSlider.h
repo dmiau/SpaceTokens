@@ -24,6 +24,9 @@
 
 @property NSMutableSet *trackTouchingSet;
 
+// stores a list of dots to be displayed on the track
+@property NSMutableArray *trackDotsArray;
+
 @property float blankXBias; 
 
 @property (nonatomic) float curvatiousness;

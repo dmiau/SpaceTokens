@@ -68,7 +68,9 @@
     self.POIArray = [[NSMutableArray alloc] init];
     self.SpaceMarkArray = [[NSMutableArray alloc] init];
     
-    self.displaySet = [[NSMutableSet alloc] init];
+    self.buttonSet = [[NSMutableSet alloc] init];
+    self.dotSet = [[NSMutableSet alloc] init];
+    
     self.touchingSet = [[NSMutableSet alloc] init];
     self.draggingSet = [[NSMutableSet alloc] init];        
     
@@ -77,7 +79,7 @@
     
     [center addObserver:self
         selector:@selector(addToSetBasedOnNotification:)
-        name:AddToDisplaySetNotification
+        name:AddToButtonSetNotification
         object:[[ UIApplication sharedApplication] delegate]];
 
     [center addObserver:self
@@ -94,7 +96,7 @@
 
     [center addObserver:self
                selector:@selector(removeFromSetBasedOnNotification:)
-                   name:RemoveFromDisplaySetNotification
+                   name:RemoveFromButtonSetNotification
                  object:nil];
     
     [center addObserver:self
@@ -123,8 +125,8 @@
 // timer
 //----------------
 -(void)timerFired{    
-    // if displaySet is not empty, update the map    
-    if ([self.displaySet count] > 0){
+    // if buttonSet is not empty, update the map    
+    if ([self.buttonSet count] > 0){
         [self orderPOIs];
     }
     

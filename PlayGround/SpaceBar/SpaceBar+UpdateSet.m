@@ -26,7 +26,7 @@
     if (aSpaceMark){
         // Add to the canvas
         [self.mapView addSubview:aSpaceMark];
-        [self.displaySet addObject:aSpaceMark];
+        [self.buttonSet addObject:aSpaceMark];
     }else{
         // error
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceMark Error"
@@ -47,15 +47,15 @@
     NSLog(@"addToSetBasedOnNotification");
     
     // handle the notification based on event name
-    if (aNotification.name == AddToDisplaySetNotification){
-        [self.displaySet addObject:aNotification.object];
+    if (aNotification.name == AddToButtonSetNotification){
+        [self.buttonSet addObject:aNotification.object];
     }else if (aNotification.name == AddToTouchingSetNotification){
         [self.touchingSet addObject:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
         
         // remove from the display set
         SpaceMark *currentSpaceMark = aNotification.object;
-        [self.displaySet removeObject:currentSpaceMark];
+        [self.buttonSet removeObject:currentSpaceMark];
         // Duplicate the button
         SpaceMark* newSpaceMark = [self addSpaceMarkWithName: currentSpaceMark.titleLabel.text
                                                     LatLon:currentSpaceMark.latLon];
@@ -71,8 +71,8 @@
     NSLog(@"removeFromSetBasedOnNotification");
     
     // handle the notification based on event name
-    if (aNotification.name == RemoveFromDisplaySetNotification){
-        [self.displaySet removeObject:aNotification.object];
+    if (aNotification.name == RemoveFromButtonSetNotification){
+        [self.buttonSet removeObject:aNotification.object];
     }else if (aNotification.name == RemoveFromTouchingSetNotification){
         [self.draggingSet removeObject:aNotification.object];        
         [self.touchingSet removeObject:aNotification.object];
@@ -89,20 +89,23 @@
 //----------------
 - (void) orderPOIs{
     // equally distribute the POIs
-    if ([self.displaySet count] > 0){
+    if ([self.buttonSet count] > 0){
         CGFloat barHeight = self.mapView.frame.size.height;
         CGFloat viewWidth = self.mapView.frame.size.width;
         
-        CGFloat gap = barHeight / ([self.displaySet count] + 1);
+        CGFloat gap = barHeight / ([self.buttonSet count] + 1);
         
-        // Sort the POIs
-        [self fillMapXYsForSet:self.displaySet];
+        // 
+        
+        
+        // Fill in mapXY
+        [self fillMapXYsForSet:self.buttonSet];
 
-        //sort by block
+        //Sort the POIs (sort by block)
         //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
         
         NSArray *sortedArray =
-        [[self.displaySet allObjects]
+        [[self.buttonSet allObjects]
          sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             POI *first = (POI*)a;
             POI *second = (POI*)b;
@@ -117,7 +120,6 @@
             }
          }];
 
-        
         // Position the SpaceMark
         for (int i = 0; i < [sortedArray count]; i++){
             POI *aPOI = sortedArray[i];
@@ -125,6 +127,10 @@
                                     gap * (i+1), aPOI.frame.size.width,
                                     aPOI.frame.size.height);
         }
+        
+        // position trackDots
+
+        
     }
 }
 

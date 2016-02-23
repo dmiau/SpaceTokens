@@ -138,7 +138,7 @@
     CGPoint locationInButton = [touch locationInView:self];
     
     // Threshold the x position to distiguish wheather the button is dragged or clicked
-    if ((self.superview.frame.size.width - locationInView.x) < 0.2 * self.superview.frame.size.width)
+    if ((self.superview.frame.size.width - locationInView.x) < self.frame.size.width*1.2)
     {
         // Do nothing if the SpaceMark is not dragged far out enough
         return;

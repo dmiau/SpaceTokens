@@ -25,7 +25,9 @@
 
 // This is a convenient set to cache the references to all the
 // POIs on the track
-@property NSMutableSet *displaySet;
+@property NSMutableSet *buttonSet;
+
+@property NSMutableSet *dotSet;
 
 // This is a convenient set to cache the references to all the
 // POIs that are being touched.

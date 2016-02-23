@@ -79,6 +79,7 @@ GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
         _lowerTouch = nil;
         
         _trackTouchingSet = [[NSMutableSet alloc] init];
+        _trackDotsArray = [[NSMutableArray alloc] init];
         
         _trackLayer = [CERangeSliderTrackLayer layer];
         _trackLayer.slider = self;
