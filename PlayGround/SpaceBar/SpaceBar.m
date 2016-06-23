@@ -74,6 +74,10 @@
     self.touchingSet = [[NSMutableSet alloc] init];
     self.draggingSet = [[NSMutableSet alloc] init];        
     
+    self.mapCentroid = [[POI alloc] init];
+    
+    [self.dotSet addObject:self.mapCentroid];
+    
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     

@@ -37,21 +37,21 @@
 // POIs that are being dragged
 @property NSMutableSet *draggingSet;
 
+// Two special POIs are cached in SpaceBar
+@property POI* mapCentroid;
+@property POI* youAreHere;
+
 // Constructors
 - (id)initWithMapView: (MKMapView *) myMapView;
 
 - (SpaceMark*) addSpaceMarkWithName: (NSString*) name
                              LatLon: (CLLocationCoordinate2D) latlon;
-// --------------
-// Private methods
-// --------------
-- (void) orderPOIs;
-
 
 // --------------
 // Implement in updateSet category
 // --------------
-
+- (void) updateSpecialPOIs;
+- (void) orderPOIs;
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification;
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification;
 

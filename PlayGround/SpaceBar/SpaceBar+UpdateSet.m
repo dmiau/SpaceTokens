@@ -83,6 +83,10 @@
     
 }
 
+- (void) updateSpecialPOIs{
+    self.mapCentroid.latLon = self.mapView.centerCoordinate;
+}
+
 
 //----------------
 // order the POIs and SpaceMarks on the track
@@ -95,17 +99,19 @@
         
         CGFloat gap = barHeight / ([self.buttonSet count] + 1);
         
-        // 
-        
-        
         // Fill in mapXY
+        [self fillMapXYsForSet:self.dotSet];
         [self fillMapXYsForSet:self.buttonSet];
+        
+        // Form a new set for sorting
+        NSMutableSet *allPOIs = [NSMutableSet setWithSet:self.dotSet];
+        [allPOIs unionSet: self.buttonSet];
 
         //Sort the POIs (sort by block)
         //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
         
         NSArray *sortedArray =
-        [[self.buttonSet allObjects]
+        [[allPOIs allObjects]
          sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             POI *first = (POI*)a;
             POI *second = (POI*)b;
@@ -116,20 +122,31 @@
             else if (first.mapViewXY.y > second.mapViewXY.y) {
                 return NSOrderedDescending;
             }else{
-                return NSOrderedSame;
+                // In the unlikely case that the two POIs have the same y
+                if (first.mapViewXY.x < second.mapViewXY.x) {
+                    return NSOrderedAscending;
+                }else if (first.mapViewXY.x > second.mapViewXY.x) {
+                    return NSOrderedDescending;
+                }else{
+                    return NSOrderedSame;
+                }
             }
          }];
 
-        // Position the SpaceMark
+        // Position the SpaceMark and dots
         for (int i = 0; i < [sortedArray count]; i++){
-            POI *aPOI = sortedArray[i];
-            aPOI.frame = CGRectMake(viewWidth - aPOI.frame.size.width,
-                                    gap * (i+1), aPOI.frame.size.width,
-                                    aPOI.frame.size.height);
+            
+            if ([sortedArray[i] isKindOfClass:[SpaceMark class]]){
+                POI *aPOI = sortedArray[i];
+                aPOI.frame = CGRectMake(viewWidth - aPOI.frame.size.width,
+                                        gap * (i+1), aPOI.frame.size.width,
+                                        aPOI.frame.size.height);
+            }else{
+                // calculate the distance from self to the adjancent two
+                // SpaceMarks
+                
+            }
         }
-        
-        // position trackDots
-
         
     }
 }

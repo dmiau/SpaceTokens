@@ -23,7 +23,6 @@
 @property CGPoint mapViewXY;
 
 //---methods
-- (id) initPOI;
 - (void) resetButton;
 
 @end
