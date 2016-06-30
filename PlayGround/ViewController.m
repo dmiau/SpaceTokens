@@ -29,6 +29,8 @@
     [self.view addSubview:self.mapView];
     [self.mapView setUserInteractionEnabled:YES];
     
+    self.mapView.delegate = self;
+    
     // Add a SpaceBar
     _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];    
     
@@ -50,12 +52,86 @@
     [self.spaceBar addSpaceMarkWithName:@"Tokyo" LatLon:
      CLLocationCoordinate2DMake(35.689487, 139.691706)];
     
+    
+    // Add a direction button for testing
+    
+    float mapViewWidth = self.mapView.frame.size.width;
+    float mapViewHeight = self.mapView.frame.size.height;
+    UIButton*  directionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    directionButton.frame = CGRectMake(mapViewWidth*0.1, mapViewHeight*0.9, 60, 20);
+    [directionButton setTitle:@"Direction" forState:UIControlStateNormal];
+    [directionButton setBackgroundColor:[UIColor grayColor]];
+    [directionButton addTarget:self action:@selector(directionButtonAction)
+              forControlEvents:UIControlEventTouchDown];
+    
+    [self.mapView addSubview:directionButton];
 
 //    // Run the test
 //    Tester *tester = [[Tester alloc] init];
 //    [tester runTests];
 }
 
+
+- (void)directionButtonAction {
+    NSLog(@"Direction button pressed!");
+    
+    // Get the direction from New York to Boston
+    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    
+    
+    // Start map item (New York)
+    MKPlacemark *startPlacemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(40.712784, -74.005941) addressDictionary:nil];
+    MKMapItem *startMapItem = [[MKMapItem alloc] initWithPlacemark:startPlacemark];
+    [startMapItem setName:@"New York"];
+    request.source = startMapItem;
+    
+    // End map item (Boston)
+    MKPlacemark *endPlacemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(42.360082, -71.058880) addressDictionary:nil];
+    MKMapItem *endMapItem = [[MKMapItem alloc] initWithPlacemark:endPlacemark];
+    [startMapItem setName:@"Boston"];
+    request.destination = endMapItem;
+    
+    
+    request.requestsAlternateRoutes = YES;
+    MKDirections *directions =
+    [[MKDirections alloc] initWithRequest:request];
+    
+    [directions calculateDirectionsWithCompletionHandler:
+     ^(MKDirectionsResponse *response, NSError *error) {
+         if (error) {
+             // Handle Error
+         } else {
+             [self showRoute:response];
+         }
+     }];
+        
+}
+
+-(void)showRoute:(MKDirectionsResponse *)response
+{
+    for (MKRoute *route in response.routes)
+    {
+        [self.mapView
+         addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
+        
+        
+        // Print out the turn-by-turn instructions
+        for (MKRouteStep *step in route.steps)
+        {
+            NSLog(@"%@", step.instructions);
+        }
+    }
+}
+
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
+{
+    MKPolylineRenderer *renderer =
+    [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+    renderer.strokeColor = [UIColor blueColor];
+    renderer.lineWidth = 5.0;
+    return renderer;
+}
 
 
 - (void)didReceiveMemoryWarning {

@@ -149,7 +149,7 @@
             self.hasReportedDraggingEvent = [NSNumber numberWithBool:YES];
             [self.lineLayer removeFromSuperlayer];
             NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
-                                                                         object:self userInfo:nil];
+                object:self userInfo:nil];
             [[ NSNotificationCenter defaultCenter] postNotification:notification];
             
             // Change the style of the dragging tocken

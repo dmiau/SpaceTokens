@@ -49,6 +49,7 @@ GENERATE_SETTER(lowerValue, float, setLowerValue, setLayerFrames)
 
 GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
 
+
 - (void) redrawLayers
 {
     [_upperKnobLayer setNeedsDisplay];
@@ -221,6 +222,8 @@ GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
         _lowerValue = aValue;
         _upperValue = -1;
 
+        
+        
     }else if ([_trackTouchingSet count] == 2){
         float twoValues[2];
         

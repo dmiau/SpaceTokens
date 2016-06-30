@@ -62,6 +62,18 @@
     return self;
 }
 
+
+- (void)setDelegate:(id <SpaceBarDelegate>)aDelegate {
+    if (_delegate != aDelegate) {
+        _delegate = aDelegate;
+        
+        _delegateRespondsTo.didFinishLoadingItem =
+        [_delegate respondsToSelector:@selector(something:didFinishLoadingItem:)];
+        _delegateRespondsTo.didFailWithError =
+        [_delegate respondsToSelector:@selector(something:didFailWithError:)];
+    }
+}
+
 // Initialize common parts among all display types
 - (void) initializeCommon {
 
