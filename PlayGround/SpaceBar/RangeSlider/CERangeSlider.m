@@ -21,6 +21,11 @@
     float _useableTrackLength;
     
     CGPoint _previousTouchPoint;
+    
+    struct {
+        unsigned int sliderOnePointTouched:1;
+        unsigned int sliderTwoPOintsTouched:1;
+    } delegateRespondsTo;
 }
 
 #define GENERATE_SETTER(PROPERTY, TYPE, SETTER, UPDATER) \
@@ -49,6 +54,17 @@ GENERATE_SETTER(lowerValue, float, setLowerValue, setLayerFrames)
 
 GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
 
+- (void)setDelegate:(id <CERangeSliderDelegate>)aDelegate {
+    if (_delegate != aDelegate) {
+        _delegate = aDelegate;
+        
+        delegateRespondsTo.sliderOnePointTouched = [_delegate
+            respondsToSelector:@selector(sliderOnePointTouched)];
+        delegateRespondsTo.sliderTwoPOintsTouched = [_delegate
+            respondsToSelector:@selector(sliderTwoPOintsTouched)];
+    }
+}
+
 
 - (void) redrawLayers
 {
@@ -65,8 +81,6 @@ GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
         _trackColour = [UIColor colorWithWhite:0.9 alpha:0.5];
         _knobColour = [UIColor whiteColor];
         _curvatiousness = 1.0;
-        _maximumValue = 10.0;
-        _minimumValue = 0.0;
         
         // Initialization code
         _maximumValue = 10.0;
@@ -222,7 +236,10 @@ GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
         _lowerValue = aValue;
         _upperValue = -1;
 
-        
+        if (delegateRespondsTo.sliderOnePointTouched)
+        {
+            [self.delegate sliderOnePointTouched];
+        }        
         
     }else if ([_trackTouchingSet count] == 2){
         float twoValues[2];

@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "SpaceMark.h"
-#import "CERangeSlider.h"
+#import "RangeSlider/CERangeSlider.h"
 
 #pragma mark - SpaceBarProtocol
+//----------------------------
+// SpaceBar (delegate)
+//----------------------------
 @protocol SpaceBarDelegate <NSObject>
 - (void)spaceBarOnePointTouched:(float) percentage;
 - (void)spaceBarTwoPointsTouched:(float[2]) percentagePair;
@@ -21,13 +24,12 @@
 //----------------------------
 // SpaceBar
 //----------------------------
-@interface SpaceBar : NSObject
+@interface SpaceBar : NSObject <CERangeSliderDelegate>
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 //@property UIView *ca nvas;
 @property (weak) MKMapView *mapView;
 
 //@property UIView *canvas;
-
 @property CERangeSlider* rangeSlider;
 
 @property NSMutableArray *POIArray;
@@ -53,11 +55,10 @@
 
 
 // Use bit field to track if delegate is set properly
-
 //http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/
 @property  struct {
-unsigned int didFinishLoadingItem:1;
-unsigned int didFailWithError:1;
+unsigned int spaceBarOnePointTouched:1;
+unsigned int spaceBarTwoPointsTouched:1;
 } delegateRespondsTo;
 
 // Constructors

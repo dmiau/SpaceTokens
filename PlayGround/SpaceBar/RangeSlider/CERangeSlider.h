@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CERangeSliderDelegate <NSObject>
+@optional
+- (void) sliderOnePointTouched;
+- (void) sliderTwoPOintsTouched;
+@end
+
+
 @interface CERangeSlider : UIControl
+
+@property (nonatomic, weak) id <CERangeSliderDelegate> delegate;
 
 @property (nonatomic) float maximumValue;
 

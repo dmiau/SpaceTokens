@@ -8,6 +8,7 @@
 
 #import "SpaceBar.h"
 #import "Constants.h"
+#import "CERangeSlider.h"
 
 // SpaceBar extension
 @interface SpaceBar ()
@@ -50,6 +51,7 @@
                                         self.mapView.frame.size.height);
         
         self.rangeSlider = [[CERangeSlider alloc] initWithFrame:sliderFrame];
+        self.rangeSlider.delegate = self;
 
         [self.mapView addSubview:_rangeSlider];
         
@@ -67,10 +69,10 @@
     if (_delegate != aDelegate) {
         _delegate = aDelegate;
         
-        _delegateRespondsTo.didFinishLoadingItem =
-        [_delegate respondsToSelector:@selector(something:didFinishLoadingItem:)];
-        _delegateRespondsTo.didFailWithError =
-        [_delegate respondsToSelector:@selector(something:didFailWithError:)];
+        _delegateRespondsTo.spaceBarOnePointTouched =
+        [_delegate respondsToSelector:@selector(spaceBarOnePointTouched:)];
+        _delegateRespondsTo.spaceBarTwoPointsTouched =
+        [_delegate respondsToSelector:@selector(spaceBarTwoPointsTouched:)];
     }
 }
 

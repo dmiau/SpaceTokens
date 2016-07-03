@@ -15,7 +15,16 @@
 #pragma mark RouteInterface
 @interface Route : NSObject
 
+//------------------
+// properties
+//------------------
 @property MKRoute *route;
+@property std::vector<double> *accumulatedDist;
+
+//------------------
+// methods
+//------------------
+
 // Constructors
 - (id)initWithMKRoute: (MKRoute *) aRoute;
 

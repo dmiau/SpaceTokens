@@ -22,10 +22,14 @@
 		9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
 		9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
+		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
+		9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A836D391C69372C007D9520 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
 		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
 		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
 		9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
+		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
+		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
 		9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AC36DCF1C6008660037210F /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DCE1C6008660037210F /* POI.m */; };
@@ -80,6 +84,8 @@
 		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
+		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
+		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
 		9A836D371C69372C007D9520 /* tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tester.h; path = tester/tester.h; sourceTree = "<group>"; };
 		9A836D381C69372C007D9520 /* tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tester.m; path = tester/tester.m; sourceTree = "<group>"; };
 		9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+UpdateSet.h"; path = "SpaceBar/SpaceBar+UpdateSet.h"; sourceTree = "<group>"; };
@@ -88,6 +94,8 @@
 		9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+UpdateMap.m"; path = "SpaceBar/SpaceBar+UpdateMap.m"; sourceTree = "<group>"; };
 		9A84136C1C6FB39B004DF8D1 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = SpaceBar/Constants.m; sourceTree = "<group>"; };
 		9A84136E1C6FB3B4004DF8D1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = SpaceBar/Constants.h; sourceTree = "<group>"; };
+		9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Interactions.h"; path = "SpaceBar/SpaceBar+Interactions.h"; sourceTree = "<group>"; };
+		9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Interactions.m"; path = "SpaceBar/SpaceBar+Interactions.m"; sourceTree = "<group>"; };
 		9AC36DC41C5FF4690037210F /* SpaceBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceBar.h; path = SpaceBar/SpaceBar.h; sourceTree = "<group>"; };
 		9AC36DC51C5FF4690037210F /* SpaceBar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SpaceBar.mm; path = SpaceBar/SpaceBar.mm; sourceTree = "<group>"; };
 		9AC36DC71C5FF9660037210F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -204,6 +212,8 @@
 				9A26CB2C1C7BCCF400E46662 /* CERange */,
 				9AC36DC41C5FF4690037210F /* SpaceBar.h */,
 				9AC36DC51C5FF4690037210F /* SpaceBar.mm */,
+				9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */,
+				9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */,
 				9A8413671C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.h */,
 				9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */,
 				9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */,
@@ -237,6 +247,8 @@
 			children = (
 				9A5301471C5AD6A6008D584B /* ViewController.h */,
 				9A5301481C5AD6A6008D584B /* ViewController.m */,
+				9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */,
+				9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -346,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
+				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.m in Sources */,
@@ -354,6 +367,7 @@
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceMark.m in Sources */,
+				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
@@ -370,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
+				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
 				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.m in Sources */,
@@ -378,6 +393,7 @@
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceMark.m in Sources */,
+				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
