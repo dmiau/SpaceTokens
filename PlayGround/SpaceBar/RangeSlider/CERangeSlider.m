@@ -132,7 +132,7 @@ GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
     [_trackLayer setNeedsDisplay];
 
     _knobWidth = self.bounds.size.width;
-    _useableTrackLength = self.bounds.size.height - _knobWidth;
+    _useableTrackLength = self.bounds.size.height;
 
     
 //    float upperKnobCentre = [self positionForValue:_upperValue];

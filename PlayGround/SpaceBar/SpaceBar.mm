@@ -45,7 +45,6 @@
 //        [_mapView addSubview: _canvas];
         
         // Add the range track
-        NSUInteger margin = 20;
         CGRect sliderFrame = CGRectMake(self.mapView.frame.size.width - 30, 0,
                                         30,
                                         self.mapView.frame.size.height);

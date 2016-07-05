@@ -101,8 +101,6 @@
 #pragma mark --customMKMapView delegate methods--
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     
-    NSLog(@"Map changed!");
-    
     if (self.route){
         std::vector<std::pair<float, float>> elevatorResutls =
         [self.route calculateVisibleSegmentsForMap:self.mapView];
@@ -113,7 +111,6 @@
         // for now I can only display one elevator
         [self.spaceBar updateElevatorFromPercentagePair:temp];
     }        
-    NSLog(@"Done!");
 }
 
 @end
