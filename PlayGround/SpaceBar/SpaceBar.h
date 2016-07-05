@@ -67,7 +67,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 - (SpaceMark*) addSpaceMarkWithName: (NSString*) name
                              LatLon: (CLLocationCoordinate2D) latlon;
 // --------------
-// Implement in updateSet category
+// Implement in Interactions category
 // --------------
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
 

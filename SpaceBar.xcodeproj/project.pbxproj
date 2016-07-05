@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A143B341D2AF56E001EE841 /* customMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* customMKMapView.m */; };
+		9A143B351D2AF56E001EE841 /* customMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* customMKMapView.m */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A22D0191D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
@@ -61,6 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A143B321D2AF56E001EE841 /* customMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customMKMapView.h; path = Map/customMKMapView.h; sourceTree = "<group>"; };
+		9A143B331D2AF56E001EE841 /* customMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customMKMapView.m; path = Map/customMKMapView.m; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
 		9A26CB181C7BC4DE00E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
@@ -135,6 +139,8 @@
 			children = (
 				9A22D0161D22BD9A009BC465 /* Route.h */,
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
+				9A143B321D2AF56E001EE841 /* customMKMapView.h */,
+				9A143B331D2AF56E001EE841 /* customMKMapView.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
+				9A143B341D2AF56E001EE841 /* customMKMapView.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.m in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
@@ -387,6 +394,7 @@
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
 				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
+				9A143B351D2AF56E001EE841 /* customMKMapView.m in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.m in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,

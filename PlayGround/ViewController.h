@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "SpaceBar/SpaceBar.h"
+#import "Map/customMKMapView.h"
 
 @class Route;
 
-@interface ViewController : UIViewController <SpaceBarDelegate>
+@interface ViewController : UIViewController <SpaceBarDelegate, MKMapViewDelegate>
 
 @property UIButton *myButton;
-@property MKMapView *mapView;
+@property customMKMapView *mapView;
 
 @property SpaceBar *spaceBar;
 @property Route *route;

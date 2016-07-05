@@ -11,6 +11,7 @@
 #include <vector>
 #include <utility>
 
+using namespace std;
 
 #pragma mark RouteInterface
 @interface Route : NSObject
@@ -19,7 +20,13 @@
 // properties
 //------------------
 @property MKRoute *route;
-@property std::vector<double> *accumulatedDist;
+
+// the following vectors are used to look up POI, or ROI or a path
+@property vector<double> *mapPointX;
+@property vector<double> *mapPointY;
+@property vector<int> *stepNumber;
+@property vector<int> *indexInStep;
+@property vector<double> *accumulatedDist;
 
 //------------------
 // methods
@@ -28,7 +35,8 @@
 // Constructors
 - (id)initWithMKRoute: (MKRoute *) aRoute;
 
--(std::vector<std::pair<float, float>>) calculateVisibleSegments;
+-(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:
+                                (MKMapView*) mapView;
 -(CLLocationCoordinate2D) convertPercentagePointToLatLon: (float) percentage;
 
 @end

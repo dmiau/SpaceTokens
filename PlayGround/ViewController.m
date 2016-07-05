@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     // Add a mapView
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 75,
+    self.mapView = [[customMKMapView alloc] initWithFrame:CGRectMake(0, 75,
                                                               self.view.frame.size.width, self.view.frame.size.height - 75)];
     [self.view addSubview:self.mapView];
     [self.mapView setUserInteractionEnabled:YES];

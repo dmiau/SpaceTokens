@@ -19,6 +19,10 @@
         [self.route convertPercentagePointToLatLon: percentage];
         [self.mapView setRegion: MKCoordinateRegionMake(coord,
                                                         MKCoordinateSpanMake(0.1, 0.1))];
+        
+        
+        // for testing purpose
+        
     }
 }
 
@@ -93,4 +97,23 @@
     renderer.lineWidth = 5.0;
     return renderer;
 }
+
+#pragma mark --customMKMapView delegate methods--
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+    
+    NSLog(@"Map changed!");
+    
+    if (self.route){
+        std::vector<std::pair<float, float>> elevatorResutls =
+        [self.route calculateVisibleSegmentsForMap:self.mapView];
+        
+        float temp[2];
+        temp[0] = elevatorResutls[0].first;
+        temp[1] = elevatorResutls[0].second;
+        // for now I can only display one elevator
+        [self.spaceBar updateElevatorFromPercentagePair:temp];
+    }        
+    NSLog(@"Done!");
+}
+
 @end

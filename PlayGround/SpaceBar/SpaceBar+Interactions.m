@@ -33,4 +33,12 @@
     }
 }
 
+
+- (void) updateElevatorFromPercentagePair: (float[2]) percentagePair{
+    
+    self.rangeSlider.lowerValue =
+                percentagePair[0] * self.rangeSlider.maximumValue;
+    self.rangeSlider.upperValue =
+                percentagePair[1] * self.rangeSlider.maximumValue;
+}
 @end
