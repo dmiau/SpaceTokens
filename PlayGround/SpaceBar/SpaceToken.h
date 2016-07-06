@@ -1,5 +1,5 @@
 //
-//  SpaceMark.h
+//  SpaceToken.h
 //  SpaceBar
 //
 //  Created by Daniel on 2/1/16.
@@ -8,14 +8,14 @@
 
 #import "POI.h"
 
-@interface SpaceMark : POI
+@interface SpaceToken : POI
 
 
 @property NSNumber *hasReportedDraggingEvent;
 @property CAShapeLayer *circleLayer;
 @property CAShapeLayer *lineLayer;
 
-// When a SpaceMark is dragged out, a copy of the current SpaceMark is created (to stay in the docking position), while the current one moves out of the dock.
-@property (weak) SpaceMark *counterPart;
+// When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
+@property (weak) SpaceToken *counterPart;
 - (void) resetButton;
 @end

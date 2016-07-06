@@ -10,9 +10,9 @@
 
 @implementation SpaceBar (UpdateMap)
 
-// This is for the SpaceMarks being dragged only
+// This is for the SpaceTokens being dragged only
 - (void) fillDraggingMapXYs{
-    for(SpaceMark* aMark in self.draggingSet) {
+    for(SpaceToken* aMark in self.draggingSet) {
         aMark.mapViewXY = aMark.center;
     }
 }
@@ -28,12 +28,12 @@
     // Assume there are at most two touched
     
     if ([self.touchingSet count] == 1){
-        SpaceMark *aSpaceMark = [self.touchingSet anyObject];
-        aSpaceMark.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
-        [self updateMapToFitPOIs:self.touchingSet];
+        SpaceToken *aSpaceToken = [self.touchingSet anyObject];
+        aSpaceToken.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
+        [self updateMapToFitPOIPreferences:self.touchingSet];
         
 //        // Draw a line
-//        [self drawLineFromSpaceMark:aSpaceMark
+//        [self drawLineFromSpaceToken:aSpaceToken
 //                            toPoint:CGPointMake(self.mapView.frame.size.width/2,
 //                                                self.mapView.frame.size.height/2)];
         
@@ -91,7 +91,7 @@
 //----------------
 // update the map based on the constraints specified in POIs
 //----------------
-- (void) updateMapToFitPOIs: (NSMutableSet*) poiSet{
+- (void) updateMapToFitPOIPreferences: (NSMutableSet*) poiSet{
 
     // Assume there are at most two POIs
     if ([poiSet count] == 1){
@@ -179,16 +179,16 @@
 }
 
 // Draw a line from pointA to pointB (with timer)
-- (void) drawLineFromSpaceMark: (SpaceMark*) aSpaceMark toPoint: (CGPoint) pointA{
+- (void) drawLineFromSpaceToken: (SpaceToken*) aSpaceToken toPoint: (CGPoint) pointA{
     // draw the line
     UIBezierPath *linePath=[UIBezierPath bezierPath];
-    [linePath moveToPoint: aSpaceMark.center];
+    [linePath moveToPoint: aSpaceToken.center];
     [linePath addLineToPoint: pointA];
     
-    aSpaceMark.lineLayer.path=linePath.CGPath;
-    aSpaceMark.lineLayer.fillColor = nil;
-    aSpaceMark.lineLayer.opacity = 1.0;
-    aSpaceMark.lineLayer.strokeColor = [UIColor blueColor].CGColor;
-    [self.mapView.layer addSublayer:aSpaceMark.lineLayer];
+    aSpaceToken.lineLayer.path=linePath.CGPath;
+    aSpaceToken.lineLayer.fillColor = nil;
+    aSpaceToken.lineLayer.opacity = 1.0;
+    aSpaceToken.lineLayer.strokeColor = [UIColor blueColor].CGColor;
+    [self.mapView.layer addSublayer:aSpaceToken.lineLayer];
 }
 @end

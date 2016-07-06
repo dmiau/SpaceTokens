@@ -6,11 +6,11 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "SpaceMark.h"
+#import "SpaceToken.h"
 #import "UIButton+Extensions.h"
 #import "Constants.h"
 
-@implementation SpaceMark
+@implementation SpaceToken
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -13,24 +13,24 @@
 @implementation SpaceBar (UpdateSet)
 
 //----------------
-// add a SpaceMark
+// add a SpaceToken
 //----------------
-- (SpaceMark*) addSpaceMarkWithName: (NSString*) name
+- (SpaceToken*) addSpaceTokenWithName: (NSString*) name
                              LatLon: (CLLocationCoordinate2D) latlon{
     
-    SpaceMark *aSpaceMark = [self.SpaceMarkArray Queue_dequeueReusableObjOfClass:@"SpaceMark"];
-    [aSpaceMark resetButton];
-    [aSpaceMark setTitle:name forState:UIControlStateNormal];
-    aSpaceMark.latLon = latlon;
+    SpaceToken *aSpaceToken = [self.SpaceTokenArray Queue_dequeueReusableObjOfClass:@"SpaceToken"];
+    [aSpaceToken resetButton];
+    [aSpaceToken setTitle:name forState:UIControlStateNormal];
+    aSpaceToken.latLon = latlon;
     
-    if (aSpaceMark){
+    if (aSpaceToken){
         // Add to the canvas
-        [self.mapView addSubview:aSpaceMark];
-        [self.buttonSet addObject:aSpaceMark];
+        [self.mapView addSubview:aSpaceToken];
+        [self.buttonSet addObject:aSpaceToken];
     }else{
         // error
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceMark Error"
-                                                        message:@"Cannot add new SpaceMark."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
+                                                        message:@"Cannot add new SpaceToken."
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -38,7 +38,7 @@
         [alert show];
     }
     
-    return aSpaceMark;
+    return aSpaceToken;
 }
 
 
@@ -54,14 +54,14 @@
     }else if (aNotification.name == AddToDraggingSetNotification){
         
         // remove from the display set
-        SpaceMark *currentSpaceMark = aNotification.object;
-        [self.buttonSet removeObject:currentSpaceMark];
+        SpaceToken *currentSpaceToken = aNotification.object;
+        [self.buttonSet removeObject:currentSpaceToken];
         // Duplicate the button
-        SpaceMark* newSpaceMark = [self addSpaceMarkWithName: currentSpaceMark.titleLabel.text
-            LatLon:currentSpaceMark.latLon];
-        currentSpaceMark.counterPart = newSpaceMark;
+        SpaceToken* newSpaceToken = [self addSpaceTokenWithName: currentSpaceToken.titleLabel.text
+            LatLon:currentSpaceToken.latLon];
+        currentSpaceToken.counterPart = newSpaceToken;
 
-        [self.draggingSet addObject:currentSpaceMark];
+        [self.draggingSet addObject:currentSpaceToken];
     }
 }
 
@@ -89,7 +89,7 @@
 
 
 //----------------
-// order the POIs and SpaceMarks on the track
+// order the POIs and SpaceTokens on the track
 //----------------
 - (void) orderPOIs{
     // equally distribute the POIs
@@ -133,17 +133,17 @@
             }
          }];
 
-        // Position the SpaceMark and dots
+        // Position the SpaceToken and dots
         for (int i = 0; i < [sortedArray count]; i++){
             
-            if ([sortedArray[i] isKindOfClass:[SpaceMark class]]){
+            if ([sortedArray[i] isKindOfClass:[SpaceToken class]]){
                 POI *aPOI = sortedArray[i];
                 aPOI.frame = CGRectMake(viewWidth - aPOI.frame.size.width,
                                         gap * (i+1), aPOI.frame.size.width,
                                         aPOI.frame.size.height);
             }else{
                 // calculate the distance from self to the adjancent two
-                // SpaceMarks
+                // SpaceTokens
                 
             }
         }

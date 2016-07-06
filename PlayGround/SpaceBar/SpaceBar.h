@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "SpaceMark.h"
+#import "SpaceToken.h"
 #import "RangeSlider/CERangeSlider.h"
 
 #pragma mark - SpaceBarProtocol
@@ -32,7 +32,7 @@
 //@property UIView *canvas;
 @property CERangeSlider* rangeSlider;
 
-@property NSMutableArray *SpaceMarkArray;
+@property NSMutableArray *SpaceTokenArray;
 
 // This is a convenient set to cache the references to all the
 // POIs on the track
@@ -63,7 +63,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 // Constructors
 - (id)initWithMapView: (MKMapView *) myMapView;
 
-- (SpaceMark*) addSpaceMarkWithName: (NSString*) name
+- (SpaceToken*) addSpaceTokenWithName: (NSString*) name
                              LatLon: (CLLocationCoordinate2D) latlon;
 // --------------
 // Implement in Interactions category
@@ -88,6 +88,6 @@ unsigned int spaceBarTwoPointsTouched:1;
 // update the (x, y) coordinates for each POI in the set
 - (void) fillMapXYsForSet: (NSSet*) aSet;
 - (void) zoomMapToFitTouchSet;
-- (void) updateMapToFitPOIs: (NSMutableSet*) poiSet;
+- (void) updateMapToFitPOIPreferences: (NSMutableSet*) poiSet;
 
 @end

@@ -78,7 +78,7 @@
 // Initialize common parts among all display types
 - (void) initializeCommon {
 
-    self.SpaceMarkArray = [[NSMutableArray alloc] init];
+    self.SpaceTokenArray = [[NSMutableArray alloc] init];
     
     self.buttonSet = [[NSMutableSet alloc] init];
     self.dotSet = [[NSMutableSet alloc] init];
@@ -148,7 +148,7 @@
     
     if ([self.draggingSet count] > 0){
         [self fillDraggingMapXYs];
-        [self updateMapToFitPOIs:self.draggingSet];
+        [self updateMapToFitPOIPreferences:self.draggingSet];
     }else    
         if ([self.touchingSet count] > 0){
         [self zoomMapToFitTouchSet];

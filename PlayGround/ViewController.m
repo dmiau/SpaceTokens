@@ -35,21 +35,21 @@
     _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];    
     self.spaceBar.delegate = self;
     
-    // Add several SpaceMarks
-    [self.spaceBar addSpaceMarkWithName:@"NY Downtown" LatLon:
+    // Add several SpaceTokens
+    [self.spaceBar addSpaceTokenWithName:@"NY Downtown" LatLon:
      CLLocationCoordinate2DMake(40.712784, -74.005941)];
     
-    [self.spaceBar addSpaceMarkWithName:@"Columbia U." LatLon:
+    [self.spaceBar addSpaceTokenWithName:@"Columbia U." LatLon:
      CLLocationCoordinate2DMake(40.807722, -73.964110)];
 
-    [self.spaceBar addSpaceMarkWithName:@"San Francisco" LatLon:
+    [self.spaceBar addSpaceTokenWithName:@"San Francisco" LatLon:
      CLLocationCoordinate2DMake(37.774929, -122.419416)];
 
 
-    [self.spaceBar addSpaceMarkWithName:@"Boston" LatLon:
+    [self.spaceBar addSpaceTokenWithName:@"Boston" LatLon:
      CLLocationCoordinate2DMake(42.360082, -71.058880)];
 
-    [self.spaceBar addSpaceMarkWithName:@"Tokyo" LatLon:
+    [self.spaceBar addSpaceTokenWithName:@"Tokyo" LatLon:
      CLLocationCoordinate2DMake(35.689487, 139.691706)];
     
     
