@@ -37,6 +37,7 @@ using namespace std;
 
 -(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:
                                 (MKMapView*) mapView;
--(CLLocationCoordinate2D) convertPercentagePointToLatLon: (float) percentage;
-
+-(void)convertPercentage: (float)percentage
+               toLatLon: (CLLocationCoordinate2D&) latLon
+            orientation: (double&) degree;
 @end

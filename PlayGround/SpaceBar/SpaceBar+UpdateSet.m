@@ -58,7 +58,7 @@
         [self.buttonSet removeObject:currentSpaceMark];
         // Duplicate the button
         SpaceMark* newSpaceMark = [self addSpaceMarkWithName: currentSpaceMark.titleLabel.text
-                                                    LatLon:currentSpaceMark.latLon];
+            LatLon:currentSpaceMark.latLon];
         currentSpaceMark.counterPart = newSpaceMark;
 
         [self.draggingSet addObject:currentSpaceMark];

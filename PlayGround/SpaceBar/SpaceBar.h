@@ -32,7 +32,6 @@
 //@property UIView *canvas;
 @property CERangeSlider* rangeSlider;
 
-@property NSMutableArray *POIArray;
 @property NSMutableArray *SpaceMarkArray;
 
 // This is a convenient set to cache the references to all the

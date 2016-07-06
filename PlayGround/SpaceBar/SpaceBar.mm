@@ -78,7 +78,6 @@
 // Initialize common parts among all display types
 - (void) initializeCommon {
 
-    self.POIArray = [[NSMutableArray alloc] init];
     self.SpaceMarkArray = [[NSMutableArray alloc] init];
     
     self.buttonSet = [[NSMutableSet alloc] init];

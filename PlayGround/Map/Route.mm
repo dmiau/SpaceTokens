@@ -75,7 +75,6 @@ template class std::vector<pair<int, int>>;
     return self;
 }
 
-
 -(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:(MKMapView*) mapView{
 
     
@@ -159,9 +158,25 @@ template class std::vector<pair<int, int>>;
     return percentageOutput;
 }
 
+double RadiansToDegrees(double radians) {return radians * 180.0/M_PI;};
+double computeOrientationFromA2B
+(MKMapPoint ref_mappoint, MKMapPoint measured_mappoint)
+{
+    double radiansBearing = atan2(measured_mappoint.x - ref_mappoint.x,
+                                  -(measured_mappoint.y - ref_mappoint.y));
+    
+    double degree = RadiansToDegrees(radiansBearing);
+    
+    // This guarantees that the orientaiton is always positive
+    if (degree < 0) degree += 360;
+    return degree;
+}
 
 
--(CLLocationCoordinate2D) convertPercentagePointToLatLon: (float) percentage{
+-(void) convertPercentage: (float)percentage
+                    toLatLon: (CLLocationCoordinate2D&) latLon
+            orientation: (double&) degree
+{
     
     // find out the segment correspond to the percetage
     double totalDist = self.accumulatedDist->back();
@@ -173,17 +188,29 @@ template class std::vector<pair<int, int>>;
     
     int idx = up - self.accumulatedDist->begin();
     
-    
     // interpolate a mapPoint
     MKMapPoint mapPointA, mapPointB, mapPointBetween;
     
     if (idx == 0){
+        
+        // first point on the route
         mapPointBetween.x = (*self.mapPointX)[0];
         mapPointBetween.y = (*self.mapPointY)[0];
+        degree = computeOrientationFromA2B
+        (MKMapPointMake((*self.mapPointX)[0],(*self.mapPointY)[0]),
+         MKMapPointMake((*self.mapPointX)[1],(*self.mapPointY)[1]));
     }else if (idx == (self.accumulatedDist->size() - 1)){
-        mapPointBetween.x = (*self.mapPointX)[self.accumulatedDist->size() - 1];
-        mapPointBetween.y = (*self.mapPointY)[self.accumulatedDist->size() - 1];
+        
+        // last point on the route
+        int lastPointIndex = self.accumulatedDist->size() - 1;
+        mapPointBetween.x = (*self.mapPointX)[lastPointIndex];
+        mapPointBetween.y = (*self.mapPointY)[lastPointIndex];
+        degree = computeOrientationFromA2B
+        (MKMapPointMake((*self.mapPointX)[lastPointIndex-1],(*self.mapPointY)[lastPointIndex-1]),
+         MKMapPointMake((*self.mapPointX)[lastPointIndex],(*self.mapPointY)[lastPointIndex]));
     }else{
+        
+        // in between two points
         mapPointA.x = (*self.mapPointX)[idx-1];
         mapPointA.y = (*self.mapPointY)[idx-1];
         
@@ -195,9 +222,12 @@ template class std::vector<pair<int, int>>;
         
         mapPointBetween.x = mapPointA.x * (1 - ratio) + mapPointB.x * ratio;
         mapPointBetween.y = mapPointA.y * (1 - ratio) + mapPointB.y * ratio;
+        degree = computeOrientationFromA2B
+        (mapPointA, mapPointBetween);
     }
     
-    return MKCoordinateForMapPoint(mapPointBetween);
+    // prepare the outputs
+    latLon = MKCoordinateForMapPoint(mapPointBetween);
 }
 
 - (void) dealloc{

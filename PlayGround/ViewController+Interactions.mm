@@ -15,14 +15,17 @@
 - (void)spaceBarOnePointTouched:(float)percentage{
     
     if (self.route){
-        CLLocationCoordinate2D coord =
-        [self.route convertPercentagePointToLatLon: percentage];
+        CLLocationCoordinate2D coord;
+        double orientationInDegree;
+                
+        [self.route convertPercentage: percentage
+                             toLatLon: coord orientation:orientationInDegree];
+        
         [self.mapView setRegion: MKCoordinateRegionMake(coord,
                                                         MKCoordinateSpanMake(0.1, 0.1))];
         
-        
-        // for testing purpose
-        
+        // set the orientation
+//        self.mapView.camera.heading = orientationInDegree;
     }
 }
 
