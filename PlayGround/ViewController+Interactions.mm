@@ -116,4 +116,15 @@
     }        
 }
 
+- (void) mapTouchBegin: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
+    
+    [self.spaceBar addAnchorForCoordinates:coord atMapXY:xy];
+    NSLog(@"addAnchor!");
+}
+
+- (void) mapTouchEnd{    
+    [self.spaceBar removeAnchor];
+    NSLog(@"removeAnchor!");
+}
+
 @end

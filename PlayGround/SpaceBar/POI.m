@@ -28,9 +28,15 @@
     self = [super init];
     if (self){
         _latLon = CLLocationCoordinate2DMake(0, 0);
-
+        _poiType = NORMAL;
     }
     return self;
+}
+
+- (NSString*) description{
+    return [NSString stringWithFormat:@"latlon: %@ \n mapViewXY: %@",
+            [NSString stringWithFormat:@"%g, %g", self.latLon.latitude, self.latLon.longitude]
+            , NSStringFromCGPoint(self.mapViewXY)];
 }
 
 @end

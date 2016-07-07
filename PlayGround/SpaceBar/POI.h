@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+typedef enum {NORMAL, ANCHOR} POIType;
+
 //-------------------
 // POI
 //-------------------
@@ -21,6 +23,7 @@
 // mapViewXY caches the Mercator (x, y) coordinates
 // corrresponding to latlon
 @property CGPoint mapViewXY;
+@property POIType poiType;
 
 //---methods
 - (void) resetButton;

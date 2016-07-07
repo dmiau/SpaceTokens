@@ -41,4 +41,27 @@
     self.rangeSlider.upperValue =
                 percentagePair[1] * self.rangeSlider.maximumValue;
 }
+
+- (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY:(CGPoint)mapXY{
+    // insert one item into dragging set
+    POI* aPOI = [[POI alloc] init];
+    aPOI.latLon = coord;
+    aPOI.mapViewXY = mapXY;
+    aPOI.poiType = ANCHOR;
+    self.anchor = aPOI;
+}
+
+- (void) removeAnchor{
+    // remove the anchor from the dragging set
+    
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"poiType == %d", ANCHOR];
+//    NSSet *filteredSet = [self.draggingSet filteredSetUsingPredicate:predicate];
+//    id firstFoundObject = nil;
+//    firstFoundObject =  filteredSet.count > 0 ? [filteredSet anyObject] : nil;
+    if (self.anchor){
+        [self.draggingSet removeObject:self.anchor];
+        self.anchor = nil;
+    }
+}
+
 @end

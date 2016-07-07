@@ -26,6 +26,8 @@
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
+		9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
+		9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9A836D391C69372C007D9520 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
 		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
 		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
@@ -90,6 +92,8 @@
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
+		9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WildcardGestureRecognizer.h; path = Map/WildcardGestureRecognizer.h; sourceTree = "<group>"; };
+		9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WildcardGestureRecognizer.m; path = Map/WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		9A836D371C69372C007D9520 /* tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tester.h; path = tester/tester.h; sourceTree = "<group>"; };
 		9A836D381C69372C007D9520 /* tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tester.m; path = tester/tester.m; sourceTree = "<group>"; };
 		9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+UpdateSet.h"; path = "SpaceBar/SpaceBar+UpdateSet.h"; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A143B321D2AF56E001EE841 /* customMKMapView.h */,
 				9A143B331D2AF56E001EE841 /* customMKMapView.m */,
+				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
+				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
+				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
@@ -400,6 +407,7 @@
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
+				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,

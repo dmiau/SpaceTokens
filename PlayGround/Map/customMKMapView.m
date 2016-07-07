@@ -8,11 +8,14 @@
 
 #import "customMKMapView.h"
 #include <stdlib.h>
+#import "WildcardGestureRecognizer.h"
 
 @implementation customMKMapView{
     NSTimer *_updateUITimer;
     struct {
         unsigned int regionDidChangeAnimated:1;
+        unsigned int mapTouchBegin:1;
+        unsigned int mapTouchEnd:1;
     } _delegateRespondsTo;
 }
 
@@ -37,20 +40,84 @@
         
         [[NSRunLoop mainRunLoop] addTimer:_updateUITimer forMode:NSRunLoopCommonModes];
         
+        WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
+        
+        tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+            [self customTouchesBegan:touches withEvent:event];
+        };
+        
+        tapInterceptor.touchesEndedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+            [self customTouchesEnded:touches withEvent:event];
+        };
+
+        tapInterceptor.touchesMovedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+            [self customTouchesMoved:touches withEvent:event];
+        };
+        
+        tapInterceptor.delegate = self;
+        [self addGestureRecognizer:tapInterceptor];
     }
     return self;
 }
 
+// Check if the protocol methods are implemetned
 - (void)setDelegate:(id<MKMapViewDelegate>)aDelegate{
     if (delegate != aDelegate) {
         delegate = aDelegate;
         super.delegate = aDelegate;
         _delegateRespondsTo.regionDidChangeAnimated =
         [delegate respondsToSelector:@selector(mapView: regionDidChangeAnimated:)];
+        _delegateRespondsTo.mapTouchBegin =
+        [delegate respondsToSelector:@selector(mapTouchBegin: atXY:)];
+        _delegateRespondsTo.mapTouchEnd =
+        [delegate respondsToSelector:@selector(mapTouchEnd)];
     }
 }
 
 
+#pragma mark --gesture recognizer--
+// this makes sure all UIControls are still functional
+// http://stackoverflow.com/questions/5222998/uigesturerecognizer-blocks-subview-for-handling-touch-events?rq=1
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+       shouldReceiveTouch:(UITouch *)touch{
+    
+    if ([[touch view] isKindOfClass:[UIControl class]]){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+
+-(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    // Only handle single touch
+    if ([touches count]==1){
+        UITouch* aTouch = (UITouch*) [touches anyObject];
+        CGPoint point = [aTouch locationInView:self];
+        
+        CLLocationCoordinate2D coord = [self convertPoint:point
+                                     toCoordinateFromView:self];
+        
+        [self.delegate mapTouchBegin: coord atXY: point];
+    }
+//    NSLog(@"touch begins");
+}
+
+
+-(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.delegate mapTouchEnd];
+//    NSLog(@"touch ended");
+}
+
+//-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+////    [self.delegate mapTouchEnd];
+//    NSLog(@"touch canceled");
+//}
+
+-(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    NSLog(@"touch moved");
+}
 
 #pragma mark --timer--
 -(void)vcTimerFired{

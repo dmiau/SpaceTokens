@@ -8,13 +8,20 @@
 
 #import <MapKit/MapKit.h>
 
-//@protocol customMKMapViewDelegate <NSObject>
-//
-//- (void) mapWasUpdated;
-//@end
+//----------------
+// customMKMapViewDelegate
+//----------------
+@protocol customMKMapViewDelegate <NSObject>
 
+// The following are to support the anchor+x interactions
+- (void) mapTouchBegin: (CLLocationCoordinate2D) coord atXY: (CGPoint) xy;
+- (void) mapTouchEnd;
+@end
 
+//----------------
+// customMKMapView
+//----------------
 @interface customMKMapView : MKMapView
 
-@property (nonatomic, weak) id<MKMapViewDelegate> delegate;
+@property (nonatomic, weak) id<MKMapViewDelegate, customMKMapViewDelegate> delegate;
 @end

@@ -130,32 +130,39 @@ template class std::vector<pair<int, int>>;
         }
     }
     
-    // check connectivity?
-    vector<pair<int, int>> output; output.clear();
-    output.push_back(make_pair(insideIndices[0], 0));
-    for (int i = 1; i < insideIndices.size(); i++){
-        
-        if (insideIndices[i]-1 != insideIndices[i-1]){
-            // unconsecutive index found
-            output.back().second = insideIndices[i-1];
-            output.push_back(make_pair(insideIndices[i], 0));
+    
+    if (insideIndices.size() > 2){
+        // check connectivity?
+        vector<pair<int, int>> output; output.clear();
+        output.push_back(make_pair(insideIndices[0], 0));
+        for (int i = 1; i < insideIndices.size(); i++){
+            
+            if (insideIndices[i]-1 != insideIndices[i-1]){
+                // unconsecutive index found
+                output.back().second = insideIndices[i-1];
+                output.push_back(make_pair(insideIndices[i], 0));
+            }
         }
+        output.back().second = insideIndices.back();
+        
+        // convert the result to percentage
+        vector<pair<float, float>> percentageOutput; percentageOutput.clear();
+        double totalDist = (*self.accumulatedDist).back();
+        for (int i = 0; i < output.size(); i++){
+            pair<float, float> temp_pair;
+            int index = output[i].first;
+            temp_pair.first = (*self.accumulatedDist)[index] / totalDist;
+            index = output[i].second;
+            temp_pair.second = (*self.accumulatedDist)[index] / totalDist;
+            percentageOutput.push_back(temp_pair);
+        }
+        
+        return percentageOutput;
+    }else{
+        vector<pair<float, float>> percentageOutput;
+        percentageOutput.push_back(make_pair(0, 0));
+        return percentageOutput;
     }
-    output.back().second = insideIndices.back();
-    
-    // convert the result to percentage
-    vector<pair<float, float>> percentageOutput; percentageOutput.clear();
-    double totalDist = (*self.accumulatedDist).back();
-    for (int i = 0; i < output.size(); i++){
-        pair<float, float> temp_pair;
-        int index = output[i].first;
-        temp_pair.first = (*self.accumulatedDist)[index] / totalDist;
-        index = output[i].second;
-        temp_pair.second = (*self.accumulatedDist)[index] / totalDist;
-        percentageOutput.push_back(temp_pair);
-    }
-    
-    return percentageOutput;
 }
 
 double RadiansToDegrees(double radians) {return radians * 180.0/M_PI;};

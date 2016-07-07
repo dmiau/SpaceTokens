@@ -37,7 +37,6 @@
 // This is a convenient set to cache the references to all the
 // POIs on the track
 @property NSMutableSet *buttonSet;
-
 @property NSMutableSet *dotSet;
 
 // This is a convenient set to cache the references of all the
@@ -48,10 +47,10 @@
 // POIs that are being dragged
 @property NSMutableSet *draggingSet;
 
-// Two special POIs are cached in SpaceBar
+// Some special POIs are cached in SpaceBar
 @property POI* mapCentroid;
 @property POI* youAreHere;
-
+@property POI* anchor;
 
 // Use bit field to track if delegate is set properly
 //http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/
@@ -69,6 +68,8 @@ unsigned int spaceBarTwoPointsTouched:1;
 // Implement in Interactions category
 // --------------
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
+- (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY: (CGPoint) mapXY;
+- (void) removeAnchor;
 
 // --------------
 // Implement in updateSet category

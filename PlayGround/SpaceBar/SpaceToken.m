@@ -24,6 +24,7 @@
     self = [super init];
     
     if (self){
+
         self.circleLayer = [CAShapeLayer layer];
         self.lineLayer = [CAShapeLayer layer];
         [self resetButton];
@@ -68,17 +69,51 @@
 - (void) resetButton{
     self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
     self.counterPart = nil;
-    [self addSubview:self.titleLabel];
-    [self setTitle:@"SpaceMark" forState:UIControlStateNormal];
-    self.frame = CGRectMake(0, 20.0, 60.0, 20.0);
-    [self setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
-    self.titleLabel.font = [UIFont systemFontOfSize:12];
-    [self setBackgroundColor:[UIColor grayColor]];
-    [self setTitleColor: [UIColor whiteColor]
-               forState: UIControlStateNormal];
-    [self.circleLayer removeFromSuperlayer];
-    [self.lineLayer removeFromSuperlayer];
+    [self configureAppearanceForType:DOCKED];
 }
+
+
+//-----------
+// configure the appearance
+//-----------
+- (void) configureAppearanceForType:(spaceTokenType)type{
+    switch (type) {
+        case DOCKED:
+            [self addSubview:self.titleLabel];
+            [self setTitle:@"SpaceToken" forState:UIControlStateNormal];
+            self.frame = CGRectMake(0, 20.0, 60.0, 20.0);
+            [self setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
+            self.titleLabel.font = [UIFont systemFontOfSize:12];
+            [self setBackgroundColor:[UIColor grayColor]];
+            [self setTitleColor: [UIColor whiteColor]
+                       forState: UIControlStateNormal];
+            [self.circleLayer removeFromSuperlayer];
+            [self.lineLayer removeFromSuperlayer];
+            break;
+        case DRAGGING:
+            [self setBackgroundColor:[UIColor clearColor]];
+            [self.titleLabel removeFromSuperview];
+            
+            // Draw a circle under the centroid of the button
+            
+            float radius = 30;
+            [self.circleLayer setStrokeColor:[[UIColor blueColor] CGColor]];
+            [self.circleLayer setFillColor:[[UIColor clearColor] CGColor]];
+            [self.circleLayer setPath:[[UIBezierPath
+                                        bezierPathWithOvalInRect:
+                                        CGRectMake(-radius + self.frame.size.width/2, -radius + self.frame.size.height/2, 2*radius, 2*radius)]
+                                       CGPath]];
+            
+            [[self layer] addSublayer:self.circleLayer];
+            [[self layer] addSublayer:self.lineLayer];
+            break;
+        default:
+            break;
+    }
+    
+    
+}
+
 
 //-----------
 // button methods
@@ -153,22 +188,7 @@
             [[ NSNotificationCenter defaultCenter] postNotification:notification];
             
             // Change the style of the dragging tocken
-            
-            [self setBackgroundColor:[UIColor clearColor]];
-            [self.titleLabel removeFromSuperview];
-            
-            // Draw a circle under the centroid of the button
-            
-            float radius = 30;
-            [self.circleLayer setStrokeColor:[[UIColor blueColor] CGColor]];
-            [self.circleLayer setFillColor:[[UIColor clearColor] CGColor]];
-            [self.circleLayer setPath:[[UIBezierPath
-                                        bezierPathWithOvalInRect:
-                                        CGRectMake(-radius + self.frame.size.width/2, -radius + self.frame.size.height/2, 2*radius, 2*radius)]
-                                       CGPath]];
-            
-            [[self layer] addSublayer:self.circleLayer];
-            [[self layer] addSublayer:self.lineLayer];
+            [self configureAppearanceForType:DRAGGING];
         }
         
         // the button should be shifted so the center is coincided with the touch

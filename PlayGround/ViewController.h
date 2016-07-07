@@ -13,7 +13,8 @@
 
 @class Route;
 
-@interface ViewController : UIViewController <SpaceBarDelegate, MKMapViewDelegate>
+@interface ViewController : UIViewController
+<SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
 
 @property UIButton *myButton;
 @property customMKMapView *mapView;

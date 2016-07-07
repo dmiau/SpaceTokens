@@ -11,12 +11,20 @@
 @implementation SpaceBar (UpdateMap)
 
 // This is for the SpaceTokens being dragged only
+// Note that a draggingSet could contain POIs (e.g., ANCHOR) or SpaceTokens
+// fillDraggingMapXYs should only apply to SpaceTokens
 - (void) fillDraggingMapXYs{
-    for(SpaceToken* aMark in self.draggingSet) {
-        aMark.mapViewXY = aMark.center;
+    for(id anItem in self.draggingSet) {
+        if ([anItem isKindOfClass:[SpaceToken class]]){
+            SpaceToken* aMark = (SpaceToken*)anItem;
+            aMark.mapViewXY = aMark.center;
+        }
     }
 }
 
+// This method finds the (x, y) corrdinates corresponding to the (lat, lon)
+// of each POI, and fills that information into each POI.
+// This is useful for POI sorting on SpaceBar
 - (void) fillMapXYsForSet: (NSSet*) aSet{
     for (POI* aPOI in aSet){
         aPOI.mapViewXY = [self.mapView convertCoordinate:aPOI.latLon
@@ -53,8 +61,6 @@
             maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
             minMapPointY = MIN(minMapPointY, tempMapPoint.y);
             maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
-            
-            NSLog(@"MapPointX: %f, %f", tempMapPoint.x, tempMapPoint.y);
         }
         
         
@@ -93,6 +99,15 @@
 //----------------
 - (void) updateMapToFitPOIPreferences: (NSMutableSet*) poiSet{
 
+    
+    // this is to support anchor+X
+    if ([self.draggingSet count] == 1
+        && [self.draggingSet anyObject] != self.anchor
+        && self.anchor)
+    {
+        [self.draggingSet addObject:self.anchor];
+    }
+    
     // Assume there are at most two POIs
     if ([poiSet count] == 1){
         // The easy case
@@ -122,6 +137,9 @@
             mapPoints[i] = MKMapPointForCoordinate(aPOI.latLon);
             cgPoints[i] = aPOI.mapViewXY;
             i++;
+            
+            
+            NSLog(@"%@", aPOI);
         }
         
         // Find out the scale factor
