@@ -59,6 +59,8 @@
         // Duplicate the button
         SpaceToken* newSpaceToken = [self addSpaceTokenWithName: currentSpaceToken.titleLabel.text
             LatLon:currentSpaceToken.latLon];
+        newSpaceToken.frame = currentSpaceToken.frame;
+        
         currentSpaceToken.counterPart = newSpaceToken;
 
         [self.draggingSet addObject:currentSpaceToken];
@@ -93,7 +95,9 @@
 //----------------
 - (void) orderPOIs{
     // equally distribute the POIs
-    if ([self.buttonSet count] > 0){
+    // only reorder when the user is not touching a button
+    if ([self.buttonSet count] > 0 && [self.touchingSet count] == 0)
+    {
         CGFloat barHeight = self.mapView.frame.size.height;
         CGFloat viewWidth = self.mapView.frame.size.width;
         

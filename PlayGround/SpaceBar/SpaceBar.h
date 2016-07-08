@@ -69,6 +69,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 // --------------
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
 - (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY: (CGPoint) mapXY;
+- (void) updateAnchorAtMapXY: (CGPoint) mapXY;
 - (void) removeAnchor;
 
 // --------------

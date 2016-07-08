@@ -24,10 +24,10 @@
     self = [super init];
     
     if (self){
-
         self.circleLayer = [CAShapeLayer layer];
         self.lineLayer = [CAShapeLayer layer];
         [self resetButton];
+        self.frame = CGRectMake(0, 0, 60.0, 20.0);
         [self registerButtonEvents];
     }
     return self;
@@ -81,7 +81,6 @@
         case DOCKED:
             [self addSubview:self.titleLabel];
             [self setTitle:@"SpaceToken" forState:UIControlStateNormal];
-            self.frame = CGRectMake(0, 20.0, 60.0, 20.0);
             [self setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
             self.titleLabel.font = [UIFont systemFontOfSize:12];
             [self setBackgroundColor:[UIColor grayColor]];
@@ -89,6 +88,17 @@
                        forState: UIControlStateNormal];
             [self.circleLayer removeFromSuperlayer];
             [self.lineLayer removeFromSuperlayer];
+            
+            // add drop shadow
+//            self.layer.cornerRadius = 8.0f;
+            self.layer.masksToBounds = NO;
+//            self.layer.borderWidth = 1.0f;
+            
+            self.layer.shadowColor = [UIColor grayColor].CGColor;
+            self.layer.shadowOpacity = 0.8;
+            self.layer.shadowRadius = 12;
+            self.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
+            
             break;
         case DRAGGING:
             [self setBackgroundColor:[UIColor clearColor]];

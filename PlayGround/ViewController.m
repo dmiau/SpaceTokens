@@ -64,6 +64,18 @@
     [directionButton addTarget:self action:@selector(directionButtonAction)
               forControlEvents:UIControlEventTouchDown];
     
+    // add drop shadow
+    //            self.layer.cornerRadius = 8.0f;
+    directionButton.layer.masksToBounds = NO;
+    //            self.layer.borderWidth = 1.0f;
+    
+    directionButton.layer.shadowColor = [UIColor grayColor].CGColor;
+    directionButton.layer.shadowOpacity = 0.8;
+    directionButton.layer.shadowRadius = 12;
+    directionButton.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
+    
+    
+    
     [self.mapView addSubview:directionButton];
 
 //    // Run the test

@@ -15,7 +15,7 @@
     struct {
         unsigned int regionDidChangeAnimated:1;
         unsigned int mapTouchBegin:1;
-        unsigned int mapTouchEnd:1;
+        unsigned int mapTouchEnded:1;
     } _delegateRespondsTo;
 }
 
@@ -69,8 +69,8 @@
         [delegate respondsToSelector:@selector(mapView: regionDidChangeAnimated:)];
         _delegateRespondsTo.mapTouchBegin =
         [delegate respondsToSelector:@selector(mapTouchBegin: atXY:)];
-        _delegateRespondsTo.mapTouchEnd =
-        [delegate respondsToSelector:@selector(mapTouchEnd)];
+        _delegateRespondsTo.mapTouchEnded =
+        [delegate respondsToSelector:@selector(mapTouchEnded)];
     }
 }
 
@@ -99,25 +99,33 @@
         CLLocationCoordinate2D coord = [self convertPoint:point
                                      toCoordinateFromView:self];
         
-        [self.delegate mapTouchBegin: coord atXY: point];
+        [self.delegate mapTouchBegan: coord atXY: point];
     }
 //    NSLog(@"touch begins");
 }
 
+-(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    // Only handle single touch
+    if ([touches count]==1){
+        UITouch* aTouch = (UITouch*) [touches anyObject];
+        CGPoint point = [aTouch locationInView:self];
+        
+        CLLocationCoordinate2D coord = [self convertPoint:point
+                                     toCoordinateFromView:self];
+        
+        [self.delegate mapTouchMoved: coord atXY: point];
+    }
+}
 
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.delegate mapTouchEnd];
+    [self.delegate mapTouchEnded];
 //    NSLog(@"touch ended");
 }
 
 //-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-////    [self.delegate mapTouchEnd];
+////    [self.delegate mapTouchEnded];
 //    NSLog(@"touch canceled");
 //}
-
--(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"touch moved");
-}
 
 #pragma mark --timer--
 -(void)vcTimerFired{

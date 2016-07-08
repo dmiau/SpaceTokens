@@ -25,7 +25,4 @@ typedef enum {NORMAL, ANCHOR} POIType;
 @property CGPoint mapViewXY;
 @property POIType poiType;
 
-//---methods
-- (void) resetButton;
-
 @end
