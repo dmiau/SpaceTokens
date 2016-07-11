@@ -28,7 +28,6 @@
     self = [super init];
     if (self){
         _latLon = CLLocationCoordinate2DMake(0, 0);
-        _poiType = NORMAL;
     }
     return self;
 }

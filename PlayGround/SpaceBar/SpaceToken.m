@@ -24,14 +24,40 @@
     self = [super init];
     
     if (self){
-        self.circleLayer = [CAShapeLayer layer];
-        self.lineLayer = [CAShapeLayer layer];
-        [self resetButton];
-        self.frame = CGRectMake(0, 0, 60.0, 20.0);
-        [self registerButtonEvents];
+
     }
     return self;
 }
+
+// factory method
+- (id) initForType: (spaceTokenType)type{
+    self = [self init];
+    self.type = type;
+    
+    switch (type) {
+        case DOCKED:
+            self.circleLayer = [CAShapeLayer layer];
+            self.lineLayer = [CAShapeLayer layer];
+            [self resetButton];
+            self.frame = CGRectMake(0, 0, 60.0, 20.0);
+            [self registerButtonEvents];
+            break;
+        case DRAGGING:
+            
+            break;
+            
+        case ANCHORTOKEN:
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    return self;
+}
+
+
 
 - (void) registerButtonEvents{
     [self addTarget:self

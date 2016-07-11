@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-typedef enum {NORMAL, ANCHOR} POIType;
+
 
 //-------------------
 // POI
 //-------------------
 @interface POI : UIButton
-
 
 //---properties
 @property CLLocationCoordinate2D latLon;
@@ -23,6 +22,5 @@ typedef enum {NORMAL, ANCHOR} POIType;
 // mapViewXY caches the Mercator (x, y) coordinates
 // corrresponding to latlon
 @property CGPoint mapViewXY;
-@property POIType poiType;
 
 @end

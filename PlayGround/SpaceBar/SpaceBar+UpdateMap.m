@@ -14,8 +14,8 @@
 // Note that a draggingSet could contain POIs (e.g., ANCHOR) or SpaceTokens
 // fillDraggingMapXYs should only apply to SpaceTokens
 - (void) fillDraggingMapXYs{
-    for(id anItem in self.draggingSet) {
-        if ([anItem isKindOfClass:[SpaceToken class]]){
+    for(SpaceToken* anItem in self.draggingSet) {
+        if (anItem.type != ANCHORTOKEN){
             SpaceToken* aMark = (SpaceToken*)anItem;
             aMark.mapViewXY = aMark.center;
         }

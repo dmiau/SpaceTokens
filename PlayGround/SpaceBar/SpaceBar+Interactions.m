@@ -42,18 +42,16 @@
 - (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY:(CGPoint)mapXY{
     if (!self.anchor){
         // create a new POI for anchor if an anchor does not exist
-        self.anchor = [[POI alloc] init];
+        self.anchor = [[SpaceToken alloc] initForType:ANCHORTOKEN];
     }
     self.anchor.latLon = coord;
     self.anchor.mapViewXY = mapXY;
-    self.anchor.poiType = ANCHOR;
 }
 
 - (void) updateAnchorAtMapXY:(CGPoint)mapXY
 {
     if (self.anchor){
         self.anchor.mapViewXY = mapXY;
-        self.anchor.poiType = ANCHOR;
     }
 }
 

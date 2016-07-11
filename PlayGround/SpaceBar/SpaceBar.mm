@@ -77,8 +77,6 @@
 
 // Initialize common parts among all display types
 - (void) initializeCommon {
-
-    self.SpaceTokenArray = [[NSMutableArray alloc] init];
     
     self.buttonSet = [[NSMutableSet alloc] init];
     self.dotSet = [[NSMutableSet alloc] init];

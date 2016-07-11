@@ -18,8 +18,8 @@
 - (SpaceToken*) addSpaceTokenWithName: (NSString*) name
                              LatLon: (CLLocationCoordinate2D) latlon{
     
-    SpaceToken *aSpaceToken = [self.SpaceTokenArray Queue_dequeueReusableObjOfClass:@"SpaceToken"];
-    [aSpaceToken resetButton];
+    SpaceToken *aSpaceToken = [[SpaceToken alloc] initForType:DOCKED];
+    
     [aSpaceToken setTitle:name forState:UIControlStateNormal];
     aSpaceToken.latLon = latlon;
     

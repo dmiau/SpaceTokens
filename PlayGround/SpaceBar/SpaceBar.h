@@ -37,8 +37,6 @@
 //@property UIView *canvas;
 @property CERangeSlider* rangeSlider;
 
-@property NSMutableArray *SpaceTokenArray;
-
 // This is a convenient set to cache the references to all the
 // POIs on the track
 @property NSMutableSet *buttonSet;
@@ -55,7 +53,7 @@
 // Some special POIs are cached in SpaceBar
 @property POI* mapCentroid;
 @property POI* youAreHere;
-@property POI* anchor;
+@property SpaceToken* anchor;
 
 // Use bit field to track if delegate is set properly
 //http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/
