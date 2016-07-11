@@ -39,20 +39,20 @@
 
 // This is a convenient set to cache the references to all the
 // POIs on the track
-@property NSMutableSet *buttonSet;
-@property NSMutableSet *dotSet;
+@property NSMutableSet <SpaceToken*> *buttonSet;
+@property NSMutableSet <SpaceToken*> *dotSet;
 
 // This is a convenient set to cache the references of all the
 // POIs that are being touched.
-@property NSMutableSet *touchingSet;
+@property NSMutableSet <SpaceToken*> *touchingSet;
 
 // This is a convenient set to cache the references of all the
 // POIs that are being dragged
-@property NSMutableSet *draggingSet;
+@property NSMutableSet <SpaceToken*> *draggingSet;
 
 // Some special POIs are cached in SpaceBar
-@property POI* mapCentroid;
-@property POI* youAreHere;
+@property SpaceToken* mapCentroid;
+@property SpaceToken* youAreHere;
 @property SpaceToken* anchor;
 
 // Use bit field to track if delegate is set properly

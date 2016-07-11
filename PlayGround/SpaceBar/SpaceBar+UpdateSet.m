@@ -21,7 +21,7 @@
     SpaceToken *aSpaceToken = [[SpaceToken alloc] initForType:DOCKED];
     
     [aSpaceToken setTitle:name forState:UIControlStateNormal];
-    aSpaceToken.latLon = latlon;
+    aSpaceToken.poi.latLon = latlon;
     
     if (aSpaceToken){
         // Add to the canvas
@@ -58,7 +58,7 @@
         [self.buttonSet removeObject:currentSpaceToken];
         // Duplicate the button
         SpaceToken* newSpaceToken = [self addSpaceTokenWithName: currentSpaceToken.titleLabel.text
-            LatLon:currentSpaceToken.latLon];
+            LatLon:currentSpaceToken.poi.latLon];
         newSpaceToken.frame = currentSpaceToken.frame;
         
         currentSpaceToken.counterPart = newSpaceToken;
@@ -86,7 +86,7 @@
 }
 
 - (void) updateSpecialPOIs{
-    self.mapCentroid.latLon = self.mapView.centerCoordinate;
+    self.mapCentroid.poi.latLon = self.mapView.centerCoordinate;
 }
 
 
@@ -108,28 +108,28 @@
         [self fillMapXYsForSet:self.buttonSet];
         
         // Form a new set for sorting
-        NSMutableSet *allPOIs = [NSMutableSet setWithSet:self.dotSet];
-        [allPOIs unionSet: self.buttonSet];
+        NSMutableSet *allTokens = [NSMutableSet setWithSet:self.dotSet];
+        [allTokens unionSet: self.buttonSet];
 
         //Sort the POIs (sort by block)
         //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
         
         NSArray *sortedArray =
-        [[allPOIs allObjects]
+        [[allTokens allObjects]
          sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-            POI *first = (POI*)a;
-            POI *second = (POI*)b;
+            SpaceToken *first = (SpaceToken*)a;
+            SpaceToken *second = (SpaceToken*)b;
             
-            if (first.mapViewXY.y < second.mapViewXY.y) {
+            if (first.poi.mapViewXY.y < second.poi.mapViewXY.y) {
                 return NSOrderedAscending;
             }
-            else if (first.mapViewXY.y > second.mapViewXY.y) {
+            else if (first.poi.mapViewXY.y > second.poi.mapViewXY.y) {
                 return NSOrderedDescending;
             }else{
                 // In the unlikely case that the two POIs have the same y
-                if (first.mapViewXY.x < second.mapViewXY.x) {
+                if (first.poi.mapViewXY.x < second.poi.mapViewXY.x) {
                     return NSOrderedAscending;
-                }else if (first.mapViewXY.x > second.mapViewXY.x) {
+                }else if (first.poi.mapViewXY.x > second.poi.mapViewXY.x) {
                     return NSOrderedDescending;
                 }else{
                     return NSOrderedSame;
@@ -139,12 +139,11 @@
 
         // Position the SpaceToken and dots
         for (int i = 0; i < [sortedArray count]; i++){
-            
-            if ([sortedArray[i] isKindOfClass:[SpaceToken class]]){
-                POI *aPOI = sortedArray[i];
-                aPOI.frame = CGRectMake(viewWidth - aPOI.frame.size.width,
-                                        gap * (i+1), aPOI.frame.size.width,
-                                        aPOI.frame.size.height);
+            SpaceToken *aToken = sortedArray[i];
+            if (aToken.type == DOCKED){
+                aToken.frame = CGRectMake(viewWidth - aToken.frame.size.width,
+                                        gap * (i+1), aToken.frame.size.width,
+                                        aToken.frame.size.height);
             }else{
                 // calculate the distance from self to the adjancent two
                 // SpaceTokens

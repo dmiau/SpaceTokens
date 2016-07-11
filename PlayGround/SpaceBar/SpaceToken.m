@@ -24,7 +24,7 @@
     self = [super init];
     
     if (self){
-
+        self.poi = [[POI alloc] init];
     }
     return self;
 }
@@ -47,6 +47,10 @@
             break;
             
         case ANCHORTOKEN:
+            
+            break;
+
+        case DOT:
             
             break;
             

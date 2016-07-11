@@ -44,14 +44,14 @@
         // create a new POI for anchor if an anchor does not exist
         self.anchor = [[SpaceToken alloc] initForType:ANCHORTOKEN];
     }
-    self.anchor.latLon = coord;
-    self.anchor.mapViewXY = mapXY;
+    self.anchor.poi.latLon = coord;
+    self.anchor.poi.mapViewXY = mapXY;
 }
 
 - (void) updateAnchorAtMapXY:(CGPoint)mapXY
 {
     if (self.anchor){
-        self.anchor.mapViewXY = mapXY;
+        self.anchor.poi.mapViewXY = mapXY;
     }
 }
 

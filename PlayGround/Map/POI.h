@@ -14,7 +14,7 @@
 //-------------------
 // POI
 //-------------------
-@interface POI : UIButton
+@interface POI : NSObject
 
 //---properties
 @property CLLocationCoordinate2D latLon;

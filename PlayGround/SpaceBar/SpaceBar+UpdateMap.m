@@ -17,7 +17,7 @@
     for(SpaceToken* anItem in self.draggingSet) {
         if (anItem.type != ANCHORTOKEN){
             SpaceToken* aMark = (SpaceToken*)anItem;
-            aMark.mapViewXY = aMark.center;
+            aMark.poi.mapViewXY = aMark.center;
         }
     }
 }
@@ -26,8 +26,8 @@
 // of each POI, and fills that information into each POI.
 // This is useful for POI sorting on SpaceBar
 - (void) fillMapXYsForSet: (NSSet*) aSet{
-    for (POI* aPOI in aSet){
-        aPOI.mapViewXY = [self.mapView convertCoordinate:aPOI.latLon
+    for (SpaceToken* aToken in aSet){
+        aToken.poi.mapViewXY = [self.mapView convertCoordinate:aToken.poi.latLon
                                            toPointToView:self.mapView];
     }
 }
@@ -45,16 +45,16 @@
         if (self.anchor)
         {
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
-            aSpaceToken.mapViewXY =
+            aSpaceToken.poi.mapViewXY =
             CGPointMake(aSpaceToken.center.x - aSpaceToken.frame.size.width *0.7, aSpaceToken.center.y);
             
             NSMutableSet* aSet = [[NSMutableSet alloc] init];
             [aSet addObject:aSpaceToken];
             [aSet addObject:self.anchor];
-            [self snapToTwoPOIs:  aSet];
+            [self snapToTwoTokens:  aSet];
         }else{
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
-            aSpaceToken.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
+            aSpaceToken.poi.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
             [self updateMapToFitPOIPreferences:self.touchingSet];
         }
                 
@@ -63,13 +63,13 @@
         // minMapPointY, maxMapPointY
         CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
         
-        POI *anyPOI = [self.touchingSet anyObject];
-        MKMapPoint aMapPoint = MKMapPointForCoordinate(anyPOI.latLon);
+        SpaceToken *anyToken = [self.touchingSet anyObject];
+        MKMapPoint aMapPoint = MKMapPointForCoordinate(anyToken.poi.latLon);
         minMapPointX = aMapPoint.x; maxMapPointX = aMapPoint.x;
         minMapPointY = aMapPoint.y; maxMapPointY = aMapPoint.y;
         
-        for (POI *aPOI in self.touchingSet){
-            MKMapPoint tempMapPoint = MKMapPointForCoordinate(aPOI.latLon);
+        for (SpaceToken *aToken in self.touchingSet){
+            MKMapPoint tempMapPoint = MKMapPointForCoordinate(aToken.poi.latLon);
             minMapPointX = MIN(minMapPointX, tempMapPoint.x);
             maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
             minMapPointY = MIN(minMapPointY, tempMapPoint.y);
@@ -110,7 +110,7 @@
 //----------------
 // zoom-to-preference
 //----------------
-- (void) updateMapToFitPOIPreferences: (NSMutableSet*) poiSet{
+- (void) updateMapToFitPOIPreferences: (NSMutableSet*) tokenSet{
     
     // this is to support anchor+X
     // one anchor + one dragging SpaceToken
@@ -122,32 +122,32 @@
     }
     
     // Assume there are at most two POIs
-    if ([poiSet count] == 1 &&
-        [poiSet anyObject] != self.anchor)
+    if ([tokenSet count] == 1 &&
+        [tokenSet anyObject] != self.anchor)
     {
         // The easy case
-        POI *aPOI = [poiSet anyObject];
-        [self snapToOnePOI:aPOI];
-    }else if ([poiSet count] == 2){       
-        [self snapToTwoPOIs:  poiSet];
+        SpaceToken *aToken = [tokenSet anyObject];
+        [self snapToOneToken:aToken];
+    }else if ([tokenSet count] == 2){
+        [self snapToTwoTokens: tokenSet];
     }
 }
 
 // this method makes the map snap to two POIs
-- (void) snapToOnePOI: (POI*) aPOI {
-    [self.mapView snapOneCoordinate: aPOI.latLon toXY: aPOI.mapViewXY];
+- (void) snapToOneToken: (SpaceToken*) aToken {
+    [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.poi.mapViewXY];
 }
 
 
 // this method makes the map snap to two POIs
-- (void) snapToTwoPOIs: (NSSet*) poiSet{
+- (void) snapToTwoTokens: (NSSet*) tokenSet{
     
     CLLocationCoordinate2D coords[2];
     CGPoint cgPoints[2];
     int i = 0;
-    for (POI *aPOI in poiSet){
-        coords[i] = aPOI.latLon;
-        cgPoints[i] = aPOI.mapViewXY;
+    for (SpaceToken *aToken in tokenSet){
+        coords[i] = aToken.poi.latLon;
+        cgPoints[i] = aToken.poi.mapViewXY;
         i++;
     }
     
