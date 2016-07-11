@@ -29,12 +29,57 @@
     }
 }
 
-
+// Two points are touched.
 -(void)spaceBarTwoPointsTouched:(float [2])percentagePair{
-    
+
+    if (self.route){
+        // look up the coordinates
+        CLLocationCoordinate2D coord1, coord2;
+        CGPoint xy1, xy2;
+        double orientationInDegree;
+        
+        //======== 1st point =========
+        
+        [self.route convertPercentage: percentagePair[0]
+                             toLatLon: coord1 orientation:orientationInDegree];
+        
+        // find the (x, y) coordinates based on the current orientation
+        xy1 = [self.mapView convertCoordinate:coord1 toPointToView:self.mapView];
+        
+        
+        //======== 2nd point =========
+        [self.route convertPercentage: percentagePair[1]
+                             toLatLon: coord2 orientation:orientationInDegree];
+        
+        xy2 = [self.mapView convertCoordinate:coord2 toPointToView:self.mapView];
+        
+        
+        // based on the constraints, calculate the map
+        
+        // figure out which one is on top
+        // xy1 should be on top of xy2, if not, swap
+        if (xy1.y < xy2.y){
+            // swap
+            CGPoint tempCGPoint = xy1;
+            CLLocationCoordinate2D tempCoord = coord1;
+            
+            xy1 = xy2; coord1 = coord2;
+            xy2 = tempCGPoint; coord2 = tempCoord;
+        }
+        
+        // calculate the differences and find the logest axis
+        
+        CLLocationCoordinate2D coords[2];
+        coords[0] = coord1;
+        coords[1] = coord2;
+        
+        CGPoint cgPoints[2];
+        cgPoints[0] = CGPointMake(self.mapView.frame.size.width/2, 0);
+        cgPoints[1] = CGPointMake(self.mapView.frame.size.width/2,
+                                  self.mapView.frame.size.height);
+        [self.mapView snapTwoCoordinates:coords toTwoXY:cgPoints];
+    }
 }
-
-
 
 - (void)directionButtonAction {
     NSLog(@"Direction button pressed!");

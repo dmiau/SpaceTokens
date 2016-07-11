@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+#import "../Map/customMKMapView.h"
 #import "SpaceToken.h"
 #import "RangeSlider/CERangeSlider.h"
 
@@ -16,6 +16,11 @@
 // SpaceBar (delegate)
 //----------------------------
 @protocol SpaceBarDelegate <NSObject>
+
+// SpaceToken delegate methods
+
+
+// SpaceBar delegate methods
 - (void)spaceBarOnePointTouched:(float) percentage;
 - (void)spaceBarTwoPointsTouched:(float[2]) percentagePair;
 @end
@@ -27,7 +32,7 @@
 @interface SpaceBar : NSObject <CERangeSliderDelegate>
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 //@property UIView *ca nvas;
-@property (weak) MKMapView *mapView;
+@property (weak) customMKMapView *mapView;
 
 //@property UIView *canvas;
 @property CERangeSlider* rangeSlider;

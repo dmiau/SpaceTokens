@@ -255,7 +255,10 @@ GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
         }
         _lowerValue = MIN(twoValues[0], twoValues[1]);
         _upperValue = MAX(twoValues[0], twoValues[1]);
-
+        
+        if (delegateRespondsTo.sliderTwoPOintsTouched){
+            [self.delegate sliderTwoPOintsTouched];
+        }
     }
 }
 

@@ -32,6 +32,8 @@
 		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
 		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
 		9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
+		9A93F9281D3016690012638A /* customMKMapView+MapDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */; };
+		9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
@@ -102,6 +104,8 @@
 		9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+UpdateMap.m"; path = "SpaceBar/SpaceBar+UpdateMap.m"; sourceTree = "<group>"; };
 		9A84136C1C6FB39B004DF8D1 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = SpaceBar/Constants.m; sourceTree = "<group>"; };
 		9A84136E1C6FB3B4004DF8D1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = SpaceBar/Constants.h; sourceTree = "<group>"; };
+		9A93F9261D3016690012638A /* customMKMapView+MapDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "customMKMapView+MapDisplay.h"; path = "Map/customMKMapView+MapDisplay.h"; sourceTree = "<group>"; };
+		9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "customMKMapView+MapDisplay.m"; path = "Map/customMKMapView+MapDisplay.m"; sourceTree = "<group>"; };
 		9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Interactions.h"; path = "SpaceBar/SpaceBar+Interactions.h"; sourceTree = "<group>"; };
 		9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Interactions.m"; path = "SpaceBar/SpaceBar+Interactions.m"; sourceTree = "<group>"; };
 		9AC36DC41C5FF4690037210F /* SpaceBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceBar.h; path = SpaceBar/SpaceBar.h; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A143B321D2AF56E001EE841 /* customMKMapView.h */,
 				9A143B331D2AF56E001EE841 /* customMKMapView.m */,
+				9A93F9261D3016690012638A /* customMKMapView+MapDisplay.h */,
+				9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */,
 				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
 				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
 			);
@@ -387,6 +393,7 @@
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
+				9A93F9281D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9AC36DCF1C6008660037210F /* POI.m in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
@@ -415,6 +422,7 @@
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
+				9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9AD0F43E1C7CF71800AEF928 /* POI.m in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,

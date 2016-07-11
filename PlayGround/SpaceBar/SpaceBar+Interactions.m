@@ -23,13 +23,10 @@
 
 - (void) sliderTwoPOintsTouched{
     if (self.delegateRespondsTo.spaceBarTwoPointsTouched){
-        if (self.delegateRespondsTo.spaceBarTwoPointsTouched){
-            
-            float temp[2];
-            temp[0] = self.rangeSlider.lowerValue/self.rangeSlider.maximumValue;
-            temp[1] = self.rangeSlider.upperValue/self.rangeSlider.maximumValue;
-            [self.delegate spaceBarTwoPointsTouched: temp];
-        }
+        float temp[2];
+        temp[0] = self.rangeSlider.lowerValue/self.rangeSlider.maximumValue;
+        temp[1] = self.rangeSlider.upperValue/self.rangeSlider.maximumValue;
+        [self.delegate spaceBarTwoPointsTouched: temp];        
     }
 }
 
