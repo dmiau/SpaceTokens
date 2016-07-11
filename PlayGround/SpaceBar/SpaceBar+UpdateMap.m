@@ -59,48 +59,11 @@
         }
                 
     }else if ([self.touchingSet count] > 1){
-        // Goal: find minMapPointX, maxMapPOintX,
-        // minMapPointY, maxMapPointY
-        CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
-        
-        SpaceToken *anyToken = [self.touchingSet anyObject];
-        MKMapPoint aMapPoint = MKMapPointForCoordinate(anyToken.poi.latLon);
-        minMapPointX = aMapPoint.x; maxMapPointX = aMapPoint.x;
-        minMapPointY = aMapPoint.y; maxMapPointY = aMapPoint.y;
-        
-        for (SpaceToken *aToken in self.touchingSet){
-            MKMapPoint tempMapPoint = MKMapPointForCoordinate(aToken.poi.latLon);
-            minMapPointX = MIN(minMapPointX, tempMapPoint.x);
-            maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
-            minMapPointY = MIN(minMapPointY, tempMapPoint.y);
-            maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
+        NSMutableSet <POI*>* poiSet = [[NSMutableSet alloc] init];
+        for (SpaceToken* aToken in self.touchingSet){
+            [poiSet addObject: aToken.poi];
         }
-        
-        
-        // Find out the mid point
-        MKMapPoint midPoint = {.x = .5*(maxMapPointX + minMapPointX),
-                                .y= .5*(maxMapPointY + minMapPointY)};
-        CGFloat height = maxMapPointY - minMapPointY;
-        CGFloat width = maxMapPointX - minMapPointX;
-        
-        // Check the aspect ratio to decide xSpan and ySpan
-        CGFloat xSpan, ySpan;
-        CGFloat aspectRatio = self.mapView.frame.size.height
-        /self.mapView.frame.size.width;
-        if (height/width > aspectRatio)
-        {
-            ySpan = height;
-            xSpan = ySpan / aspectRatio;
-        }else{
-            xSpan = width;
-            ySpan = xSpan * aspectRatio;
-        }
-        
-        MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan,
-                                           midPoint.y - ySpan,
-                                           xSpan * 2.3, ySpan*2.3);
-        
-        [self.mapView setVisibleMapRect:zoomRect animated:NO];
+        [self.mapView zoomToFitPOIs:poiSet];
         
         // Clear the touching set
         [self.touchingSet removeAllObjects];

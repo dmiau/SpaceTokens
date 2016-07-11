@@ -7,6 +7,7 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "POI.h"
 
 //----------------
 // customMKMapViewDelegate
@@ -31,4 +32,6 @@
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY;
 - (void) snapTwoCoordinates: (CLLocationCoordinate2D[2]) coords
                     toTwoXY: (CGPoint[2]) viewXYs;
+
+- (void) zoomToFitPOIs: (NSSet<POI*> *) poiSet;
 @end

@@ -89,4 +89,50 @@
     self.centerCoordinate = targetCentroidLatlon;
 }
 
+
+- (void) zoomToFitPOIs: (NSSet<POI*> *) poiSet{
+    // Goal: find minMapPointX, maxMapPOintX,
+    // minMapPointY, maxMapPointY
+    CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
+    
+    POI *aPOI = [poiSet anyObject];
+    MKMapPoint aMapPoint = MKMapPointForCoordinate(aPOI.latLon);
+    minMapPointX = aMapPoint.x; maxMapPointX = aMapPoint.x;
+    minMapPointY = aMapPoint.y; maxMapPointY = aMapPoint.y;
+    
+    for (POI *aPOI in poiSet){
+        MKMapPoint tempMapPoint = MKMapPointForCoordinate(aPOI.latLon);
+        minMapPointX = MIN(minMapPointX, tempMapPoint.x);
+        maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
+        minMapPointY = MIN(minMapPointY, tempMapPoint.y);
+        maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
+    }
+    
+    
+    // Find out the mid point
+    MKMapPoint midPoint = {.x = .5*(maxMapPointX + minMapPointX),
+        .y= .5*(maxMapPointY + minMapPointY)};
+    CGFloat height = maxMapPointY - minMapPointY;
+    CGFloat width = maxMapPointX - minMapPointX;
+    
+    // Check the aspect ratio to decide xSpan and ySpan
+    CGFloat xSpan, ySpan;
+    CGFloat aspectRatio = self.frame.size.height
+    /self.frame.size.width;
+    if (height/width > aspectRatio)
+    {
+        ySpan = height;
+        xSpan = ySpan / aspectRatio;
+    }else{
+        xSpan = width;
+        ySpan = xSpan * aspectRatio;
+    }
+    
+    MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan,
+                                       midPoint.y - ySpan,
+                                       xSpan * 2.3, ySpan*2.3);
+    
+    [self setVisibleMapRect:zoomRect animated:NO];
+}
+
 @end
