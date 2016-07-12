@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 #import "tester.h"
+#import "Views/DirectionPanel.h"
+
+//-------------------
+// Parameters
+//-------------------
+#define topPanelHeight 75
 
 
 // This is an extension (similar to a category)
@@ -17,6 +23,10 @@
 
 @end
 
+
+//-------------------
+// ViewController
+//-------------------
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -24,8 +34,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     // Add a mapView
-    self.mapView = [[customMKMapView alloc] initWithFrame:CGRectMake(0, 75,
-                                                              self.view.frame.size.width, self.view.frame.size.height - 75)];
+    self.mapView = [[customMKMapView alloc] initWithFrame:CGRectMake(0, topPanelHeight,
+                    self.view.frame.size.width, self.view.frame.size.height - topPanelHeight)];
     [self.view addSubview:self.mapView];
     [self.mapView setUserInteractionEnabled:YES];
     
@@ -83,6 +93,20 @@
 //    [tester runTests];
 }
 
+- (void)addDirectionPanel{
+    
+    if (self.directionPanel){
+        // add the panel to the main view if it has been instantiated
+        [self.view addSubview:self.directionPanel];
+    }else{
+        self.directionPanel = [[DirectionPanel alloc] initWithFrame:
+                CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)];
+        [self.view addSubview:self.directionPanel];
+    }
+    
+    // remove all
+    [self.spaceBar removeAllSpaceTokens];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -12,6 +12,7 @@
 #import "Map/customMKMapView.h"
 
 @class Route;
+@class DirectionPanel;
 
 @interface ViewController : UIViewController
 <SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
@@ -21,5 +22,14 @@
 
 @property SpaceBar *spaceBar;
 @property Route *route;
+
+
+
+
+
+// UI Panels
+@property DirectionPanel *directionPanel;
+- (void) addDirectionPanel;
+
 @end
 

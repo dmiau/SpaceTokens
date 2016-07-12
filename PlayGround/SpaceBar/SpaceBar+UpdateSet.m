@@ -42,6 +42,9 @@
 }
 
 
+//----------------
+// notifications
+//----------------
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification
 {
     NSLog(@"addToSetBasedOnNotification");
@@ -152,6 +155,31 @@
         }
         
     }
+}
+
+
+//----------------
+// remove all SpaceTokens
+//----------------
+- (void)removeAllSpaceTokens{
+    [self.draggingSet removeAllObjects];
+    [self.touchingSet removeAllObjects];
+    
+    // destory all the SpaceTokens
+    for (SpaceToken* aToken in self.draggingSet){
+        [aToken removeFromSuperview];
+    }
+    
+    for (SpaceToken* aToken in self.dotSet){
+        [aToken removeFromSuperview];
+    }
+
+    for (SpaceToken* aToken in self.buttonSet){
+        [aToken removeFromSuperview];
+    }
+    
+    [self.dotSet removeAllObjects];
+    [self.buttonSet removeAllObjects];
 }
 
 @end

@@ -19,6 +19,8 @@
 
 @property (nonatomic, weak) id <CERangeSliderDelegate> delegate;
 
+@property bool smallValueOnTopOfBar; // this indicates whether the small value is on top
+
 @property (nonatomic) float maximumValue;
 
 @property (nonatomic) float minimumValue;

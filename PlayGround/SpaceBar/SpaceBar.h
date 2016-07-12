@@ -31,11 +31,9 @@
 //----------------------------
 @interface SpaceBar : NSObject <CERangeSliderDelegate>
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
-//@property UIView *ca nvas;
 @property (weak) customMKMapView *mapView;
-
-//@property UIView *canvas;
 @property CERangeSlider* rangeSlider;
+@property bool smallValueOnTopOfBar;
 
 // This is a convenient set to cache the references to all the
 // POIs on the track
@@ -67,6 +65,9 @@ unsigned int spaceBarTwoPointsTouched:1;
 
 - (SpaceToken*) addSpaceTokenWithName: (NSString*) name
                              LatLon: (CLLocationCoordinate2D) latlon;
+
+- (void)removeAllSpaceTokens;
+
 // --------------
 // Implement in Interactions category
 // --------------
@@ -92,6 +93,8 @@ unsigned int spaceBarTwoPointsTouched:1;
 
 // update the (x, y) coordinates for each POI in the set
 - (void) fillMapXYsForSet: (NSSet*) aSet;
+
+
 - (void) zoomMapToFitTouchSet;
 - (void) updateMapToFitPOIPreferences: (NSMutableSet*) poiSet;
 

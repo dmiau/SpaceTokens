@@ -113,7 +113,10 @@
              [self showRoute:response];
          }
      }];
+ 
     
+    // Add the direction panel
+    [self addDirectionPanel];    
 }
 
 -(void)showRoute:(MKDirectionsResponse *)response
