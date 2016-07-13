@@ -15,28 +15,47 @@
 - (void) sliderOnePointTouched{
     
     if (self.delegateRespondsTo.spaceBarOnePointTouched){
-        [self.delegate spaceBarOnePointTouched:
-         self.rangeSlider.lowerValue/self.rangeSlider.maximumValue
-         ];
+        
+        // need to take the current upper and lower value into accunt
+        double percentage = self.rangeSlider.lowerValue/self.rangeSlider.maximumValue;
+        if (!self.smallValueOnTopOfBar){
+            // when the small value is on the bottom
+            percentage = 1 - percentage;
+        }
+        [self.delegate spaceBarOnePointTouched: percentage];
     }
 }
 
 - (void) sliderTwoPOintsTouched{
     if (self.delegateRespondsTo.spaceBarTwoPointsTouched){
+        
+        double lowerPercentage = self.rangeSlider.lowerValue/self.rangeSlider.maximumValue;
+        double upperPercentage = self.rangeSlider.upperValue/self.rangeSlider.maximumValue;
+        if (!self.smallValueOnTopOfBar){
+            double templowerPercentage = lowerPercentage;
+            lowerPercentage = 1 - upperPercentage;
+            upperPercentage = 1 - templowerPercentage;
+        }
+        
         float temp[2];
-        temp[0] = self.rangeSlider.lowerValue/self.rangeSlider.maximumValue;
-        temp[1] = self.rangeSlider.upperValue/self.rangeSlider.maximumValue;
+        temp[0] = lowerPercentage;
+        temp[1] = upperPercentage;
         [self.delegate spaceBarTwoPointsTouched: temp];        
     }
 }
 
-
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair{
     
-    self.rangeSlider.lowerValue =
-                percentagePair[0] * self.rangeSlider.maximumValue;
-    self.rangeSlider.upperValue =
-                percentagePair[1] * self.rangeSlider.maximumValue;
+    float barLowerValue = percentagePair[0] * self.rangeSlider.maximumValue;
+    float barUpperValue = percentagePair[1] * self.rangeSlider.maximumValue;
+    
+    if (!self.smallValueOnTopOfBar){
+        barLowerValue = self.rangeSlider.maximumValue - barLowerValue;
+        barUpperValue = self.rangeSlider.maximumValue - barUpperValue;
+    }
+    
+    self.rangeSlider.lowerValue = barLowerValue;    
+    self.rangeSlider.upperValue = barUpperValue;
 }
 
 - (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY:(CGPoint)mapXY{

@@ -42,7 +42,8 @@
     self.mapView.delegate = self;
     
     // Add a SpaceBar
-    _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];    
+    _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];
+    self.spaceBar.smallValueOnTopOfBar = false;
     self.spaceBar.delegate = self;
     
     // Add several SpaceTokens

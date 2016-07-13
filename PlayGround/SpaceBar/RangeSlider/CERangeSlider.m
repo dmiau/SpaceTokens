@@ -82,8 +82,6 @@ GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
         _knobColour = [UIColor whiteColor];
         _curvatiousness = 1.0;
         
-        _smallValueOnTopOfBar = true;
-        
         // Initialization code
         _minimumValue = 0.0;
         _maximumValue = 10.0;

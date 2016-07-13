@@ -87,6 +87,8 @@
     self.mapCentroid = [[SpaceToken alloc] initForType:DOT];    
     [self.dotSet addObject:self.mapCentroid];
     
+    self.smallValueOnTopOfBar = true;
+    
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     

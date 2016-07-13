@@ -33,7 +33,7 @@
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 @property (weak) customMKMapView *mapView;
 @property CERangeSlider* rangeSlider;
-@property bool smallValueOnTopOfBar;
+@property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
 // This is a convenient set to cache the references to all the
 // POIs on the track
