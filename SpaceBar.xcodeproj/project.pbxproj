@@ -38,6 +38,8 @@
 		9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
+		9ABB28101D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
+		9ABB28111D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
 		9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
@@ -112,6 +114,8 @@
 		9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "customMKMapView+MapDisplay.m"; path = "Map/customMKMapView+MapDisplay.m"; sourceTree = "<group>"; };
 		9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Interactions.h"; path = "SpaceBar/SpaceBar+Interactions.h"; sourceTree = "<group>"; };
 		9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Interactions.m"; path = "SpaceBar/SpaceBar+Interactions.m"; sourceTree = "<group>"; };
+		9ABB280E1D36795C00595A0D /* Elevator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Elevator.h; path = SpaceBar/RangeSlider/Elevator.h; sourceTree = "<group>"; };
+		9ABB280F1D36795C00595A0D /* Elevator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Elevator.m; path = SpaceBar/RangeSlider/Elevator.m; sourceTree = "<group>"; };
 		9AC36DC41C5FF4690037210F /* SpaceBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceBar.h; path = SpaceBar/SpaceBar.h; sourceTree = "<group>"; };
 		9AC36DC51C5FF4690037210F /* SpaceBar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SpaceBar.mm; path = SpaceBar/SpaceBar.mm; sourceTree = "<group>"; };
 		9AC36DC71C5FF9660037210F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -163,7 +167,7 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		9A26CB2C1C7BCCF400E46662 /* CERange */ = {
+		9A26CB2C1C7BCCF400E46662 /* Track */ = {
 			isa = PBXGroup;
 			children = (
 				9A26CB231C7BCCE500E46662 /* CERangeSlider.h */,
@@ -172,8 +176,10 @@
 				9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */,
 				9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */,
 				9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */,
+				9ABB280E1D36795C00595A0D /* Elevator.h */,
+				9ABB280F1D36795C00595A0D /* Elevator.m */,
 			);
-			name = CERange;
+			name = Track;
 			sourceTree = "<group>";
 		};
 		9A5301351C5AD6A6008D584B = {
@@ -233,7 +239,7 @@
 		9AC36DC31C5FF2220037210F /* SpaceBar */ = {
 			isa = PBXGroup;
 			children = (
-				9A26CB2C1C7BCCF400E46662 /* CERange */,
+				9A26CB2C1C7BCCF400E46662 /* Track */,
 				9AC36DC41C5FF4690037210F /* SpaceBar.h */,
 				9AC36DC51C5FF4690037210F /* SpaceBar.mm */,
 				9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */,
@@ -404,6 +410,7 @@
 				9A93F9281D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
+				9ABB28101D36795C00595A0D /* Elevator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +441,7 @@
 				9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
+				9ABB28111D36795C00595A0D /* Elevator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

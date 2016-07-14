@@ -10,8 +10,8 @@
 
 @protocol CERangeSliderDelegate <NSObject>
 @optional
-- (void) sliderOnePointTouched;
-- (void) sliderTwoPOintsTouched;
+- (void) sliderOnePointTouched:(double)percentage;
+- (void) sliderTwoPOintsTouchedLow:(double) percentageLow high:(double)percentageHigh;
 @end
 
 
@@ -23,18 +23,11 @@
 
 @property (nonatomic) float minimumValue;
 
-@property (nonatomic) float upperValue;
-
-@property (nonatomic) float lowerValue;
-
 @property (weak) UITouch *upperTouch;
 
 @property (weak) UITouch *lowerTouch;
 
 @property NSMutableSet *trackTouchingSet;
-
-// stores a list of dots to be displayed on the track
-@property NSMutableArray *trackDotsArray;
 
 @property float blankXBias; 
 
@@ -48,4 +41,5 @@
 
 - (float) positionForValue:(float)value;
 
+- (void) updateElevatorPercentageLow: (double)low high:(double)high;
 @end

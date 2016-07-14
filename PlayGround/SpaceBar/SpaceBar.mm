@@ -71,7 +71,7 @@
         _delegateRespondsTo.spaceBarOnePointTouched =
         [_delegate respondsToSelector:@selector(spaceBarOnePointTouched:)];
         _delegateRespondsTo.spaceBarTwoPointsTouched =
-        [_delegate respondsToSelector:@selector(spaceBarTwoPointsTouched:)];
+        [_delegate respondsToSelector:@selector(spaceBarTwoPointsTouchedLow:high:)];
     }
 }
 

@@ -30,7 +30,7 @@
 }
 
 // Two points are touched.
--(void)spaceBarTwoPointsTouched:(float [2])percentagePair{
+-(void)spaceBarTwoPointsTouchedLow:(float)low high:(float)high{
 
     if (self.route){
         // look up the coordinates
@@ -40,7 +40,7 @@
         
         //======== 1st point =========
         
-        [self.route convertPercentage: percentagePair[0]
+        [self.route convertPercentage: low
                              toLatLon: coord1 orientation:orientationInDegree];
         
         // find the (x, y) coordinates based on the current orientation
@@ -48,35 +48,35 @@
         
         
         //======== 2nd point =========
-        [self.route convertPercentage: percentagePair[1]
+        [self.route convertPercentage: high
                              toLatLon: coord2 orientation:orientationInDegree];
         
         xy2 = [self.mapView convertCoordinate:coord2 toPointToView:self.mapView];
         
         
-        // based on the constraints, calculate the map
-        
-        // figure out which one is on top
-        // xy1 should be on top of xy2, if not, swap
-        if (xy1.y < xy2.y){
-            // swap
-            CGPoint tempCGPoint = xy1;
-            CLLocationCoordinate2D tempCoord = coord1;
-            
-            xy1 = xy2; coord1 = coord2;
-            xy2 = tempCGPoint; coord2 = tempCoord;
-        }
+//        // based on the constraints, calculate the map
+//        
+//        // figure out which one is on top
+//        // xy1 should be on top of xy2, if not, swap
+//        if (xy1.y < xy2.y){
+//            // swap
+//            CGPoint tempCGPoint = xy1;
+//            CLLocationCoordinate2D tempCoord = coord1;
+//            
+//            xy1 = xy2; coord1 = coord2;
+//            xy2 = tempCGPoint; coord2 = tempCoord;
+//        }
         
         // calculate the differences and find the logest axis
         
         CLLocationCoordinate2D coords[2];
-        coords[0] = coord1;
-        coords[1] = coord2;
+        coords[0] = coord1; // 1 is low
+        coords[1] = coord2; // 2 is high
         
         CGPoint cgPoints[2];
-        cgPoints[0] = CGPointMake(self.mapView.frame.size.width/2, 0);
-        cgPoints[1] = CGPointMake(self.mapView.frame.size.width/2,
+        cgPoints[0] = CGPointMake(self.mapView.frame.size.width/2,
                                   self.mapView.frame.size.height);
+        cgPoints[1] = CGPointMake(self.mapView.frame.size.width/2,0);
         [self.mapView snapTwoCoordinates:coords toTwoXY:cgPoints];
     }
 }
@@ -112,6 +112,8 @@
          } else {
              [self showRoute:response];
          }
+         
+         [self updateSpaceBar];
      }];
  
     
@@ -151,7 +153,11 @@
 
 #pragma mark --customMKMapView delegate methods--
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-    
+    [self updateSpaceBar];
+}
+
+// Triggers SpaceBar redraw
+- (void) updateSpaceBar{
     if (self.route){
         std::vector<std::pair<float, float>> elevatorResutls =
         [self.route calculateVisibleSegmentsForMap:self.mapView];
@@ -161,7 +167,7 @@
         temp[1] = elevatorResutls[0].second;
         // for now I can only display one elevator
         [self.spaceBar updateElevatorFromPercentagePair:temp];
-    }        
+    }
 }
 
 - (void) mapTouchBegan: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{

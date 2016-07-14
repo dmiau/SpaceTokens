@@ -22,7 +22,7 @@
 
 // SpaceBar delegate methods
 - (void)spaceBarOnePointTouched:(float) percentage;
-- (void)spaceBarTwoPointsTouched:(float[2]) percentagePair;
+- (void)spaceBarTwoPointsTouchedLow:(float) low high: (float) high;
 @end
 
 #pragma mark - SpaceBarInterface
@@ -52,6 +52,8 @@
 @property SpaceToken* mapCentroid;
 @property SpaceToken* youAreHere;
 @property SpaceToken* anchor;
+
+
 
 // Use bit field to track if delegate is set properly
 //http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/
