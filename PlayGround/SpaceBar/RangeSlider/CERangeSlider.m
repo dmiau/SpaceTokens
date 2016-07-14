@@ -12,6 +12,8 @@
 #import "CERangeSliderTrackLayer.h"
 #import "Elevator.h"
 
+#define BOUND(VALUE, LOWER, UPPER)	MIN(MAX(VALUE, LOWER), UPPER)
+
 @implementation CERangeSlider
 {
     CERangeSliderTrackLayer* _trackLayer;
@@ -20,7 +22,7 @@
 //    CERangeSliderKnobLayer* _lowerKnobLayer;
     
     float _useableTrackLength;
-    
+    float _paddingLength;
     CGPoint _previousTouchPoint;
     
     struct {
@@ -86,6 +88,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         // Initialization code
         _minimumValue = 0.0;
         _maximumValue = 10.0;
+        _trackPaddingInPoints = 30;
         
         _blankXBias = 30;
         
@@ -111,7 +114,9 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     }
     return self;
 }
-                                           
+
+
+// This specify the parameters of the track and the elevator
 - (void) setLayerFrames
 {
     // create a larger drawing area
@@ -121,23 +126,31 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     CGRect trackFrame = self.bounds;
     trackFrame.origin.x = -_blankXBias;
     trackFrame.size.width += _blankXBias;
-    _trackLayer.frame = trackFrame;
     
+    // Add cell padding for the trackLayer?
+    trackFrame.origin.y = _trackPaddingInPoints;
+    trackFrame.size.height -= _trackPaddingInPoints *2;
+    
+    _trackLayer.frame = trackFrame;
     [_trackLayer setNeedsDisplay];
 
     _elevator.frame = trackFrame;
     [_elevator setNeedsDisplay];
     
-    _useableTrackLength = self.bounds.size.height;
+    _useableTrackLength = self.bounds.size.height - _trackPaddingInPoints *2;
 }
-                                           
+
+// position (in the context of the track) 
 - (float) positionForValue:(float)value
 {
     return _useableTrackLength * (value - _minimumValue) /
-        (_maximumValue - _minimumValue);    
+        (_maximumValue - _minimumValue);
 }
 
-
+- (float) valueForPosition:(float)position{
+    return (position - _trackPaddingInPoints)/_useableTrackLength *
+    (_maximumValue - _minimumValue);
+}
 
 //-----------------
 // Interactions
@@ -159,8 +172,8 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     if ([self.trackTouchingSet count] == 1){
         CGPoint touchPoint = [[_trackTouchingSet anyObject]
                               locationInView:self];
-        float aValue = touchPoint.y / _useableTrackLength
-        * (_maximumValue - _minimumValue);
+        float aValue = [self valueForPosition: touchPoint.y];
+        
         if ([_elevator hitTestOfValue:aValue]){
             // The elevator is touched
             _elevator.isTouched = true;
@@ -173,8 +186,6 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     }
 }
 
-#define BOUND(VALUE, UPPER, LOWER)	MIN(MAX(VALUE, LOWER), UPPER)
-
 
 - (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
@@ -182,8 +193,14 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         UITouch* touch = [touches anyObject];
         CGPoint locationInView = [touch locationInView:self];
         CGPoint previousLoationInView = [touch previousLocationInView:self];
-        float diff = locationInView.y - previousLoationInView.y;
-        diff = diff / _useableTrackLength * (_maximumValue - _minimumValue);
+        
+        // This is necessary to make sure the values are within the bound.
+        float currentY = BOUND(locationInView.y - _trackPaddingInPoints,
+                               0, _useableTrackLength);
+        float previousY = BOUND(previousLoationInView.y - _trackPaddingInPoints,
+                                0, _useableTrackLength);
+        float diff = currentY - previousY;
+        
         [_elevator translateByPoints: diff];
 
         // The following is necessary to maintain the size of the elevator
@@ -192,7 +209,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
             [self.delegate sliderTwoPOintsTouchedLow: _elevator.lowerValue/_maximumValue
                                                 high:_elevator.upperValue/_maximumValue];
             [_elevator loadElevatorParamsFromTouchPoint:
-             locationInView.y / _useableTrackLength * (_maximumValue - _minimumValue)];
+             currentY / _useableTrackLength * (_maximumValue - _minimumValue)];
             
             // Without this call the size of the elevator shrinks over time!
             [self.delegate sliderTwoPOintsTouchedLow: _elevator.lowerValue/_maximumValue
@@ -233,10 +250,15 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 //        _lowerValue = -1;
 //        _upperValue = -1;
     }else if ([_trackTouchingSet count] == 1){
+        //--------------
+        // One touch is detected
+        //--------------
+        
         CGPoint touchPoint = [[_trackTouchingSet anyObject]
                               locationInView:self];
-        float aValue = touchPoint.y / _useableTrackLength
-        * (_maximumValue - _minimumValue);
+                
+        float aValue = BOUND([self valueForPosition: touchPoint.y]
+                             , _minimumValue, _maximumValue);
         
         _elevator.lowerValue = aValue;
         _elevator.upperValue = -1;
@@ -247,6 +269,10 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         }        
         
     }else if ([_trackTouchingSet count] == 2){
+        
+        //--------------
+        // Two touches are detected
+        //--------------
         float twoValues[2];
         
         // To detect _upperValue and _lowerValue
@@ -254,8 +280,8 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         for (UITouch *aTouch in self.trackTouchingSet){
             CGPoint touchPoint = [aTouch locationInView:self];
             
-            twoValues[i] = touchPoint.y / _useableTrackLength
-            * (_maximumValue - _minimumValue);
+            twoValues[i] = BOUND([self valueForPosition: touchPoint.y],
+                                 _minimumValue, _maximumValue);
             i++;
         }
         _elevator.lowerValue = MIN(twoValues[0], twoValues[1]);
