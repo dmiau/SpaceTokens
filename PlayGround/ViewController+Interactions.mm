@@ -110,6 +110,9 @@
          if (error) {
              // Handle Error
          } else {
+             
+             // A response is received
+             [self initRouteoBject:response];
              [self showRoute:response];
          }
          
@@ -121,26 +124,34 @@
     [self addDirectionPanel];    
 }
 
+// Initialize the route object
+- (void) initRouteoBject: (MKDirectionsResponse *) response{
+    for (MKRoute *route in response.routes)
+    {
+        self.route = nil; //reset
+        self.route = [[Route alloc] initWithMKRoute:route];
+        self.route.source = response.source;
+        self.route.destination = response.destination;
+        // only draw the first route
+        break;
+    }
+}
+
 -(void)showRoute:(MKDirectionsResponse *)response
 {
     for (MKRoute *route in response.routes)
     {
         [self.mapView
          addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
-        
-        
-        // Print out the turn-by-turn instructions
-        for (MKRouteStep *step in route.steps)
-        {
-            NSLog(@"%@", step.instructions);
-        }
-        self.route = nil; //reset
-        self.route = [[Route alloc] initWithMKRoute:route];
+//        // Print out the turn-by-turn instructions
+//        for (MKRouteStep *step in route.steps)
+//        {
+//            NSLog(@"%@", step.instructions);
+//        }
         // only draw the first route
         break;
     }
 }
-
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
 {

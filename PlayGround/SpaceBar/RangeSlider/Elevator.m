@@ -32,28 +32,24 @@
     if ((self.upperValue == -1))
     {
         // draw a dot to signify the touch point
-        float touchPosition =
-        [self.slider positionForValue:self.lowerValue];
-        [self drawTouchIndicator:touchPosition inContext:ctx];
+        [self drawTouchIndicator:self.lowerValue inContext:ctx];
         
     }else if ((self.upperValue > -1) && (self.lowerValue > -1))
     {
         // fill the highlighed range
         CGContextSetFillColorWithColor(ctx, self.slider.trackHighlightColour.CGColor);
-        float lower = [self.slider positionForValue:self.lowerValue];
-        float upper = [self.slider positionForValue:self.upperValue];
+        float lower = (self.lowerValue - self.slider.minimumValue)
+                    / (self.slider.maximumValue - self.slider.minimumValue)
+                    * self.frame.size.height;
+        float upper = (self.upperValue - self.slider.minimumValue)
+                    / (self.slider.maximumValue - self.slider.minimumValue)
+                    * self.frame.size.height;
         CGContextFillRect(ctx, CGRectMake(self.slider.blankXBias, lower,
                                           self.bounds.size.width, upper - lower));
         
-        
         // draw two touch points
-        float touchPosition =
-        [self.slider positionForValue:self.lowerValue];
-        [self drawTouchIndicator:touchPosition inContext:ctx];
-        
-        touchPosition =
-        [self.slider positionForValue:self.upperValue];
-        [self drawTouchIndicator:touchPosition inContext:ctx];
+        [self drawTouchIndicator:self.lowerValue inContext:ctx];
+        [self drawTouchIndicator:self.upperValue inContext:ctx];
     }
     
     //    // shadow
@@ -70,16 +66,21 @@
     
 }
 
-- (void) drawTouchIndicator: (float) touchPosition inContext: (CGContextRef)ctx
+- (void) drawTouchIndicator: (float) value inContext: (CGContextRef)ctx
 {
     float radius = 3;
     float xBias = self.slider.blankXBias;
+    
+    // Convert from value to position
+    float position = (value - self.slider.minimumValue)
+                    / (self.slider.maximumValue - self.slider.minimumValue)
+                    * self.frame.size.height;
     
     // -radius - xBias
     UIBezierPath *dotPath = [UIBezierPath
                              bezierPathWithOvalInRect:
                              CGRectMake(0,
-                                        touchPosition-radius,
+                                        position-radius,
                                         2*radius, 2*radius)];
     
     CGContextSetFillColorWithColor(ctx, [[UIColor blueColor] CGColor]);

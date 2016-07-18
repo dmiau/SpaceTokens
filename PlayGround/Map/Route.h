@@ -21,6 +21,9 @@ using namespace std;
 //------------------
 @property MKRoute *route;
 
+@property MKMapItem *source;
+@property MKMapItem *destination;
+
 // the following vectors are used to look up POI, or ROI or a path
 @property vector<double> *mapPointX;
 @property vector<double> *mapPointY;

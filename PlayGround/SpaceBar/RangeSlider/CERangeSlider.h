@@ -43,9 +43,5 @@
 //
 @property float trackPaddingInPoints;
 
-// convert value to y position
-- (float) positionForValue:(float)value;
-- (float) valueForPosition:(float)position;
-
 - (void) updateElevatorPercentageLow: (double)low high:(double)high;
 @end

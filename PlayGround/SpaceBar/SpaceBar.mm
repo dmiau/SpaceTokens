@@ -51,6 +51,7 @@
         
         self.rangeSlider = [[CERangeSlider alloc] initWithFrame:sliderFrame];
         self.rangeSlider.delegate = self;
+        self.rangeSlider.trackPaddingInPoints = 30;
 
         [self.mapView addSubview:_rangeSlider];
         

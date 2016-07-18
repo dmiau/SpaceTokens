@@ -71,7 +71,12 @@ unsigned int spaceBarTwoPointsTouched:1;
 - (void)removeAllSpaceTokens;
 
 // --------------
-// Implement in Interactions category
+// Implemented in annotation category
+// --------------
+
+
+// --------------
+// Implemented in Interactions category
 // --------------
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
 - (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY: (CGPoint) mapXY;
@@ -79,7 +84,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 - (void) removeAnchor;
 
 // --------------
-// Implement in updateSet category
+// Implemented in updateSet category
 // --------------
 - (void) updateSpecialPOIs;
 - (void) orderPOIs;
@@ -87,7 +92,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification;
 
 // --------------
-// Implement in updateMap category
+// Implemented in updateMap category
 // --------------
 
 // copy the button centroid to the dragged button's mapXY

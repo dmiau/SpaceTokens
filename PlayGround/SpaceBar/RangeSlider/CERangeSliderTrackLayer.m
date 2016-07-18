@@ -11,8 +11,10 @@
 
 @implementation CERangeSliderTrackLayer
 
-- (void)drawInContext:(CGContextRef)ctx
+- (void)drawRect:(CGRect)rect
+//- (void)drawInContext:(CGContextRef)ctx
 {
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
     float trackWidth = self.bounds.size.width - self.slider.blankXBias;
     
     // clip

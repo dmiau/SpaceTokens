@@ -98,14 +98,16 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         _trackTouchingSet = [[NSMutableSet alloc] init];
         
         // Initialize the track layer
-        _trackLayer = [CERangeSliderTrackLayer layer];
+        _trackLayer = [[CERangeSliderTrackLayer alloc] init];
         _trackLayer.slider = self;
-        [self.layer addSublayer:_trackLayer];
+        _trackLayer.userInteractionEnabled = NO;
+        _trackLayer.backgroundColor =[UIColor clearColor];
+        [self addSubview:_trackLayer];
         
         // Initialize the elevator layer
         _elevator = [Elevator layer];
         _elevator.slider = self;
-        [self.layer addSublayer:_elevator];
+        [_trackLayer.layer addSublayer:_elevator];
         
         [self setLayerFrames];
         
@@ -123,6 +125,9 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 //    _trackLayer.frame = CGRectInset(self.bounds, 0, 0);
 //    // self.bounds.size.width / 3.5
     
+    //-----------------
+    // Set up the track
+    //-----------------
     CGRect trackFrame = self.bounds;
     trackFrame.origin.x = -_blankXBias;
     trackFrame.size.width += _blankXBias;
@@ -134,21 +139,21 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     _trackLayer.frame = trackFrame;
     [_trackLayer setNeedsDisplay];
 
-    _elevator.frame = trackFrame;
+    //-----------------
+    // Set up the elevator
+    //-----------------
+    CGRect elevatorFrame = CGRectMake(0, 0,
+                                      trackFrame.size.width, trackFrame.size.height);
+    _elevator.frame = elevatorFrame;
     [_elevator setNeedsDisplay];
     
     _useableTrackLength = self.bounds.size.height - _trackPaddingInPoints *2;
 }
 
-// position (in the context of the track) 
-- (float) positionForValue:(float)value
-{
-    return _useableTrackLength * (value - _minimumValue) /
-        (_maximumValue - _minimumValue);
-}
 
+// the position is wrt to _trackLayer
 - (float) valueForPosition:(float)position{
-    return (position - _trackPaddingInPoints)/_useableTrackLength *
+    return position/_useableTrackLength *
     (_maximumValue - _minimumValue);
 }
 
@@ -171,7 +176,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     // Check if the elevator is touched
     if ([self.trackTouchingSet count] == 1){
         CGPoint touchPoint = [[_trackTouchingSet anyObject]
-                              locationInView:self];
+                              locationInView:_trackLayer];
         float aValue = [self valueForPosition: touchPoint.y];
         
         if ([_elevator hitTestOfValue:aValue]){
@@ -255,7 +260,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         //--------------
         
         CGPoint touchPoint = [[_trackTouchingSet anyObject]
-                              locationInView:self];
+                              locationInView:_trackLayer];
                 
         float aValue = BOUND([self valueForPosition: touchPoint.y]
                              , _minimumValue, _maximumValue);
@@ -278,7 +283,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         // To detect _upperValue and _lowerValue
         int i = 0;
         for (UITouch *aTouch in self.trackTouchingSet){
-            CGPoint touchPoint = [aTouch locationInView:self];
+            CGPoint touchPoint = [aTouch locationInView:_trackLayer];
             
             twoValues[i] = BOUND([self valueForPosition: touchPoint.y],
                                  _minimumValue, _maximumValue);
