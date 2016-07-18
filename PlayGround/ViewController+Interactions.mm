@@ -132,7 +132,9 @@
         self.route = [[Route alloc] initWithMKRoute:route];
         self.route.source = response.source;
         self.route.destination = response.destination;
-        // only draw the first route
+        
+        // Add annotations to SpaceBar
+        [self.spaceBar addAnnotationsFromRoute:self.route];
         break;
     }
 }

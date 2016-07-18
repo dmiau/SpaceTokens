@@ -11,6 +11,9 @@
 #import "SpaceToken.h"
 #import "RangeSlider/CERangeSlider.h"
 
+
+@class Route;
+
 #pragma mark - SpaceBarProtocol
 //----------------------------
 // SpaceBar (delegate)
@@ -73,7 +76,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 // --------------
 // Implemented in annotation category
 // --------------
-
+- (void) addAnnotationsFromRoute:(Route *) route;
 
 // --------------
 // Implemented in Interactions category

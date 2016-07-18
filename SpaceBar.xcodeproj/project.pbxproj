@@ -23,6 +23,8 @@
 		9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
 		9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
 		9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
+		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.m */; };
+		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.m */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
@@ -94,6 +96,8 @@
 		9A5301501C5AD6A6008D584B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A5301531C5AD6A6008D584B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A5D40581D3D2D7600CC91BE /* SpaceBar+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Annotations.h"; path = "SpaceBar/SpaceBar+Annotations.h"; sourceTree = "<group>"; };
+		9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Annotations.m"; path = "SpaceBar/SpaceBar+Annotations.m"; sourceTree = "<group>"; };
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				9A26CB2C1C7BCCF400E46662 /* Track */,
 				9AC36DC41C5FF4690037210F /* SpaceBar.h */,
 				9AC36DC51C5FF4690037210F /* SpaceBar.mm */,
+				9A5D40581D3D2D7600CC91BE /* SpaceBar+Annotations.h */,
+				9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.m */,
 				9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */,
 				9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */,
 				9A8413671C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.h */,
@@ -400,6 +406,7 @@
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
+				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.m in Sources */,
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
@@ -431,6 +438,7 @@
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
+				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.m in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
