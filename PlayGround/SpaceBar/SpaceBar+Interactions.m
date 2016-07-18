@@ -47,7 +47,7 @@
         high = 1 -tempLow;
     }
     
-    [self.rangeSlider updateElevatorPercentageLow:low high:high];
+    [self.sliderContainer updateElevatorPercentageLow:low high:high];
 }
 
 - (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY:(CGPoint)mapXY{

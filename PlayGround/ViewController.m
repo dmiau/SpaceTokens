@@ -41,6 +41,8 @@
     
     self.mapView.delegate = self;
     
+    [self.mapView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 60)];
+    
     // Add a SpaceBar
     _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];
     self.spaceBar.smallValueOnTopOfBar = false;

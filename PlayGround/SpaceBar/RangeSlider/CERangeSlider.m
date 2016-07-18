@@ -22,7 +22,6 @@
 //    CERangeSliderKnobLayer* _lowerKnobLayer;
     
     float _useableTrackLength;
-    float _paddingLength;
     CGPoint _previousTouchPoint;
     
     struct {
@@ -48,6 +47,8 @@ GENERATE_SETTER(trackColour, UIColor*, setTrackColour, redrawLayers)
 GENERATE_SETTER(curvatiousness, float, setCurvatiousness, redrawLayers)
 
 GENERATE_SETTER(knobColour, UIColor*, setKnobColour, redrawLayers)
+
+GENERATE_SETTER(trackPaddingInPoints, float, setTrackPaddingInPoints, redrawLayers)
 
 GENERATE_SETTER(maximumValue, float, setMaximumValue, setLayerFrames)
 

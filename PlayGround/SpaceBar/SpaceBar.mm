@@ -49,16 +49,16 @@
                                         30,
                                         self.mapView.frame.size.height);
         
-        self.rangeSlider = [[CERangeSlider alloc] initWithFrame:sliderFrame];
-        self.rangeSlider.delegate = self;
-        self.rangeSlider.trackPaddingInPoints = 30;
+        self.sliderContainer = [[CERangeSlider alloc] initWithFrame:sliderFrame];
+        self.sliderContainer.delegate = self;
+        self.sliderContainer.trackPaddingInPoints = 30;
 
-        [self.mapView addSubview:_rangeSlider];
+        [self.mapView addSubview:self.sliderContainer];
         
-//        [self.rangeSlider addTarget:self
+//        [self.sliderContainer addTarget:self
 //                         action:@selector(slideValueChanged:)
 //               forControlEvents:UIControlEventValueChanged];
-        self.rangeSlider.curvatiousness = 0.0;
+        self.sliderContainer.curvatiousness = 0.0;
         
     }
     return self;
