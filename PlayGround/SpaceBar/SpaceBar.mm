@@ -155,6 +155,13 @@
     }    
 }
 
+- (void) resetSpaceBar{
+    // The valid range of lowerValue and upperValue of the elevator should be [0, 1]
+    // Setting the lowerValue and upperValue to be both -1 will make the elevator invisible
+    float temp[2] = {-1, -1};
+    [self updateElevatorFromPercentagePair:temp];
+}
+
 
 //----------------
 // desctructor

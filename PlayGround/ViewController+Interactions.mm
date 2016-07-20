@@ -14,11 +14,11 @@
 // The following two are SpaceBar delegate method
 - (void)spaceBarOnePointTouched:(float)percentage{
     
-    if (self.route){
+    if (self.activeRoute){
         CLLocationCoordinate2D coord;
         double orientationInDegree;
                 
-        [self.route convertPercentage: percentage
+        [self.activeRoute convertPercentage: percentage
                              toLatLon: coord orientation:orientationInDegree];
         
         [self.mapView setRegion: MKCoordinateRegionMake(coord,
@@ -32,7 +32,7 @@
 // Two points are touched.
 -(void)spaceBarTwoPointsTouchedLow:(float)low high:(float)high{
 
-    if (self.route){
+    if (self.activeRoute){
         // look up the coordinates
         CLLocationCoordinate2D coord1, coord2;
         CGPoint xy1, xy2;
@@ -40,7 +40,7 @@
         
         //======== 1st point =========
         
-        [self.route convertPercentage: low
+        [self.activeRoute convertPercentage: low
                              toLatLon: coord1 orientation:orientationInDegree];
         
         // find the (x, y) coordinates based on the current orientation
@@ -48,7 +48,7 @@
         
         
         //======== 2nd point =========
-        [self.route convertPercentage: high
+        [self.activeRoute convertPercentage: high
                              toLatLon: coord2 orientation:orientationInDegree];
         
         xy2 = [self.mapView convertCoordinate:coord2 toPointToView:self.mapView];
@@ -124,17 +124,20 @@
     [self addDirectionPanel];    
 }
 
+
+
+
 // Initialize the route object
 - (void) initRouteoBject: (MKDirectionsResponse *) response{
     for (MKRoute *route in response.routes)
     {
-        self.route = nil; //reset
-        self.route = [[Route alloc] initWithMKRoute:route];
-        self.route.source = response.source;
-        self.route.destination = response.destination;
+        self.activeRoute = nil; //reset
+        self.activeRoute = [[Route alloc] initWithMKRoute:route];
+        self.activeRoute.source = response.source;
+        self.activeRoute.destination = response.destination;
         
         // Add annotations to SpaceBar
-        [self.spaceBar addAnnotationsFromRoute:self.route];
+        [self.spaceBar addAnnotationsFromRoute:self.activeRoute];
         break;
     }
 }
@@ -171,9 +174,9 @@
 
 // Triggers SpaceBar redraw
 - (void) updateSpaceBar{
-    if (self.route){
+    if (self.activeRoute){
         std::vector<std::pair<float, float>> elevatorResutls =
-        [self.route calculateVisibleSegmentsForMap:self.mapView];
+        [self.activeRoute calculateVisibleSegmentsForMap:self.mapView];
         
         float temp[2];
         temp[0] = elevatorResutls[0].first;

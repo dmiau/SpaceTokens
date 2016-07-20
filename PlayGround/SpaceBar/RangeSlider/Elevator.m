@@ -44,8 +44,18 @@
         float upper = (self.upperValue - self.slider.minimumValue)
                     / (self.slider.maximumValue - self.slider.minimumValue)
                     * self.frame.size.height;
-        CGContextFillRect(ctx, CGRectMake(self.slider.blankXBias, lower,
-                                          self.bounds.size.width, upper - lower));
+        
+        CGRect elevactorRect = CGRectMake(self.slider.blankXBias+2, lower,
+                                          self.slider.blankXBias-4, upper - lower);
+        
+        //Original drawing code
+        //CGContextFillRect(ctx, elevactorRect);
+        
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:elevactorRect cornerRadius:15.0];
+        CGContextAddPath(ctx, bezierPath.CGPath);
+        CGContextFillPath(ctx);
+//        CGContextSetStrokeColorWithColor(ctx, [UIColor grayColor].CGColor);
+//        [bezierPath stroke];
         
         // draw two touch points
         [self drawTouchIndicator:self.lowerValue inContext:ctx];

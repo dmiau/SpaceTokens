@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+//-----------------
+// Delegate
+//-----------------
 @protocol CERangeSliderDelegate <NSObject>
 @optional
 - (void) sliderOnePointTouched:(double)percentage;
@@ -15,6 +18,9 @@
 @end
 
 
+//-----------------
+// Class definition
+//-----------------
 @interface CERangeSlider : UIControl
 
 @property (nonatomic, weak) id <CERangeSliderDelegate> delegate;

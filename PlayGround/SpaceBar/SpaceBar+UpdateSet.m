@@ -157,13 +157,21 @@
     }
 }
 
+//----------------
+// Add SpaceTokens from poiArray
+//----------------
+- (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray{
+    
+    for (POI* aPOI in poiArray){
+        [self addSpaceTokenWithName:aPOI.name LatLon: aPOI.latLon];
+    }
+}
 
 //----------------
 // remove all SpaceTokens
 //----------------
 - (void)removeAllSpaceTokens{
-    [self.draggingSet removeAllObjects];
-    [self.touchingSet removeAllObjects];
+
     
     // destory all the SpaceTokens
     for (SpaceToken* aToken in self.draggingSet){
@@ -177,7 +185,9 @@
     for (SpaceToken* aToken in self.buttonSet){
         [aToken removeFromSuperview];
     }
-    
+
+    [self.draggingSet removeAllObjects];
+    [self.touchingSet removeAllObjects];
     [self.dotSet removeAllObjects];
     [self.buttonSet removeAllObjects];
 }

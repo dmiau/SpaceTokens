@@ -70,8 +70,9 @@ unsigned int spaceBarTwoPointsTouched:1;
 
 - (SpaceToken*) addSpaceTokenWithName: (NSString*) name
                              LatLon: (CLLocationCoordinate2D) latlon;
-
+- (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray;
 - (void)removeAllSpaceTokens;
+- (void) resetSpaceBar;
 
 // --------------
 // Implemented in annotation category

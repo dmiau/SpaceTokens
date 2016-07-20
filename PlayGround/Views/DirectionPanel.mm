@@ -7,6 +7,9 @@
 //
 
 #import "DirectionPanel.h"
+#import "AppDelegate.h"
+#import "../ViewController.h"
+#import "../Map/Route.h"
 
 @implementation DirectionPanel
 
@@ -15,14 +18,26 @@
     self = [super initWithFrame:frame];
     if (self){
         
-        // set up the color of the view
-        [self setBackgroundColor:[UIColor blueColor]];
+        //-------------------
+        // Set the rootViewController
+        //-------------------
+        AppDelegate *app = [[UIApplication sharedApplication] delegate];
         
+        self.rootViewController = (ViewController*) app.window.rootViewController;
+        
+        //-------------------
+        // Set up the view
+        //-------------------
+        
+        // set up the color of the view
+        [self setBackgroundColor:[UIColor colorWithRed: 0.94 green:0.94 blue:0.94
+                                                 alpha:1.0]];
         // dismiss button
         UIButton*  dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
         dismissButton.frame =
             CGRectMake(frame.size.width*0.1, frame.size.height*0.5, 60, 20);
         [dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+        dismissButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [dismissButton setBackgroundColor:[UIColor grayColor]];
         [dismissButton addTarget:self action:@selector(dismissButtonAction)
                   forControlEvents:UIControlEventTouchDown];
@@ -44,7 +59,17 @@
 
 
 - (void)dismissButtonAction{
+    
+    // Do some clean up
+    // Remove route annotation and the route
+    [self.rootViewController.mapView removeOverlay:
+     self.rootViewController.activeRoute.route.polyline];
+    self.rootViewController.activeRoute = nil;
+    
+    // Reset Spacebar
+    [self.rootViewController.spaceBar resetSpaceBar];
     [self removeFromSuperview];
+    [self.rootViewController initSpaceBarWithTokens];
 }
 
 

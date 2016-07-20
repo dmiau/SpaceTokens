@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class ViewController;
+
 //---------------
 // Direction panel
 //---------------
 @interface DirectionPanel : UIView
+
+@property ViewController *rootViewController;
 
 @end

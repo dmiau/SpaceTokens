@@ -9,11 +9,14 @@
 #import "ViewController.h"
 #import "tester.h"
 #import "Views/DirectionPanel.h"
+#import "Views/DefaultSearchPanel.h"
+#import "Map/Route.h"
+#import "Map/POIDatabase.h"
 
 //-------------------
 // Parameters
 //-------------------
-#define topPanelHeight 75
+#define topPanelHeight 120
 
 
 // This is an extension (similar to a category)
@@ -32,8 +35,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    //----------------
+    // Initialize a POI DB
+    //----------------
+    self.poiDatabase = [[POIDatabase alloc] init];
+    [self.poiDatabase reloadPOI];
     
+    //----------------
     // Add a mapView
+    //----------------
     self.mapView = [[customMKMapView alloc] initWithFrame:CGRectMake(0, topPanelHeight,
                     self.view.frame.size.width, self.view.frame.size.height - topPanelHeight)];
     [self.view addSubview:self.mapView];
@@ -41,38 +52,49 @@
     
     self.mapView.delegate = self;
     
-    [self.mapView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 60)];
+//    [self.mapView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 60)];
+    self.mapView.showsCompass = NO;
+//    self.mapView.mapType = MKMapTypeSatelliteFlyover;
     
+    //----------------
     // Add a SpaceBar
+    //----------------
     _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];
     self.spaceBar.smallValueOnTopOfBar = false;
     self.spaceBar.delegate = self;
     
-    // Add several SpaceTokens
-    [self.spaceBar addSpaceTokenWithName:@"NY Downtown" LatLon:
-     CLLocationCoordinate2DMake(40.712784, -74.005941)];
+//    // Add several SpaceTokens
+//    [self.spaceBar addSpaceTokenWithName:@"NY Downtown" LatLon:
+//     CLLocationCoordinate2DMake(40.712784, -74.005941)];
+//    
+//    [self.spaceBar addSpaceTokenWithName:@"Columbia U." LatLon:
+//     CLLocationCoordinate2DMake(40.807722, -73.964110)];
+//
+//    [self.spaceBar addSpaceTokenWithName:@"San Francisco" LatLon:
+//     CLLocationCoordinate2DMake(37.774929, -122.419416)];
+//
+//
+//    [self.spaceBar addSpaceTokenWithName:@"Boston" LatLon:
+//     CLLocationCoordinate2DMake(42.360082, -71.058880)];
+//
+//    [self.spaceBar addSpaceTokenWithName:@"Tokyo" LatLon:
+//     CLLocationCoordinate2DMake(35.689487, 139.691706)];
     
-    [self.spaceBar addSpaceTokenWithName:@"Columbia U." LatLon:
-     CLLocationCoordinate2DMake(40.807722, -73.964110)];
-
-    [self.spaceBar addSpaceTokenWithName:@"San Francisco" LatLon:
-     CLLocationCoordinate2DMake(37.774929, -122.419416)];
-
-
-    [self.spaceBar addSpaceTokenWithName:@"Boston" LatLon:
-     CLLocationCoordinate2DMake(42.360082, -71.058880)];
-
-    [self.spaceBar addSpaceTokenWithName:@"Tokyo" LatLon:
-     CLLocationCoordinate2DMake(35.689487, 139.691706)];
+    //----------------
+    // Add a search panel
+    //----------------
+    [self addDefaultSearchPanel];
     
-    
+    //------------------
     // Add a direction button for testing
+    //------------------
     
     float mapViewWidth = self.mapView.frame.size.width;
     float mapViewHeight = self.mapView.frame.size.height;
     UIButton*  directionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     directionButton.frame = CGRectMake(mapViewWidth*0.1, mapViewHeight*0.9, 60, 20);
     [directionButton setTitle:@"Direction" forState:UIControlStateNormal];
+    directionButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     [directionButton setBackgroundColor:[UIColor grayColor]];
     [directionButton addTarget:self action:@selector(directionButtonAction)
               forControlEvents:UIControlEventTouchDown];
@@ -110,6 +132,26 @@
     // remove all
     [self.spaceBar removeAllSpaceTokens];
 }
+
+- (void)addDefaultSearchPanel{
+    
+    if (!self.defaultSearchPanel){
+        self.defaultSearchPanel = [[DefaultSearchPanel alloc]
+                                   initWithFrame:
+    CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)];
+    }
+    
+    [self.view addSubview:self.defaultSearchPanel];
+    
+    [self initSpaceBarWithTokens];
+}
+
+- (void) initSpaceBarWithTokens{
+
+    // Add SpaceTokens
+    [self.spaceBar addSpaceTokensFromPOIArray: self.poiDatabase.poiArray];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
