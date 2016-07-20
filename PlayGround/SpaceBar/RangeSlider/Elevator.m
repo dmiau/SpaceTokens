@@ -113,7 +113,7 @@
     _touchPointOffset = value - _lowerValue;
 }
 
-- (void)loadElevatorParamsFromTouchPoint: (float) touchPoint{
+- (void)restoreElevatorParamsFromTouchPoint: (float) touchPoint{
     _lowerValue = MAX(0, touchPoint - _touchPointOffset);
     _upperValue = MIN(self.slider.maximumValue, _lowerValue + _elevatorWidth);
 }

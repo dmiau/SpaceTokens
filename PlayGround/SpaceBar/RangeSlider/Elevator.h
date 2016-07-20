@@ -18,9 +18,14 @@
 
 @property (nonatomic) float lowerValue;
 
-@property bool isTouched;
-- (void)specifyElevatorParamsWithTouchValue: (float) value;
-- (void)loadElevatorParamsFromTouchPoint: (float) touchPoint;
-- (bool)hitTestOfValue: (float) value;
+
+
 - (void)translateByPoints: (float) points;
+
+
+- (void)restoreElevatorParamsFromTouchPoint: (float) touchPoint;
+
+@property bool isTouched;
+- (bool)hitTestOfValue: (float) value;
+- (void)specifyElevatorParamsWithTouchValue: (float) value;
 @end

@@ -41,10 +41,20 @@
     poi4.latLon = CLLocationCoordinate2DMake(42.360082, -71.058880);
     poi4.name = @"Boston";
     [self.poiArray addObject:poi4];
-    
+
     POI *poi5 = [[POI alloc] init];
-    poi5.latLon = CLLocationCoordinate2DMake(35.689487, 139.691706);
-    poi5.name = @"35.689487, 139.691706";
+    poi5.latLon = CLLocationCoordinate2DMake(51.507351, -0.127758);
+    poi5.name = @"London";
     [self.poiArray addObject:poi5];
+
+    POI *poi6 = [[POI alloc] init];
+    poi6.latLon = CLLocationCoordinate2DMake(48.856614, 2.352222);
+    poi6.name = @"Paris";
+    [self.poiArray addObject:poi6];
+    
+//    POI *poi5 = [[POI alloc] init];
+//    poi5.latLon = CLLocationCoordinate2DMake(35.689487, 139.691706);
+//    poi5.name = @"Tokyo";
+//    [self.poiArray addObject:poi5];
 }
 @end

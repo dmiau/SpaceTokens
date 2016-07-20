@@ -163,10 +163,10 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 //-----------------
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"touchesBegan is called!");
-    
-    NSLog(@"# of touches in event: %lu", [[event allTouches] count]);
-    
+//    NSLog(@"touchesBegan is called!");    
+//    NSLog(@"# of touches in event: %lu", [[event allTouches] count]);
+
+    // trackTouchingSet keeps tracking of all the touching events
     for (UITouch *aTouch in touches){
         if (![self.trackTouchingSet containsObject:aTouch])
         {
@@ -187,7 +187,6 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         }else{
             _elevator.isTouched = false;
             [self updateLowerUpperValues];
-            [self setLayerFrames];
         }
     }
 }
@@ -214,7 +213,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
             
             [self.delegate sliderTwoPOintsTouchedLow: _elevator.lowerValue/_maximumValue
                                                 high:_elevator.upperValue/_maximumValue];
-            [_elevator loadElevatorParamsFromTouchPoint:
+            [_elevator restoreElevatorParamsFromTouchPoint:
              currentY / _useableTrackLength * (_maximumValue - _minimumValue)];
             
             // Without this call the size of the elevator shrinks over time!

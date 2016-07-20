@@ -165,6 +165,8 @@
     for (POI* aPOI in poiArray){
         [self addSpaceTokenWithName:aPOI.name LatLon: aPOI.latLon];
     }
+    
+    [self orderPOIs];
 }
 
 //----------------
