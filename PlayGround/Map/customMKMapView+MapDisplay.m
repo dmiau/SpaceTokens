@@ -16,12 +16,14 @@
     CGFloat diffX = self.frame.size.width/2 - viewXY.x;
     CGFloat diffY = self.frame.size.height/2 - viewXY.y;
     
+//    MKMapType originalType = self.mapType; // A hack
+//    self.mapType = MKMapTypeStandard;
     CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
     
     CLLocationCoordinate2D centroid = [self convertPoint:
         CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                         toCoordinateFromView: self];
-    
+//    self.mapType = originalType;
     [self setRegion: MKCoordinateRegionMake(centroid,
                             MKCoordinateSpanMake(0.1, 0.1))];
 }

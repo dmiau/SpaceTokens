@@ -57,7 +57,7 @@
         self.rootViewController.mapView.mapType = MKMapTypeStandard;
     }else if ([label isEqualToString:@"Hybrid"]){
 
-        self.rootViewController.mapView.mapType = MKMapTypeHybrid;
+        self.rootViewController.mapView.mapType = MKMapTypeHybridFlyover;
     }else if ([label isEqualToString:@"Satellite"]){
 
         self.rootViewController.mapView.mapType = MKMapTypeSatelliteFlyover;
