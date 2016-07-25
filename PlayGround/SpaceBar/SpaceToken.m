@@ -216,6 +216,14 @@
     if ((self.superview.frame.size.width - locationInView.x) < self.frame.size.width*1.2)
     {
         // Do nothing if the SpaceMark is not dragged far out enough
+        
+        // Cancel the button if the touch is outside of the button        
+        if (locationInView.y < self.frame.origin.y
+            || locationInView.y > self.frame.origin.y + self.frame.size.height)
+        {
+            [self buttonUp:self];
+        }
+        
         return;
     }else{
         

@@ -24,13 +24,13 @@
         // add a button to access the preference panel
         UIButton*  preferenceButton = [UIButton buttonWithType:UIButtonTypeCustom];
         preferenceButton.frame =
-        CGRectMake(frame.size.width*0.1, frame.size.height*0.5, 60, 20);
-        [preferenceButton setTitle:@"Pref" forState:UIControlStateNormal];
+        CGRectMake(frame.size.width*0.05, frame.size.height*0.5, 60, 20);
+        [preferenceButton setTitle:@"Pref." forState:UIControlStateNormal];
         preferenceButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [preferenceButton setBackgroundColor:[UIColor grayColor]];
         [preferenceButton addTarget:self action:@selector(preferenceButtonAction)
                 forControlEvents:UIControlEventTouchDown];
-        
+
         // add drop shadow
         //            self.layer.cornerRadius = 8.0f;
         preferenceButton.layer.masksToBounds = NO;
@@ -41,6 +41,19 @@
         preferenceButton.layer.shadowRadius = 12;
         preferenceButton.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
         [self addSubview:preferenceButton];
+        
+        
+        // add a button to access the data panel
+        UIButton*  dataButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        dataButton.frame =
+        CGRectMake(frame.size.width*0.8, frame.size.height*0.5, 60, 20);
+        [dataButton setTitle:@"Data" forState:UIControlStateNormal];
+        dataButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        [dataButton setBackgroundColor:[UIColor grayColor]];
+        [dataButton addTarget:self action:@selector(dataButtonAction)
+                   forControlEvents:UIControlEventTouchDown];
+        [self addSubview:dataButton];
+
     }
     
     return self;
@@ -59,6 +72,20 @@
     [rootViewController performSegueWithIdentifier:@"PreferencesSegue"
                                             sender:nil];
 }
+
+- (void)dataButtonAction{
+    //-------------------
+    // Set the rootViewController
+    //-------------------
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    ViewController *rootViewController =
+    app.window.rootViewController;
+    
+    [rootViewController performSegueWithIdentifier:@"DataSegue"
+                                            sender:nil];
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -20,12 +20,15 @@
 
 
 
-- (void)translateByPoints: (float) points;
-
+- (void)translateFromPreviousValue: (float) previousValue toCurrentValue: (float) currentValue;
 
 - (void)restoreElevatorParamsFromTouchPoint: (float) touchPoint;
 
-@property bool isTouched;
-- (bool)hitTestOfValue: (float) value;
-- (void)specifyElevatorParamsWithTouchValue: (float) value;
+//@property bool isTouched;
+//- (bool)hitTestOfValue: (float) value;
+//- (void)specifyElevatorParamsWithTouchValue: (float) value;
+
+
+- (void) touchPointA: (float)value;
+- (void) touchPointA: (float)valueA pointB: (float) valueB;
 @end

@@ -123,9 +123,6 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 - (void) setLayerFrames
 {
     // create a larger drawing area
-//    _trackLayer.frame = CGRectInset(self.bounds, 0, 0);
-//    // self.bounds.size.width / 3.5
-    
     //-----------------
     // Set up the track
     //-----------------
@@ -152,10 +149,15 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 }
 
 
-// the position is wrt to _trackLayer
+// the position is wrt to _trackLayer (with bound check)
 - (float) valueForPosition:(float)position{
-    return position/_useableTrackLength *
+    
+    // Convert from position (in _trackLayer) to value
+    float tempValue =  position/_useableTrackLength *
     (_maximumValue - _minimumValue);
+    
+    // Check if the value is within the bound.
+    return BOUND(tempValue, _minimumValue, _maximumValue);
 }
 
 //-----------------
@@ -163,142 +165,153 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 //-----------------
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"touchesBegan is called!");    
-//    NSLog(@"# of touches in event: %lu", [[event allTouches] count]);
 
     // trackTouchingSet keeps tracking of all the touching events
     for (UITouch *aTouch in touches){
-        if (![self.trackTouchingSet containsObject:aTouch])
-        {
-            [self.trackTouchingSet addObject:aTouch];
-        }
-    }
-    
-    // Check if the elevator is touched
-    if ([self.trackTouchingSet count] == 1){
-        CGPoint touchPoint = [[_trackTouchingSet anyObject]
-                              locationInView:_trackLayer];
-        float aValue = [self valueForPosition: touchPoint.y];
         
-        if ([_elevator hitTestOfValue:aValue]){
-            // The elevator is touched
-            _elevator.isTouched = true;
-            [_elevator specifyElevatorParamsWithTouchValue:aValue];
+        if (![self isTouchValid:aTouch]){
+            NSMutableSet *aSet = [[NSMutableSet alloc] init];
+            [aSet addObject:aTouch];
+            [self touchesCancelled:aSet withEvent:nil];
+            
         }else{
-            _elevator.isTouched = false;
-            [self updateLowerUpperValues];
+            if (![self.trackTouchingSet containsObject:aTouch])
+            {
+                [self.trackTouchingSet addObject:aTouch];
+            }
         }
     }
-}
-
-
-- (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    if (_elevator.isTouched && [touches count] == 1){
-        UITouch* touch = [touches anyObject];
-        CGPoint locationInView = [touch locationInView:self];
-        CGPoint previousLoationInView = [touch previousLocationInView:self];
-        
-        // This is necessary to make sure the values are within the bound.
-        float currentY = BOUND(locationInView.y - _trackPaddingInPoints,
-                               0, _useableTrackLength);
-        float previousY = BOUND(previousLoationInView.y - _trackPaddingInPoints,
-                                0, _useableTrackLength);
-        float diff = currentY - previousY;
-        
-        [_elevator translateByPoints: diff];
-
-        // The following is necessary to maintain the size of the elevator
-        if (delegateRespondsTo.sliderTwoPOintsTouched){
-            
-            [self.delegate sliderTwoPOintsTouchedLow: _elevator.lowerValue/_maximumValue
-                                                high:_elevator.upperValue/_maximumValue];
-            [_elevator restoreElevatorParamsFromTouchPoint:
-             currentY / _useableTrackLength * (_maximumValue - _minimumValue)];
-            
-            // Without this call the size of the elevator shrinks over time!
-            [self.delegate sliderTwoPOintsTouchedLow: _elevator.lowerValue/_maximumValue
-                                                high:_elevator.upperValue/_maximumValue];
-        }
-        
-    }else{
-        [self updateLowerUpperValues];
-        
-        [CATransaction begin];
-        [CATransaction setDisableActions:YES] ;
-        
-        [self setLayerFrames];
-        
-        [CATransaction commit];
-    }
-
-    [self sendActionsForControlEvents:UIControlEventValueChanged];
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    _elevator.isTouched = false;
-    
-    for (UITouch *aTouch in touches){
-        [self.trackTouchingSet removeObject:aTouch];
-    }
-    
-    // Leave the elevator intact?
-//    [self updateLowerUpperValues];
-    [self setLayerFrames];
-}
-
-- (void) updateLowerUpperValues{
-    
-    if ([_trackTouchingSet count] == 0){
-
-        // I don't see any reason to disable the elevator indicator
-//        _lowerValue = -1;
-//        _upperValue = -1;
-    }else if ([_trackTouchingSet count] == 1){
-        //--------------
-        // One touch is detected
-        //--------------
-        
+    if ([self.trackTouchingSet count] == 1){
+        // One point touched
         CGPoint touchPoint = [[_trackTouchingSet anyObject]
                               locationInView:_trackLayer];
-                
-        float aValue = BOUND([self valueForPosition: touchPoint.y]
-                             , _minimumValue, _maximumValue);
         
-        _elevator.lowerValue = aValue;
-        _elevator.upperValue = -1;
-
-        if (delegateRespondsTo.sliderOnePointTouched)
-        {
-            [self.delegate sliderOnePointTouched: aValue/_maximumValue];
-        }        
-        
-    }else if ([_trackTouchingSet count] == 2){
-        
-        //--------------
-        // Two touches are detected
-        //--------------
+        if (touchPoint.y > 0 && touchPoint.y < _trackLayer.frame.size.height){
+            float aValue = [self valueForPosition: touchPoint.y];
+            [_elevator touchPointA:aValue];
+            // Update the elevator and the map
+            [self updateElevatorThenMap];
+        }
+    }else if ([self.trackTouchingSet count] == 2){
+        // Two points touched
         float twoValues[2];
         
         // To detect _upperValue and _lowerValue
         int i = 0;
         for (UITouch *aTouch in self.trackTouchingSet){
             CGPoint touchPoint = [aTouch locationInView:_trackLayer];
-            
-            twoValues[i] = BOUND([self valueForPosition: touchPoint.y],
-                                 _minimumValue, _maximumValue);
+            twoValues[i] = [self valueForPosition: touchPoint.y];
             i++;
         }
-        _elevator.lowerValue = MIN(twoValues[0], twoValues[1]);
-        _elevator.upperValue = MAX(twoValues[0], twoValues[1]);
+        [_elevator touchPointA:twoValues[0] pointB:twoValues[1]];
+        // Update the elevator and the map
+        [self updateElevatorThenMap];
+    }
+}
+
+- (bool) isTouchValid: (UITouch*) touch{
+    CGPoint touchPoint = [touch locationInView:_trackLayer];
+    return (touchPoint.y > 0 && touchPoint.y < _trackLayer.frame.size.height);
+}
+
+
+- (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    
+    if ([touches count] == 1 && [self.trackTouchingSet count] == 1){
+        //--------------
+        // One point is moved and there is only *one* touch point.
+        // It is possible that one touch point is stationary and one touch point is moved.
+        // (If so the one stationary touch point + one moving touch point casse should be handled as two touch points.)
+        //--------------
+        UITouch* touch = [touches anyObject];
+        CGPoint locationInView = [touch locationInView:_trackLayer];
+        CGPoint previousLoationInView = [touch previousLocationInView:_trackLayer];
         
-        if (delegateRespondsTo.sliderTwoPOintsTouched){
-            [self.delegate sliderTwoPOintsTouchedLow: _elevator.lowerValue/_maximumValue
-                                                high:_elevator.upperValue/_maximumValue];
+        
+        if (locationInView.y < 0 || locationInView.y > _trackLayer.frame.size.height){
+            // Touch is out of bound. Do nothing?
+        }else{
+            // Convert both from positions to values
+            float currentValue = [self valueForPosition:locationInView.y];
+            float previousValue = [self valueForPosition:previousLoationInView.y];
+            
+            if (currentValue >= _minimumValue && currentValue <= _maximumValue){
+                
+                [_elevator translateFromPreviousValue:previousValue toCurrentValue:currentValue];
+                
+                // The following is necessary to maintain the size of the elevator
+                [self updateElevatorThenMap];
+                
+                
+                // how about the two extremes?
+                [_elevator restoreElevatorParamsFromTouchPoint: currentValue];
+                [_elevator setNeedsDisplay];
+                
+                //            [self updateElevatorThenMap]; //TODO: this needs further investigations
+            }
         }
+
+    }else if ([self.trackTouchingSet count] == 2){
+        //--------------
+        // Two points are touched
+        //--------------
+        
+        // Two points touched
+        
+        float twoValues[2];
+        
+        // To detect _upperValue and _lowerValue
+        int i = 0;
+        for (UITouch *aTouch in self.trackTouchingSet){
+            CGPoint touchPoint = [aTouch locationInView:_trackLayer];
+            twoValues[i] = [self valueForPosition: touchPoint.y];
+            i++;
+        }
+        [_elevator touchPointA:twoValues[0] pointB:twoValues[1]];
+        
+        // Update the elevator and the map
+        [self updateElevatorThenMap];
+        
+//        [CATransaction begin];
+//        [CATransaction setDisableActions:YES] ;
+//        
+//        [self setLayerFrames];
+//        
+//        [CATransaction commit];
+    }
+
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    for (UITouch *aTouch in touches){
+        [self.trackTouchingSet removeObject:aTouch];
     }
     
+    // Need to fix the offset here
+    if ([self.trackTouchingSet count] == 1){
+        UITouch *aTouch = [self.trackTouchingSet anyObject];
+        CGPoint touchPoint = [aTouch locationInView:_trackLayer];
+        
+        float aValue = [self valueForPosition: touchPoint.y];
+        [_elevator touchPointA:aValue];
+    }
+}
+
+
+// 1. Update the elevator visualization
+// 2. Update the map
+- (void) updateElevatorThenMap{
     [_elevator setNeedsDisplay];
+    
+    if (delegateRespondsTo.sliderTwoPOintsTouched){
+        [self.delegate sliderTwoPOintsTouchedLow:
+         _elevator.lowerValue/_maximumValue
+        high:_elevator.upperValue/_maximumValue];
+    }
 }
 
 - (void) updateElevatorPercentageLow:(double)low high:(double)high{

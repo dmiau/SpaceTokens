@@ -180,7 +180,7 @@
         
         float temp[2];
         temp[0] = elevatorResutls[0].first;
-        temp[1] = elevatorResutls[0].second;
+        temp[1] = elevatorResutls.back().second; //TODO: fix this
         // for now I can only display one elevator
         [self.spaceBar updateElevatorFromPercentagePair:temp];
     }

@@ -8,6 +8,7 @@
 
 #import "PreferencesController.h"
 #import "AppDelegate.h"
+#import "CustomTabController.h"
 
 @implementation PreferencesController
 
@@ -22,10 +23,45 @@
         // Set the rootViewController
         //-------------------
         AppDelegate *app = [[UIApplication sharedApplication] delegate];
-        
         self.rootViewController = (ViewController*) app.window.rootViewController;
     }
     return self;
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    CustomTabController *tabController = (CustomTabController *) self.parentViewController;
+    
+    // Control the title bar
+    tabController.navigationBar.topItem.title = @"General";
+    
+    // Update the setting of the map segment controller
+    if (self.rootViewController.mapView.mapType == MKMapTypeStandard){
+        self.mapSegmentControl.selectedSegmentIndex = 0;
+    }else if (self.rootViewController.mapView.mapType == MKMapTypeHybrid){
+        self.mapSegmentControl.selectedSegmentIndex = 1;
+    }else if (self.rootViewController.mapView.mapType == MKMapTypeSatelliteFlyover){
+        self.mapSegmentControl.selectedSegmentIndex = 2;
+    }
+    
+}
+
+//------------------
+// Select map style
+//------------------
+- (IBAction)mapStyleSegmentControl:(id)sender {
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    NSString *label = [segmentedControl
+                       titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
+    
+    if ([label isEqualToString:@"Standard"]){
+        self.rootViewController.mapView.mapType = MKMapTypeStandard;
+    }else if ([label isEqualToString:@"Hybrid"]){
+
+        self.rootViewController.mapView.mapType = MKMapTypeHybrid;
+    }else if ([label isEqualToString:@"Satellite"]){
+
+        self.rootViewController.mapView.mapType = MKMapTypeSatelliteFlyover;
+    }
 }
 
 @end

@@ -12,4 +12,7 @@
 
 @property ViewController* rootViewController;
 
+- (IBAction)mapStyleSegmentControl:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentControl;
+
 @end

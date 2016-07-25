@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9A143B341D2AF56E001EE841 /* customMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* customMKMapView.m */; };
 		9A143B351D2AF56E001EE841 /* customMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* customMKMapView.m */; };
+		9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
+		9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A22D0191D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
@@ -83,6 +85,8 @@
 /* Begin PBXFileReference section */
 		9A143B321D2AF56E001EE841 /* customMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customMKMapView.h; path = Map/customMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* customMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customMKMapView.m; path = Map/customMKMapView.m; sourceTree = "<group>"; };
+		9A1CA2B41D4671210098957A /* CustomTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabController.h; path = Views/CustomTabController.h; sourceTree = "<group>"; };
+		9A1CA2B51D4671210098957A /* CustomTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabController.m; path = Views/CustomTabController.m; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
 		9A26CB181C7BC4DE00E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
@@ -229,7 +233,7 @@
 			children = (
 				9A836D361C6933B6007D9520 /* Tests */,
 				9A22D0151D22B97C009BC465 /* Map */,
-				9AC36DC31C5FF2220037210F /* SpaceBar */,
+				9AC36DC31C5FF2220037210F /* SpaceBar Project */,
 				9AC36DC91C5FFBE30037210F /* View */,
 				9AC36DD31C60098A0037210F /* Controller */,
 				9A5301451C5AD6A6008D584B /* AppDelegate.m */,
@@ -259,7 +263,7 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
-		9AC36DC31C5FF2220037210F /* SpaceBar */ = {
+		9AC36DC31C5FF2220037210F /* SpaceBar Project */ = {
 			isa = PBXGroup;
 			children = (
 				9A26CB2C1C7BCCF400E46662 /* Track */,
@@ -282,7 +286,7 @@
 				9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */,
 				9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */,
 			);
-			name = SpaceBar;
+			name = "SpaceBar Project";
 			sourceTree = "<group>";
 		};
 		9AC36DC91C5FFBE30037210F /* View */ = {
@@ -311,6 +315,8 @@
 				9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */,
 				9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */,
 				9A43EAED1D40029D00080029 /* topPanel.h */,
+				9A1CA2B41D4671210098957A /* CustomTabController.h */,
+				9A1CA2B51D4671210098957A /* CustomTabController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
+				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
@@ -469,6 +476,7 @@
 				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
+				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
