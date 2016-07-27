@@ -47,12 +47,14 @@
 //----------------
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification
 {
-    NSLog(@"addToSetBasedOnNotification");
+//    NSLog(@"addToSetBasedOnNotification");
     
     // handle the notification based on event name
     if (aNotification.name == AddToButtonSetNotification){
         [self.buttonSet addObject:aNotification.object];
     }else if (aNotification.name == AddToTouchingSetNotification){
+        SpaceToken *aToken = (SpaceToken *)aNotification.object;
+        aToken.selected = YES;
         [self.touchingSet addObject:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
         
@@ -73,19 +75,20 @@
 
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification
 {
-    NSLog(@"removeFromSetBasedOnNotification");
+//    NSLog(@"removeFromSetBasedOnNotification");
     
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonSetNotification){
         [self.buttonSet removeObject:aNotification.object];
     }else if (aNotification.name == RemoveFromTouchingSetNotification){
-        [self.draggingSet removeObject:aNotification.object];        
         [self.touchingSet removeObject:aNotification.object];
         
+        // Set the color back
+        SpaceToken* aToken = (SpaceToken*) aNotification.object;
+        aToken.selected = NO;
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
         [self.draggingSet removeObject:aNotification.object];
     }
-    
 }
 
 - (void) updateSpecialPOIs{
@@ -192,6 +195,13 @@
     [self.touchingSet removeAllObjects];
     [self.dotSet removeAllObjects];
     [self.buttonSet removeAllObjects];
+}
+
+- (void)clearAllTouchedTokens{    
+    for (SpaceToken* aToken in self.touchingSet){
+        aToken.selected = NO;
+    }
+    [self.touchingSet removeAllObjects];
 }
 
 @end

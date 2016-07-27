@@ -65,8 +65,8 @@
         }
         [self.mapView zoomToFitPOIs:poiSet];
         
-        // Clear the touching set
-        [self.touchingSet removeAllObjects];
+//        // Clear the touching set
+//        [self.touchingSet removeAllObjects];
     }
 }
 

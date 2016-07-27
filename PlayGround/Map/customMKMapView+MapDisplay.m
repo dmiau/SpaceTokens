@@ -25,7 +25,7 @@
                                         toCoordinateFromView: self];
 //    self.mapType = originalType;
     [self setRegion: MKCoordinateRegionMake(centroid,
-                            MKCoordinateSpanMake(0.1, 0.1))];
+                            MKCoordinateSpanMake(0.01, 0.01))];
 }
 
 

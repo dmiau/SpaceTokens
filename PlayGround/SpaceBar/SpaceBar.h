@@ -72,12 +72,14 @@ unsigned int spaceBarTwoPointsTouched:1;
                              LatLon: (CLLocationCoordinate2D) latlon;
 - (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray;
 - (void)removeAllSpaceTokens;
-- (void) resetSpaceBar;
+- (void)resetSpaceBar;
+- (void)clearAllTouchedTokens;
 
 // --------------
 // Implemented in annotation category
 // --------------
 - (void) addAnnotationsFromRoute:(Route *) route;
+
 
 // --------------
 // Implemented in Interactions category

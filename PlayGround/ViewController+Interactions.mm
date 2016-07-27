@@ -187,15 +187,20 @@
 }
 
 - (void) mapTouchBegan: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
+    // Remove all the touched SpaceTokens
+    [self.spaceBar clearAllTouchedTokens];
     
     [self.spaceBar addAnchorForCoordinates:coord atMapXY:xy];
 }
 
-- (void) mapTouchMoved: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{    
+- (void) mapTouchMoved: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
+    
     [self.spaceBar updateAnchorAtMapXY:xy];
 }
 
-- (void) mapTouchEnded{    
+- (void) mapTouchEnded{
+    // Remove all the touched SpaceTokens
+    [self.spaceBar clearAllTouchedTokens];
     [self.spaceBar removeAnchor];
 }
 

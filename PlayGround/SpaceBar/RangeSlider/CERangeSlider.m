@@ -77,6 +77,10 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     [_trackLayer setNeedsDisplay];
 }
 
+
+//--------------------------------
+// Initializations
+//--------------------------------
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -95,6 +99,8 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         
         _upperTouch = nil;
         _lowerTouch = nil;
+        
+        _pathBarMode = MAP;
         
         _trackTouchingSet = [[NSMutableSet alloc] init];
         
@@ -170,6 +176,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     for (UITouch *aTouch in touches){
         
         if (![self isTouchValid:aTouch]){
+            // If the touch is out of bound, do nothing
             NSMutableSet *aSet = [[NSMutableSet alloc] init];
             [aSet addObject:aTouch];
             [self touchesCancelled:aSet withEvent:nil];
@@ -189,9 +196,15 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         
         if (touchPoint.y > 0 && touchPoint.y < _trackLayer.frame.size.height){
             float aValue = [self valueForPosition: touchPoint.y];
-            [_elevator touchPointA:aValue];
-            // Update the elevator and the map
-            [self updateElevatorThenMap];
+            
+            if (self.pathBarMode == MAP){
+                [_elevator touchPointA:aValue];
+                // Update the elevator and the map
+                [self updateElevatorThenMap];
+            }else{
+                
+                
+            }
         }
     }else if ([self.trackTouchingSet count] == 2){
         // Two points touched

@@ -60,25 +60,9 @@
     // Add a SpaceBar
     //----------------
     _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];
+    [self.spaceBar.sliderContainer setUserInteractionEnabled: NO];
     self.spaceBar.smallValueOnTopOfBar = false;
     self.spaceBar.delegate = self;
-    
-//    // Add several SpaceTokens
-//    [self.spaceBar addSpaceTokenWithName:@"NY Downtown" LatLon:
-//     CLLocationCoordinate2DMake(40.712784, -74.005941)];
-//    
-//    [self.spaceBar addSpaceTokenWithName:@"Columbia U." LatLon:
-//     CLLocationCoordinate2DMake(40.807722, -73.964110)];
-//
-//    [self.spaceBar addSpaceTokenWithName:@"San Francisco" LatLon:
-//     CLLocationCoordinate2DMake(37.774929, -122.419416)];
-//
-//
-//    [self.spaceBar addSpaceTokenWithName:@"Boston" LatLon:
-//     CLLocationCoordinate2DMake(42.360082, -71.058880)];
-//
-//    [self.spaceBar addSpaceTokenWithName:@"Tokyo" LatLon:
-//     CLLocationCoordinate2DMake(35.689487, 139.691706)];
     
     //----------------
     // Add a search panel
@@ -131,6 +115,7 @@
     
     // remove all
     [self.spaceBar removeAllSpaceTokens];
+    [self.spaceBar.sliderContainer setUserInteractionEnabled: YES];
 }
 
 - (void)addDefaultSearchPanel{
@@ -150,6 +135,7 @@
 
     // Add SpaceTokens
     [self.spaceBar addSpaceTokensFromPOIArray: self.poiDatabase.poiArray];
+    [self.spaceBar.sliderContainer setUserInteractionEnabled: NO];
 }
 
 

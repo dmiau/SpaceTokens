@@ -17,6 +17,8 @@
 - (void) sliderTwoPOintsTouchedLow:(double) percentageLow high:(double)percentageHigh;
 @end
 
+typedef enum {MAP, STREETVIEW} PathBarMode;
+// MAP mode: the elevator width varies for single taps; STREETVIEW mode: the elevator width fixes for single taps
 
 //-----------------
 // Class definition
@@ -46,8 +48,10 @@
 @property (nonatomic) UIColor* knobColour;
 
 // Style Control
-//
 @property float trackPaddingInPoints;
 
+@property PathBarMode pathBarMode;
+
+// Interface for outside to update the elevator
 - (void) updateElevatorPercentageLow: (double)low high:(double)high;
 @end

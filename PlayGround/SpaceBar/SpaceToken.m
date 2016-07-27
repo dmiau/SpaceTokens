@@ -109,11 +109,14 @@
 - (void) configureAppearanceForType:(spaceTokenType)type{
     switch (type) {
         case DOCKED:
+
             [self addSubview:self.titleLabel];
             [self setTitle:@"SpaceToken" forState:UIControlStateNormal];
             [self setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
             self.titleLabel.font = [UIFont systemFontOfSize:12];
-            [self setBackgroundColor:[UIColor grayColor]];
+//            [self setBackgroundColor:[UIColor grayColor]];
+            self.selected = NO;
+            
             [self setTitleColor: [UIColor whiteColor]
                        forState: UIControlStateNormal];
             [self.circleLayer removeFromSuperlayer];
@@ -131,6 +134,7 @@
             
             break;
         case DRAGGING:
+            self.selected = NO;
             [self setBackgroundColor:[UIColor clearColor]];
             [self.titleLabel removeFromSuperview];
             
@@ -164,14 +168,18 @@
     if (sender != self)
         return;
     
-    NSLog(@"Touch down!");
+//    NSLog(@"Touch down!");
     self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
     
-    [self setBackgroundColor:[UIColor redColor]];
-    
-    NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
-                                                                 object:self userInfo:nil];
-    [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    if (self.selected){
+        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    }else{
+        NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    }
 }
 
 - (void) buttonUp:(UIButton*)sender {
@@ -180,16 +188,24 @@
     if (sender != self)
         return;
     
-    NSLog(@"Touch up!");
-    [self setBackgroundColor:[UIColor grayColor]];
-    [self.lineLayer removeFromSuperlayer];
-    NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
-                                                                 object:self userInfo:nil];
-    [[ NSNotificationCenter defaultCenter] postNotification:notification];
-    
+//    NSLog(@"Touch up!");
     if ([self.hasReportedDraggingEvent boolValue]){
+        //------------------------
+        // The button was dragged.
+        //------------------------
         self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
+        [self.lineLayer removeFromSuperlayer];
         [self removeFromSuperview];
+        NSNotification *notification = [NSNotification notificationWithName:RemoveFromDraggingSetNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    }else{
+        //------------------------
+        // The button was touched.
+        //------------------------
+//        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
+//                                                                     object:self userInfo:nil];
+//        [[ NSNotificationCenter defaultCenter] postNotification:notification];
     }
 }
 
@@ -265,5 +281,13 @@
 }
 
 
+- (void)setSelected:(BOOL)selected{
+    super.selected = selected;
+    if (selected){
+        self.backgroundColor = [UIColor redColor];
+    }else{
+        self.backgroundColor = [UIColor grayColor];
+    }
+}
 
 @end
