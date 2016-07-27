@@ -28,24 +28,39 @@
     // need to paint touch indicator
     
     // do things differently, depending on the number of touches
-    if ((self.upperValue == -1))
+    if (self.sliderContainer.pathBarMode == STREETVIEW)
     {
-        // draw a dot to signify the touch point
+        
+        //-----------------
+        // This is primary for the single touch in StreetView mode
+        //-----------------
+        
+        float value = self.lowerValue;
+        // Draw a small touch block
+        CGRect elevactorRect = CGRectMake(self.sliderContainer.blankXBias+2, value -0.5,
+                                          self.sliderContainer.blankXBias-4, value +0.5);
+        
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:elevactorRect cornerRadius:15.0];
+        CGContextAddPath(ctx, bezierPath.CGPath);
+        CGContextFillPath(ctx);
+        
+        // Draw a dot to signify the touch point
         [self drawTouchIndicator:self.lowerValue inContext:ctx];
+        
         
     }else if ((self.upperValue > -1) && (self.lowerValue > -1))
     {
         // fill the highlighed range
-        CGContextSetFillColorWithColor(ctx, self.slider.trackHighlightColour.CGColor);
-        float lower = (self.lowerValue - self.slider.minimumValue)
-                    / (self.slider.maximumValue - self.slider.minimumValue)
+        CGContextSetFillColorWithColor(ctx, self.sliderContainer.trackHighlightColour.CGColor);
+        float lower = (self.lowerValue - self.sliderContainer.minimumValue)
+                    / (self.sliderContainer.maximumValue - self.sliderContainer.minimumValue)
                     * self.frame.size.height;
-        float upper = (self.upperValue - self.slider.minimumValue)
-                    / (self.slider.maximumValue - self.slider.minimumValue)
+        float upper = (self.upperValue - self.sliderContainer.minimumValue)
+                    / (self.sliderContainer.maximumValue - self.sliderContainer.minimumValue)
                     * self.frame.size.height;
         
-        CGRect elevactorRect = CGRectMake(self.slider.blankXBias+2, lower,
-                                          self.slider.blankXBias-4, upper - lower);
+        CGRect elevactorRect = CGRectMake(self.sliderContainer.blankXBias+2, lower,
+                                          self.sliderContainer.blankXBias-4, upper - lower);
         
         //Original drawing code
         //CGContextFillRect(ctx, elevactorRect);
@@ -75,14 +90,18 @@
     
 }
 
+//--------------------
+// draw the dot outside of the track
+// (otherwise users won't be able to see the touch point)
+//--------------------
 - (void) drawTouchIndicator: (float) value inContext: (CGContextRef)ctx
 {
     float radius = 3;
-    float xBias = self.slider.blankXBias;
+    float xBias = self.sliderContainer.blankXBias;
     
     // Convert from value to position
-    float position = (value - self.slider.minimumValue)
-                    / (self.slider.maximumValue - self.slider.minimumValue)
+    float position = (value - self.sliderContainer.minimumValue)
+                    / (self.sliderContainer.maximumValue - self.sliderContainer.minimumValue)
                     * self.frame.size.height;
     
     // -radius - xBias
@@ -123,7 +142,7 @@
     // In principle _touchPointOffset is needed when an elevator is translated.
     // However, enabling the following line all translation cases may result
     // touching point goes outside of the elevator. I am not sure why
-    if (_lowerValue == 0 || _upperValue == self.slider.maximumValue){
+    if (_lowerValue == 0 || _upperValue == self.sliderContainer.maximumValue){
         _touchPointOffset = currentValue - _lowerValue;
     }
 }
@@ -131,15 +150,15 @@
 // This method makes sure _lowerValue and _upperValue
 // do not go out of bound
 - (void) correctElevatorBasedOnBound{
-    if (_lowerValue < self.slider.minimumValue){
-        float diff = self.slider.minimumValue - _lowerValue;
-        _lowerValue = self.slider.minimumValue;
+    if (_lowerValue < self.sliderContainer.minimumValue){
+        float diff = self.sliderContainer.minimumValue - _lowerValue;
+        _lowerValue = self.sliderContainer.minimumValue;
         _upperValue += diff;
     }
     
-    if (_upperValue > self.slider.maximumValue){
-        float diff =  _upperValue - self.slider.maximumValue;
-        _upperValue = self.slider.maximumValue;
+    if (_upperValue > self.sliderContainer.maximumValue){
+        float diff =  _upperValue - self.sliderContainer.maximumValue;
+        _upperValue = self.sliderContainer.maximumValue;
         _lowerValue -= diff;
     }
 }
@@ -147,11 +166,24 @@
 
 - (void)restoreElevatorParamsFromTouchPoint: (float) touchPoint{
     _lowerValue = MAX(0, touchPoint - _touchPointOffset);
-    _upperValue = MIN(self.slider.maximumValue, _lowerValue + _elevatorWidth);
+    _upperValue = MIN(self.sliderContainer.maximumValue, _lowerValue + _elevatorWidth);
 }
 
 
-- (void) touchPointA: (float)value {
+//-----------------
+// Support StreetView use cases
+//-----------------
+- (void) touchSingleDot: (float) value{
+    _elevatorWidth  =0;
+    _touchPointOffset = 0;
+    _lowerValue = value;
+    _upperValue = -1;
+}
+
+//-----------------
+// Support the map use cases
+//-----------------
+- (void) touchElevatorPointA: (float)value {
     
     // Check whether the elevator is touched?
     if ([self hitTestOfValue:value]){
@@ -168,7 +200,7 @@
         // Cache the elevator size and current touch off-set
         _elevatorWidth = _upperValue - _lowerValue;
         
-        float fullRangeValue = self.slider.maximumValue - self.slider.minimumValue;
+        float fullRangeValue = self.sliderContainer.maximumValue - self.sliderContainer.minimumValue;
         
         // In case the current elevator length is 0
         if (_elevatorWidth <= 0.05 * fullRangeValue){
@@ -205,7 +237,7 @@
 
 
 
-- (void) touchPointA: (float)valueA pointB: (float) valueB {
+- (void) touchElevatorPointA: (float)valueA pointB: (float) valueB {
     _lowerValue = MIN(valueA, valueB);
     _upperValue = MAX(valueA, valueB);
     _elevatorWidth = _upperValue - _lowerValue;

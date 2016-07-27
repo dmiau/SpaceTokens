@@ -58,6 +58,9 @@
         [self.touchingSet addObject:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
         
+        // Empty touchingSet as soon as a SpaceToken is being dragged
+        [self clearAllTouchedTokens];
+        
         // remove from the display set
         SpaceToken *currentSpaceToken = aNotification.object;
         [self.buttonSet removeObject:currentSpaceToken];

@@ -12,23 +12,20 @@
 
 @interface Elevator : CALayer
 
-@property CERangeSlider* slider;
+@property CERangeSlider* sliderContainer;
 
 @property (nonatomic) float upperValue;
 
 @property (nonatomic) float lowerValue;
 
 
-
+// Support the traslation of the elevator
 - (void)translateFromPreviousValue: (float) previousValue toCurrentValue: (float) currentValue;
 
 - (void)restoreElevatorParamsFromTouchPoint: (float) touchPoint;
 
-//@property bool isTouched;
-//- (bool)hitTestOfValue: (float) value;
-//- (void)specifyElevatorParamsWithTouchValue: (float) value;
 
-
-- (void) touchPointA: (float)value;
-- (void) touchPointA: (float)valueA pointB: (float) valueB;
+- (void) touchSingleDot: (float) value;
+- (void) touchElevatorPointA: (float)value;
+- (void) touchElevatorPointA: (float)valueA pointB: (float) valueB;
 @end

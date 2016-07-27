@@ -113,7 +113,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         
         // Initialize the elevator layer
         _elevator = [Elevator layer];
-        _elevator.slider = self;
+        _elevator.sliderContainer = self;
         [_trackLayer.layer addSublayer:_elevator];
         
         [self setLayerFrames];
@@ -198,12 +198,27 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
             float aValue = [self valueForPosition: touchPoint.y];
             
             if (self.pathBarMode == MAP){
-                [_elevator touchPointA:aValue];
+                
+                //--------------------
+                // Single touch in MAP mode
+                //--------------------
+                
+                [_elevator touchElevatorPointA:aValue];
                 // Update the elevator and the map
                 [self updateElevatorThenMap];
             }else{
+
+                //--------------------
+                // Single touch in StreetView mode
+                //--------------------
+                [_elevator touchSingleDot:aValue];
                 
+                [_elevator setNeedsDisplay];
                 
+                if (delegateRespondsTo.sliderTwoPOintsTouched){
+                    [self.delegate sliderOnePointTouched:
+                     _elevator.lowerValue/_maximumValue];
+                }                
             }
         }
     }else if ([self.trackTouchingSet count] == 2){
@@ -217,7 +232,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
             twoValues[i] = [self valueForPosition: touchPoint.y];
             i++;
         }
-        [_elevator touchPointA:twoValues[0] pointB:twoValues[1]];
+        [_elevator touchElevatorPointA:twoValues[0] pointB:twoValues[1]];
         // Update the elevator and the map
         [self updateElevatorThenMap];
     }
@@ -282,7 +297,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
             twoValues[i] = [self valueForPosition: touchPoint.y];
             i++;
         }
-        [_elevator touchPointA:twoValues[0] pointB:twoValues[1]];
+        [_elevator touchElevatorPointA:twoValues[0] pointB:twoValues[1]];
         
         // Update the elevator and the map
         [self updateElevatorThenMap];
@@ -310,7 +325,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         CGPoint touchPoint = [aTouch locationInView:_trackLayer];
         
         float aValue = [self valueForPosition: touchPoint.y];
-        [_elevator touchPointA:aValue];
+        [_elevator touchElevatorPointA:aValue];
     }
 }
 
