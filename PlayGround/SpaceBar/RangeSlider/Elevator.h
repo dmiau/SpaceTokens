@@ -18,6 +18,7 @@
 
 @property (nonatomic) float lowerValue;
 
+@property bool isElevatorOneFingerMoved;
 
 // Support the traslation of the elevator
 - (void)translateFromPreviousValue: (float) previousValue toCurrentValue: (float) currentValue;

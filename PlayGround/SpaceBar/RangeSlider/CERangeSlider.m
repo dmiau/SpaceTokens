@@ -25,8 +25,9 @@
     CGPoint _previousTouchPoint;
     
     struct {
-        unsigned int sliderOnePointTouched:1;
+        unsigned int privateSliderOnePointTouched:1;
         unsigned int sliderTwoPOintsTouched:1;
+        unsigned int privateSliderElevatorMoved:1;
     } delegateRespondsTo;
 }
 
@@ -62,10 +63,12 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     if (_delegate != aDelegate) {
         _delegate = aDelegate;
         
-        delegateRespondsTo.sliderOnePointTouched = [_delegate
-            respondsToSelector:@selector(sliderOnePointTouched:)];
+        delegateRespondsTo.privateSliderOnePointTouched = [_delegate
+            respondsToSelector:@selector(privateSliderOnePointTouched:)];
         delegateRespondsTo.sliderTwoPOintsTouched = [_delegate
-            respondsToSelector:@selector(sliderTwoPOintsTouchedLow:high:)];
+            respondsToSelector:@selector(privateSliderTwoPOintsTouchedLow:high:)];
+        delegateRespondsTo.privateSliderElevatorMoved = [_delegate
+                respondsToSelector:@selector(privateSliderElevatorMovedLow: high: fromLowToHigh:)];
     }
 }
 
@@ -216,7 +219,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
                 [_elevator setNeedsDisplay];
                 
                 if (delegateRespondsTo.sliderTwoPOintsTouched){
-                    [self.delegate sliderOnePointTouched:
+                    [self.delegate privateSliderOnePointTouched:
                      _elevator.lowerValue/_maximumValue];
                 }                
             }
@@ -261,23 +264,36 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         if (locationInView.y < 0 || locationInView.y > _trackLayer.frame.size.height){
             // Touch is out of bound. Do nothing?
         }else{
+            // In oneFingerMove mode, the elevator does not accept lowerValue, upperValue updates from map
+            _elevator.isElevatorOneFingerMoved = YES;
+            
             // Convert both from positions to values
             float currentValue = [self valueForPosition:locationInView.y];
             float previousValue = [self valueForPosition:previousLoationInView.y];
             
             if (currentValue >= _minimumValue && currentValue <= _maximumValue){
-                
+
                 [_elevator translateFromPreviousValue:previousValue toCurrentValue:currentValue];
                 
-                // The following is necessary to maintain the size of the elevator
-                [self updateElevatorThenMap];
-                
-                
-                // how about the two extremes?
-                [_elevator restoreElevatorParamsFromTouchPoint: currentValue];
+                // Smooth translation--the scale should not change
                 [_elevator setNeedsDisplay];
                 
-                //            [self updateElevatorThenMap]; //TODO: this needs further investigations
+                if (delegateRespondsTo.privateSliderElevatorMoved){
+                    
+                    bool directionFlag = (currentValue > previousValue);
+                    [self.delegate privateSliderElevatorMovedLow:
+                     _elevator.lowerValue/_maximumValue
+                    high:_elevator.upperValue/_maximumValue
+                     fromLowToHigh:directionFlag];
+                }
+                
+                
+                // Original scale changing code
+//                // The following is necessary to maintain the size of the elevator
+//                [self updateElevatorThenMap];
+                // The following is necessary to maintain the size of the elevator
+//                [_elevator  restoreElevatorParamsFromTouchPoint: currentValue];
+//                [_elevator setNeedsDisplay];
             }
         }
 
@@ -319,6 +335,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         [self.trackTouchingSet removeObject:aTouch];
     }
     
+    // The following is called upon transitioning from two-finger touch to one finger touch
     // Need to fix the offset here
     if ([self.trackTouchingSet count] == 1){
         UITouch *aTouch = [self.trackTouchingSet anyObject];
@@ -327,6 +344,9 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         float aValue = [self valueForPosition: touchPoint.y];
         [_elevator touchElevatorPointA:aValue];
     }
+    
+    
+    _elevator.isElevatorOneFingerMoved = NO;
 }
 
 
@@ -336,16 +356,19 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     [_elevator setNeedsDisplay];
     
     if (delegateRespondsTo.sliderTwoPOintsTouched){
-        [self.delegate sliderTwoPOintsTouchedLow:
+        [self.delegate privateSliderTwoPOintsTouchedLow:
          _elevator.lowerValue/_maximumValue
         high:_elevator.upperValue/_maximumValue];
     }
 }
 
 - (void) updateElevatorPercentageLow:(double)low high:(double)high{
-    _elevator.lowerValue = low * _maximumValue;
-    _elevator.upperValue = high * _maximumValue;
-    [_elevator setNeedsDisplay];
+    // In oneFingerMove mode, the elevator does not accept lowerValue, upperValue updates from map
+    if (!_elevator.isElevatorOneFingerMoved){
+        _elevator.lowerValue = low * _maximumValue;
+        _elevator.upperValue = high * _maximumValue;
+        [_elevator setNeedsDisplay];
+    }
 }
 
 @end

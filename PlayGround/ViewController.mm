@@ -115,7 +115,6 @@
     
     // remove all
     [self.spaceBar removeAllSpaceTokens];
-    [self.spaceBar.sliderContainer setUserInteractionEnabled: YES];
 }
 
 - (void)addDefaultSearchPanel{

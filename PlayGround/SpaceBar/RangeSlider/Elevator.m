@@ -18,6 +18,7 @@
     if (self){
         self.lowerValue = -1;
         self.upperValue = -1;
+        self.isElevatorOneFingerMoved = NO;
     }
     return self;
 }

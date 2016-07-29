@@ -26,6 +26,7 @@
 // SpaceBar delegate methods
 - (void)spaceBarOnePointTouched:(float) percentage;
 - (void)spaceBarTwoPointsTouchedLow:(float) low high: (float) high;
+- (void)spaceBarElevatorMovedLow:(float) low high: (float) high fromLowToHigh: (bool) flag;
 @end
 
 #pragma mark - SpaceBarInterface
@@ -63,6 +64,7 @@
 @property  struct {
 unsigned int spaceBarOnePointTouched:1;
 unsigned int spaceBarTwoPointsTouched:1;
+unsigned int spaceBarElevatorMoved:1;
 } delegateRespondsTo;
 
 // Constructors

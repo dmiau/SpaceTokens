@@ -12,20 +12,40 @@
 
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
 {
+    // All the calculation should be done with mappoints
+    MKMapPoint targetMapPoint = MKMapPointForCoordinate(coord);
+    [self setRegion: MKCoordinateRegionMake(coord,
+                                            MKCoordinateSpanMake(0.01, 0.01))];
     
-    CGFloat diffX = self.frame.size.width/2 - viewXY.x;
-    CGFloat diffY = self.frame.size.height/2 - viewXY.y;
-    
-//    MKMapType originalType = self.mapType; // A hack
-//    self.mapType = MKMapTypeStandard;
-    CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
-    
+    // Need to find the desired centroid
+    CGFloat expectedCentroidX = self.frame.size.width - viewXY.x;
+    CGFloat expectedCentroidY = self.frame.size.height - viewXY.y;
     CLLocationCoordinate2D centroid = [self convertPoint:
-        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
-                                        toCoordinateFromView: self];
-//    self.mapType = originalType;
+                            CGPointMake(expectedCentroidX, expectedCentroidY)
+                                    toCoordinateFromView: self];
     [self setRegion: MKCoordinateRegionMake(centroid,
-                            MKCoordinateSpanMake(0.01, 0.01))];
+                                            MKCoordinateSpanMake(0.01, 0.01))];
+}
+
+- (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
+           withOrientation: (float) orientation
+{
+    // All the calculation should be done with mappoints
+    MKMapPoint targetMapPoint = MKMapPointForCoordinate(coord);
+    [self setCenterCoordinate:coord];
+    
+    // Need to find the desired centroid
+    CGFloat expectedCentroidX = self.frame.size.width - viewXY.x;
+    CGFloat expectedCentroidY = self.frame.size.height - viewXY.y;
+    CLLocationCoordinate2D centroid = [self convertPoint:
+                                       CGPointMake(expectedCentroidX, expectedCentroidY)
+                                    toCoordinateFromView: self];
+    [self setCenterCoordinate:centroid];
+
+    // Set the orientation
+    if (orientation){
+        self.camera.heading = orientation;
+    }
 }
 
 
@@ -39,6 +59,7 @@
     }
     
     // Find out the scale factor
+    [self setCenterCoordinate:coords[0]]; // this is needed
     float desiredDistance = sqrtf(powf((cgPoints[0].x - cgPoints[1].x), 2)+
                                   powf((cgPoints[0].y - cgPoints[1].y), 2));
     CGPoint currentCGPoints[2];
@@ -91,6 +112,21 @@
     self.centerCoordinate = targetCentroidLatlon;
 }
 
+- (CLLocationDirection) computeOrientationFromA: (CLLocationCoordinate2D) coordA
+                                            toB: (CLLocationCoordinate2D) coordB
+{
+    // Use some background map manipulation to figure out the parameters
+    MKMapPoint mapPointA, mapPointB;
+    
+    mapPointA = MKMapPointForCoordinate(coordA);
+    mapPointB = MKMapPointForCoordinate(coordB);
+    
+    // Find out the rotation, use POI_0 as the reference
+    // Convert the result to degree
+    double orientation = atan2(-(mapPointB.y - mapPointA.y),
+                                mapPointB.x - mapPointA.x)/M_PI * 180;
+    return 90-orientation;
+}
 
 - (void) zoomToFitPOIs: (NSSet<POI*> *) poiSet{
     // Goal: find minMapPointX, maxMapPOintX,

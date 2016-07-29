@@ -73,6 +73,8 @@
         [_delegate respondsToSelector:@selector(spaceBarOnePointTouched:)];
         _delegateRespondsTo.spaceBarTwoPointsTouched =
         [_delegate respondsToSelector:@selector(spaceBarTwoPointsTouchedLow:high:)];
+        _delegateRespondsTo.spaceBarElevatorMoved =
+        [_delegate respondsToSelector:@selector(spaceBarElevatorMovedLow: high: fromLowToHigh:)];
     }
 }
 

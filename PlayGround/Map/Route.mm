@@ -131,6 +131,8 @@ template class std::vector<pair<int, int>>;
     }
     
     
+    // TODO: the result could be further interpolated
+    
     if (insideIndices.size() > 2){
         // check connectivity?
         vector<pair<int, int>> output; output.clear();
@@ -148,6 +150,7 @@ template class std::vector<pair<int, int>>;
         // convert the result to percentage
         vector<pair<float, float>> percentageOutput; percentageOutput.clear();
         double totalDist = (*self.accumulatedDist).back();
+        
         for (int i = 0; i < output.size(); i++){
             pair<float, float> temp_pair;
             int index = output[i].first;

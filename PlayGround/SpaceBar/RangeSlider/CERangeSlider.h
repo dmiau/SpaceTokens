@@ -12,9 +12,10 @@
 // Delegate
 //-----------------
 @protocol CERangeSliderDelegate <NSObject>
-@optional
-- (void) sliderOnePointTouched:(double)percentage;
-- (void) sliderTwoPOintsTouchedLow:(double) percentageLow high:(double)percentageHigh;
+- (void) privateSliderOnePointTouched:(double)percentage;
+- (void) privateSliderTwoPOintsTouchedLow:(double) percentageLow high:(double)percentageHigh;
+- (void) privateSliderElevatorMovedLow:(double) percentageLow high:(double)percentageHigh
+                                                        fromLowToHigh: (bool)directionFlag;
 @end
 
 typedef enum {MAP, STREETVIEW} PathBarMode;

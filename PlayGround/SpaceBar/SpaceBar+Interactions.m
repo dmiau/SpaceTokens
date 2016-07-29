@@ -10,9 +10,9 @@
 
 @implementation SpaceBar (Interactions)
 
-
+//-----------------------
 // delegate methods of CERangeSliderDelegate
-- (void) sliderOnePointTouched: (double) percentage{
+- (void) privateSliderOnePointTouched: (double) percentage{
     
     if (self.delegateRespondsTo.spaceBarOnePointTouched){
         // need to take the current upper and lower value into accunt
@@ -24,7 +24,7 @@
     }
 }
 
-- (void) sliderTwoPOintsTouchedLow:(double)lowerPercentage high:(double)upperPercentage
+- (void) privateSliderTwoPOintsTouchedLow:(double)lowerPercentage high:(double)upperPercentage
 {
     if (self.delegateRespondsTo.spaceBarTwoPointsTouched){
         
@@ -37,7 +37,29 @@
     }
 }
 
-- (void) updateElevatorFromPercentagePair: (float[2]) percentagePair{    
+- (void) privateSliderElevatorMovedLow:(double) lowerPercentage
+                                  high:(double)upperPercentage
+                                  fromLowToHigh: (bool) directionFlag
+{
+    if (self.delegateRespondsTo.spaceBarElevatorMoved){
+        
+        if (!self.smallValueOnTopOfBar){
+            double templowerPercentage = lowerPercentage;
+            lowerPercentage = 1 - upperPercentage;
+            upperPercentage = 1 - templowerPercentage;
+            directionFlag = !directionFlag;
+        }
+        [self.delegate spaceBarElevatorMovedLow:lowerPercentage
+                                           high:upperPercentage
+                                  fromLowToHigh: directionFlag];
+    }
+}
+//-----------------------
+
+- (void) updateElevatorFromPercentagePair: (float[2]) percentagePair{
+    
+    // TODO: should this be disabled during moving?
+    
     float low = MIN(percentagePair[0], percentagePair[1]);
     float high = MAX(percentagePair[0], percentagePair[1]);
     

@@ -81,6 +81,37 @@
     }
 }
 
+// The elevator is moved!
+- (void)spaceBarElevatorMovedLow:(float) low
+                            high: (float) high
+                   fromLowToHigh:(bool)directionFlag
+{    
+    CLLocationCoordinate2D anchor; double orientation1;
+    CLLocationCoordinate2D target; double orientation2;
+    if (directionFlag){
+        // Move from low to high
+        
+        // The bottom one (lower value) should be the anchor
+        // find the (lat, lon) of the bottom one
+        [self.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
+        [self.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
+        // Compute the orientation from anchor to target
+        CLLocationDirection degree = [self.mapView computeOrientationFromA:anchor
+                                                                       toB:target];
+        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree];
+    }else{
+       // Move from high to low
+        [self.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
+        [self.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
+        // Compute the orientation from anchor to target
+        CLLocationDirection degree = [self.mapView computeOrientationFromA:target
+                                                                       toB:anchor];
+        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree];
+    }
+
+    
+}
+
 - (void)directionButtonAction {
     NSLog(@"Direction button pressed!");
     
@@ -138,6 +169,13 @@
         
         // Add annotations to SpaceBar
         [self.spaceBar addAnnotationsFromRoute:self.activeRoute];
+        
+        
+        // Show the entire route
+        [self spaceBarTwoPointsTouchedLow:0 high:1];
+        
+        // Only enable SpaceBar after a route is added
+        [self.spaceBar.sliderContainer setUserInteractionEnabled: YES];
         break;
     }
 }
