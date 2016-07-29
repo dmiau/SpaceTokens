@@ -172,10 +172,13 @@
     self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
     
     if (self.selected){
+        self.selected = NO;
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
     }else{
+        self.selected = YES;
+
         NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
@@ -280,13 +283,16 @@
     }
 }
 
-
 - (void)setSelected:(BOOL)selected{
     super.selected = selected;
     if (selected){
         self.backgroundColor = [UIColor redColor];
+        
+
     }else{
         self.backgroundColor = [UIColor grayColor];
+        
+
     }
 }
 

@@ -57,7 +57,8 @@
 @property SpaceToken* youAreHere;
 @property SpaceToken* anchor;
 
-
+@property NSTimer *privateTouchingSetTimer;
+// timer for touchingSet
 
 // Use bit field to track if delegate is set properly
 //http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/

@@ -53,9 +53,7 @@
     if (aNotification.name == AddToButtonSetNotification){
         [self.buttonSet addObject:aNotification.object];
     }else if (aNotification.name == AddToTouchingSetNotification){
-        SpaceToken *aToken = (SpaceToken *)aNotification.object;
-        aToken.selected = YES;
-        [self.touchingSet addObject:aNotification.object];
+        [self addTokenToTouchingSet:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
         
         // Empty touchingSet as soon as a SpaceToken is being dragged
@@ -85,10 +83,6 @@
         [self.buttonSet removeObject:aNotification.object];
     }else if (aNotification.name == RemoveFromTouchingSetNotification){
         [self.touchingSet removeObject:aNotification.object];
-        
-        // Set the color back
-        SpaceToken* aToken = (SpaceToken*) aNotification.object;
-        aToken.selected = NO;
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
         [self.draggingSet removeObject:aNotification.object];
     }
@@ -195,16 +189,39 @@
     }
 
     [self.draggingSet removeAllObjects];
-    [self.touchingSet removeAllObjects];
+    [self clearAllTouchedTokens];
     [self.dotSet removeAllObjects];
     [self.buttonSet removeAllObjects];
 }
 
-- (void)clearAllTouchedTokens{    
+
+//----------------
+// TouchingSet managment
+//----------------
+- (void)addTokenToTouchingSet: (SpaceToken*) aToken
+{
+    if (self.privateTouchingSetTimer){
+        [self.privateTouchingSetTimer invalidate];
+        self.privateTouchingSetTimer = nil;
+    }
+    [self.touchingSet addObject:aToken];
+    self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:0.75
+                                                         target:self
+                                                       selector:@selector(setTimerAction)
+                                                       userInfo:nil
+                                                        repeats:NO];
+}
+
+- (void)clearAllTouchedTokens{
+    self.privateTouchingSetTimer = nil;
     for (SpaceToken* aToken in self.touchingSet){
         aToken.selected = NO;
     }
     [self.touchingSet removeAllObjects];
+}
+
+- (void) setTimerAction{
+    [self clearAllTouchedTokens];
 }
 
 @end

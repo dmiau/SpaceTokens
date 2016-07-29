@@ -12,17 +12,18 @@
 
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
 {
-    // All the calculation should be done with mappoints
-    MKMapPoint targetMapPoint = MKMapPointForCoordinate(coord);
-    [self setRegion: MKCoordinateRegionMake(coord,
-                                            MKCoordinateSpanMake(0.01, 0.01))];
+    CGFloat diffX = self.frame.size.width/2 - viewXY.x;
+    CGFloat diffY = self.frame.size.height/2 - viewXY.y;
     
-    // Need to find the desired centroid
-    CGFloat expectedCentroidX = self.frame.size.width - viewXY.x;
-    CGFloat expectedCentroidY = self.frame.size.height - viewXY.y;
-    CLLocationCoordinate2D centroid = [self convertPoint:
-                            CGPointMake(expectedCentroidX, expectedCentroidY)
+    // The scale of the hidden map should be the same as the current map
+    [self.hiddenMap setVisibleMapRect:self.visibleMapRect animated:NO];
+    self.hiddenMap.camera.heading = self.camera.heading;
+    CGPoint targetCGPoint = [self.hiddenMap convertCoordinate:coord toPointToView:self];
+    
+    CLLocationCoordinate2D centroid = [self.hiddenMap convertPoint:
+                                       CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                     toCoordinateFromView: self];
+    //    self.mapType = originalType;
     [self setRegion: MKCoordinateRegionMake(centroid,
                                             MKCoordinateSpanMake(0.01, 0.01))];
 }
@@ -30,16 +31,17 @@
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
            withOrientation: (float) orientation
 {
-    // All the calculation should be done with mappoints
-    MKMapPoint targetMapPoint = MKMapPointForCoordinate(coord);
-    [self setCenterCoordinate:coord];
+    CGFloat diffX = self.frame.size.width/2 - viewXY.x;
+    CGFloat diffY = self.frame.size.height/2 - viewXY.y;
     
-    // Need to find the desired centroid
-    CGFloat expectedCentroidX = self.frame.size.width - viewXY.x;
-    CGFloat expectedCentroidY = self.frame.size.height - viewXY.y;
+    // The scale of the hidden map should be the same as the current map
+//    [self.hiddenMap setVisibleMapRect:self.visibleMapRect animated:NO];
+//    self.hiddenMap.camera.heading = self.camera.heading;
+    CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
+    
     CLLocationCoordinate2D centroid = [self convertPoint:
-                                       CGPointMake(expectedCentroidX, expectedCentroidY)
-                                    toCoordinateFromView: self];
+                                       CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
+                                              toCoordinateFromView: self];
     [self setCenterCoordinate:centroid];
 
     // Set the orientation
@@ -58,8 +60,11 @@
         mapPoints[i] = MKMapPointForCoordinate(coords[i]);
     }
     
+//    // The scale of the hidden map should be the same as the current map
+//    [self.hiddenMap setVisibleMapRect:self.visibleMapRect animated:NO];
+//    self.hiddenMap.camera.heading = self.camera.heading;
+    
     // Find out the scale factor
-    [self setCenterCoordinate:coords[0]]; // this is needed
     float desiredDistance = sqrtf(powf((cgPoints[0].x - cgPoints[1].x), 2)+
                                   powf((cgPoints[0].y - cgPoints[1].y), 2));
     CGPoint currentCGPoints[2];

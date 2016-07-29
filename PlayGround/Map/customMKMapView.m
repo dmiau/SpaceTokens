@@ -30,6 +30,9 @@
         
         // additional initialization
         
+        _hiddenMap = [[MKMapView alloc] initWithFrame:frame];
+        _hiddenMap.mapType = MKMapTypeStandard;
+        
         // this function is to check wheter the map has been touched
         float timer_interval = 0.06;
         _updateUITimer = [NSTimer timerWithTimeInterval:timer_interval

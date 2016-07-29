@@ -26,6 +26,7 @@
 @interface customMKMapView : MKMapView
 
 @property (nonatomic, weak) id<MKMapViewDelegate, customMKMapViewDelegate> delegate;
+@property MKMapView *hiddenMap; // a hidden map for calculation purposes
 
 // === (MapDisplay) ===
 // Two snapping methods
