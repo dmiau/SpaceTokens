@@ -38,4 +38,22 @@
             , NSStringFromCGPoint(self.mapViewXY)];
 }
 
+
+
+// saving and loading the object
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeDouble:self.latLon.latitude forKey:@"latLon.latitdue"];
+    [coder encodeDouble:self.latLon.longitude forKey:@"latLon.longitude"];
+    [coder encodeObject:self.name forKey:@"name"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [self init];
+    self.latLon = CLLocationCoordinate2DMake([coder decodeDoubleForKey:@"latLon.latitdue"], [coder decodeDoubleForKey:@"latLon.longitude"]);
+    self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
+    
+    return self;
+}
+
+
 @end

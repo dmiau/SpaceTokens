@@ -1,16 +1,15 @@
 //
-//  LocationTableController.h
+//  FileTableController.h
 //  SpaceBar
 //
-//  Created by Daniel on 7/18/16.
+//  Created by Daniel on 8/1/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 @class ViewController;
 
-
-@interface LocationTableController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>{
+@interface FileTableController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>{
     NSArray *fileArray;
 }
 
@@ -18,4 +17,6 @@
 
 @property ViewController* rootViewController;
 @property NSString *documentDirectory;
+- (IBAction)reloadICloud:(id)sender;
+
 @end

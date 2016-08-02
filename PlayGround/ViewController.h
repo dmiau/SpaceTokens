@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "SpaceBar/SpaceBar.h"
 #import "Map/customMKMapView.h"
+#import "Map/POIDatabase.h"
 
 @class Route;
 @class POIDatabase;

@@ -11,8 +11,13 @@
 
 @interface POIDatabase : NSObject
 
-
+@property NSString *documentDirectory;
 @property NSMutableArray <POI *> *poiArray;
 
 -(void)reloadPOI; // a temporary method
+
+
+// iCloud related methods
+-(bool)saveDatatoFileWithName: (NSString*) fileName;
+-(bool)loadFromFile:(NSString*) fileName;
 @end

@@ -35,12 +35,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
+    
+    //----------------
+    // Refresh the iCloud drive
+    //----------------
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *containerURL =
+    [fileManager URLForUbiquityContainerIdentifier:nil];
+    [fileManager startDownloadingUbiquitousItemAtURL:containerURL error:nil] ;
+    
     //----------------
     // Initialize a POI DB
     //----------------
     self.poiDatabase = [[POIDatabase alloc] init];
     [self.poiDatabase reloadPOI];
+    
+    
+    // Test file saving capability
+    [self.poiDatabase saveDatatoFileWithName:@"myTest.data"];
+    [self.poiDatabase loadFromFile:@"myTest.data"];
     
     //----------------
     // Add a mapView

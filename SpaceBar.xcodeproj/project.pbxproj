@@ -27,6 +27,8 @@
 		9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
 		9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
 		9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
+		9A56B7E11D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */; };
+		9A56B7E21D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */; };
 		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
@@ -77,12 +79,15 @@
 		9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */; };
+		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
+		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9AF3B44A1D3E95D1004680CB /* DefaultSearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* DefaultSearchPanel.m */; };
 		9AF3B44B1D3E95D1004680CB /* DefaultSearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* DefaultSearchPanel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceBar.entitlements; sourceTree = "<group>"; };
 		9A143B321D2AF56E001EE841 /* customMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customMKMapView.h; path = Map/customMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* customMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customMKMapView.m; path = Map/customMKMapView.m; sourceTree = "<group>"; };
 		9A1CA2B41D4671210098957A /* CustomTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabController.h; path = Views/CustomTabController.h; sourceTree = "<group>"; };
@@ -111,6 +116,9 @@
 		9A5301501C5AD6A6008D584B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A5301531C5AD6A6008D584B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SpaceBar iPad.entitlements"; sourceTree = "<group>"; };
+		9A56B7DF1D4E7C5A00A14B02 /* POIDatabase+iCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POIDatabase+iCloud.h"; path = "Map/POIDatabase+iCloud.h"; sourceTree = "<group>"; };
+		9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POIDatabase+iCloud.m"; path = "Map/POIDatabase+iCloud.m"; sourceTree = "<group>"; };
 		9A5D40581D3D2D7600CC91BE /* SpaceBar+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Annotations.h"; path = "SpaceBar/SpaceBar+Annotations.h"; sourceTree = "<group>"; };
 		9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SpaceBar+Annotations.mm"; path = "SpaceBar/SpaceBar+Annotations.mm"; sourceTree = "<group>"; };
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
@@ -149,6 +157,8 @@
 		9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceBar iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBar copy-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBar copy-Info.plist"; sourceTree = "<absolute>"; };
 		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
+		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
+		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
 		9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Extensions.h"; path = "SpaceBar/UIButton+Extensions.h"; sourceTree = "<group>"; };
 		9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Extensions.m"; path = "SpaceBar/UIButton+Extensions.m"; sourceTree = "<group>"; };
 		9AF3B4481D3E95D1004680CB /* DefaultSearchPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefaultSearchPanel.h; path = Views/DefaultSearchPanel.h; sourceTree = "<group>"; };
@@ -190,6 +200,8 @@
 				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
 				9A43EAEE1D4008F400080029 /* POIDatabase.h */,
 				9A43EAEF1D4008F400080029 /* POIDatabase.m */,
+				9A56B7DF1D4E7C5A00A14B02 /* POIDatabase+iCloud.h */,
+				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -212,6 +224,8 @@
 		9A5301351C5AD6A6008D584B = {
 			isa = PBXGroup;
 			children = (
+				9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */,
+				9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */,
 				9AC36DC71C5FF9660037210F /* MapKit.framework */,
 				9A5301401C5AD6A6008D584B /* PlayGround */,
 				9A53013F1C5AD6A6008D584B /* Products */,
@@ -317,6 +331,8 @@
 				9A43EAED1D40029D00080029 /* topPanel.h */,
 				9A1CA2B41D4671210098957A /* CustomTabController.h */,
 				9A1CA2B51D4671210098957A /* CustomTabController.m */,
+				9AD639F11D50267C00C91F1B /* FileTableController.h */,
+				9AD639F21D50267C00C91F1B /* FileTableController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -370,6 +386,19 @@
 					9A53013D1C5AD6A6008D584B = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = T8L89L97Z5;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					9AD0F42E1C7CF71800AEF928 = {
+						DevelopmentTeam = T8L89L97Z5;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -433,6 +462,7 @@
 				9A43EAF01D4008F400080029 /* POIDatabase.m in Sources */,
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A143B341D2AF56E001EE841 /* customMKMapView.m in Sources */,
+				9A56B7E11D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
@@ -452,6 +482,7 @@
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9281D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
+				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
 				9ABB28101D36795C00595A0D /* Elevator.m in Sources */,
@@ -470,6 +501,7 @@
 				9A43EAF11D4008F400080029 /* POIDatabase.m in Sources */,
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
 				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
+				9A56B7E21D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */,
 				9A143B351D2AF56E001EE841 /* customMKMapView.m in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
@@ -489,6 +521,7 @@
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
+				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
 				9ABB28111D36795C00595A0D /* Elevator.m in Sources */,
@@ -611,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PlayGround/Info.plist;
@@ -626,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PlayGround/Info.plist;
@@ -641,6 +676,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SpaceBar iPad.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
@@ -656,6 +692,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SpaceBar iPad.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
