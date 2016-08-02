@@ -55,6 +55,8 @@
 		9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
 		9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
+		9AC7E1A91D50E08400C2E8BE /* GestureEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */; };
+		9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */; };
 		9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
 		9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
 		9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
@@ -152,6 +154,8 @@
 		9AC36DC71C5FF9660037210F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9AC36DD01C60087B0037210F /* SpaceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceToken.h; path = SpaceBar/SpaceToken.h; sourceTree = "<group>"; };
 		9AC36DD11C60087B0037210F /* SpaceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceToken.m; path = SpaceBar/SpaceToken.m; sourceTree = "<group>"; };
+		9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GestureEngine.h; path = SpaceBar/GestureEngine.h; sourceTree = "<group>"; };
+		9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GestureEngine.m; path = SpaceBar/GestureEngine.m; sourceTree = "<group>"; };
 		9ACD6CDB1D352E8600E3BF9C /* DirectionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectionPanel.h; path = Views/DirectionPanel.h; sourceTree = "<group>"; };
 		9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DirectionPanel.mm; path = Views/DirectionPanel.mm; sourceTree = "<group>"; };
 		9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceBar iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +297,8 @@
 				9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */,
 				9AC36DD01C60087B0037210F /* SpaceToken.h */,
 				9AC36DD11C60087B0037210F /* SpaceToken.m */,
+				9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */,
+				9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */,
 				9A62F1E21C62C6BF00A39DAF /* Tools.h */,
 				9A62F1E31C62C6BF00A39DAF /* Tools.m */,
 				9A84136C1C6FB39B004DF8D1 /* Constants.m */,
@@ -316,25 +322,41 @@
 		9AC36DD31C60098A0037210F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9AC7E1AC1D51164600C2E8BE /* SeguePanels */,
+				9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */,
 				9A5301471C5AD6A6008D584B /* ViewController.h */,
 				9A5301481C5AD6A6008D584B /* ViewController.mm */,
 				9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */,
 				9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */,
+				9A43EAED1D40029D00080029 /* topPanel.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */ = {
+			isa = PBXGroup;
+			children = (
 				9ACD6CDB1D352E8600E3BF9C /* DirectionPanel.h */,
 				9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */,
 				9AF3B4481D3E95D1004680CB /* DefaultSearchPanel.h */,
 				9AF3B4491D3E95D1004680CB /* DefaultSearchPanel.m */,
-				9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */,
+			);
+			name = RootViewPanels;
+			sourceTree = "<group>";
+		};
+		9AC7E1AC1D51164600C2E8BE /* SeguePanels */ = {
+			isa = PBXGroup;
+			children = (
 				9A8F67EC1D3DA65200C08CCB /* PreferencesController.m */,
+				9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */,
 				9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */,
 				9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */,
-				9A43EAED1D40029D00080029 /* topPanel.h */,
-				9A1CA2B41D4671210098957A /* CustomTabController.h */,
-				9A1CA2B51D4671210098957A /* CustomTabController.m */,
 				9AD639F11D50267C00C91F1B /* FileTableController.h */,
 				9AD639F21D50267C00C91F1B /* FileTableController.m */,
+				9A1CA2B41D4671210098957A /* CustomTabController.h */,
+				9A1CA2B51D4671210098957A /* CustomTabController.m */,
 			);
-			name = Controller;
+			name = SeguePanels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,6 +493,7 @@
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
+				9AC7E1A91D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
@@ -510,6 +533,7 @@
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
+				9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,

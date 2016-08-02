@@ -13,6 +13,7 @@
 
 
 @class Route;
+@class GestureEngine;
 
 #pragma mark - SpaceBarProtocol
 //----------------------------
@@ -33,10 +34,17 @@
 //----------------------------
 // SpaceBar
 //----------------------------
+
+typedef enum {TOKENONLY, PATH} SpaceBarMode;
+
 @interface SpaceBar : NSObject <CERangeSliderDelegate>
+@property SpaceBarMode spaceBarMode;
+@property CGRect frame;
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 @property (weak) customMKMapView *mapView;
 @property CERangeSlider* sliderContainer;
+@property GestureEngine *gestureEngine;
+
 @property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
 // This is a convenient set to cache the references to all the
@@ -71,8 +79,7 @@ unsigned int spaceBarElevatorMoved:1;
 // Constructors
 - (id)initWithMapView: (MKMapView *) myMapView;
 
-- (SpaceToken*) addSpaceTokenWithName: (NSString*) name
-                             LatLon: (CLLocationCoordinate2D) latlon;
+- (SpaceToken*) addSpaceTokenFromPOI:(POI*) poi;
 - (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray;
 - (void)removeAllSpaceTokens;
 - (void)resetSpaceBar;
@@ -81,8 +88,9 @@ unsigned int spaceBarElevatorMoved:1;
 // --------------
 // Implemented in annotation category
 // --------------
+@property UIView *annotationView;
 - (void) addAnnotationsFromRoute:(Route *) route;
-
+- (void) removeRouteAnnotations;
 
 // --------------
 // Implemented in Interactions category

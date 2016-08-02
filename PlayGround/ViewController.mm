@@ -73,7 +73,7 @@
     // Add a SpaceBar
     //----------------
     _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];
-    [self.spaceBar.sliderContainer setUserInteractionEnabled: NO];
+    self.spaceBar.spaceBarMode = TOKENONLY;
     self.spaceBar.smallValueOnTopOfBar = false;
     self.spaceBar.delegate = self;
     
@@ -147,7 +147,7 @@
 
     // Add SpaceTokens
     [self.spaceBar addSpaceTokensFromPOIArray: self.poiDatabase.poiArray];
-    [self.spaceBar.sliderContainer setUserInteractionEnabled: NO];
+    self.spaceBar.spaceBarMode = TOKENONLY;
 }
 
 

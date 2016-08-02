@@ -175,7 +175,7 @@
         [self spaceBarTwoPointsTouchedLow:0 high:1];
         
         // Only enable SpaceBar after a route is added
-        [self.spaceBar.sliderContainer setUserInteractionEnabled: YES];
+        self.spaceBar.spaceBarMode = PATH;
         break;
     }
 }

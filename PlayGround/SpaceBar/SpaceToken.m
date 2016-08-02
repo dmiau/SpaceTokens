@@ -287,12 +287,8 @@
     super.selected = selected;
     if (selected){
         self.backgroundColor = [UIColor redColor];
-        
-
     }else{
         self.backgroundColor = [UIColor grayColor];
-        
-
     }
 }
 

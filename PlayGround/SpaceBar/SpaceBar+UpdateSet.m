@@ -15,13 +15,12 @@
 //----------------
 // add a SpaceToken
 //----------------
-- (SpaceToken*) addSpaceTokenWithName: (NSString*) name
-                             LatLon: (CLLocationCoordinate2D) latlon{
+- (SpaceToken*) addSpaceTokenFromPOI:(POI *)poi{
     
     SpaceToken *aSpaceToken = [[SpaceToken alloc] initForType:DOCKED];
     
-    [aSpaceToken setTitle:name forState:UIControlStateNormal];
-    aSpaceToken.poi.latLon = latlon;
+    [aSpaceToken setTitle:poi.name forState:UIControlStateNormal];
+    aSpaceToken.poi = [poi copy];
     
     if (aSpaceToken){
         // Add to the canvas
@@ -30,7 +29,7 @@
     }else{
         // error
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
-                                                        message:@"Cannot add new SpaceToken."
+            message:@"Cannot add new SpaceToken."
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -63,8 +62,8 @@
         SpaceToken *currentSpaceToken = aNotification.object;
         [self.buttonSet removeObject:currentSpaceToken];
         // Duplicate the button
-        SpaceToken* newSpaceToken = [self addSpaceTokenWithName: currentSpaceToken.titleLabel.text
-            LatLon:currentSpaceToken.poi.latLon];
+        SpaceToken* newSpaceToken =
+        [self addSpaceTokenFromPOI:currentSpaceToken.poi];
         newSpaceToken.frame = currentSpaceToken.frame;
         
         currentSpaceToken.counterPart = newSpaceToken;
@@ -163,7 +162,7 @@
 - (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray{
     
     for (POI* aPOI in poiArray){
-        [self addSpaceTokenWithName:aPOI.name LatLon: aPOI.latLon];
+        [self addSpaceTokenFromPOI:aPOI];
     }
     
     [self orderPOIs];

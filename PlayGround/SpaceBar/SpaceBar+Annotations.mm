@@ -24,7 +24,7 @@
     [sourceLabel setTextColor:[UIColor blackColor]];
     [sourceLabel setBackgroundColor:[UIColor clearColor]];
     [sourceLabel setFont: [UIFont fontWithName:@"Trebuchet MS" size:14.0f]];
-    [self.sliderContainer addSubview:sourceLabel];
+    [self.annotationView addSubview:sourceLabel];
 
     
     // Add the source label
@@ -35,10 +35,12 @@
     [destinationLabel setTextColor:[UIColor blackColor]];
     [destinationLabel setBackgroundColor:[UIColor clearColor]];
     [destinationLabel setFont: [UIFont fontWithName:@"Trebuchet MS" size:14.0f]];
-    [self.sliderContainer addSubview:destinationLabel];
+    [self.annotationView addSubview:destinationLabel];
     
 }
 
-
-
+- (void) removeRouteAnnotations{
+    [[self.annotationView subviews]
+     makeObjectsPerformSelector:@selector(removeFromSuperview)];
+}
 @end

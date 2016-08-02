@@ -9,6 +9,7 @@
 #import "SpaceBar.h"
 #import "Constants.h"
 #import "CERangeSlider.h"
+#import "GestureEngine.h"
 
 // SpaceBar extension
 @interface SpaceBar ()
@@ -30,6 +31,7 @@
         // This part is common for all display types
         [self initializeCommon];
         
+        self.spaceBarMode = TOKENONLY;
 
         // Initialize the map
         self.mapView = myMapView;    
@@ -44,12 +46,18 @@
 //
 //        [_mapView addSubview: _canvas];
         
-        // Add the range track
-        CGRect sliderFrame = CGRectMake(self.mapView.frame.size.width - 30, 0,
-                                        30,
-                                        self.mapView.frame.size.height);
+        // Init the frame
+        self.frame = CGRectMake(self.mapView.frame.size.width - 30, 0,
+                                30,
+                                self.mapView.frame.size.height);
         
-        self.sliderContainer = [[CERangeSlider alloc] initWithFrame:sliderFrame];
+        // Init an annotation view to hold annotations
+        self.annotationView = [[UIView alloc] initWithFrame:self.frame];
+        self.annotationView.backgroundColor = [UIColor clearColor];
+        [self.mapView addSubview:self.annotationView];
+        
+        // Init the slider
+        self.sliderContainer = [[CERangeSlider alloc] initWithFrame:self.frame];
         self.sliderContainer.delegate = self;
         self.sliderContainer.trackPaddingInPoints = 30;
 
@@ -60,6 +68,9 @@
 //               forControlEvents:UIControlEventValueChanged];
         self.sliderContainer.curvatiousness = 0.0;
         
+        // Add the gesture engine
+        self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
+        [self.mapView addSubview:self.gestureEngine];
     }
     return self;
 }
@@ -138,6 +149,19 @@
     [[NSRunLoop mainRunLoop] addTimer:iv_updateUITimer forMode:NSRunLoopCommonModes];
 }
 
+
+- (void)setSpaceBarMode:(SpaceBarMode)spaceBarMode{
+    if (spaceBarMode == TOKENONLY){
+        // SpaceToken only mode
+        [self removeRouteAnnotations];
+        [self.gestureEngine setUserInteractionEnabled:YES];
+        [self.sliderContainer setUserInteractionEnabled: NO];
+    }else{
+        // Path mode
+        [self.gestureEngine setUserInteractionEnabled:NO];
+        [self.sliderContainer setUserInteractionEnabled: YES];
+    }
+}
 
 //----------------
 // timer

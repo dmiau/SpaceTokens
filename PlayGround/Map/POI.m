@@ -55,5 +55,14 @@
     return self;
 }
 
+// Deep copy
+-(id) copyWithZone:(NSZone *) zone
+{
+    POI *object = [[POI alloc] init];
+    object.latLon = self.latLon;
+    object.name = self.name;
+    object.mapViewXY = CGPointMake(0, 0);
+    return object;
+}
 
 @end
