@@ -15,7 +15,7 @@
 @class Route;
 @class POIDatabase;
 @class DirectionPanel;
-@class DefaultSearchPanel;
+@class SearchPanel;
 
 @interface ViewController : UIViewController
 <SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
@@ -34,7 +34,7 @@
 - (void) addDirectionPanel;
 - (void) initSpaceBarWithTokens;
 - (void)directionButtonAction;
-@property DefaultSearchPanel *defaultSearchPanel;
+@property SearchPanel *searchPanel;
 
 @end
 

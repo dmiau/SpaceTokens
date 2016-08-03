@@ -1,16 +1,16 @@
 //
-//  DefaultSearchPanel.m
+//  SearchPanel.m
 //  SpaceBar
 //
 //  Created by dmiau on 7/19/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "DefaultSearchPanel.h"
+#import "SearchPanel.h"
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-@implementation DefaultSearchPanel
+@implementation SearchPanel
 
 - (id)initWithFrame:(CGRect)frame ViewController:(ViewController*) viewController{
     

@@ -1,5 +1,6 @@
+
 //
-//  DefaultSearchPanel.h
+//  SearchPanel.h
 //  SpaceBar
 //
 //  Created by dmiau on 7/19/16.
@@ -11,7 +12,7 @@
 
 @class ViewController;
 
-@interface DefaultSearchPanel : UIView <TopPanel>
+@interface SearchPanel : UIView <TopPanel>
 @property ViewController *rootViewController;
 @property UIButton *directionButton;
 -(id)initWithFrame: (CGRect)frame ViewController:(ViewController*) viewController;

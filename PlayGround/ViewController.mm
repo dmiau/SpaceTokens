@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "tester.h"
 #import "Views/DirectionPanel.h"
-#import "Views/DefaultSearchPanel.h"
+#import "Views/SearchPanel.h"
 #import "Map/Route.h"
 #import "Map/POIDatabase.h"
 
@@ -75,11 +75,11 @@
     //----------------
     // Initialize the default search panel
     //----------------
-    self.defaultSearchPanel = [[DefaultSearchPanel alloc]
+    self.searchPanel = [[SearchPanel alloc]
                                initWithFrame:
                                CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)
                                ViewController:self];
-    [self.defaultSearchPanel addPanel];
+    [self.searchPanel addPanel];
 
     self.directionPanel = [[DirectionPanel alloc] initWithFrame:
                            CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)
