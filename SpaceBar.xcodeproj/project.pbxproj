@@ -20,6 +20,8 @@
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9A43EAF01D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
 		9A43EAF11D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
+		9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
+		9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
 		9A5301431C5AD6A6008D584B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
 		9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301451C5AD6A6008D584B /* AppDelegate.m */; };
 		9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.mm */; };
@@ -107,6 +109,8 @@
 		9A43EAED1D40029D00080029 /* topPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topPanel.h; path = Views/topPanel.h; sourceTree = "<group>"; };
 		9A43EAEE1D4008F400080029 /* POIDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIDatabase.h; path = Map/POIDatabase.h; sourceTree = "<group>"; };
 		9A43EAEF1D4008F400080029 /* POIDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIDatabase.m; path = Map/POIDatabase.m; sourceTree = "<group>"; };
+		9A48C1361D5273EA0038FBA5 /* MainViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewManager.h; sourceTree = "<group>"; };
+		9A48C1371D5273EA0038FBA5 /* MainViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewManager.m; sourceTree = "<group>"; };
 		9A53013E1C5AD6A6008D584B /* SpaceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5301421C5AD6A6008D584B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A5301441C5AD6A6008D584B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -328,7 +332,6 @@
 				9A5301481C5AD6A6008D584B /* ViewController.mm */,
 				9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */,
 				9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */,
-				9A43EAED1D40029D00080029 /* topPanel.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -340,6 +343,9 @@
 				9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */,
 				9AF3B4481D3E95D1004680CB /* DefaultSearchPanel.h */,
 				9AF3B4491D3E95D1004680CB /* DefaultSearchPanel.m */,
+				9A48C1361D5273EA0038FBA5 /* MainViewManager.h */,
+				9A48C1371D5273EA0038FBA5 /* MainViewManager.m */,
+				9A43EAED1D40029D00080029 /* topPanel.h */,
 			);
 			name = RootViewPanels;
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
 				9AF3B44A1D3E95D1004680CB /* DefaultSearchPanel.m in Sources */,
+				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
@@ -539,6 +546,7 @@
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9AF3B44B1D3E95D1004680CB /* DefaultSearchPanel.m in Sources */,
+				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,

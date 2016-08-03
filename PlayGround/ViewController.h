@@ -33,6 +33,7 @@
 @property DirectionPanel *directionPanel;
 - (void) addDirectionPanel;
 - (void) initSpaceBarWithTokens;
+- (void)directionButtonAction;
 @property DefaultSearchPanel *defaultSearchPanel;
 
 @end

@@ -13,20 +13,12 @@
 
 @implementation DirectionPanel
 
-- (id)initWithFrame:(CGRect)frame{
+- (id)initWithFrame:(CGRect)frame ViewController:(ViewController*) viewController{
     
     self = [super initWithFrame:frame];
     if (self){
         
-        //-------------------
-        // Set the rootViewController
-        //-------------------
-        AppDelegate *app = [[UIApplication sharedApplication] delegate];
-        
-        UINavigationController *myNavigationController =
-        app.window.rootViewController;
-        
-        self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
+        self.rootViewController = viewController;
         
         //-------------------
         // Set up the view
@@ -60,9 +52,13 @@
     return self;
 }
 
+- (void)addPanel{
+    [self.rootViewController.view addSubview:self];
+    // remove all SpaceTokens
+    [self.rootViewController.spaceBar removeAllSpaceTokens];
+}
 
-- (void)dismissButtonAction{
-    
+- (void)removePanel{
     // Do some clean up
     // Remove route annotation and the route
     [self.rootViewController.mapView removeOverlay:
@@ -72,9 +68,11 @@
     // Reset Spacebar
     [self.rootViewController.spaceBar resetSpaceBar];
     [self removeFromSuperview];
-    [self.rootViewController initSpaceBarWithTokens];
 }
 
+- (void)dismissButtonAction{
+//    [self.rootViewController initSpaceBarWithTokens];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

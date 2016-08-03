@@ -19,61 +19,70 @@ template class std::vector<pair<int, int>>;
 @implementation Route
 
 
-- (id)initWithMKRoute: (MKRoute *) aRoute{
+- (id)initWithMKRoute: (MKRoute *) aRoute Source:(MKMapItem *)source Destination:(MKMapItem *)destination
+{
     self = [super init];
     if (self) {
-        
         self.route = aRoute;
-
-        //computer the accumulatedDist array
-        self.mapPointX = new vector<double>;
-        self.mapPointY = new vector<double>;
-        self.stepNumber = new vector<int>;
-        self.indexInStep = new vector<int>;
-        self.accumulatedDist = new vector<double>;
-        
-        // pre-allocate a chunk of memory
-        int pointNumber = 0;
-        for (int i = 0; i < [aRoute.steps count]; i++){
-            pointNumber += aRoute.steps[i].polyline.pointCount;
-        }
-        
-        self.mapPointX->assign(pointNumber, 0);
-        self.mapPointY->assign(pointNumber, 0);
-        self.stepNumber->assign(pointNumber, 0);
-        self.indexInStep->assign(pointNumber, 0);
-        self.accumulatedDist->assign(pointNumber, 0);
-        
-        //------------------
-        // Populate the accumulatedDist structures
-        //------------------
-        // This chunk could potentially take some time
-        int pointIdx = 0;
-        float accumulatedDist = 0;
-        MKMapPoint previousMapPoint = self.route.steps[0].polyline.points[0];
-        for (int i = 0; i < [aRoute.steps count]; ++i){
-            
-            for (int j = 0; j < aRoute.steps[i].polyline.pointCount; ++j){
-                
-                MKPolyline* aPolyline = aRoute.steps[i].polyline;
-                (*self.mapPointX)[pointIdx] = aPolyline.points[j].x;
-                (*self.mapPointY)[pointIdx] = aPolyline.points[j].y;
-                (*self.stepNumber)[pointIdx] = i;
-                (*self.indexInStep)[pointIdx] = j;
-                
-                // Calculate the distance from the current point to the previous point
-                CLLocationDistance dist = MKMetersBetweenMapPoints
-                (previousMapPoint, aPolyline.points[j]);
-                accumulatedDist += dist;
-                (*self.accumulatedDist)[pointIdx] = accumulatedDist;
-                
-                previousMapPoint = aPolyline.points[j];
-                pointIdx++;
-            }
-        }
+        self.source = source;
+        self.destination = destination;
+        [self computeAccumulatedDistStructure];
     }
     return self;
 }
+
+//-----------------
+// Compute accumulatedDist structure
+//-----------------
+-(void)computeAccumulatedDistStructure{
+    //computer the accumulatedDist array
+    self.mapPointX = new vector<double>;
+    self.mapPointY = new vector<double>;
+    self.stepNumber = new vector<int>;
+    self.indexInStep = new vector<int>;
+    self.accumulatedDist = new vector<double>;
+    
+    // pre-allocate a chunk of memory
+    int pointNumber = 0;
+    for (int i = 0; i < [self.route.steps count]; i++){
+        pointNumber += self.route.steps[i].polyline.pointCount;
+    }
+    
+    self.mapPointX->assign(pointNumber, 0);
+    self.mapPointY->assign(pointNumber, 0);
+    self.stepNumber->assign(pointNumber, 0);
+    self.indexInStep->assign(pointNumber, 0);
+    self.accumulatedDist->assign(pointNumber, 0);
+    
+    //------------------
+    // Populate the accumulatedDist structures
+    //------------------
+    // This chunk could potentially take some time
+    int pointIdx = 0;
+    float accumulatedDist = 0;
+    MKMapPoint previousMapPoint = self.route.steps[0].polyline.points[0];
+    for (int i = 0; i < [self.route.steps count]; ++i){
+        
+        for (int j = 0; j < self.route.steps[i].polyline.pointCount; ++j){
+            
+            MKPolyline* aPolyline = self.route.steps[i].polyline;
+            (*self.mapPointX)[pointIdx] = aPolyline.points[j].x;
+            (*self.mapPointY)[pointIdx] = aPolyline.points[j].y;
+            (*self.stepNumber)[pointIdx] = i;
+            (*self.indexInStep)[pointIdx] = j;
+            
+            // Calculate the distance from the current point to the previous point
+            CLLocationDistance dist = MKMetersBetweenMapPoints
+            (previousMapPoint, aPolyline.points[j]);
+            accumulatedDist += dist;
+            (*self.accumulatedDist)[pointIdx] = accumulatedDist;
+            
+            previousMapPoint = aPolyline.points[j];
+            pointIdx++;
+        }
+    }
+}
+
 
 -(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:(MKMapView*) mapView{
 
@@ -240,6 +249,29 @@ double computeOrientationFromA2B
     // prepare the outputs
     latLon = MKCoordinateForMapPoint(mapPointBetween);
 }
+
+//----------------
+// Save the route
+//----------------
+// saving and loading the object
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.route forKey:@"route"];
+    [coder encodeObject:self.source forKey:@"source"];
+    [coder encodeObject:self.destination forKey:@"destination"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [self init];
+    self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
+    self.route = [coder decodeObjectOfClass:[MKRoute class] forKey:@"route"];
+    self.source = [coder decodeObjectOfClass:[MKMapItem class] forKey:@"source"];
+    self.destination = [coder decodeObjectOfClass:[MKMapItem class] forKey:@"destination"];
+
+    [self computeAccumulatedDistStructure];
+    return self;
+}
+
 
 - (void) dealloc{
     // destructor

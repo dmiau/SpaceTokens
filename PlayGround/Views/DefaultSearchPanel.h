@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "topPanel.h"
 
+@class ViewController;
 
-@interface DefaultSearchPanel : UIView <topPanel>
+@interface DefaultSearchPanel : UIView <TopPanel>
+@property ViewController *rootViewController;
+@property UIButton *directionButton;
+-(id)initWithFrame: (CGRect)frame ViewController:(ViewController*) viewController;
 
-
+-(void)addPanel;
+-(void)removePanel;
 @end

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "topPanel.h"
 
 @class ViewController;
 
 //---------------
 // Direction panel
 //---------------
-@interface DirectionPanel : UIView
+@interface DirectionPanel : UIView <TopPanel>
 
 @property ViewController *rootViewController;
 

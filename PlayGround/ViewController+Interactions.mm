@@ -145,9 +145,9 @@
              // A response is received
              [self initRouteoBject:response];
              [self showRoute:response];
+             NSLog(@"Direction response received!");
          }
-         
-         [self updateSpaceBar];
+//         [self updateSpaceBar];
      }];
  
     
@@ -163,9 +163,8 @@
     for (MKRoute *route in response.routes)
     {
         self.activeRoute = nil; //reset
-        self.activeRoute = [[Route alloc] initWithMKRoute:route];
-        self.activeRoute.source = response.source;
-        self.activeRoute.destination = response.destination;
+        self.activeRoute = [[Route alloc] initWithMKRoute:route
+                            Source:response.source Destination:response.destination];
         
         // Add annotations to SpaceBar
         [self.spaceBar addAnnotationsFromRoute:self.activeRoute];

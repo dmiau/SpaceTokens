@@ -19,6 +19,7 @@ using namespace std;
 //------------------
 // properties
 //------------------
+@property NSString *name;
 @property MKRoute *route;
 
 @property MKMapItem *source;
@@ -36,7 +37,8 @@ using namespace std;
 //------------------
 
 // Constructors
-- (id)initWithMKRoute: (MKRoute *) aRoute;
+- (id)initWithMKRoute: (MKRoute *) aRoute Source: (MKMapItem*) source
+          Destination: (MKMapItem*) destination;
 
 -(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:
                                 (MKMapView*) mapView;

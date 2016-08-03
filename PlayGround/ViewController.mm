@@ -50,11 +50,6 @@
     self.poiDatabase = [[POIDatabase alloc] init];
     [self.poiDatabase reloadPOI];
     
-    
-    // Test file saving capability
-    [self.poiDatabase saveDatatoFileWithName:@"myTest.data"];
-    [self.poiDatabase loadFromFile:@"myTest.data"];
-    
     //----------------
     // Add a mapView
     //----------------
@@ -78,42 +73,36 @@
     self.spaceBar.delegate = self;
     
     //----------------
-    // Add a search panel
+    // Initialize the default search panel
     //----------------
-    [self addDefaultSearchPanel];
-    
-    //------------------
-    // Add a direction button for testing
-    //------------------
-    
-    float mapViewWidth = self.mapView.frame.size.width;
-    float mapViewHeight = self.mapView.frame.size.height;
-    UIButton*  directionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    directionButton.frame = CGRectMake(mapViewWidth*0.1, mapViewHeight*0.9, 60, 20);
-    [directionButton setTitle:@"Direction" forState:UIControlStateNormal];
-    directionButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
-    [directionButton setBackgroundColor:[UIColor grayColor]];
-    [directionButton addTarget:self action:@selector(directionButtonAction)
-              forControlEvents:UIControlEventTouchDown];
-    
-    // add drop shadow
-    //            self.layer.cornerRadius = 8.0f;
-    directionButton.layer.masksToBounds = NO;
-    //            self.layer.borderWidth = 1.0f;
-    
-    directionButton.layer.shadowColor = [UIColor grayColor].CGColor;
-    directionButton.layer.shadowOpacity = 0.8;
-    directionButton.layer.shadowRadius = 12;
-    directionButton.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
-    
-    
-    
-    [self.mapView addSubview:directionButton];
+    self.defaultSearchPanel = [[DefaultSearchPanel alloc]
+                               initWithFrame:
+                               CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)
+                               ViewController:self];
+    [self.defaultSearchPanel addPanel];
 
+    self.directionPanel = [[DirectionPanel alloc] initWithFrame:
+                           CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)
+                           ViewController:self];
+    
 //    // Run the test
 //    Tester *tester = [[Tester alloc] init];
 //    [tester runTests];
 }
+
+
+//-----------------
+// A temporary method to save data into the disk
+//-----------------
+- (void)tempSaveDataMethod{
+    // Need to run on the background thread
+    
+    
+    // Test file saving capability
+    [self.poiDatabase saveDatatoFileWithName:@"myTest.data"];
+    [self.poiDatabase loadFromFile:@"myTest.data"];
+}
+
 
 - (void)addDirectionPanel{
     
@@ -129,27 +118,6 @@
     // remove all
     [self.spaceBar removeAllSpaceTokens];
 }
-
-- (void)addDefaultSearchPanel{
-    
-    if (!self.defaultSearchPanel){
-        self.defaultSearchPanel = [[DefaultSearchPanel alloc]
-                                   initWithFrame:
-    CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)];
-    }
-    
-    [self.view addSubview:self.defaultSearchPanel];
-    
-    [self initSpaceBarWithTokens];
-}
-
-- (void) initSpaceBarWithTokens{
-
-    // Add SpaceTokens
-    [self.spaceBar addSpaceTokensFromPOIArray: self.poiDatabase.poiArray];
-    self.spaceBar.spaceBarMode = TOKENONLY;
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
