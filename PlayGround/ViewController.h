@@ -11,14 +11,14 @@
 #import "SpaceBar/SpaceBar.h"
 #import "Map/customMKMapView.h"
 #import "Map/POIDatabase.h"
+#import "MainViewManager.h"
 
 @class Route;
-@class POIDatabase;
-@class DirectionPanel;
-@class SearchPanel;
 
 @interface ViewController : UIViewController
 <SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
+
+@property MainViewManager *mainViewManager;
 
 @property UIButton *myButton;
 @property customMKMapView *mapView;
@@ -29,12 +29,12 @@
 @property NSMutableArray <Route*> *routeArray;
 @property Route* activeRoute;
 
+
+
 // UI Panels
-@property DirectionPanel *directionPanel;
+
 - (void) addDirectionPanel;
 - (void) initSpaceBarWithTokens;
 - (void)directionButtonAction;
-@property SearchPanel *searchPanel;
-
 @end
 

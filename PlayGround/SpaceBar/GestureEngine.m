@@ -17,7 +17,13 @@
 //--------------------------------
 - (id)initWithSpaceBar:(SpaceBar*) spaceBar{
 
-    self = [super initWithFrame:spaceBar.frame];
+    // Make the detection area bigger
+    CGRect detectionFrame = CGRectMake(spaceBar.frame.origin.x - spaceBar.frame.size.width,
+                                       spaceBar.frame.origin.y,
+                                       spaceBar.frame.size.width*2,
+                                       spaceBar.frame.size.height);
+    
+    self = [super initWithFrame:detectionFrame];
     if (self) {
         
         // Enable multitouch control

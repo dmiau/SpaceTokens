@@ -152,7 +152,7 @@
  
     
     // Add the direction panel
-    [self addDirectionPanel];    
+    [self.mainViewManager showPanelWithType:DIRECTION];
 }
 
 

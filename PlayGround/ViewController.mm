@@ -8,15 +8,8 @@
 
 #import "ViewController.h"
 #import "tester.h"
-#import "Views/DirectionPanel.h"
-#import "Views/SearchPanel.h"
 #import "Map/Route.h"
 #import "Map/POIDatabase.h"
-
-//-------------------
-// Parameters
-//-------------------
-#define topPanelHeight 120
 
 
 // This is an extension (similar to a category)
@@ -26,6 +19,11 @@
 
 @end
 
+
+//-------------------
+// Parameters
+//-------------------
+#define topPanelHeight 120
 
 //-------------------
 // ViewController
@@ -73,17 +71,9 @@
     self.spaceBar.delegate = self;
     
     //----------------
-    // Initialize the default search panel
+    // Initialize MainViewManager
     //----------------
-    self.searchPanel = [[SearchPanel alloc]
-                               initWithFrame:
-                               CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)
-                               ViewController:self];
-    [self.searchPanel addPanel];
-
-    self.directionPanel = [[DirectionPanel alloc] initWithFrame:
-                           CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)
-                           ViewController:self];
+    self.mainViewManager = [[MainViewManager alloc] initWithViewController:self];
     
 //    // Run the test
 //    Tester *tester = [[Tester alloc] init];
@@ -101,22 +91,6 @@
     // Test file saving capability
     [self.poiDatabase saveDatatoFileWithName:@"myTest.data"];
     [self.poiDatabase loadFromFile:@"myTest.data"];
-}
-
-
-- (void)addDirectionPanel{
-    
-    if (self.directionPanel){
-        // add the panel to the main view if it has been instantiated
-        [self.view addSubview:self.directionPanel];
-    }else{
-        self.directionPanel = [[DirectionPanel alloc] initWithFrame:
-                CGRectMake(0, 0, self.view.frame.size.width, topPanelHeight)];
-        [self.view addSubview:self.directionPanel];
-    }
-    
-    // remove all
-    [self.spaceBar removeAllSpaceTokens];
 }
 
 - (void)didReceiveMemoryWarning {

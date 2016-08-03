@@ -71,7 +71,7 @@
 }
 
 - (void)dismissButtonAction{
-//    [self.rootViewController initSpaceBarWithTokens];
+    [self.rootViewController.mainViewManager showDefaultPanel];
 }
 
 /*

@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Mgr-BX-eSq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="utr-4Q-hTY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s5R-Zj-Xkl">
@@ -221,7 +221,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ha2-da-V2y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MZm-xF-38M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -251,7 +251,6 @@
                     <navigationItem key="navigationItem" id="7If-za-i5f"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="rsh-FC-3uW" kind="show" identifier="PreferencesSegue" id="QG4-Ck-F5r"/>
                         <segue destination="i9V-Qy-le4" kind="show" identifier="DataSegue" id="SJZ-Dn-KUl"/>
                     </connections>
                 </viewController>
