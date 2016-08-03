@@ -66,11 +66,28 @@
     //-------------------
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
-    ViewController *rootViewController =
+    UINavigationController *myNavigationController =
     app.window.rootViewController;
-
-    [rootViewController performSegueWithIdentifier:@"PreferencesSegue"
-                                            sender:nil];
+    
+//    ViewController *rootViewController =
+//    [myNavigationController.viewControllers objectAtIndex:0];
+//
+//    [rootViewController performSegueWithIdentifier:@"PreferencesSegue"
+//                                            sender:nil];
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *destinationController = (UIViewController *)[sb instantiateViewControllerWithIdentifier:@"PreferenceTabController"];
+    CATransition* transition = [CATransition animation];
+    transition.duration = .25;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    
+    [myNavigationController.view.layer addAnimation:transition
+                                                forKey:kCATransition];
+    
+    [myNavigationController pushViewController:destinationController animated:NO];
+    
 }
 
 - (void)dataButtonAction{
@@ -79,8 +96,10 @@
     //-------------------
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
-    ViewController *rootViewController =
+    UINavigationController *myNavigationController =
     app.window.rootViewController;
+    
+    ViewController *rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
     
     [rootViewController performSegueWithIdentifier:@"DataSegue"
                                             sender:nil];

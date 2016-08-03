@@ -53,10 +53,21 @@
 
 
 - (void)backToMainView:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        // call your completion method:
-//        [self.rootViewController viewWillAppear:YES];
-    }];
+    if ([self.restorationIdentifier isEqualToString:@"PreferenceTabController"]){
+        CATransition* transition = [CATransition animation];
+        transition.duration = .25;
+        transition.timingFunction =
+        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type = kCATransitionPush;
+        transition.subtype = kCATransitionFromRight;
+        
+        [self.navigationController.view.layer addAnimation:transition
+                                                    forKey:kCATransition];
+        
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /*

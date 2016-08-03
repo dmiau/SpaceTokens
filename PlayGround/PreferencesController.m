@@ -23,7 +23,10 @@
         // Set the rootViewController
         //-------------------
         AppDelegate *app = [[UIApplication sharedApplication] delegate];
-        self.rootViewController = (ViewController*) app.window.rootViewController;
+        
+        UINavigationController *myNavigationController =
+        app.window.rootViewController;
+        self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
     }
     return self;
 }
