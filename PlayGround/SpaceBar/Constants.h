@@ -21,5 +21,5 @@ FOUNDATION_EXPORT NSString *const AddToTouchingSetNotification;
 FOUNDATION_EXPORT NSString *const RemoveFromTouchingSetNotification;
 FOUNDATION_EXPORT NSString *const AddToDraggingSetNotification;
 FOUNDATION_EXPORT NSString *const RemoveFromDraggingSetNotification;
-
+FOUNDATION_EXPORT NSString *const TouchMovesOutOfTokenNotification;
 #endif /* Constants_h */

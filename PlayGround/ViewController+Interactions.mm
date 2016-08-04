@@ -156,8 +156,6 @@
 }
 
 
-
-
 // Initialize the route object
 - (void) initRouteoBject: (MKDirectionsResponse *) response{
     for (MKRoute *route in response.routes)

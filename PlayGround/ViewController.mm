@@ -33,20 +33,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+
     //----------------
-    // Refresh the iCloud drive
+    // Initialize File Manager
     //----------------
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *containerURL =
-    [fileManager URLForUbiquityContainerIdentifier:nil];
-    [fileManager startDownloadingUbiquitousItemAtURL:containerURL error:nil] ;
+    self.myFileManager = [[MyFileManager alloc] init];
+    self.myFileManager.directorPartialPath = @"test";
     
     //----------------
     // Initialize a POI DB
     //----------------
     self.poiDatabase = [[POIDatabase alloc] init];
     [self.poiDatabase reloadPOI];
+    
+    
+    [self tempSaveDataMethod];
     
     //----------------
     // Add a mapView
@@ -60,7 +61,6 @@
     
 //    [self.mapView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 60)];
     self.mapView.showsCompass = NO;
-//    self.mapView.mapType = MKMapTypeSatelliteFlyover;
     
     //----------------
     // Add a SpaceBar
@@ -87,10 +87,23 @@
 - (void)tempSaveDataMethod{
     // Need to run on the background thread
     
+    //Save the files using the background thread
+    //http://stackoverflow.com/questions/12671042/moving-a-function-to-a-background-thread-in-objective-c
     
-    // Test file saving capability
-    [self.poiDatabase saveDatatoFileWithName:@"myTest.data"];
-    [self.poiDatabase loadFromFile:@"myTest.data"];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        NSString *dirPath = [self.myFileManager currentFullDirectoryPath];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
+        
+        // Test file saving capability
+        [self.poiDatabase saveDatatoFileWithName:fileFullPath];
+        [self.poiDatabase loadFromFile:fileFullPath];
+        
+        // Perform async operation
+        // Call your method/function here
+        // Example:
+        // NSString *result = [anObject calculateSomething];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

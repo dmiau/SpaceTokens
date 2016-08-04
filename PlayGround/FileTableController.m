@@ -8,6 +8,7 @@
 
 #import "FileTableController.h"
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @implementation FileTableController
 
@@ -27,21 +28,6 @@
         UINavigationController *myNavigationController =
         app.window.rootViewController;
         self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
-        
-        //-------------------
-        // File Manager Initlialization
-        //-------------------
-        NSFileManager *fileManager = [[NSFileManager alloc] init];
-        
-        NSURL *containerURL =
-        [fileManager URLForUbiquityContainerIdentifier:nil];
-        
-        NSString *documentsDirectory =
-        [[containerURL path]
-         stringByAppendingPathComponent:@"Documents"];
-        
-        self.documentDirectory = documentsDirectory;
-        
     }
     return self;
 }
@@ -59,7 +45,8 @@
 - (void) initFileList{
     // List all the files in the document direction
     fileArray = [[NSFileManager defaultManager]
-                 contentsOfDirectoryAtPath:self.documentDirectory error:NULL];
+                 contentsOfDirectoryAtPath:
+                 [self.rootViewController.myFileManager currentFullDirectoryPath] error:NULL];
     
     //    NSMutableArray *poiFiles = [[NSMutableArray alloc] init];
     //    [dirs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -105,15 +92,10 @@
 - (IBAction)reloadICloud:(id)sender {
     
     NSError *error = nil;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-
+    NSURL *documentDirectoryURL = [self.rootViewController.myFileManager currentFullDirectoryURL];
     
-    NSURL *containerURL =
-    [fileManager URLForUbiquityContainerIdentifier:nil];
-    
-    NSURL *documentDirectoryURL = [containerURL URLByAppendingPathComponent:@"Documents"];
-    
-    [fileManager startDownloadingUbiquitousItemAtURL:documentDirectoryURL error:&error] ;
+    [self.rootViewController.myFileManager
+     startDownloadingUbiquitousItemAtURL:documentDirectoryURL error:&error] ;
     
     if (error != nil)
     {
@@ -121,7 +103,7 @@
     }
 
     
-    NSArray *directoryContent = [[NSFileManager defaultManager]
+    NSArray *directoryContent = [self.rootViewController.myFileManager
             contentsOfDirectoryAtURL:documentDirectoryURL
             includingPropertiesForKeys:[[NSArray alloc] initWithObjects:NSURLNameKey, nil]
                                  options:NSDirectoryEnumerationSkipsHiddenFiles

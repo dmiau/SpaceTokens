@@ -10,7 +10,7 @@
 #import "POI.h"
 
 @interface POIDatabase : NSObject
-
+@property NSString *name;
 @property NSString *documentDirectory;
 @property NSMutableArray <POI *> *poiArray;
 
@@ -18,6 +18,6 @@
 
 
 // iCloud related methods
--(bool)saveDatatoFileWithName: (NSString*) fileName;
--(bool)loadFromFile:(NSString*) fileName;
+-(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
+-(bool)loadFromFile:(NSString*) fullPathFileName;
 @end

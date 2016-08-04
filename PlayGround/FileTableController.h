@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @property ViewController* rootViewController;
-@property NSString *documentDirectory;
 - (IBAction)reloadICloud:(id)sender;
 
 @end

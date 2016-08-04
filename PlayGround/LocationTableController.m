@@ -27,22 +27,7 @@
         
         UINavigationController *myNavigationController =
         app.window.rootViewController;
-        self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
-        
-        //-------------------
-        // File Manager Initlialization
-        //-------------------
-        NSFileManager *fileManager = [[NSFileManager alloc] init];
-        
-        NSURL *containerURL =
-        [fileManager URLForUbiquityContainerIdentifier:nil];
-        
-        NSString *documentsDirectory =
-        [[containerURL path]
-         stringByAppendingPathComponent:@"Documents"];
-        
-        self.documentDirectory = documentsDirectory;
-        
+        self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];        
     }
     return self;
 }

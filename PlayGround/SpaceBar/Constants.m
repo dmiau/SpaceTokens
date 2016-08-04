@@ -14,3 +14,4 @@ NSString *const AddToTouchingSetNotification = @"AddToTouchingSetNotification";
 NSString *const RemoveFromTouchingSetNotification = @"RemoveFromTouchingSetNotification";
 NSString *const AddToDraggingSetNotification = @"AddToDraggingSetNotification";
 NSString *const RemoveFromDraggingSetNotification = @"RemoveFromDraggingSetNotification";
+NSString *const TouchMovesOutOfTokenNotification = @"TouchMovesOutOfTokenNotification";

@@ -12,6 +12,7 @@
 #import "Map/customMKMapView.h"
 #import "Map/POIDatabase.h"
 #import "MainViewManager.h"
+#import "MyFileManager.h"
 
 @class Route;
 
@@ -19,7 +20,7 @@
 <SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
 
 @property MainViewManager *mainViewManager;
-
+@property MyFileManager *myFileManager;
 @property UIButton *myButton;
 @property customMKMapView *mapView;
 @property SpaceBar *spaceBar;

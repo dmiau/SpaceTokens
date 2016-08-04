@@ -17,6 +17,38 @@
             endingLineNumber = "150"
             landmarkName = "-directionButtonAction"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "SpaceBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/ViewController+Interactions.mm"
+                  timestampString = "492016312.345434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "51">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "SpaceBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/ViewController+Interactions.mm"
+                  timestampString = "492016312.345541"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "29">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -65,38 +97,6 @@
             endingLineNumber = "163"
             landmarkName = "-initRouteoBject:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController(Interactions) initRouteoBject:]"
-                  moduleName = "SpaceBar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/ViewController+Interactions.mm"
-                  timestampString = "491937919.603509"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "163"
-                  endingLineNumber = "163"
-                  offsetFromSymbolStart = "68">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController(Interactions) initRouteoBject:]"
-                  moduleName = "SpaceBar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/ViewController+Interactions.mm"
-                  timestampString = "491937919.60375"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "163"
-                  endingLineNumber = "163"
-                  offsetFromSymbolStart = "96">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

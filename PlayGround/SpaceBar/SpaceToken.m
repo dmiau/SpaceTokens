@@ -241,6 +241,9 @@
             || locationInView.y > self.frame.origin.y + self.frame.size.height)
         {
             [self buttonUp:self];
+            
+            // If the touche moves outside of the button vertically, gesture engine should take over
+            
         }
         
         return;

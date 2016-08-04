@@ -13,39 +13,32 @@
 
 // Good reference: http://www.idev101.com/code/Objective-C/Saving_Data/NSKeyedArchiver.html
 
-- (bool)saveDatatoFileWithName: (NSString*) fileName{
-    
-    // Test a data save
-    NSString *pathToSave = [self.documentDirectory
-     stringByAppendingPathComponent:fileName];
-    
+- (bool)saveDatatoFileWithName: (NSString*) fullPathFileName{
     // Save the entire database to a file
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject: self];
     
-    if ([data writeToFile:pathToSave atomically:YES]){
-        NSLog(@"File saving successfully!");
+    if ([data writeToFile:fullPathFileName atomically:YES]){
+        NSLog(@"%@ saved successfully!", fullPathFileName);
         return YES;
     }else{
-        NSLog(@"File saving failed!");
+        NSLog(@"Failed to save %@", fullPathFileName);
         return NO;
     }
 }
 
-- (bool)loadFromFile:(NSString*) fileName{
+- (bool)loadFromFile:(NSString*) fullPathFileName{
         
     // Read content from a file
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *pathToRead =
-    [self.documentDirectory stringByAppendingPathComponent:fileName];
-    
-    if ([fileManager fileExistsAtPath:pathToRead]){
+    NSFileManager *fileManager = [NSFileManager defaultManager];    
+    if ([fileManager fileExistsAtPath:fullPathFileName]){
 
-        NSData *data = [NSData dataWithContentsOfFile:pathToRead];
+        NSData *data = [NSData dataWithContentsOfFile:fullPathFileName];
         POIDatabase *poiDB = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        self.name = poiDB.name;
         self.poiArray = poiDB.poiArray;
         return YES;
     }else{
-        NSLog(@"file does not exist.");
+        NSLog(@"%@ does not exist.", fullPathFileName);
         return NO;
     }
 }

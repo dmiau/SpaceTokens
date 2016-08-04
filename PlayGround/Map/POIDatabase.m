@@ -15,61 +15,6 @@
     self = [super init];
     if (self){
         self.poiArray = [[NSMutableArray alloc] init];
-        
-        
-        //----------------------
-        // Initialize file storage
-        //----------------------
-        BOOL result = NO;
-        
-        NSFileManager *fileManager = [[NSFileManager alloc] init];
-        
-        NSURL *containerURL =
-        [fileManager URLForUbiquityContainerIdentifier:nil];
-        
-        NSString *documentsDirectory =
-        [[containerURL path]
-         stringByAppendingPathComponent:@"Documents"];
-        
-        self.documentDirectory = documentsDirectory;
-        
-        
-        
-        
-        BOOL isDirectory = NO;
-        BOOL mustCreateDocumentsDirectory = NO;
-        
-        if ([fileManager fileExistsAtPath:documentsDirectory
-                              isDirectory:&isDirectory]){
-            if (isDirectory == NO){
-                mustCreateDocumentsDirectory = YES;
-            }
-        } else {
-            mustCreateDocumentsDirectory = YES;
-        }
-        
-        if (mustCreateDocumentsDirectory){
-            NSLog(@"Must create the directory.");
-            
-            NSError *directoryCreationError = nil;
-            
-            if ([fileManager createDirectoryAtPath:documentsDirectory
-                       withIntermediateDirectories:YES
-                                        attributes:nil
-                                             error:&directoryCreationError]){
-                result = YES;
-                NSLog(@"Successfully created the folder.");
-            } else {
-                NSLog(@"Failed to create the folder with error = %@",
-                      directoryCreationError);
-            }
-            
-        } else {
-            NSLog(@"This folder already exists.");
-            result = YES;
-        }
-        
-        
     }
     return self;
 }
@@ -147,11 +92,13 @@
 
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.name forKey:@"name"];
     [coder encodeObject:self.poiArray forKey:@"poiArray"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
-    self = [self init];    
+    self = [self init];
+    self.name = [coder decodeObjectForKey:@"name"];
     self.poiArray = [[coder decodeObjectForKey:@"poiArray"] mutableCopy];
     return self;
 }
