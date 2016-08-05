@@ -31,7 +31,7 @@
 @property RouteDatabase *routeDatabase;
 
 @property Route* activeRoute;
-
+- (void)showRoute:(Route*) aRoute;
 
 
 // UI Panels

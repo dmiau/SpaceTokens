@@ -110,7 +110,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -125,9 +125,21 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZX-wM-LWU">
                                 <rect key="frame" x="0.0" y="565" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem title="Save" id="AEd-lx-0Nb"/>
-                                    <barButtonItem title="Reload" id="3qN-vK-zxB"/>
-                                    <barButtonItem title="Clear" id="ewi-jJ-E6D"/>
+                                    <barButtonItem title="Save" id="AEd-lx-0Nb">
+                                        <connections>
+                                            <action selector="saveAction:" destination="YJ2-sW-9Rh" id="rSB-2h-btR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Reload" id="3qN-vK-zxB">
+                                        <connections>
+                                            <action selector="reloadAction:" destination="YJ2-sW-9Rh" id="Ps2-Vg-mEa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Clear" id="ewi-jJ-E6D">
+                                        <connections>
+                                            <action selector="clearAction:" destination="YJ2-sW-9Rh" id="2c1-qa-mbw"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

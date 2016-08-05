@@ -144,56 +144,43 @@
          if (error) {
              // Handle Error
          } else {
-             
-             // A response is received
-             [self initRouteoBject:response];
-             [self showRoute:response];
              NSLog(@"Direction response received!");
+             MKRoute *tempRoute = response.routes[0];
+             Route *myRoute =
+             [[Route alloc] initWithMKRoute:tempRoute
+                                     Source:response.source Destination:response.destination];
+             [self showRoute:myRoute];
          }
 //         [self updateSpaceBar];
      }];
- 
-    
     // Add the direction panel
     [self.mainViewManager showPanelWithType:DIRECTION];
 }
 
-
-// Initialize the route object
-- (void) initRouteoBject: (MKDirectionsResponse *) response{
-    for (MKRoute *route in response.routes)
-    {
-        self.activeRoute = nil; //reset
-        self.activeRoute = [[Route alloc] initWithMKRoute:route
-                            Source:response.source Destination:response.destination];
-        
-        // Add annotations to SpaceBar
-        [self.spaceBar addAnnotationsFromRoute:self.activeRoute];
-        
-        
-        // Show the entire route
-        [self spaceBarTwoPointsTouchedLow:0 high:1];
-        
-        // Only enable SpaceBar after a route is added
-        self.spaceBar.spaceBarMode = PATH;
-        break;
+//-----------------
+// This method does the following things
+//-----------------
+- (void)showRoute:(Route*) aRoute{
+    
+    // Remove the previous route if there is any
+    if (self.activeRoute){
+        [self.mapView removeOverlay:
+         self.activeRoute.route.polyline];
+        self.activeRoute = nil;
     }
-}
 
--(void)showRoute:(MKDirectionsResponse *)response
-{
-    for (MKRoute *route in response.routes)
-    {
-        [self.mapView
-         addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
-//        // Print out the turn-by-turn instructions
-//        for (MKRouteStep *step in route.steps)
-//        {
-//            NSLog(@"%@", step.instructions);
-//        }
-        // only draw the first route
-        break;
-    }
+    // Show the new route
+    self.activeRoute = aRoute;
+    // Add annotations to SpaceBar
+    [self.spaceBar addAnnotationsFromRoute:self.activeRoute];
+    
+    // Show the entire route
+    [self spaceBarTwoPointsTouchedLow:0 high:1];
+    
+    // Only enable SpaceBar after a route is added
+    self.spaceBar.spaceBarMode = PATH;
+    
+    [self.mapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay

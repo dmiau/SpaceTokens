@@ -17,7 +17,10 @@
 
 @property ViewController* rootViewController;
 
+- (IBAction)saveAction:(id)sender;
 
+- (IBAction)reloadAction:(id)sender;
 
+- (IBAction)clearAction:(id)sender;
 
 @end

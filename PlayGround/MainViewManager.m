@@ -65,8 +65,6 @@
 }
 
 - (void)showDirectionPanel{
-    // remove all
-    [self.rootViewController.spaceBar removeAllSpaceTokens];
     [self removeActivePanel];
     // add the panel to the main view if it has been instantiated
     [self.directionPanel addPanel];

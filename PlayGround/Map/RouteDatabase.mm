@@ -32,7 +32,15 @@
     [self addRouteWithSource:NewYork Destination:Boston];
     
     // London to Cambridge
+    POI *London = [[POI alloc] init];
+    London.latLon = CLLocationCoordinate2DMake(51.507351, -0.127758);
+    London.name = @"London";
     
+    POI *Cambridge = [[POI alloc] init];
+    Cambridge.latLon = CLLocationCoordinate2DMake(52.205337, 0.121817);
+    Cambridge.name = @"Cambridge";
+    
+    [self addRouteWithSource:London Destination:Cambridge];
 
 }
 

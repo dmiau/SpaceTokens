@@ -155,12 +155,9 @@
 }
 
 -(void)removePanel{
-    
-    
+    // Remove the direction button
+    [self.directionButton removeFromSuperview];
 }
-
-
-
 
 
 /*

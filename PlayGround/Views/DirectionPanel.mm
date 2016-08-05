@@ -54,8 +54,7 @@
 
 - (void)addPanel{
     [self.rootViewController.view addSubview:self];
-    // remove all SpaceTokens
-    [self.rootViewController.spaceBar removeAllSpaceTokens];
+    self.rootViewController.spaceBar.spaceBarMode = PATH;
 }
 
 - (void)removePanel{

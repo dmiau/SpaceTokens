@@ -76,29 +76,46 @@
     return cell;
 }
 
-//// Reload the directory
-//- (IBAction)reloadICloud:(id)sender {
-//    
-//    NSError *error = nil;
-//    NSURL *documentDirectoryURL = [self.rootViewController.myFileManager currentFullDirectoryURL];
-//    
-//    [self.rootViewController.myFileManager
-//     startDownloadingUbiquitousItemAtURL:documentDirectoryURL error:&error] ;
-//    
-//    if (error != nil)
-//    {
-//        NSLog(@"ERROR Loading %@", documentDirectoryURL) ;
-//    }
-//    
-//    
-//    NSArray *directoryContent = [self.rootViewController.myFileManager
-//                                 contentsOfDirectoryAtURL:documentDirectoryURL
-//                                 includingPropertiesForKeys:[[NSArray alloc] initWithObjects:NSURLNameKey, nil]
-//                                 options:NSDirectoryEnumerationSkipsHiddenFiles
-//                                 error:&error];
-//    
-//    [self initFileList];
-//    [self.myTableView reloadData];
-//}
 
+#pragma mark -----Table Interaction Methods-----
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path {
+    
+    int row_id = [path row];
+    int section_id = [path section];
+    
+    [self.rootViewController showRoute:routeDatabase.routeArray[row_id]];    
+    //--------------
+    // We might need to do something for iPad
+    //--------------
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+
+- (IBAction)saveAction:(id)sender {
+//    //Save the files using the background thread
+//    //http://stackoverflow.com/questions/12671042/moving-a-function-to-a-background-thread-in-objective-c
+//    
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+//    dispatch_async(queue, ^{
+//        NSString *dirPath = [self.rootViewController.myFileManager currentFullDirectoryPath];
+//        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.route"];
+//        
+//        // Test file saving capability
+//        [routeDatabase saveDatatoFileWithName:fileFullPath];
+//                
+//        // Perform async operation
+//        // Call your method/function here
+//        // Example:
+//        // NSString *result = [anObject calculateSomething];
+//    });
+    
+    
+}
+
+- (IBAction)reloadAction:(id)sender {
+//    [routeDatabase loadFromFile:fileFullPath];
+}
+
+- (IBAction)clearAction:(id)sender {
+}
 @end

@@ -158,6 +158,8 @@
         [self.sliderContainer setUserInteractionEnabled: NO];
     }else{
         // Path mode
+        // remove all SpaceTokens
+        [self removeAllSpaceTokens];
         [self.gestureEngine setUserInteractionEnabled:NO];
         [self.sliderContainer setUserInteractionEnabled: YES];
     }
