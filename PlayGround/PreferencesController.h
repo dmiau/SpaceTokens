@@ -15,4 +15,8 @@
 - (IBAction)mapStyleSegmentControl:(id)sender;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentControl;
 
+// App mode segment control
+@property (weak, nonatomic) IBOutlet UISegmentedControl *appModeSegmentControlOutlet;
+- (IBAction)appModeSegmentControl:(id)sender;
+
 @end

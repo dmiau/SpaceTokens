@@ -10,7 +10,7 @@
 #import "ViewController.h"
 #import "Views/DirectionPanel.h"
 #import "Views/SearchPanel.h"
-
+#import "Views/CircleCheckingPanel.h"
 
 @implementation MainViewManager
 
@@ -34,15 +34,12 @@
         self.directionPanel = [[DirectionPanel alloc] initWithFrame:
                                CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
                                                      ViewController:self.rootViewController];
+        self.circleCheckingPanel = [[CircleCheckingPanel alloc] initWithFrame:
+                                    CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
+                                                          ViewController:self.rootViewController];
         
     }
     return self;
-}
-
-- (void)showDefaultPanel{
-    [self removeActivePanel];
-    [self.searchPanel addPanel];
-    self.activePanel = self.searchPanel;
 }
 
 - (void)removeActivePanel{
@@ -59,8 +56,24 @@
         case DIRECTION:
             [self showDirectionPanel];
             break;
+        case CIRCLECHECKING:
+            [self showCircleCheckingPanel];
+            break;
         default:
             break;
+    }
+}
+
+- (void)showDefaultPanel{
+    [self removeActivePanel];
+    [self.searchPanel addPanel];
+    self.activePanel = self.searchPanel;
+    
+    // Remove the filter panel
+    if (self.filterPanel){
+        UIView *tempPanel = (UIView*) self.filterPanel;
+        [tempPanel removeFromSuperview];
+        self.filterPanel = nil;
     }
 }
 
@@ -69,6 +82,11 @@
     // add the panel to the main view if it has been instantiated
     [self.directionPanel addPanel];
     self.activePanel = self.directionPanel;
+}
+
+- (void)showCircleCheckingPanel{
+    [self.circleCheckingPanel addPanel];
+    self.filterPanel = self.circleCheckingPanel;
 }
 
 @end

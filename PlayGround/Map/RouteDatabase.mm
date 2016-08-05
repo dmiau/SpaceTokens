@@ -42,6 +42,18 @@
     
     [self addRouteWithSource:London Destination:Cambridge];
 
+    
+    // Edgewater, NJ to Columbia
+    POI *Edgewater = [[POI alloc] init];
+    Edgewater.latLon = CLLocationCoordinate2DMake(40.827045, -73.975694);
+    Edgewater.name = @"Edgewater, NJ";
+    
+    POI *Columbia = [[POI alloc] init];
+    Columbia.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
+    Columbia.name = @"Columbia";
+    
+    [self addRouteWithSource:Edgewater Destination:Columbia];
+    
 }
 
 - (void) addRouteWithSource:(POI*) source Destination:(POI*) destination

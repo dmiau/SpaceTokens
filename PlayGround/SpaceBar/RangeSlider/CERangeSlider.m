@@ -136,8 +136,8 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     // Set up the track
     //-----------------
     CGRect trackFrame = self.bounds;
-    trackFrame.origin.x = -_blankXBias;
-    trackFrame.size.width += _blankXBias;
+//    trackFrame.origin.x = +_blankXBias;
+//    trackFrame.size.width -= _blankXBias;
     
     // Add cell padding for the trackLayer?
     trackFrame.origin.y = _trackPaddingInPoints;

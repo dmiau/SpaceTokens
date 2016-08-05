@@ -30,13 +30,16 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BjC-Kw-sh2">
-                                <rect key="frame" x="38" y="225" width="335" height="29"/>
+                                <rect key="frame" x="38" y="226" width="335" height="29"/>
                                 <segments>
                                     <segment title="Normal"/>
                                     <segment title="Demo"/>
                                     <segment title="Study"/>
                                     <segment title="Authoring"/>
                                 </segments>
+                                <connections>
+                                    <action selector="appModeSegmentControl:" destination="9O4-1U-3y6" eventType="valueChanged" id="wa1-th-iiV"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5I-6N-VUO">
                                 <rect key="frame" x="38" y="94" width="82" height="21"/>
@@ -57,6 +60,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="appModeSegmentControlOutlet" destination="BjC-Kw-sh2" id="8fH-kv-APG"/>
                         <outlet property="mapSegmentControl" destination="s5R-Zj-Xkl" id="Fvn-Hz-cK0"/>
                     </connections>
                 </viewController>

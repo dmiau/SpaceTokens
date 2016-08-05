@@ -8,7 +8,7 @@
 
 #import "DirectionPanel.h"
 #import "AppDelegate.h"
-#import "../ViewController.h"
+#import "ViewController.h"
 #import "../Map/Route.h"
 
 @implementation DirectionPanel

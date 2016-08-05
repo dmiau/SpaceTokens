@@ -47,8 +47,9 @@
 //        [_mapView addSubview: _canvas];
         
         // Init the frame
-        self.frame = CGRectMake(self.mapView.frame.size.width - 30, 0,
-                                30,
+        float spaceBarWidth = 60;
+        self.frame = CGRectMake(self.mapView.frame.size.width - spaceBarWidth, 0,
+                                spaceBarWidth,
                                 self.mapView.frame.size.height);
         
         // Init an annotation view to hold annotations

@@ -11,6 +11,7 @@
 #import "Map/Route.h"
 #import "Map/POIDatabase.h"
 #import "Map/RouteDatabase.h"
+#import "StudyManager/StudyManager.h"
 
 // This is an extension (similar to a category)
 @interface ViewController ()
@@ -41,6 +42,12 @@
     self.myFileManager.directorPartialPath = @"test";
     
     //----------------
+    // Initialize Study Manager
+    //----------------
+    self.studyManager = [[StudyManager alloc] init];
+    self.studyManager.studyManagerStatus = OFF;
+    
+    //----------------
     // Initialize a POI DB
     //----------------
     self.poiDatabase = [[POIDatabase alloc] init];
@@ -66,6 +73,10 @@
     
 //    [self.mapView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 60)];
     self.mapView.showsCompass = NO;
+    
+    CLLocationCoordinate2D NYC = CLLocationCoordinate2DMake(40.711801, -74.013120);
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:NYC radius:300]; // radius is measured in meters
+    [self.mapView addOverlay:circle];
     
     //----------------
     // Add a SpaceBar

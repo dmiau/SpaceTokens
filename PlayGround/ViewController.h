@@ -16,6 +16,7 @@
 
 @class Route;
 @class RouteDatabase;
+@class StudyManager;
 
 @interface ViewController : UIViewController
 <SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
@@ -31,6 +32,9 @@
 @property RouteDatabase *routeDatabase;
 
 @property Route* activeRoute;
+@property StudyManager *studyManager;
+
+
 - (void)showRoute:(Route*) aRoute;
 
 

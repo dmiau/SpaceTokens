@@ -171,7 +171,8 @@
 
     // Show the new route
     self.activeRoute = aRoute;
-    // Add annotations to SpaceBar
+    // Remove old annotations and add new ones
+    [self.spaceBar removeRouteAnnotations];
     [self.spaceBar addAnnotationsFromRoute:self.activeRoute];
     
     // Show the entire route
@@ -181,52 +182,6 @@
     self.spaceBar.spaceBarMode = PATH;
     
     [self.mapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
-}
-
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
-{
-    MKPolylineRenderer *renderer =
-    [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-    renderer.strokeColor = [UIColor blueColor];
-    renderer.lineWidth = 5.0;
-    return renderer;
-}
-
-#pragma mark --customMKMapView delegate methods--
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-    [self updateSpaceBar];
-}
-
-// Triggers SpaceBar redraw
-- (void) updateSpaceBar{
-    if (self.activeRoute){
-        std::vector<std::pair<float, float>> elevatorResutls =
-        [self.activeRoute calculateVisibleSegmentsForMap:self.mapView];
-        
-        float temp[2];
-        temp[0] = elevatorResutls[0].first;
-        temp[1] = elevatorResutls.back().second; //TODO: fix this
-        // for now I can only display one elevator
-        [self.spaceBar updateElevatorFromPercentagePair:temp];
-    }
-}
-
-- (void) mapTouchBegan: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
-    // Remove all the touched SpaceTokens
-    [self.spaceBar clearAllTouchedTokens];
-    
-    [self.spaceBar addAnchorForCoordinates:coord atMapXY:xy];
-}
-
-- (void) mapTouchMoved: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
-    
-    [self.spaceBar updateAnchorAtMapXY:xy];
-}
-
-- (void) mapTouchEnded{
-    // Remove all the touched SpaceTokens
-    [self.spaceBar clearAllTouchedTokens];
-    [self.spaceBar removeAnchor];
 }
 
 @end

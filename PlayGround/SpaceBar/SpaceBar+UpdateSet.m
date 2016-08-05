@@ -161,6 +161,9 @@
 //----------------
 - (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray{
     
+    // Remove all SpaceTokens first
+    [self removeAllSpaceTokens];
+    
     for (POI* aPOI in poiArray){
         [self addSpaceTokenFromPOI:aPOI];
     }

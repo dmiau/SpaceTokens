@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
+		9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A143B341D2AF56E001EE841 /* customMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* customMKMapView.m */; };
 		9A143B351D2AF56E001EE841 /* customMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* customMKMapView.m */; };
 		9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
@@ -18,6 +20,14 @@
 		9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
 		9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
+		9A437FA91D5507CA00F28E61 /* SnapShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FA81D5507CA00F28E61 /* SnapShot.m */; };
+		9A437FAA1D5507CA00F28E61 /* SnapShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FA81D5507CA00F28E61 /* SnapShot.m */; };
+		9A437FAD1D55080B00F28E61 /* SnapShotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */; };
+		9A437FAE1D55080B00F28E61 /* SnapShotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */; };
+		9A437FB21D550C7A00F28E61 /* StudyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* StudyManager.m */; };
+		9A437FB31D550C7A00F28E61 /* StudyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* StudyManager.m */; };
+		9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
+		9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
 		9A43EAF01D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
 		9A43EAF11D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
 		9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
@@ -97,6 +107,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A0E063B1D54FCB800E5722D /* ViewController+MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MapView.h"; sourceTree = "<group>"; };
+		9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+MapView.mm"; sourceTree = "<group>"; };
 		9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceBar.entitlements; sourceTree = "<group>"; };
 		9A143B321D2AF56E001EE841 /* customMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customMKMapView.h; path = Map/customMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* customMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customMKMapView.m; path = Map/customMKMapView.m; sourceTree = "<group>"; };
@@ -112,6 +124,14 @@
 		9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderKnobLayer.m; path = SpaceBar/RangeSlider/CERangeSliderKnobLayer.m; sourceTree = "<group>"; };
 		9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSliderTrackLayer.h; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.h; sourceTree = "<group>"; };
 		9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderTrackLayer.m; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
+		9A437FA71D5507CA00F28E61 /* SnapShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapShot.h; path = Map/SnapShot.h; sourceTree = "<group>"; };
+		9A437FA81D5507CA00F28E61 /* SnapShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapShot.m; path = Map/SnapShot.m; sourceTree = "<group>"; };
+		9A437FAB1D55080B00F28E61 /* SnapShotDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapShotDatabase.h; path = Map/SnapShotDatabase.h; sourceTree = "<group>"; };
+		9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapShotDatabase.m; path = Map/SnapShotDatabase.m; sourceTree = "<group>"; };
+		9A437FB01D550C7A00F28E61 /* StudyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudyManager.h; path = StudyManager/StudyManager.h; sourceTree = "<group>"; };
+		9A437FB11D550C7A00F28E61 /* StudyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudyManager.m; path = StudyManager/StudyManager.m; sourceTree = "<group>"; };
+		9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleCheckingPanel.h; path = Views/CircleCheckingPanel.h; sourceTree = "<group>"; };
+		9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleCheckingPanel.m; path = Views/CircleCheckingPanel.m; sourceTree = "<group>"; };
 		9A43EAED1D40029D00080029 /* topPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topPanel.h; path = Views/topPanel.h; sourceTree = "<group>"; };
 		9A43EAEE1D4008F400080029 /* POIDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIDatabase.h; path = Map/POIDatabase.h; sourceTree = "<group>"; };
 		9A43EAEF1D4008F400080029 /* POIDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIDatabase.m; path = Map/POIDatabase.m; sourceTree = "<group>"; };
@@ -210,6 +230,8 @@
 			children = (
 				9A8BCA261D343D43006C2EDC /* POI.h */,
 				9A8BCA271D343D43006C2EDC /* POI.m */,
+				9A437FA71D5507CA00F28E61 /* SnapShot.h */,
+				9A437FA81D5507CA00F28E61 /* SnapShot.m */,
 				9A22D0161D22BD9A009BC465 /* Route.h */,
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A143B321D2AF56E001EE841 /* customMKMapView.h */,
@@ -224,6 +246,8 @@
 				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
 				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
+				9A437FAB1D55080B00F28E61 /* SnapShotDatabase.h */,
+				9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -241,6 +265,22 @@
 				9ABB280F1D36795C00595A0D /* Elevator.m */,
 			);
 			name = Track;
+			sourceTree = "<group>";
+		};
+		9A437FAF1D55082700F28E61 /* StudyManager */ = {
+			isa = PBXGroup;
+			children = (
+				9A437FB01D550C7A00F28E61 /* StudyManager.h */,
+				9A437FB11D550C7A00F28E61 /* StudyManager.m */,
+			);
+			name = StudyManager;
+			sourceTree = "<group>";
+		};
+		9A437FB81D55482B00F28E61 /* StudyPanels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StudyPanels;
 			sourceTree = "<group>";
 		};
 		9A5301351C5AD6A6008D584B = {
@@ -340,12 +380,15 @@
 		9AC36DD31C60098A0037210F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9A437FAF1D55082700F28E61 /* StudyManager */,
 				9AC7E1AC1D51164600C2E8BE /* SeguePanels */,
 				9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */,
 				9A5301471C5AD6A6008D584B /* ViewController.h */,
 				9A5301481C5AD6A6008D584B /* ViewController.mm */,
 				9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */,
 				9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */,
+				9A0E063B1D54FCB800E5722D /* ViewController+MapView.h */,
+				9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */,
 				9AA454DD1D52D160008D4FCF /* MyFileManager.h */,
 				9AA454DE1D52D160008D4FCF /* MyFileManager.m */,
 			);
@@ -355,6 +398,7 @@
 		9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */ = {
 			isa = PBXGroup;
 			children = (
+				9A437FB81D55482B00F28E61 /* StudyPanels */,
 				9ACD6CDB1D352E8600E3BF9C /* DirectionPanel.h */,
 				9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */,
 				9AF3B4481D3E95D1004680CB /* SearchPanel.h */,
@@ -362,6 +406,8 @@
 				9A48C1361D5273EA0038FBA5 /* MainViewManager.h */,
 				9A48C1371D5273EA0038FBA5 /* MainViewManager.m */,
 				9A43EAED1D40029D00080029 /* topPanel.h */,
+				9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */,
+				9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */,
 			);
 			name = RootViewPanels;
 			sourceTree = "<group>";
@@ -500,7 +546,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.m in Sources */,
+				9A437FAD1D55080B00F28E61 /* SnapShotDatabase.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
@@ -523,6 +571,7 @@
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
+				9A437FA91D5507CA00F28E61 /* SnapShot.m in Sources */,
 				9AF3B44A1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -531,9 +580,11 @@
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
+				9A437FB21D550C7A00F28E61 /* StudyManager.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9281D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
+				9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
 				9ABB28101D36795C00595A0D /* Elevator.m in Sources */,
@@ -544,7 +595,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9A8F67EE1D3DA65200C08CCB /* PreferencesController.m in Sources */,
+				9A437FAE1D55080B00F28E61 /* SnapShotDatabase.m in Sources */,
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
@@ -567,6 +620,7 @@
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
+				9A437FAA1D5507CA00F28E61 /* SnapShot.m in Sources */,
 				9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -575,9 +629,11 @@
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
+				9A437FB31D550C7A00F28E61 /* StudyManager.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
+				9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
 				9ABB28111D36795C00595A0D /* Elevator.m in Sources */,

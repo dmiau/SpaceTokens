@@ -9,6 +9,7 @@
 #import "PreferencesController.h"
 #import "AppDelegate.h"
 #import "CustomTabController.h"
+#import "StudyManager/StudyManager.h"
 
 @implementation PreferencesController
 
@@ -46,6 +47,24 @@
         self.mapSegmentControl.selectedSegmentIndex = 2;
     }
     
+    int selectionIndex = 0;
+    switch (self.rootViewController.studyManager.studyManagerStatus) {
+        case OFF:
+            selectionIndex = 0;
+            break;
+        case DEMO:
+            selectionIndex = 1;
+            break;
+        case STUDY:
+            selectionIndex = 2;
+            break;
+        case AUTHORING:
+            selectionIndex = 3;
+            break;
+        default:
+            break;
+    }
+    self.appModeSegmentControlOutlet.selectedSegmentIndex = selectionIndex;
 }
 
 //------------------
@@ -67,4 +86,28 @@
     }
 }
 
+- (IBAction)appModeSegmentControl:(id)sender {
+    
+    
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    NSString *label = [segmentedControl
+                       titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
+    
+    if ([label isEqualToString:@"Normal"]){
+        self.rootViewController.studyManager.studyManagerStatus = OFF;
+        
+        // Show the default view
+        [self.rootViewController.mainViewManager showDefaultPanel];        
+    }else if ([label isEqualToString:@"Demo"]){
+        self.rootViewController.studyManager.studyManagerStatus = DEMO;
+    }else if ([label isEqualToString:@"Study"]){
+        self.rootViewController.studyManager.studyManagerStatus = STUDY;
+        
+        // Add the filter to the main view
+        [self.rootViewController.mainViewManager showPanelWithType:CIRCLECHECKING];
+        
+    }else if ([label isEqualToString:@"Authoring"]){
+        self.rootViewController.studyManager.studyManagerStatus = AUTHORING;
+    }
+}
 @end
