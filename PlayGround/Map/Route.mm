@@ -26,6 +26,7 @@ template class std::vector<pair<int, int>>;
         self.route = aRoute;
         self.source = source;
         self.destination = destination;
+        self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
         [self computeAccumulatedDistStructure];
     }
     return self;

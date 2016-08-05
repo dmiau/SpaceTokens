@@ -115,6 +115,9 @@
 - (void)directionButtonAction {
     NSLog(@"Direction button pressed!");
     
+    // Check if a route has been loaded
+    
+    
     // Get the direction from New York to Boston
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
     
@@ -128,7 +131,7 @@
     // End map item (Boston)
     MKPlacemark *endPlacemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(42.360082, -71.058880) addressDictionary:nil];
     MKMapItem *endMapItem = [[MKMapItem alloc] initWithPlacemark:endPlacemark];
-    [startMapItem setName:@"Boston"];
+    [endMapItem setName:@"Boston"];
     request.destination = endMapItem;
     
     

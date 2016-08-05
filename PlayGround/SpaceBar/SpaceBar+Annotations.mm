@@ -20,7 +20,7 @@
     CGRectMake(-30,
                self.sliderContainer.frame.size.height - self.sliderContainer.trackPaddingInPoints
                , 60, 30)];
-    sourceLabel.text = @"New York";
+    sourceLabel.text = route.source.name;
     [sourceLabel setTextColor:[UIColor blackColor]];
     [sourceLabel setBackgroundColor:[UIColor clearColor]];
     [sourceLabel setFont: [UIFont fontWithName:@"Trebuchet MS" size:14.0f]];
@@ -31,7 +31,7 @@
     UILabel *destinationLabel = [[UILabel alloc] initWithFrame:
                             CGRectMake(-30, 0
                                        , 60, 30)];
-    destinationLabel.text = @"Boston";
+    destinationLabel.text = route.destination.name;
     [destinationLabel setTextColor:[UIColor blackColor]];
     [destinationLabel setBackgroundColor:[UIColor clearColor]];
     [destinationLabel setFont: [UIFont fontWithName:@"Trebuchet MS" size:14.0f]];

@@ -15,6 +15,7 @@
 #import "MyFileManager.h"
 
 @class Route;
+@class RouteDatabase;
 
 @interface ViewController : UIViewController
 <SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
@@ -27,7 +28,8 @@
 
 
 @property POIDatabase *poiDatabase;
-@property NSMutableArray <Route*> *routeArray;
+@property RouteDatabase *routeDatabase;
+
 @property Route* activeRoute;
 
 

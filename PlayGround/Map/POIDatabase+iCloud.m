@@ -10,7 +10,6 @@
 
 @implementation POIDatabase (iCloud)
 
-
 // Good reference: http://www.idev101.com/code/Objective-C/Saving_Data/NSKeyedArchiver.html
 
 - (bool)saveDatatoFileWithName: (NSString*) fullPathFileName{

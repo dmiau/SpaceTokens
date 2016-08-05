@@ -10,7 +10,7 @@
 #import "tester.h"
 #import "Map/Route.h"
 #import "Map/POIDatabase.h"
-
+#import "Map/RouteDatabase.h"
 
 // This is an extension (similar to a category)
 @interface ViewController ()
@@ -46,8 +46,13 @@
     self.poiDatabase = [[POIDatabase alloc] init];
     [self.poiDatabase reloadPOI];
     
-    
     [self tempSaveDataMethod];
+    
+    //----------------
+    // Initialize a Route DB
+    //----------------
+    self.routeDatabase = [[RouteDatabase alloc] init];
+    [self.routeDatabase reloadRouteDB];
     
     //----------------
     // Add a mapView
