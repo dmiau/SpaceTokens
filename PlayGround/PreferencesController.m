@@ -104,7 +104,7 @@
         self.rootViewController.studyManager.studyManagerStatus = STUDY;
         
         // Add the filter to the main view
-        [self.rootViewController.mainViewManager showPanelWithType:CIRCLECHECKING];
+        [self.rootViewController.mainViewManager showPanelWithType:TASKCHECKING];
         
     }else if ([label isEqualToString:@"Authoring"]){
         self.rootViewController.studyManager.studyManagerStatus = AUTHORING;

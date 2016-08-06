@@ -18,10 +18,7 @@
 - (id)initWithSpaceBar:(SpaceBar*) spaceBar{
 
     // Make the detection area bigger
-    CGRect detectionFrame = CGRectMake(spaceBar.frame.origin.x - spaceBar.frame.size.width,
-                                       spaceBar.frame.origin.y,
-                                       spaceBar.frame.size.width*2,
-                                       spaceBar.frame.size.height);
+    CGRect detectionFrame = spaceBar.frame;
     
     self = [super initWithFrame:detectionFrame];
     if (self) {

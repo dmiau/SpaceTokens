@@ -11,6 +11,7 @@
 #import "Views/DirectionPanel.h"
 #import "Views/SearchPanel.h"
 #import "Views/CircleCheckingPanel.h"
+#import "Views/TaskCheckingPanel.h"
 
 @implementation MainViewManager
 
@@ -38,6 +39,10 @@
                                     CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
                                                           ViewController:self.rootViewController];
         
+        self.taskCheckingPanel = [[TaskCheckingPanel alloc] initWithFrame:
+                                    CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
+                                                               ViewController:self.rootViewController];
+        
     }
     return self;
 }
@@ -58,6 +63,9 @@
             break;
         case CIRCLECHECKING:
             [self showCircleCheckingPanel];
+            break;
+        case TASKCHECKING:
+            [self showTaskCheckingPanel];
             break;
         default:
             break;
@@ -82,6 +90,13 @@
     // add the panel to the main view if it has been instantiated
     [self.directionPanel addPanel];
     self.activePanel = self.directionPanel;
+}
+
+- (void)showTaskCheckingPanel{
+    [self removeActivePanel];
+    // add the panel to the main view if it has been instantiated
+    [self.taskCheckingPanel addPanel];
+    self.activePanel = self.taskCheckingPanel;
 }
 
 - (void)showCircleCheckingPanel{

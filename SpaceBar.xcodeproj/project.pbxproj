@@ -15,15 +15,15 @@
 		9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A22D0191D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
+		9A246D6B1D554F3000888A74 /* TaskCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */; };
+		9A246D6C1D554F3000888A74 /* TaskCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */; };
+		9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
+		9A246D701D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
 		9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
-		9A437FA91D5507CA00F28E61 /* SnapShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FA81D5507CA00F28E61 /* SnapShot.m */; };
-		9A437FAA1D5507CA00F28E61 /* SnapShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FA81D5507CA00F28E61 /* SnapShot.m */; };
-		9A437FAD1D55080B00F28E61 /* SnapShotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */; };
-		9A437FAE1D55080B00F28E61 /* SnapShotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */; };
 		9A437FB21D550C7A00F28E61 /* StudyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* StudyManager.m */; };
 		9A437FB31D550C7A00F28E61 /* StudyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* StudyManager.m */; };
 		9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
@@ -116,6 +116,10 @@
 		9A1CA2B51D4671210098957A /* CustomTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabController.m; path = Views/CustomTabController.m; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
+		9A246D691D554F3000888A74 /* TaskCheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCheckingPanel.h; path = Views/TaskCheckingPanel.h; sourceTree = "<group>"; };
+		9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCheckingPanel.m; path = Views/TaskCheckingPanel.m; sourceTree = "<group>"; };
+		9A246D6D1D55589B00888A74 /* SettingsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsButton.h; path = Views/SettingsButton.h; sourceTree = "<group>"; };
+		9A246D6E1D55589B00888A74 /* SettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsButton.m; path = Views/SettingsButton.m; sourceTree = "<group>"; };
 		9A26CB181C7BC4DE00E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
 		9A26CB1D1C7BCBF400E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
 		9A26CB231C7BCCE500E46662 /* CERangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSlider.h; path = SpaceBar/RangeSlider/CERangeSlider.h; sourceTree = "<group>"; };
@@ -124,10 +128,6 @@
 		9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderKnobLayer.m; path = SpaceBar/RangeSlider/CERangeSliderKnobLayer.m; sourceTree = "<group>"; };
 		9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSliderTrackLayer.h; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.h; sourceTree = "<group>"; };
 		9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderTrackLayer.m; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
-		9A437FA71D5507CA00F28E61 /* SnapShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapShot.h; path = Map/SnapShot.h; sourceTree = "<group>"; };
-		9A437FA81D5507CA00F28E61 /* SnapShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapShot.m; path = Map/SnapShot.m; sourceTree = "<group>"; };
-		9A437FAB1D55080B00F28E61 /* SnapShotDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapShotDatabase.h; path = Map/SnapShotDatabase.h; sourceTree = "<group>"; };
-		9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapShotDatabase.m; path = Map/SnapShotDatabase.m; sourceTree = "<group>"; };
 		9A437FB01D550C7A00F28E61 /* StudyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudyManager.h; path = StudyManager/StudyManager.h; sourceTree = "<group>"; };
 		9A437FB11D550C7A00F28E61 /* StudyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudyManager.m; path = StudyManager/StudyManager.m; sourceTree = "<group>"; };
 		9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleCheckingPanel.h; path = Views/CircleCheckingPanel.h; sourceTree = "<group>"; };
@@ -230,8 +230,6 @@
 			children = (
 				9A8BCA261D343D43006C2EDC /* POI.h */,
 				9A8BCA271D343D43006C2EDC /* POI.m */,
-				9A437FA71D5507CA00F28E61 /* SnapShot.h */,
-				9A437FA81D5507CA00F28E61 /* SnapShot.m */,
 				9A22D0161D22BD9A009BC465 /* Route.h */,
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A143B321D2AF56E001EE841 /* customMKMapView.h */,
@@ -246,8 +244,6 @@
 				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
 				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
-				9A437FAB1D55080B00F28E61 /* SnapShotDatabase.h */,
-				9A437FAC1D55080B00F28E61 /* SnapShotDatabase.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -279,6 +275,8 @@
 		9A437FB81D55482B00F28E61 /* StudyPanels */ = {
 			isa = PBXGroup;
 			children = (
+				9A246D691D554F3000888A74 /* TaskCheckingPanel.h */,
+				9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */,
 			);
 			name = StudyPanels;
 			sourceTree = "<group>";
@@ -408,6 +406,8 @@
 				9A43EAED1D40029D00080029 /* topPanel.h */,
 				9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */,
 				9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */,
+				9A246D6D1D55589B00888A74 /* SettingsButton.h */,
+				9A246D6E1D55589B00888A74 /* SettingsButton.m */,
 			);
 			name = RootViewPanels;
 			sourceTree = "<group>";
@@ -546,9 +546,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */,
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.m in Sources */,
-				9A437FAD1D55080B00F28E61 /* SnapShotDatabase.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
@@ -566,12 +566,12 @@
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
+				9A246D6B1D554F3000888A74 /* TaskCheckingPanel.m in Sources */,
 				9AC7E1A91D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
-				9A437FA91D5507CA00F28E61 /* SnapShot.m in Sources */,
 				9AF3B44A1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -595,9 +595,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A246D701D55589B00888A74 /* SettingsButton.m in Sources */,
 				9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9A8F67EE1D3DA65200C08CCB /* PreferencesController.m in Sources */,
-				9A437FAE1D55080B00F28E61 /* SnapShotDatabase.m in Sources */,
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
@@ -615,12 +615,12 @@
 				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
+				9A246D6C1D554F3000888A74 /* TaskCheckingPanel.m in Sources */,
 				9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
-				9A437FAA1D5507CA00F28E61 /* SnapShot.m in Sources */,
 				9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,

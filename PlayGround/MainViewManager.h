@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "topPanel.h"
 
-typedef enum {SEARCH, DIRECTION, CIRCLECHECKING} PanelType;
+typedef enum {SEARCH, DIRECTION, CIRCLECHECKING, TASKCHECKING} PanelType;
 @class ViewController;
 @class DirectionPanel;
 @class SearchPanel;
 @class CircleCheckingPanel;
+@class TaskCheckingPanel;
 
 //-------------------------
 // ManViewManager
@@ -29,6 +30,7 @@ typedef enum {SEARCH, DIRECTION, CIRCLECHECKING} PanelType;
 @property DirectionPanel *directionPanel;
 @property SearchPanel *searchPanel;
 @property CircleCheckingPanel *circleCheckingPanel;
+@property TaskCheckingPanel *taskCheckingPanel;
 
 - (id) initWithViewController:(ViewController*) viewController;
 - (void)showDefaultPanel;

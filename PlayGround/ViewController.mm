@@ -24,7 +24,7 @@
 //-------------------
 // Parameters
 //-------------------
-#define topPanelHeight 120
+#define topPanelHeight 150
 
 //-------------------
 // ViewController
