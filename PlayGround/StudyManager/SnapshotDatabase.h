@@ -1,21 +1,22 @@
 //
-//  RouteDatabase.h
+//  SnapshotDatabase.h
 //  SpaceBar
 //
-//  Created by Daniel on 8/4/16.
+//  Created by Daniel on 8/6/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Route.h"
 
-@interface RouteDatabase : NSObject
+@interface SnapshotDatabase : NSObject
+
 @property NSString *name;
-@property NSMutableDictionary <NSString*, Route *> *routeDictionary;
+@property NSMutableDictionary *snapshotDictrionary;
 
--(void)reloadRouteDB; // a temporary method
+- (id)initWithDatabaseName:(NSString*) databaseName;
 
 // iCloud related methods
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
+
 @end

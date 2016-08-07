@@ -184,4 +184,16 @@
     [self.mapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
 }
 
+- (void)removeRoute{
+    // Remove the previous route if there is any
+    if (self.activeRoute){
+        [self.mapView removeOverlay:
+         self.activeRoute.route.polyline];
+        self.activeRoute = nil;
+    }
+    // Reset Spacebar
+    [self.spaceBar resetSpaceBar];
+}
+
+
 @end

@@ -13,7 +13,7 @@
 - (id) init{
     self = [super init];
     if (self){
-        self.routeArray = [[NSMutableArray alloc] init];
+        self.routeDictionary = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -53,6 +53,17 @@
     Columbia.name = @"Columbia";
     
     [self addRouteWithSource:Edgewater Destination:Columbia];
+
+    // Munich to Copenhagen
+    POI *Munich = [[POI alloc] init];
+    Munich.latLon = CLLocationCoordinate2DMake(48.135125, 11.581981);
+    Munich.name = @"Munich";
+    
+    POI *Copenhagen = [[POI alloc] init];
+    Copenhagen.latLon = CLLocationCoordinate2DMake(55.676097, 12.568337);
+    Copenhagen.name = @"Copenhagen";
+    
+    [self addRouteWithSource:Munich Destination:Copenhagen];
     
 }
 
@@ -99,7 +110,7 @@
     {
         Route *aRoute = [[Route alloc] initWithMKRoute:route
                                                    Source:response.source Destination:response.destination];
-        [self.routeArray addObject:aRoute];
+        self.routeDictionary[aRoute.name] = aRoute;
         break;
     }
 }
@@ -108,13 +119,13 @@
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeObject:self.routeArray forKey:@"routeArray"];
+    [coder encodeObject:self.routeDictionary forKey:@"routeDictionary"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [self init];
     self.name = [coder decodeObjectForKey:@"name"];
-    self.routeArray = [[coder decodeObjectForKey:@"routeArray"] mutableCopy];
+    self.routeDictionary = [[coder decodeObjectForKey:@"routeDictionary"] mutableCopy];
     return self;
 }
 
@@ -148,7 +159,7 @@
         NSData *data = [NSData dataWithContentsOfFile:fullPathFileName];
         RouteDatabase *routeDB = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         self.name = routeDB.name;
-        self.routeArray = routeDB.routeArray;
+        self.routeDictionary = routeDB.routeDictionary;
         return YES;
     }else{
         NSLog(@"%@ does not exist.", fullPathFileName);

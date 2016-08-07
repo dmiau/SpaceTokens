@@ -141,9 +141,10 @@
 -(void)addPanel{
     
     [self.rootViewController.view addSubview:self];
-
+    [self.rootViewController removeRoute];
     [self.rootViewController.spaceBar
      addSpaceTokensFromPOIArray: self.rootViewController.poiDatabase.poiArray];
+    
     self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     
     // Add the direction button
@@ -152,6 +153,7 @@
     
     self.directionButton.frame = CGRectMake(width*0.1, height*0.9, 60, 20);
     [self.rootViewController.mapView addSubview:self.directionButton];
+    
 }
 
 -(void)removePanel{

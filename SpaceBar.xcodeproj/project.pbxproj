@@ -24,8 +24,8 @@
 		9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
 		9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
-		9A437FB21D550C7A00F28E61 /* StudyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* StudyManager.m */; };
-		9A437FB31D550C7A00F28E61 /* StudyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* StudyManager.m */; };
+		9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
+		9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
 		9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
 		9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
 		9A43EAF01D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
@@ -64,8 +64,14 @@
 		9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
 		9A93F9281D3016690012638A /* customMKMapView+MapDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */; };
 		9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */; };
+		9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
+		9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
+		9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
+		9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
+		9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
+		9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9ABB28101D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
@@ -128,8 +134,8 @@
 		9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderKnobLayer.m; path = SpaceBar/RangeSlider/CERangeSliderKnobLayer.m; sourceTree = "<group>"; };
 		9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSliderTrackLayer.h; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.h; sourceTree = "<group>"; };
 		9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderTrackLayer.m; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
-		9A437FB01D550C7A00F28E61 /* StudyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudyManager.h; path = StudyManager/StudyManager.h; sourceTree = "<group>"; };
-		9A437FB11D550C7A00F28E61 /* StudyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudyManager.m; path = StudyManager/StudyManager.m; sourceTree = "<group>"; };
+		9A437FB01D550C7A00F28E61 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = StudyManager/GameManager.h; sourceTree = "<group>"; };
+		9A437FB11D550C7A00F28E61 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = StudyManager/GameManager.m; sourceTree = "<group>"; };
 		9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleCheckingPanel.h; path = Views/CircleCheckingPanel.h; sourceTree = "<group>"; };
 		9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleCheckingPanel.m; path = Views/CircleCheckingPanel.m; sourceTree = "<group>"; };
 		9A43EAED1D40029D00080029 /* topPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topPanel.h; path = Views/topPanel.h; sourceTree = "<group>"; };
@@ -179,8 +185,15 @@
 		9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableController.m; sourceTree = "<group>"; };
 		9A93F9261D3016690012638A /* customMKMapView+MapDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "customMKMapView+MapDisplay.h"; path = "Map/customMKMapView+MapDisplay.h"; sourceTree = "<group>"; };
 		9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "customMKMapView+MapDisplay.m"; path = "Map/customMKMapView+MapDisplay.m"; sourceTree = "<group>"; };
+		9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotChecking.h; path = StudyManager/SnapshotChecking.h; sourceTree = "<group>"; };
+		9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotChecking.m; path = StudyManager/SnapshotChecking.m; sourceTree = "<group>"; };
+		9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotTableController.h; sourceTree = "<group>"; };
+		9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapshotTableController.m; sourceTree = "<group>"; };
 		9AA454DD1D52D160008D4FCF /* MyFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFileManager.h; sourceTree = "<group>"; };
 		9AA454DE1D52D160008D4FCF /* MyFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFileManager.m; sourceTree = "<group>"; };
+		9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotDatabase.h; path = StudyManager/SnapshotDatabase.h; sourceTree = "<group>"; };
+		9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotDatabase.m; path = StudyManager/SnapshotDatabase.m; sourceTree = "<group>"; };
+		9AA617611D5635D1003CD946 /* SnapshotProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProtocol.h; path = StudyManager/SnapshotProtocol.h; sourceTree = "<group>"; };
 		9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Interactions.h"; path = "SpaceBar/SpaceBar+Interactions.h"; sourceTree = "<group>"; };
 		9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Interactions.m"; path = "SpaceBar/SpaceBar+Interactions.m"; sourceTree = "<group>"; };
 		9ABB280E1D36795C00595A0D /* Elevator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Elevator.h; path = SpaceBar/RangeSlider/Elevator.h; sourceTree = "<group>"; };
@@ -263,13 +276,18 @@
 			name = Track;
 			sourceTree = "<group>";
 		};
-		9A437FAF1D55082700F28E61 /* StudyManager */ = {
+		9A437FAF1D55082700F28E61 /* GameManager */ = {
 			isa = PBXGroup;
 			children = (
-				9A437FB01D550C7A00F28E61 /* StudyManager.h */,
-				9A437FB11D550C7A00F28E61 /* StudyManager.m */,
+				9A437FB01D550C7A00F28E61 /* GameManager.h */,
+				9A437FB11D550C7A00F28E61 /* GameManager.m */,
+				9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */,
+				9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */,
+				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
+				9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */,
+				9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */,
 			);
-			name = StudyManager;
+			name = GameManager;
 			sourceTree = "<group>";
 		};
 		9A437FB81D55482B00F28E61 /* StudyPanels */ = {
@@ -378,7 +396,7 @@
 		9AC36DD31C60098A0037210F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9A437FAF1D55082700F28E61 /* StudyManager */,
+				9A437FAF1D55082700F28E61 /* GameManager */,
 				9AC7E1AC1D51164600C2E8BE /* SeguePanels */,
 				9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */,
 				9A5301471C5AD6A6008D584B /* ViewController.h */,
@@ -425,6 +443,8 @@
 				9A1CA2B51D4671210098957A /* CustomTabController.m */,
 				9A75D8981D54C20B0071F6A6 /* RouteTableController.h */,
 				9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */,
+				9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */,
+				9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */,
 			);
 			name = SeguePanels;
 			sourceTree = "<group>";
@@ -577,15 +597,18 @@
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
+				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
-				9A437FB21D550C7A00F28E61 /* StudyManager.m in Sources */,
+				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
+				9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9281D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
+				9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
 				9ABB28101D36795C00595A0D /* Elevator.m in Sources */,
 			);
@@ -626,15 +649,18 @@
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
+				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
-				9A437FB31D550C7A00F28E61 /* StudyManager.m in Sources */,
+				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
+				9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9291D3016690012638A /* customMKMapView+MapDisplay.m in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
+				9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
 				9ABB28111D36795C00595A0D /* Elevator.m in Sources */,
 			);

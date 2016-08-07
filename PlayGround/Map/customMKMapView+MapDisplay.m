@@ -113,8 +113,16 @@
     CLLocationCoordinate2D targetCentroidLatlon = [self
                                                    convertPoint:CGPointMake(targetX, targetY)
                                                    toCoordinateFromView:self];
-    
-    self.centerCoordinate = targetCentroidLatlon;
+    if(CLLocationCoordinate2DIsValid(targetCentroidLatlon)){
+        self.centerCoordinate = targetCentroidLatlon;
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to position the map."
+                                                        message:@"Center coordinate is invalid, try again."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (CLLocationDirection) computeOrientationFromA: (CLLocationCoordinate2D) coordA

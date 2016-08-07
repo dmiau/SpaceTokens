@@ -1,21 +1,20 @@
 //
-//  RouteTableController.m
+//  SnapshotTableController.m
 //  SpaceBar
 //
-//  Created by Daniel on 8/5/16.
+//  Created by Daniel on 8/6/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "RouteTableController.h"
+#import "SnapshotTableController.h"
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "Map/RouteDatabase.h"
+#import "StudyManager/SnapshotDatabase.h"
+#import "StudyManager/GameManager.h"
 
-@implementation RouteTableController{
-    RouteDatabase *routeDatabase;
-    NSMutableArray *keyArray;
+@implementation SnapshotTableController{
+    GameManager *gameManager;
 }
-
 
 // Initialization
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -35,8 +34,7 @@
         self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
         
         // Connect the RouteDatabase
-        routeDatabase = self.rootViewController.routeDatabase;
-        keyArray = [[NSMutableArray alloc] init];
+        gameManager = self.rootViewController.gameManager;
     }
     return self;
 }
@@ -46,8 +44,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [keyArray removeAllObjects]; // reset the array
-    keyArray = [routeDatabase.routeDictionary allKeys];
     [self.myTableView reloadData];
 }
 
@@ -58,7 +54,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [keyArray count];
+    return [gameManager.gameVector count];
 }
 
 //----------------
@@ -66,7 +62,7 @@
 //----------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = (UITableViewCell *)[tableView                                                dequeueReusableCellWithIdentifier:@"routeCell"];
+    UITableViewCell *cell = (UITableViewCell *)[tableView                                                dequeueReusableCellWithIdentifier:@"snapshotCell"];
     
     if (cell == nil){
         NSLog(@"Something wrong...");
@@ -76,7 +72,7 @@
     int i = [indexPath row];
     
     // Configure Cell
-    cell.textLabel.text = keyArray[i];
+    cell.textLabel.text = gameManager.gameVector[i];
     return cell;
 }
 
@@ -86,40 +82,13 @@
     
     int row_id = [path row];
     int section_id = [path section];
-    
-    [self.rootViewController showRoute:routeDatabase.routeDictionary[keyArray[row_id]]];
+
+    // execute the snapshot
+    [gameManager runSnapshotIndex:row_id];
     //--------------
     // We might need to do something for iPad
     //--------------
     [self.navigationController popViewControllerAnimated:NO];
 }
 
-
-- (IBAction)saveAction:(id)sender {
-//    //Save the files using the background thread
-//    //http://stackoverflow.com/questions/12671042/moving-a-function-to-a-background-thread-in-objective-c
-//    
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-//    dispatch_async(queue, ^{
-//        NSString *dirPath = [self.rootViewController.myFileManager currentFullDirectoryPath];
-//        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.route"];
-//        
-//        // Test file saving capability
-//        [routeDatabase saveDatatoFileWithName:fileFullPath];
-//                
-//        // Perform async operation
-//        // Call your method/function here
-//        // Example:
-//        // NSString *result = [anObject calculateSomething];
-//    });
-    
-    
-}
-
-- (IBAction)reloadAction:(id)sender {
-//    [routeDatabase loadFromFile:fileFullPath];
-}
-
-- (IBAction)clearAction:(id)sender {
-}
 @end

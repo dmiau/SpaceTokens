@@ -16,32 +16,28 @@
 
 @class Route;
 @class RouteDatabase;
-@class StudyManager;
+@class GameManager;
 
 @interface ViewController : UIViewController
 <SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
 
 @property MainViewManager *mainViewManager;
 @property MyFileManager *myFileManager;
-@property UIButton *myButton;
 @property customMKMapView *mapView;
 @property SpaceBar *spaceBar;
 
 
+// Databases
 @property POIDatabase *poiDatabase;
+@property GameManager *gameManager;
+
+// Route related methods
 @property RouteDatabase *routeDatabase;
-
 @property Route* activeRoute;
-@property StudyManager *studyManager;
-
-
 - (void)showRoute:(Route*) aRoute;
-
+- (void)removeRoute;
 
 // UI Panels
-
-- (void) addDirectionPanel;
-- (void) initSpaceBarWithTokens;
-- (void)directionButtonAction;
+- (void) directionButtonAction;
 @end
 

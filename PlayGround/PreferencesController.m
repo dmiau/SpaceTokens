@@ -9,7 +9,7 @@
 #import "PreferencesController.h"
 #import "AppDelegate.h"
 #import "CustomTabController.h"
-#import "StudyManager/StudyManager.h"
+#import "StudyManager/GameManager.h"
 
 @implementation PreferencesController
 
@@ -48,7 +48,7 @@
     }
     
     int selectionIndex = 0;
-    switch (self.rootViewController.studyManager.studyManagerStatus) {
+    switch (self.rootViewController.gameManager.gameManagerStatus) {
         case OFF:
             selectionIndex = 0;
             break;
@@ -94,20 +94,23 @@
                        titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
     
     if ([label isEqualToString:@"Normal"]){
-        self.rootViewController.studyManager.studyManagerStatus = OFF;
+        self.rootViewController.gameManager.gameManagerStatus = OFF;
         
         // Show the default view
-        [self.rootViewController.mainViewManager showDefaultPanel];        
+        [self.rootViewController.mainViewManager showDefaultPanel];
+        
+        
+        
     }else if ([label isEqualToString:@"Demo"]){
-        self.rootViewController.studyManager.studyManagerStatus = DEMO;
+        self.rootViewController.gameManager.gameManagerStatus = DEMO;
     }else if ([label isEqualToString:@"Study"]){
-        self.rootViewController.studyManager.studyManagerStatus = STUDY;
+        self.rootViewController.gameManager.gameManagerStatus = STUDY;
         
         // Add the filter to the main view
         [self.rootViewController.mainViewManager showPanelWithType:TASKCHECKING];
         
     }else if ([label isEqualToString:@"Authoring"]){
-        self.rootViewController.studyManager.studyManagerStatus = AUTHORING;
+        self.rootViewController.gameManager.gameManagerStatus = AUTHORING;
     }
 }
 @end

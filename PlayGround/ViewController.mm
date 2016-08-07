@@ -11,7 +11,8 @@
 #import "Map/Route.h"
 #import "Map/POIDatabase.h"
 #import "Map/RouteDatabase.h"
-#import "StudyManager/StudyManager.h"
+#import "StudyManager/GameManager.h"
+#import "StudyManager/SnapshotDatabase.h"
 
 // This is an extension (similar to a category)
 @interface ViewController ()
@@ -42,12 +43,6 @@
     self.myFileManager.directorPartialPath = @"test";
     
     //----------------
-    // Initialize Study Manager
-    //----------------
-    self.studyManager = [[StudyManager alloc] init];
-    self.studyManager.studyManagerStatus = OFF;
-    
-    //----------------
     // Initialize a POI DB
     //----------------
     self.poiDatabase = [[POIDatabase alloc] init];
@@ -60,6 +55,17 @@
     //----------------
     self.routeDatabase = [[RouteDatabase alloc] init];
     [self.routeDatabase reloadRouteDB];
+    
+    //----------------
+    // Initialize a Snashot DB
+    //----------------
+    SnapshotDatabase *mySnapshotDatabase = [[SnapshotDatabase alloc] initWithDatabaseName:@"study"];
+    NSArray *gameVector = @[@"PC1", @"PC2", @"TC1", @"TC2"];
+    //----------------
+    // Initialize Study Manager
+    //----------------
+    self.gameManager = [[GameManager alloc] initWithSnapshotDatabase:mySnapshotDatabase GameVector:gameVector];
+    self.gameManager.gameManagerStatus = OFF;
     
     //----------------
     // Add a mapView
