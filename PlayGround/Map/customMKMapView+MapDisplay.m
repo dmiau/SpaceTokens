@@ -114,7 +114,7 @@
                                                    convertPoint:CGPointMake(targetX, targetY)
                                                    toCoordinateFromView:self];
     if(CLLocationCoordinate2DIsValid(targetCentroidLatlon)){
-        self.centerCoordinate = targetCentroidLatlon;
+        self.centerCoordinate = targetCentroidLatlon;                
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to position the map."
                                                         message:@"Center coordinate is invalid, try again."

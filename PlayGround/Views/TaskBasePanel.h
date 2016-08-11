@@ -1,18 +1,26 @@
 //
-//  TaskCheckingPanel.h
+//  TaskBasePanel.h
 //  SpaceBar
 //
-//  Created by dmiau on 8/5/16.
+//  Created by dmiau on 8/7/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "topPanel.h"
+#import "../StudyManager/GameManager.h"
 
 @class ViewController;
 
-@interface TaskCheckingPanel : UIView <TopPanel>
+@interface TaskBasePanel : UIView <TopPanel>
 
 @property ViewController *rootViewController;
+
+- (void)configureForTask:(TaskType) taskType;
+
+
+
+
+
 
 @end

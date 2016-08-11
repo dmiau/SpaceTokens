@@ -7,7 +7,7 @@
 //
 
 #import "ViewController+Interactions.h"
-#import "Map/Route.h"
+#import "Map/RouteDatabase.h"
 
 @implementation ViewController (Interactions)
 
@@ -149,7 +149,7 @@
              Route *myRoute =
              [[Route alloc] initWithMKRoute:tempRoute
                                      Source:response.source Destination:response.destination];
-             [self showRoute:myRoute];
+             [self showRoute:myRoute zoomToOverview: YES];
          }
 //         [self updateSpaceBar];
      }];
@@ -160,7 +160,26 @@
 //-----------------
 // This method does the following things
 //-----------------
-- (void)showRoute:(Route*) aRoute{
+- (void)showRouteFromDatabaseWithName:(NSString*) name
+                       zoomToOverview: (BOOL) overviewFlag
+{
+    
+    Route *aRoute = self.routeDatabase.routeDictionary[name];
+    if (aRoute){
+        [self showRoute:aRoute zoomToOverview: overviewFlag];
+    }else{
+        NSString *message = [NSString stringWithFormat:@"Route: %@ cannot be found.", name];
+        // A route with the name does not exist, throw a warning
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Route not found."
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag{
     
     // Remove the previous route if there is any
     if (self.activeRoute){
@@ -175,11 +194,13 @@
     [self.spaceBar removeRouteAnnotations];
     [self.spaceBar addAnnotationsFromRoute:self.activeRoute];
     
-    // Show the entire route
-    [self spaceBarTwoPointsTouchedLow:0 high:1];
-    
     // Only enable SpaceBar after a route is added
     self.spaceBar.spaceBarMode = PATH;
+    
+    if (overviewFlag){
+        // Show the entire route
+        [self spaceBarTwoPointsTouchedLow:0 high:1];
+    }
     
     [self.mapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
 }

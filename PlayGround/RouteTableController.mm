@@ -87,7 +87,8 @@
     int row_id = [path row];
     int section_id = [path section];
     
-    [self.rootViewController showRoute:routeDatabase.routeDictionary[keyArray[row_id]]];
+    [self.rootViewController showRoute:routeDatabase.routeDictionary[keyArray[row_id]]
+                        zoomToOverview:YES];
     //--------------
     // We might need to do something for iPad
     //--------------

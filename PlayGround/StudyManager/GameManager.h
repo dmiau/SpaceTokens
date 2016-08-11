@@ -11,7 +11,7 @@
 #import "SnapshotDatabase.h"
 
 typedef enum {OFF, STUDY, DEMO, AUTHORING} GameManagerStatus;
-
+typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 
 @interface GameManager : NSObject
 @property GameManagerStatus gameManagerStatus;
@@ -19,9 +19,12 @@ typedef enum {OFF, STUDY, DEMO, AUTHORING} GameManagerStatus;
 @property SnapshotDatabase *snapshotDatabase;
 @property NSArray *gameVector;
 
-- (id)initWithSnapshotDatabase: (SnapshotDatabase*) snapshotDatabase
-                    GameVector:(NSArray*) gameVector;
+
+// Game execution
 - (void)runSnapshotIndex:(int)index;
 
+
+- (id)initWithSnapshotDatabase: (SnapshotDatabase*) snapshotDatabase
+                    GameVector:(NSArray*) gameVector;
 - (void)reportCompletionFromSnashot:(id<SnapshotProtocol>) snapshot;
 @end

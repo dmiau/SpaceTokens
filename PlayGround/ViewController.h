@@ -34,7 +34,9 @@
 // Route related methods
 @property RouteDatabase *routeDatabase;
 @property Route* activeRoute;
-- (void)showRoute:(Route*) aRoute;
+- (void)showRouteFromDatabaseWithName:(NSString*) name
+                       zoomToOverview: (BOOL) overviewFlag;
+- (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag;
 - (void)removeRoute;
 
 // UI Panels

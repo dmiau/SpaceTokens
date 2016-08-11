@@ -98,7 +98,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         _maximumValue = 10.0;
         _trackPaddingInPoints = 30;
         
-        _blankXBias = 30;
+        _blankXBias = frame.size.width/2;
         
         _upperTouch = nil;
         _lowerTouch = nil;
@@ -365,8 +365,15 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 - (void) updateElevatorPercentageLow:(double)low high:(double)high{
     // In oneFingerMove mode, the elevator does not accept lowerValue, upperValue updates from map
     if (!_elevator.isElevatorOneFingerMoved){
-        _elevator.lowerValue = low * _maximumValue;
-        _elevator.upperValue = high * _maximumValue;
+        
+        if (isnan(low) || isnan(high)){
+            _elevator.lowerValue = nan("");
+            _elevator.upperValue = nan("");
+        }else{
+            _elevator.lowerValue = low * _maximumValue;
+            _elevator.upperValue = high * _maximumValue;
+        }
+        
         [_elevator setNeedsDisplay];
     }
 }

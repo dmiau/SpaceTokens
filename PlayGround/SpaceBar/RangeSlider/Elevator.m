@@ -16,17 +16,27 @@
 - (id) init{
     self = [super init];
     if (self){
-        self.lowerValue = -1;
-        self.upperValue = -1;
+        self.lowerValue = nanf("");
+        self.upperValue = nanf("");
+        
+        // Assign a default elevator width
+        _elevatorWidth = 0.5;
         self.isElevatorOneFingerMoved = NO;
     }
     return self;
 }
 
-
+//-----------------
+// This method draws the elevator
+//-----------------
 - (void)drawInContext:(CGContextRef)ctx
 {
-    // need to paint touch indicator
+    //*****************
+    // Do not draw anything if one of the value is nan
+    //*****************
+    if (isnan(self.lowerValue) || isnan(self.upperValue)){
+        return;
+    }
     
     // do things differently, depending on the number of touches
     if (self.sliderContainer.pathBarMode == STREETVIEW)
@@ -49,7 +59,7 @@
         [self drawTouchIndicator:self.lowerValue inContext:ctx];
         
         
-    }else if ((self.upperValue > -1) && (self.lowerValue > -1))
+    }else if ((self.upperValue >= 0) && (self.lowerValue >= 0))
     {
         // fill the highlighed range
         CGContextSetFillColorWithColor(ctx, self.sliderContainer.trackHighlightColour.CGColor);
@@ -175,7 +185,7 @@
 // Support StreetView use cases
 //-----------------
 - (void) touchSingleDot: (float) value{
-    _elevatorWidth  =0;
+    _elevatorWidth  = 0;
     _touchPointOffset = 0;
     _lowerValue = value;
     _upperValue = -1;
@@ -199,17 +209,14 @@
         // The elevator is NOT touched
         
         // Cache the elevator size and current touch off-set
-        _elevatorWidth = _upperValue - _lowerValue;
+        if (!isnan(_upperValue) && !isnan(_lowerValue)){
+            _elevatorWidth = _upperValue - _lowerValue;
+        }
         
         float fullRangeValue = self.sliderContainer.maximumValue - self.sliderContainer.minimumValue;
         
-        // In case the current elevator length is 0
-        if (_elevatorWidth <= 0.05 * fullRangeValue){
-            // Assign a default elevator width
-            _elevatorWidth = 0.05 * fullRangeValue;
-        }
-        
-        if ( _lowerValue < 0 && _upperValue < 0){
+        if (isnan(_upperValue) || isnan(_lowerValue))
+        {
             // There is no elevator
             _lowerValue = value - _elevatorWidth/2;
             _upperValue = value + _elevatorWidth/2;

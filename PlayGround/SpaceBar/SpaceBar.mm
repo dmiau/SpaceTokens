@@ -47,7 +47,7 @@
 //        [_mapView addSubview: _canvas];
         
         // Init the frame
-        float spaceBarWidth = 60;
+        float spaceBarWidth = 40;
         self.frame = CGRectMake(self.mapView.frame.size.width - spaceBarWidth, 0,
                                 spaceBarWidth,
                                 self.mapView.frame.size.height);

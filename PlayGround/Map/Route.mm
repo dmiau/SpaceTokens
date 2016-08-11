@@ -173,7 +173,7 @@ template class std::vector<pair<int, int>>;
         return percentageOutput;
     }else{
         vector<pair<float, float>> percentageOutput;
-        percentageOutput.push_back(make_pair(-10, -10));
+        percentageOutput.push_back(make_pair(nanf(""), nanf("")));
         cout << "The route is invisible!" << endl;
         return percentageOutput;
     }

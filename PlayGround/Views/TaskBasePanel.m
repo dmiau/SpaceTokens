@@ -1,16 +1,17 @@
 //
-//  TaskCheckingPanel.m
+//  TaskBasePanel.m
 //  SpaceBar
 //
-//  Created by dmiau on 8/5/16.
+//  Created by dmiau on 8/7/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "TaskCheckingPanel.h"
 #import "SettingsButton.h"
+#import "TaskBasePanel.h"
 
-@implementation TaskCheckingPanel{
+
+@implementation TaskBasePanel{
     SettingsButton *settingsButton;
 }
 
@@ -23,7 +24,7 @@
         
         //-------------------
         // Set up the view
-        //-------------------        
+        //-------------------
         // set up the color of the view
         [self setBackgroundColor:[UIColor colorWithRed: 0.94 green:0.94 blue:0.94
                                                  alpha:1.0]];
@@ -34,7 +35,7 @@
 }
 
 - (void)addPanel{
-
+    
     float panelHeight = self.rootViewController.view.frame.size.height -
     self.rootViewController.mapView.frame.size.height;
     // Move the map to the top
@@ -51,6 +52,7 @@
     [self.rootViewController.view addSubview: settingsButton];
 }
 
+
 - (void)removePanel{
     // Remove the settings button
     [settingsButton removeFromSuperview];
@@ -65,5 +67,33 @@
     self.rootViewController.mapView.frame = CGRectMake(0, panelHeight, mapWidth, mapHeight);
 }
 
+- (void)configureForTask:(TaskType) taskType{
+    switch (taskType) {
+        case CHECKING:
+            [self configureChecking];
+            break;
+        case PROGRESS:
+            [self configureProgress];
+            break;
+//        case SCLAE:
+//            <#statements#>
+//            break;
+//        case JUMP:
+//            <#statements#>
+//            break;
+//        case ZOOMTOFIT:
+//            <#statements#>
+//            break;
+        default:
+            break;
+    }
+}
 
+- (void)configureChecking{
+    
+}
+
+- (void)configureProgress{
+    
+}
 @end

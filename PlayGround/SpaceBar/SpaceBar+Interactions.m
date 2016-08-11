@@ -58,17 +58,20 @@
 
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair{
     
-    // TODO: should this be disabled during moving?
-    
-    float low = MIN(percentagePair[0], percentagePair[1]);
-    float high = MAX(percentagePair[0], percentagePair[1]);
-    
-    if (!self.smallValueOnTopOfBar){
-        double tempLow = low;
-        low = 1 - high;
-        high = 1 -tempLow;
+    float low, high;
+    if (isnan(percentagePair[0]) || isnan(percentagePair[1])){
+        low = nanf(""); high = nanf("");
+    }else{
+        low = MIN(percentagePair[0], percentagePair[1]);
+        high = MAX(percentagePair[0], percentagePair[1]);
+        
+        if (!self.smallValueOnTopOfBar){
+            double tempLow = low;
+            low = 1 - high;
+            high = 1 -tempLow;
+        }
     }
-    
+
     [self.sliderContainer updateElevatorPercentageLow:low high:high];
 }
 

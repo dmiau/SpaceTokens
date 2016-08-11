@@ -28,6 +28,7 @@
     self = [super init];
     if (self){
         _latLon = CLLocationCoordinate2DMake(0, 0);
+        _coordSpan = MKCoordinateSpanMake(0.01, 0.01);
     }
     return self;
 }

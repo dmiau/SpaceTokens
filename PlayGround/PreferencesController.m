@@ -95,20 +95,11 @@
     
     if ([label isEqualToString:@"Normal"]){
         self.rootViewController.gameManager.gameManagerStatus = OFF;
-        
-        // Show the default view
-        [self.rootViewController.mainViewManager showDefaultPanel];
-        
-        
-        
+
     }else if ([label isEqualToString:@"Demo"]){
         self.rootViewController.gameManager.gameManagerStatus = DEMO;
     }else if ([label isEqualToString:@"Study"]){
         self.rootViewController.gameManager.gameManagerStatus = STUDY;
-        
-        // Add the filter to the main view
-        [self.rootViewController.mainViewManager showPanelWithType:TASKCHECKING];
-        
     }else if ([label isEqualToString:@"Authoring"]){
         self.rootViewController.gameManager.gameManagerStatus = AUTHORING;
     }

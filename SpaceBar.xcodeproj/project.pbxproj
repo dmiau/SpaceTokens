@@ -15,8 +15,6 @@
 		9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A22D0191D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
-		9A246D6B1D554F3000888A74 /* TaskCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */; };
-		9A246D6C1D554F3000888A74 /* TaskCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */; };
 		9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A246D701D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
@@ -74,6 +72,8 @@
 		9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
+		9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
+		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9ABB28101D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9ABB28111D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
@@ -107,6 +107,10 @@
 		9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
+		9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
+		9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
+		9AF100031D57FA720063CB63 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
+		9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
 		9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9AF3B44A1D3E95D1004680CB /* SearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* SearchPanel.m */; };
 		9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* SearchPanel.m */; };
@@ -122,8 +126,6 @@
 		9A1CA2B51D4671210098957A /* CustomTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabController.m; path = Views/CustomTabController.m; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
-		9A246D691D554F3000888A74 /* TaskCheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCheckingPanel.h; path = Views/TaskCheckingPanel.h; sourceTree = "<group>"; };
-		9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCheckingPanel.m; path = Views/TaskCheckingPanel.m; sourceTree = "<group>"; };
 		9A246D6D1D55589B00888A74 /* SettingsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsButton.h; path = Views/SettingsButton.h; sourceTree = "<group>"; };
 		9A246D6E1D55589B00888A74 /* SettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsButton.m; path = Views/SettingsButton.m; sourceTree = "<group>"; };
 		9A26CB181C7BC4DE00E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
@@ -196,6 +198,8 @@
 		9AA617611D5635D1003CD946 /* SnapshotProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProtocol.h; path = StudyManager/SnapshotProtocol.h; sourceTree = "<group>"; };
 		9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Interactions.h"; path = "SpaceBar/SpaceBar+Interactions.h"; sourceTree = "<group>"; };
 		9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Interactions.m"; path = "SpaceBar/SpaceBar+Interactions.m"; sourceTree = "<group>"; };
+		9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProgress.h; path = StudyManager/SnapshotProgress.h; sourceTree = "<group>"; };
+		9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SnapshotProgress.mm; path = StudyManager/SnapshotProgress.mm; sourceTree = "<group>"; };
 		9ABB280E1D36795C00595A0D /* Elevator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Elevator.h; path = SpaceBar/RangeSlider/Elevator.h; sourceTree = "<group>"; };
 		9ABB280F1D36795C00595A0D /* Elevator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Elevator.m; path = SpaceBar/RangeSlider/Elevator.m; sourceTree = "<group>"; };
 		9AC36DC41C5FF4690037210F /* SpaceBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceBar.h; path = SpaceBar/SpaceBar.h; sourceTree = "<group>"; };
@@ -212,6 +216,9 @@
 		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
 		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
+		9AF100021D57FA720063CB63 /* StudyPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyPanels.xib; sourceTree = "<group>"; };
+		9AF1FFFE1D57CA770063CB63 /* TaskBasePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskBasePanel.h; path = Views/TaskBasePanel.h; sourceTree = "<group>"; };
+		9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskBasePanel.m; path = Views/TaskBasePanel.m; sourceTree = "<group>"; };
 		9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Extensions.h"; path = "SpaceBar/UIButton+Extensions.h"; sourceTree = "<group>"; };
 		9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Extensions.m"; path = "SpaceBar/UIButton+Extensions.m"; sourceTree = "<group>"; };
 		9AF3B4481D3E95D1004680CB /* SearchPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanel.h; path = Views/SearchPanel.h; sourceTree = "<group>"; };
@@ -286,6 +293,8 @@
 				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
 				9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */,
 				9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */,
+				9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */,
+				9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */,
 			);
 			name = GameManager;
 			sourceTree = "<group>";
@@ -293,8 +302,9 @@
 		9A437FB81D55482B00F28E61 /* StudyPanels */ = {
 			isa = PBXGroup;
 			children = (
-				9A246D691D554F3000888A74 /* TaskCheckingPanel.h */,
-				9A246D6A1D554F3000888A74 /* TaskCheckingPanel.m */,
+				9AF1FFFE1D57CA770063CB63 /* TaskBasePanel.h */,
+				9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */,
+				9AF100021D57FA720063CB63 /* StudyPanels.xib */,
 			);
 			name = StudyPanels;
 			sourceTree = "<group>";
@@ -538,6 +548,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AF100031D57FA720063CB63 /* StudyPanels.xib in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
@@ -555,6 +566,7 @@
 				9AD0F4461C7CF71800AEF928 /* Main.storyboard in Resources */,
 				9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */,
 				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
+				9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,11 +594,12 @@
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
+				9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
+				9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */,
 				9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
-				9A246D6B1D554F3000888A74 /* TaskCheckingPanel.m in Sources */,
 				9AC7E1A91D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
@@ -634,11 +647,12 @@
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
 				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
+				9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
+				9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */,
 				9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
-				9A246D6C1D554F3000888A74 /* TaskCheckingPanel.m in Sources */,
 				9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
