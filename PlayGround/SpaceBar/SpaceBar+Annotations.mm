@@ -18,16 +18,18 @@
     // Add the source label
     UILabel *sourceLabel = [self generateAnnotationLabelWithName:route.source.name
                                                     atPercentage:0];
-    sourceLabel.frame =  CGRectMake(0,
-    self.sliderContainer.frame.size.height - self.sliderContainer.trackPaddingInPoints
-                                       , 60, 30);
+    [sourceLabel sizeToFit];
+    sourceLabel.frame =  CGRectMake(
+                self.sliderContainer.frame.size.width - sourceLabel.frame.size.width,
+    self.sliderContainer.frame.size.height - self.sliderContainer.trackPaddingInPoints, sourceLabel.frame.size.width, sourceLabel.frame.size.height);
     [self.annotationView addSubview:sourceLabel];
 
     
     // Add the destination label
     UILabel *destinationLabel = [self generateAnnotationLabelWithName:route.destination.name
                                                          atPercentage:0];
-    destinationLabel.frame = CGRectMake(0, 0, 60, 30);
+    [destinationLabel sizeToFit];
+    destinationLabel.frame = CGRectMake(self.sliderContainer.frame.size.width - destinationLabel.frame.size.width, 0, destinationLabel.frame.size.width, destinationLabel.frame.size.height);
     [self.annotationView addSubview:destinationLabel];
     
     // Randomly add some annotations in between

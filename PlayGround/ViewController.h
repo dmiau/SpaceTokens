@@ -24,6 +24,7 @@
 @property MainViewManager *mainViewManager;
 @property MyFileManager *myFileManager;
 @property customMKMapView *mapView;
+@property customMKMapView *miniMapView;
 @property SpaceBar *spaceBar;
 
 

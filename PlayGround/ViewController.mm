@@ -6,11 +6,13 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ViewController.h"
 #import "tester.h"
 #import "Map/Route.h"
 #import "Map/POIDatabase.h"
 #import "Map/RouteDatabase.h"
+#import "Map/MiniMapView.h"
 #import "StudyManager/GameManager.h"
 #import "StudyManager/SnapshotDatabase.h"
 
@@ -83,6 +85,16 @@
     CLLocationCoordinate2D NYC = CLLocationCoordinate2DMake(40.711801, -74.013120);
     MKCircle *circle = [MKCircle circleWithCenterCoordinate:NYC radius:300]; // radius is measured in meters
     [self.mapView addOverlay:circle];
+    
+    
+    //----------------
+    // Add a mini map
+    //----------------
+    self.miniMapView = [[MiniMapView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                     self.view.frame.size.width/3,
+                                                                     self.mapView.frame.size.height/3)];
+    [self.miniMapView setUserInteractionEnabled:NO];
+    self.miniMapView.showsCompass = NO;
     
     //----------------
     // Add a SpaceBar

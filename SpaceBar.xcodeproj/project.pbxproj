@@ -54,6 +54,8 @@
 		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
 		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
 		9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
+		9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B5E521D5D659300A32DC9 /* MiniMapView.m */; };
+		9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B5E521D5D659300A32DC9 /* MiniMapView.m */; };
 		9A8BCA281D343D43006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
 		9A8BCA2B1D344892006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
 		9A8F67ED1D3DA65200C08CCB /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.m */; };
@@ -179,6 +181,8 @@
 		9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+UpdateMap.m"; path = "SpaceBar/SpaceBar+UpdateMap.m"; sourceTree = "<group>"; };
 		9A84136C1C6FB39B004DF8D1 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = SpaceBar/Constants.m; sourceTree = "<group>"; };
 		9A84136E1C6FB3B4004DF8D1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = SpaceBar/Constants.h; sourceTree = "<group>"; };
+		9A8B5E511D5D659300A32DC9 /* MiniMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniMapView.h; path = Map/MiniMapView.h; sourceTree = "<group>"; };
+		9A8B5E521D5D659300A32DC9 /* MiniMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMapView.m; path = Map/MiniMapView.m; sourceTree = "<group>"; };
 		9A8BCA261D343D43006C2EDC /* POI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POI.h; path = Map/POI.h; sourceTree = "<group>"; };
 		9A8BCA271D343D43006C2EDC /* POI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POI.m; path = Map/POI.m; sourceTree = "<group>"; };
 		9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 				9A143B331D2AF56E001EE841 /* customMKMapView.m */,
 				9A93F9261D3016690012638A /* customMKMapView+MapDisplay.h */,
 				9A93F9271D3016690012638A /* customMKMapView+MapDisplay.m */,
+				9A8B5E511D5D659300A32DC9 /* MiniMapView.h */,
+				9A8B5E521D5D659300A32DC9 /* MiniMapView.m */,
 				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
 				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
 				9A43EAEE1D4008F400080029 /* POIDatabase.h */,
@@ -592,6 +598,7 @@
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
+				9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
 				9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
@@ -645,6 +652,7 @@
 				9A143B351D2AF56E001EE841 /* customMKMapView.m in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
+				9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
 				9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,

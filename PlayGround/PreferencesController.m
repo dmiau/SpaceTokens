@@ -65,6 +65,13 @@
             break;
     }
     self.appModeSegmentControlOutlet.selectedSegmentIndex = selectionIndex;
+    
+    // Update the status of the mini map
+    if (!self.rootViewController.miniMapView.superview){
+        self.miniMapOutlet.selectedSegmentIndex = 0;
+    }else{
+        self.miniMapOutlet.selectedSegmentIndex = 1;
+    }    
 }
 
 //------------------
@@ -88,7 +95,6 @@
 
 - (IBAction)appModeSegmentControl:(id)sender {
     
-    
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     NSString *label = [segmentedControl
                        titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
@@ -102,6 +108,18 @@
         self.rootViewController.gameManager.gameManagerStatus = STUDY;
     }else if ([label isEqualToString:@"Authoring"]){
         self.rootViewController.gameManager.gameManagerStatus = AUTHORING;
+    }
+}
+- (IBAction)miniMapAction:(id)sender {
+    
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    NSString *label = [segmentedControl
+                       titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
+    
+    if ([label isEqualToString:@"On"]){
+        [self.rootViewController.mapView addSubview: self.rootViewController.miniMapView];
+    }else if ([label isEqualToString:@"Off"]){
+        [self.rootViewController.miniMapView removeFromSuperview];
     }
 }
 @end

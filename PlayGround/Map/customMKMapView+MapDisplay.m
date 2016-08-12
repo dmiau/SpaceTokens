@@ -141,6 +141,10 @@
     return 90-orientation;
 }
 
+
+//---------------------
+// Zoom-to-fit
+//---------------------
 - (void) zoomToFitPOIs: (NSSet<POI*> *) poiSet{
     // Goal: find minMapPointX, maxMapPOintX,
     // minMapPointY, maxMapPointY
@@ -179,9 +183,9 @@
         ySpan = xSpan * aspectRatio;
     }
     
-    MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan,
-                                       midPoint.y - ySpan,
-                                       xSpan * 2.3, ySpan*2.3);
+    MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan/2,
+                                       midPoint.y - ySpan/2,
+                                       xSpan * 1.1, ySpan*1.1);
     
     [self setVisibleMapRect:zoomRect animated:NO];
 }

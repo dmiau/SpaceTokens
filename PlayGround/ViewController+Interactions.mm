@@ -200,6 +200,22 @@
     if (overviewFlag){
         // Show the entire route
         [self spaceBarTwoPointsTouchedLow:0 high:1];
+        
+        // If the mini map is on, zoom the map to fit the entire route
+        if (self.miniMapView.superview){
+            
+            POI *startPOI = [[POI alloc] init];
+            POI *endPOI = [[POI alloc] init];
+            startPOI.latLon = MKCoordinateForMapPoint
+            (MKMapPointMake((*self.activeRoute.mapPointX)[0], (*self.activeRoute.mapPointY)[0]));
+            unsigned long length = self.activeRoute.mapPointX->size();
+            endPOI.latLon = MKCoordinateForMapPoint
+            (MKMapPointMake((*self.activeRoute.mapPointX)[length-1],
+                            (*self.activeRoute.mapPointY)[length-1]));
+            NSSet *poiSet = [NSSet setWithObjects:startPOI, endPOI, nil];
+            [self.miniMapView zoomToFitPOIs:poiSet];            
+            [self.miniMapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
+        }
     }
     
     [self.mapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];

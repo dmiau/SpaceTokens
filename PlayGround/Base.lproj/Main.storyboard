@@ -30,7 +30,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BjC-Kw-sh2">
-                                <rect key="frame" x="38" y="226" width="335" height="29"/>
+                                <rect key="frame" x="38" y="295" width="335" height="29"/>
                                 <segments>
                                     <segment title="Normal"/>
                                     <segment title="Demo"/>
@@ -48,11 +48,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="App Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HT-DU-XZ0">
-                                <rect key="frame" x="41" y="196" width="79" height="21"/>
+                                <rect key="frame" x="41" y="265" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mini Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92L-Ps-zc9">
+                                <rect key="frame" x="38" y="171" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-BI-Q2V">
+                                <rect key="frame" x="38" y="200" width="121" height="29"/>
+                                <segments>
+                                    <segment title="Off"/>
+                                    <segment title="ON"/>
+                                </segments>
+                                <connections>
+                                    <action selector="miniMapAction:" destination="9O4-1U-3y6" eventType="valueChanged" id="IE0-9K-O2U"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -62,6 +78,7 @@
                     <connections>
                         <outlet property="appModeSegmentControlOutlet" destination="BjC-Kw-sh2" id="8fH-kv-APG"/>
                         <outlet property="mapSegmentControl" destination="s5R-Zj-Xkl" id="Fvn-Hz-cK0"/>
+                        <outlet property="miniMapOutlet" destination="6ne-BI-Q2V" id="jNe-hd-C0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEM-VR-Vd3" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,8 +12,11 @@
 
 @property ViewController* rootViewController;
 
+// Map mode segment control
 - (IBAction)mapStyleSegmentControl:(id)sender;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *miniMapOutlet;
+- (IBAction)miniMapAction:(id)sender;
 
 // App mode segment control
 @property (weak, nonatomic) IBOutlet UISegmentedControl *appModeSegmentControlOutlet;
