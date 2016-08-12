@@ -48,8 +48,8 @@
         
         float value = self.lowerValue;
         // Draw a small touch block
-        CGRect elevactorRect = CGRectMake(self.sliderContainer.blankXBias+2, value -0.5,
-                                          self.sliderContainer.blankXBias-4, value +0.5);
+        CGRect elevactorRect = CGRectMake(self.sliderContainer.frame.size.width/2+2, value -0.5,
+                                          self.sliderContainer.frame.size.width/2-4, value +0.5);
         
         UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:elevactorRect cornerRadius:15.0];
         CGContextAddPath(ctx, bezierPath.CGPath);
@@ -70,8 +70,8 @@
                     / (self.sliderContainer.maximumValue - self.sliderContainer.minimumValue)
                     * self.frame.size.height;
         
-        CGRect elevactorRect = CGRectMake(self.sliderContainer.blankXBias+2, lower,
-                                          self.sliderContainer.blankXBias-4, upper - lower);
+        CGRect elevactorRect = CGRectMake(self.sliderContainer.frame.size.width/2+2, lower,
+                                          self.sliderContainer.frame.size.width/2-4, upper - lower);
         
         //Original drawing code
         //CGContextFillRect(ctx, elevactorRect);
@@ -108,7 +108,7 @@
 - (void) drawTouchIndicator: (float) value inContext: (CGContextRef)ctx
 {
     float radius = 3;
-    float xBias = self.sliderContainer.blankXBias;
+    float xBias = self.sliderContainer.frame.size.width/2;
     
     // Convert from value to position
     float position = (value - self.sliderContainer.minimumValue)

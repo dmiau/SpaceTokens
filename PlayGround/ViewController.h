@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "SpaceBar/SpaceBar.h"
 #import "Map/customMKMapView.h"
+#import "Map/MiniMapView.h"
 #import "Map/POIDatabase.h"
 #import "MainViewManager.h"
 #import "MyFileManager.h"
@@ -24,7 +25,7 @@
 @property MainViewManager *mainViewManager;
 @property MyFileManager *myFileManager;
 @property customMKMapView *mapView;
-@property customMKMapView *miniMapView;
+@property MiniMapView *miniMapView;
 @property SpaceBar *spaceBar;
 
 

@@ -9,6 +9,9 @@
 #import <MapKit/MapKit.h>
 #import "POI.h"
 
+// Forward declration
+@class Route;
+
 //----------------
 // customMKMapViewDelegate
 //----------------
@@ -37,10 +40,9 @@
                     toTwoXY: (CGPoint[2]) viewXYs;
 
 - (void) zoomToFitPOIs: (NSSet<POI*> *) poiSet;
-
+- (void) zoomToFitRoute:(Route*) aRoute;
 
 // Tools
-//
 - (CLLocationDirection) computeOrientationFromA: (CLLocationCoordinate2D) coordA
                                             toB: (CLLocationCoordinate2D) coordB;
 

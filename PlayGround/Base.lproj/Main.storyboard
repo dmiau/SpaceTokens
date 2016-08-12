@@ -63,10 +63,26 @@
                                 <rect key="frame" x="38" y="200" width="121" height="29"/>
                                 <segments>
                                     <segment title="Off"/>
-                                    <segment title="ON"/>
+                                    <segment title="On"/>
                                 </segments>
                                 <connections>
                                     <action selector="miniMapAction:" destination="9O4-1U-3y6" eventType="valueChanged" id="IE0-9K-O2U"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sync Rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJT-mm-sOR">
+                                <rect key="frame" x="186" y="171" width="107" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xIY-GS-GRm">
+                                <rect key="frame" x="186" y="200" width="121" height="29"/>
+                                <segments>
+                                    <segment title="No"/>
+                                    <segment title="Yes"/>
+                                </segments>
+                                <connections>
+                                    <action selector="syncMiniMapRotationAction:" destination="9O4-1U-3y6" eventType="valueChanged" id="36b-Nk-Wpo"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -79,6 +95,7 @@
                         <outlet property="appModeSegmentControlOutlet" destination="BjC-Kw-sh2" id="8fH-kv-APG"/>
                         <outlet property="mapSegmentControl" destination="s5R-Zj-Xkl" id="Fvn-Hz-cK0"/>
                         <outlet property="miniMapOutlet" destination="6ne-BI-Q2V" id="jNe-hd-C0C"/>
+                        <outlet property="syncMiniMapRotationOutlet" destination="xIY-GS-GRm" id="d6U-ub-T4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEM-VR-Vd3" userLabel="First Responder" sceneMemberID="firstResponder"/>

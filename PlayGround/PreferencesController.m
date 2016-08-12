@@ -71,6 +71,12 @@
         self.miniMapOutlet.selectedSegmentIndex = 0;
     }else{
         self.miniMapOutlet.selectedSegmentIndex = 1;
+    }
+    
+    if (self.rootViewController.miniMapView.syncRotation){
+        self.syncMiniMapRotationOutlet.selectedSegmentIndex = 1;
+    }else{
+        self.syncMiniMapRotationOutlet.selectedSegmentIndex = 0;
     }    
 }
 
@@ -120,6 +126,19 @@
         [self.rootViewController.mapView addSubview: self.rootViewController.miniMapView];
     }else if ([label isEqualToString:@"Off"]){
         [self.rootViewController.miniMapView removeFromSuperview];
+    }
+}
+
+- (IBAction)syncMiniMapRotationAction:(id)sender {
+    
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    NSString *label = [segmentedControl
+                       titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
+    
+    if ([label isEqualToString:@"No"]){
+        self.rootViewController.miniMapView.syncRotation = NO;
+    }else if ([label isEqualToString:@"Yes"]){
+        self.rootViewController.miniMapView.syncRotation = YES;
     }
 }
 @end

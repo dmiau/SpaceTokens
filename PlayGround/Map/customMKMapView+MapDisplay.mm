@@ -7,6 +7,7 @@
 //
 
 #import "customMKMapView+MapDisplay.h"
+#import "Route.h"
 
 @implementation customMKMapView (MapDisplay)
 
@@ -188,6 +189,19 @@
                                        xSpan * 1.1, ySpan*1.1);
     
     [self setVisibleMapRect:zoomRect animated:NO];
+}
+
+- (void)zoomToFitRoute:(Route*) aRoute{
+    POI *startPOI = [[POI alloc] init];
+    POI *endPOI = [[POI alloc] init];
+    startPOI.latLon = MKCoordinateForMapPoint
+    (MKMapPointMake((*aRoute.mapPointX)[0], (*aRoute.mapPointY)[0]));
+    unsigned long length = aRoute.mapPointX->size();
+    endPOI.latLon = MKCoordinateForMapPoint
+    (MKMapPointMake((*aRoute.mapPointX)[length-1],
+                    (*aRoute.mapPointY)[length-1]));
+    NSSet *poiSet = [NSSet setWithObjects:startPOI, endPOI, nil];
+    [self zoomToFitPOIs:poiSet];
 }
 
 @end

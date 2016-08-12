@@ -53,6 +53,8 @@ typedef enum {MAP, STREETVIEW} PathBarMode;
 
 @property PathBarMode pathBarMode;
 
+- (void) setLayerFrames;
+
 // Interface for outside to update the elevator
 - (void) updateElevatorPercentageLow: (double)low high:(double)high;
 @end

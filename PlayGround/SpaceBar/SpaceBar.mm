@@ -36,19 +36,9 @@
         // Initialize the map
         self.mapView = myMapView;    
         
-//        // Add an UIView on top of the mapView
-//        _canvas = [[UIView alloc] initWithFrame:
-//                   CGRectMake(0, 0,
-//                _mapView.frame.size.width, _mapView.frame.size.height)];
-//        
-//        _canvas.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-//        _canvas.opaque = NO;
-//
-//        [_mapView addSubview: _canvas];
-        
         // Init the frame
         float spaceBarWidth = 40;
-        self.frame = CGRectMake(self.mapView.frame.size.width - spaceBarWidth, 0,
+        _frame = CGRectMake(self.mapView.frame.size.width - spaceBarWidth, 0,
                                 spaceBarWidth,
                                 self.mapView.frame.size.height);
         
@@ -63,10 +53,6 @@
         self.sliderContainer.trackPaddingInPoints = 30;
 
         [self.mapView addSubview:self.sliderContainer];
-        
-//        [self.sliderContainer addTarget:self
-//                         action:@selector(slideValueChanged:)
-//               forControlEvents:UIControlEventValueChanged];
         self.sliderContainer.curvatiousness = 0.0;
         
         // Add the gesture engine
@@ -76,6 +62,15 @@
     return self;
 }
 
+
+// Change the size of the frame
+- (void)setFrame:(CGRect)frame{
+    _frame = frame;
+    self.annotationView.frame = frame;
+    self.sliderContainer.frame = frame;
+    [self.sliderContainer setLayerFrames]; //redraw the layer
+    self.gestureEngine.frame = frame;
+}
 
 - (void)setDelegate:(id <SpaceBarDelegate>)aDelegate {
     if (_delegate != aDelegate) {

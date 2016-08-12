@@ -31,12 +31,11 @@
 @end
 
 #pragma mark - SpaceBarInterface
+typedef enum {TOKENONLY, PATH} SpaceBarMode;
+
 //----------------------------
 // SpaceBar
 //----------------------------
-
-typedef enum {TOKENONLY, PATH} SpaceBarMode;
-
 @interface SpaceBar : NSObject <CERangeSliderDelegate>
 @property SpaceBarMode spaceBarMode;
 @property CGRect frame;

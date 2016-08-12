@@ -15,12 +15,12 @@
 //- (void)drawInContext:(CGContextRef)ctx
 {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    float trackWidth = self.bounds.size.width - self.slider.blankXBias;
+    float trackWidth = self.bounds.size.width/2;
     
     // clip
     float cornerRadius = trackWidth * self.slider.curvatiousness / 2.0;
     
-    CGRect newBound = CGRectMake(self.slider.blankXBias, 0,
+    CGRect newBound = CGRectMake(self.bounds.size.width/2, 0,
                                  trackWidth, self.bounds.size.height);
     
     UIBezierPath *switchOutline = [UIBezierPath bezierPathWithRoundedRect:newBound

@@ -10,4 +10,7 @@
 
 @interface MiniMapView : customMKMapView <MKMapViewDelegate, customMKMapViewDelegate>
 
+@property MKPolyline *boxPolyline;
+@property BOOL syncRotation;
+
 @end

@@ -127,7 +127,6 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     return self;
 }
 
-
 // This specify the parameters of the track and the elevator
 - (void) setLayerFrames
 {
@@ -136,9 +135,6 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     // Set up the track
     //-----------------
     CGRect trackFrame = self.bounds;
-//    trackFrame.origin.x = +_blankXBias;
-//    trackFrame.size.width -= _blankXBias;
-    
     // Add cell padding for the trackLayer?
     trackFrame.origin.y = _trackPaddingInPoints;
     trackFrame.size.height -= _trackPaddingInPoints *2;
@@ -174,7 +170,14 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 //-----------------
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-
+//    // Exapand the width of the bar
+//    CGRect originalFrame = self.superview.frame;
+//    CGRect newFrame = CGRectMake(originalFrame.origin.x - originalFrame.size.width,
+//                                 originalFrame.origin.y,
+//                                 originalFrame.size.width*2,
+//                                 originalFrame.size.height);
+//    self.superview.frame = newFrame;
+    
     // trackTouchingSet keeps tracking of all the touching events
     for (UITouch *aTouch in touches){
         

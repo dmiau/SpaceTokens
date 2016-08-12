@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *miniMapOutlet;
 - (IBAction)miniMapAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *syncMiniMapRotationOutlet;
+- (IBAction)syncMiniMapRotationAction:(id)sender;
+
 // App mode segment control
 @property (weak, nonatomic) IBOutlet UISegmentedControl *appModeSegmentControlOutlet;
 - (IBAction)appModeSegmentControl:(id)sender;
