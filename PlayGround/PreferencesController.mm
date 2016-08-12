@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "CustomTabController.h"
 #import "StudyManager/GameManager.h"
+#import "Map/Route.h"
 
 @implementation PreferencesController
 
@@ -124,6 +125,18 @@
     
     if ([label isEqualToString:@"On"]){
         [self.rootViewController.mapView addSubview: self.rootViewController.miniMapView];
+        
+        // Add the route if there is an active route
+        
+        if (self.rootViewController.activeRoute){
+            [self.rootViewController.miniMapView zoomToFitRoute:self.rootViewController.activeRoute];
+            // Remove previous routes if any
+            [self.rootViewController.miniMapView removeRouteOverlays];
+            
+            [self.rootViewController.miniMapView
+             addOverlay:self.rootViewController.activeRoute.route.polyline
+             level:MKOverlayLevelAboveRoads];
+        }
     }else if ([label isEqualToString:@"Off"]){
         [self.rootViewController.miniMapView removeFromSuperview];
     }

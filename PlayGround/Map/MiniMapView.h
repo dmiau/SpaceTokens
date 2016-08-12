@@ -13,4 +13,6 @@
 @property MKPolyline *boxPolyline;
 @property BOOL syncRotation;
 
+- (void) updateBox: (MKMapView*) aMapView;
+- (void) removeRouteOverlays;
 @end

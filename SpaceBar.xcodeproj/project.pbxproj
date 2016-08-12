@@ -58,8 +58,8 @@
 		9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B5E521D5D659300A32DC9 /* MiniMapView.m */; };
 		9A8BCA281D343D43006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
 		9A8BCA2B1D344892006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
-		9A8F67ED1D3DA65200C08CCB /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.m */; };
-		9A8F67EE1D3DA65200C08CCB /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.m */; };
+		9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */; };
+		9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */; };
 		9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
 		9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
 		9A93F9281D3016690012638A /* customMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* customMKMapView+MapDisplay.mm */; };
@@ -186,7 +186,7 @@
 		9A8BCA261D343D43006C2EDC /* POI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POI.h; path = Map/POI.h; sourceTree = "<group>"; };
 		9A8BCA271D343D43006C2EDC /* POI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POI.m; path = Map/POI.m; sourceTree = "<group>"; };
 		9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
-		9A8F67EC1D3DA65200C08CCB /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreferencesController.mm; sourceTree = "<group>"; };
 		9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableController.h; sourceTree = "<group>"; };
 		9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableController.m; sourceTree = "<group>"; };
 		9A93F9261D3016690012638A /* customMKMapView+MapDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "customMKMapView+MapDisplay.h"; path = "Map/customMKMapView+MapDisplay.h"; sourceTree = "<group>"; };
@@ -449,7 +449,7 @@
 		9AC7E1AC1D51164600C2E8BE /* SeguePanels */ = {
 			isa = PBXGroup;
 			children = (
-				9A8F67EC1D3DA65200C08CCB /* PreferencesController.m */,
+				9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */,
 				9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */,
 				9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */,
 				9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */,
@@ -586,7 +586,7 @@
 			files = (
 				9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */,
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
-				9A8F67ED1D3DA65200C08CCB /* PreferencesController.m in Sources */,
+				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
@@ -640,7 +640,7 @@
 			files = (
 				9A246D701D55589B00888A74 /* SettingsButton.m in Sources */,
 				9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
-				9A8F67EE1D3DA65200C08CCB /* PreferencesController.m in Sources */,
+				9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,

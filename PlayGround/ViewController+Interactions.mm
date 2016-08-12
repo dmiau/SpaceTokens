@@ -204,6 +204,9 @@
         // If the mini map is on, zoom the map to fit the entire route
         if (self.miniMapView.superview){            
             [self.miniMapView zoomToFitRoute:self.activeRoute];
+            // Remove previous routes if any
+            [self.miniMapView removeRouteOverlays];
+            
             [self.miniMapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
         }
     }

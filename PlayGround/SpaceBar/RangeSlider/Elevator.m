@@ -82,9 +82,9 @@
 //        CGContextSetStrokeColorWithColor(ctx, [UIColor grayColor].CGColor);
 //        [bezierPath stroke];
         
-        // draw two touch points
-        [self drawTouchIndicator:self.lowerValue inContext:ctx];
-        [self drawTouchIndicator:self.upperValue inContext:ctx];
+//        // draw two touch points
+//        [self drawTouchIndicator:self.lowerValue inContext:ctx];
+//        [self drawTouchIndicator:self.upperValue inContext:ctx];
     }
     
     //    // shadow
