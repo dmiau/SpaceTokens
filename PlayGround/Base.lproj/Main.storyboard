@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Mgr-BX-eSq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="utr-4Q-hTY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s5R-Zj-Xkl">
@@ -106,7 +106,6 @@
         <scene sceneID="v8w-Xj-nna">
             <objects>
                 <tabBarController storyboardIdentifier="PreferenceTabController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rsh-FC-3uW" customClass="CustomTabController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9Rr-a8-nuk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -130,7 +129,7 @@
                         <viewControllerLayoutGuide type="bottom" id="JIu-SF-icP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Lhy-U9-LK2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moc-OC-X9A">
@@ -190,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfo-Gm-NvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1539" y="1858"/>
+            <point key="canvasLocation" x="1527" y="1962"/>
         </scene>
         <!--Files-->
         <scene sceneID="r96-QB-qO9">
@@ -201,7 +200,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Pck-wa-0UZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tjf-u3-QEv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ox7-7l-taT">
@@ -314,7 +313,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cii-8g-S8f"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HZe-dP-dh8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jz0-E0-mAf">
@@ -385,7 +384,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ha2-da-V2y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MZm-xF-38M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -404,7 +403,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
                             <userLayoutGuide location="216" affinity="maxX"/>
@@ -413,7 +412,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="7If-za-i5f"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <segue destination="i9V-Qy-le4" kind="show" identifier="DataSegue" id="SJZ-Dn-KUl"/>
                     </connections>

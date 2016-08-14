@@ -114,6 +114,10 @@
 		9AF100031D57FA720063CB63 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
 		9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
 		9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
+		9AF2D54C1D5E85C0001FCA6E /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */; };
+		9AF2D54D1D5E85C0001FCA6E /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */; };
+		9AF2D5501D5E8886001FCA6E /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
+		9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
 		9AF3B44A1D3E95D1004680CB /* SearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* SearchPanel.m */; };
 		9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* SearchPanel.m */; };
 /* End PBXBuildFile section */
@@ -225,6 +229,10 @@
 		9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskBasePanel.m; path = Views/TaskBasePanel.m; sourceTree = "<group>"; };
 		9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Extensions.h"; path = "SpaceBar/UIButton+Extensions.h"; sourceTree = "<group>"; };
 		9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Extensions.m"; path = "SpaceBar/UIButton+Extensions.m"; sourceTree = "<group>"; };
+		9AF2D54A1D5E85C0001FCA6E /* ProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressPanel.h; path = Views/ProgressPanel.h; sourceTree = "<group>"; };
+		9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressPanel.m; path = Views/ProgressPanel.m; sourceTree = "<group>"; };
+		9AF2D54E1D5E8886001FCA6E /* CheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckingPanel.h; path = Views/CheckingPanel.h; sourceTree = "<group>"; };
+		9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckingPanel.m; path = Views/CheckingPanel.m; sourceTree = "<group>"; };
 		9AF3B4481D3E95D1004680CB /* SearchPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanel.h; path = Views/SearchPanel.h; sourceTree = "<group>"; };
 		9AF3B4491D3E95D1004680CB /* SearchPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanel.m; path = Views/SearchPanel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -311,6 +319,10 @@
 				9AF1FFFE1D57CA770063CB63 /* TaskBasePanel.h */,
 				9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */,
 				9AF100021D57FA720063CB63 /* StudyPanels.xib */,
+				9AF2D54A1D5E85C0001FCA6E /* ProgressPanel.h */,
+				9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */,
+				9AF2D54E1D5E8886001FCA6E /* CheckingPanel.h */,
+				9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */,
 			);
 			name = StudyPanels;
 			sourceTree = "<group>";
@@ -590,6 +602,7 @@
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
+				9AF2D5501D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9A43EAF01D4008F400080029 /* POIDatabase.m in Sources */,
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
@@ -615,6 +628,7 @@
 				9AF3B44A1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
+				9AF2D54C1D5E85C0001FCA6E /* ProgressPanel.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
@@ -644,6 +658,7 @@
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
+				9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9A43EAF11D4008F400080029 /* POIDatabase.m in Sources */,
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
@@ -669,6 +684,7 @@
 				9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
+				9AF2D54D1D5E85C0001FCA6E /* ProgressPanel.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
@@ -812,7 +828,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -828,7 +844,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

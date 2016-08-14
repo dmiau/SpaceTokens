@@ -16,7 +16,7 @@
 
 @property ViewController *rootViewController;
 
-- (void)configureForTask:(TaskType) taskType;
+- (void)configureForSnapshot:(id <SnapshotProtocol>) snapshot;
 
 
 

@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "SettingsButton.h"
 #import "TaskBasePanel.h"
-
+#import "../StudyManager/SnapshotProgress.h"
+#import "../StudyManager/SnapshotChecking.h"
 
 @implementation TaskBasePanel{
     SettingsButton *settingsButton;
@@ -29,6 +30,13 @@
         [self setBackgroundColor:[UIColor colorWithRed: 0.94 green:0.94 blue:0.94
                                                  alpha:1.0]];
         settingsButton = [[SettingsButton alloc] init];
+        
+        
+        //-------------------
+        // Load all the panels
+        //-------------------
+        
+        
     }
     
     return self;
@@ -67,26 +75,33 @@
     self.rootViewController.mapView.frame = CGRectMake(0, panelHeight, mapWidth, mapHeight);
 }
 
-- (void)configureForTask:(TaskType) taskType{
-    switch (taskType) {
-        case CHECKING:
-            [self configureChecking];
-            break;
-        case PROGRESS:
-            [self configureProgress];
-            break;
-//        case SCLAE:
-//            <#statements#>
-//            break;
-//        case JUMP:
-//            <#statements#>
-//            break;
-//        case ZOOMTOFIT:
-//            <#statements#>
-//            break;
-        default:
-            break;
+- (void)configureForSnapshot:(id <SnapshotProtocol>) snapshot{
+    if ([snapshot isKindOfClass:[SnapshotProgress class]]){
+        
     }
+    
+    
+    
+    
+//    switch (taskType) {
+//        case CHECKING:
+//            [self configureChecking];
+//            break;
+//        case PROGRESS:
+//            [self configureProgress];
+//            break;
+//            //        case SCLAE:
+//            //            <#statements#>
+//            //            break;
+//            //        case JUMP:
+//            //            <#statements#>
+//            //            break;
+//            //        case ZOOMTOFIT:
+//            //            <#statements#>
+//            //            break;
+//        default:
+//            break;
+//    }
 }
 
 - (void)configureChecking{
