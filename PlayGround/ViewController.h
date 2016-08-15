@@ -14,6 +14,7 @@
 #import "Map/POIDatabase.h"
 #import "MainViewManager.h"
 #import "MyFileManager.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @class Route;
 @class RouteDatabase;
@@ -27,7 +28,7 @@
 @property customMKMapView *mapView;
 @property MiniMapView *miniMapView;
 @property SpaceBar *spaceBar;
-
+@property GMSPanoramaView *panoView; //cache a pointer to the StreetView object
 
 // Databases
 @property POIDatabase *poiDatabase;

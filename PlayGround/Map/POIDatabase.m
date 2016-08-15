@@ -27,11 +27,7 @@
     poi1.latLon = CLLocationCoordinate2DMake(40.885722, -73.912491);
     poi1.name = @"Home";
     [self.poiArray addObject:poi1];
-    
-    POI *poi2 = [[POI alloc] init];
-    poi2.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
-    poi2.name = @"Columbia U.";
-    [self.poiArray addObject:poi2];
+
     
     POI *poi3 = [[POI alloc] init];
     poi3.latLon = CLLocationCoordinate2DMake(40.711801, -74.013120);

@@ -168,6 +168,12 @@
         [self addSpaceTokenFromPOI:aPOI];
     }
     
+    // Add a YouAreHere SpaceToken
+    POI *specialPOI = [[POI alloc] init];
+    specialPOI.name = @"YouRHere";
+    specialPOI.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
+    self.youAreHere = [self addSpaceTokenFromPOI:specialPOI];
+    
     [self orderPOIs];
 }
 

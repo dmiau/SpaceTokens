@@ -11,6 +11,7 @@
 #import "CustomTabController.h"
 #import "StudyManager/GameManager.h"
 #import "Map/Route.h"
+#import "MainViewManager.h"
 
 @implementation PreferencesController
 
@@ -46,6 +47,8 @@
         self.mapSegmentControl.selectedSegmentIndex = 1;
     }else if (self.rootViewController.mapView.mapType == MKMapTypeSatelliteFlyover){
         self.mapSegmentControl.selectedSegmentIndex = 2;
+    }else if ([self.rootViewController.panoView superview]){
+        self.mapSegmentControl.selectedSegmentIndex = 3;
     }
     
     int selectionIndex = 0;
@@ -90,13 +93,17 @@
                        titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
     
     if ([label isEqualToString:@"Standard"]){
+        [self.rootViewController.mainViewManager showDefaultPanel];
         self.rootViewController.mapView.mapType = MKMapTypeStandard;
     }else if ([label isEqualToString:@"Hybrid"]){
-
+        [self.rootViewController.mainViewManager showDefaultPanel];
         self.rootViewController.mapView.mapType = MKMapTypeHybridFlyover;
     }else if ([label isEqualToString:@"Satellite"]){
-
+        [self.rootViewController.mainViewManager showDefaultPanel];
         self.rootViewController.mapView.mapType = MKMapTypeSatelliteFlyover;
+    }else if ([label isEqualToString:@"StreetView"]){
+        [self.rootViewController.mainViewManager
+         showPanelWithType:STREETVIEWPANEL];
     }
 }
 
@@ -108,7 +115,6 @@
     
     if ([label isEqualToString:@"Normal"]){
         self.rootViewController.gameManager.gameManagerStatus = OFF;
-
     }else if ([label isEqualToString:@"Demo"]){
         self.rootViewController.gameManager.gameManagerStatus = DEMO;
     }else if ([label isEqualToString:@"Study"]){

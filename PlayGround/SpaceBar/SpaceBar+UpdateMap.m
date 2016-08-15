@@ -91,6 +91,11 @@
         // The easy case
         SpaceToken *aToken = [tokenSet anyObject];
         [self snapToOneToken:aToken];
+        
+        // Debug
+        NSLog(@"Snap name: %@", aToken.poi.name);
+        NSLog(@"Snap to lat: %g lon: %g", aToken.poi.latLon.latitude, aToken.poi.latLon.longitude);
+        
     }else if ([tokenSet count] == 2){
         [self snapToTwoTokens: tokenSet];
     }

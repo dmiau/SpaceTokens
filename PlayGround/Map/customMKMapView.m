@@ -29,9 +29,11 @@
     if (self){
         
         // additional initialization
-        
         _hiddenMap = [[MKMapView alloc] initWithFrame:frame];
         _hiddenMap.mapType = MKMapTypeStandard;
+        
+        // Initialize the custom user location
+        _customUserLocation = [[MKUserLocation alloc] init];        
         
         // this function is to check wheter the map has been touched
         float timer_interval = 0.06;

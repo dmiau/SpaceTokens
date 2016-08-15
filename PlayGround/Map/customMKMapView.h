@@ -30,6 +30,7 @@
 
 @property (nonatomic, weak) id<MKMapViewDelegate, customMKMapViewDelegate> delegate;
 @property MKMapView *hiddenMap; // a hidden map for calculation purposes
+@property MKUserLocation *customUserLocation;
 
 // === (MapDisplay) ===
 // Two snapping methods

@@ -86,7 +86,6 @@
     MKCircle *circle = [MKCircle circleWithCenterCoordinate:NYC radius:300]; // radius is measured in meters
     [self.mapView addOverlay:circle];
     
-    
     //----------------
     // Add a mini map
     //----------------

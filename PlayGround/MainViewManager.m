@@ -12,6 +12,7 @@
 #import "Views/SearchPanel.h"
 #import "Views/CircleCheckingPanel.h"
 #import "Views/TaskBasePanel.h"
+#import "Views/StreetViewPanel.h"
 
 @implementation MainViewManager
 
@@ -43,6 +44,10 @@
                                     CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
                                                                ViewController:self.rootViewController];
         
+        self.streetViewPanel = [[StreetViewPanel alloc] initWithFrame:
+                              CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
+                                                   ViewController:self.rootViewController];
+        
     }
     return self;
 }
@@ -66,6 +71,9 @@
             break;
         case TASKBASEPANEL:
             [self showTaskBasePanel];
+            break;
+        case STREETVIEWPANEL:
+            [self showStreetViewPanel];
             break;
         default:
             break;
@@ -104,4 +112,11 @@
     self.filterPanel = self.circleCheckingPanel;
 }
 
+
+- (void)showStreetViewPanel{
+    [self removeActivePanel];
+    // add the panel to the main view if it has been instantiated
+    [self.streetViewPanel addPanel];
+    self.activePanel = self.streetViewPanel;
+}
 @end
