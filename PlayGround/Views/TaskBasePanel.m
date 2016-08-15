@@ -31,7 +31,6 @@
                                                  alpha:1.0]];
         settingsButton = [[SettingsButton alloc] init];
         
-        
         //-------------------
         // Load all the panels
         //-------------------

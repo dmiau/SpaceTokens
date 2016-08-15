@@ -25,6 +25,7 @@
     
     if (self){
         self.poi = [[POI alloc] init];
+        self.mapViewXY = CGPointMake(0, 0);
     }
     return self;
 }

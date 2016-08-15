@@ -81,13 +81,13 @@
         self.anchor = [[SpaceToken alloc] initForType:ANCHORTOKEN];
     }
     self.anchor.poi.latLon = coord;
-    self.anchor.poi.mapViewXY = mapXY;
+    self.anchor.mapViewXY = mapXY;
 }
 
 - (void) updateAnchorAtMapXY:(CGPoint)mapXY
 {
     if (self.anchor){
-        self.anchor.poi.mapViewXY = mapXY;
+        self.anchor.mapViewXY = mapXY;
     }
 }
 

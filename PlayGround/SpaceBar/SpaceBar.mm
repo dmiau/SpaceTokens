@@ -167,7 +167,7 @@
 -(void)timerFired{    
     // if buttonSet is not empty, update the map    
     if ([self.buttonSet count] > 0){
-//        [self orderPOIs];
+//        [self orderSpaceTokens];
     }
     
     if ([self.draggingSet count] > 0){

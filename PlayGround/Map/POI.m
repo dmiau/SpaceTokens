@@ -34,9 +34,8 @@
 }
 
 - (NSString*) description{
-    return [NSString stringWithFormat:@"latlon: %@ \n mapViewXY: %@",
-            [NSString stringWithFormat:@"%g, %g", self.latLon.latitude, self.latLon.longitude]
-            , NSStringFromCGPoint(self.mapViewXY)];
+    return [NSString stringWithFormat:@"latlon: %@",
+            [NSString stringWithFormat:@"%g, %g", self.latLon.latitude, self.latLon.longitude]];
 }
 
 
@@ -62,7 +61,6 @@
     POI *object = [[POI alloc] init];
     object.latLon = self.latLon;
     object.name = self.name;
-    object.mapViewXY = CGPointMake(0, 0);
     return object;
 }
 

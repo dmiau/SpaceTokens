@@ -41,14 +41,15 @@
     tabController.navigationBar.topItem.title = @"General";
     
     // Update the setting of the map segment controller
-    if (self.rootViewController.mapView.mapType == MKMapTypeStandard){
+    if([self.rootViewController.panoView superview]){
+        // This need to be the first
+        self.mapSegmentControl.selectedSegmentIndex = 3;
+    }else if (self.rootViewController.mapView.mapType == MKMapTypeStandard){
         self.mapSegmentControl.selectedSegmentIndex = 0;
     }else if (self.rootViewController.mapView.mapType == MKMapTypeHybrid){
         self.mapSegmentControl.selectedSegmentIndex = 1;
     }else if (self.rootViewController.mapView.mapType == MKMapTypeSatelliteFlyover){
         self.mapSegmentControl.selectedSegmentIndex = 2;
-    }else if ([self.rootViewController.panoView superview]){
-        self.mapSegmentControl.selectedSegmentIndex = 3;
     }
     
     int selectionIndex = 0;

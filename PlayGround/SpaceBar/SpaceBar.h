@@ -103,7 +103,7 @@ unsigned int spaceBarElevatorMoved:1;
 // Implemented in updateSet category
 // --------------
 - (void) updateSpecialPOIs;
-- (void) orderPOIs;
+- (void) orderSpaceTokens;
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification;
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification;
 

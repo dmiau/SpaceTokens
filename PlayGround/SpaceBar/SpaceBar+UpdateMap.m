@@ -17,7 +17,7 @@
     for(SpaceToken* anItem in self.draggingSet) {
         if (anItem.type != ANCHORTOKEN){
             SpaceToken* aMark = (SpaceToken*)anItem;
-            aMark.poi.mapViewXY = aMark.center;
+            aMark.mapViewXY = aMark.center;
         }
     }
 }
@@ -27,7 +27,7 @@
 // This is useful for POI sorting on SpaceBar
 - (void) fillMapXYsForSet: (NSSet*) aSet{
     for (SpaceToken* aToken in aSet){
-        aToken.poi.mapViewXY = [self.mapView convertCoordinate:aToken.poi.latLon
+        aToken.mapViewXY = [self.mapView convertCoordinate:aToken.poi.latLon
                                            toPointToView:self.mapView];
     }
 }
@@ -45,7 +45,7 @@
         if (self.anchor)
         {
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
-            aSpaceToken.poi.mapViewXY =
+            aSpaceToken.mapViewXY =
             CGPointMake(aSpaceToken.center.x - aSpaceToken.frame.size.width *0.7, aSpaceToken.center.y);
             
             NSMutableSet* aSet = [[NSMutableSet alloc] init];
@@ -54,7 +54,7 @@
             [self snapToTwoTokens:  aSet];
         }else{
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
-            aSpaceToken.poi.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
+            aSpaceToken.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
             [self updateMapToFitPOIPreferences:self.touchingSet];
         }
                 
@@ -91,11 +91,6 @@
         // The easy case
         SpaceToken *aToken = [tokenSet anyObject];
         [self snapToOneToken:aToken];
-        
-        // Debug
-        NSLog(@"Snap name: %@", aToken.poi.name);
-        NSLog(@"Snap to lat: %g lon: %g", aToken.poi.latLon.latitude, aToken.poi.latLon.longitude);
-        
     }else if ([tokenSet count] == 2){
         [self snapToTwoTokens: tokenSet];
     }
@@ -103,7 +98,7 @@
 
 // this method makes the map snap to two POIs
 - (void) snapToOneToken: (SpaceToken*) aToken {
-    [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.poi.mapViewXY];
+    [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.mapViewXY];
 }
 
 
@@ -115,7 +110,7 @@
     int i = 0;
     for (SpaceToken *aToken in tokenSet){
         coords[i] = aToken.poi.latLon;
-        cgPoints[i] = aToken.poi.mapViewXY;
+        cgPoints[i] = aToken.mapViewXY;
         i++;
     }
     

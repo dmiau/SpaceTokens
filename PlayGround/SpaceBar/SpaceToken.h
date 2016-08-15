@@ -25,6 +25,10 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 @property spaceTokenType type;
 @property POI* poi;
 
+@property CGPoint mapViewXY;
+// mapViewXY caches the Mercator (x, y) coordinates
+// corrresponding to latlon
+
 - (id) initForType: (spaceTokenType)type; // factory method
 
 - (void) resetButton;

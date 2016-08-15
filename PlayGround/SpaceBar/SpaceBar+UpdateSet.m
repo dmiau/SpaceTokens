@@ -20,7 +20,7 @@
     SpaceToken *aSpaceToken = [[SpaceToken alloc] initForType:DOCKED];
     
     [aSpaceToken setTitle:poi.name forState:UIControlStateNormal];
-    aSpaceToken.poi = [poi copy];
+    aSpaceToken.poi = poi;
     
     if (aSpaceToken){
         // Add to the canvas
@@ -95,7 +95,7 @@
 //----------------
 // order the POIs and SpaceTokens on the track
 //----------------
-- (void) orderPOIs{
+- (void) orderSpaceTokens{
     // equally distribute the POIs
     // only reorder when the user is not touching a button
     if ([self.buttonSet count] > 0 && [self.touchingSet count] == 0)
@@ -122,16 +122,16 @@
             SpaceToken *first = (SpaceToken*)a;
             SpaceToken *second = (SpaceToken*)b;
             
-            if (first.poi.mapViewXY.y < second.poi.mapViewXY.y) {
+            if (first.mapViewXY.y < second.mapViewXY.y) {
                 return NSOrderedAscending;
             }
-            else if (first.poi.mapViewXY.y > second.poi.mapViewXY.y) {
+            else if (first.mapViewXY.y > second.mapViewXY.y) {
                 return NSOrderedDescending;
             }else{
                 // In the unlikely case that the two POIs have the same y
-                if (first.poi.mapViewXY.x < second.poi.mapViewXY.x) {
+                if (first.mapViewXY.x < second.mapViewXY.x) {
                     return NSOrderedAscending;
-                }else if (first.poi.mapViewXY.x > second.poi.mapViewXY.x) {
+                }else if (first.mapViewXY.x > second.mapViewXY.x) {
                     return NSOrderedDescending;
                 }else{
                     return NSOrderedSame;
@@ -174,7 +174,7 @@
     specialPOI.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
     self.youAreHere = [self addSpaceTokenFromPOI:specialPOI];
     
-    [self orderPOIs];
+    [self orderSpaceTokens];
 }
 
 //----------------

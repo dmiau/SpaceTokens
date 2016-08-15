@@ -27,7 +27,6 @@
     poi1.latLon = CLLocationCoordinate2DMake(40.885722, -73.912491);
     poi1.name = @"Home";
     [self.poiArray addObject:poi1];
-
     
     POI *poi3 = [[POI alloc] init];
     poi3.latLon = CLLocationCoordinate2DMake(40.711801, -74.013120);
@@ -45,8 +44,8 @@
     [self.poiArray addObject:poi5];
     
     POI *poi6 = [[POI alloc] init];
-    poi6.latLon = CLLocationCoordinate2DMake(40.767499, -73.833079);
-    poi6.name = @"Flushing, Queens";
+    poi6.latLon = CLLocationCoordinate2DMake(48.858370, 2.294481);
+    poi6.name = @"Eiffel Tower";
     [self.poiArray addObject:poi6];
     
     

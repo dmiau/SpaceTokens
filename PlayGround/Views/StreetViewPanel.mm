@@ -9,10 +9,14 @@
 #import "StreetViewPanel.h"
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "SettingsButton.h"
 #import <MapKit/MapKit.h>
 
 
-@implementation StreetViewPanel
+@implementation StreetViewPanel{
+    SettingsButton *settingsButton;
+    CGRect cachedMapFrame;
+}
 
 -(id)initWithFrame: (CGRect)frame ViewController:(ViewController*) viewController{
     self = [super initWithFrame:frame];
@@ -25,6 +29,8 @@
                          initWithFrame: self.frame]; //dummy initialization
         self.panoView.delegate = self;
         self.rootViewController.panoView = self.panoView; // cache a pointer in the main ViewController
+        
+        settingsButton = [[SettingsButton alloc] init];
     }
     return self;
 }
@@ -42,11 +48,15 @@
     [self.rootViewController.view addSubview:self.panoView];
     
     // Adjust the size of the map
+    cachedMapFrame = self.rootViewController.mapView.frame;
     self.rootViewController.mapView.frame =
     CGRectMake(0, streetViewHeight,
                self.rootViewController.view.frame.size.width,
                self.rootViewController.view.frame.size.height-
                streetViewHeight);
+    
+    // Adjust the spacing of SpaceTokens
+    [self.rootViewController.spaceBar orderSpaceTokens];
     
     // Position the map and StreetView to Paris
     [self.panoView moveNearCoordinate:CLLocationCoordinate2DMake(48.857624, 2.351482)];
@@ -56,28 +66,26 @@
      (CLLocationCoordinate2DMake(48.857624, 2.351482),
                         MKCoordinateSpanMake(0.003, 0.003))];
     
-    // Manually set the user's location
-    
+    // Add the preference button
+    settingsButton.frame = CGRectMake(0, 30, 30, 30);
+    [self.rootViewController.view addSubview: settingsButton];    
 }
 
 -(void)removePanel{
+    [settingsButton removeFromSuperview];
     // Hide the StreetView
     [self.panoView removeFromSuperview];
+    self.rootViewController.mapView.frame = cachedMapFrame; // Move the map back
 }
 
 // Panorama is moved. Need to update the user's location
 - (void)panoramaView:(GMSPanoramaView *)view didMoveToPanorama:(GMSPanorama *)panorama{
-    static int counter = 0;
+
     self.rootViewController.mapView.customUserLocation.coordinate =
     panorama.coordinate;
     
-    NSString *temp  =[NSString stringWithFormat:@"%d", counter++];
-    
     // Also update the YouAreHere indicator
-    self.rootViewController.spaceBar.youAreHere.poi.name = temp; //update the name for debug purposes
     self.rootViewController.spaceBar.youAreHere.poi.latLon = panorama.coordinate;
-    NSLog(@"StreetView name: %@", temp);
-    NSLog(@"StreetView lat: %g lon: %g", panorama.coordinate.latitude, panorama.coordinate.longitude);
 }
 
 /*
