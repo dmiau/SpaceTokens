@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-
+#import "CustomPointAnnotation.h"
 
 
 //-------------------
@@ -20,5 +20,5 @@
 @property CLLocationCoordinate2D latLon;
 @property MKCoordinateSpan coordSpan;
 @property NSString *name;
-
+@property CustomPointAnnotation *annotation;
 @end

@@ -45,6 +45,8 @@
 		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
+		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
+		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
@@ -81,6 +83,12 @@
 		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9ABB28101D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9ABB28111D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
+		9AC338241D63AA1C000272D9 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
+		9AC338251D63AA1C000272D9 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
+		9AC338261D63AA1C000272D9 /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
+		9AC338271D63AA1C000272D9 /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
+		9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */; };
+		9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */; };
 		9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
 		9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
@@ -176,6 +184,8 @@
 		9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SpaceBar+Annotations.mm"; path = "SpaceBar/SpaceBar+Annotations.mm"; sourceTree = "<group>"; };
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
+		9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Annotations.h"; sourceTree = "<group>"; };
+		9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Annotations.m"; sourceTree = "<group>"; };
 		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
 		9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteTableController.mm; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
@@ -217,6 +227,10 @@
 		9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SnapshotProgress.mm; path = StudyManager/SnapshotProgress.mm; sourceTree = "<group>"; };
 		9ABB280E1D36795C00595A0D /* Elevator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Elevator.h; path = SpaceBar/RangeSlider/Elevator.h; sourceTree = "<group>"; };
 		9ABB280F1D36795C00595A0D /* Elevator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Elevator.m; path = SpaceBar/RangeSlider/Elevator.m; sourceTree = "<group>"; };
+		9AC338221D63AA1C000272D9 /* heading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heading.png; path = icons/heading.png; sourceTree = "<group>"; };
+		9AC338231D63AA1C000272D9 /* star-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star-128.png"; path = "icons/star-128.png"; sourceTree = "<group>"; };
+		9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPointAnnotation.h; path = Map/CustomPointAnnotation.h; sourceTree = "<group>"; };
+		9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPointAnnotation.m; path = Map/CustomPointAnnotation.m; sourceTree = "<group>"; };
 		9AC36DC41C5FF4690037210F /* SpaceBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceBar.h; path = SpaceBar/SpaceBar.h; sourceTree = "<group>"; };
 		9AC36DC51C5FF4690037210F /* SpaceBar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SpaceBar.mm; path = SpaceBar/SpaceBar.mm; sourceTree = "<group>"; };
 		9AC36DC71C5FF9660037210F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -304,6 +318,8 @@
 				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
 				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
+				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
+				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -413,6 +429,15 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		9AC338211D63A680000272D9 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				9AC338221D63AA1C000272D9 /* heading.png */,
+				9AC338231D63AA1C000272D9 /* star-128.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
 		9AC36DC31C5FF2220037210F /* SpaceBar Project */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +469,7 @@
 		9AC36DC91C5FFBE30037210F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9AC338211D63A680000272D9 /* icons */,
 				9A53014A1C5AD6A6008D584B /* Main.storyboard */,
 				9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */,
 				9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */,
@@ -463,6 +489,8 @@
 				9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */,
 				9A0E063B1D54FCB800E5722D /* ViewController+MapView.h */,
 				9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */,
+				9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */,
+				9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */,
 				9AA454DD1D52D160008D4FCF /* MyFileManager.h */,
 				9AA454DE1D52D160008D4FCF /* MyFileManager.m */,
 			);
@@ -600,7 +628,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AF100031D57FA720063CB63 /* StudyPanels.xib in Resources */,
+				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
+				9AC338241D63AA1C000272D9 /* heading.png in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
@@ -618,6 +648,8 @@
 				9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */,
 				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
 				9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */,
+				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
+				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,6 +747,8 @@
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
+				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
+				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
@@ -772,6 +806,8 @@
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
+				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
+				9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,

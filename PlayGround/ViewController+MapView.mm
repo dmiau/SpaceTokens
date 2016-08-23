@@ -10,6 +10,7 @@
 #import "Map/Route.h"
 #import "Map/MiniMapView.h"
 #import <MapKit/MapKit.h>
+#import "Constants.h"
 
 @implementation ViewController (MapView)
 
@@ -17,6 +18,13 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     [self updateSpaceBar];
     [self updateMiniMap];
+    
+    // Broadcast a notification about the changing map
+    NSNotification *notification = [NSNotification notificationWithName:MapUpdatedNotification
+        object:self userInfo:nil];
+    [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    
 }
 
 // Triggers SpaceBar redraw
@@ -76,5 +84,6 @@
     [self.spaceBar clearAllTouchedTokens];
     [self.spaceBar removeAnchor];
 }
+
 
 @end

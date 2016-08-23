@@ -9,6 +9,7 @@
 #import "SpaceToken.h"
 #import "UIButton+Extensions.h"
 #import "Constants.h"
+#import "../Map/CustomPointAnnotation.h"
 
 @implementation SpaceToken
 
@@ -26,6 +27,14 @@
     if (self){
         self.poi = [[POI alloc] init];
         self.mapViewXY = CGPointMake(0, 0);
+        
+
+        // listen to several notification of interest
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self
+                   selector:@selector(mapUpdateHandler)
+                       name:MapUpdatedNotification
+                     object:nil];
     }
     return self;
 }
@@ -175,7 +184,7 @@
     if (self.selected){
         self.selected = NO;
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
-                                                                     object:self userInfo:nil];
+                    object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
     }else{
         self.selected = YES;
@@ -291,9 +300,35 @@
     super.selected = selected;
     if (selected){
         self.backgroundColor = [UIColor redColor];
+        [[self layer] addSublayer:self.lineLayer];
+        [self updatePOILine];
     }else{
         self.backgroundColor = [UIColor grayColor];
+        [self.lineLayer removeFromSuperlayer];
     }
+}
+
+- (void)mapUpdateHandler{
+    if (self.selected){
+        [self updatePOILine];
+    }
+}
+
+
+- (void)updatePOILine{
+
+    // draw the line
+    UIBezierPath *linePath=[UIBezierPath bezierPath];
+    [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
+                                       self.frame.size.height/2)];
+    [linePath addLineToPoint:
+     [self convertPoint:self.mapViewXY fromView:self.superview]];
+    
+    self.lineLayer.path=linePath.CGPath;
+    self.lineLayer.fillColor = nil;
+    self.lineLayer.opacity = 1.0;
+    self.lineLayer.strokeColor = [UIColor blueColor].CGColor;
+    
 }
 
 @end

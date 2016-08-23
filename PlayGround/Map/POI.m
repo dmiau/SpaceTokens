@@ -29,6 +29,7 @@
     if (self){
         _latLon = CLLocationCoordinate2DMake(0, 0);
         _coordSpan = MKCoordinateSpanMake(0.01, 0.01);
+        _annotation = [[CustomPointAnnotation alloc] init];
     }
     return self;
 }
@@ -38,7 +39,17 @@
             [NSString stringWithFormat:@"%g, %g", self.latLon.latitude, self.latLon.longitude]];
 }
 
+// Custom set methods
+- (void)setLatLon:(CLLocationCoordinate2D)latLon{
+    _latLon = latLon;
+    _annotation.coordinate = latLon;
+}
 
+
+- (void)setName:(NSString *)name{
+    _name = name;
+    _annotation.title = name;
+}
 
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {

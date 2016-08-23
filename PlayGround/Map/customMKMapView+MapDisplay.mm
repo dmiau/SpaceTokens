@@ -25,8 +25,9 @@
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                     toCoordinateFromView: self];
     //    self.mapType = originalType;
-    [self setRegion: MKCoordinateRegionMake(centroid,
-                                            MKCoordinateSpanMake(0.01, 0.01))];
+    [self setRegion:
+     MKCoordinateRegionMake(centroid,MKCoordinateSpanMake(0.01, 0.01))
+     animated:NO];
 }
 
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
@@ -43,7 +44,7 @@
     CLLocationCoordinate2D centroid = [self convertPoint:
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                               toCoordinateFromView: self];
-    [self setCenterCoordinate:centroid];
+    [self setCenterCoordinate:centroid animated:NO];
 
     // Set the orientation
     if (orientation){
@@ -186,7 +187,7 @@
     
     MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan/2,
                                        midPoint.y - ySpan/2,
-                                       xSpan * 1.1, ySpan*1.1);
+                                       xSpan * 1.2, ySpan*1.2);
     
     [self setVisibleMapRect:zoomRect animated:NO];
 }

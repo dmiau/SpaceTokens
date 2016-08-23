@@ -166,6 +166,9 @@
     
     for (POI* aPOI in poiArray){
         [self addSpaceTokenFromPOI:aPOI];
+        
+        // Add the annotation
+        [self.mapView addAnnotation:aPOI.annotation];
     }
     
     // Add a YouAreHere SpaceToken

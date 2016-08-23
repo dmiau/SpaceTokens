@@ -168,6 +168,7 @@
     // if buttonSet is not empty, update the map    
     if ([self.buttonSet count] > 0){
 //        [self orderSpaceTokens];
+        [self fillMapXYsForSet:self.buttonSet];
     }
     
     if ([self.draggingSet count] > 0){
