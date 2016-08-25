@@ -13,6 +13,7 @@ typedef enum {
     dropped,
     search_result,
     heading,
+    people,
     answer
 } location_enum;
 

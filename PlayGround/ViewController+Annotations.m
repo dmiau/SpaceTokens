@@ -49,6 +49,9 @@
                                       newSize:CGSizeMake(12, 12)];
         }else{
 //            [pinView setAnimatesDrop:YES];
+            
+            
+            
         }
 //
 //        [pinView setCanShowCallout:YES];

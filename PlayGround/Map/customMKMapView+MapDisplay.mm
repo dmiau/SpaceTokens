@@ -16,12 +16,9 @@
     CGFloat diffX = self.frame.size.width/2 - viewXY.x;
     CGFloat diffY = self.frame.size.height/2 - viewXY.y;
     
-    // The scale of the hidden map should be the same as the current map
-    [self.hiddenMap setVisibleMapRect:self.visibleMapRect animated:NO];
-    self.hiddenMap.camera.heading = self.camera.heading;
-    CGPoint targetCGPoint = [self.hiddenMap convertCoordinate:coord toPointToView:self];
+    CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
     
-    CLLocationCoordinate2D centroid = [self.hiddenMap convertPoint:
+    CLLocationCoordinate2D centroid = [self convertPoint:
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                     toCoordinateFromView: self];
     //    self.mapType = originalType;
@@ -36,9 +33,7 @@
     CGFloat diffX = self.frame.size.width/2 - viewXY.x;
     CGFloat diffY = self.frame.size.height/2 - viewXY.y;
     
-    // The scale of the hidden map should be the same as the current map
-//    [self.hiddenMap setVisibleMapRect:self.visibleMapRect animated:NO];
-//    self.hiddenMap.camera.heading = self.camera.heading;
+
     CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
     
     CLLocationCoordinate2D centroid = [self convertPoint:
@@ -61,10 +56,6 @@
     for (int i = 1; i < 2; i++){
         mapPoints[i] = MKMapPointForCoordinate(coords[i]);
     }
-    
-//    // The scale of the hidden map should be the same as the current map
-//    [self.hiddenMap setVisibleMapRect:self.visibleMapRect animated:NO];
-//    self.hiddenMap.camera.heading = self.camera.heading;
     
     // Find out the scale factor
     float desiredDistance = sqrtf(powf((cgPoints[0].x - cgPoints[1].x), 2)+

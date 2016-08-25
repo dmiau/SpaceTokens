@@ -72,8 +72,9 @@
     //----------------
     // Add a mapView
     //----------------
-    self.mapView = [[customMKMapView alloc] initWithFrame:CGRectMake(0, topPanelHeight,
-                    self.view.frame.size.width, self.view.frame.size.height - topPanelHeight)];
+    self.mapView = [customMKMapView sharedManager];
+    self.mapView.frame = CGRectMake(0, topPanelHeight,
+                                    self.view.frame.size.width, self.view.frame.size.height - topPanelHeight);
     [self.view addSubview:self.mapView];
     [self.mapView setUserInteractionEnabled:YES];
     

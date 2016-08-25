@@ -19,6 +19,7 @@
 //---properties
 @property CLLocationCoordinate2D latLon;
 @property MKCoordinateSpan coordSpan;
+@property double headingInDegree;
 @property NSString *name;
 @property CustomPointAnnotation *annotation;
 @end

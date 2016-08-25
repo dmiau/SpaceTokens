@@ -10,6 +10,8 @@
 #import "UIButton+Extensions.h"
 #import "Constants.h"
 #import "../Map/CustomPointAnnotation.h"
+#import "../Map/Person.h"
+#import "../Map/customMKMapView.h"
 
 @implementation SpaceToken
 
@@ -72,6 +74,10 @@
 }
 
 
+- (void)setPerson:(Person *)person{
+    _person = person;
+    _poi = person.poi;
+}
 
 - (void) registerButtonEvents{
     [self addTarget:self
@@ -305,6 +311,26 @@
     }else{
         self.backgroundColor = [UIColor grayColor];
         [self.lineLayer removeFromSuperlayer];
+    }
+    
+    // A SpaceToken may be linked to a dynamic locaiton, such as a person
+    if (self.person){
+
+        // Get the map object
+        customMKMapView *myMapView = [customMKMapView sharedManager];
+
+        if (selected){
+            self.person.updateFlag = YES;            
+        }else{
+            // http://stackoverflow.com/questions/14924892/nstimer-with-anonymous-function-block
+            int64_t delayInSeconds = 5; // Your Game Interval as mentioned above by you
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                // Update your label here. 
+                self.person.updateFlag = NO;
+            });
+        }
     }
 }
 

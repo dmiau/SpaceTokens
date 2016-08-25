@@ -9,6 +9,7 @@
 #import "SpaceBar+UpdateSet.h"
 #import "Constants.h"
 #import "Tools.h"
+#import "../Map/Person.h"
 
 @implementation SpaceBar (UpdateSet)
 
@@ -80,8 +81,8 @@
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonSetNotification){
         [self.buttonSet removeObject:aNotification.object];
-    }else if (aNotification.name == RemoveFromTouchingSetNotification){
-        [self.touchingSet removeObject:aNotification.object];
+    }else if (aNotification.name == RemoveFromTouchingSetNotification){        
+        [self removeTokenFromTouchingSet:aNotification.object];
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
         [self.draggingSet removeObject:aNotification.object];
     }
@@ -176,7 +177,10 @@
     specialPOI.name = @"YouRHere";
     specialPOI.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
     self.youAreHere = [self addSpaceTokenFromPOI:specialPOI];
-    
+        
+    // Create a person
+    Person *person = [[Person alloc] init];
+    self.youAreHere.person = person;    
     [self orderSpaceTokens];
 }
 
@@ -222,6 +226,27 @@
                                                        userInfo:nil
                                                         repeats:NO];
 }
+
+
+- (void)removeTokenFromTouchingSet: (SpaceToken*) aToken
+{
+    
+    if ([self.touchingSet count] >1){
+        if (self.privateTouchingSetTimer){
+            [self.privateTouchingSetTimer invalidate];
+            self.privateTouchingSetTimer = nil;
+        }
+        
+        self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:0.75
+                                                                        target:self
+                                                                      selector:@selector(setTimerAction)
+                                                                      userInfo:nil
+                                                                       repeats:NO];
+    }
+    
+    [self.touchingSet removeObject:aToken];
+}
+
 
 - (void)clearAllTouchedTokens{
     self.privateTouchingSetTimer = nil;

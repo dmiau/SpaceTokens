@@ -8,6 +8,8 @@
 
 #import "../Map/POI.h"
 
+@class Person;
+
 typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 
 //--------------------
@@ -24,6 +26,7 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 @property (weak) SpaceToken *counterPart;
 @property spaceTokenType type;
 @property POI* poi;
+@property Person* person; // A SpaceToken can be linked to a Person object
 
 @property CGPoint mapViewXY;
 // mapViewXY caches the Mercator (x, y) coordinates

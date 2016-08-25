@@ -22,47 +22,62 @@
 @synthesize delegate; // this is necessary so the setter could work
 
 #pragma mark --initialization--
+
+// Two initialization methods
+
+//http://www.galloway.me.uk/tutorials/singleton-classes/
+
++ (id)sharedManager {
+    static customMKMapView *sharedCustomMKMapView = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedCustomMKMapView = [[self alloc] init];
+        [sharedCustomMKMapView commonInit];
+    });
+    return sharedCustomMKMapView;
+}
+
 - (id) initWithFrame:(CGRect)frame{
     
     self = [super initWithFrame:frame];
     
     if (self){
-        
-        // additional initialization
-        _hiddenMap = [[MKMapView alloc] initWithFrame:frame];
-        _hiddenMap.mapType = MKMapTypeStandard;
-        
-        // Initialize the custom user location
-        _customUserLocation = [[MKUserLocation alloc] init];        
-        
-        // this function is to check wheter the map has been touched
-        float timer_interval = 0.06;
-        _updateUITimer = [NSTimer timerWithTimeInterval:timer_interval
-                                                 target:self
-                                               selector:@selector(vcTimerFired)
-                                               userInfo:nil
-                                                repeats:YES];
-        
-        [[NSRunLoop mainRunLoop] addTimer:_updateUITimer forMode:NSRunLoopCommonModes];
-        
-        WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
-        
-        tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
-            [self customTouchesBegan:touches withEvent:event];
-        };
-        
-        tapInterceptor.touchesEndedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
-            [self customTouchesEnded:touches withEvent:event];
-        };
+        [self commonInit];
 
-        tapInterceptor.touchesMovedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
-            [self customTouchesMoved:touches withEvent:event];
-        };
-        
-        tapInterceptor.delegate = self;
-        [self addGestureRecognizer:tapInterceptor];
     }
     return self;
+}
+
+- (void)commonInit{    
+    // Initialize the custom user location
+    _customUserLocation = [[MKUserLocation alloc] init];
+    
+    // this function is to check wheter the map has been touched
+    float timer_interval = 0.06;
+    _updateUITimer = [NSTimer timerWithTimeInterval:timer_interval
+                                             target:self
+                                           selector:@selector(vcTimerFired)
+                                           userInfo:nil
+                                            repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:_updateUITimer forMode:NSRunLoopCommonModes];
+    
+    WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
+    
+    tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesBegan:touches withEvent:event];
+    };
+    
+    tapInterceptor.touchesEndedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesEnded:touches withEvent:event];
+    };
+    
+    tapInterceptor.touchesMovedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesMoved:touches withEvent:event];
+    };
+    
+    tapInterceptor.delegate = self;
+    [self addGestureRecognizer:tapInterceptor];
 }
 
 // Check if the protocol methods are implemetned

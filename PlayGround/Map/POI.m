@@ -30,6 +30,7 @@
         _latLon = CLLocationCoordinate2DMake(0, 0);
         _coordSpan = MKCoordinateSpanMake(0.01, 0.01);
         _annotation = [[CustomPointAnnotation alloc] init];
+        _headingInDegree = 0;
     }
     return self;
 }
