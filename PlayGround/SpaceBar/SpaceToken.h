@@ -19,6 +19,7 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 
 
 @property NSNumber *hasReportedDraggingEvent;
+@property CGPoint initialTouchLocationInView;
 @property CAShapeLayer *circleLayer;
 @property CAShapeLayer *lineLayer;
 
@@ -33,6 +34,8 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 // corrresponding to latlon
 
 - (id) initForType: (spaceTokenType)type; // factory method
+
+- (void) registerButtonEvents;
 
 - (void) resetButton;
 - (void) configureAppearanceForType: (spaceTokenType) type;

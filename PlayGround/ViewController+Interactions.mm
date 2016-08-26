@@ -98,7 +98,7 @@
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [self.mapView computeOrientationFromA:anchor
                                                                        toB:target];
-        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree];
+        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
     }else{
        // Move from high to low
         [self.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
@@ -106,10 +106,8 @@
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [self.mapView computeOrientationFromA:target
                                                                        toB:anchor];
-        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree];
+        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree animated:NO];
     }
-
-    
 }
 
 - (void)directionButtonAction {

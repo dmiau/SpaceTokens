@@ -39,6 +39,9 @@
     // Assume there are at most two touched
     
     if ([self.touchingSet count] == 1){
+        //------------------------
+        // Show one SpaceToken
+        //------------------------
         
         // this is to support anchor+X
         // one anchor + one touched SpaceToken
@@ -55,7 +58,9 @@
         }else{
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
             aSpaceToken.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
-            [self updateMapToFitPOIPreferences:self.touchingSet];
+            
+            [self.mapView snapOneCoordinate: aSpaceToken.poi.latLon
+                                       toXY: aSpaceToken.mapViewXY animated:NO];
         }
                 
     }else if ([self.touchingSet count] > 1){
@@ -88,19 +93,20 @@
     if ([tokenSet count] == 1 &&
         [tokenSet anyObject] != self.anchor)
     {
-        // The easy case
+        //----------------------
+        // Snap to one SpaceToken
+        //----------------------
         SpaceToken *aToken = [tokenSet anyObject];
-        [self snapToOneToken:aToken];
+        [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.mapViewXY
+         withOrientation:self.mapView.camera.heading animated:NO];
     }else if ([tokenSet count] == 2){
+        
+        //----------------------
+        // Snap to two SpaceTokens
+        //----------------------
         [self snapToTwoTokens: tokenSet];
     }
 }
-
-// this method makes the map snap to two POIs
-- (void) snapToOneToken: (SpaceToken*) aToken {
-    [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.mapViewXY];
-}
-
 
 // this method makes the map snap to two POIs
 - (void) snapToTwoTokens: (NSSet*) tokenSet{

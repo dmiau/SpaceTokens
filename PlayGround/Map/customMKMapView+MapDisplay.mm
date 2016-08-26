@@ -12,6 +12,7 @@
 @implementation customMKMapView (MapDisplay)
 
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
+                  animated: (BOOL) animatedFlag
 {
     CGFloat diffX = self.frame.size.width/2 - viewXY.x;
     CGFloat diffY = self.frame.size.height/2 - viewXY.y;
@@ -24,11 +25,11 @@
     //    self.mapType = originalType;
     [self setRegion:
      MKCoordinateRegionMake(centroid,MKCoordinateSpanMake(0.01, 0.01))
-     animated:NO];
+     animated:animatedFlag];
 }
 
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
-           withOrientation: (float) orientation
+           withOrientation: (float) orientation animated:(BOOL)animatedFlag
 {
     CGFloat diffX = self.frame.size.width/2 - viewXY.x;
     CGFloat diffY = self.frame.size.height/2 - viewXY.y;
@@ -39,7 +40,7 @@
     CLLocationCoordinate2D centroid = [self convertPoint:
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                               toCoordinateFromView: self];
-    [self setCenterCoordinate:centroid animated:NO];
+    [self setCenterCoordinate:centroid animated:animatedFlag];
 
     // Set the orientation
     if (orientation){

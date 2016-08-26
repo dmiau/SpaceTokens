@@ -77,6 +77,8 @@
 - (void) mapTouchMoved: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
     
     [self.spaceBar updateAnchorAtMapXY:xy];
+    // Add a SpaceToken?
+    NSLog(@"Map XY: %@", NSStringFromCGPoint(xy));
 }
 
 - (void) mapTouchEnded{

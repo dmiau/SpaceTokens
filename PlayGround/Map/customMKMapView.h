@@ -35,9 +35,11 @@
 
 // === (MapDisplay) ===
 // Two snapping methods
-- (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY;
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
-           withOrientation: (float) orientation;
+                  animated: (BOOL) flag;
+- (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
+           withOrientation: (float) orientation
+                  animated: (BOOL) flag;
 - (void) snapTwoCoordinates: (CLLocationCoordinate2D[2]) coords
                     toTwoXY: (CGPoint[2]) viewXYs;
 

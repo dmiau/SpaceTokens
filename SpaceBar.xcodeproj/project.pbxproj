@@ -31,6 +31,8 @@
 		9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
 		9A43EAF01D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
 		9A43EAF11D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
+		9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
+		9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
 		9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
 		9A5301431C5AD6A6008D584B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
@@ -166,6 +168,8 @@
 		9A43EAED1D40029D00080029 /* topPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topPanel.h; path = Views/topPanel.h; sourceTree = "<group>"; };
 		9A43EAEE1D4008F400080029 /* POIDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIDatabase.h; path = Map/POIDatabase.h; sourceTree = "<group>"; };
 		9A43EAEF1D4008F400080029 /* POIDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIDatabase.m; path = Map/POIDatabase.m; sourceTree = "<group>"; };
+		9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Gestures.h"; path = "SpaceBar/SpaceToken+Gestures.h"; sourceTree = "<group>"; };
+		9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceToken+Gestures.m"; path = "SpaceBar/SpaceToken+Gestures.m"; sourceTree = "<group>"; };
 		9A48C1361D5273EA0038FBA5 /* MainViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewManager.h; sourceTree = "<group>"; };
 		9A48C1371D5273EA0038FBA5 /* MainViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewManager.m; sourceTree = "<group>"; };
 		9A53013E1C5AD6A6008D584B /* SpaceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -460,6 +464,8 @@
 				9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */,
 				9AC36DD01C60087B0037210F /* SpaceToken.h */,
 				9AC36DD11C60087B0037210F /* SpaceToken.m */,
+				9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */,
+				9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */,
 				9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */,
 				9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */,
 				9A62F1E21C62C6BF00A39DAF /* Tools.h */,
@@ -727,6 +733,7 @@
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A143B341D2AF56E001EE841 /* customMKMapView.m in Sources */,
 				9A56B7E11D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */,
+				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
@@ -787,6 +794,7 @@
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
 				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
 				9A56B7E21D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */,
+				9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A143B351D2AF56E001EE841 /* customMKMapView.m in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,

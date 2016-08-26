@@ -88,6 +88,9 @@
 {
     if (self.anchor){
         self.anchor.mapViewXY = mapXY;
+        
+        // Create a SpaceToken when the anchor hits the edge?
+        
     }
 }
 
