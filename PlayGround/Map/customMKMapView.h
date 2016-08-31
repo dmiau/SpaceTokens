@@ -18,9 +18,9 @@
 @protocol customMKMapViewDelegate <NSObject>
 
 // The following are to support the anchor+x interactions
-- (void) mapTouchBegan: (CLLocationCoordinate2D) coord atXY: (CGPoint) xy;
-- (void) mapTouchMoved: (CLLocationCoordinate2D) coord atXY: (CGPoint) xy;
-- (void) mapTouchEnded;
+- (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+- (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+- (void) mapTouchEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 @end
 
 //----------------

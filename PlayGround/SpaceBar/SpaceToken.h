@@ -18,8 +18,11 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 @interface SpaceToken : UIButton
 
 
-@property NSNumber *hasReportedDraggingEvent;
+@property BOOL hasReportedDraggingEvent;
 @property CGPoint initialTouchLocationInView;
+@property BOOL isCircleLayerOn;
+@property BOOL isLineLayerOn;
+
 @property CAShapeLayer *circleLayer;
 @property CAShapeLayer *lineLayer;
 
@@ -33,10 +36,12 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 // mapViewXY caches the Mercator (x, y) coordinates
 // corrresponding to latlon
 
-- (id) initForType: (spaceTokenType)type; // factory method
-
 - (void) registerButtonEvents;
 
-- (void) resetButton;
 - (void) configureAppearanceForType: (spaceTokenType) type;
+
+// Exposing the button methods so the buttons can be touched programmatically
+- (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event;
+- (void) buttonUp:(UIButton*)sender forEvent:(UIEvent*)event;
+- (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event;
 @end

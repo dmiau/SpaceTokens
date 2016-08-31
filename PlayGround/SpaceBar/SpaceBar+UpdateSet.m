@@ -18,7 +18,8 @@
 //----------------
 - (SpaceToken*) addSpaceTokenFromPOI:(POI *)poi{
     
-    SpaceToken *aSpaceToken = [[SpaceToken alloc] initForType:DOCKED];
+    SpaceToken *aSpaceToken = [[SpaceToken alloc] init];
+    [aSpaceToken configureAppearanceForType:DOCKED];
     
     [aSpaceToken setTitle:poi.name forState:UIControlStateNormal];
     aSpaceToken.poi = poi;

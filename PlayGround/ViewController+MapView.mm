@@ -67,21 +67,18 @@
     }
 }
 
-- (void) mapTouchBegan: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
+- (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     // Remove all the touched SpaceTokens
-    [self.spaceBar clearAllTouchedTokens];
-    
-    [self.spaceBar addAnchorForCoordinates:coord atMapXY:xy];
+    [self.spaceBar clearAllTouchedTokens];    
+    [self.spaceBar addAnchorForTouches: touches];
 }
 
-- (void) mapTouchMoved: (CLLocationCoordinate2D) coord atXY:(CGPoint)xy{
+- (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    [self.spaceBar updateAnchorAtMapXY:xy];
-    // Add a SpaceToken?
-    NSLog(@"Map XY: %@", NSStringFromCGPoint(xy));
+    [self.spaceBar updateAnchorForTouches: touches];
 }
 
-- (void) mapTouchEnded{
+- (void) mapTouchEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     // Remove all the touched SpaceTokens
     [self.spaceBar clearAllTouchedTokens];
     [self.spaceBar removeAnchor];

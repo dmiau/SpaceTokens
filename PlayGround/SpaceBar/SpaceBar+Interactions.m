@@ -75,22 +75,44 @@
     [self.sliderContainer updateElevatorPercentageLow:low high:high];
 }
 
-- (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY:(CGPoint)mapXY{
-    if (!self.anchor){
-        // create a new POI for anchor if an anchor does not exist
-        self.anchor = [[SpaceToken alloc] initForType:ANCHORTOKEN];
+- (void) addAnchorForTouches:(NSSet<UITouch *> *)touches{
+
+    // Note: there could be more than one touch point
+    // For now, let's only handle the case when there is only one touch point
+    if ([touches count] == 1){
+        UITouch *touch = [touches anyObject];
+        CGPoint mapXY = [touch locationInView:self.mapView];
+        CLLocationCoordinate2D coord = [self.mapView convertPoint:mapXY
+                                             toCoordinateFromView:self.mapView];
+        if (!self.anchor){
+            // create a new POI for anchor if an anchor does not exist
+            SpaceToken *aToken = [[SpaceToken alloc] init];
+            [aToken configureAppearanceForType:ANCHORTOKEN];
+            
+            // Add the anchor to the map
+            [self.mapView addSubview:aToken];
+            
+            // Position the SpaceToken correctly
+            aToken.center = mapXY;
+            aToken.poi.latLon = coord;
+            aToken.mapViewXY = mapXY;
+            
+            self.anchor = aToken;
+        }
     }
-    self.anchor.poi.latLon = coord;
-    self.anchor.mapViewXY = mapXY;
 }
 
-- (void) updateAnchorAtMapXY:(CGPoint)mapXY
+- (void) updateAnchorForTouches:(NSSet<UITouch *> *)touches
 {
-    if (self.anchor){
-        self.anchor.mapViewXY = mapXY;
-        
-        // Create a SpaceToken when the anchor hits the edge?
-        
+    if ([touches count] == 1){
+        if (self.anchor){
+            UITouch *touch = [touches anyObject];
+            CGPoint mapXY = [touch locationInView:self.mapView];
+            
+            // Position the SpaceToken correctly
+            self.anchor.center = mapXY;
+            self.anchor.mapViewXY = mapXY;
+        }
     }
 }
 
@@ -98,6 +120,7 @@
     // remove the anchor from the dragging set
     if (self.anchor){
         [self.draggingSet removeObject:self.anchor];
+        [self.anchor removeFromSuperview];
         self.anchor = nil;
     }
 }

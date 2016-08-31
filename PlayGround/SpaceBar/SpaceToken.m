@@ -37,65 +37,53 @@
                    selector:@selector(mapUpdateHandler)
                        name:MapUpdatedNotification
                      object:nil];
+        
+        // Appearance Initialization
+        self.isCircleLayerOn = NO;
+        self.isLineLayerOn = NO;
+        self.circleLayer = [CAShapeLayer layer];
+        self.lineLayer = [CAShapeLayer layer];
+        self.hasReportedDraggingEvent = NO;
+        self.counterPart = nil;
+        self.frame = CGRectMake(0, 0, 60.0, 20.0);
+        [self registerButtonEvents];
+        
+        
     }
     return self;
 }
 
-// factory method
-- (id) initForType: (spaceTokenType)type{
-    self = [self init];
-    self.type = type;
-    
-    switch (type) {
-        case DOCKED:
-            self.circleLayer = [CAShapeLayer layer];
-            self.lineLayer = [CAShapeLayer layer];
-            [self resetButton];
-            self.frame = CGRectMake(0, 0, 60.0, 20.0);
-            [self registerButtonEvents];
-            break;
-        case DRAGGING:
-            
-            break;
-            
-        case ANCHORTOKEN:
-            break;
-
-        case DOT:
-            
-            break;
-            
-        default:
-            break;
+- (void)setIsCircleLayerOn:(BOOL)isCircleLayerOn{
+    _isCircleLayerOn = isCircleLayerOn;
+    if (_isCircleLayerOn){
+        [[self layer] addSublayer:self.circleLayer];
+    }else{
+        [self.circleLayer removeFromSuperlayer];
     }
-    
-    return self;
 }
 
+
+- (void)setIsLineLayerOn:(BOOL)isLineLayerOn{
+    _isLineLayerOn = isLineLayerOn;
+    if (_isLineLayerOn){
+        [[self layer] addSublayer:self.lineLayer];
+    }else{
+        [self.lineLayer removeFromSuperlayer];
+    }
+}
 
 - (void)setPerson:(Person *)person{
     _person = person;
     _poi = person.poi;
 }
 
-
-//-----------
-// reattach to a superview
-//-----------
-- (void) resetButton{
-    self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
-    self.counterPart = nil;
-    [self configureAppearanceForType:DOCKED];
-}
-
-
 //-----------
 // configure the appearance
 //-----------
 - (void) configureAppearanceForType:(spaceTokenType)type{
+    self.type = type;
     switch (type) {
         case DOCKED:
-
             [self addSubview:self.titleLabel];
             [self setTitle:@"SpaceToken" forState:UIControlStateNormal];
             [self setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
@@ -105,8 +93,8 @@
             
             [self setTitleColor: [UIColor whiteColor]
                        forState: UIControlStateNormal];
-            [self.circleLayer removeFromSuperlayer];
-            [self.lineLayer removeFromSuperlayer];
+            self.isLineLayerOn = NO;
+            self.isCircleLayerOn = NO;
             
             // add drop shadow
 //            self.layer.cornerRadius = 8.0f;
@@ -120,28 +108,56 @@
             
             break;
         case DRAGGING:
-            self.selected = NO;
-            [self setBackgroundColor:[UIColor clearColor]];
-            [self.titleLabel removeFromSuperview];
-            
-            // Draw a circle under the centroid of the button
-            
-            float radius = 30;
-            [self.circleLayer setStrokeColor:[[UIColor blueColor] CGColor]];
-            [self.circleLayer setFillColor:[[UIColor clearColor] CGColor]];
-            [self.circleLayer setPath:[[UIBezierPath
-                                        bezierPathWithOvalInRect:
-                                        CGRectMake(-radius + self.frame.size.width/2, -radius + self.frame.size.height/2, 2*radius, 2*radius)]
-                                       CGPath]];
-            
-            [[self layer] addSublayer:self.circleLayer];
-            [[self layer] addSublayer:self.lineLayer];
+            [self configureDraggingTokenAppearance];
+            break;
+        case ANCHORTOKEN:
+            [self configureDraggingTokenAppearance];
+            self.isLineLayerOn = NO;
+            self.isCircleLayerOn = NO;
+            self.hasReportedDraggingEvent = YES;
             break;
         default:
             break;
     }
     
     
+}
+
+//-------------------
+// Configure the token as a dragging token
+//-------------------
+- (void)configureDraggingTokenAppearance{
+    self.selected = NO;
+    [self setBackgroundColor:[UIColor clearColor]];
+    [self.titleLabel removeFromSuperview];
+    
+    // Draw a circle under the centroid of the button
+    
+    float radius = 30;
+    [self.circleLayer setStrokeColor:[[UIColor blueColor] CGColor]];
+    [self.circleLayer setFillColor:[[UIColor clearColor] CGColor]];
+    [self.circleLayer setPath:[[UIBezierPath
+                                bezierPathWithOvalInRect:
+                                CGRectMake(-radius + self.frame.size.width/2, -radius + self.frame.size.height/2, 2*radius, 2*radius)]
+                               CGPath]];
+    
+    [[self layer] addSublayer:self.circleLayer];
+    
+    float width = 100;
+    float height = 30;
+    // Add a label on top of the circle
+    UILabel *label = [[UILabel alloc] initWithFrame:
+                      CGRectMake(-width/2 + self.frame.size.width/2,
+                                 -height -radius + self.frame.size.height/2,
+                                 width, height)];
+    
+    label.text = self.poi.name;
+    label.textAlignment = NSTextAlignmentCenter;
+    [label setTextColor:[UIColor redColor]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setFont: [UIFont fontWithName:@"Trebuchet MS" size:12.0f]];
+    [self addSubview:label];
+    //            [[self layer] addSublayer:self.lineLayer];
 }
 
 - (void)setSelected:(BOOL)selected{

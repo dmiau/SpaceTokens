@@ -51,11 +51,11 @@
 - (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event {
     
     // Do nothing if the event is not triggered by self
-    if (sender != self)
+    if (sender != self || self.type !=DOCKED)
         return;
     
     //    NSLog(@"Touch down!");
-    self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
+    self.hasReportedDraggingEvent = NO;
     
     if (self.selected){
         self.selected = NO;
@@ -91,11 +91,11 @@
         return;
     
     //    NSLog(@"Touch up!");
-    if ([self.hasReportedDraggingEvent boolValue]){
+    if (self.hasReportedDraggingEvent){
         //------------------------
         // The button was dragged.
         //------------------------
-        self.hasReportedDraggingEvent = [NSNumber numberWithBool:NO];
+        self.hasReportedDraggingEvent = NO;
         [self.lineLayer removeFromSuperlayer];
         [self removeFromSuperview];
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromDraggingSetNotification
@@ -148,7 +148,6 @@
         }
         
         // If the SpaceToken is dragged outside of the display, delete the SpaceToken
-        NSLog(@"locationInView: %g", locationInView.x);
         if ((locationInView.x - self.initialTouchLocationInView.x) >
             self.frame.size.width/3)
         {
@@ -168,9 +167,9 @@
     CGPoint previousLoationInView = [touch previousLocationInView:self.superview];
     CGPoint locationInButton = [touch locationInView:self];
     
-    if (![self.hasReportedDraggingEvent boolValue]){
+    if (!self.hasReportedDraggingEvent){
         // This is to make sure AddToDraggingSet notification is only sent once.
-        self.hasReportedDraggingEvent = [NSNumber numberWithBool:YES];
+        self.hasReportedDraggingEvent = YES;
         [self.lineLayer removeFromSuperlayer];
         NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
                                                                      object:self userInfo:nil];

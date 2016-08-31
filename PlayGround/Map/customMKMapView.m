@@ -15,6 +15,7 @@
     struct {
         unsigned int regionDidChangeAnimated:1;
         unsigned int mapTouchBegin:1;
+        unsigned int mapTouchMoved:1;
         unsigned int mapTouchEnded:1;
     } _delegateRespondsTo;
 }
@@ -88,9 +89,11 @@
         _delegateRespondsTo.regionDidChangeAnimated =
         [delegate respondsToSelector:@selector(mapView: regionDidChangeAnimated:)];
         _delegateRespondsTo.mapTouchBegin =
-        [delegate respondsToSelector:@selector(mapTouchBegin: atXY:)];
+        [delegate respondsToSelector:@selector(mapTouchBegan: withEvent:)];
+        _delegateRespondsTo.mapTouchMoved =
+        [delegate respondsToSelector:@selector(mapTouchMoved: withEvent:)];
         _delegateRespondsTo.mapTouchEnded =
-        [delegate respondsToSelector:@selector(mapTouchEnded)];
+        [delegate respondsToSelector:@selector(mapTouchEnded: withEvent:)];
     }
 }
 
@@ -110,36 +113,23 @@
 
 
 -(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    // Only handle single touch
-    if ([touches count]==1){
-        UITouch* aTouch = (UITouch*) [touches anyObject];
-        CGPoint point = [aTouch locationInView:self];
-        
-        CLLocationCoordinate2D coord = [self convertPoint:point
-                                     toCoordinateFromView:self];
-        
-        [self.delegate mapTouchBegan: coord atXY: point];
+    if (_delegateRespondsTo.mapTouchBegin)
+    {        
+        [self.delegate mapTouchBegan: touches withEvent:event];
     }
-//    NSLog(@"touch begins");
 }
 
 -(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    // Only handle single touch
-    if ([touches count]==1){
-        UITouch* aTouch = (UITouch*) [touches anyObject];
-        CGPoint point = [aTouch locationInView:self];
-        
-        CLLocationCoordinate2D coord = [self convertPoint:point
-                                     toCoordinateFromView:self];
-        
-        [self.delegate mapTouchMoved: coord atXY: point];
+    if (_delegateRespondsTo.mapTouchMoved)
+    {
+        [self.delegate mapTouchMoved: touches withEvent:event];
     }
 }
 
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.delegate mapTouchEnded];
-//    NSLog(@"touch ended");
+    if (_delegateRespondsTo.mapTouchEnded){
+        [self.delegate mapTouchEnded: touches withEvent:(UIEvent *)event];
+    }
 }
 
 //-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

@@ -95,8 +95,8 @@ unsigned int spaceBarElevatorMoved:1;
 // Implemented in Interactions category
 // --------------
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
-- (void) addAnchorForCoordinates: (CLLocationCoordinate2D) coord atMapXY: (CGPoint) mapXY;
-- (void) updateAnchorAtMapXY: (CGPoint) mapXY;
+- (void) addAnchorForTouches:(NSSet<UITouch *> *)touches;
+- (void) updateAnchorForTouches: (NSSet<UITouch *> *)touches;
 - (void) removeAnchor;
 
 // --------------
