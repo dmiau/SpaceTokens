@@ -41,8 +41,10 @@
         // Appearance Initialization
         self.isCircleLayerOn = NO;
         self.isLineLayerOn = NO;
+        self.isConstraintLineOn = NO;
         self.circleLayer = [CAShapeLayer layer];
         self.lineLayer = [CAShapeLayer layer];
+        self.constraintLayer = [CAShapeLayer layer];
         self.hasReportedDraggingEvent = NO;
         self.counterPart = nil;
         self.frame = CGRectMake(0, 0, 60.0, 20.0);
@@ -53,6 +55,10 @@
     return self;
 }
 
+#pragma mark --setters--
+//-----------
+// setters
+//-----------
 - (void)setIsCircleLayerOn:(BOOL)isCircleLayerOn{
     _isCircleLayerOn = isCircleLayerOn;
     if (_isCircleLayerOn){
@@ -72,10 +78,60 @@
     }
 }
 
+// This controls the constraint layer
+- (void)setIsConstraintLineOn:(BOOL)isConstraintLineOn{
+    
+    _isConstraintLineOn = isConstraintLineOn;
+    if (isConstraintLineOn){
+        // Turn off the line and circle layers
+        self.isLineLayerOn = NO;
+        self.isCircleLayerOn = NO;
+        
+        // Turn on the constraint layer
+        [[self layer] addSublayer:self.constraintLayer];
+    }else{
+        [self.constraintLayer removeFromSuperlayer];
+    }
+}
+
+
 - (void)setPerson:(Person *)person{
     _person = person;
     _poi = person.poi;
 }
+
+- (void)setSelected:(BOOL)selected{
+    super.selected = selected;
+    if (selected){
+        self.backgroundColor = [UIColor redColor];
+        [[self layer] addSublayer:self.lineLayer];
+        [self updatePOILine];
+    }else{
+        self.backgroundColor = [UIColor grayColor];
+        [self.lineLayer removeFromSuperlayer];
+    }
+    
+    // A SpaceToken may be linked to a dynamic locaiton, such as a person
+    if (self.person){
+        
+        // Get the map object
+        customMKMapView *myMapView = [customMKMapView sharedManager];
+        
+        if (selected){
+            self.person.updateFlag = YES;
+        }else{
+            // http://stackoverflow.com/questions/14924892/nstimer-with-anonymous-function-block
+            int64_t delayInSeconds = 5; // Your Game Interval as mentioned above by you
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                // Update your label here.
+                self.person.updateFlag = NO;
+            });
+        }
+    }
+}
+
 
 //-----------
 // configure the appearance
@@ -160,47 +216,20 @@
     //            [[self layer] addSublayer:self.lineLayer];
 }
 
-- (void)setSelected:(BOOL)selected{
-    super.selected = selected;
-    if (selected){
-        self.backgroundColor = [UIColor redColor];
-        [[self layer] addSublayer:self.lineLayer];
-        [self updatePOILine];
-    }else{
-        self.backgroundColor = [UIColor grayColor];
-        [self.lineLayer removeFromSuperlayer];
-    }
-    
-    // A SpaceToken may be linked to a dynamic locaiton, such as a person
-    if (self.person){
-
-        // Get the map object
-        customMKMapView *myMapView = [customMKMapView sharedManager];
-
-        if (selected){
-            self.person.updateFlag = YES;            
-        }else{
-            // http://stackoverflow.com/questions/14924892/nstimer-with-anonymous-function-block
-            int64_t delayInSeconds = 5; // Your Game Interval as mentioned above by you
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                // Update your label here. 
-                self.person.updateFlag = NO;
-            });
-        }
-    }
-}
 
 - (void)mapUpdateHandler{
     if (self.selected){
         [self updatePOILine];
     }
+    
+    if (self.isConstraintLineOn){
+        [self updateConstraintLine];
+    }
+    
 }
 
 
 - (void)updatePOILine{
-
     // draw the line
     UIBezierPath *linePath=[UIBezierPath bezierPath];
     [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
@@ -212,7 +241,40 @@
     self.lineLayer.fillColor = nil;
     self.lineLayer.opacity = 1.0;
     self.lineLayer.strokeColor = [UIColor blueColor].CGColor;
+}
+
+- (void)updateConstraintLine{
     
+    //Draw multiple path on a single CALayer
+    //http://stackoverflow.com/questions/9967157/multiple-paths-in-cashapelayer
+    
+    // draw the line
+    UIBezierPath *linePath=[UIBezierPath bezierPath];
+    [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
+                                       self.frame.size.height/2)];
+    // Get the map object
+    customMKMapView *myMapView = [customMKMapView sharedManager];
+    CGPoint shiftedPOIXY = [myMapView convertCoordinate:self.poi.latLon
+                                          toPointToView:self];
+    
+    [linePath addLineToPoint: shiftedPOIXY];
+    
+    
+    // Circle path
+    float radius = 30;
+    UIBezierPath *cirlcePath=[UIBezierPath
+                              bezierPathWithOvalInRect:
+                              CGRectMake(-radius + shiftedPOIXY.x, -radius + shiftedPOIXY.y,
+                                         2*radius, 2*radius)];
+    
+    // Combine the cirlce path with the line path
+    CGMutablePathRef combinedPath = CGPathCreateMutableCopy(linePath.CGPath);
+    CGPathAddPath(combinedPath, NULL, cirlcePath.CGPath);
+    
+    self.constraintLayer.path = combinedPath;
+    self.constraintLayer.fillColor = nil;
+    self.constraintLayer.strokeColor = [UIColor redColor].CGColor;
+    self.constraintLayer.opacity = 1.0;
 }
 
 @end

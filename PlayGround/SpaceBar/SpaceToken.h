@@ -22,9 +22,11 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 @property CGPoint initialTouchLocationInView;
 @property BOOL isCircleLayerOn;
 @property BOOL isLineLayerOn;
+@property BOOL isConstraintLineOn;
 
 @property CAShapeLayer *circleLayer;
 @property CAShapeLayer *lineLayer;
+@property CAShapeLayer *constraintLayer;
 
 // When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
 @property (weak) SpaceToken *counterPart;

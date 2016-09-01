@@ -177,8 +177,8 @@
         ySpan = xSpan * aspectRatio;
     }
     
-    MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan/2,
-                                       midPoint.y - ySpan/2,
+    MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan * 0.6,
+                                       midPoint.y - ySpan * 0.6,
                                        xSpan * 1.2, ySpan*1.2);
     
     [self setVisibleMapRect:zoomRect animated:NO];

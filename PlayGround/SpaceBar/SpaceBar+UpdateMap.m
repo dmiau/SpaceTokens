@@ -47,6 +47,9 @@
         // one anchor + one touched SpaceToken
         if (self.anchor)
         {
+            // Turn on the touching visualization
+            self.anchor.isCircleLayerOn = YES;
+            
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
             aSpaceToken.mapViewXY =
             CGPointMake(aSpaceToken.center.x - aSpaceToken.frame.size.width *0.7, aSpaceToken.center.y);
@@ -64,14 +67,20 @@
         }
                 
     }else if ([self.touchingSet count] > 1){
+
         NSMutableSet <POI*>* poiSet = [[NSMutableSet alloc] init];
         for (SpaceToken* aToken in self.touchingSet){
             [poiSet addObject: aToken.poi];
         }
-        [self.mapView zoomToFitPOIs:poiSet];
         
-//        // Clear the touching set
-//        [self.touchingSet removeAllObjects];
+        // Relaxed constraints
+        if (self.anchor){
+            [poiSet addObject:self.anchor.poi];
+            // Draw the constraint line
+            self.anchor.isConstraintLineOn = YES;
+        }
+        
+        [self.mapView zoomToFitPOIs:poiSet];
     }
 }
 
@@ -86,6 +95,7 @@
         && [self.draggingSet anyObject] != self.anchor
         && self.anchor)
     {
+        self.anchor.isCircleLayerOn = YES;
         [self.draggingSet addObject:self.anchor];
     }
     

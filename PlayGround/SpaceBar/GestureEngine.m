@@ -34,7 +34,7 @@
 // Interactions
 //-----------------
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"Touches began...");
+//    NSLog(@"Touches began...");
 }
 
 
@@ -44,12 +44,12 @@
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"Touches cancelled...");
+//    NSLog(@"Touches cancelled...");
 }
 
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"Touches ended...");
+//    NSLog(@"Touches ended...");
 }
 
 
