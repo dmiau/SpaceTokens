@@ -59,7 +59,16 @@
     
     if (self.selected){
         self.selected = NO;
-        
+
+        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    }else{
+        self.selected = YES;
+
+        //--------------
+        // SpaceToken is being turned on
+        //--------------
         
         // There could be multiple touch events!
         // Need to find the touch even associated with self
@@ -70,13 +79,6 @@
         }
         // Cache the initial button down location
         self.initialTouchLocationInView = [touch locationInView:self.superview];
-        
-        
-        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
-                                                                     object:self userInfo:nil];
-        [[ NSNotificationCenter defaultCenter] postNotification:notification];
-    }else{
-        self.selected = YES;
         
         NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
                                                                      object:self userInfo:nil];
@@ -151,7 +153,11 @@
         if ((locationInView.x - self.initialTouchLocationInView.x) >
             self.frame.size.width/3)
         {
-//            [self handleRemoveToken];
+            NSLog(@"current touch: %g, initial touch: %g",
+                  locationInView.x,
+                  self.initialTouchLocationInView.x);
+            
+            [self handleRemoveToken];
         }
         
     }else{
@@ -207,13 +213,18 @@
 // Remove the SpaceToken
 //---------------
 - (void)handleRemoveToken{
-    NSLog(@"Removing the SpaceToken.");
-    
-    NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
-                                                                 object:self userInfo:nil];
-    [[ NSNotificationCenter defaultCenter] postNotification:notification];
+
+    // Remove from the touching set
+    [[ NSNotificationCenter defaultCenter] postNotification:
+     [NSNotification notificationWithName:
+      RemoveFromTouchingSetNotification object:self userInfo:nil]];
     
     [self removeFromSuperview];
+    
+    // Remove from the button set
+    [[ NSNotificationCenter defaultCenter] postNotification:
+     [NSNotification notificationWithName:RemoveFromButtonSetNotification
+                                   object:self userInfo:nil]];
 }
 
 @end

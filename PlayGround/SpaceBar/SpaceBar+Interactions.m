@@ -77,6 +77,8 @@
 
 - (void) addAnchorForTouches:(NSSet<UITouch *> *)touches{
 
+    static int counter = 0;
+    
     // Note: there could be more than one touch point
     // For now, let's only handle the case when there is only one touch point
     if ([touches count] == 1){
@@ -96,6 +98,7 @@
             aToken.center = mapXY;
             aToken.poi.latLon = coord;
             aToken.mapViewXY = mapXY;
+            aToken.poi.name = [NSString stringWithFormat:@"Anchor%d", counter++];
             
             self.anchor = aToken;
         }
@@ -109,9 +112,14 @@
             UITouch *touch = [touches anyObject];
             CGPoint mapXY = [touch locationInView:self.mapView];
             
-            // Position the SpaceToken correctly
-            self.anchor.center = mapXY;
-            self.anchor.mapViewXY = mapXY;
+            // Create a SpaceToken if the touch falls into the creation zone
+            if (mapXY.x > 0.95 * self.mapView.frame.size.width){
+                [self convertAnchorToRealToken:self.anchor];
+            }else{
+                // Position the SpaceToken correctly
+                self.anchor.center = mapXY;
+                self.anchor.mapViewXY = mapXY;
+            }
         }
     }
 }
@@ -123,6 +131,14 @@
         [self.anchor removeFromSuperview];
         self.anchor = nil;
     }
+}
+
+- (void) convertAnchorToRealToken: (SpaceToken*) token{    
+    // Create a new SpaceToken based on anchor
+    SpaceToken* newSpaceToken =
+    [self addSpaceTokenFromPOI:token.poi];
+    [self removeAnchor];
+    [self orderSpaceTokens];
 }
 
 @end

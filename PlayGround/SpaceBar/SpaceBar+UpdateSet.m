@@ -81,7 +81,7 @@
     
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonSetNotification){
-        [self.buttonSet removeObject:aNotification.object];
+        [self.buttonSet removeObject:aNotification.object];        
     }else if (aNotification.name == RemoveFromTouchingSetNotification){        
         [self removeTokenFromTouchingSet:aNotification.object];
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
@@ -182,7 +182,7 @@
     // Create a person
     Person *person = [[Person alloc] init];
     self.youAreHere.person = person;    
-    [self orderSpaceTokens];
+    [self orderSpaceTokens]; 
 }
 
 //----------------
@@ -221,7 +221,7 @@
         self.privateTouchingSetTimer = nil;
     }
     [self.touchingSet addObject:aToken];
-    self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:1
+    self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:5
                                                          target:self
                                                        selector:@selector(setTimerAction)
                                                        userInfo:nil
@@ -238,7 +238,7 @@
             self.privateTouchingSetTimer = nil;
         }
         
-        self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:1
+        self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:5
                                                                         target:self
                                                                       selector:@selector(setTimerAction)
                                                                       userInfo:nil
