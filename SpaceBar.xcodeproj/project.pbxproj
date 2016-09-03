@@ -85,6 +85,8 @@
 		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
+		9ABA3B471D7B749300895175 /* ViewController+SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */; };
+		9ABA3B481D7B749300895175 /* ViewController+SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */; };
 		9ABB28101D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9ABB28111D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9AC338241D63AA1C000272D9 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
@@ -124,6 +126,8 @@
 		9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
+		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
+		9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
 		9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
 		9AF100031D57FA720063CB63 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
@@ -233,6 +237,8 @@
 		9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Interactions.m"; path = "SpaceBar/SpaceBar+Interactions.m"; sourceTree = "<group>"; };
 		9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProgress.h; path = StudyManager/SnapshotProgress.h; sourceTree = "<group>"; };
 		9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SnapshotProgress.mm; path = StudyManager/SnapshotProgress.mm; sourceTree = "<group>"; };
+		9ABA3B451D7B749300895175 /* ViewController+SpaceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+SpaceToken.h"; sourceTree = "<group>"; };
+		9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+SpaceToken.m"; sourceTree = "<group>"; };
 		9ABB280E1D36795C00595A0D /* Elevator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Elevator.h; path = SpaceBar/RangeSlider/Elevator.h; sourceTree = "<group>"; };
 		9ABB280F1D36795C00595A0D /* Elevator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Elevator.m; path = SpaceBar/RangeSlider/Elevator.m; sourceTree = "<group>"; };
 		9AC338221D63AA1C000272D9 /* heading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heading.png; path = icons/heading.png; sourceTree = "<group>"; };
@@ -253,6 +259,8 @@
 		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
 		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
+		9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIDetailViewController.h; sourceTree = "<group>"; };
+		9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIDetailViewController.m; sourceTree = "<group>"; };
 		9AF100021D57FA720063CB63 /* StudyPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyPanels.xib; sourceTree = "<group>"; };
 		9AF1FFFE1D57CA770063CB63 /* TaskBasePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskBasePanel.h; path = Views/TaskBasePanel.h; sourceTree = "<group>"; };
 		9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskBasePanel.m; path = Views/TaskBasePanel.m; sourceTree = "<group>"; };
@@ -497,6 +505,8 @@
 				9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */,
 				9A5301471C5AD6A6008D584B /* ViewController.h */,
 				9A5301481C5AD6A6008D584B /* ViewController.mm */,
+				9ABA3B451D7B749300895175 /* ViewController+SpaceToken.h */,
+				9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */,
 				9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */,
 				9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */,
 				9A0E063B1D54FCB800E5722D /* ViewController+MapView.h */,
@@ -535,6 +545,8 @@
 				9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */,
 				9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */,
 				9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */,
+				9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */,
+				9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */,
 				9AD639F11D50267C00C91F1B /* FileTableController.h */,
 				9AD639F21D50267C00C91F1B /* FileTableController.m */,
 				9A1CA2B41D4671210098957A /* CustomTabController.h */,
@@ -757,6 +769,7 @@
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9AF2D54C1D5E85C0001FCA6E /* ProgressPanel.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
+				9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
@@ -765,6 +778,7 @@
 				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
+				9ABA3B471D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
@@ -818,6 +832,7 @@
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9AF2D54D1D5E85C0001FCA6E /* ProgressPanel.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
+				9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
@@ -826,6 +841,7 @@
 				9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
+				9ABA3B481D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,

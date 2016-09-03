@@ -220,7 +220,7 @@
       RemoveFromTouchingSetNotification object:self userInfo:nil]];
     
     [self removeFromSuperview];
-    
+    self.poi.isEnabled = NO;
     // Remove from the button set
     [[ NSNotificationCenter defaultCenter] postNotification:
      [NSNotification notificationWithName:RemoveFromButtonSetNotification

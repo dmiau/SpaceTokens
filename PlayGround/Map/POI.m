@@ -31,6 +31,7 @@
         _coordSpan = MKCoordinateSpanMake(0.01, 0.01);
         _annotation = [[CustomPointAnnotation alloc] init];
         _headingInDegree = 0;
+        _isEnabled = YES;
     }
     return self;
 }

@@ -139,6 +139,9 @@
     [self addSpaceTokenFromPOI:token.poi];
     [self removeAnchor];
     [self orderSpaceTokens];
+    
+    // Add the POI to poiArray
+    [self.poiArray addObject:token.poi];
 }
 
 @end

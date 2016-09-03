@@ -9,7 +9,79 @@
 #import "LocationTableController.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "POIDetailViewController.h"
 
+#pragma mark --POI Cell--
+@interface landmarkCell :UITableViewCell
+
+@property UISwitch* mySwitch;
+@property ViewController* rootViewController;
+@property POI* poi;
+@property bool isUserLocation;
+
+@end
+
+//---------------------
+// landmarkCell implementation
+//---------------------
+@implementation landmarkCell
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]))
+    {
+        //-------------------
+        // Create an UISwitch
+        //-------------------
+        UISwitch *onoff = [[UISwitch alloc]
+                           initWithFrame:CGRectMake(260, 6, 51, 31)];
+        [onoff addTarget: self action: @selector(flipSingleLandmark:) forControlEvents:UIControlEventValueChanged];
+        onoff.on = false;
+        self.mySwitch = onoff;
+        [self addSubview:onoff];
+        
+        //-------------------
+        // Set the rootViewController
+        //-------------------
+        AppDelegate *app = [[UIApplication sharedApplication] delegate];
+        
+        UINavigationController *myNavigationController =
+        app.window.rootViewController;
+        
+        self.rootViewController =
+        [myNavigationController.viewControllers objectAtIndex:0];
+        
+        [self setAccessoryType: UITableViewCellAccessoryDetailButton];
+    }
+    return self;
+}
+
+- (void) flipSingleLandmark:(UISwitch*)sender{
+    if (sender.isOn) {
+        self.poi.isEnabled = true;
+    } else {
+        self.poi.isEnabled = false;
+    }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate{
+    
+    if (editing){
+        [self.mySwitch setHidden:YES];
+        [self setEditingAccessoryType: UITableViewCellAccessoryDetailButton];
+    }else{
+        [self.mySwitch setHidden:NO];
+        if (self.poi)
+            self.mySwitch.on = self.poi.isEnabled;
+        [self setEditingAccessoryType: UITableViewCellAccessoryNone];
+    }
+    [super setEditing:editing animated:animate];
+}
+
+@end
+
+
+
+#pragma mark --LocationTableController--
 @implementation LocationTableController
 
 // Initialization
@@ -27,14 +99,25 @@
         
         UINavigationController *myNavigationController =
         app.window.rootViewController;
-        self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];        
+        self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
+
+
     }
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    //-----------------
+    // Register the custom cell
+    //-----------------
+    [self.myTableView registerClass:[landmarkCell class]
+             forCellReuseIdentifier:@"myTableCell"];
+}
+
 - (void)awakeFromNib{
     
-
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -56,7 +139,7 @@
 //----------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = (UITableViewCell *)[tableView                                                dequeueReusableCellWithIdentifier:@"tableCell"];
+    landmarkCell *cell = (landmarkCell *)[tableView                                                dequeueReusableCellWithIdentifier:@"myTableCell"];
     
     if (cell == nil){
         NSLog(@"Something wrong...");
@@ -67,6 +150,9 @@
     
     // Configure Cell
     cell.textLabel.text = self.rootViewController.poiDatabase.poiArray[i].name;
+    cell.poi = self.rootViewController.poiDatabase.poiArray[i];
+    
+    cell.mySwitch.on = cell.poi.isEnabled;
     return cell;
 }
 
@@ -82,4 +168,38 @@
     }];
 }
 
+
+//----------------
+// This method is called when the accessory button is pressed
+// *************
+// It appears that this method will only be called when
+// accessoryTrype is set to "Detail Disclosure"
+//----------------
+- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    // Get the row ID
+    int i = [indexPath row];
+    int section_id = [indexPath section];
+    
+    // Perform segue
+    [self performSegueWithIdentifier:@"POIDetailVC"
+                              sender:self.rootViewController.poiDatabase.poiArray[i]];
+}
+
+
+#pragma mark -----Navigation and Exit-----
+//------------------
+// Prepare for the detail view
+//------------------
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(CustomPointAnnotation*)sender
+{
+    if ([segue.identifier isEqualToString:@"POIDetailVC"])
+    {
+        POIDetailViewController *destinationViewController =
+        segue.destinationViewController;
+        
+        // grab the annotation from the sender
+        destinationViewController.poi = sender;
+    }
+}
 @end

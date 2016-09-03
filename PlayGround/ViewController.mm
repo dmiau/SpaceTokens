@@ -115,6 +115,12 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated{
+    if (self.spaceBar.spaceBarMode == TOKENONLY){
+        [self refreshSpaceTokens];
+    }
+}
+
 //-----------------
 // A temporary method to save data into the disk
 //-----------------

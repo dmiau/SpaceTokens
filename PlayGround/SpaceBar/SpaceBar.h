@@ -46,6 +46,8 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 
 @property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
+
+@property (weak) NSMutableArray<POI*> *poiArray;
 // This is a convenient set to cache the references to all the
 // POIs on the track
 @property NSMutableSet <SpaceToken*> *buttonSet;
@@ -78,8 +80,11 @@ unsigned int spaceBarElevatorMoved:1;
 // Constructors
 - (id)initWithMapView: (MKMapView *) myMapView;
 
+// --------------
+// SpaceToken management
+// --------------
 - (SpaceToken*) addSpaceTokenFromPOI:(POI*) poi;
-- (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray;
+- (void)addSpaceTokensFromPOIArray: (NSMutableArray <POI*> *) poiArray;
 - (void)removeAllSpaceTokens;
 - (void)resetSpaceBar;
 - (void)clearAllTouchedTokens;

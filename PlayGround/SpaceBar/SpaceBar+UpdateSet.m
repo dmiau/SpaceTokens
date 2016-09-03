@@ -13,35 +13,7 @@
 
 @implementation SpaceBar (UpdateSet)
 
-//----------------
-// add a SpaceToken
-//----------------
-- (SpaceToken*) addSpaceTokenFromPOI:(POI *)poi{
-    
-    SpaceToken *aSpaceToken = [[SpaceToken alloc] init];
-    [aSpaceToken configureAppearanceForType:DOCKED];
-    
-    [aSpaceToken setTitle:poi.name forState:UIControlStateNormal];
-    aSpaceToken.poi = poi;
-    
-    if (aSpaceToken){
-        // Add to the canvas
-        [self.mapView addSubview:aSpaceToken];
-        [self.buttonSet addObject:aSpaceToken];
-    }else{
-        // error
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
-            message:@"Cannot add new SpaceToken."
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
-    }
-    
-    return aSpaceToken;
-}
-
+#pragma mark -- Handle notifications ---
 
 //----------------
 // notifications
@@ -88,6 +60,9 @@
         [self.draggingSet removeObject:aNotification.object];
     }
 }
+
+
+#pragma mark --Order SpaceToken--
 
 - (void) updateSpecialPOIs{
     self.mapCentroid.poi.latLon = self.mapView.centerCoordinate;
@@ -158,10 +133,46 @@
     }
 }
 
+
+
+#pragma mark --Add/remove SpaceToken--
+
+//----------------
+// add a SpaceToken
+//----------------
+- (SpaceToken*) addSpaceTokenFromPOI:(POI *)poi{
+    
+    SpaceToken *aSpaceToken = [[SpaceToken alloc] init];
+    [aSpaceToken configureAppearanceForType:DOCKED];
+    
+    [aSpaceToken setTitle:poi.name forState:UIControlStateNormal];
+    aSpaceToken.poi = poi;
+    
+    if (aSpaceToken){
+        // Add to the canvas
+        [self.mapView addSubview:aSpaceToken];
+        [self.buttonSet addObject:aSpaceToken];
+    }else{
+        // error
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
+                                                        message:@"Cannot add new SpaceToken."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+    }
+    
+    return aSpaceToken;
+}
+
 //----------------
 // Add SpaceTokens from poiArray
 //----------------
 - (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray{
+
+    // Cache the link to POI array
+    self.poiArray = poiArray;
     
     // Remove all SpaceTokens first
     [self removeAllSpaceTokens];

@@ -22,4 +22,6 @@
 @property double headingInDegree;
 @property NSString *name;
 @property CustomPointAnnotation *annotation;
+@property bool isEnabled;
+@property (weak) id linkedObj; // a POI can be linked another object, e.g., a SpaceToken
 @end
