@@ -19,4 +19,7 @@
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
 
+// Debug methods
+- (void)debugInit;
+
 @end

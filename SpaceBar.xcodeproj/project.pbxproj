@@ -83,6 +83,10 @@
 		9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
+		9AAAA1821D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
+		9AAAA1831D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
+		9AAAA1861D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */; };
+		9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */; };
 		9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9ABA3B471D7B749300895175 /* ViewController+SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */; };
@@ -235,6 +239,10 @@
 		9AA617611D5635D1003CD946 /* SnapshotProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProtocol.h; path = StudyManager/SnapshotProtocol.h; sourceTree = "<group>"; };
 		9AA62C031D25734200913F29 /* SpaceBar+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Interactions.h"; path = "SpaceBar/SpaceBar+Interactions.h"; sourceTree = "<group>"; };
 		9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Interactions.m"; path = "SpaceBar/SpaceBar+Interactions.m"; sourceTree = "<group>"; };
+		9AAAA1801D7C6BEE003F4AA3 /* SnapshotAnchorPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotAnchorPlus.h; path = StudyManager/SnapshotAnchorPlus.h; sourceTree = "<group>"; };
+		9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotAnchorPlus.m; path = StudyManager/SnapshotAnchorPlus.m; sourceTree = "<group>"; };
+		9AAAA1841D7C70EA003F4AA3 /* SnapshotDatabase+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SnapshotDatabase+Debug.h"; path = "StudyManager/SnapshotDatabase+Debug.h"; sourceTree = "<group>"; };
+		9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SnapshotDatabase+Debug.m"; path = "StudyManager/SnapshotDatabase+Debug.m"; sourceTree = "<group>"; };
 		9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProgress.h; path = StudyManager/SnapshotProgress.h; sourceTree = "<group>"; };
 		9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SnapshotProgress.mm; path = StudyManager/SnapshotProgress.mm; sourceTree = "<group>"; };
 		9ABA3B451D7B749300895175 /* ViewController+SpaceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+SpaceToken.h"; sourceTree = "<group>"; };
@@ -362,13 +370,17 @@
 			children = (
 				9A437FB01D550C7A00F28E61 /* GameManager.h */,
 				9A437FB11D550C7A00F28E61 /* GameManager.m */,
+				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
 				9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */,
 				9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */,
-				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
+				9AAAA1841D7C70EA003F4AA3 /* SnapshotDatabase+Debug.h */,
+				9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */,
 				9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */,
 				9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */,
 				9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */,
 				9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */,
+				9AAAA1801D7C6BEE003F4AA3 /* SnapshotAnchorPlus.h */,
+				9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */,
 			);
 			name = GameManager;
 			sourceTree = "<group>";
@@ -739,6 +751,7 @@
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
+				9AAAA1821D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
 				9AF2D5501D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9A43EAF01D4008F400080029 /* POIDatabase.m in Sources */,
@@ -764,6 +777,7 @@
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9A8EC9E11D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
+				9AAAA1861D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AF3B44A1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -802,6 +816,7 @@
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
+				9AAAA1831D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
 				9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9A43EAF11D4008F400080029 /* POIDatabase.m in Sources */,
@@ -827,6 +842,7 @@
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
 				9A8EC9E21D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
+				9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */,
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import "SnapshotDatabase.h"
-#import "SnapshotChecking.h"
 
 @implementation SnapshotDatabase
 
@@ -21,16 +20,6 @@
     }
     return self;
 }
-
-- (void)debugInit{
-    // Initialize a bunch of snapshots temporary
-    NSArray *keys = @[@"PC1", @"PC2", @"TC1", @"TC2"];
-    for (NSString *aKey in keys){
-        SnapshotChecking *checking = [[SnapshotChecking alloc] init];
-        self.snapshotDictrionary[aKey] = checking;
-    }
-}
-
 
 // iCloud related methods
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName{
