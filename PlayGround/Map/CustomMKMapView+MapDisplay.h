@@ -1,13 +1,13 @@
 //
-//  customMKMapView+MapDisplay.h
+//  CustomMKMapView+MapDisplay.h
 //  SpaceBar
 //
 //  Created by dmiau on 7/8/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "customMKMapView.h"
+#import "CustomMKMapView.h"
 
-@interface customMKMapView (MapDisplay)
+@interface CustomMKMapView (MapDisplay)
 
 @end

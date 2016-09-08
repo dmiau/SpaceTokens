@@ -1,5 +1,5 @@
 //
-//  customMKMapView.h
+//  CustomMKMapView.h
 //  SpaceBar
 //
 //  Created by Daniel on 7/4/16.
@@ -13,9 +13,9 @@
 @class Route;
 
 //----------------
-// customMKMapViewDelegate
+// CustomMKMapViewDelegate
 //----------------
-@protocol customMKMapViewDelegate <NSObject>
+@protocol CustomMKMapViewDelegate <NSObject>
 
 // The following are to support the anchor+x interactions
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
@@ -24,13 +24,13 @@
 @end
 
 //----------------
-// customMKMapView
+// CustomMKMapView
 //----------------
-@interface customMKMapView : MKMapView
+@interface CustomMKMapView : MKMapView
 
 + (id)sharedManager; // Singleton method
 
-@property (nonatomic, weak) id<MKMapViewDelegate, customMKMapViewDelegate> delegate;
+@property (nonatomic, weak) id<MKMapViewDelegate, CustomMKMapViewDelegate> delegate;
 @property MKUserLocation *customUserLocation;
 
 // === (MapDisplay) ===
