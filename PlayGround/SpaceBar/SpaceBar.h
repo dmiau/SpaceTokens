@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "../Map/customMKMapView.h"
+#import "../Map/CustomMKMapView.h"
 #import "SpaceToken.h"
 #import "RangeSlider/CERangeSlider.h"
 
@@ -40,7 +40,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property SpaceBarMode spaceBarMode;
 @property CGRect frame;
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
-@property (weak) customMKMapView *mapView;
+@property (weak) CustomMKMapView *mapView;
 @property CERangeSlider* sliderContainer;
 @property GestureEngine *gestureEngine;
 

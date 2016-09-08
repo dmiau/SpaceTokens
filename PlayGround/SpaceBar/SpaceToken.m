@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "../Map/CustomPointAnnotation.h"
 #import "../Map/Person.h"
-#import "../Map/customMKMapView.h"
+#import "../Map/CustomMKMapView.h"
 
 @implementation SpaceToken
 
@@ -115,7 +115,7 @@
     if (self.person){
         
         // Get the map object
-        customMKMapView *myMapView = [customMKMapView sharedManager];
+        CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
         
         if (selected){
             self.person.updateFlag = YES;
@@ -253,7 +253,7 @@
     [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
                                        self.frame.size.height/2)];
     // Get the map object
-    customMKMapView *myMapView = [customMKMapView sharedManager];
+    CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     CGPoint shiftedPOIXY = [myMapView convertCoordinate:self.poi.latLon
                                           toPointToView:self];
     

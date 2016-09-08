@@ -62,17 +62,18 @@
     // Initialize a Snashot DB
     //----------------
     SnapshotDatabase *mySnapshotDatabase = [[SnapshotDatabase alloc] initWithDatabaseName:@"study"];
-    NSArray *gameVector = @[@"PC1", @"PC2", @"TC1", @"TC2"];
+    NSArray *gameVector = @[@"AP1", @"PC1", @"PC2", @"TC1", @"TC2"];
     //----------------
     // Initialize Study Manager
     //----------------
-    self.gameManager = [[GameManager alloc] initWithSnapshotDatabase:mySnapshotDatabase GameVector:gameVector];
-    self.gameManager.gameManagerStatus = OFF;
+    self.gameManager = [GameManager sharedManager];
+    self.gameManager.gameVector = gameVector;
+    self.gameManager.snapshotDatabase = mySnapshotDatabase;
     
     //----------------
     // Add a mapView
     //----------------
-    self.mapView = [customMKMapView sharedManager];
+    self.mapView = [CustomMKMapView sharedManager];
     self.mapView.frame = CGRectMake(0, topPanelHeight,
                                     self.view.frame.size.width, self.view.frame.size.height - topPanelHeight);
     [self.view addSubview:self.mapView];
@@ -116,10 +117,17 @@
 
 
 - (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES];
+    
     if (self.spaceBar.spaceBarMode == TOKENONLY){
         [self refreshSpaceTokens];
     }
 }
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
 
 //-----------------
 // A temporary method to save data into the disk

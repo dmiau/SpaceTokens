@@ -232,7 +232,7 @@
         self.privateTouchingSetTimer = nil;
     }
     [self.touchingSet addObject:aToken];
-    self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:5
+    self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
                                                          target:self
                                                        selector:@selector(setTimerAction)
                                                        userInfo:nil
@@ -249,7 +249,7 @@
             self.privateTouchingSetTimer = nil;
         }
         
-        self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:5
+        self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
                                                                         target:self
                                                                       selector:@selector(setTimerAction)
                                                                       userInfo:nil
@@ -269,7 +269,7 @@
 }
 
 - (void) setTimerAction{
-    [self clearAllTouchedTokens];
+//    [self clearAllTouchedTokens];
 }
 
 @end

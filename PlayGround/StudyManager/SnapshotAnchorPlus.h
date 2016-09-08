@@ -10,10 +10,13 @@
 #import "POI.h"
 
 @class ViewController;
+@class Record;
 
 @interface SnapshotAnchorPlus : POI <SnapshotProtocol>
 
+@property NSMutableArray <POI*> *highlightedPOIs;
 @property ViewController *rootViewController;
 @property NSMutableArray <POI*> *targetedPOIs;
+@property Record *record;
 
 @end

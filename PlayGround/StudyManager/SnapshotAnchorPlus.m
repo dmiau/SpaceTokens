@@ -9,11 +9,14 @@
 #import "SnapshotAnchorPlus.h"
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "../Map/customMKMapView.h"
+#import "../Map/CustomMKMapView.h"
 #import "Constants.h"
+#import "Record.h"
+#import "GameManager.h"
 
 @implementation SnapshotAnchorPlus{
-    
+    CustomMKMapView *mapView;
+    MKCircle *circle;
 }
 
 - (id)init{
@@ -27,6 +30,16 @@
         UINavigationController *myNavigationController =
         app.window.rootViewController;
         self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
+        
+        // Cache the map view
+        mapView = [CustomMKMapView sharedManager];
+        
+        // Initlialize the POI list
+        self.highlightedPOIs = [[NSMutableArray alloc] init];
+        self.targetedPOIs = [[NSMutableArray alloc] init];
+        
+        // Initialize the record object
+        self.record = [[Record alloc] init];
     }
     return self;
 }
@@ -50,32 +63,67 @@
                  object:nil];
     
     // Start the timer
-    
+    [self.record start];
     
 }
 
 - (void)validator{
 
     // Stop the timer when the goal is achieved
+    BOOL passFlag = NO;
+    
+    // validator should only be called once
+    if (self.record.isAnswered){
+        return;
+    }
+    
+    // Make sure the two points are visible
+    CGPoint xy0 = [mapView convertCoordinate:_targetedPOIs[0].latLon toPointToView:mapView];
+    CGPoint xy1 = [mapView convertCoordinate:_targetedPOIs[1].latLon toPointToView:mapView];
+    CGRect mapRect = CGRectMake(0, 0, _rootViewController.mapView.frame.size.width,
+                                _rootViewController.mapView.frame.size.height);
+    passFlag = (CGRectContainsPoint(mapRect, xy0) && CGRectContainsPoint(mapRect, xy1));
 
+    // Calculate the screen distance between the two points
+    double dist = sqrt( pow(xy0.x - xy1.x, 2) + pow(xy0.y - xy1.y, 2));
+    passFlag = passFlag && (dist > _rootViewController.mapView.frame.size.width * 0.8);
     
+    // if passed, Show the visual indication
     
-    
-    
-    
-    
-    
-    // Disable the map interactions
-    
-    // Report the result
-    
-    // Game manager takes care of the following?
-    // Clean up
-    // Terminate the task
+    if (passFlag){
+        [self.record end];
+        // Get the map point equivalents to compute the mid point
+        MKMapPoint mapPoint0 = MKMapPointForCoordinate(_targetedPOIs[0].latLon);
+        MKMapPoint mapPoint1 = MKMapPointForCoordinate(_targetedPOIs[1].latLon);
+        
+        // Compute the distance between two mapPoints
+        CLLocationDistance meters = MKMetersBetweenMapPoints(mapPoint0, mapPoint1);
+        
+        MKMapPoint midPoint = MKMapPointMake((mapPoint0.x + mapPoint1.x)/2, (mapPoint0.y + mapPoint1.y)/2);
+        CLLocationCoordinate2D midCoord = MKCoordinateForMapPoint(midPoint);
+        
+        circle = [MKCircle circleWithCenterCoordinate:midCoord radius:meters/2]; // radius is measured in meters
+        [self.rootViewController.mapView addOverlay:circle];
+        
+        // Disable the map interactions
+        self.rootViewController.mapView.userInteractionEnabled = NO;
+        
+        // Report the result
+        GameManager *gameManager = [GameManager sharedManager];
+        [gameManager reportCompletionFromSnashot:self];
+        
+        // Game manager takes care of the following?
+        // Clean up
+        // Terminate the task
+    }
 }
 
 - (void)cleanup{
+    //Reenable user interaction
+    self.rootViewController.mapView.userInteractionEnabled = YES;
     
+    // Remove the overlay
+    [self.rootViewController.mapView removeOverlay: circle];
 }
 
 @end

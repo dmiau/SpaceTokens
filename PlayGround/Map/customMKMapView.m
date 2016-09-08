@@ -1,16 +1,16 @@
 //
-//  customMKMapView.m
+//  CustomMKMapView.m
 //  SpaceBar
 //
 //  Created by Daniel on 7/4/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "customMKMapView.h"
+#import "CustomMKMapView.h"
 #include <stdlib.h>
 #import "WildcardGestureRecognizer.h"
 
-@implementation customMKMapView{
+@implementation CustomMKMapView{
     NSTimer *_updateUITimer;
     struct {
         unsigned int regionDidChangeAnimated:1;
@@ -29,10 +29,10 @@
 //http://www.galloway.me.uk/tutorials/singleton-classes/
 
 + (id)sharedManager {
-    static customMKMapView *sharedCustomMKMapView = nil;
+    static CustomMKMapView *sharedCustomMKMapView = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedCustomMKMapView = [[self alloc] init];
+        sharedCustomMKMapView = [[CustomMKMapView alloc] init];
         [sharedCustomMKMapView commonInit];
     });
     return sharedCustomMKMapView;

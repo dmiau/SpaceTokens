@@ -16,11 +16,11 @@
 
 @property ViewController *rootViewController;
 
+@property (weak, nonatomic) IBOutlet UILabel *counterOutlet;
+@property (weak, nonatomic) IBOutlet UILabel *instructionsOutlet;
+
++(id)sharedManager;
 - (void)configureForSnapshot:(id <SnapshotProtocol>) snapshot;
-
-
-
-
 
 
 @end

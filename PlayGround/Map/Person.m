@@ -7,7 +7,7 @@
 //
 
 #import "Person.h"
-#import "customMKMapView.h"
+#import "CustomMKMapView.h"
 
 @implementation Person{
     CLLocationManager *locationManager;
@@ -31,7 +31,7 @@
 -(void)setUpdateFlag:(BOOL)updateFlag{
     _updateFlag = updateFlag;
     // Get the map object
-    customMKMapView *myMapView = [customMKMapView sharedManager];
+    CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     
     if (_updateFlag){
         // Turn on the location flag
@@ -92,7 +92,7 @@
 
 - (void)updateMapAnnotation{
     // Get the map object
-    customMKMapView *myMapView = [customMKMapView sharedManager];
+    CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     
     MKAnnotationView *myAnnotationView = [myMapView viewForAnnotation: self.poi.annotation];
     

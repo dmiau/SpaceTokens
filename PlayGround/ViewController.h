@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "SpaceBar/SpaceBar.h"
-#import "Map/customMKMapView.h"
+#import "Map/CustomMKMapView.h"
 #import "Map/MiniMapView.h"
 #import "Map/POIDatabase.h"
 #import "MainViewManager.h"
@@ -21,11 +21,11 @@
 @class GameManager;
 
 @interface ViewController : UIViewController
-<SpaceBarDelegate, MKMapViewDelegate, customMKMapViewDelegate>
+<SpaceBarDelegate, MKMapViewDelegate, CustomMKMapViewDelegate>
 
 @property MainViewManager *mainViewManager;
 @property MyFileManager *myFileManager;
-@property customMKMapView *mapView;
+@property CustomMKMapView *mapView;
 @property MiniMapView *miniMapView;
 @property SpaceBar *spaceBar;
 @property GMSPanoramaView *panoView; //cache a pointer to the StreetView object

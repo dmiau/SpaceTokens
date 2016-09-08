@@ -14,7 +14,7 @@
 
 @implementation ViewController (MapView)
 
-#pragma mark --customMKMapView delegate methods--
+#pragma mark --CustomMKMapView delegate methods--
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     [self updateSpaceBar];
     [self updateMiniMap];
@@ -68,6 +68,13 @@
 }
 
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    // Show the current center and span
+    NSLog(@"Center: (%g, %g)",
+          self.mapView.centerCoordinate.latitude, self.mapView.centerCoordinate.longitude);
+    NSLog(@"Span: (%g, %g)",
+          self.mapView.region.span.latitudeDelta, self.mapView.region.span.longitudeDelta);
+    
     // Remove all the touched SpaceTokens
     [self.spaceBar clearAllTouchedTokens];    
     [self.spaceBar addAnchorForTouches: touches];

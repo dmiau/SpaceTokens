@@ -13,24 +13,36 @@
 #import "MainViewManager.h"
 
 
-@implementation GameManager
+@implementation GameManager{
+    id <SnapshotProtocol> activeSnapshot;
+}
+
+#pragma mark --Initialization--
+
++ (id)sharedManager{
+    static GameManager *sharedGameManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedGameManager = [[GameManager alloc] init];
+        sharedGameManager.gameManagerStatus = OFF;
+        sharedGameManager.gameCounter = -1; // set the game counter to an invalid integer
+    });
+    return sharedGameManager;
+}
+
 
 - (id)initWithSnapshotDatabase: (SnapshotDatabase*) snapshotDatabase
                     GameVector:(NSArray*) gameVector
 {
     self = [super init];
     if (self){
-        
-        // Get the rootViewController
-        
-        
-        self.gameManagerStatus = OFF;
-        self.gameCounter = 0;
         self.gameVector = gameVector;
         self.snapshotDatabase = snapshotDatabase;
     }
     return self;
 }
+
+#pragma mark --Setter--
 
 - (void)setGameManagerStatus:(GameManagerStatus)gameManagerStatus{
     
@@ -65,16 +77,60 @@
     }
 }
 
+#pragma mark --Game Execution--
 
 // Execute a specific snapshot
 - (void)runSnapshotIndex:(int)index{
+    
+    
+    
+    
+    // Clean the activeSnapshot if there is one
+    if (activeSnapshot){
+        [activeSnapshot cleanup];
+    }
+    
     self.gameCounter = index;
     NSString *code = self.gameVector[index];
     id<SnapshotProtocol> aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
     [aSnapshot setup];
 }
 
+- (void)runNextSnapshot{
+    // Check the bound
+    if ((self.gameCounter + 1) == [self.gameVector count]){
+        // We have reached the end of the game, display ending message
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"End of the game!"
+                                                        message:@"Please notify the study coordinator."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];        
+        return;
+    }
+}
+
+
 - (void)reportCompletionFromSnashot:(id<SnapshotProtocol>) snapshot{
     
+    NSString *code = self.gameVector[self.gameCounter];
+    id<SnapshotProtocol> aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
+    
+    // Present a modal dialog
+    UIAlertView *confirmationModal = [[UIAlertView alloc]
+                                      initWithTitle:@"Good job!"
+                                      message:@""
+                                      delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    [confirmationModal show];
+    
+    // Time delay before cleaning up
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC),
+                   dispatch_get_main_queue(),
+                   ^{
+                       [confirmationModal dismissWithClickedButtonIndex:-1 animated:YES];
+                       [aSnapshot cleanup];
+                       // Proceed to the next game
+                       [self runNextSnapshot];
+    });
 }
 @end

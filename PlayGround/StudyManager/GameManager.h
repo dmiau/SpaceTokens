@@ -19,6 +19,8 @@ typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 @property SnapshotDatabase *snapshotDatabase;
 @property NSArray *gameVector;
 
+// Initialization
++ (id)sharedManager; // Singleton method
 
 // Game execution
 - (void)runSnapshotIndex:(int)index;

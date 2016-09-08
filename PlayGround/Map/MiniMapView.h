@@ -6,9 +6,9 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "customMKMapView.h"
+#import "CustomMKMapView.h"
 
-@interface MiniMapView : customMKMapView <MKMapViewDelegate, customMKMapViewDelegate>
+@interface MiniMapView : CustomMKMapView <MKMapViewDelegate, CustomMKMapViewDelegate>
 
 @property MKPolyline *boxPolyline;
 @property BOOL syncRotation;

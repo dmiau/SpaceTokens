@@ -16,9 +16,36 @@
     SettingsButton *settingsButton;
 }
 
+// http://stackoverflow.com/questions/4609609/use-singleton-in-interface-builder
+static TaskBasePanel *instance;
+
++ (id)sharedManager { return instance; }
+
++ (id)hiddenAlloc
+{
+    return [super alloc];
+}
+
++ (id)alloc
+{
+    return [self sharedManager];
+}
+
++ (void)initialize
+{
+    static BOOL initialized = NO;
+    if(!initialized)
+    {
+        initialized = YES;
+        instance = [[TaskBasePanel hiddenAlloc] init];
+    }
+}
+
+
 - (id)initWithFrame:(CGRect)frame ViewController:(ViewController*) viewController{
     
-    self = [super initWithFrame:frame];
+    self = [TaskBasePanel sharedManager];
+    self.frame = frame;
     if (self){
         
         self.rootViewController = viewController;

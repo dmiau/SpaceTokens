@@ -40,13 +40,35 @@
                                     CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
                                                           ViewController:self.rootViewController];
         
-        self.taskBasePanel = [[TaskBasePanel alloc] initWithFrame:
-                                    CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
-                                                               ViewController:self.rootViewController];
+//        self.taskBasePanel = [[TaskBasePanel alloc] initWithFrame:
+//                                    CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
+//                                                               ViewController:self.rootViewController];
+        
         
         self.streetViewPanel = [[StreetViewPanel alloc] initWithFrame:
                               CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
                                                    ViewController:self.rootViewController];
+        
+        //----------------------
+        // Load all the panels from xib
+        //----------------------
+        // Note this method needs to be here
+        NSArray *view_array =
+        [[NSBundle mainBundle] loadNibNamed:@"StudyPanels"
+                                      owner:self options:nil];
+        
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        
+        for (UIView *aView in view_array){
+            [aView setHidden:YES];
+            
+            if ([[aView restorationIdentifier] isEqualToString:@"TaskBasePanel"]){
+                NSLog(@"Found!");
+//                self.viewPanel = aView;
+            }
+        }
         
     }
     return self;
