@@ -104,6 +104,8 @@
 		9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
 		9AC7E1A91D50E08400C2E8BE /* GestureEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */; };
 		9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */; };
+		9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
+		9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
 		9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
 		9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
 		9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
@@ -262,6 +264,7 @@
 		9AC36DD11C60087B0037210F /* SpaceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceToken.m; path = SpaceBar/SpaceToken.m; sourceTree = "<group>"; };
 		9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GestureEngine.h; path = SpaceBar/GestureEngine.h; sourceTree = "<group>"; };
 		9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GestureEngine.m; path = SpaceBar/GestureEngine.m; sourceTree = "<group>"; };
+		9ACCEA151D81EFD700E145D7 /* Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Snapshot.m; path = StudyManager/Snapshot.m; sourceTree = "<group>"; };
 		9ACD6CDB1D352E8600E3BF9C /* DirectionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectionPanel.h; path = Views/DirectionPanel.h; sourceTree = "<group>"; };
 		9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DirectionPanel.mm; path = Views/DirectionPanel.mm; sourceTree = "<group>"; };
 		9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceBar iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,6 +378,7 @@
 				9A437FB01D550C7A00F28E61 /* GameManager.h */,
 				9A437FB11D550C7A00F28E61 /* GameManager.m */,
 				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
+				9ACCEA151D81EFD700E145D7 /* Snapshot.m */,
 				9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */,
 				9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */,
 				9AAAA1841D7C70EA003F4AA3 /* SnapshotDatabase+Debug.h */,
@@ -792,6 +796,7 @@
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
+				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
@@ -858,6 +863,7 @@
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
+				9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,

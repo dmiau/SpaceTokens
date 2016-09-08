@@ -10,6 +10,8 @@
 #import "SnapshotProtocol.h"
 #import "SnapshotDatabase.h"
 
+FOUNDATION_EXPORT NSString *const GameSetupNotification;
+
 typedef enum {OFF, STUDY, DEMO, AUTHORING} GameManagerStatus;
 typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 
@@ -18,6 +20,7 @@ typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 @property int gameCounter;
 @property SnapshotDatabase *snapshotDatabase;
 @property NSArray *gameVector;
+@property Snapshot *activeSnapshot;
 
 // Initialization
 + (id)sharedManager; // Singleton method

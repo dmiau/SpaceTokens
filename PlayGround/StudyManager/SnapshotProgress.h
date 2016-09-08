@@ -10,12 +10,8 @@
 
 @class ViewController;
 
-@interface SnapshotProgress : POI <SnapshotProtocol>
-
-@property ViewController *rootViewController;
+@interface SnapshotProgress : Snapshot <SnapshotProtocol>
 
 @property NSString *routeID;
-
-@property NSMutableArray <POI*> *targetedPOIs;
 
 @end

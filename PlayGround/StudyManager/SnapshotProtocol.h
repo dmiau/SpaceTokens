@@ -10,6 +10,8 @@
 #define SnapshotProtocol_h
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import "POI.h"
+#import "Record.h"
 
 @class ViewController;
 
@@ -24,5 +26,17 @@
 
 @end
 
+//----------------------
+// Snapshot interface
+//----------------------
+@interface Snapshot : POI
+
+@property NSString *instructions;
+@property NSMutableArray <POI*> *highlightedPOIs;
+@property ViewController *rootViewController;
+@property NSMutableArray <POI*> *targetedPOIs;
+@property Record *record;
+
+@end
 
 #endif /* SnapshotProtocol_h */

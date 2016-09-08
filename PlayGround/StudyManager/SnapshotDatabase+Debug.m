@@ -20,6 +20,7 @@
     SnapshotAnchorPlus *ap1 = [[SnapshotAnchorPlus alloc] init];
     ap1.latLon = CLLocationCoordinate2DMake(40.715, -74.0099);
     ap1.coordSpan = MKCoordinateSpanMake(0.0104498, 0.01);
+    ap1.instructions = @"Examine the area between W.T.C. and Bronx.";
     
     POI *wtc = [[POI alloc] init];
     wtc.latLon = CLLocationCoordinate2DMake(40.711801, -74.013120);

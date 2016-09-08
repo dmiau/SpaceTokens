@@ -50,10 +50,7 @@
     // Position the map to the initial condition
     MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);
     [self.rootViewController.mapView setRegion:region animated:NO];
-    
-    // Add a panel on top of the basePanel
-    // Deprecated: [self.rootViewController.mainViewManager showPanelWithType:TASKCHECKING];
-    
+        
     // Start the validator
     // listen to the map change event
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -78,23 +75,23 @@
     }
     
     // Make sure the two points are visible
-    CGPoint xy0 = [mapView convertCoordinate:_targetedPOIs[0].latLon toPointToView:mapView];
-    CGPoint xy1 = [mapView convertCoordinate:_targetedPOIs[1].latLon toPointToView:mapView];
-    CGRect mapRect = CGRectMake(0, 0, _rootViewController.mapView.frame.size.width,
-                                _rootViewController.mapView.frame.size.height);
+    CGPoint xy0 = [mapView convertCoordinate:self.targetedPOIs[0].latLon toPointToView:mapView];
+    CGPoint xy1 = [mapView convertCoordinate:self.targetedPOIs[1].latLon toPointToView:mapView];
+    CGRect mapRect = CGRectMake(0, 0, self.rootViewController.mapView.frame.size.width,
+                                self.rootViewController.mapView.frame.size.height);
     passFlag = (CGRectContainsPoint(mapRect, xy0) && CGRectContainsPoint(mapRect, xy1));
 
     // Calculate the screen distance between the two points
     double dist = sqrt( pow(xy0.x - xy1.x, 2) + pow(xy0.y - xy1.y, 2));
-    passFlag = passFlag && (dist > _rootViewController.mapView.frame.size.width * 0.8);
+    passFlag = passFlag && (dist > self.rootViewController.mapView.frame.size.width * 0.8);
     
     // if passed, Show the visual indication
     
     if (passFlag){
         [self.record end];
         // Get the map point equivalents to compute the mid point
-        MKMapPoint mapPoint0 = MKMapPointForCoordinate(_targetedPOIs[0].latLon);
-        MKMapPoint mapPoint1 = MKMapPointForCoordinate(_targetedPOIs[1].latLon);
+        MKMapPoint mapPoint0 = MKMapPointForCoordinate(self.targetedPOIs[0].latLon);
+        MKMapPoint mapPoint1 = MKMapPointForCoordinate(self.targetedPOIs[1].latLon);
         
         // Compute the distance between two mapPoints
         CLLocationDistance meters = MKMetersBetweenMapPoints(mapPoint0, mapPoint1);

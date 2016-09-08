@@ -20,7 +20,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *instructionsOutlet;
 
 +(id)sharedManager;
-- (void)configureForSnapshot:(id <SnapshotProtocol>) snapshot;
-
 
 @end

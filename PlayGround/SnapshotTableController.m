@@ -80,6 +80,11 @@
 #pragma mark -----Table Interaction Methods-----
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path {
     
+    // Enable the study interface if it is not already enabled
+    if (gameManager.gameManagerStatus != STUDY){
+        gameManager.gameManagerStatus = STUDY;
+    }
+    
     int row_id = [path row];
     int section_id = [path section];
 

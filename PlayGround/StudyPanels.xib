@@ -25,20 +25,26 @@
             <rect key="frame" x="0.0" y="0.0" width="432" height="179"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ml-uK-iJy">
-                    <rect key="frame" x="245" y="120" width="158" height="38"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEh-mY-kgG">
+                    <rect key="frame" x="0.0" y="0.0" width="376" height="59"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEh-mY-kgG">
-                    <rect key="frame" x="22" y="28" width="376" height="59"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ml-uK-iJy">
+                    <rect key="frame" x="328" y="147" width="104" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3Ml-uK-iJy" secondAttribute="trailing" id="HcT-fE-9Rq"/>
+                <constraint firstItem="tEh-mY-kgG" firstAttribute="leading" secondItem="c9T-ZK-FkO" secondAttribute="leading" id="KfE-Q8-O2N"/>
+                <constraint firstAttribute="bottom" secondItem="3Ml-uK-iJy" secondAttribute="bottom" id="VgW-jW-YMd"/>
+                <constraint firstItem="tEh-mY-kgG" firstAttribute="top" secondItem="c9T-ZK-FkO" secondAttribute="top" id="a2g-HM-REB"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="counterOutlet" destination="3Ml-uK-iJy" id="Ncs-5f-R4D"/>

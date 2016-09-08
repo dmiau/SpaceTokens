@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "MainViewManager.h"
 
+NSString *const GameSetupNotification = @"GameSetupNotification";
 
 @implementation GameManager{
     id <SnapshotProtocol> activeSnapshot;
@@ -82,17 +83,23 @@
 // Execute a specific snapshot
 - (void)runSnapshotIndex:(int)index{
     
-    
-    
-    
     // Clean the activeSnapshot if there is one
     if (activeSnapshot){
         [activeSnapshot cleanup];
     }
     
     self.gameCounter = index;
+    
     NSString *code = self.gameVector[index];
     id<SnapshotProtocol> aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
+    self.activeSnapshot = aSnapshot;
+    
+    
+    // Broadcast a notification about the changing map
+    NSNotification *notification = [NSNotification notificationWithName:GameSetupNotification
+                                                                 object:self userInfo:nil];
+    [[ NSNotificationCenter defaultCenter] postNotification:notification];
+            
     [aSnapshot setup];
 }
 
@@ -107,6 +114,9 @@
                                               otherButtonTitles:nil];
         [alert show];        
         return;
+    }else{
+        // Load the next snapshot
+        [self runSnapshotIndex:self.gameCounter+1];
     }
 }
 

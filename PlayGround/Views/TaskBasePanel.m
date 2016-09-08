@@ -11,6 +11,7 @@
 #import "TaskBasePanel.h"
 #import "../StudyManager/SnapshotProgress.h"
 #import "../StudyManager/SnapshotChecking.h"
+#import "GameManager.h"
 
 @implementation TaskBasePanel{
     SettingsButton *settingsButton;
@@ -38,17 +39,32 @@ static TaskBasePanel *instance;
     {
         initialized = YES;
         instance = [[TaskBasePanel hiddenAlloc] init];
+        
+        // Initialize the ViewController
+        
+        
+        
+        
     }
 }
 
-
-- (id)initWithFrame:(CGRect)frame ViewController:(ViewController*) viewController{
-    
-    self = [TaskBasePanel sharedManager];
-    self.frame = frame;
-    if (self){
+- (id)init
+{
+    if(instance==nil) // allow only to be called once
+    {
+        // your normal initialization here
         
-        self.rootViewController = viewController;
+        // Connect to the parent view controller to update its
+        // properties directly
+        
+        //-------------------
+        // Set the rootViewController
+        //-------------------
+        AppDelegate *app = [[UIApplication sharedApplication] delegate];
+        
+        UINavigationController *myNavigationController =
+        app.window.rootViewController;
+        self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
         
         //-------------------
         // Set up the view
@@ -58,10 +74,24 @@ static TaskBasePanel *instance;
                                                  alpha:1.0]];
         settingsButton = [[SettingsButton alloc] init];
         
-        //-------------------
-        // Load all the panels
-        //-------------------
+
+        // listen to the map change event
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self
+                   selector:@selector(updatePanel)
+                       name:GameSetupNotification
+                     object:nil];
         
+    }
+    return self;
+}
+
+
+- (id)initWithFrame:(CGRect)frame ViewController:(ViewController*) viewController{
+    
+    self = [TaskBasePanel sharedManager];
+    self.frame = frame;
+    if (self){
         
     }
     
@@ -101,40 +131,12 @@ static TaskBasePanel *instance;
     self.rootViewController.mapView.frame = CGRectMake(0, panelHeight, mapWidth, mapHeight);
 }
 
-- (void)configureForSnapshot:(id <SnapshotProtocol>) snapshot{
-    if ([snapshot isKindOfClass:[SnapshotProgress class]]){
-        
-    }
-    
-    
-    
-    
-//    switch (taskType) {
-//        case CHECKING:
-//            [self configureChecking];
-//            break;
-//        case PROGRESS:
-//            [self configureProgress];
-//            break;
-//            //        case SCLAE:
-//            //            <#statements#>
-//            //            break;
-//            //        case JUMP:
-//            //            <#statements#>
-//            //            break;
-//            //        case ZOOMTOFIT:
-//            //            <#statements#>
-//            //            break;
-//        default:
-//            break;
-//    }
+#pragma makr --Update--
+- (void)updatePanel{
+    // Get the gameManager
+    GameManager *gameManager = [GameManager sharedManager];
+    self.instructionsOutlet.text = gameManager.activeSnapshot.instructions;
+    self.counterOutlet.text = [NSString stringWithFormat:@"%d", gameManager.gameCounter];
 }
 
-- (void)configureChecking{
-    
-}
-
-- (void)configureProgress{
-    
-}
 @end

@@ -10,7 +10,6 @@
 #import "SnapshotProtocol.h"
 #import "../Map/POI.h"
 
-@interface SnapshotChecking : POI <SnapshotProtocol>
+@interface SnapshotChecking : Snapshot <SnapshotProtocol>
 
-@property ViewController *rootViewController;
 @end
