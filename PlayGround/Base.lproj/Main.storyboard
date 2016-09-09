@@ -113,12 +113,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="9O4-1U-3y6" kind="relationship" relationship="viewControllers" id="tgZ-tK-hrt"/>
-                        <segue destination="igq-Eu-Ar6" kind="relationship" relationship="viewControllers" id="vQP-i2-mhN"/>
+                        <segue destination="tDC-Kg-SX0" kind="relationship" relationship="viewControllers" id="mfq-pA-hiV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkY-bg-62s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478" y="-396"/>
+            <point key="canvasLocation" x="1548" y="-400"/>
         </scene>
         <!--Routes-->
         <scene sceneID="clQ-Yk-4AY">
@@ -269,7 +269,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="snapshotCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="snapshotCell" textLabel="O2a-eg-P9L" style="IBUITableViewCellStyleDefault" id="wv4-GM-4hJ">
-                                        <rect key="frame" x="0.0" y="92" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wv4-GM-4hJ" id="PA1-Ct-nPx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -302,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m9B-Sr-2je" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2729" y="1866"/>
+            <point key="canvasLocation" x="2869" y="1554"/>
         </scene>
         <!--POI-->
         <scene sceneID="vfZ-Lw-2nT">
@@ -374,26 +374,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1T-aV-MCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="1053"/>
-        </scene>
-        <!--Study-->
-        <scene sceneID="RL2-co-T9L">
-            <objects>
-                <viewController id="igq-Eu-Ar6" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fkA-nb-0fq"/>
-                        <viewControllerLayoutGuide type="bottom" id="ha2-da-V2y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MZm-xF-38M">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Study" id="A4m-GR-gFg"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5aw-Mp-YGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2406" y="75"/>
+            <point key="canvasLocation" x="690" y="789"/>
         </scene>
         <!--Title-->
         <scene sceneID="ORy-QG-sKC">
@@ -467,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="723" y="-211"/>
+            <point key="canvasLocation" x="755" y="-239"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bh5-IW-lR6">
@@ -488,4 +469,7 @@
             <point key="canvasLocation" x="-89" y="-211"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mfq-pA-hiV"/>
+    </inferredMetricsTieBreakers>
 </document>

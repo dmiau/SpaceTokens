@@ -71,8 +71,6 @@
     
     
     // Make sure the target circle is visible
-    CGPoint xy0 = [mapView convertCoordinate:self.targetedPOIs[0].latLon toPointToView:mapView];
-    
     MKMapPoint targetMapPoint = MKMapPointForCoordinate(self.targetedPOIs[0].latLon);
     
     
@@ -82,7 +80,22 @@
                                                    self.targetedPOIs[0].coordSpan)];
     passFlag = MKMapRectContainsRect(mapViewRect, targetRect);
     
-    // if passed, Show the visual indication
+    // Need to check the size of the target area
+    // Calculate the screen distance between the two points of the circle
+    CLLocationCoordinate2D coord0 =
+    CLLocationCoordinate2DMake(self.targetedPOIs[0].latLon.latitude,
+                               self.targetedPOIs[0].latLon.longitude -
+                               self.targetedPOIs[0].coordSpan.longitudeDelta/2);
+    CLLocationCoordinate2D coord1 =
+    CLLocationCoordinate2DMake(self.targetedPOIs[0].latLon.latitude,
+                               self.targetedPOIs[0].latLon.longitude +
+                               self.targetedPOIs[0].coordSpan.longitudeDelta/2);
+    CGPoint xy0 = [mapView convertCoordinate:coord0 toPointToView:mapView];
+    CGPoint xy1 = [mapView convertCoordinate:coord1 toPointToView:mapView];
+    
+    double dist = sqrt( pow(xy0.x - xy1.x, 2) + pow(xy0.y - xy1.y, 2));
+    passFlag = passFlag && (dist > self.rootViewController.mapView.frame.size.width * 0.8);
+    
     
     if (passFlag){
         [self.record end];

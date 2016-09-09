@@ -13,7 +13,7 @@
 @property NSString *name;
 @property NSMutableDictionary *snapshotDictrionary;
 
-- (id)initWithDatabaseName:(NSString*) databaseName;
++(id)sharedManager;
 
 // iCloud related methods
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;

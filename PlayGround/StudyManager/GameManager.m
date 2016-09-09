@@ -71,7 +71,7 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
             //<#statements#>
             break;
         case AUTHORING:
-            //<#statements#>
+            [mainViewManager showPanelWithType: AUTHORINGPANEL];
             break;
         default:
             break;

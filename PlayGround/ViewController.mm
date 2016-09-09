@@ -61,7 +61,8 @@
     //----------------
     // Initialize a Snashot DB
     //----------------
-    SnapshotDatabase *mySnapshotDatabase = [[SnapshotDatabase alloc] initWithDatabaseName:@"study"];
+    SnapshotDatabase *mySnapshotDatabase = [SnapshotDatabase sharedManager];
+    mySnapshotDatabase.name = @"Study";
     NSArray *gameVector = @[@"AP1", @"PL1", @"PC1", @"PC2", @"TC1", @"TC2"];
     //----------------
     // Initialize Study Manager

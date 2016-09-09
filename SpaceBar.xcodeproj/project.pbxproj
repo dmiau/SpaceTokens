@@ -151,6 +151,8 @@
 		9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
 		9AF3B44A1D3E95D1004680CB /* SearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* SearchPanel.m */; };
 		9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* SearchPanel.m */; };
+		9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
+		9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -295,6 +297,8 @@
 		9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckingPanel.m; path = Views/CheckingPanel.m; sourceTree = "<group>"; };
 		9AF3B4481D3E95D1004680CB /* SearchPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanel.h; path = Views/SearchPanel.h; sourceTree = "<group>"; };
 		9AF3B4491D3E95D1004680CB /* SearchPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanel.m; path = Views/SearchPanel.m; sourceTree = "<group>"; };
+		9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthoringPanel.h; path = Views/AuthoringPanel.h; sourceTree = "<group>"; };
+		9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanel.m; path = Views/AuthoringPanel.m; sourceTree = "<group>"; };
 		B2AD7B9B487C49E3FF64C00D /* Pods-SpaceBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -420,6 +424,8 @@
 				9A8EC9DF1D6112CD0012C769 /* StreetViewPanel.h */,
 				9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */,
 				9A43EAED1D40029D00080029 /* topPanel.h */,
+				9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */,
+				9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */,
 			);
 			name = StudyPanels;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
+				9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */,
 				9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
@@ -854,6 +861,7 @@
 				9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
+				9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */,
 				9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,

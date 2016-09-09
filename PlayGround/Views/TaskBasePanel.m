@@ -39,12 +39,6 @@ static TaskBasePanel *instance;
     {
         initialized = YES;
         instance = [[TaskBasePanel hiddenAlloc] init];
-        
-        // Initialize the ViewController
-        
-        
-        
-        
     }
 }
 

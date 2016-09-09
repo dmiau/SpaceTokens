@@ -13,6 +13,7 @@
 #import "Views/CircleCheckingPanel.h"
 #import "Views/TaskBasePanel.h"
 #import "Views/StreetViewPanel.h"
+#import "Views/AuthoringPanel.h"
 
 @implementation MainViewManager
 
@@ -55,6 +56,8 @@
         for (UIView *aView in view_array){
             if ([[aView restorationIdentifier] isEqualToString:@"TaskBasePanel"]){
                 self.taskBasePanel = (TaskBasePanel*) aView;
+            }else if([[aView restorationIdentifier] isEqualToString:@"AuthoringPanel"]){
+                self.authoringPanel = (AuthoringPanel*) aView;
             }
         }
         
@@ -68,6 +71,8 @@
     [tempView removeFromSuperview];
 }
 
+
+#pragma mark -- Show Panels --
 - (void)showPanelWithType: (PanelType)panelType{
     switch (panelType) {
         case SEARCH:
@@ -81,6 +86,9 @@
             break;
         case TASKBASEPANEL:
             [self showTaskBasePanel];
+            break;
+        case AUTHORINGPANEL:
+            [self showAuthoringPanel];
             break;
         case STREETVIEWPANEL:
             [self showStreetViewPanel];
@@ -115,6 +123,13 @@
     // add the panel to the main view if it has been instantiated
     [self.taskBasePanel addPanel];
     self.activePanel = self.taskBasePanel;
+}
+
+- (void)showAuthoringPanel{
+    [self removeActivePanel];
+    // add the panel to the main view if it has been instantiated
+    [self.authoringPanel addPanel];
+    self.activePanel = self.authoringPanel;
 }
 
 - (void)showCircleCheckingPanel{

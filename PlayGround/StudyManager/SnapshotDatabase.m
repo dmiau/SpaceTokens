@@ -10,14 +10,18 @@
 
 @implementation SnapshotDatabase
 
-- (id)initWithDatabaseName:(NSString*) databaseName{
-    self = [super init];
-    if (self){
-        self.name = databaseName;
-        self.snapshotDictrionary = [[NSMutableDictionary alloc] init];
-        
-        [self debugInit];
-    }
++(id)sharedManager{
+    static SnapshotDatabase* sharedSnapshotDatabase = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedSnapshotDatabase = [[SnapshotDatabase alloc] init];
+    });
+    return sharedSnapshotDatabase;
+}
+
+- (id)init{
+    self.snapshotDictrionary = [[NSMutableDictionary alloc] init];
+    [self debugInit];
     return self;
 }
 
