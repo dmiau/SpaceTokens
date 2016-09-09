@@ -29,13 +29,22 @@
 //----------------------
 // Snapshot interface
 //----------------------
-@interface Snapshot : POI
+@interface Snapshot : POI <SnapshotProtocol>{
+    MKCircle *targetCircle;
+    MKCircle *completionIndicator;
+}
 
 @property NSString *instructions;
 @property NSMutableArray <POI*> *highlightedPOIs;
 @property ViewController *rootViewController;
 @property NSMutableArray <POI*> *targetedPOIs;
 @property Record *record;
+
+
+// Methods to setup and validate the tasks
+- (void)drawOnePointVisualTarget;
+- (void)onePointValidator;
+- (void)twoPointsValidator;
 
 @end
 

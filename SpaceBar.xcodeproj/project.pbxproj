@@ -106,6 +106,10 @@
 		9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */; };
 		9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
 		9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
+		9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */; };
+		9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */; };
+		9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
+		9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
 		9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
 		9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
 		9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
@@ -265,6 +269,10 @@
 		9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GestureEngine.h; path = SpaceBar/GestureEngine.h; sourceTree = "<group>"; };
 		9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GestureEngine.m; path = SpaceBar/GestureEngine.m; sourceTree = "<group>"; };
 		9ACCEA151D81EFD700E145D7 /* Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Snapshot.m; path = StudyManager/Snapshot.m; sourceTree = "<group>"; };
+		9ACCEA181D81FB7400E145D7 /* SnapshotPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotPlace.h; path = StudyManager/SnapshotPlace.h; sourceTree = "<group>"; };
+		9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotPlace.m; path = StudyManager/SnapshotPlace.m; sourceTree = "<group>"; };
+		9ACCEA1C1D821FEE00E145D7 /* CustomMKMapView+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+Tools.h"; path = "Map/CustomMKMapView+Tools.h"; sourceTree = "<group>"; };
+		9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+Tools.m"; path = "Map/CustomMKMapView+Tools.m"; sourceTree = "<group>"; };
 		9ACD6CDB1D352E8600E3BF9C /* DirectionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectionPanel.h; path = Views/DirectionPanel.h; sourceTree = "<group>"; };
 		9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DirectionPanel.mm; path = Views/DirectionPanel.mm; sourceTree = "<group>"; };
 		9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceBar iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +347,8 @@
 				9A143B331D2AF56E001EE841 /* CustomMKMapView.m */,
 				9A93F9261D3016690012638A /* CustomMKMapView+MapDisplay.h */,
 				9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */,
+				9ACCEA1C1D821FEE00E145D7 /* CustomMKMapView+Tools.h */,
+				9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */,
 				9A8B5E511D5D659300A32DC9 /* MiniMapView.h */,
 				9A8B5E521D5D659300A32DC9 /* MiniMapView.m */,
 				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
@@ -389,6 +399,8 @@
 				9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */,
 				9AAAA1801D7C6BEE003F4AA3 /* SnapshotAnchorPlus.h */,
 				9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */,
+				9ACCEA181D81FB7400E145D7 /* SnapshotPlace.h */,
+				9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */,
 				9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */,
 				9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */,
 			);
@@ -778,6 +790,7 @@
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
 				9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
+				9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */,
@@ -798,6 +811,7 @@
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
+				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
@@ -845,6 +859,7 @@
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
 				9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
+				9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
 				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */,
@@ -865,6 +880,7 @@
 				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
 				9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
+				9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,

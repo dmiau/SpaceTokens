@@ -12,6 +12,6 @@
 @class ViewController;
 @class Record;
 
-@interface SnapshotAnchorPlus : Snapshot <SnapshotProtocol>
+@interface SnapshotAnchorPlus : Snapshot
 
 @end

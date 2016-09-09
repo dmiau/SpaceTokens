@@ -47,7 +47,9 @@
 - (void) zoomToFitRoute:(Route*) aRoute;
 
 // Tools
-- (CLLocationDirection) computeOrientationFromA: (CLLocationCoordinate2D) coordA
++ (CLLocationDirection) computeOrientationFromA: (CLLocationCoordinate2D) coordA
                                             toB: (CLLocationCoordinate2D) coordB;
+
++ (MKMapRect)MKMapRectForCoordinateRegion:(MKCoordinateRegion)region;
 
 @end

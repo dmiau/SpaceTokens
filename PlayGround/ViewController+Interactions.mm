@@ -96,7 +96,7 @@
         [self.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
         [self.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
-        CLLocationDirection degree = [self.mapView computeOrientationFromA:anchor
+        CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:anchor
                                                                        toB:target];
         [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
     }else{
@@ -104,7 +104,7 @@
         [self.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
         [self.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
-        CLLocationDirection degree = [self.mapView computeOrientationFromA:target
+        CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:target
                                                                        toB:anchor];
         [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree animated:NO];
     }
