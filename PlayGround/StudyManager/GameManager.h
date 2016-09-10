@@ -27,9 +27,5 @@ typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 
 // Game execution
 - (void)runSnapshotIndex:(int)index;
-
-
-- (id)initWithSnapshotDatabase: (SnapshotDatabase*) snapshotDatabase
-                    GameVector:(NSArray*) gameVector;
 - (void)reportCompletionFromSnashot:(id<SnapshotProtocol>) snapshot;
 @end

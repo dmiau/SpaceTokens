@@ -47,7 +47,7 @@
     //----------------
     // Initialize a POI DB
     //----------------
-    self.poiDatabase = [[POIDatabase alloc] init];
+    self.poiDatabase = [POIDatabase sharedManager];
     [self.poiDatabase reloadPOI];
     
     [self tempSaveDataMethod];
@@ -63,13 +63,13 @@
     //----------------
     SnapshotDatabase *mySnapshotDatabase = [SnapshotDatabase sharedManager];
     mySnapshotDatabase.name = @"Study";
-    NSArray *gameVector = @[@"AP1", @"PL1", @"PC1", @"PC2", @"TC1", @"TC2"];
     //----------------
     // Initialize Study Manager
     //----------------
     self.gameManager = [GameManager sharedManager];
-    self.gameManager.gameVector = gameVector;
     self.gameManager.snapshotDatabase = mySnapshotDatabase;
+    // Initialize a default gameVector
+    self.gameManager.gameVector = [mySnapshotDatabase.snapshotDictrionary allKeys];
     
     //----------------
     // Add a mapView

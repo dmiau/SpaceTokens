@@ -17,14 +17,7 @@
 #import "SnapshotPlace.h"
 #import "SnapshotAnchorPlus.h"
 
-@implementation AuthoringPanel{
-    SettingsButton *settingsButton;
-    Snapshot *snapShot;
-    NSMutableArray *activeCaptureArray;
- 
-    CGRect targetRectBox;
-    CAShapeLayer *authoringVisualAidLayer;
-}
+@implementation AuthoringPanel
 
 static AuthoringPanel *instance;
 
@@ -51,7 +44,7 @@ static AuthoringPanel *instance;
     }
 }
 
-
+#pragma mark --View Init--
 - (id)init
 {
     if(instance==nil) // allow only to be called once
@@ -103,10 +96,10 @@ static AuthoringPanel *instance;
     // Move the map to the top
     float mapWidth = self.rootViewController.mapView.frame.size.width;
     float mapHeight = self.rootViewController.mapView.frame.size.height;
-    self.rootViewController.mapView.frame = CGRectMake(0, 0, mapWidth, mapHeight);
+//    self.rootViewController.mapView.frame = CGRectMake(0, 0, mapWidth, mapHeight);
     
     // Set up the frame of the panel
-    self.frame = CGRectMake(0, mapHeight, mapWidth, panelHeight);
+    self.frame = CGRectMake(0, 0, mapWidth, panelHeight);
     [self.rootViewController.view addSubview:self];
     
     // Add the preference button
@@ -114,6 +107,9 @@ static AuthoringPanel *instance;
     [self.rootViewController.view addSubview: settingsButton];
     
     self.isAuthoringVisualAidOn = YES;
+    
+    // Reset the interface
+    [self resetInterface];
 }
 
 
@@ -125,7 +121,7 @@ static AuthoringPanel *instance;
     // Restore the location of the map
     float panelHeight = self.rootViewController.view.frame.size.height -
     self.rootViewController.mapView.frame.size.height;
-    // Move the map to the top
+    // Move the map to the bottom
     float mapWidth = self.rootViewController.mapView.frame.size.width;
     float mapHeight = self.rootViewController.mapView.frame.size.height;
     self.rootViewController.mapView.frame = CGRectMake(0, panelHeight, mapWidth, mapHeight);
@@ -145,7 +141,7 @@ static AuthoringPanel *instance;
         float width = mapView.frame.size.width;
         float height = mapView.frame.size.height;
         float diameter = 0.8 * width;
-        CGRect targetRectBox = CGRectMake(0.1*width, (height - diameter)/2, diameter, diameter);
+        targetRectBox = CGRectMake(0.1*width, (height - diameter)/2, diameter, diameter);
         
         // Draw a circle
         [authoringVisualAidLayer setPath:[[UIBezierPath bezierPathWithOvalInRect:targetRectBox] CGPath]];
@@ -177,46 +173,70 @@ static AuthoringPanel *instance;
     NSString *label = [segmentedControl
                        titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
     
-    if ([label isEqualToString:@"Standard"]){
-        [self.rootViewController.mainViewManager showDefaultPanel];
-        self.rootViewController.mapView.mapType = MKMapTypeStandard;
-    }else if ([label isEqualToString:@"Hybrid"]){
-        [self.rootViewController.mainViewManager showDefaultPanel];
-        self.rootViewController.mapView.mapType = MKMapTypeHybridFlyover;
-    }else if ([label isEqualToString:@"Satellite"]){
-        [self.rootViewController.mainViewManager showDefaultPanel];
-        self.rootViewController.mapView.mapType = MKMapTypeSatelliteFlyover;
-    }else if ([label isEqualToString:@"StreetView"]){
-        [self.rootViewController.mainViewManager
-         showPanelWithType:STREETVIEWPANEL];
+    if ([label isEqualToString:@"Place"]){
+        snapShot = [[SnapshotPlace alloc] init];
+    }else if ([label isEqualToString:@"Anchor"]){
+        snapShot = [[SnapshotAnchorPlus alloc] init];
+    }else if ([label isEqualToString:@"Z-2-Pref"]){
+
+    }else if ([label isEqualToString:@"Constraints"]){
+
     }
 }
 
-- (IBAction)startEndAction:(id)sender {
-    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    NSString *label = [segmentedControl
-                       titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
-    
-    if ([label isEqualToString:@"Start"]){
-        activeCaptureArray = snapShot.highlightedPOIs;
-    }else if ([label isEqualToString:@"End"]){
-        activeCaptureArray = snapShot.targetedPOIs;
-    }
-}
-
-- (IBAction)captureAction:(id)sender {    
+- (IBAction)captureStartAction:(id)sender {
     // Save the current map parameters
     MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
+    snapShot.latLon = coordinateRegion.center;
+    snapShot.coordSpan = coordinateRegion.span;
     
-    // Construct a POI
+    // Update the label of the button
+    [self.captureStartCondOutlet setTitle:@"CaptureStartCond(1)" forState:UIControlStateNormal];
+}
+
+- (IBAction)captureEndAction:(id)sender {
+    MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
     POI *poi = [[POI alloc] init];
     poi.latLon = coordinateRegion.center;
     poi.coordSpan = coordinateRegion.span;
     
-    [activeCaptureArray addObject: poi];
+    [targetedPOIsArray addObject:poi];
+    
+    // Update the label of the button
+    NSString *buttonLabel = [NSString stringWithFormat: @"CaptureEndCond(%lu)", [targetedPOIsArray count]];
+    [self.captureEndCondOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+}
+
+- (IBAction)resetAction:(id)sender {
+    [self resetInterface];
+}
+
+- (IBAction)instructionAction:(id)sender {
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    snapShot.instructions = textField.text;
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)resetInterface{
+    
+    // Reset segement controls and initialize instant variables
+    self.taskTypeOutlet.selectedSegmentIndex = 0;
+    snapShot = [[SnapshotPlace alloc] init];
+    targetedPOIsArray = [[NSMutableArray alloc] init];
+    self.instructionOutlet.text = @"";
+    self.captureStartCondOutlet.titleLabel.text = @"CaptureStartCond(0)";
+    self.captureEndCondOutlet.titleLabel.text =
+    [NSString stringWithFormat:@"CaptureEndCond(%d)", 0];
 }
 
 - (IBAction)addAction:(id)sender {
+    
+    // Assemble the snapshot
+    snapShot.targetedPOIs = targetedPOIsArray;
     
     // Get the SnapshotDatabase
     SnapshotDatabase *snapshotDatabase = [SnapshotDatabase sharedManager];
@@ -235,6 +255,8 @@ static AuthoringPanel *instance;
     // Put the snapshot into SnapshotDatabase
     snapshotDatabase.snapshotDictrionary[snapshotName] = snapShot;
 }
+
+
 
 // A helper function
 NSString* SnapshotTypeToPrefix( Snapshot *aSnapshot){

@@ -31,18 +31,6 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
     return sharedGameManager;
 }
 
-
-- (id)initWithSnapshotDatabase: (SnapshotDatabase*) snapshotDatabase
-                    GameVector:(NSArray*) gameVector
-{
-    self = [super init];
-    if (self){
-        self.gameVector = gameVector;
-        self.snapshotDatabase = snapshotDatabase;
-    }
-    return self;
-}
-
 #pragma mark --Setter--
 
 - (void)setGameManagerStatus:(GameManagerStatus)gameManagerStatus{

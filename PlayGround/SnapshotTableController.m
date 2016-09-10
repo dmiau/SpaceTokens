@@ -44,6 +44,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    // Regenerate the gameVector for now
+    gameManager.gameVector = [gameManager.snapshotDatabase.snapshotDictrionary allKeys];    
     [self.myTableView reloadData];
 }
 

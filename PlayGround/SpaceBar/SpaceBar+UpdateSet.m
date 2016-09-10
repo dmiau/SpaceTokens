@@ -133,7 +133,9 @@
     }
 }
 
-
+- (void)placeSpaceTokensToGrid{
+    
+}
 
 #pragma mark --Add/remove SpaceToken--
 
@@ -170,18 +172,17 @@
 // Add SpaceTokens from poiArray
 //----------------
 - (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray{
-
-    // Cache the link to POI array
-    self.poiArray = poiArray;
-    
     // Remove all SpaceTokens first
     [self removeAllSpaceTokens];
     
     for (POI* aPOI in poiArray){
-        [self addSpaceTokenFromPOI:aPOI];
         
-        // Add the annotation
-        [self.mapView addAnnotation:aPOI.annotation];
+        // Only show the enabled ones
+        if (aPOI.isEnabled){
+            [self addSpaceTokenFromPOI:aPOI];
+            // Add the annotation
+            [self.mapView addAnnotation:aPOI.annotation];
+        }
     }
     
     // Add a YouAreHere SpaceToken

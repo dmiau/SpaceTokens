@@ -13,6 +13,7 @@
 @property NSString *name;
 @property NSMutableArray <POI *> *poiArray;
 
++(POIDatabase*)sharedManager;
 -(void)reloadPOI; // a temporary method
 
 // iCloud related methods

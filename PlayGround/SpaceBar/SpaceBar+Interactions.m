@@ -7,6 +7,7 @@
 //
 
 #import "SpaceBar+Interactions.h"
+#import "POIDatabase.h"
 
 @implementation SpaceBar (Interactions)
 
@@ -140,8 +141,9 @@
     [self removeAnchor];
     [self orderSpaceTokens];
     
-    // Add the POI to poiArray
-    [self.poiArray addObject:token.poi];
+    // Add the poi associated with the newly created SpaceToken to poiArray
+    POIDatabase *poiDatabase = [POIDatabase sharedManager];
+    [poiDatabase.poiArray addObject: token.poi];
 }
 
 @end

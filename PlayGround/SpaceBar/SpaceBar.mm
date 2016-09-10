@@ -88,7 +88,7 @@
 // Initialize common parts among all display types
 - (void) initializeCommon {
     
-    self.buttonSet = [[NSMutableSet alloc] init];
+    self.buttonSet = [[NSMutableArray alloc] init];
     self.dotSet = [[NSMutableSet alloc] init];
     
     self.touchingSet = [[NSMutableSet alloc] init];

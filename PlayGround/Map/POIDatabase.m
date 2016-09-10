@@ -11,14 +11,20 @@
 
 @implementation POIDatabase
 
-- (id) init{
-    self = [super init];
-    if (self){
-        self.poiArray = [[NSMutableArray alloc] init];
-    }
-    return self;
+
++(POIDatabase*)sharedManager{
+    static POIDatabase *sharedPOIDatabase = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedPOIDatabase = [[POIDatabase alloc] init];
+    });
+    return sharedPOIDatabase;
 }
 
+- (id) init{
+    self.poiArray = [[NSMutableArray alloc] init];
+    return self;
+}
 
 - (void)reloadPOI{
     [self.poiArray removeAllObjects];

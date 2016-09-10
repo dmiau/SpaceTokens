@@ -38,7 +38,7 @@
     [ap1.targetedPOIs addObject:wtc];
     [ap1.targetedPOIs addObject:home];
     
-    self.snapshotDictrionary[@"AP1"] = ap1;
+    self.snapshotDictrionary[@"Anchor:1"] = ap1;
     
     //---------------------
     // Add a PLACE task
@@ -55,13 +55,7 @@
     west.coordSpan = MKCoordinateSpanMake(0.00420188, 0.00402331);
     [pl1.targetedPOIs addObject:west];
     
-    self.snapshotDictrionary[@"PL1"] = pl1;
-    
-    NSArray *keys = @[@"PC1", @"PC2", @"TC1", @"TC2"];
-    for (NSString *aKey in keys){
-        SnapshotChecking *checking = [[SnapshotChecking alloc] init];
-        self.snapshotDictrionary[aKey] = checking;
-    }
+    self.snapshotDictrionary[@"Place:1"] = pl1;
 }
 
 @end
