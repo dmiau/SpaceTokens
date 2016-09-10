@@ -88,7 +88,7 @@
 // Initialize common parts among all display types
 - (void) initializeCommon {
     
-    self.buttonSet = [[NSMutableArray alloc] init];
+    self.buttonArray = [[NSMutableArray alloc] init];
     self.dotSet = [[NSMutableSet alloc] init];
     
     self.touchingSet = [[NSMutableSet alloc] init];
@@ -101,7 +101,7 @@
     
     [center addObserver:self
         selector:@selector(addToSetBasedOnNotification:)
-        name:AddToButtonSetNotification
+        name:AddToButtonArrayNotification
         object:[[ UIApplication sharedApplication] delegate]];
 
     [center addObserver:self
@@ -118,7 +118,7 @@
 
     [center addObserver:self
                selector:@selector(removeFromSetBasedOnNotification:)
-                   name:RemoveFromButtonSetNotification
+                   name:RemoveFromButtonArrayNotification
                  object:nil];
     
     [center addObserver:self
@@ -162,10 +162,10 @@
 // timer
 //----------------
 -(void)timerFired{    
-    // if buttonSet is not empty, update the map    
-    if ([self.buttonSet count] > 0){
+    // if buttonArray is not empty, update the map    
+    if ([self.buttonArray count] > 0){
 //        [self orderSpaceTokens];
-        [self fillMapXYsForSet:self.buttonSet];
+        [self fillMapXYsForSet:self.buttonArray];
     }
     
     if ([self.draggingSet count] > 0){

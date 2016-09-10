@@ -23,8 +23,8 @@
 //    NSLog(@"addToSetBasedOnNotification");
     
     // handle the notification based on event name
-    if (aNotification.name == AddToButtonSetNotification){
-        [self.buttonSet addObject:aNotification.object];
+    if (aNotification.name == AddToButtonArrayNotification){
+        [self.buttonArray addObject:aNotification.object];
     }else if (aNotification.name == AddToTouchingSetNotification){
         [self addTokenToTouchingSet:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
@@ -34,7 +34,7 @@
         
         // remove from the display set
         SpaceToken *currentSpaceToken = aNotification.object;
-        [self.buttonSet removeObject:currentSpaceToken];
+        [self.buttonArray removeObject:currentSpaceToken];
         // Duplicate the button
         SpaceToken* newSpaceToken =
         [self addSpaceTokenFromPOI:currentSpaceToken.poi];
@@ -52,8 +52,8 @@
 //    NSLog(@"removeFromSetBasedOnNotification");
     
     // handle the notification based on event name
-    if (aNotification.name == RemoveFromButtonSetNotification){
-        [self.buttonSet removeObject:aNotification.object];        
+    if (aNotification.name == RemoveFromButtonArrayNotification){
+        [self.buttonArray removeObject:aNotification.object];        
     }else if (aNotification.name == RemoveFromTouchingSetNotification){        
         [self removeTokenFromTouchingSet:aNotification.object];
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
@@ -75,20 +75,20 @@
 - (void) orderSpaceTokens{
     // equally distribute the POIs
     // only reorder when the user is not touching a button
-    if ([self.buttonSet count] > 0 && [self.touchingSet count] == 0)
+    if ([self.buttonArray count] > 0 && [self.touchingSet count] == 0)
     {
         CGFloat barHeight = self.mapView.frame.size.height;
         CGFloat viewWidth = self.mapView.frame.size.width;
         
-        CGFloat gap = barHeight / ([self.buttonSet count] + 1);
+        CGFloat gap = barHeight / ([self.buttonArray count] + 1);
         
         // Fill in mapXY
         [self fillMapXYsForSet:self.dotSet];
-        [self fillMapXYsForSet:self.buttonSet];
+        [self fillMapXYsForSet:self.buttonArray];
         
         // Form a new set for sorting
         NSMutableSet *allTokens = [NSMutableSet setWithSet:self.dotSet];
-        [allTokens unionSet: self.buttonSet];
+        [allTokens unionSet: [NSMutableSet setWithArray:self.buttonArray]];
 
         //Sort the POIs (sort by block)
         //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
@@ -153,7 +153,7 @@
     if (aSpaceToken){
         // Add to the canvas
         [self.mapView addSubview:aSpaceToken];
-        [self.buttonSet addObject:aSpaceToken];
+        [self.buttonArray addObject:aSpaceToken];
     }else{
         // error
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
@@ -212,14 +212,14 @@
         [aToken removeFromSuperview];
     }
 
-    for (SpaceToken* aToken in self.buttonSet){
+    for (SpaceToken* aToken in self.buttonArray){
         [aToken removeFromSuperview];
     }
 
     [self.draggingSet removeAllObjects];
     [self clearAllTouchedTokens];
     [self.dotSet removeAllObjects];
-    [self.buttonSet removeAllObjects];
+    [self.buttonArray removeAllObjects];
 }
 
 

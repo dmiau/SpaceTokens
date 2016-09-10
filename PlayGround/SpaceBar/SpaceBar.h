@@ -46,7 +46,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 
 @property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
-@property NSMutableArray <SpaceToken*> *buttonSet;
+@property NSMutableArray <SpaceToken*> *buttonArray;
 @property NSMutableSet <SpaceToken*> *dotSet;
 
 // This is a convenient set to cache the references of all the

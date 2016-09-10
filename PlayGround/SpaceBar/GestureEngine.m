@@ -63,7 +63,7 @@
                 [aTouch previousLocationInView:self.spaceBar.mapView];
     
     // Iterate over SpaceTokens and perform hittest
-    for (SpaceToken *aToken in self.spaceBar.buttonSet){
+    for (SpaceToken *aToken in self.spaceBar.buttonArray){
         
         CGRect buttonFrame = aToken.frame;
         if (CGRectContainsPoint(buttonFrame, touchPoint) &&

@@ -223,7 +223,7 @@
     self.poi.isEnabled = NO;
     // Remove from the button set
     [[ NSNotificationCenter defaultCenter] postNotification:
-     [NSNotification notificationWithName:RemoveFromButtonSetNotification
+     [NSNotification notificationWithName:RemoveFromButtonArrayNotification
                                    object:self userInfo:nil]];
 }
 
