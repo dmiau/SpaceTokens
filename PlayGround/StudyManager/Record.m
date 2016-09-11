@@ -29,7 +29,7 @@
 
 - (void)end{
     self.isAnswered = YES;
-    self.elapsedTime = [self.startDate timeIntervalSinceNow];
+    self.elapsedTime = fabs([self.startDate timeIntervalSinceNow]);
     self.endDate = [NSDate date];
 }
 

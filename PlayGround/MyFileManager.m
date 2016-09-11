@@ -11,7 +11,6 @@
 @implementation MyFileManager
 
 - (id) init{
-    self = [super init];
     if (self){
         //----------------------
         // Initialize file storage
@@ -29,6 +28,15 @@
         [self initICloudContainer];
     }
     return self;
+}
+
++(MyFileManager*)sharedManager{
+    static MyFileManager *sharedMyFileManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMyFileManager = [[MyFileManager alloc] init];
+    });
+    return sharedMyFileManager;
 }
 
 - (bool)initICloudContainer{

@@ -15,6 +15,9 @@ FOUNDATION_EXPORT NSString *const GameSetupNotification;
 typedef enum {OFF, STUDY, DEMO, AUTHORING} GameManagerStatus;
 typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 
+//-----------------
+// GameManager interface
+//-----------------
 @interface GameManager : NSObject
 @property GameManagerStatus gameManagerStatus;
 @property int gameCounter;

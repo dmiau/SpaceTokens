@@ -153,6 +153,8 @@
 		9AF3B44B1D3E95D1004680CB /* SearchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3B4491D3E95D1004680CB /* SearchPanel.m */; };
 		9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
+		9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
+		9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -299,6 +301,8 @@
 		9AF3B4491D3E95D1004680CB /* SearchPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanel.m; path = Views/SearchPanel.m; sourceTree = "<group>"; };
 		9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthoringPanel.h; path = Views/AuthoringPanel.h; sourceTree = "<group>"; };
 		9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanel.m; path = Views/AuthoringPanel.m; sourceTree = "<group>"; };
+		9AFFFFF01D85B85A00111E6C /* Snapshot+Validators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Snapshot+Validators.h"; path = "StudyManager/Snapshot+Validators.h"; sourceTree = "<group>"; };
+		9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Snapshot+Validators.m"; path = "StudyManager/Snapshot+Validators.m"; sourceTree = "<group>"; };
 		B2AD7B9B487C49E3FF64C00D /* Pods-SpaceBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -393,6 +397,8 @@
 				9A437FB11D550C7A00F28E61 /* GameManager.m */,
 				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
 				9ACCEA151D81EFD700E145D7 /* Snapshot.m */,
+				9AFFFFF01D85B85A00111E6C /* Snapshot+Validators.h */,
+				9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */,
 				9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */,
 				9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */,
 				9AAAA1841D7C70EA003F4AA3 /* SnapshotDatabase+Debug.h */,
@@ -777,6 +783,7 @@
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
+				9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
@@ -847,6 +854,7 @@
 				9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
+				9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,

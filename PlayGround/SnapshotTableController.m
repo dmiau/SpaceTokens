@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "StudyManager/SnapshotDatabase.h"
 #import "StudyManager/GameManager.h"
+#import "MyFileManager.h"
 
 @implementation SnapshotTableController{
     GameManager *gameManager;
@@ -45,7 +46,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     // Regenerate the gameVector for now
-    gameManager.gameVector = [gameManager.snapshotDatabase.snapshotDictrionary allKeys];    
+    gameManager.gameVector = [NSMutableArray arrayWithArray:
+    [gameManager.snapshotDatabase.snapshotDictrionary allKeys]];
     [self.myTableView reloadData];
 }
 
@@ -122,5 +124,40 @@
         [self.myTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                 withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+#pragma mark --Save/Reload--
+- (IBAction)saveAction:(id)sender {
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        MyFileManager *myFileManager = [MyFileManager sharedManager];
+        
+        NSString *dirPath = [myFileManager currentFullDirectoryPath];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"mySnapshotDB.snapshot"];
+        
+        // Test file saving capability
+        [gameManager.snapshotDatabase saveDatatoFileWithName:fileFullPath];
+        
+//        [self.poiDatabase saveDatatoFileWithName:fileFullPath];
+//        [self.poiDatabase loadFromFile:fileFullPath];
+    });
+    
+    
+    
+}
+
+- (IBAction)reloadAction:(id)sender {
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"mySnapshotDB.snapshot"];
+    
+    [gameManager.snapshotDatabase loadFromFile:fileFullPath];
+    
+    // Reload the table
+    gameManager.gameVector = [NSMutableArray arrayWithArray:
+                              [gameManager.snapshotDatabase.snapshotDictrionary allKeys]];
+    [self.myTableView reloadData];
 }
 @end

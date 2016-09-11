@@ -172,11 +172,17 @@ static AuthoringPanel *instance;
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     NSString *label = [segmentedControl
                        titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
-    
+    [self restartAuthoringFlow];
     if ([label isEqualToString:@"Place"]){
         snapShot = [[SnapshotPlace alloc] init];
+        // Enable some of the buttons
+        [self.captureEndCondOutlet setEnabled:YES];
+        
     }else if ([label isEqualToString:@"Anchor"]){
         snapShot = [[SnapshotAnchorPlus alloc] init];
+        // Disable some of the buttons
+        [self.captureEndCondOutlet setEnabled:NO];
+        
     }else if ([label isEqualToString:@"Z-2-Pref"]){
 
     }else if ([label isEqualToString:@"Constraints"]){
@@ -248,12 +254,13 @@ static AuthoringPanel *instance;
 }
 
 - (void)resetInterface{
-    
     // Reset segement controls and initialize instant variables
     self.taskTypeOutlet.selectedSegmentIndex = 0;
-    
+    [self taskTypeAction:self.taskTypeOutlet];
+}
+
+- (void)restartAuthoringFlow{
     // Reinitialize some instance variables
-    snapShot = [[SnapshotPlace alloc] init];
     highlightedPOIsArray = [[NSMutableArray alloc] init];
     spaceTokenPOIsArray = [[NSMutableArray alloc] init];
     targetedPOIsArray = [[NSMutableArray alloc] init];
@@ -266,10 +273,20 @@ static AuthoringPanel *instance;
     self.spaceTokenPOIOutlet.titleLabel.text = @"SpaceToken(0)";
 }
 
+
 - (IBAction)addAction:(id)sender {
     // Assemble the snapshot
     snapShot.highlightedPOIs = highlightedPOIsArray;
     snapShot.poisForSpaceTokens = spaceTokenPOIsArray;
+    
+    // Assemble snapshot differently based on Snapshot type
+    if ([snapShot isKindOfClass:[SnapshotAnchorPlus class]]){
+        // targetedPOIsArray must be empty
+        // Fill in the array with the highlighted POI and the SpaceToken
+        [targetedPOIsArray addObject:highlightedPOIsArray[0]];
+        [targetedPOIsArray addObject:spaceTokenPOIsArray[0]];
+    }
+    
     snapShot.targetedPOIs = targetedPOIsArray;
     
     // Get the SnapshotDatabase

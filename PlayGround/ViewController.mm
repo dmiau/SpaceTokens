@@ -41,7 +41,7 @@
     //----------------
     // Initialize File Manager
     //----------------
-    self.myFileManager = [[MyFileManager alloc] init];
+    self.myFileManager = [MyFileManager sharedManager];
     self.myFileManager.directorPartialPath = @"test";
     
     //----------------

@@ -14,8 +14,12 @@
     self.nameOutlet.text = self.poi.name;
 }
 
-- (IBAction)doneAction:(id)sender {
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [self.nameOutlet resignFirstResponder];
     self.poi.name = self.nameOutlet.text;
+    return YES;
 }
+
 @end

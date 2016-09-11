@@ -13,6 +13,7 @@
 @property NSURL *containerURL;
 @property NSString *directorPartialPath;
 
++ (MyFileManager*)sharedManager;
 - (NSString*)currentFullDirectoryPath; // Returns the full directory string
 - (NSURL*)currentFullDirectoryURL; // Returns the full directory URL
 @end

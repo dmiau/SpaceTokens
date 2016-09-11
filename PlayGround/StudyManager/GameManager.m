@@ -14,9 +14,7 @@
 
 NSString *const GameSetupNotification = @"GameSetupNotification";
 
-@implementation GameManager{
-    id <SnapshotProtocol> activeSnapshot;
-}
+@implementation GameManager
 
 #pragma mark --Initialization--
 
@@ -74,14 +72,14 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
 - (void)runSnapshotIndex:(int)index{
     
     // Clean the activeSnapshot if there is one
-    if (activeSnapshot){
-        [activeSnapshot cleanup];
+    if (self.activeSnapshot){
+        [self.activeSnapshot cleanup];
     }
     
     self.gameCounter = index;
     
     NSString *code = self.gameVector[index];
-    id<SnapshotProtocol> aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
+    Snapshot *aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
     self.activeSnapshot = aSnapshot;
     
     
@@ -114,23 +112,28 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
 - (void)reportCompletionFromSnashot:(id<SnapshotProtocol>) snapshot{
     
     NSString *code = self.gameVector[self.gameCounter];
-    id<SnapshotProtocol> aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
+    Snapshot *aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
     
     // Present a modal dialog
     UIAlertView *confirmationModal = [[UIAlertView alloc]
                                       initWithTitle:@"Good job!"
-                                      message:@""
-                                      delegate:nil cancelButtonTitle:@"Next" otherButtonTitles:nil];
+                                      message:[NSString stringWithFormat:@"Time: %g", aSnapshot.record.elapsedTime]
+                                      delegate:self cancelButtonTitle:@"Next" otherButtonTitles:nil];
     [confirmationModal show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     
-    // Time delay before cleaning up
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC),
-                   dispatch_get_main_queue(),
-                   ^{
-                       [confirmationModal dismissWithClickedButtonIndex:-1 animated:YES];
-                       [aSnapshot cleanup];
-                       // Proceed to the next game
-                       [self runNextSnapshot];
-    });
+    if ([alertView.title isEqualToString:@"End of the game!"]){
+        
+    }else if ([alertView.title isEqualToString:@"Good job!"]){
+        // the user clicked OK
+        if (buttonIndex == 0) {
+            [self.activeSnapshot cleanup];
+            // Proceed to the next game
+            [self runNextSnapshot];
+        }
+    }
 }
 @end

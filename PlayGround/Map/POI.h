@@ -16,6 +16,9 @@
 //-------------------
 @interface POI : NSObject
 
+- (id)initWithCoder:(NSCoder *)coder;
+- (void)encodeWithCoder:(NSCoder *)coder;
+
 //---properties
 @property CLLocationCoordinate2D latLon;
 @property MKCoordinateSpan coordSpan;

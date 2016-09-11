@@ -14,5 +14,5 @@
 @property POI *poi;
 @property (weak, nonatomic) IBOutlet UITextField *nameOutlet;
 
-- (IBAction)doneAction:(id)sender;
+
 @end
