@@ -19,7 +19,7 @@ typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 @property GameManagerStatus gameManagerStatus;
 @property int gameCounter;
 @property SnapshotDatabase *snapshotDatabase;
-@property NSArray *gameVector;
+@property NSMutableArray *gameVector;
 @property Snapshot *activeSnapshot;
 
 // Initialization

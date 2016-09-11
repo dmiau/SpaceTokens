@@ -39,6 +39,29 @@
     return self;
 }
 
+#pragma mark --CommonSetup--
+- (void) setupMapSpacebar{
+    // Position the map to the initial condition
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);
+    [self.rootViewController.mapView setRegion:region animated:NO];
+    
+    // Set up the SpaceToken correctly
+    SpaceBar *spaceBar = self.rootViewController.spaceBar;
+    spaceBar.isYouAreHereEnabled = NO;
+    [spaceBar removeAllSpaceTokens];
+    [spaceBar addSpaceTokensFromPOIArray:self.poisForSpaceTokens];
+    
+    
+    // Remove all annotations
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    [mapView removeAnnotations:mapView.annotations];
+    
+    // Add the annotations
+    for (POI *aPOI in self.highlightedPOIs){
+        aPOI.isMapAnnotationEnabled = YES;
+    }
+}
+
 
 #pragma mark --Target Drawing--
 - (void)drawOnePointVisualTarget{

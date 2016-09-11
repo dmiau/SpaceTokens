@@ -50,9 +50,11 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
         case OFF:
             // Turn off the game
             [mainViewManager showDefaultPanel];
+            rootViewController.spaceBar.isYouAreHereEnabled = YES;
             break;
         case STUDY:
             // Turn on the game
+            rootViewController.spaceBar.isYouAreHereEnabled = NO;
             [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;
         case DEMO:
@@ -118,7 +120,7 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
     UIAlertView *confirmationModal = [[UIAlertView alloc]
                                       initWithTitle:@"Good job!"
                                       message:@""
-                                      delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+                                      delegate:nil cancelButtonTitle:@"Next" otherButtonTitles:nil];
     [confirmationModal show];
     
     // Time delay before cleaning up

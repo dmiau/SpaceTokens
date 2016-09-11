@@ -9,7 +9,7 @@
 #import "SnapshotAnchorPlus.h"
 
 #import "ViewController.h"
-#import "../Map/CustomMKMapView.h"
+#import "CustomMKMapView.h"
 #import "Constants.h"
 #import "Record.h"
 #import "GameManager.h"
@@ -17,12 +17,9 @@
 @implementation SnapshotAnchorPlus
 
 
-- (void)setup{
+- (void)setup{    
+    [self setupMapSpacebar];
     
-    // Position the map to the initial condition
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);
-    [self.rootViewController.mapView setRegion:region animated:NO];
-        
     // Start the validator
     // listen to the map change event
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];

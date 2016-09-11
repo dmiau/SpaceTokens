@@ -7,8 +7,7 @@
 //
 
 #import "POI.h"
-
-
+#import "CustomMKMapView.h"
 
 @implementation POI
 
@@ -20,7 +19,7 @@
 }
 */
 
-
+#pragma --initialization--
 //----------------
 // initialization
 //----------------
@@ -36,11 +35,15 @@
     return self;
 }
 
-- (NSString*) description{
-    return [NSString stringWithFormat:@"latlon: %@",
-            [NSString stringWithFormat:@"%g, %g", self.latLon.latitude, self.latLon.longitude]];
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [self init];
+    self.latLon = CLLocationCoordinate2DMake([coder decodeDoubleForKey:@"latLon.latitdue"], [coder decodeDoubleForKey:@"latLon.longitude"]);
+    self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
+    
+    return self;
 }
 
+#pragma mark --Setters--
 // Custom set methods
 - (void)setLatLon:(CLLocationCoordinate2D)latLon{
     _latLon = latLon;
@@ -53,19 +56,26 @@
     _annotation.title = name;
 }
 
+-(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
+    _isMapAnnotationEnabled = isMapAnnotationEnabled;
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    if (isMapAnnotationEnabled){
+        // Add the annotation
+        [mapView addAnnotation:self.annotation];
+    }else{
+        // Remove the annotation
+        [mapView removeAnnotation:self.annotation];
+    }
+}
+
+#pragma mark --Serialization--
+
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeDouble:self.latLon.latitude forKey:@"latLon.latitdue"];
     [coder encodeDouble:self.latLon.longitude forKey:@"latLon.longitude"];
     [coder encodeObject:self.name forKey:@"name"];
-}
-
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [self init];
-    self.latLon = CLLocationCoordinate2DMake([coder decodeDoubleForKey:@"latLon.latitdue"], [coder decodeDoubleForKey:@"latLon.longitude"]);
-    self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
-    
-    return self;
 }
 
 // Deep copy
@@ -77,4 +87,9 @@
     return object;
 }
 
+
+- (NSString*) description{
+    return [NSString stringWithFormat:@"latlon: %@",
+            [NSString stringWithFormat:@"%g, %g", self.latLon.latitude, self.latLon.longitude]];
+}
 @end

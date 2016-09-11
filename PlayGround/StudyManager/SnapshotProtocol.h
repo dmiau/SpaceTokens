@@ -33,15 +33,17 @@
     MKCircle *targetCircle;
     MKCircle *completionIndicator;
 }
+@property ViewController *rootViewController;
 
 @property NSString *instructions;
 @property NSMutableArray <POI*> *highlightedPOIs;
-@property ViewController *rootViewController;
+@property NSMutableArray <POI*> *poisForSpaceTokens; // poi to generate SpaceToken
 @property NSMutableArray <POI*> *targetedPOIs;
 @property Record *record;
 
 
 // Methods to setup and validate the tasks
+- (void)setupMapSpacebar;
 - (void)drawOnePointVisualTarget;
 - (void)onePointValidator;
 - (void)twoPointsValidator;

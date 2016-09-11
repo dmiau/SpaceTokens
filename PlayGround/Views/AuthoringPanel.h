@@ -16,6 +16,8 @@
 @interface AuthoringPanel : UIView <TopPanel, UITextFieldDelegate>{
     SettingsButton *settingsButton;
     Snapshot *snapShot;
+    NSMutableArray *highlightedPOIsArray;
+    NSMutableArray *spaceTokenPOIsArray;
     NSMutableArray *targetedPOIsArray;
     
     CGRect targetRectBox;
@@ -34,16 +36,20 @@
 @property (weak, nonatomic) IBOutlet UIButton *captureStartCondOutlet;
 @property (weak, nonatomic) IBOutlet UIButton *captureEndCondOutlet;
 @property (weak, nonatomic) IBOutlet UITextField *instructionOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *highlightedPOIOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *spaceTokenPOIOutlet;
 
 // Interface action related methods
 - (IBAction)taskTypeAction:(id)sender;
 - (IBAction)captureStartAction:(id)sender;
 - (IBAction)captureEndAction:(id)sender;
-- (IBAction)resetAction:(id)sender;
+
+- (IBAction)highlightPOIAction:(id)sender;
+- (IBAction)spaceTokenPOIAction:(id)sender;
 
 - (IBAction)instructionAction:(id)sender;
 
+- (IBAction)resetAction:(id)sender;
 - (IBAction)addAction:(id)sender;
-
 
 @end

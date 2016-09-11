@@ -139,11 +139,9 @@
     SpaceToken* newSpaceToken =
     [self addSpaceTokenFromPOI:token.poi];
     [self removeAnchor];
-    [self orderSpaceTokens];
+    [self orderButtonArray];
     
-    // Add the poi associated with the newly created SpaceToken to poiArray
-    POIDatabase *poiDatabase = [POIDatabase sharedManager];
-    [poiDatabase.poiArray addObject: token.poi];
+    [self.poiArrayDataSource addObject:token.poi];
 }
 
 @end

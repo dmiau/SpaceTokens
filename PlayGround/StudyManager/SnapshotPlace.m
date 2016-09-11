@@ -17,10 +17,7 @@
 
 
 - (void)setup{
-    
-    // Position the map to the initial condition
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);
-    [self.rootViewController.mapView setRegion:region animated:NO];
+    [self setupMapSpacebar];
     
     //Draw the target
     [self drawOnePointVisualTarget];

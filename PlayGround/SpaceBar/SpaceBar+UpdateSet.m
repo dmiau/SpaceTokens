@@ -72,69 +72,76 @@
 //----------------
 // order the POIs and SpaceTokens on the track
 //----------------
-- (void) orderSpaceTokens{
+-(void) orderButtonArray{
     // equally distribute the POIs
-    // only reorder when the user is not touching a button
-    if ([self.buttonArray count] > 0 && [self.touchingSet count] == 0)
-    {
-        CGFloat barHeight = self.mapView.frame.size.height;
-        CGFloat viewWidth = self.mapView.frame.size.width;
-        
-        CGFloat gap = barHeight / ([self.buttonArray count] + 1);
-        
-        // Fill in mapXY
-        [self fillMapXYsForSet:self.dotSet];
-        [self fillMapXYsForSet:self.buttonArray];
-        
-        // Form a new set for sorting
-        NSMutableSet *allTokens = [NSMutableSet setWithSet:self.dotSet];
-        [allTokens unionSet: [NSMutableSet setWithArray:self.buttonArray]];
-
-        //Sort the POIs (sort by block)
-        //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
-        
-        NSArray *sortedArray =
-        [[allTokens allObjects]
-         sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-            SpaceToken *first = (SpaceToken*)a;
-            SpaceToken *second = (SpaceToken*)b;
-            
-            if (first.mapViewXY.y < second.mapViewXY.y) {
-                return NSOrderedAscending;
-            }
-            else if (first.mapViewXY.y > second.mapViewXY.y) {
-                return NSOrderedDescending;
-            }else{
-                // In the unlikely case that the two POIs have the same y
-                if (first.mapViewXY.x < second.mapViewXY.x) {
-                    return NSOrderedAscending;
-                }else if (first.mapViewXY.x > second.mapViewXY.x) {
-                    return NSOrderedDescending;
-                }else{
-                    return NSOrderedSame;
-                }
-            }
-         }];
-
-        // Position the SpaceToken and dots
-        for (int i = 0; i < [sortedArray count]; i++){
-            SpaceToken *aToken = sortedArray[i];
-            if (aToken.type == DOCKED){
-                aToken.frame = CGRectMake(viewWidth - aToken.frame.size.width,
-                                        gap * (i+1), aToken.frame.size.width,
-                                        aToken.frame.size.height);
-            }else{
-                // calculate the distance from self to the adjancent two
-                // SpaceTokens
-                
-            }
-        }
-        
+    if ([self.buttonArray count] == 0 || [self.touchingSet count] > 0){
+        // only reorder when the user is not touching a button
+        return;
     }
-}
-
-- (void)placeSpaceTokensToGrid{
     
+    // Fill in mapXY
+    [self fillMapXYsForSet:self.buttonArray];
+    
+    // Form a new set for sorting
+    NSMutableSet *allTokens = [NSMutableSet setWithArray:self.buttonArray];
+    
+    // Take YouAreHere from the set (YouAreHere should be at the bottom)
+    [allTokens removeObject: self.youAreHere];
+    
+    //Sort the POIs (sort by block)
+    //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
+    
+    NSArray *sortedArray =
+    [[allTokens allObjects]
+     sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+         SpaceToken *first = (SpaceToken*)a;
+         SpaceToken *second = (SpaceToken*)b;
+         
+         if (first.mapViewXY.y < second.mapViewXY.y) {
+             return NSOrderedAscending;
+         }
+         else if (first.mapViewXY.y > second.mapViewXY.y) {
+             return NSOrderedDescending;
+         }else{
+             // In the unlikely case that the two POIs have the same y
+             if (first.mapViewXY.x < second.mapViewXY.x) {
+                 return NSOrderedAscending;
+             }else if (first.mapViewXY.x > second.mapViewXY.x) {
+                 return NSOrderedDescending;
+             }else{
+                 return NSOrderedSame;
+             }
+         }
+     }];
+    
+    
+    //----------------
+    // Snap SpaceTokens to grid
+    //----------------
+    self.buttonArray = [NSMutableArray arrayWithArray:sortedArray];
+    
+    if (self.isYouAreHereEnabled){
+        [self.buttonArray addObject:self.youAreHere];
+    }
+    
+    // Place the sorted button on to the grid
+    CGFloat viewWidth = self.mapView.frame.size.width;
+    CGFloat barHeight = self.mapView.frame.size.height;
+    CGFloat gap = barHeight / ([self.buttonArray count] + 1);
+    
+    // Position the SpaceToken and dots
+    for (int i = 0; i < [self.buttonArray count]; i++){
+        SpaceToken *aToken = self.buttonArray[i];
+        if (aToken.type == DOCKED){
+            aToken.frame = CGRectMake(viewWidth - aToken.frame.size.width,
+                                      gap * (i+1), aToken.frame.size.width,
+                                      aToken.frame.size.height);
+        }else{
+            // calculate the distance from self to the adjancent two
+            // SpaceTokens
+            
+        }
+    }
 }
 
 #pragma mark --Add/remove SpaceToken--
@@ -171,9 +178,11 @@
 //----------------
 // Add SpaceTokens from poiArray
 //----------------
-- (void)addSpaceTokensFromPOIArray: (NSArray <POI*> *) poiArray{
+- (void)addSpaceTokensFromPOIArray: (NSMutableArray <POI*> *) poiArray{
     // Remove all SpaceTokens first
     [self removeAllSpaceTokens];
+    
+    self.poiArrayDataSource = poiArray;
     
     for (POI* aPOI in poiArray){
         
@@ -181,20 +190,23 @@
         if (aPOI.isEnabled){
             [self addSpaceTokenFromPOI:aPOI];
             // Add the annotation
-            [self.mapView addAnnotation:aPOI.annotation];
+            aPOI.isMapAnnotationEnabled = YES;
         }
     }
-    
-    // Add a YouAreHere SpaceToken
-    POI *specialPOI = [[POI alloc] init];
-    specialPOI.name = @"YouRHere";
-    specialPOI.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
-    self.youAreHere = [self addSpaceTokenFromPOI:specialPOI];
-        
-    // Create a person
-    Person *person = [[Person alloc] init];
-    self.youAreHere.person = person;    
-    [self orderSpaceTokens]; 
+
+    // Add YouAreHere
+    if (self.isYouAreHereEnabled){
+        // Initialize YouAreHere
+        // Add a YouAreHere SpaceToken
+        POI *specialPOI = [[POI alloc] init];
+        specialPOI.name = @"YouRHere";
+        specialPOI.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
+        self.youAreHere = [self addSpaceTokenFromPOI:specialPOI];
+        // Create a person
+        Person *person = [[Person alloc] init];
+        self.youAreHere.person = person;
+    }
+    [self orderButtonArray]; 
 }
 
 //----------------

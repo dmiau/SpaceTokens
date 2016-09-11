@@ -46,6 +46,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 
 @property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
+@property NSMutableArray <POI*> *poiArrayDataSource;
 @property NSMutableArray <SpaceToken*> *buttonArray;
 @property NSMutableSet <SpaceToken*> *dotSet;
 
@@ -60,6 +61,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // Some special POIs are cached in SpaceBar
 @property SpaceToken* mapCentroid;
 @property SpaceToken* youAreHere;
+@property BOOL isYouAreHereEnabled;
 @property SpaceToken* anchor;
 
 @property NSTimer *privateTouchingSetTimer;
@@ -105,7 +107,7 @@ unsigned int spaceBarElevatorMoved:1;
 // Implemented in updateSet category
 // --------------
 - (void) updateSpecialPOIs;
-- (void) orderSpaceTokens;
+- (void) orderButtonArray;
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification;
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification;
 

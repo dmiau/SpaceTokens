@@ -23,5 +23,6 @@
 @property NSString *name;
 @property CustomPointAnnotation *annotation;
 @property bool isEnabled;
+@property BOOL isMapAnnotationEnabled;
 @property (weak) id linkedObj; // a POI can be linked another object, e.g., a SpaceToken
 @end

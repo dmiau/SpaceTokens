@@ -98,4 +98,29 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+
+//-------------
+// Deleting rows
+//-------------
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //https://developer.apple.com/library/ios/documentation/userexperience/conceptual/tableview_iphone/ManageInsertDeleteRow/ManageInsertDeleteRow.html
+    
+    // If row is deleted, remove it from the list.
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        int i = [indexPath row];
+        
+        NSString *key = gameManager.gameVector[i];
+        
+        // Remove the snapshot from the gameVector
+        [gameManager.gameVector removeObject: gameManager.gameVector[i]];
+        
+        // Remvoe the snapshot from the database
+        [gameManager.snapshotDatabase.snapshotDictrionary removeObjectForKey: key];
+        
+        // Then, delete the row
+        [self.myTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 @end

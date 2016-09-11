@@ -191,7 +191,7 @@ static AuthoringPanel *instance;
     snapShot.coordSpan = coordinateRegion.span;
     
     // Update the label of the button
-    [self.captureStartCondOutlet setTitle:@"CaptureStartCond(1)" forState:UIControlStateNormal];
+    [self.captureStartCondOutlet setTitle:@"Cap-StartCond(1)" forState:UIControlStateNormal];
 }
 
 - (IBAction)captureEndAction:(id)sender {
@@ -203,8 +203,34 @@ static AuthoringPanel *instance;
     [targetedPOIsArray addObject:poi];
     
     // Update the label of the button
-    NSString *buttonLabel = [NSString stringWithFormat: @"CaptureEndCond(%lu)", [targetedPOIsArray count]];
+    NSString *buttonLabel = [NSString stringWithFormat: @"Cap-EndCond(%lu)", [targetedPOIsArray count]];
     [self.captureEndCondOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+}
+
+- (IBAction)highlightPOIAction:(id)sender {
+    MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
+    POI *poi = [[POI alloc] init];
+    poi.latLon = coordinateRegion.center;
+    poi.coordSpan = coordinateRegion.span;
+    
+    [highlightedPOIsArray addObject:poi];
+    
+    // Update the label of the button
+    NSString *buttonLabel = [NSString stringWithFormat: @"HighlightedPOI(%lu)", [highlightedPOIsArray count]];
+    [self.highlightedPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+}
+
+- (IBAction)spaceTokenPOIAction:(id)sender {
+    MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
+    POI *poi = [[POI alloc] init];
+    poi.latLon = coordinateRegion.center;
+    poi.coordSpan = coordinateRegion.span;
+    
+    [spaceTokenPOIsArray addObject:poi];
+    
+    // Update the label of the button
+    NSString *buttonLabel = [NSString stringWithFormat: @"SpaceToken(%lu)", [spaceTokenPOIsArray count]];
+    [self.spaceTokenPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
 }
 
 - (IBAction)resetAction:(id)sender {
@@ -225,17 +251,25 @@ static AuthoringPanel *instance;
     
     // Reset segement controls and initialize instant variables
     self.taskTypeOutlet.selectedSegmentIndex = 0;
+    
+    // Reinitialize some instance variables
     snapShot = [[SnapshotPlace alloc] init];
+    highlightedPOIsArray = [[NSMutableArray alloc] init];
+    spaceTokenPOIsArray = [[NSMutableArray alloc] init];
     targetedPOIsArray = [[NSMutableArray alloc] init];
+    
     self.instructionOutlet.text = @"";
-    self.captureStartCondOutlet.titleLabel.text = @"CaptureStartCond(0)";
+    self.captureStartCondOutlet.titleLabel.text = @"Cap-StartCond(0)";
     self.captureEndCondOutlet.titleLabel.text =
-    [NSString stringWithFormat:@"CaptureEndCond(%d)", 0];
+    [NSString stringWithFormat:@"Cap-EndCond(%d)", 0];
+    self.highlightedPOIOutlet.titleLabel.text = @"HighlightedPOI(0)";
+    self.spaceTokenPOIOutlet.titleLabel.text = @"SpaceToken(0)";
 }
 
 - (IBAction)addAction:(id)sender {
-    
     // Assemble the snapshot
+    snapShot.highlightedPOIs = highlightedPOIsArray;
+    snapShot.poisForSpaceTokens = spaceTokenPOIsArray;
     snapShot.targetedPOIs = targetedPOIsArray;
     
     // Get the SnapshotDatabase
@@ -254,6 +288,9 @@ static AuthoringPanel *instance;
     
     // Put the snapshot into SnapshotDatabase
     snapshotDatabase.snapshotDictrionary[snapshotName] = snapShot;
+    
+    // Reset the panel
+    [self resetInterface];
 }
 
 

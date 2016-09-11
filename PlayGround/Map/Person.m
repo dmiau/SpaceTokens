@@ -48,12 +48,12 @@
         
         [locationManager startUpdatingLocation];
         [locationManager startUpdatingHeading];
-        [myMapView addAnnotation: self.poi.annotation];
+        self.poi.isMapAnnotationEnabled = YES;
     }else{
         // Stop Location Manager
         [locationManager stopUpdatingLocation];
         [locationManager stopUpdatingHeading];
-        [myMapView removeAnnotation:self.poi.annotation];
+        self.poi.isMapAnnotationEnabled = NO;
     }
 }
 

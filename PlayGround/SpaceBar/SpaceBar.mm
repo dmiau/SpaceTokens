@@ -11,6 +11,7 @@
 #import "CERangeSlider.h"
 #import "GestureEngine.h"
 
+
 // SpaceBar extension
 @interface SpaceBar ()
 {
@@ -28,13 +29,13 @@
 - (id)initWithMapView: (MKMapView *) myMapView {
     self = [super init];
     if (self) {
+        // Initialize the map
+        self.mapView = myMapView;
+        
         // This part is common for all display types
         [self initializeCommon];
         
         self.spaceBarMode = TOKENONLY;
-
-        // Initialize the map
-        self.mapView = myMapView;    
         
         // Init the frame
         float spaceBarWidth = 40;
@@ -95,6 +96,10 @@
     self.draggingSet = [[NSMutableSet alloc] init];        
         
     self.smallValueOnTopOfBar = true;
+    
+    self.isYouAreHereEnabled = YES;
+
+
     
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
