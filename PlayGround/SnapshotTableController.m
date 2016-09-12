@@ -138,13 +138,7 @@
         
         // Test file saving capability
         [gameManager.snapshotDatabase saveDatatoFileWithName:fileFullPath];
-        
-//        [self.poiDatabase saveDatatoFileWithName:fileFullPath];
-//        [self.poiDatabase loadFromFile:fileFullPath];
     });
-    
-    
-    
 }
 
 - (IBAction)reloadAction:(id)sender {

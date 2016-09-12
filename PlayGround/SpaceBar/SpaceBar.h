@@ -62,6 +62,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property SpaceToken* mapCentroid;
 @property SpaceToken* youAreHere;
 @property BOOL isYouAreHereEnabled;
+@property BOOL isAutoOrderSpaceTokenEnabled;
 @property SpaceToken* anchor;
 
 @property NSTimer *privateTouchingSetTimer;

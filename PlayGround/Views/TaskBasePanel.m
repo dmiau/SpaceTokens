@@ -15,12 +15,15 @@
 
 @implementation TaskBasePanel{
     SettingsButton *settingsButton;
+    NSDate *startDate;
+    NSTimer *updateTimer;
 }
 
 // http://stackoverflow.com/questions/4609609/use-singleton-in-interface-builder
 static TaskBasePanel *instance;
 
 + (id)sharedManager { return instance; }
+
 
 + (id)hiddenAlloc
 {
@@ -74,6 +77,11 @@ static TaskBasePanel *instance;
         [center addObserver:self
                    selector:@selector(updatePanel)
                        name:GameSetupNotification
+                     object:nil];
+        
+        [center addObserver:self
+                   selector:@selector(stopTimerAction:)
+                       name:GameCleanupNotification
                      object:nil];
         
     }
@@ -131,6 +139,29 @@ static TaskBasePanel *instance;
     GameManager *gameManager = [GameManager sharedManager];
     self.instructionsOutlet.text = gameManager.activeSnapshot.instructions;
     self.counterOutlet.text = [NSString stringWithFormat:@"%d", gameManager.gameCounter];
+    
+    // Start to update the timer
+    startDate = [NSDate date];
+    
+    // this function is to check wheter the map has been touched
+    float timer_interval = 0.06;
+    updateTimer = [NSTimer timerWithTimeInterval:timer_interval
+                                             target:self
+                                           selector:@selector(timerAction)
+                                           userInfo:nil
+                                            repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:updateTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)timerAction{
+    double elapsedTime = fabs([startDate timeIntervalSinceNow]);
+    self.timeOutlet.text =
+    [NSString stringWithFormat:@"Elapsed time: %g", elapsedTime];
+}
+
+- (IBAction)stopTimerAction:(id)sender {
+    [updateTimer invalidate];
 }
 
 @end

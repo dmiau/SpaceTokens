@@ -99,7 +99,7 @@
     
     self.isYouAreHereEnabled = YES;
 
-
+    self.isAutoOrderSpaceTokenEnabled = YES;
     
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];

@@ -13,6 +13,7 @@
 #import "MainViewManager.h"
 
 NSString *const GameSetupNotification = @"GameSetupNotification";
+NSString *const GameCleanupNotification = @"GameCleanupNotification";
 
 @implementation GameManager
 
@@ -72,9 +73,7 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
 - (void)runSnapshotIndex:(int)index{
     
     // Clean the activeSnapshot if there is one
-    if (self.activeSnapshot){
-        [self.activeSnapshot cleanup];
-    }
+    [self terminateActiveSnapshot];
     
     self.gameCounter = index;
     
@@ -130,10 +129,23 @@ NSString *const GameSetupNotification = @"GameSetupNotification";
     }else if ([alertView.title isEqualToString:@"Good job!"]){
         // the user clicked OK
         if (buttonIndex == 0) {
-            [self.activeSnapshot cleanup];
+            [self terminateActiveSnapshot];
             // Proceed to the next game
             [self runNextSnapshot];
         }
+    }
+}
+
+
+- (void)terminateActiveSnapshot{
+    if (self.activeSnapshot){
+        [self.activeSnapshot cleanup];
+        // Broadcast a notification about the changing map
+        NSNotification *notification = [NSNotification notificationWithName:GameCleanupNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+        
+        self.activeSnapshot = nil;
     }
 }
 @end

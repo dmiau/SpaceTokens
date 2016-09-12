@@ -82,47 +82,49 @@
     // Fill in mapXY
     [self fillMapXYsForSet:self.buttonArray];
     
-    // Form a new set for sorting
-    NSMutableSet *allTokens = [NSMutableSet setWithArray:self.buttonArray];
-    
-    // Take YouAreHere from the set (YouAreHere should be at the bottom)
-    [allTokens removeObject: self.youAreHere];
-    
-    //Sort the POIs (sort by block)
-    //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
-    
-    NSArray *sortedArray =
-    [[allTokens allObjects]
-     sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-         SpaceToken *first = (SpaceToken*)a;
-         SpaceToken *second = (SpaceToken*)b;
-         
-         if (first.mapViewXY.y < second.mapViewXY.y) {
-             return NSOrderedAscending;
-         }
-         else if (first.mapViewXY.y > second.mapViewXY.y) {
-             return NSOrderedDescending;
-         }else{
-             // In the unlikely case that the two POIs have the same y
-             if (first.mapViewXY.x < second.mapViewXY.x) {
+    if (self.isAutoOrderSpaceTokenEnabled){
+        // Form a new set for sorting
+        NSMutableSet *allTokens = [NSMutableSet setWithArray:self.buttonArray];
+        
+        // Take YouAreHere from the set (YouAreHere should be at the bottom)
+        [allTokens removeObject: self.youAreHere];
+        
+        //Sort the POIs (sort by block)
+        //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
+        
+        NSArray *sortedArray =
+        [[allTokens allObjects]
+         sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+             SpaceToken *first = (SpaceToken*)a;
+             SpaceToken *second = (SpaceToken*)b;
+             
+             if (first.mapViewXY.y < second.mapViewXY.y) {
                  return NSOrderedAscending;
-             }else if (first.mapViewXY.x > second.mapViewXY.x) {
+             }
+             else if (first.mapViewXY.y > second.mapViewXY.y) {
                  return NSOrderedDescending;
              }else{
-                 return NSOrderedSame;
+                 // In the unlikely case that the two POIs have the same y
+                 if (first.mapViewXY.x < second.mapViewXY.x) {
+                     return NSOrderedAscending;
+                 }else if (first.mapViewXY.x > second.mapViewXY.x) {
+                     return NSOrderedDescending;
+                 }else{
+                     return NSOrderedSame;
+                 }
              }
-         }
-     }];
-    
+         }];
+        
+        self.buttonArray = [NSMutableArray arrayWithArray:sortedArray];
+        
+        if (self.isYouAreHereEnabled){
+            [self.buttonArray addObject:self.youAreHere];
+        }
+    }
     
     //----------------
     // Snap SpaceTokens to grid
     //----------------
-    self.buttonArray = [NSMutableArray arrayWithArray:sortedArray];
-    
-    if (self.isYouAreHereEnabled){
-        [self.buttonArray addObject:self.youAreHere];
-    }
     
     // Place the sorted button on to the grid
     CGFloat viewWidth = self.mapView.frame.size.width;

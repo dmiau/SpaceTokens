@@ -50,8 +50,6 @@
     self.poiDatabase = [POIDatabase sharedManager];
     [self.poiDatabase reloadPOI];
     
-    [self tempSaveDataMethod];
-    
     //----------------
     // Initialize a Route DB
     //----------------
@@ -127,32 +125,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO];
-}
-
-
-//-----------------
-// A temporary method to save data into the disk
-//-----------------
-- (void)tempSaveDataMethod{
-    // Need to run on the background thread
-    
-    //Save the files using the background thread
-    //http://stackoverflow.com/questions/12671042/moving-a-function-to-a-background-thread-in-objective-c
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-    dispatch_async(queue, ^{
-        NSString *dirPath = [self.myFileManager currentFullDirectoryPath];
-        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
-        
-        // Test file saving capability
-        [self.poiDatabase saveDatatoFileWithName:fileFullPath];
-        [self.poiDatabase loadFromFile:fileFullPath];
-        
-        // Perform async operation
-        // Call your method/function here
-        // Example:
-        // NSString *result = [anObject calculateSomething];
-    });
 }
 
 - (void)didReceiveMemoryWarning {

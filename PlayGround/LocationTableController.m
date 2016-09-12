@@ -121,6 +121,16 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
+    // Update SpaceToken order control
+    if (self.rootViewController.spaceBar.isAutoOrderSpaceTokenEnabled){
+        self.orderSegmentOutlet.selectedSegmentIndex = 0;
+    }else{
+        self.orderSegmentOutlet.selectedSegmentIndex = 1;
+    }
+    
+    
+    [self.navigationController setNavigationBarHidden:NO];
     [self.myTableView reloadData];
 }
 
@@ -187,6 +197,37 @@
 }
 
 
+//----------------
+// Reorder the cell
+//----------------
+- (IBAction)editAction:(id)sender {
+    UIButton *button = (UIButton*) sender;
+    
+    if ([button.titleLabel.text isEqualToString:@"Edit"]){
+        [self.myTableView setEditing:YES animated:YES];
+        [self.editOutlet setTitle:@"Done" forState:UIControlStateNormal];
+    }else{
+        [self.myTableView setEditing:NO animated:YES];
+        [self.editOutlet setTitle:@"Edit" forState:UIControlStateNormal];
+    }
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    // Get the object
+    POIDatabase *poiDatabase = self.rootViewController.poiDatabase;
+    
+    POI *aPOI = poiDatabase.poiArray[sourceIndexPath.row];
+    [poiDatabase.poiArray removeObjectAtIndex:sourceIndexPath.row];
+    [poiDatabase.poiArray insertObject:aPOI atIndex:destinationIndexPath.row];
+}
+
 //-------------
 // Deleting rows
 //-------------
@@ -227,4 +268,42 @@
         destinationViewController.poi = sender;
     }
 }
+
+#pragma mark --Save/Reload--
+- (IBAction)orderSegmentAction:(UISegmentedControl*)sender {
+    if (sender.selectedSegmentIndex == 0){
+        self.rootViewController.spaceBar.isAutoOrderSpaceTokenEnabled = YES;
+    }else{
+        self.rootViewController.spaceBar.isAutoOrderSpaceTokenEnabled = NO;
+    }
+}
+
+- (IBAction)saveAction:(id)sender {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        MyFileManager *myFileManager = [MyFileManager sharedManager];
+        
+        NSString *dirPath = [myFileManager currentFullDirectoryPath];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
+        
+        // Test file saving capability
+        [self.rootViewController.poiDatabase saveDatatoFileWithName:fileFullPath];
+    });
+}
+
+- (IBAction)reloadAction:(id)sender {
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
+    
+    [self.rootViewController.poiDatabase loadFromFile:fileFullPath];
+    // Need to reconnec the data source
+    [self.rootViewController.spaceBar
+     addSpaceTokensFromPOIArray: self.rootViewController.poiDatabase.poiArray];
+    // Reload the table
+    [self.myTableView reloadData];
+}
+
+
 @end

@@ -18,7 +18,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *counterOutlet;
 @property (weak, nonatomic) IBOutlet UILabel *instructionsOutlet;
+@property (weak, nonatomic) IBOutlet UILabel *timeOutlet;
 
 +(id)sharedManager;
+- (IBAction)stopTimerAction:(id)sender;
 
 @end

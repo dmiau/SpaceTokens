@@ -12,6 +12,7 @@
 #import "StudyManager/GameManager.h"
 #import "Map/Route.h"
 #import "MainViewManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation PreferencesController
 
@@ -160,5 +161,18 @@
     }else if ([label isEqualToString:@"Yes"]){
         self.rootViewController.miniMapView.syncRotation = YES;
     }
+}
+- (IBAction)camSegmentAction:(UISegmentedControl*)sender {
+    static AVCaptureVideoPreviewLayer *previewLayer;
+    if (sender.selectedSegmentIndex == 1){
+        AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];;
+        previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+        UIView *aView = self.rootViewController.mapView;
+        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
+        [aView.layer addSublayer:previewLayer];
+    }else{
+        [previewLayer removeFromSuperlayer];
+    }
+    
 }
 @end

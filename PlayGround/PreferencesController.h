@@ -25,4 +25,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *appModeSegmentControlOutlet;
 - (IBAction)appModeSegmentControl:(id)sender;
 
+// Cam segment control
+@property (weak, nonatomic) IBOutlet UISegmentedControl *camSegmentOutlet;
+- (IBAction)camSegmentAction:(id)sender;
+
 @end

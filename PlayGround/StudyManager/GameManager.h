@@ -11,6 +11,7 @@
 #import "SnapshotDatabase.h"
 
 FOUNDATION_EXPORT NSString *const GameSetupNotification;
+FOUNDATION_EXPORT NSString *const GameCleanupNotification;
 
 typedef enum {OFF, STUDY, DEMO, AUTHORING} GameManagerStatus;
 typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;

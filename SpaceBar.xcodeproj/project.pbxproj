@@ -51,6 +51,7 @@
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
 		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
+		9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
@@ -214,6 +215,7 @@
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
 		9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Annotations.h"; sourceTree = "<group>"; };
 		9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Annotations.m"; sourceTree = "<group>"; };
+		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
 		9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteTableController.mm; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */,
 				9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */,
 				5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */,
 			);
@@ -330,6 +333,7 @@
 		0143FC2420AD43B364D84109 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A73C4101D86527200CF2BF1 /* AVFoundation.framework */,
 				51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */,
 			);
 			name = Frameworks;
