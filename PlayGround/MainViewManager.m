@@ -109,6 +109,11 @@
         [tempPanel removeFromSuperview];
         self.filterPanel = nil;
     }
+    
+    // Refresh SpaceTokens
+    [self.rootViewController.spaceBar removeAllSpaceTokens];
+    [self.rootViewController.spaceBar
+     addSpaceTokensFromPOIArray:self.rootViewController.poiDatabase.poiArray];
 }
 
 - (void)showDirectionPanel{

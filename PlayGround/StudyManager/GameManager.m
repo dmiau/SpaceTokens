@@ -45,11 +45,18 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     MainViewManager *mainViewManager = rootViewController.mainViewManager;
     
     _gameManagerStatus = gameManagerStatus;
+    POIDatabase *poiDB = [POIDatabase sharedManager];
     switch (gameManagerStatus) {
         case OFF:
             // Turn off the game
-            [mainViewManager showDefaultPanel];
+            
             rootViewController.spaceBar.isYouAreHereEnabled = YES;
+            
+            // set the POIDatabase to use the temporary POIArray
+            [poiDB removeTempPOIArray];
+            
+            [mainViewManager showDefaultPanel];
+            
             break;
         case STUDY:
             // Turn on the game
@@ -87,7 +94,10 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     NSNotification *notification = [NSNotification notificationWithName:GameSetupNotification
                                                                  object:self userInfo:nil];
     [[ NSNotificationCenter defaultCenter] postNotification:notification];
-            
+    
+    // set the POIDatabase to use the temporary POIArray
+    POIDatabase *poiDB = [POIDatabase sharedManager];
+    [poiDB useTempPOIArray:aSnapshot.poisForSpaceTokens];
     [aSnapshot setup];
 }
 

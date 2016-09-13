@@ -9,11 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "POI.h"
 
-@interface POIDatabase : NSObject
+@interface POIDatabase : NSObject{
+    NSMutableArray <POI *> *cachedDefaultPOIArray;
+    BOOL useDefaultPOIArray;
+}
 @property NSString *name;
 @property NSMutableArray <POI *> *poiArray;
 
 +(POIDatabase*)sharedManager;
+
+// temp POI array
+- (void)useTempPOIArray:(NSMutableArray*)tempArray;
+- (void)removeTempPOIArray;
 
 // iCloud related methods
 - (void)debugInit; // a temporary method

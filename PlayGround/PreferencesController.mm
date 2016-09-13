@@ -39,7 +39,7 @@
     CustomTabController *tabController = (CustomTabController *) self.parentViewController;
     
     // Control the title bar
-    tabController.navigationBar.topItem.title = @"General";
+    tabController.navigationBar.topItem.title = @"Settings";
     
     // Update the setting of the map segment controller
     if([self.rootViewController.panoView superview]){

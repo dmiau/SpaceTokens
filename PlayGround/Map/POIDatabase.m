@@ -9,8 +9,9 @@
 #import "POIDatabase.h"
 
 
-@implementation POIDatabase
-
+@implementation POIDatabase{
+    NSMutableArray <POI*> *cacheDefaultPOIArray;
+}
 
 +(POIDatabase*)sharedManager{
     static POIDatabase *sharedPOIDatabase = nil;
@@ -23,7 +24,27 @@
 
 - (id) init{
     self.poiArray = [[NSMutableArray alloc] init];
+    cacheDefaultPOIArray = [[NSMutableArray alloc] init];
+    useDefaultPOIArray = YES;
     return self;
+}
+
+- (void)setPoiArray:(NSMutableArray<POI *> *)poiArray{
+    if (useDefaultPOIArray){
+        cacheDefaultPOIArray = poiArray;
+    }
+    _poiArray = poiArray;
+}
+
+// methods to support a temporary POI array
+- (void)useTempPOIArray:(NSMutableArray*)tempArray{
+    useDefaultPOIArray = NO;
+    self.poiArray = tempArray;
+}
+
+- (void)removeTempPOIArray{
+    useDefaultPOIArray = YES;
+    self.poiArray = cacheDefaultPOIArray;
 }
 
 // saving and loading the object
