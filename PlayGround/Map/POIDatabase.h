@@ -14,9 +14,9 @@
 @property NSMutableArray <POI *> *poiArray;
 
 +(POIDatabase*)sharedManager;
--(void)reloadPOI; // a temporary method
 
 // iCloud related methods
+- (void)debugInit; // a temporary method
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
 @end

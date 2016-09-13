@@ -308,7 +308,7 @@ static AuthoringPanel *instance;
     snapShot.name = snapshotName;
     
     // Put the snapshot into SnapshotDatabase
-    snapshotDatabase.snapshotDictrionary[snapshotName] = snapShot;
+    [snapshotDatabase.snapshotArray addObject: snapShot];
     
     // Reset the panel
     [self resetInterface];

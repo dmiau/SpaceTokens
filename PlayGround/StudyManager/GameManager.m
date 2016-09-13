@@ -53,6 +53,8 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             break;
         case STUDY:
             // Turn on the game
+            snapshotDatabase = [SnapshotDatabase sharedManager];
+            
             rootViewController.spaceBar.isYouAreHereEnabled = NO;
             [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;
@@ -77,8 +79,7 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     
     self.gameCounter = index;
     
-    NSString *code = self.gameVector[index];
-    Snapshot *aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
+    Snapshot *aSnapshot = snapshotDatabase.snapshotArray[index];
     self.activeSnapshot = aSnapshot;
     
     
@@ -92,7 +93,7 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
 
 - (void)runNextSnapshot{
     // Check the bound
-    if ((self.gameCounter + 1) == [self.gameVector count]){
+    if ((self.gameCounter + 1) == [snapshotDatabase.snapshotArray count]){
         // We have reached the end of the game, display ending message
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"End of the game!"
                                                         message:@"Please notify the study coordinator."
@@ -110,8 +111,7 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
 
 - (void)reportCompletionFromSnashot:(id<SnapshotProtocol>) snapshot{
     
-    NSString *code = self.gameVector[self.gameCounter];
-    Snapshot *aSnapshot = self.snapshotDatabase.snapshotDictrionary[code];
+    Snapshot *aSnapshot = snapshotDatabase.snapshotArray[self.gameCounter];
     
     // Present a modal dialog
     UIAlertView *confirmationModal = [[UIAlertView alloc]

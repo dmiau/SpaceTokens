@@ -7,6 +7,8 @@
 //
 
 #import "SnapshotDatabase.h"
+#import "SnapshotProtocol.h"
+#import <UIKit/UIkit.h>
 
 @implementation SnapshotDatabase
 
@@ -20,9 +22,74 @@
 }
 
 - (id)init{
-    self.snapshotDictrionary = [[NSMutableDictionary alloc] init];
-    [self debugInit];
+    _snapshotArray = [[NSMutableArray alloc] init];
     return self;
+}
+
+
+// Generate a snapshotArray
+- (NSMutableArray*)generateSnapshotArrayFromGameVector:(NSArray*) gameVector{
+    self.snapshotArray = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc] init];
+    
+    // Form a dictionary
+    BOOL foundDuplicatedKey = false;
+    for (Snapshot *aSnapshot in self.snapshotArray){
+        NSString *key = aSnapshot.name;
+        
+        if (![tempDictionary objectForKey:key]){
+            tempDictionary[key] = aSnapshot;
+        }else{
+            NSLog(@"Key: %@ already exists", key);
+            foundDuplicatedKey = YES;
+        }
+    }
+    
+    // Error reporting
+    if (foundDuplicatedKey){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Found duplicated keys."
+                                        message:@"Please check snapshotArray."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    
+    if (!gameVector){
+        // generate gameVector if
+        gameVector = [tempDictionary allKeys];
+    }
+    
+    BOOL keyNotFound = NO;
+    for (NSString *aKey in gameVector){
+        if ([tempDictionary objectForKey:aKey]){
+            [self.snapshotArray addObject:tempDictionary[aKey]];
+        }else{
+            keyNotFound = YES;
+        }
+    }
+
+    // Error reporting
+    if (keyNotFound){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Keys not found."
+                                                        message:@"Please check snapshotArray."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    return self.snapshotArray;
+}
+
+- (NSArray*)allSnapshotIDs{
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    for (Snapshot* aSnapshot in self.snapshotArray){
+        [tempArray addObject: aSnapshot.name];
+    }
+    NSArray *outArray = [NSArray arrayWithArray:tempArray];
+    return outArray;
 }
 
 #pragma mark --Save and Load --
@@ -30,13 +97,13 @@
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeObject:self.snapshotDictrionary forKey:@"snapshotDictrionary"];
+    [coder encodeObject:self.snapshotArray forKey:@"snapshotArray"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [self init];
     self.name = [coder decodeObjectForKey:@"name"];
-    self.snapshotDictrionary = [[coder decodeObjectForKey:@"snapshotDictrionary"] mutableCopy];
+    self.snapshotArray = [[coder decodeObjectForKey:@"snapshotArray"] mutableCopy];
     return self;
 }
 
@@ -45,7 +112,7 @@
 {
     SnapshotDatabase *object = [[SnapshotDatabase alloc] init];
     object.name = self.name;
-    object.snapshotDictrionary = self.snapshotDictrionary;
+    object.snapshotArray = self.snapshotArray;
 
     return object;
 }
@@ -72,7 +139,7 @@
         NSData *data = [NSData dataWithContentsOfFile:fullPathFileName];
         SnapshotDatabase *snapshotDB = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         self.name = snapshotDB.name;
-        self.snapshotDictrionary = snapshotDB.snapshotDictrionary;
+        self.snapshotArray = snapshotDB.snapshotArray;
         return YES;
     }else{
         NSLog(@"%@ does not exist.", fullPathFileName);

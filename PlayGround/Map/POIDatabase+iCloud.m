@@ -7,8 +7,18 @@
 //
 
 #import "POIDatabase+iCloud.h"
+#import "MyFileManager.h"
 
 @implementation POIDatabase (iCloud)
+
+- (void)debugInit{
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
+    
+    [self loadFromFile:fileFullPath];
+}
 
 // Good reference: http://www.idev101.com/code/Objective-C/Saving_Data/NSKeyedArchiver.html
 

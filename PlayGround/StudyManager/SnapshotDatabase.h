@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class Snapshot;
+
 @interface SnapshotDatabase : NSObject
 
 @property NSString *name;
-@property NSMutableDictionary *snapshotDictrionary;
+@property NSMutableArray <Snapshot*> *snapshotArray;
 
 +(id)sharedManager;
+- (NSMutableArray*)generateSnapshotArrayFromGameVector:(NSArray*) gameVector;
+
+- (NSArray*)allSnapshotIDs;
 
 // iCloud related methods
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;

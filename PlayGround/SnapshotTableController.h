@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @class ViewController;
+@class SnapshotDatabase;
 
-@interface SnapshotTableController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface SnapshotTableController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>{
+    SnapshotDatabase *snapshotDatabase;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 

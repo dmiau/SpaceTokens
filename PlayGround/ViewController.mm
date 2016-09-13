@@ -48,7 +48,7 @@
     // Initialize a POI DB
     //----------------
     self.poiDatabase = [POIDatabase sharedManager];
-    [self.poiDatabase reloadPOI];
+    [self.poiDatabase debugInit];
     
     //----------------
     // Initialize a Route DB
@@ -61,13 +61,12 @@
     //----------------
     SnapshotDatabase *mySnapshotDatabase = [SnapshotDatabase sharedManager];
     mySnapshotDatabase.name = @"Study";
+    [mySnapshotDatabase debugInit];
+    
     //----------------
     // Initialize Study Manager
     //----------------
     self.gameManager = [GameManager sharedManager];
-    self.gameManager.snapshotDatabase = mySnapshotDatabase;
-    // Initialize a default gameVector
-    self.gameManager.gameVector = [mySnapshotDatabase.snapshotDictrionary allKeys];
     
     //----------------
     // Add a mapView
