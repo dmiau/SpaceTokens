@@ -305,6 +305,8 @@ static AuthoringPanel *instance;
     NSString *prefix = SnapshotTypeToPrefix(snapShot);
     NSString *snapshotName = [NSString stringWithFormat:@"%@:%@", prefix, dateString];
     
+    snapShot.name = snapshotName;
+    
     // Put the snapshot into SnapshotDatabase
     snapshotDatabase.snapshotDictrionary[snapshotName] = snapShot;
     

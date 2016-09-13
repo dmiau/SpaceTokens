@@ -257,7 +257,7 @@
 //------------------
 // Prepare for the detail view
 //------------------
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(CustomPointAnnotation*)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(POI*)sender
 {
     if ([segue.identifier isEqualToString:@"POIDetailVC"])
     {

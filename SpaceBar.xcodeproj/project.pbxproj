@@ -58,6 +58,8 @@
 		9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
+		9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */; };
+		9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */; };
 		9A836D391C69372C007D9520 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
 		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
 		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
@@ -222,6 +224,8 @@
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
 		9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WildcardGestureRecognizer.h; path = Map/WildcardGestureRecognizer.h; sourceTree = "<group>"; };
 		9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WildcardGestureRecognizer.m; path = Map/WildcardGestureRecognizer.m; sourceTree = "<group>"; };
+		9A81DBEB1D877EE3006DA5A1 /* SnapshotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotDetailViewController.h; sourceTree = "<group>"; };
+		9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapshotDetailViewController.m; sourceTree = "<group>"; };
 		9A836D371C69372C007D9520 /* tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tester.h; path = tester/tester.h; sourceTree = "<group>"; };
 		9A836D381C69372C007D9520 /* tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tester.m; path = tester/tester.m; sourceTree = "<group>"; };
 		9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+UpdateSet.h"; path = "SpaceBar/SpaceBar+UpdateSet.h"; sourceTree = "<group>"; };
@@ -605,6 +609,8 @@
 				9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */,
 				9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */,
 				9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */,
+				9A81DBEB1D877EE3006DA5A1 /* SnapshotDetailViewController.h */,
+				9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */,
 			);
 			name = SeguePanels;
 			sourceTree = "<group>";
@@ -801,6 +807,7 @@
 				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
+				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
 				9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */,
 				9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */,
@@ -872,6 +879,7 @@
 				9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
+				9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
 				9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */,
 				9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */,

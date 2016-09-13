@@ -12,6 +12,7 @@
 #import "StudyManager/SnapshotDatabase.h"
 #import "StudyManager/GameManager.h"
 #import "MyFileManager.h"
+#import "SnapshotDetailViewController.h"
 
 @implementation SnapshotTableController{
     GameManager *gameManager;
@@ -100,6 +101,25 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+//----------------
+// This method is called when the accessory button is pressed
+// *************
+// It appears that this method will only be called when
+// accessoryTrype is set to "Detail Disclosure"
+//----------------
+- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    // Get the row ID
+    int i = [indexPath row];
+    int section_id = [indexPath section];
+    
+    NSString *key = gameManager.gameVector[i];
+    Snapshot *aSnapshot = gameManager.snapshotDatabase.snapshotDictrionary[key];
+    // Perform segue
+    [self performSegueWithIdentifier:@"SnapshotDetailVC"
+                              sender:aSnapshot];
+}
+
 
 //-------------
 // Deleting rows
@@ -125,6 +145,23 @@
                                 withRowAnimation:UITableViewRowAnimationFade];
     }
 }
+
+#pragma mark -----Navigation and Exit-----
+//------------------
+// Prepare for the detail view
+//------------------
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(Snapshot*)sender
+{
+    if ([segue.identifier isEqualToString:@"SnapshotDetailVC"])
+    {
+        SnapshotDetailViewController *destinationViewController =
+        segue.destinationViewController;
+        
+        // grab the annotation from the sender
+        destinationViewController.snapshot = sender;
+    }
+}
+
 
 #pragma mark --Save/Reload--
 - (IBAction)saveAction:(id)sender {
