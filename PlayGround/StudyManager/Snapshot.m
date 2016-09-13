@@ -85,6 +85,9 @@
     //Reenable user interaction
     self.rootViewController.mapView.userInteractionEnabled = YES;
     
+    //Reset SpaceTokens, as a pre-caution
+    [self.rootViewController.spaceBar removeAllSpaceTokens];
+    
     // Remove the overlays
     [self.rootViewController.mapView removeOverlay: targetCircle];
     [self.rootViewController.mapView removeOverlay: completionIndicator];

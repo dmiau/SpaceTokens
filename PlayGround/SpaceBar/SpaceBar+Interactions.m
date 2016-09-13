@@ -102,6 +102,12 @@
             aToken.poi.name = [NSString stringWithFormat:@"Anchor%d", counter++];
             
             self.anchor = aToken;
+            
+//            // Add anchor to the draggingSet
+//            if (![self.draggingSet containsObject:self.anchor])
+//            {
+//                [self.draggingSet addObject:self.anchor];
+//            }
         }
     }
 }

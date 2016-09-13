@@ -81,7 +81,7 @@
 }
 
 - (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+    NSLog(@"Map is moved: %@", [touches anyObject]);
     [self.spaceBar updateAnchorForTouches: touches];
 }
 

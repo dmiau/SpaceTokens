@@ -43,10 +43,14 @@
         // Show one SpaceToken
         //------------------------
         
-        // this is to support anchor+X
-        // one anchor + one touched SpaceToken
+
         if (self.anchor)
         {
+            //====================
+            // this is to support anchor+X
+            // one anchor + one touched SpaceToken
+            //====================
+            
             // Turn on the touching visualization
             self.anchor.isCircleLayerOn = YES;
             
@@ -59,6 +63,10 @@
             [aSet addObject:self.anchor];
             [self snapToTwoTokens:  aSet];
         }else{
+            //====================
+            // one SpaceToken is pressed
+            //====================
+            
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
             aSpaceToken.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
             
@@ -73,7 +81,9 @@
             [poiSet addObject: aToken.poi];
         }
         
-        // Relaxed constraints
+        //----------------------
+        // Relaxed constraints if an anchor is present
+        //----------------------
         if (self.anchor){
             [poiSet addObject:self.anchor.poi];
             // Draw the constraint line
@@ -102,6 +112,7 @@
     // Assume there are at most two POIs
     if ([tokenSet count] == 1 &&
         [tokenSet anyObject] != self.anchor)
+//    if ([tokenSet count] == 1)
     {
         //----------------------
         // Snap to one SpaceToken

@@ -177,12 +177,12 @@ static AuthoringPanel *instance;
         snapShot = [[SnapshotPlace alloc] init];
         // Enable some of the buttons
         [self.captureEndCondOutlet setEnabled:YES];
-        
+        [self.highlightedPOIOutlet setEnabled:NO];
     }else if ([label isEqualToString:@"Anchor"]){
         snapShot = [[SnapshotAnchorPlus alloc] init];
         // Disable some of the buttons
         [self.captureEndCondOutlet setEnabled:NO];
-        
+        [self.highlightedPOIOutlet setEnabled:YES];
     }else if ([label isEqualToString:@"Z-2-Pref"]){
 
     }else if ([label isEqualToString:@"Constraints"]){
@@ -287,6 +287,8 @@ static AuthoringPanel *instance;
         [targetedPOIsArray addObject:spaceTokenPOIsArray[0]];
     }
     
+    // In case the user forgets to press the return key
+    snapShot.instructions = self.instructionOutlet.text;
     snapShot.targetedPOIs = targetedPOIsArray;
     
     // Get the SnapshotDatabase
@@ -309,8 +311,6 @@ static AuthoringPanel *instance;
     // Reset the panel
     [self resetInterface];
 }
-
-
 
 // A helper function
 NSString* SnapshotTypeToPrefix( Snapshot *aSnapshot){

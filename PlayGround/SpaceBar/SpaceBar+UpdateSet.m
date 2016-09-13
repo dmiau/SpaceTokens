@@ -229,7 +229,8 @@
     for (SpaceToken* aToken in self.buttonArray){
         [aToken removeFromSuperview];
     }
-
+    
+    [self removeAnchor];
     [self.draggingSet removeAllObjects];
     [self clearAllTouchedTokens];
     [self.dotSet removeAllObjects];
