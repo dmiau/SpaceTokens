@@ -277,4 +277,17 @@
     self.constraintLayer.opacity = 1.0;
 }
 
+
+- (NSString*)description{
+    NSString *tokenInfo = [NSString stringWithFormat:@"Name: %p", self];
+    NSString *mapViewString = NSStringFromCGPoint(self.mapViewXY);
+    NSString *pointerString = [NSString stringWithFormat:@"%p", self.touch];
+    NSString *latLonString = [NSString stringWithFormat:@"lat: %g, long: %g",
+                              self.poi.latLon.latitude, self.poi.latLon.longitude];
+    
+    NSArray *stringArray = [[NSArray alloc] initWithObjects:tokenInfo, mapViewString, pointerString, latLonString, nil];
+    NSString *joinedString = [stringArray componentsJoinedByString:@"\n"];
+    return joinedString;
+}
+
 @end

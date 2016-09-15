@@ -44,15 +44,16 @@
         //------------------------
         
 
-        if (self.anchor)
+        if ([self.anchorArray count]==1)
         {
+            SpaceToken *oneAnchor = self.anchorArray[0];
             //====================
             // this is to support anchor+X
             // one anchor + one touched SpaceToken
             //====================
             
             // Turn on the touching visualization
-            self.anchor.isCircleLayerOn = YES;
+            oneAnchor.isCircleLayerOn = YES;
             
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
             aSpaceToken.mapViewXY =
@@ -60,11 +61,16 @@
             
             NSMutableSet* aSet = [[NSMutableSet alloc] init];
             [aSet addObject:aSpaceToken];
-            [aSet addObject:self.anchor];
+            [aSet addObject:oneAnchor];
+            
+            // This part needs to be fixed
+            
             [self snapToTwoTokens:  aSet];
-        }else{
+        }else if ([self.anchorArray count]==0){
+            
+            
             //====================
-            // one SpaceToken is pressed
+            // one SpaceToken is pressed (no anchors)
             //====================
             
             SpaceToken *aSpaceToken = [self.touchingSet anyObject];
@@ -72,11 +78,33 @@
             
             [self.mapView snapOneCoordinate: aSpaceToken.poi.latLon
                                        toXY: aSpaceToken.mapViewXY animated:NO];
+        }else if ([self.anchorArray count]>1){
+            
+            
+            //====================
+            // one SpaceToken is pressed (with anchors)
+            //====================
+            NSMutableSet <POI*>* poiSet =
+            [[NSMutableSet alloc] init];
+            SpaceToken *aToken = [self.touchingSet anyObject];
+            [poiSet addObject: aToken.poi];
+            
+            //----------------------
+            // Relaxed constraints if an anchor is present
+            //----------------------
+            for (SpaceToken *aToken in self.anchorArray){
+                [poiSet addObject:aToken.poi];
+                // Draw the constraint line
+                aToken.isConstraintLineOn = YES;
+            }
+            
+            [self.mapView zoomToFitPOIs:poiSet];
         }
-                
+        
     }else if ([self.touchingSet count] > 1){
 
-        NSMutableSet <POI*>* poiSet = [[NSMutableSet alloc] init];
+        NSMutableSet <POI*>* poiSet =
+        [[NSMutableSet alloc] init];
         for (SpaceToken* aToken in self.touchingSet){
             [poiSet addObject: aToken.poi];
         }
@@ -84,10 +112,13 @@
         //----------------------
         // Relaxed constraints if an anchor is present
         //----------------------
-        if (self.anchor){
-            [poiSet addObject:self.anchor.poi];
-            // Draw the constraint line
-            self.anchor.isConstraintLineOn = YES;
+        if ([self.anchorArray count]>0){
+            
+            for (SpaceToken *aToken in self.anchorArray){
+                [poiSet addObject:aToken.poi];
+                // Draw the constraint line
+                aToken.isConstraintLineOn = YES;
+            }
         }
         
         [self.mapView zoomToFitPOIs:poiSet];
@@ -99,21 +130,35 @@
 //----------------
 - (void) updateMapToFitPOIPreferences: (NSMutableSet*) tokenSet{
     
+    BOOL isAnchorInDraggingSet = NO;
+    
+    if ([self.anchorArray count]>0){
+        NSMutableSet *intersectSet = [NSMutableSet setWithSet:tokenSet];
+        [intersectSet intersectSet:[NSSet setWithArray:self.anchorArray]];
+        if ([intersectSet count] > 0){
+            isAnchorInDraggingSet = YES;
+        }
+    }
+
     // this is to support anchor+X
     // one anchor + one dragging SpaceToken
-    if ([self.draggingSet count] == 1
-        && [self.draggingSet anyObject] != self.anchor
-        && self.anchor)
+    if ([tokenSet count] == 1
+        && !isAnchorInDraggingSet
+        && [self.anchorArray count]==1)
     {
-        self.anchor.isCircleLayerOn = YES;
-        [self.draggingSet addObject:self.anchor];
+        SpaceToken *anchor = self.anchorArray[0];
+        anchor.isCircleLayerOn = YES;
+        [self.draggingSet addObject:anchor];
     }
     
     // Assume there are at most two POIs
-    if ([tokenSet count] == 1 &&
-        [tokenSet anyObject] != self.anchor)
-//    if ([tokenSet count] == 1)
+    if ([tokenSet count] == 1)
     {
+        
+//        if (isAnchorInDraggingSet){
+//            NSLog(@"anchor: %@", [tokenSet anyObject]);
+//        }
+        
         //----------------------
         // Snap to one SpaceToken
         //----------------------
@@ -121,7 +166,6 @@
         [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.mapViewXY
          withOrientation:self.mapView.camera.heading animated:NO];
     }else if ([tokenSet count] == 2){
-        
         //----------------------
         // Snap to two SpaceTokens
         //----------------------
@@ -140,7 +184,6 @@
         cgPoints[i] = aToken.mapViewXY;
         i++;
     }
-    
     [self.mapView snapTwoCoordinates: coords toTwoXY: cgPoints];
 }
 

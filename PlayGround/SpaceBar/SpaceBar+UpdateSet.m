@@ -230,7 +230,7 @@
         [aToken removeFromSuperview];
     }
     
-    [self removeAnchor];
+    [self removeAllAnchors];
     [self.draggingSet removeAllObjects];
     [self clearAllTouchedTokens];
     [self.dotSet removeAllObjects];

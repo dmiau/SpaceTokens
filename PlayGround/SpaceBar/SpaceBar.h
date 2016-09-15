@@ -63,7 +63,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property SpaceToken* youAreHere;
 @property BOOL isYouAreHereEnabled;
 @property BOOL isAutoOrderSpaceTokenEnabled;
-@property SpaceToken* anchor;
+@property NSMutableArray <SpaceToken*> *anchorArray;
 
 @property NSTimer *privateTouchingSetTimer;
 // timer for touchingSet
@@ -101,7 +101,8 @@ unsigned int spaceBarElevatorMoved:1;
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
 - (void) addAnchorForTouches:(NSSet<UITouch *> *)touches;
 - (void) updateAnchorForTouches: (NSSet<UITouch *> *)touches;
-- (void) removeAnchor;
+- (void) removeAnchorForTouches: (NSSet<UITouch *> *)touches;
+- (void) removeAllAnchors;
 - (void) convertAnchorToRealToken: (SpaceToken*) token;
 
 // --------------

@@ -94,7 +94,8 @@
     
     self.touchingSet = [[NSMutableSet alloc] init];
     self.draggingSet = [[NSMutableSet alloc] init];        
-        
+    self.anchorArray = [[NSMutableArray alloc] init];
+    
     self.smallValueOnTopOfBar = true;
     
     self.isYouAreHereEnabled = YES;
