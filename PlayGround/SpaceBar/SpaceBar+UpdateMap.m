@@ -36,91 +36,41 @@
 // zoom-to-fit
 //----------------
 - (void) zoomMapToFitTouchSet{
-    // Assume there are at most two touched
     
-    if ([self.touchingSet count] == 1){
-        //------------------------
-        // Show one SpaceToken
-        //------------------------
+    if ([self.anchorArray count]==1){
+        //--------------
+        // One anchor
+        //--------------
+        // Show the anchor and one desired location
+        SpaceToken *oneAnchor = self.anchorArray[0];
         
-
-        if ([self.anchorArray count]==1)
-        {
-            SpaceToken *oneAnchor = self.anchorArray[0];
-            //====================
-            // this is to support anchor+X
-            // one anchor + one touched SpaceToken
-            //====================
-            
-            // Turn on the touching visualization
-            oneAnchor.isCircleLayerOn = YES;
-            
-            SpaceToken *aSpaceToken = [self.touchingSet anyObject];
-            aSpaceToken.mapViewXY =
-            CGPointMake(aSpaceToken.center.x - aSpaceToken.frame.size.width *0.7, aSpaceToken.center.y);
-            
-            NSMutableSet* aSet = [[NSMutableSet alloc] init];
-            [aSet addObject:aSpaceToken];
-            [aSet addObject:oneAnchor];
-            
-            // This part needs to be fixed
-            
-            [self snapToTwoTokens:  aSet];
-        }else if ([self.anchorArray count]==0){
-            
-            
-            //====================
-            // one SpaceToken is pressed (no anchors)
-            //====================
-            
-            SpaceToken *aSpaceToken = [self.touchingSet anyObject];
-            aSpaceToken.mapViewXY = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
-            
-            [self.mapView snapOneCoordinate: aSpaceToken.poi.latLon
-                                       toXY: aSpaceToken.mapViewXY animated:NO];
-        }else if ([self.anchorArray count]>1){
-            
-            
-            //====================
-            // one SpaceToken is pressed (with anchors)
-            //====================
-            NSMutableSet <POI*>* poiSet =
-            [[NSMutableSet alloc] init];
-            SpaceToken *aToken = [self.touchingSet anyObject];
-            [poiSet addObject: aToken.poi];
-            
-            //----------------------
-            // Relaxed constraints if an anchor is present
-            //----------------------
-            for (SpaceToken *aToken in self.anchorArray){
-                [poiSet addObject:aToken.poi];
-                // Draw the constraint line
-                aToken.isConstraintLineOn = YES;
-            }
-            
-            [self.mapView zoomToFitPOIs:poiSet];
-        }
+        MKMapRect mapRect = [self computerBoundingPOIsForTokenSets: self.touchingSet
+                                                         andAnchor: oneAnchor];
+        // Turn on the debug visual
+        oneAnchor.isLineLayerOn = YES;
+        oneAnchor.isConstraintLineOn = YES;
+        [self.mapView setVisibleMapRect:mapRect animated:NO];
         
-    }else if ([self.touchingSet count] > 1){
-
+    }else{
+        //--------------
+        // Zero anchor, or more than one anchor
+        //--------------
+        
+        // Put POIs in touchingSet into a poiSet
         NSMutableSet <POI*>* poiSet =
         [[NSMutableSet alloc] init];
         for (SpaceToken* aToken in self.touchingSet){
             [poiSet addObject: aToken.poi];
         }
         
-        //----------------------
-        // Relaxed constraints if an anchor is present
-        //----------------------
-        if ([self.anchorArray count]>0){
-            
-            for (SpaceToken *aToken in self.anchorArray){
-                [poiSet addObject:aToken.poi];
-                // Draw the constraint line
-                aToken.isConstraintLineOn = YES;
-            }
+        // Put POIs in anchorArray into a poiSet
+        for (SpaceToken *aToken in self.anchorArray){
+            [poiSet addObject:aToken.poi];
+            // Draw the constraint line
+            aToken.isConstraintLineOn = YES;
         }
         
+        // Zoom to fit
         [self.mapView zoomToFitPOIs:poiSet];
     }
 }
@@ -131,7 +81,6 @@
 - (void) updateMapToFitPOIPreferences: (NSMutableSet*) tokenSet{
     
     BOOL isAnchorInDraggingSet = NO;
-    
     if ([self.anchorArray count]>0){
         NSMutableSet *intersectSet = [NSMutableSet setWithSet:tokenSet];
         [intersectSet intersectSet:[NSSet setWithArray:self.anchorArray]];
@@ -139,7 +88,7 @@
             isAnchorInDraggingSet = YES;
         }
     }
-
+    
     // this is to support anchor+X
     // one anchor + one dragging SpaceToken
     if ([tokenSet count] == 1
@@ -154,22 +103,153 @@
     // Assume there are at most two POIs
     if ([tokenSet count] == 1)
     {
-        
-//        if (isAnchorInDraggingSet){
-//            NSLog(@"anchor: %@", [tokenSet anyObject]);
-//        }
-        
         //----------------------
         // Snap to one SpaceToken
         //----------------------
         SpaceToken *aToken = [tokenSet anyObject];
         [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.mapViewXY
-         withOrientation:self.mapView.camera.heading animated:NO];
+                        withOrientation:self.mapView.camera.heading animated:NO];
     }else if ([tokenSet count] == 2){
         //----------------------
         // Snap to two SpaceTokens
         //----------------------
         [self snapToTwoTokens: tokenSet];
+    }
+}
+
+
+//------------------
+// Compute the bounding box that includes an anchor and tokens
+//------------------
+- (MKMapRect)computerBoundingPOIsForTokenSets: (NSSet*)tokenSet
+                                       andAnchor: (SpaceToken*) anchor
+{
+    // Compute the bounding POIs
+    CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
+    
+    // To initialize the search
+    SpaceToken *aToken = [tokenSet anyObject];
+    MKMapPoint aMapPoint = MKMapPointForCoordinate(aToken.poi.latLon);
+    minMapPointX = aMapPoint.x; maxMapPointX = aMapPoint.x;
+    minMapPointY = aMapPoint.y; maxMapPointY = aMapPoint.y;
+    
+    for (SpaceToken *aToken in tokenSet){
+        MKMapPoint tempMapPoint = MKMapPointForCoordinate(aToken.poi.latLon);
+        minMapPointX = MIN(minMapPointX, tempMapPoint.x);
+        maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
+        minMapPointY = MIN(minMapPointY, tempMapPoint.y);
+        maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
+    }
+    
+    MKMapPoint anchorMapPoint = MKMapPointForCoordinate(anchor.poi.latLon);
+    
+    // Need to figure out the arrangement of the points
+    
+    MKMapRect mapRect = self.mapView.visibleMapRect;
+    double leftEdge, rightEdge, topEdge, bottomEdge;
+    leftEdge = mapRect.origin.x; rightEdge = mapRect.origin.x + mapRect.size.width;
+    topEdge = mapRect.origin.y; bottomEdge = mapRect.origin.y + mapRect.size.height;
+    
+    // Goal: find targetedMinX, targetedMaxX, targetedMinY, targetedMaxY
+    double targetedMinX, targetedMaxX, targetedMinY, targetedMaxY;
+
+    // find the boubdary in the x direction
+    findTargetedMinMax(leftEdge, anchorMapPoint.x, rightEdge
+                       , minMapPointX, maxMapPointX,
+                       &targetedMinX, &targetedMaxX);
+    
+    // find the boubdary in the y direction
+    findTargetedMinMax(topEdge, anchorMapPoint.y, bottomEdge
+                       , minMapPointY, maxMapPointY,
+                       &targetedMinY, &targetedMaxY);
+    
+    // Need to further correct the aspect ratio
+    double xDiff = targetedMaxX - targetedMinX;
+    double yDiff = targetedMaxY - targetedMinY;
+    
+    double mapWidth = self.mapView.frame.size.width;
+    double mapHeight = self.mapView.frame.size.height;
+    
+    if (yDiff/xDiff > mapHeight/mapWidth)
+    {
+        double scale = yDiff / mapHeight * mapWidth / xDiff;
+        targetedMinX = anchorMapPoint.x - scale * (anchorMapPoint.x - targetedMinX);
+        targetedMaxX = scale * (targetedMaxX - anchorMapPoint.x) + anchorMapPoint.x;
+    }else{
+        double scale = xDiff / mapWidth * mapHeight / yDiff;
+        targetedMinY = anchorMapPoint.y - scale * (anchorMapPoint.y - targetedMinY);
+        targetedMaxY = scale * (targetedMaxY - anchorMapPoint.y) + anchorMapPoint.y;
+    }
+    
+    // Generate MapRect
+    MKMapRect outMapRect = MKMapRectMake(targetedMinX, targetedMinY,
+                                      targetedMaxX - targetedMinX,
+                                      targetedMaxY - targetedMinY);
+    return outMapRect;
+}
+
+// This function computes the ideal targetedMin and targetedMax
+// based on the provided information
+void findTargetedMinMax(double leftEdge, double anchorMapPoint, double rightEdge
+                        ,double minMapPoint, double maxMapPoint,
+                        double *targetedMin, double *targetedMax)
+{
+    // Initial condition
+    // |--left--a--right--|
+    
+    // Check if anchor is in between min and max
+    if (anchorMapPoint <= minMapPoint){
+        //  --a--minMapPointX, maxMapPointX--
+        
+        //want:
+        // |--a--minMapPointX maxMapPointX|
+        *targetedMax = maxMapPoint;
+        *targetedMin = anchorMapPoint -
+        (maxMapPoint - anchorMapPoint)
+        * (anchorMapPoint - leftEdge)/(rightEdge - anchorMapPoint);
+        
+    }else if (anchorMapPoint > minMapPoint &&
+              anchorMapPoint <= maxMapPoint)
+    {
+        //  --minMapPointX -- a -- maxMapPointX--
+        
+        //want:
+        // |minMapPointX -- a -- maxMapPointX|
+        
+        // Need to figure out which end is the dominant end
+        double currentLeftDelta, currentRightDelta;
+        // | currentLeftDelta-- a -- currentRightDelta|
+        currentLeftDelta = anchorMapPoint - leftEdge;
+        currentRightDelta = rightEdge - anchorMapPoint;
+        
+        // minMapPointX --deltaToMin-- a --deltaToMax-- maxMapPointX
+        double deltaToMin, deltaToMax;
+        deltaToMin = anchorMapPoint - minMapPoint;
+        deltaToMax = maxMapPoint - anchorMapPoint;
+        
+        if ((currentLeftDelta/currentRightDelta) > (deltaToMin/deltaToMax)){
+            // Left end is dominant
+            // |minMapPointX -- a -- maxMapPointX------|
+            *targetedMin = anchorMapPoint - deltaToMax / currentRightDelta * currentLeftDelta;
+            *targetedMax = maxMapPoint;
+        }else{
+            // Right end is dominant
+            // |-------minMapPointX -- a -- maxMapPointX|
+            *targetedMin = minMapPoint;
+            *targetedMax = anchorMapPoint + deltaToMin / currentLeftDelta * currentRightDelta;
+        }
+        
+    }else{
+        //  |minMapPointX -- maxMapPointX--a--|
+        
+        //want:
+        // |minMapPointX maxMapPointX--a--|
+        double deltaToMin = anchorMapPoint - minMapPoint;
+        double currentLeftDelta = anchorMapPoint - leftEdge;
+        double currentRightDelta = rightEdge - anchorMapPoint;
+        
+        *targetedMin = minMapPoint;
+        *targetedMax = anchorMapPoint + deltaToMin / currentLeftDelta * currentRightDelta;
     }
 }
 

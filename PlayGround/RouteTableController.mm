@@ -45,8 +45,7 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [keyArray removeAllObjects]; // reset the array
+- (void)viewWillAppear:(BOOL)animated{    
     keyArray = [routeDatabase.routeDictionary allKeys];
     [self.myTableView reloadData];
 }

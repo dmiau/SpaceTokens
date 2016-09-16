@@ -168,20 +168,25 @@
 // timer
 //----------------
 -(void)timerFired{    
-    // if buttonArray is not empty, update the map    
+    [self updateBasedOnConstraints];
+}
+
+- (void)updateBasedOnConstraints{
+    // if buttonArray is not empty, update the map
     if ([self.buttonArray count] > 0){
-//        [self orderSpaceTokens];
+        //        [self orderSpaceTokens];
         [self fillMapXYsForSet:self.buttonArray];
     }
     
     if ([self.draggingSet count] > 0){
         [self fillDraggingMapXYs];
         [self updateMapToFitPOIPreferences:self.draggingSet];
-    }else    
+    }else
         if ([self.touchingSet count] > 0){
-        [self zoomMapToFitTouchSet];
-    }    
+            [self zoomMapToFitTouchSet];
+        }
 }
+
 
 - (void) resetSpaceBar{
     // The valid range of lowerValue and upperValue of the elevator should be [0, 1]

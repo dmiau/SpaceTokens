@@ -69,23 +69,18 @@
 
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    // Show the current center and span
-//    NSLog(@"Center: (%g, %g)",
-//          self.mapView.centerCoordinate.latitude, self.mapView.centerCoordinate.longitude);
-//    NSLog(@"Span: (%g, %g)",
-//          self.mapView.region.span.latitudeDelta, self.mapView.region.span.longitudeDelta);
-    
-//    // Debug
-//    NSLog(@"mapTouchBegan");
-//    for (UITouch *aTouch in touches){
-//        NSLog(@"%p", aTouch);
-//    }
+
+//    UITouch *aTouch = [touches anyObject];
+//    CGPoint aPoint = [aTouch locationInView:self.mapView];
+//    CLLocationCoordinate2D coord = [self.mapView convertPoint:aPoint toCoordinateFromView:self.mapView];
+//    MKMapPoint mapPoint = MKMapPointForCoordinate(coord);
+//    
+//    NSLog(@"CGPoint: %@", NSStringFromCGPoint(aPoint));
+//    NSLog(@"MapPoint: (%g, %g)", mapPoint.x, mapPoint.y);
     
     // Remove all the touched SpaceTokens
     [self.spaceBar clearAllTouchedTokens];    
     [self.spaceBar addAnchorForTouches: touches];
-    
-    
 }
 
 - (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

@@ -89,6 +89,11 @@ unsigned int spaceBarElevatorMoved:1;
 - (void)clearAllTouchedTokens;
 
 // --------------
+// Constraint engine
+// --------------
+- (void)updateBasedOnConstraints;
+
+// --------------
 // Implemented in annotation category
 // --------------
 @property UIView *annotationView;

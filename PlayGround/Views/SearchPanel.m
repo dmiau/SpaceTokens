@@ -52,8 +52,9 @@
     preferenceButton.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
     [self addSubview:preferenceButton];
     
-    
+    //------------------------
     // add a button to access the data panel
+    //------------------------
     UIButton*  dataButton = [UIButton buttonWithType:UIButtonTypeCustom];
     dataButton.frame =
     CGRectMake(self.frame.size.width*0.8, self.frame.size.height*0.5, 60, 20);
@@ -63,6 +64,19 @@
     [dataButton addTarget:self action:@selector(dataButtonAction)
          forControlEvents:UIControlEventTouchDown];
     [self addSubview:dataButton];
+    
+    //------------------------
+    // add a button for SpaceBar
+    //------------------------
+    UIButton*  spaceBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    spaceBarButton.frame =
+    CGRectMake(self.frame.size.width*0.6, self.frame.size.height*0.5, 60, 20);
+    [spaceBarButton setTitle:@"SpaceBar" forState:UIControlStateNormal];
+    spaceBarButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    [spaceBarButton setBackgroundColor:[UIColor grayColor]];
+    [spaceBarButton addTarget:self action:@selector(spaceBarButtonAction)
+         forControlEvents:UIControlEventTouchDown];
+    [self addSubview:spaceBarButton];
 }
 
 - (void)initDirectionButton{
@@ -88,7 +102,6 @@
     directionButton.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
     self.directionButton = directionButton;
 }
-
 
 - (void)preferenceButtonAction{        
     //-------------------
@@ -133,6 +146,10 @@
     
     [rootViewController performSegueWithIdentifier:@"DataSegue"
                                             sender:nil];
+}
+
+- (void)spaceBarButtonAction{
+    [self.rootViewController.spaceBar updateBasedOnConstraints];
 }
 
 //----------------------
