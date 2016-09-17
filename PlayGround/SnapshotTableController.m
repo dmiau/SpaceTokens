@@ -135,6 +135,35 @@
     }
 }
 
+//----------------
+// Reorder the cell
+//----------------
+- (IBAction)editAction:(UIButton *)button {
+    
+    if ([button.titleLabel.text isEqualToString:@"Edit"]){
+        [self.myTableView setEditing:YES animated:YES];
+        [button setTitle:@"Done" forState:UIControlStateNormal];
+    }else{
+        [self.myTableView setEditing:NO animated:YES];
+        [button setTitle:@"Edit" forState:UIControlStateNormal];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    // Get the object
+    Snapshot *snapshot = snapshotDatabase.snapshotArray[sourceIndexPath.row];
+    [snapshotDatabase.snapshotArray removeObjectAtIndex:sourceIndexPath.row];
+    [snapshotDatabase.snapshotArray insertObject:snapshot
+                                         atIndex:destinationIndexPath.row];
+}
+
+
 #pragma mark -----Navigation and Exit-----
 //------------------
 // Prepare for the detail view
@@ -177,4 +206,5 @@
 
     [self.myTableView reloadData];
 }
+
 @end

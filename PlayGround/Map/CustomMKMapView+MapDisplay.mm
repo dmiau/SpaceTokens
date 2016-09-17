@@ -133,11 +133,13 @@
         //----------------
         // One POI
         //----------------
-        
         POI *aPOI = [poiSet anyObject];
         MKCoordinateRegion region;
         region.center = aPOI.latLon;
-        region.span = aPOI.coordSpan;
+        MKCoordinateSpan span = aPOI.coordSpan;
+        span.latitudeDelta = max(0.01, span.latitudeDelta);
+        span.longitudeDelta = max(0.01, span.longitudeDelta);
+        region.span = span;
         [self setRegion:region animated:NO];
     }else{
         // Goal: find minMapPointX, maxMapPOintX,

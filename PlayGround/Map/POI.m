@@ -68,9 +68,9 @@
     self.latLon = CLLocationCoordinate2DMake([coder decodeDoubleForKey:@"latLon.latitdue"], [coder decodeDoubleForKey:@"latLon.longitude"]);
     self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
 
-    self.coordSpan = MKCoordinateSpanMake(
-        [coder decodeDoubleForKey:@"latitudeDelta"],
-        [coder decodeDoubleForKey:@"longitudeDelta"]);
+//    self.coordSpan = MKCoordinateSpanMake(
+//        [coder decodeDoubleForKey:@"latitudeDelta"],
+//        [coder decodeDoubleForKey:@"longitudeDelta"]);
     return self;
 }
 
@@ -80,8 +80,8 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeDouble:self.latLon.latitude forKey:@"latLon.latitdue"];
     [coder encodeDouble:self.latLon.longitude forKey:@"latLon.longitude"];
-    [coder encodeDouble:self.coordSpan.latitudeDelta forKey:@"latitudeDelta"];
-    [coder encodeDouble:self.coordSpan.longitudeDelta forKey:@"longitudeDelta"];
+//    [coder encodeDouble:self.coordSpan.latitudeDelta forKey:@"latitudeDelta"];
+//    [coder encodeDouble:self.coordSpan.longitudeDelta forKey:@"longitudeDelta"];
     [coder encodeObject:self.name forKey:@"name"];
 }
 

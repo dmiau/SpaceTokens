@@ -49,8 +49,7 @@
         // Turn on the debug visual
         oneAnchor.isLineLayerOn = YES;
         oneAnchor.isConstraintLineOn = YES;
-        [self.mapView setVisibleMapRect:mapRect animated:NO];
-        
+        [self.mapView setVisibleMapRect:mapRect animated:NO];        
     }else{
         //--------------
         // Zero anchor, or more than one anchor

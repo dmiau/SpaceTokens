@@ -20,5 +20,6 @@
 
 - (IBAction)saveAction:(id)sender;
 - (IBAction)reloadAction:(id)sender;
+- (IBAction)editAction:(UIButton *)sender;
 
 @end
