@@ -46,6 +46,7 @@
         
         MKMapRect mapRect = [self computerBoundingPOIsForTokenSets: self.touchingSet
                                                          andAnchor: oneAnchor];
+        
         // Turn on the debug visual
         oneAnchor.isLineLayerOn = YES;
         oneAnchor.isConstraintLineOn = YES;
@@ -124,42 +125,42 @@
                                        andAnchor: (SpaceToken*) anchor
 {
     // Compute the bounding POIs
-    CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
+    CGFloat minCGPointX, maxCGPointX, minCGPointY, maxCGPointY;
     
     // To initialize the search
     SpaceToken *aToken = [tokenSet anyObject];
-    MKMapPoint aMapPoint = MKMapPointForCoordinate(aToken.poi.latLon);
-    minMapPointX = aMapPoint.x; maxMapPointX = aMapPoint.x;
-    minMapPointY = aMapPoint.y; maxMapPointY = aMapPoint.y;
+    CGPoint aCGPoint = [self.mapView convertCoordinate: aToken.poi.latLon
+                                         toPointToView: self.mapView];
+    minCGPointX = aCGPoint.x; maxCGPointX = aCGPoint.x;
+    minCGPointY = aCGPoint.y; maxCGPointY = aCGPoint.y;
     
     for (SpaceToken *aToken in tokenSet){
-        MKMapPoint tempMapPoint = MKMapPointForCoordinate(aToken.poi.latLon);
-        minMapPointX = MIN(minMapPointX, tempMapPoint.x);
-        maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
-        minMapPointY = MIN(minMapPointY, tempMapPoint.y);
-        maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
+        CGPoint tempMapPoint = [self.mapView convertCoordinate: aToken.poi.latLon
+                                                 toPointToView: self.mapView];
+        minCGPointX = MIN(minCGPointX, tempMapPoint.x);
+        maxCGPointX = MAX(maxCGPointX, tempMapPoint.x);
+        minCGPointY = MIN(minCGPointY, tempMapPoint.y);
+        maxCGPointY = MAX(maxCGPointY, tempMapPoint.y);
     }
     
-    MKMapPoint anchorMapPoint = MKMapPointForCoordinate(anchor.poi.latLon);
+    CGPoint anchorCGPoint = anchor.mapViewXY;
     
     // Need to figure out the arrangement of the points
-    
-    MKMapRect mapRect = self.mapView.visibleMapRect;
     double leftEdge, rightEdge, topEdge, bottomEdge;
-    leftEdge = mapRect.origin.x; rightEdge = mapRect.origin.x + mapRect.size.width;
-    topEdge = mapRect.origin.y; bottomEdge = mapRect.origin.y + mapRect.size.height;
+    leftEdge = 0; rightEdge = self.mapView.frame.size.width;
+    topEdge = 0; bottomEdge = self.mapView.frame.size.height;
     
     // Goal: find targetedMinX, targetedMaxX, targetedMinY, targetedMaxY
     double targetedMinX, targetedMaxX, targetedMinY, targetedMaxY;
 
     // find the boubdary in the x direction
-    findTargetedMinMax(leftEdge, anchorMapPoint.x, rightEdge
-                       , minMapPointX, maxMapPointX,
+    findTargetedMinMax(leftEdge, anchorCGPoint.x, rightEdge
+                       , minCGPointX, maxCGPointX,
                        &targetedMinX, &targetedMaxX);
     
     // find the boubdary in the y direction
-    findTargetedMinMax(topEdge, anchorMapPoint.y, bottomEdge
-                       , minMapPointY, maxMapPointY,
+    findTargetedMinMax(topEdge, anchorCGPoint.y, bottomEdge
+                       , minCGPointY, maxCGPointY,
                        &targetedMinY, &targetedMaxY);
     
     // Need to further correct the aspect ratio
@@ -172,18 +173,28 @@
     if (yDiff/xDiff > mapHeight/mapWidth)
     {
         double scale = yDiff / mapHeight * mapWidth / xDiff;
-        targetedMinX = anchorMapPoint.x - scale * (anchorMapPoint.x - targetedMinX);
-        targetedMaxX = scale * (targetedMaxX - anchorMapPoint.x) + anchorMapPoint.x;
+        targetedMinX = anchorCGPoint.x - scale * (anchorCGPoint.x - targetedMinX);
+        targetedMaxX = scale * (targetedMaxX - anchorCGPoint.x) + anchorCGPoint.x;
     }else{
         double scale = xDiff / mapWidth * mapHeight / yDiff;
-        targetedMinY = anchorMapPoint.y - scale * (anchorMapPoint.y - targetedMinY);
-        targetedMaxY = scale * (targetedMaxY - anchorMapPoint.y) + anchorMapPoint.y;
+        targetedMinY = anchorCGPoint.y - scale * (anchorCGPoint.y - targetedMinY);
+        targetedMaxY = scale * (targetedMaxY - anchorCGPoint.y) + anchorCGPoint.y;
     }
     
-    // Generate MapRect
-    MKMapRect outMapRect = MKMapRectMake(targetedMinX, targetedMinY,
-                                      targetedMaxX - targetedMinX,
-                                      targetedMaxY - targetedMinY);
+    // Generate MapRect (first need to convert from CGPoint to MapPoints)
+    MKMapPoint topLeft =
+    MKMapPointForCoordinate(
+          [self.mapView convertPoint:CGPointMake(targetedMinX, targetedMinY)
+                toCoordinateFromView: self.mapView]);
+    
+    MKMapPoint bottomRight =
+    MKMapPointForCoordinate(
+                            [self.mapView convertPoint:CGPointMake(targetedMaxX, targetedMaxY)
+                                  toCoordinateFromView: self.mapView]);
+    
+    MKMapRect outMapRect = MKMapRectMake(topLeft.x, topLeft.y,
+                                      bottomRight.x - topLeft.x,
+                                      bottomRight.y - topLeft.y);
     return outMapRect;
 }
 

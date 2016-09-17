@@ -70,12 +70,12 @@
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
 
-//    UITouch *aTouch = [touches anyObject];
-//    CGPoint aPoint = [aTouch locationInView:self.mapView];
+    UITouch *aTouch = [touches anyObject];
+    CGPoint aPoint = [aTouch locationInView:self.mapView];
 //    CLLocationCoordinate2D coord = [self.mapView convertPoint:aPoint toCoordinateFromView:self.mapView];
 //    MKMapPoint mapPoint = MKMapPointForCoordinate(coord);
 //    
-//    NSLog(@"CGPoint: %@", NSStringFromCGPoint(aPoint));
+    NSLog(@"CGPoint: %@", NSStringFromCGPoint(aPoint));
 //    NSLog(@"MapPoint: (%g, %g)", mapPoint.x, mapPoint.y);
     
     // Remove all the touched SpaceTokens
