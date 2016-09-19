@@ -107,10 +107,10 @@ static TaskBasePanel *instance;
     // Move the map to the top
     float mapWidth = self.rootViewController.mapView.frame.size.width;
     float mapHeight = self.rootViewController.mapView.frame.size.height;
-    self.rootViewController.mapView.frame = CGRectMake(0, 0, mapWidth, mapHeight);
+//    self.rootViewController.mapView.frame = CGRectMake(0, 0, mapWidth, mapHeight);
     
     // Set up the frame of the panel
-    self.frame = CGRectMake(0, mapHeight, mapWidth, panelHeight);
+    self.frame = CGRectMake(0, 0, mapWidth, panelHeight);
     [self.rootViewController.view addSubview:self];
     
     // Add the preference button

@@ -72,6 +72,15 @@ static AuthoringPanel *instance;
         settingsButton = [[SettingsButton alloc] init];
         
         authoringVisualAidLayer = [CAShapeLayer layer];
+        
+        // Initiate the gesture view
+        gestureView = [[UIView alloc] init];
+        
+        // Add a tap gesture recognizer
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(handleSingleTap:)];
+        [gestureView addGestureRecognizer:singleTap];
+        
     }
     return self;
 }
@@ -102,11 +111,16 @@ static AuthoringPanel *instance;
     self.frame = CGRectMake(0, 0, mapWidth, panelHeight);
     [self.rootViewController.view addSubview:self];
     
+    // Set up the gestureView to capture gestures
+    gestureView.frame = CGRectMake(0, 0, mapWidth, mapHeight);
+    [gestureView setBackgroundColor:[UIColor blackColor]];
+    gestureView.alpha = 0.4;
+    
     // Add the preference button
     settingsButton.frame = CGRectMake(0, 30, 30, 30);
     [self.rootViewController.view addSubview: settingsButton];
     
-    self.isAuthoringVisualAidOn = YES;
+    self.isAuthoringVisualAidOn = NO;
     
     // Reset the interface
     [self resetInterface];
@@ -117,6 +131,9 @@ static AuthoringPanel *instance;
     // Remove the settings button
     [settingsButton removeFromSuperview];
     [self removeFromSuperview];
+    
+    // Remove the gesture layer
+    [gestureView removeFromSuperview];
     
     // Restore the location of the map
     float panelHeight = self.rootViewController.view.frame.size.height -
@@ -159,8 +176,6 @@ static AuthoringPanel *instance;
     // Get the map object
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
-    // Get the
-    
     MKCoordinateRegion coordinateRegion = [mapView convertRect:targetRectBox
                                               toRegionFromView:mapView];
     return coordinateRegion;
@@ -190,17 +205,44 @@ static AuthoringPanel *instance;
     }
 }
 
+
+//----------------
+// Capture the start condition
+//----------------
 - (IBAction)captureStartAction:(id)sender {
+    // Draw the visual on the map
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
     // Save the current map parameters
-    MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
+    MKCoordinateRegion coordinateRegion = mapView.region;
     snapShot.latLon = coordinateRegion.center;
     snapShot.coordSpan = coordinateRegion.span;
+    
+    // Need to get a square out of the rectangle
+    MKMapRect mapRect = mapView.visibleMapRect;
+    MKMapRect circleRect;
+    
+    // Assume the map is in portrait mode
+    circleRect.origin = MKMapPointMake(mapRect.origin.x,
+                                       mapRect.origin.y +
+                                       (mapRect.size.height - mapRect.size.width)/2);
+    circleRect.size.height = mapRect.size.width;
+    circleRect.size.width = mapRect.size.width;
+    
+    
+    MKCircle *circle = [MKCircle circleWithMapRect: circleRect];
+    [mapView addOverlay:circle];
     
     // Update the label of the button
     [self.captureStartCondOutlet setTitle:@"Cap-StartCond(1)" forState:UIControlStateNormal];
 }
 
+
+//----------------
+// Capture the end condition
+//----------------
 - (IBAction)captureEndAction:(id)sender {
+//    self.isAuthoringVisualAidOn = YES;
     MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
     POI *poi = [[POI alloc] init];
     poi.latLon = coordinateRegion.center;
@@ -208,37 +250,86 @@ static AuthoringPanel *instance;
     
     [targetedPOIsArray addObject:poi];
     
+    // Visualize the end circle
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    MKCircle *circle = [MKCircle circleWithMapRect:
+                        [CustomMKMapView MKMapRectForCoordinateRegion:coordinateRegion]];
+    [mapView addOverlay:circle];
+    
+    
     // Update the label of the button
     NSString *buttonLabel = [NSString stringWithFormat: @"Cap-EndCond(%lu)", [targetedPOIsArray count]];
     [self.captureEndCondOutlet setTitle:buttonLabel forState:UIControlStateNormal];
 }
 
+//----------------------
+// Denote an anchor
+//----------------------
 - (IBAction)highlightPOIAction:(id)sender {
-    MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
-    POI *poi = [[POI alloc] init];
-    poi.latLon = coordinateRegion.center;
-    poi.coordSpan = coordinateRegion.span;
-    
-    [highlightedPOIsArray addObject:poi];
-    
-    // Update the label of the button
-    NSString *buttonLabel = [NSString stringWithFormat: @"HighlightedPOI(%lu)", [highlightedPOIsArray count]];
-    [self.highlightedPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+    captureArray = highlightedPOIsArray;
+    [self enableGestureLayer];
 }
 
+//----------------------
+// Denote a SpaceToken
+//----------------------
 - (IBAction)spaceTokenPOIAction:(id)sender {
-    MKCoordinateRegion coordinateRegion = [self getTargetCoordinatRegion];
-    POI *poi = [[POI alloc] init];
-    poi.latLon = coordinateRegion.center;
-    poi.coordSpan = coordinateRegion.span;
-    
-    [spaceTokenPOIsArray addObject:poi];
-    
-    // Update the label of the button
-    NSString *buttonLabel = [NSString stringWithFormat: @"SpaceToken(%lu)", [spaceTokenPOIsArray count]];
-    [self.spaceTokenPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+    captureArray = spaceTokenPOIsArray;
+    [self enableGestureLayer];
 }
 
+- (void)enableGestureLayer{
+    self.isAuthoringVisualAidOn = NO;
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    [mapView addSubview:gestureView];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *) recognizer{
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    CGPoint location = [recognizer locationInView:mapView];
+    CLLocationCoordinate2D coord = [mapView convertPoint:location
+                                    toCoordinateFromView:mapView];
+    MKCoordinateRegion region = mapView.region;
+
+    //-------------
+    // Generate a POI
+    //-------------
+    POI *poi = [[POI alloc] init];
+    poi.latLon = coord;
+    poi.coordSpan = region.span;
+    poi.isMapAnnotationEnabled = YES;
+    
+    
+    if (captureArray == highlightedPOIsArray){
+        //---------------
+        // Capture an anchor
+        //---------------
+
+        [highlightedPOIsArray addObject:poi];
+        
+        // Update the label of the button
+        NSString *buttonLabel = [NSString stringWithFormat: @"Anchor(%lu)", [highlightedPOIsArray count]];
+        [self.highlightedPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+        
+    }else if (captureArray == spaceTokenPOIsArray){
+        //---------------
+        // Capture a SpaceToken
+        //---------------
+        
+        [spaceTokenPOIsArray addObject:poi];
+        
+        // Update the label of the button
+        NSString *buttonLabel = [NSString stringWithFormat: @"SpaceToken(%lu)", [spaceTokenPOIsArray count]];
+        [self.spaceTokenPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+    }
+    
+    // Remove the gesture layer
+    [gestureView removeFromSuperview];
+}
+
+//----------------------
+// Reset the interface
+//----------------------
 - (IBAction)resetAction:(id)sender {
     [self resetInterface];
 }
@@ -269,8 +360,13 @@ static AuthoringPanel *instance;
     self.captureStartCondOutlet.titleLabel.text = @"Cap-StartCond(0)";
     self.captureEndCondOutlet.titleLabel.text =
     [NSString stringWithFormat:@"Cap-EndCond(%d)", 0];
-    self.highlightedPOIOutlet.titleLabel.text = @"HighlightedPOI(0)";
+    self.highlightedPOIOutlet.titleLabel.text = @"Anchor(0)";
     self.spaceTokenPOIOutlet.titleLabel.text = @"SpaceToken(0)";
+    
+    // Remove all overlays
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    [mapView removeOverlays:mapView.overlays];
+    
 }
 
 

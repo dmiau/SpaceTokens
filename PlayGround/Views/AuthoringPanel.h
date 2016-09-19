@@ -22,6 +22,10 @@
     
     CGRect targetRectBox;
     CAShapeLayer *authoringVisualAidLayer;
+    
+    // Adding an UIVeiw to capture gestures
+    UIView *gestureView;
+    NSMutableArray *captureArray;
 }
 
 @property ViewController *rootViewController;

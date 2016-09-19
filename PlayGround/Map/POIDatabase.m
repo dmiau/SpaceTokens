@@ -47,6 +47,8 @@
     self.poiArray = cacheDefaultPOIArray;
 }
 
+#pragma mark -- Save/Load --
+
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.name forKey:@"name"];

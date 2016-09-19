@@ -126,11 +126,11 @@
         [self.rootViewController.mapView addOverlay:completionIndicator];
         
         // Disable the map interactions
-//        self.rootViewController.mapView.userInteractionEnabled = NO;
+        self.rootViewController.mapView.userInteractionEnabled = NO;
         
         // Report the result
-//        GameManager *gameManager = [GameManager sharedManager];
-//        [gameManager reportCompletionFromSnashot:self];
+        GameManager *gameManager = [GameManager sharedManager];
+        [gameManager reportCompletionFromSnashot:self];
         
         // Game manager takes care of the following?
         // Clean up

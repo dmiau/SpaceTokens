@@ -109,10 +109,7 @@
 
 - (id)initWithCoder:(NSCoder *)coder {
     
-    self = [super initWithCoder:coder];
-//    self.latLon = CLLocationCoordinate2DMake([coder decodeDoubleForKey:@"latLon.latitdue"], [coder decodeDoubleForKey:@"latLon.longitude"]);
-//    self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
-    
+    self = [super initWithCoder:coder];    
     self.instructions = [coder decodeObjectOfClass:[NSString class] forKey:@"instructions"];
     self.highlightedPOIs = [coder decodeObjectOfClass:[NSString class] forKey:@"highlightedPOIs"];
     self.poisForSpaceTokens = [coder decodeObjectOfClass:[NSString class] forKey:@"poisForSpaceTokens"];
