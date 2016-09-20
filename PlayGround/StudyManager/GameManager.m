@@ -61,6 +61,8 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
         case STUDY:
             // Turn on the game
             snapshotDatabase = [SnapshotDatabase sharedManager];
+            recordDatabase = [RecordDatabase sharedManager];
+            [recordDatabase initWithSnapshotArray:snapshotDatabase.snapshotArray];
             
             rootViewController.spaceBar.isYouAreHereEnabled = NO;
             [mainViewManager showPanelWithType: TASKBASEPANEL];
@@ -122,6 +124,9 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
 - (void)reportCompletionFromSnashot:(id<SnapshotProtocol>) snapshot{
     
     Snapshot *aSnapshot = snapshotDatabase.snapshotArray[self.gameCounter];
+    
+    
+    
     
     // Present a modal dialog
     UIAlertView *confirmationModal = [[UIAlertView alloc]

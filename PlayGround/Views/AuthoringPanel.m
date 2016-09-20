@@ -116,6 +116,10 @@ static AuthoringPanel *instance;
     [gestureView setBackgroundColor:[UIColor blackColor]];
     gestureView.alpha = 0.4;
     
+    // Calculate targetRectBox
+    float diameter = 0.8 * mapWidth;
+    targetRectBox = CGRectMake(0.1*mapWidth, (mapHeight - diameter)/2, diameter, diameter);
+    
     // Add the preference button
     settingsButton.frame = CGRectMake(0, 30, 30, 30);
     [self.rootViewController.view addSubview: settingsButton];
@@ -155,10 +159,7 @@ static AuthoringPanel *instance;
     if (isAuthoringVisualAidOn){
         // Draw a cirlce in the middle of the display
         // Get the width and height
-        float width = mapView.frame.size.width;
-        float height = mapView.frame.size.height;
-        float diameter = 0.8 * width;
-        targetRectBox = CGRectMake(0.1*width, (height - diameter)/2, diameter, diameter);
+
         
         // Draw a circle
         [authoringVisualAidLayer setPath:[[UIBezierPath bezierPathWithOvalInRect:targetRectBox] CGPath]];

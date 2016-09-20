@@ -110,6 +110,10 @@
 		9A43EAF11D4008F400080029 /* POIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EAEF1D4008F400080029 /* POIDatabase.m */; };
 		9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
+		9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
+		9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
+		9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B4A1D90910400C43255 /* RecordTableViewController.m */; };
+		9A485B4C1D90910400C43255 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B4A1D90910400C43255 /* RecordTableViewController.m */; };
 		9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
 		9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
 		9A5301431C5AD6A6008D584B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
@@ -274,6 +278,10 @@
 		9A43EAEF1D4008F400080029 /* POIDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIDatabase.m; path = Map/POIDatabase.m; sourceTree = "<group>"; };
 		9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Gestures.h"; path = "SpaceBar/SpaceToken+Gestures.h"; sourceTree = "<group>"; };
 		9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceToken+Gestures.m"; path = "SpaceBar/SpaceToken+Gestures.m"; sourceTree = "<group>"; };
+		9A485B451D906BD500C43255 /* RecordDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordDatabase.h; path = StudyManager/RecordDatabase.h; sourceTree = "<group>"; };
+		9A485B461D906BD500C43255 /* RecordDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordDatabase.m; path = StudyManager/RecordDatabase.m; sourceTree = "<group>"; };
+		9A485B491D90910400C43255 /* RecordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordTableViewController.h; sourceTree = "<group>"; };
+		9A485B4A1D90910400C43255 /* RecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordTableViewController.m; sourceTree = "<group>"; };
 		9A48C1361D5273EA0038FBA5 /* MainViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewManager.h; sourceTree = "<group>"; };
 		9A48C1371D5273EA0038FBA5 /* MainViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewManager.m; sourceTree = "<group>"; };
 		9A53013E1C5AD6A6008D584B /* SpaceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -514,6 +522,8 @@
 				9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */,
 				9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */,
 				9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */,
+				9A485B451D906BD500C43255 /* RecordDatabase.h */,
+				9A485B461D906BD500C43255 /* RecordDatabase.m */,
 			);
 			name = GameManager;
 			sourceTree = "<group>";
@@ -708,6 +718,8 @@
 				9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */,
 				9A81DBEB1D877EE3006DA5A1 /* SnapshotDetailViewController.h */,
 				9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */,
+				9A485B491D90910400C43255 /* RecordTableViewController.h */,
+				9A485B4A1D90910400C43255 /* RecordTableViewController.m */,
 			);
 			name = SeguePanels;
 			sourceTree = "<group>";
@@ -1095,6 +1107,7 @@
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
+				9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */,
 				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
@@ -1104,6 +1117,7 @@
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
+				9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */,
 				9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
 				9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
@@ -1168,6 +1182,7 @@
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
+				9A485B4C1D90910400C43255 /* RecordTableViewController.m in Sources */,
 				9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
@@ -1177,6 +1192,7 @@
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
+				9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */,
 				9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
 				9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,

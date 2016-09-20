@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SnapshotProtocol.h"
 #import "SnapshotDatabase.h"
+#import "RecordDatabase.h"
 
 FOUNDATION_EXPORT NSString *const GameSetupNotification;
 FOUNDATION_EXPORT NSString *const GameCleanupNotification;
@@ -21,6 +22,7 @@ typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 //-----------------
 @interface GameManager : NSObject{
     SnapshotDatabase *snapshotDatabase;
+    RecordDatabase *recordDatabase;
 }
 
 @property GameManagerStatus gameManagerStatus;

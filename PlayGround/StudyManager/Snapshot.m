@@ -39,6 +39,11 @@
     return self;
 }
 
+-(void)setName:(NSString *)name{
+    super.name = name;
+    _record.name = name;
+}
+
 #pragma mark --CommonSetup--
 - (void) setupMapSpacebar{
     // Position the map to the initial condition
@@ -97,9 +102,10 @@
 
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeDouble:self.latLon.latitude forKey:@"latLon.latitdue"];
-    [coder encodeDouble:self.latLon.longitude forKey:@"latLon.longitude"];
-    [coder encodeObject:self.name forKey:@"name"];
+    [super encodeWithCoder:coder];    
+//    [coder encodeDouble:self.latLon.latitude forKey:@"latLon.latitdue"];
+//    [coder encodeDouble:self.latLon.longitude forKey:@"latLon.longitude"];
+//    [coder encodeObject:self.name forKey:@"name"];
     
     [coder encodeObject:self.instructions forKey:@"instructions"];
     [coder encodeObject:self.highlightedPOIs forKey:@"highlightedPOIs"];
