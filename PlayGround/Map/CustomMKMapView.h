@@ -33,6 +33,9 @@
 @property (nonatomic, weak) id<MKMapViewDelegate, CustomMKMapViewDelegate> delegate;
 @property MKUserLocation *customUserLocation;
 
+@property UIEdgeInsets edgeInsets;// this is for the zoom-to-fit feature
+
+
 // === (MapDisplay) ===
 // Two snapping methods
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY

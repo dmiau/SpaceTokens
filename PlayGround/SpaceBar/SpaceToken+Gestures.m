@@ -160,7 +160,8 @@
             [self handleRemoveToken];
         }
         
-    }else{
+    }else if (self.isDraggable){
+        // handle the dragging event if the button is draggable
         [self handleDragToScreenAction:touch];
     }
 }

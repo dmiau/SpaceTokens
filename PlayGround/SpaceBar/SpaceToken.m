@@ -13,6 +13,10 @@
 #import "../Map/Person.h"
 #import "../Map/CustomMKMapView.h"
 
+
+#define SPACE_TOKEN_WIDTH 60
+#define SPACE_TOKEN_HEIGHT 20
+
 @implementation SpaceToken
 
 /*
@@ -42,12 +46,14 @@
         self.isCircleLayerOn = NO;
         self.isLineLayerOn = NO;
         self.isConstraintLineOn = NO;
+        self.isDraggable = YES;
+        
         self.circleLayer = [CAShapeLayer layer];
         self.lineLayer = [CAShapeLayer layer];
         self.constraintLayer = [CAShapeLayer layer];
         self.hasReportedDraggingEvent = NO;
         self.counterPart = nil;
-        self.frame = CGRectMake(0, 0, 60.0, 20.0);
+        self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
         [self registerButtonEvents];
         
         

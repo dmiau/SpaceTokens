@@ -26,6 +26,10 @@
     // Adding an UIVeiw to capture gestures
     UIView *gestureView;
     NSMutableArray *captureArray;
+    
+    // textSink (to capture the text for SpaceToken and the instructions)
+    id textSinkObject;
+    
 }
 
 @property ViewController *rootViewController;
@@ -51,7 +55,8 @@
 - (IBAction)highlightPOIAction:(id)sender;
 - (IBAction)spaceTokenPOIAction:(id)sender;
 
-- (IBAction)instructionAction:(id)sender;
+- (IBAction)instructionButtonAction:(id)sender;
+
 
 - (IBAction)resetAction:(id)sender;
 - (IBAction)addAction:(id)sender;

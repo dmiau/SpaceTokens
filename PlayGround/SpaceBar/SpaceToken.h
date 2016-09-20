@@ -23,6 +23,8 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 @property BOOL isCircleLayerOn;
 @property BOOL isLineLayerOn;
 @property BOOL isConstraintLineOn;
+@property BOOL isDraggable;
+
 @property (weak) UITouch *touch; // to keep tracking of UITouch
 
 @property CAShapeLayer *circleLayer;

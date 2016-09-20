@@ -47,20 +47,6 @@
     [writeString writeToFile:fullPathFileName atomically:NO
                     encoding:NSUTF8StringEncoding
                        error:nil];
-    
-//    // Create a file if the file does not exist yet
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:fullPathFileName]) {
-//        [[NSFileManager defaultManager] createFileAtPath: fullPathFileName contents:nil attributes:nil];
-//        NSLog(@"Created %@", fullPathFileName);
-//    }
-//    
-//    NSFileHandle *handle;
-//    handle = [NSFileHandle fileHandleForWritingAtPath: fullPathFileName];
-//    //say to handle where's the file fo write
-//    [handle truncateFileAtOffset:[handle seekToEndOfFile]];
-//    //position handle cursor to the end of file
-//    [handle writeData:[writeString dataUsingEncoding:NSUTF8StringEncoding]];
-    
     return true;
 }
 

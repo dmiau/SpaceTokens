@@ -142,6 +142,11 @@
         region.span = span;
         [self setRegion:region animated:NO];
     }else{
+        
+        //----------------------------------
+        // need to fit more than one point
+        //----------------------------------
+        
         // Goal: find minMapPointX, maxMapPOintX,
         // minMapPointY, maxMapPointY
         CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
@@ -168,8 +173,9 @@
         
         // Check the aspect ratio to decide xSpan and ySpan
         CGFloat xSpan, ySpan;
-        CGFloat aspectRatio = self.frame.size.height
-        /self.frame.size.width;
+        CGFloat aspectRatio =
+        (self.frame.size.height - self.edgeInsets.top - self.edgeInsets.bottom)
+        /(self.frame.size.width - self.edgeInsets.left - self.edgeInsets.right);
         if (height/width > aspectRatio)
         {
             ySpan = height;
@@ -179,11 +185,12 @@
             ySpan = xSpan * aspectRatio;
         }
         
-        MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan * 0.6,
-                                           midPoint.y - ySpan * 0.6,
-                                           xSpan * 1.2, ySpan*1.2);
+        MKMapRect zoomRect = MKMapRectMake(midPoint.x - xSpan * 0.5,
+                                           midPoint.y - ySpan * 0.5,
+                                           xSpan, ySpan);
         
-        [self setVisibleMapRect:zoomRect animated:NO];
+        [self setVisibleMapRect:zoomRect edgePadding:self.edgeInsets
+                       animated:NO];
     }
 }
 

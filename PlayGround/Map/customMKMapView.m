@@ -52,7 +52,11 @@
 - (void)commonInit{    
     // Initialize the custom user location
     _customUserLocation = [[MKUserLocation alloc] init];
+    self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
     
+    //----------------------
+    // initialize the timer
+    //----------------------
     // this function is to check wheter the map has been touched
     float timer_interval = 0.06;
     _updateUITimer = [NSTimer timerWithTimeInterval:timer_interval
@@ -62,7 +66,11 @@
                                             repeats:YES];
     
     [[NSRunLoop mainRunLoop] addTimer:_updateUITimer forMode:NSRunLoopCommonModes];
+
     
+    //----------------------
+    // initialize the gesture recognizer
+    //----------------------
     WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     
     tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {

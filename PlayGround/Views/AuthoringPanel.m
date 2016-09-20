@@ -261,6 +261,8 @@ static AuthoringPanel *instance;
     // Update the label of the button
     NSString *buttonLabel = [NSString stringWithFormat: @"Cap-EndCond(%lu)", [targetedPOIsArray count]];
     [self.captureEndCondOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+    
+    textSinkObject = snapShot;
 }
 
 //----------------------
@@ -277,6 +279,10 @@ static AuthoringPanel *instance;
 - (IBAction)spaceTokenPOIAction:(id)sender {
     captureArray = spaceTokenPOIsArray;
     [self enableGestureLayer];
+}
+
+- (IBAction)instructionButtonAction:(id)sender {
+    textSinkObject = snapShot;
 }
 
 - (void)enableGestureLayer{
@@ -322,6 +328,12 @@ static AuthoringPanel *instance;
         // Update the label of the button
         NSString *buttonLabel = [NSString stringWithFormat: @"SpaceToken(%lu)", [spaceTokenPOIsArray count]];
         [self.spaceTokenPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
+        
+        // Create a SpaceToken
+        poi.name = @"token";
+        SpaceToken* aToken = [self.rootViewController.spaceBar addSpaceTokenFromPOI:poi];
+        [self.rootViewController.spaceBar orderButtonArray];
+        textSinkObject = aToken;
     }
     
     // Remove the gesture layer
@@ -335,12 +347,18 @@ static AuthoringPanel *instance;
     [self resetInterface];
 }
 
-- (IBAction)instructionAction:(id)sender {
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    snapShot.instructions = textField.text;
+    
+    if ([textSinkObject isKindOfClass:[SpaceToken class]]){
+        SpaceToken *aToken = textSinkObject;
+        aToken.titleLabel.text = textField.text;
+        aToken.poi.name = textField.text;
+    }else if ([textSinkObject isKindOfClass:[Snapshot class]]){
+        snapShot.instructions = textField.text;
+    }
+    
     [textField resignFirstResponder];
     return YES;
 }
@@ -367,7 +385,9 @@ static AuthoringPanel *instance;
     // Remove all overlays
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     [mapView removeOverlays:mapView.overlays];
-    
+ 
+    // Remove all SpaceTokens
+    [self.rootViewController.spaceBar removeAllSpaceTokens];
 }
 
 

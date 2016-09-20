@@ -50,7 +50,8 @@
         // Turn on the debug visual
         oneAnchor.isLineLayerOn = YES;
         oneAnchor.isConstraintLineOn = YES;
-        [self.mapView setVisibleMapRect:mapRect animated:NO];        
+        [self.mapView setVisibleMapRect:mapRect edgePadding:self.mapView.edgeInsets
+                               animated:NO];
     }else{
         //--------------
         // Zero anchor, or more than one anchor
@@ -147,8 +148,10 @@
     
     // Need to figure out the arrangement of the points
     double leftEdge, rightEdge, topEdge, bottomEdge;
-    leftEdge = 0; rightEdge = self.mapView.frame.size.width;
-    topEdge = 0; bottomEdge = self.mapView.frame.size.height;
+    leftEdge = self.mapView.edgeInsets.left;
+    rightEdge = self.mapView.frame.size.width - self.mapView.edgeInsets.right;
+    topEdge = self.mapView.edgeInsets.top;
+    bottomEdge = self.mapView.frame.size.height - self.mapView.edgeInsets.bottom;
     
     // Goal: find targetedMinX, targetedMaxX, targetedMinY, targetedMaxY
     double targetedMinX, targetedMaxX, targetedMinY, targetedMaxY;
@@ -167,8 +170,10 @@
     double xDiff = targetedMaxX - targetedMinX;
     double yDiff = targetedMaxY - targetedMinY;
     
-    double mapWidth = self.mapView.frame.size.width;
-    double mapHeight = self.mapView.frame.size.height;
+    double mapWidth = self.mapView.frame.size.width -
+    self.mapView.edgeInsets.left - self.mapView.edgeInsets.right;
+    double mapHeight = self.mapView.frame.size.height -
+    self.mapView.edgeInsets.top - self.mapView.edgeInsets.bottom;
     
     if (yDiff/xDiff > mapHeight/mapWidth)
     {
