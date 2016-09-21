@@ -84,6 +84,26 @@
     [self.rootViewController.mapView addOverlay:targetCircle];
 }
 
+- (void)drawTwoPointsVisualTarget{
+    // Get the map point equivalents to compute the mid point
+    MKMapPoint mapPoint0 = MKMapPointForCoordinate(self.targetedPOIs[0].latLon);
+    MKMapPoint mapPoint1 = MKMapPointForCoordinate(self.targetedPOIs[1].latLon);
+    
+    // Compute the distance between two mapPoints
+    CLLocationDistance meters = MKMetersBetweenMapPoints(mapPoint0, mapPoint1);
+    
+    MKMapPoint midPoint = MKMapPointMake((mapPoint0.x + mapPoint1.x)/2, (mapPoint0.y + mapPoint1.y)/2);
+    CLLocationCoordinate2D midCoord = MKCoordinateForMapPoint(midPoint);
+    
+    targetCircle = [MKCircle circleWithCenterCoordinate:midCoord radius:meters/2]; // radius is measured in meters
+    [self.rootViewController.mapView addOverlay:targetCircle];
+    
+    // Change the color of the circle
+    MKCircleRenderer *renderer =
+    [self.rootViewController.mapView rendererForOverlay:completionIndicator];
+    renderer.fillColor = [[UIColor clearColor] colorWithAlphaComponent:0];
+}
+
 
 #pragma mark --Clean up--
 - (void)cleanup{

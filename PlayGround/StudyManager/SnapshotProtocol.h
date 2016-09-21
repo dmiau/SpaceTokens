@@ -32,6 +32,7 @@
 @interface Snapshot : POI <SnapshotProtocol>{
     MKCircle *targetCircle;
     MKCircle *completionIndicator;
+    NSTimer *validatorTimer;
 }
 @property ViewController *rootViewController;
 
@@ -45,6 +46,7 @@
 // Methods to setup and validate the tasks
 - (void)setupMapSpacebar;
 - (void)drawOnePointVisualTarget;
+- (void)drawTwoPointsVisualTarget;
 - (void)onePointValidator;
 - (void)twoPointsValidator;
 

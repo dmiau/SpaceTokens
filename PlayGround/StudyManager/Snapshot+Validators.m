@@ -21,6 +21,10 @@
 @implementation Snapshot (Validators)
 
 #pragma mark --Validator--
+
+//------------------------
+// One point validator
+//------------------------
 - (void)onePointValidator{
     
     // Stop the timer when the goal is achieved
@@ -57,34 +61,52 @@
     CGPoint xy0 = [mapView convertCoordinate:coord0 toPointToView:mapView];
     CGPoint xy1 = [mapView convertCoordinate:coord1 toPointToView:mapView];
     
-    double dist = sqrt( pow(xy0.x - xy1.x, 2) + pow(xy0.y - xy1.y, 2));
+    double dist = sqrt( pow(xy0.x - xy1.x, 2) + pow(xy0.y - xy1.y, 2)) + 0.1; // to resolve the calculation errors.
     passFlag = passFlag && (dist > self.rootViewController.mapView.frame.size.width * 0.8);
     
-    
-    if (passFlag){
-        [self.record end];
+    if (passFlag && !validatorTimer){
         
-        // Change overlay color
-        //        MKOverlayView *anOverlay;  //You need to set this view to the object you are interested in
-        //        anOverlay.backgroundColor = [UIColor redColor];
-        //        [anOverlay setNeedsDisplay];
+        // Change the color of the circle
+        MKCircleRenderer *renderer =
+        [mapView rendererForOverlay:targetCircle];
+        renderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
         
-        
-        // Disable the map interactions
-        self.rootViewController.mapView.userInteractionEnabled = NO;
-        
-        // Report the result
-        GameManager *gameManager = [GameManager sharedManager];
-        [gameManager reportCompletionFromSnashot:self];
-        
-        // Game manager takes care of the following?
-        // Clean up
-        // Terminate the task
+        validatorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                         target:self
+                                       selector:@selector(onePointCompletionAction)
+                                       userInfo:nil
+                                        repeats:NO];        
+    }else if (!passFlag){
+        // Change the color of the circle
+        MKCircleRenderer *renderer =
+        [mapView rendererForOverlay:targetCircle];
+        renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+
+        [validatorTimer invalidate];
+        validatorTimer = nil;
     }
 }
 
-#pragma mark --TwoPoints--
+- (void)onePointCompletionAction{
+    [self.record end];
+    
+    // Disable the map interactions
+    self.rootViewController.mapView.userInteractionEnabled = NO;
+    
+    // Report the result
+    GameManager *gameManager = [GameManager sharedManager];
+    [gameManager reportCompletionFromSnashot:self];
+    
+    // Game manager takes care of the following?
+    // Clean up
+    // Terminate the task
+}
 
+
+#pragma mark --TwoPoints--
+//------------------------
+// Two point validator
+//------------------------
 - (void)twoPointsValidator{
     
     // Stop the timer when the goal is achieved
@@ -106,37 +128,46 @@
     
     // Calculate the screen distance between the two points
     double dist = sqrt( pow(xy0.x - xy1.x, 2) + pow(xy0.y - xy1.y, 2));
-    passFlag = passFlag && (dist > self.rootViewController.mapView.frame.size.width * 0.8);
+    passFlag = passFlag && (dist > self.rootViewController.mapView.frame.size.width);
     
     // if passed, Show the visual indication
     
-    if (passFlag){
-        [self.record end];
-        // Get the map point equivalents to compute the mid point
-        MKMapPoint mapPoint0 = MKMapPointForCoordinate(self.targetedPOIs[0].latLon);
-        MKMapPoint mapPoint1 = MKMapPointForCoordinate(self.targetedPOIs[1].latLon);
+    if (passFlag && !validatorTimer){
         
-        // Compute the distance between two mapPoints
-        CLLocationDistance meters = MKMetersBetweenMapPoints(mapPoint0, mapPoint1);
+        // Change the color of the circle
+        MKCircleRenderer *renderer = (MKCircleRenderer *)
+        [mapView rendererForOverlay:targetCircle];
+        renderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
         
-        MKMapPoint midPoint = MKMapPointMake((mapPoint0.x + mapPoint1.x)/2, (mapPoint0.y + mapPoint1.y)/2);
-        CLLocationCoordinate2D midCoord = MKCoordinateForMapPoint(midPoint);
+        validatorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                          target:self
+                                                        selector:@selector(twoPointsCompletionAction)
+                                                        userInfo:nil
+                                                         repeats:NO];                
+    }else if (!passFlag){
+        // Change the color of the circle
+        MKCircleRenderer *renderer = (MKCircleRenderer *)
+        [mapView rendererForOverlay:targetCircle];
+        renderer.fillColor = [[UIColor clearColor] colorWithAlphaComponent:0.0];
         
-        completionIndicator = [MKCircle circleWithCenterCoordinate:midCoord radius:meters/2]; // radius is measured in meters
-        [self.rootViewController.mapView addOverlay:completionIndicator];
-        
-        // Disable the map interactions
-        self.rootViewController.mapView.userInteractionEnabled = NO;
-        
-        // Report the result
-        GameManager *gameManager = [GameManager sharedManager];
-        [gameManager reportCompletionFromSnashot:self];
-        
-        // Game manager takes care of the following?
-        // Clean up
-        // Terminate the task
+        [validatorTimer invalidate];
+        validatorTimer = nil;
     }
 }
 
+- (void)twoPointsCompletionAction{
+    [self.record end];
 
+    
+    // Disable the map interactions
+    self.rootViewController.mapView.userInteractionEnabled = NO;
+    
+    // Report the result
+    GameManager *gameManager = [GameManager sharedManager];
+    [gameManager reportCompletionFromSnashot:self];
+    
+    // Game manager takes care of the following?
+    // Clean up
+    // Terminate the task
+}
 @end
