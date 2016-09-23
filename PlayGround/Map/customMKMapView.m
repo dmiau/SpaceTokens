@@ -33,7 +33,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedCustomMKMapView = [[CustomMKMapView alloc] init];
-        [sharedCustomMKMapView commonInit];
+//        [sharedCustomMKMapView commonInit];
     });
     return sharedCustomMKMapView;
 }
@@ -53,6 +53,58 @@
     // Initialize the custom user location
     _customUserLocation = [[MKUserLocation alloc] init];
     self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
+    self.isDebugModeOn = YES;
+    
+    //-----------------
+    // Initialize a hidden map
+    //-----------------
+    hiddenMap = [[MKMapView alloc] init];
+    hiddenMap.translatesAutoresizingMaskIntoConstraints = NO;
+    hiddenMap.mapType = MKMapTypeStandard;
+    [self addSubview:hiddenMap];
+    [hiddenMap setUserInteractionEnabled:NO];
+//    [hiddenMap setAlpha:0.5];
+    [hiddenMap setHidden:YES];
+    // Use constraint to make sure the hidden map is the same size as the acutal map
+    
+    //-----------------
+    // Initialize a gesture layer
+    //-----------------
+    UIView *gestureView = [[UIView alloc] init];
+    [gestureView setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:gestureView];
+    gestureView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    //-----------------
+    // Constraints
+    //-----------------
+    NSMutableDictionary *viewDictionary = [[NSMutableDictionary alloc] init];
+    viewDictionary[@"hiddenMap"] = hiddenMap;
+    viewDictionary[@"realMap"] = self;
+    viewDictionary[@"gestureView"] = gestureView;
+    
+    NSMutableArray *constraintStringArray = [[NSMutableArray alloc] init];
+    [constraintStringArray addObject:@"H:[hiddenMap(==realMap)]"];
+    [constraintStringArray addObject:@"V:[hiddenMap(==realMap)]"];
+    [constraintStringArray addObject:@"V:|-0-[hiddenMap]-0-|"];
+    [constraintStringArray addObject:@"H:|-0-[hiddenMap]-0-|"];
+    
+    // Add constraints for the gesture view
+    [constraintStringArray addObject:@"H:[gestureView(==realMap)]"];
+    [constraintStringArray addObject:@"V:[gestureView(==realMap)]"];
+    [constraintStringArray addObject:@"V:|-0-[gestureView]-0-|"];
+    [constraintStringArray addObject:@"H:|-0-[gestureView]-0-|"];
+    
+    NSMutableArray *constraints = [[NSMutableArray alloc] init];
+    
+    for (NSString *constraintString in constraintStringArray){
+        [constraints addObjectsFromArray:
+         [NSLayoutConstraint constraintsWithVisualFormat:constraintString
+                                                 options:0 metrics:nil
+                                                   views:viewDictionary]];
+    }
+    
+    [self addConstraints:constraints];
     
     //----------------------
     // initialize the timer
@@ -70,7 +122,7 @@
     
     //----------------------
     // initialize the gesture recognizer
-    //----------------------
+    //----------------------        
     WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     
     tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
@@ -86,7 +138,9 @@
     };
     
     tapInterceptor.delegate = self;
-    [self addGestureRecognizer:tapInterceptor];
+    
+    // Let the gesture layer to handle the gesture
+    [gestureView addGestureRecognizer:tapInterceptor];
 }
 
 // Check if the protocol methods are implemetned
@@ -107,6 +161,9 @@
 
 
 #pragma mark --gesture recognizer--
+//-----------------------------
+// Touch related methods
+//-----------------------------
 // this makes sure all UIControls are still functional
 // http://stackoverflow.com/questions/5222998/uigesturerecognizer-blocks-subview-for-handling-touch-events?rq=1
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
@@ -124,6 +181,32 @@
     if (_delegateRespondsTo.mapTouchBegin)
     {        
         [self.delegate mapTouchBegan: touches withEvent:event];
+    }
+    
+    if (_isDebugModeOn){
+        
+        //----------------
+        // investigate the region corresponding to the cgrect
+        //----------------
+        CGRect realRect = [self convertRegion:self.region toRectToView:self];
+        CGRect hiddenRect = [hiddenMap convertRegion:hiddenMap.region toRectToView:hiddenMap];
+        
+        NSLog(@"Real rect: %@", NSStringFromCGRect(realRect));
+        NSLog(@"Hidden rect: %@", NSStringFromCGRect(hiddenRect));
+        
+        //----------------
+        // Print out debug info
+        //----------------
+        MKMapRect mapRect = self.visibleMapRect;
+        NSLog(@"MapRect Origin: (%g, %g), Size: (%g, %g)",
+              mapRect.origin.x, mapRect.origin.y,
+              mapRect.size.width, mapRect.size.height);
+        
+        //-------------------------
+        NSLog(@"real: centroid:(%g, %g), span:(%g, %g)", self.region.center.latitude,
+              self.region.center.longitude, self.region.span.latitudeDelta, self.region.span.longitudeDelta);
+        NSLog(@"hiddenMap: centroid:(%g, %g), span:(%g, %g)", hiddenMap.region.center.latitude,
+              hiddenMap.region.center.longitude, hiddenMap.region.span.latitudeDelta, hiddenMap.region.span.longitudeDelta);
     }
 }
 
@@ -181,7 +264,6 @@
             if(_delegateRespondsTo.regionDidChangeAnimated){
                 [self.delegate mapView:self regionDidChangeAnimated:YES];
             }
-            
             hasChanged = false;
         }
     }
@@ -231,6 +313,47 @@ double computeOrientationFromA2B
     return degree;
 }
 
+- (void)updateHiddenMap{
+    
+    // Calculate the scale
+    
+    // Get two map points from the real map and computer their graphics distance
+    MKMapRect mapRect = self.visibleMapRect;
+    MKMapPoint mapPointA = MKMapPointMake(mapRect.origin.x
+                                         , mapRect.origin.y +
+                                         mapRect.size.height/2);
+    MKMapPoint mapPointB = MKMapPointMake(mapRect.origin.x + mapRect.size.width
+                                          , mapRect.origin.y +
+                                          mapRect.size.height/2);
+    
+    // Calculate the corresponding CGPoints
+    CGPoint cgPointA =  [self convertCoordinate:MKCoordinateForMapPoint(mapPointA) toPointToView:self];
+    CGPoint cgPointB =  [self convertCoordinate:MKCoordinateForMapPoint(mapPointB) toPointToView:self];
+    
+    // Compute the cg distance
+    double distOnRealMap = sqrt(pow(cgPointA.x - cgPointB.x, 2) +
+                                pow(cgPointA.y - cgPointB.x, 2));
+    
+    cgPointA =  [hiddenMap convertCoordinate:MKCoordinateForMapPoint(mapPointA) toPointToView:hiddenMap];
+    cgPointB =  [hiddenMap convertCoordinate:MKCoordinateForMapPoint(mapPointB) toPointToView:hiddenMap];
+    double distOnHiddenMap = sqrt(pow(cgPointA.x - cgPointB.x, 2) +
+                                  pow(cgPointA.y - cgPointB.x, 2));
+    
+    double scale = distOnHiddenMap / distOnRealMap;
+    
+    // Scale the hiddenMap
+    hiddenMap.camera.heading = 0;
+    
+    MKMapRect hiddenRect = hiddenMap.visibleMapRect;
+    hiddenMap.visibleMapRect = MKMapRectMake(mapRect.origin.x, mapRect.origin.y, hiddenRect.size.width * scale, hiddenRect.size.height*scale);
+    
+    // Set the
+    hiddenMap.camera.heading = self.camera.heading;
+    
+    // Set the centroid
+    hiddenMap.centerCoordinate = self.centerCoordinate;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -238,5 +361,4 @@ double computeOrientationFromA2B
     // Drawing code
 }
 */
-
 @end

@@ -61,6 +61,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // Some special POIs are cached in SpaceBar
 @property SpaceToken* mapCentroid;
 @property SpaceToken* youAreHere;
+@property BOOL isConstrainEngineON;
 @property BOOL isYouAreHereEnabled;
 @property BOOL isAutoOrderSpaceTokenEnabled;
 @property NSMutableArray <SpaceToken*> *anchorArray;

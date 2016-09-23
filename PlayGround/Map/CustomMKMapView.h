@@ -26,7 +26,9 @@
 //----------------
 // CustomMKMapView
 //----------------
-@interface CustomMKMapView : MKMapView
+@interface CustomMKMapView : MKMapView{
+    MKMapView *hiddenMap; // for calculations
+}
 
 + (id)sharedManager; // Singleton method
 
@@ -35,6 +37,10 @@
 
 @property UIEdgeInsets edgeInsets;// this is for the zoom-to-fit feature
 
+@property BOOL isDebugModeOn;
+
+//=====================
+- (void)updateHiddenMap;
 
 // === (MapDisplay) ===
 // Two snapping methods

@@ -42,6 +42,12 @@
             aToken.poi.name = [NSString stringWithFormat:@"Anchor%d", counter++];
             aToken.touch = aTouch;
             [self.anchorArray addObject:aToken];
+            
+//            // Only add the anchor to the dragging set if there is only one anchor
+//            if ([self.anchorArray count]==1){
+                [self.draggingSet addObject:aToken];
+            aToken.isCircleLayerOn = YES;
+//            }
         }
     }
 }

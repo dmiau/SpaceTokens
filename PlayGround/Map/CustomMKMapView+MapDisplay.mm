@@ -17,26 +17,32 @@
     CGFloat diffX = self.frame.size.width/2 - viewXY.x;
     CGFloat diffY = self.frame.size.height/2 - viewXY.y;
     
-    CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
+    // The idea:
+    // Performing all the calculation on a hidden map.
+    // Find the screen coordinates of the desired point (on the hidden map),
+    // and then find the needed "centroid" (on the hidden map) to be able to
+    // show the desired point at the specified viewXY
+//    [self updateHiddenMap];
     
+    CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
     CLLocationCoordinate2D centroid = [self convertPoint:
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                     toCoordinateFromView: self];
-    //    self.mapType = originalType;
     [self setRegion:
      MKCoordinateRegionMake(centroid,MKCoordinateSpanMake(0.01, 0.01))
      animated:animatedFlag];
 }
 
+// Similar to the above method, but preserves the orientation
 - (void) snapOneCoordinate: (CLLocationCoordinate2D) coord toXY: (CGPoint) viewXY
            withOrientation: (float) orientation animated:(BOOL)animatedFlag
 {
     CGFloat diffX = self.frame.size.width/2 - viewXY.x;
     CGFloat diffY = self.frame.size.height/2 - viewXY.y;
     
-
-    CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
     
+//    [self updateHiddenMap];
+    CGPoint targetCGPoint = [self convertCoordinate:coord toPointToView:self];
     CLLocationCoordinate2D centroid = [self convertPoint:
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                               toCoordinateFromView: self];
@@ -52,18 +58,27 @@
 - (void) snapTwoCoordinates: (CLLocationCoordinate2D[2]) coords
                     toTwoXY: (CGPoint[2]) cgPoints{
     
+    // Print out the two points
+//    NSLog(@"%@", NSStringFromCGPoint(cgPoints[0]));
+//    NSLog(@"%@", NSStringFromCGPoint(cgPoints[1]));
+
+//    NSLog(@"latLon0: (%g, %g)", coords[0].latitude, coords[0].longitude);
+//    NSLog(@"latLon1: (%g, %g)", coords[1].latitude, coords[1].longitude);
+    
     // Use some background map manipulation to figure out the parameters
     MKMapPoint mapPoints[2];
     for (int i = 1; i < 2; i++){
         mapPoints[i] = MKMapPointForCoordinate(coords[i]);
     }
     
+    hiddenMap.camera.heading = 0;
+    
     // Find out the scale factor
     float desiredDistance = sqrtf(powf((cgPoints[0].x - cgPoints[1].x), 2)+
                                   powf((cgPoints[0].y - cgPoints[1].y), 2));
     CGPoint currentCGPoints[2];
-    currentCGPoints[0] = [self convertCoordinate:coords[0] toPointToView:self];
-    currentCGPoints[1] = [self convertCoordinate:coords[1] toPointToView:self];
+    currentCGPoints[0] = [hiddenMap convertCoordinate:coords[0] toPointToView:hiddenMap];
+    currentCGPoints[1] = [hiddenMap convertCoordinate:coords[1] toPointToView:hiddenMap];
     
     float currentDistance = sqrtf(
                                   powf((currentCGPoints[0].x - currentCGPoints[1].x), 2)+
@@ -76,15 +91,15 @@
     double currentTheta = atan2(-(currentCGPoints[1].y - currentCGPoints[0].y),
                                 currentCGPoints[1].x - currentCGPoints[0].x);
     double rotation = desiredTheta - currentTheta;
-    
+//    NSLog(@"rotation: %g", rotation);
     
     // Correct the scale first
     
     // Get the current mapRect
-    CLLocationDirection heading = self.camera.heading;
-    
-    self.camera.heading = 0;
-    MKMapRect currentMapRect = self.visibleMapRect;
+//    CLLocationDirection heading = self.camera.heading;
+//    
+//    hiddenMap.camera.heading = 0;
+    MKMapRect currentMapRect = hiddenMap.visibleMapRect;
     CGFloat xSpan = currentMapRect.size.width/scale;
     CGFloat ySpan = currentMapRect.size.height/scale;
     MKMapPoint centroidMapPoint = MKMapPointForCoordinate(coords[0]);
@@ -96,19 +111,30 @@
                                          xSpan,
                                          ySpan);
     // Correct the rotation
-    [self setVisibleMapRect:newMapRect];
-    self.camera.heading = heading + rotation/M_PI * 180;
+    [hiddenMap setVisibleMapRect:newMapRect];
+    hiddenMap.camera.heading = rotation/M_PI * 180;
     
     
     // Correct the translation
     CGFloat targetX = self.frame.size.width - cgPoints[0].x;
     CGFloat targetY = self.frame.size.height - cgPoints[0].y;
     
-    CLLocationCoordinate2D targetCentroidLatlon = [self
+    CLLocationCoordinate2D targetCentroidLatlon = [hiddenMap
                                                    convertPoint:CGPointMake(targetX, targetY)
-                                                   toCoordinateFromView:self];
+                                                   toCoordinateFromView:hiddenMap];
+    hiddenMap.centerCoordinate = targetCentroidLatlon;
     if(CLLocationCoordinate2DIsValid(targetCentroidLatlon)){
-        self.centerCoordinate = targetCentroidLatlon;                
+        CLLocationDirection heading = hiddenMap.camera.heading;
+        hiddenMap.camera.heading = 0;
+        self.camera.heading = 0;
+        
+        MKMapRect aRect = hiddenMap.visibleMapRect;
+        NSLog(@"(%g, %g), (%g, %g)",
+              aRect.origin.x, aRect.origin.y, aRect.size.width, aRect.size.height);
+        
+        self.visibleMapRect = hiddenMap.visibleMapRect;
+        self.camera.heading = heading;
+//        self.centerCoordinate = targetCentroidLatlon;                
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to position the map."
                                                         message:@"Center coordinate is invalid, try again."

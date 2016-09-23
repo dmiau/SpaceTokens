@@ -96,6 +96,8 @@
     self.draggingSet = [[NSMutableSet alloc] init];        
     self.anchorArray = [[NSMutableArray alloc] init];
     
+    self.isConstrainEngineON = YES;
+    
     self.smallValueOnTopOfBar = true;
     
     self.isYouAreHereEnabled = YES;
@@ -167,8 +169,9 @@
 //----------------
 // timer
 //----------------
--(void)timerFired{    
-    [self updateBasedOnConstraints];
+-(void)timerFired{
+    if (self.isConstrainEngineON)
+        [self updateBasedOnConstraints];
 }
 
 - (void)updateBasedOnConstraints{
@@ -177,8 +180,10 @@
         //        [self orderSpaceTokens];
         [self fillMapXYsForSet:self.buttonArray];
     }
-    
-    if ([self.draggingSet count] > 0){
+        
+    if ([self.draggingSet count] > 0
+        && [self.touchingSet count] == 0)
+    {
         [self fillDraggingMapXYs];
         [self updateMapToFitPOIPreferences:self.draggingSet];
     }else

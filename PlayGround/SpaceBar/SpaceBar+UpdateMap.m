@@ -111,6 +111,7 @@
         [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.mapViewXY
                         withOrientation:self.mapView.camera.heading animated:NO];
     }else if ([tokenSet count] == 2){
+        
         //----------------------
         // Snap to two SpaceTokens
         //----------------------
