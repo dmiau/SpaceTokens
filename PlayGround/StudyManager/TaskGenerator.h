@@ -10,6 +10,8 @@
 
 @interface TaskGenerator : NSObject
 
++(TaskGenerator*)sharedManager;
 
+- (NSMutableArray*)generateTasks;
 
 @end

@@ -27,7 +27,7 @@
 // CustomMKMapView
 //----------------
 @interface CustomMKMapView : MKMapView{
-    CustomMKMapView *hiddenMap; // for calculations
+    MKMapView *hiddenMap; // for calculations
 }
 
 + (id)sharedManager; // Singleton method

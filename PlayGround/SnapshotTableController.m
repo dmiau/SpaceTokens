@@ -14,6 +14,7 @@
 #import "MyFileManager.h"
 #import "SnapshotDetailViewController.h"
 
+
 @implementation SnapshotTableController
 
 // Initialization
@@ -180,6 +181,14 @@
     }
 }
 
+#pragma mark --Task Generation--
+- (IBAction)generateTaskAction:(id)sender {
+    // Generate new tasks
+    [snapshotDatabase generateNewTasks];
+    
+    // Refresh the table
+    [self.myTableView reloadData];    
+}
 
 #pragma mark --Save/Reload--
 - (IBAction)saveAction:(id)sender {

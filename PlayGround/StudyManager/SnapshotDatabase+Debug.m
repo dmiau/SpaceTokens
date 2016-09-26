@@ -11,9 +11,18 @@
 #import "SnapshotAnchorPlus.h"
 #import "SnapshotPlace.h"
 #import "MyFileManager.h"
-
+#import "TaskGenerator.h"
 
 @implementation SnapshotDatabase (Debug)
+
+
+- (void)generateNewTasks{
+    TaskGenerator *taskGenerator = [TaskGenerator sharedManager];
+    
+    // Generate tasks
+    self.snapshotArray = [taskGenerator generateTasks];
+}
+
 
 - (void)debugInit{
     

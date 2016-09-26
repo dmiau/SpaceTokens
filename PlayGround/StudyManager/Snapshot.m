@@ -32,6 +32,7 @@
         // Initlialize the POI list
         self.highlightedPOIs = [[NSMutableArray alloc] init];
         self.targetedPOIs = [[NSMutableArray alloc] init];
+        self.poisForSpaceTokens = [[NSMutableArray alloc] init];
         
         // Initialize the record object
         self.record = [[Record alloc] init];

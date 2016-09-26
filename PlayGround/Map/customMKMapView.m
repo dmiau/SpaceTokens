@@ -59,7 +59,7 @@
     //-----------------
     // Initialize a hidden map
     //-----------------
-    hiddenMap = [[CustomMKMapView alloc] init];
+    hiddenMap = [[MKMapView alloc] init];
     hiddenMap.translatesAutoresizingMaskIntoConstraints = NO;
     hiddenMap.mapType = MKMapTypeStandard;
     [self addSubview:hiddenMap];

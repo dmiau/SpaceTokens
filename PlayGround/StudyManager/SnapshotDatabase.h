@@ -26,5 +26,5 @@
 
 // Debug methods
 - (void)debugInit;
-
+- (void)generateNewTasks;
 @end

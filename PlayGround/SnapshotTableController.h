@@ -21,5 +21,9 @@
 - (IBAction)saveAction:(id)sender;
 - (IBAction)reloadAction:(id)sender;
 - (IBAction)editAction:(UIButton *)sender;
+- (IBAction)generateTaskAction:(id)sender;
+
+
+
 
 @end
