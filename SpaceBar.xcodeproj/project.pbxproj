@@ -95,6 +95,8 @@
 		9A234B671D8A1C6D00F3EE21 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A246D701D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
+		9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2495EC1D9929CC00A92207 /* TaskGenerator.m */; };
+		9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2495EC1D9929CC00A92207 /* TaskGenerator.m */; };
 		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
@@ -259,6 +261,8 @@
 		9A234B6E1D8A1C6D00F3EE21 /* SpaceBar copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBar copy2-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBar copy2-Info.plist"; sourceTree = "<absolute>"; };
 		9A246D6D1D55589B00888A74 /* SettingsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsButton.h; path = Views/SettingsButton.h; sourceTree = "<group>"; };
 		9A246D6E1D55589B00888A74 /* SettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsButton.m; path = Views/SettingsButton.m; sourceTree = "<group>"; };
+		9A2495EB1D9929CC00A92207 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = StudyManager/TaskGenerator.h; sourceTree = "<group>"; };
+		9A2495EC1D9929CC00A92207 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskGenerator.m; path = StudyManager/TaskGenerator.m; sourceTree = "<group>"; };
 		9A26CB181C7BC4DE00E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
 		9A26CB1D1C7BCBF400E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
 		9A26CB231C7BCCE500E46662 /* CERangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSlider.h; path = SpaceBar/RangeSlider/CERangeSlider.h; sourceTree = "<group>"; };
@@ -504,6 +508,8 @@
 			children = (
 				9A437FB01D550C7A00F28E61 /* GameManager.h */,
 				9A437FB11D550C7A00F28E61 /* GameManager.m */,
+				9A2495EB1D9929CC00A92207 /* TaskGenerator.h */,
+				9A2495EC1D9929CC00A92207 /* TaskGenerator.m */,
 				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
 				9ACCEA151D81EFD700E145D7 /* Snapshot.m */,
 				9AFFFFF01D85B85A00111E6C /* Snapshot+Validators.h */,
@@ -1114,6 +1120,7 @@
 				9ABA3B471D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */,
+				9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
@@ -1189,6 +1196,7 @@
 				9ABA3B481D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */,
+				9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
 				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,

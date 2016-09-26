@@ -33,6 +33,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedCustomMKMapView = [[CustomMKMapView alloc] init];
+        // init will call initWithFrame
 //        [sharedCustomMKMapView commonInit];
     });
     return sharedCustomMKMapView;
@@ -58,7 +59,7 @@
     //-----------------
     // Initialize a hidden map
     //-----------------
-    hiddenMap = [[MKMapView alloc] init];
+    hiddenMap = [[CustomMKMapView alloc] init];
     hiddenMap.translatesAutoresizingMaskIntoConstraints = NO;
     hiddenMap.mapType = MKMapTypeStandard;
     [self addSubview:hiddenMap];
@@ -188,11 +189,11 @@
         //----------------
         // investigate the region corresponding to the cgrect
         //----------------
-        CGRect realRect = [self convertRegion:self.region toRectToView:self];
-        CGRect hiddenRect = [hiddenMap convertRegion:hiddenMap.region toRectToView:hiddenMap];
+//        CGRect realRect = [self convertRegion:self.region toRectToView:self];
+//        CGRect hiddenRect = [hiddenMap convertRegion:hiddenMap.region toRectToView:hiddenMap];
         
-        NSLog(@"Real rect: %@", NSStringFromCGRect(realRect));
-        NSLog(@"Hidden rect: %@", NSStringFromCGRect(hiddenRect));
+//        NSLog(@"Real rect: %@", NSStringFromCGRect(realRect));
+//        NSLog(@"Hidden rect: %@", NSStringFromCGRect(hiddenRect));
         
         //----------------
         // Print out debug info
@@ -205,8 +206,8 @@
         //-------------------------
         NSLog(@"real: centroid:(%g, %g), span:(%g, %g)", self.region.center.latitude,
               self.region.center.longitude, self.region.span.latitudeDelta, self.region.span.longitudeDelta);
-        NSLog(@"hiddenMap: centroid:(%g, %g), span:(%g, %g)", hiddenMap.region.center.latitude,
-              hiddenMap.region.center.longitude, hiddenMap.region.span.latitudeDelta, hiddenMap.region.span.longitudeDelta);
+//        NSLog(@"hiddenMap: centroid:(%g, %g), span:(%g, %g)", hiddenMap.region.center.latitude,
+//              hiddenMap.region.center.longitude, hiddenMap.region.span.latitudeDelta, hiddenMap.region.span.longitudeDelta);
     }
 }
 
