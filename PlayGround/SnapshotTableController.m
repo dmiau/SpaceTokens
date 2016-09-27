@@ -17,6 +17,7 @@
 
 @implementation SnapshotTableController
 
+#pragma mark -- Initialization --
 // Initialization
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -33,6 +34,9 @@
         UINavigationController *myNavigationController =
         app.window.rootViewController;
         self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
+     
+        // Collapse the collection by default
+        expandCollectionSection = false;
         
         snapshotDatabase = [SnapshotDatabase sharedManager];
     }
@@ -44,19 +48,96 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
+    // Collect a list of .snapshot files
+    [self updateSnapshotFileList];
+    
     // Regenerate the gameVector for now
     [self.myTableView reloadData];
 }
 
-#pragma mark -----Table View Data Source Methods-----
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Three sections: user location, the location file listing, and bookmarks
-    return 1;
+- (void)updateSnapshotFileList{
+    // List all the files in the document direction
+    NSArray *fileArray = [[NSFileManager defaultManager]
+                 contentsOfDirectoryAtPath:
+                 [self.rootViewController.myFileManager currentFullDirectoryPath] error:NULL];
+    
+    // List all the files with the .snapshot extention
+    snapshotFileArray = [fileArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS '.snapshot'"]];
 }
 
+
+
+#pragma mark -----Table View Data Source Methods-----
+typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
+
+
+//-----------------
+// Section
+//-----------------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [snapshotDatabase.snapshotArray count];
+    if (section ==COLLECTIONS){
+        if (expandCollectionSection)
+            return [snapshotFileArray count];
+        else
+            return 0;
+    }else{
+        return [snapshotDatabase.snapshotArray count];
+    }
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Three sections: user location, the location file listing, and bookmarks
+    return 2;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSArray *list = @[@"Snapshot files", snapshotDatabase.name];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
+    /* Create custom view to display section header... */
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 30)];
+    [label setFont:[UIFont boldSystemFontOfSize:14]];
+    NSString *string =[list objectAtIndex:section];
+    /* Section header is in 0th index... */
+    [label setText:string];
+    [view addSubview:label];
+    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
+    
+    // Only add gesture recognizer to the AREA section
+    if (section == COLLECTIONS){
+        // Add UITapGestureRecognizer to SectionView
+        UITapGestureRecognizer *headerTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderTapped:)];
+        [view addGestureRecognizer:headerTapped];
+    }
+    
+    /********** Add a custom Separator with cell *******************/
+    UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 29, self.myTableView.frame.size.width, 1)];
+    separatorLineView.backgroundColor = [UIColor blackColor];
+    [view addSubview:separatorLineView];
+    
+    return view;
+}
+
+
+// To handle the section header tapping gesture
+- (void)sectionHeaderTapped:(UITapGestureRecognizer *)gestureRecognizer{
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0
+                                                inSection:gestureRecognizer.view.tag];
+    if (indexPath.row == 0) {
+        [self updateSnapshotFileList];
+        expandCollectionSection = !expandCollectionSection;        
+        [self.myTableView reloadData];
+    }
+}
+
 
 //----------------
 // Populate each row of the table
@@ -74,6 +155,16 @@
     
     // Configure Cell
     cell.textLabel.text = snapshotDatabase.snapshotArray[i].name;
+    
+    if (section_id == COLLECTIONS){
+        cell.textLabel.text = snapshotFileArray[i];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", i];
+    }else{
+        // Configure Cell
+        cell.textLabel.text = snapshotDatabase.snapshotArray[i].name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", i];
+    }
+    
     return cell;
 }
 
@@ -88,13 +179,29 @@
     
     int row_id = [path row];
     int section_id = [path section];
-
-    // execute the snapshot
-    [gameManager runSnapshotIndex:row_id];
-    //--------------
-    // We might need to do something for iPad
-    //--------------
-    [self.navigationController popViewControllerAnimated:NO];
+    
+    if (section_id == COLLECTIONS){
+        //----------------
+        // User selects a file
+        //----------------
+        MyFileManager *myFileManager = [MyFileManager sharedManager];
+        
+        NSString *dirPath = [myFileManager currentFullDirectoryPath];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:snapshotFileArray[row_id]];
+        
+        [snapshotDatabase loadFromFile:fileFullPath];
+        
+        expandCollectionSection = false;
+        [self.myTableView reloadData];
+        
+    }else{
+        // execute the snapshot
+        [gameManager runSnapshotIndex:row_id];
+        //--------------
+        // We might need to do something for iPad
+        //--------------
+        [self.navigationController popViewControllerAnimated:NO];
+    }
 }
 
 //----------------
@@ -109,10 +216,13 @@
     int i = [indexPath row];
     int section_id = [indexPath section];
     
-    Snapshot *aSnapshot = snapshotDatabase.snapshotArray[i];
-    // Perform segue
-    [self performSegueWithIdentifier:@"SnapshotDetailVC"
-                              sender:aSnapshot];
+    if (section_id ==COLLECTIONS){
+    }else{
+        Snapshot *aSnapshot = snapshotDatabase.snapshotArray[i];
+        // Perform segue
+        [self performSegueWithIdentifier:@"SnapshotDetailVC"
+                                  sender:aSnapshot];
+    }
 }
 
 
@@ -123,17 +233,45 @@
 {
     //https://developer.apple.com/library/ios/documentation/userexperience/conceptual/tableview_iphone/ManageInsertDeleteRow/ManageInsertDeleteRow.html
     
-    // If row is deleted, remove it from the list.
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        int i = [indexPath row];
-        
-        // Remove the snapshot from the gameVector
-        [snapshotDatabase.snapshotArray removeObject: snapshotDatabase.snapshotArray[i]];
-        
-        // Then, delete the row
-        [self.myTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                withRowAnimation:UITableViewRowAnimationFade];
-    }
+        int section_id = [indexPath section];
+        if (section_id == COLLECTIONS){
+            //-----------------------
+            // Delete a snapshot file
+            //-----------------------
+            
+            int i = [indexPath row];
+            if ([snapshotFileArray[i] isEqualToString:@"default.snapshot"])
+                return;
+            
+            MyFileManager *myFileManager = [MyFileManager sharedManager];
+            
+            NSString *dirPath = [myFileManager currentFullDirectoryPath];
+            NSString *fileFullPath = [dirPath stringByAppendingPathComponent: snapshotFileArray[i]];
+            
+            // delete a file
+            [myFileManager removeItemAtPath:fileFullPath error:nil];
+            
+            [self updateSnapshotFileList];
+            [self.myTableView reloadData];
+        }else{
+            //-----------------------
+            // Delete a snapshot
+            //-----------------------
+            
+            // If row is deleted, remove it from the list.
+            if (editingStyle == UITableViewCellEditingStyleDelete) {
+                int i = [indexPath row];
+                
+                // Remove the snapshot from the gameVector
+                [snapshotDatabase.snapshotArray removeObject: snapshotDatabase.snapshotArray[i]];
+                
+                // Then, delete the row
+                [self.myTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                        withRowAnimation:UITableViewRowAnimationFade];
+            }
+        }
+    
+
 }
 
 //----------------

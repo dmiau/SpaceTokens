@@ -12,6 +12,11 @@
 
 @interface SnapshotTableController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>{
     SnapshotDatabase *snapshotDatabase;
+    NSArray *snapshotFileArray;
+    
+    //this flag decides whether the snapshot file section should be expanded or collapsed
+    bool expandCollectionSection;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
