@@ -147,11 +147,13 @@
 // Deep copy
 -(id) copyWithZone:(NSZone *) zone
 {
-    Snapshot *object = [[Snapshot alloc] init];
+    Snapshot *object = [[[self class] allocWithZone:zone] init];
     object.latLon = self.latLon;
     object.name = self.name;
-    
-    
+    object.coordSpan = self.coordSpan;
+    object.highlightedPOIs = [[NSMutableArray alloc] initWithArray:self.highlightedPOIs copyItems:YES];
+    object.poisForSpaceTokens = [[NSMutableArray alloc] initWithArray:self.poisForSpaceTokens copyItems:YES];
+    object.targetedPOIs = [[NSMutableArray alloc] initWithArray:self.targetedPOIs copyItems:YES];
     
     return object;
 }

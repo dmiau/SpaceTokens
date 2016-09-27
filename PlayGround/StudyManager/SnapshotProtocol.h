@@ -15,6 +15,9 @@
 
 @class ViewController;
 
+// condition enum
+typedef enum {CONTROL, EXPERIMENT} Condition;
+
 //----------------------
 // Protocol for snapshot
 //----------------------
@@ -41,7 +44,7 @@
 @property NSMutableArray <POI*> *poisForSpaceTokens; // poi to generate SpaceToken
 @property NSMutableArray <POI*> *targetedPOIs;
 @property Record *record;
-
+@property Condition condition;
 
 // Methods to setup and validate the tasks
 - (void)setupMapSpacebar;

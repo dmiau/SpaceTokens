@@ -61,6 +61,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // Some special POIs are cached in SpaceBar
 @property SpaceToken* mapCentroid;
 @property SpaceToken* youAreHere;
+@property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
 @property BOOL isConstrainEngineON;
 @property BOOL isYouAreHereEnabled;
 @property BOOL isAutoOrderSpaceTokenEnabled;

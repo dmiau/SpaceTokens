@@ -158,6 +158,8 @@
     
     [aSpaceToken setTitle:poi.name forState:UIControlStateNormal];
     aSpaceToken.poi = poi;
+    poi.linkedObj = aSpaceToken; // Establish the connection
+    aSpaceToken.isDraggable = self.isTokenDraggingEnabled;
     
     if (aSpaceToken){
         // Add to the canvas

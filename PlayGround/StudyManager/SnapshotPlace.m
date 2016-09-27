@@ -30,17 +30,18 @@
                    name:MapUpdatedNotification
                  object:nil];
     
+    // Get the SpaceBar object
+    SpaceBar *spaceBar = self.rootViewController.spaceBar;
+    
+    // Set up the environment based on the condition
+    if (self.condition == CONTROL){
+        spaceBar.isTokenDraggingEnabled = NO;
+    }else{
+        spaceBar.isTokenDraggingEnabled = YES;
+    }
+    
     // Start the timer
     [self.record start];
-    
 }
-
-
-
-
-
-
-
-
 
 @end

@@ -29,15 +29,28 @@
 // Method to generate tasks for PLACE
 //---------------------
 - (NSMutableArray*)generateTasks{
-    NSMutableArray* taskArray = [[NSMutableArray alloc] init];
+    NSMutableArray* controlArray = [[NSMutableArray alloc] init];
+    NSMutableArray* experimentArray = [[NSMutableArray alloc] init];
     
     NSMutableDictionary *taskDictionary = [self generatePlaceDictionary];
-
+    
+    // Need to handle multiple conditions
     for (NSString *aKey in taskDictionary){
         SnapshotPlace *snapshot = taskDictionary[aKey];
-        [taskArray addObject:snapshot];
+        SnapshotPlace *snapshotCopy = [snapshot copy];
+        
+        snapshot.name = [snapshot.name stringByAppendingString:@":control"];
+        snapshot.condition = CONTROL;
+        [controlArray addObject:snapshot];
+        
+        snapshotCopy.name = [snapshotCopy.name stringByAppendingString:@":experiment"];
+        snapshotCopy.condition = EXPERIMENT;
+        [experimentArray addObject:snapshotCopy];
     }
-    
+ 
+    NSMutableArray *taskArray = [[NSMutableArray alloc] init];
+    [taskArray addObjectsFromArray:controlArray];
+    [taskArray addObjectsFromArray:experimentArray];
     return taskArray;
 }
 
@@ -61,6 +74,7 @@
     
     // Grand Central for now
     POI *tokenPOI = [[POI alloc] init];
+    tokenPOI.name = @"Grand Central";
     tokenPOI.latLon = CLLocationCoordinate2DMake(40.7527, -73.9772);
     tokenPOI.coordSpan = MKCoordinateSpanMake(0.0104439, 0.01);
 

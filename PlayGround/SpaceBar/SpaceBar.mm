@@ -96,6 +96,8 @@
     self.draggingSet = [[NSMutableSet alloc] init];        
     self.anchorArray = [[NSMutableArray alloc] init];
     
+    self.isTokenDraggingEnabled = YES;
+    
     self.isConstrainEngineON = YES;
     
     self.smallValueOnTopOfBar = true;
@@ -165,6 +167,16 @@
         [self.sliderContainer setUserInteractionEnabled: YES];
     }
 }
+
+- (void)setIsTokenDraggingEnabled:(BOOL)isTokenDraggingEnabled{
+    _isTokenDraggingEnabled = isTokenDraggingEnabled;
+    
+    // iterate over all the SpaceTokens
+    for (SpaceToken* aToken in self.buttonArray){
+        aToken.isDraggable = isTokenDraggingEnabled;
+    }    
+}
+
 
 //----------------
 // timer

@@ -90,6 +90,7 @@
 {
     POI *object = [[POI alloc] init];
     object.latLon = self.latLon;
+    object.coordSpan = self.coordSpan;
     object.name = self.name;
     return object;
 }
