@@ -55,7 +55,7 @@
         return;
     
     //    NSLog(@"Touch down!");
-    self.hasReportedDraggingEvent = NO;
+    hasReportedDraggingEvent = NO;
     
     if (self.selected){
         self.selected = NO;
@@ -78,7 +78,7 @@
                 touch = aTouch;
         }
         // Cache the initial button down location
-        self.initialTouchLocationInView = [touch locationInView:self.superview];
+        initialTouchLocationInView = [touch locationInView:self.superview];
         
         NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
                                                                      object:self userInfo:nil];
@@ -93,11 +93,11 @@
         return;
     
     //    NSLog(@"Touch up!");
-    if (self.hasReportedDraggingEvent){
+    if (hasReportedDraggingEvent){
         //------------------------
         // The button was dragged.
         //------------------------
-        self.hasReportedDraggingEvent = NO;
+        hasReportedDraggingEvent = NO;
         [self.lineLayer removeFromSuperlayer];
         [self removeFromSuperview];
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromDraggingSetNotification
@@ -150,7 +150,7 @@
         }
         
         // If the SpaceToken is dragged outside of the display, delete the SpaceToken
-        if ((locationInView.x - self.initialTouchLocationInView.x) >
+        if ((locationInView.x - initialTouchLocationInView.x) >
             self.frame.size.width/3)
         {
             
@@ -175,9 +175,9 @@
     CGPoint previousLoationInView = [touch previousLocationInView:self.superview];
     CGPoint locationInButton = [touch locationInView:self];
     
-    if (!self.hasReportedDraggingEvent){
+    if (!hasReportedDraggingEvent){
         // This is to make sure AddToDraggingSet notification is only sent once.
-        self.hasReportedDraggingEvent = YES;
+        hasReportedDraggingEvent = YES;
         [self.lineLayer removeFromSuperlayer];
         NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
                                                                      object:self userInfo:nil];

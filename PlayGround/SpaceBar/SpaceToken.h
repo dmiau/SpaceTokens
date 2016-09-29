@@ -6,20 +6,22 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "../Map/POI.h"
+#import "POI.h"
 
 @class Person;
 
 typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 
-//--------------------
+//----------------------------------------
 // SpaceToken interface
-//--------------------
-@interface SpaceToken : UIButton
+//----------------------------------------
+@interface SpaceToken : UIButton{
+    CGPoint initialTouchLocationInView;
+    BOOL hasReportedDraggingEvent;
+    NSTimer *anchorVisualTimer;
+}
 
 
-@property BOOL hasReportedDraggingEvent;
-@property CGPoint initialTouchLocationInView;
 @property BOOL isCircleLayerOn;
 @property BOOL isLineLayerOn;
 @property BOOL isConstraintLineOn;
@@ -27,9 +29,9 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 
 @property (weak) UITouch *touch; // to keep tracking of UITouch
 
-@property CAShapeLayer *circleLayer;
-@property CAShapeLayer *lineLayer;
-@property CAShapeLayer *constraintLayer;
+@property CAShapeLayer *circleLayer; // signifies the touch poing
+@property CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
+@property CAShapeLayer *constraintLayer; //used in the relaxed constraint state
 
 // When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
 @property (weak) SpaceToken *counterPart;
@@ -40,6 +42,10 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 @property CGPoint mapViewXY;
 // mapViewXY caches the Mercator (x, y) coordinates
 // corrresponding to latlon
+
+
+// display the anchor circle after some seconds
+- (void)showAnchorVisualIndicatorAfter:(double) second;
 
 - (void) registerButtonEvents;
 

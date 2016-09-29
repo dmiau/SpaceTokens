@@ -43,11 +43,8 @@
             aToken.touch = aTouch;
             [self.anchorArray addObject:aToken];
             
-//            // Only add the anchor to the dragging set if there is only one anchor
-//            if ([self.anchorArray count]==1){
-                [self.draggingSet addObject:aToken];
-            aToken.isCircleLayerOn = YES;
-//            }
+            [self.draggingSet addObject:aToken];
+            [aToken showAnchorVisualIndicatorAfter:1];
         }
     }
 }

@@ -51,7 +51,8 @@
         self.circleLayer = [CAShapeLayer layer];
         self.lineLayer = [CAShapeLayer layer];
         self.constraintLayer = [CAShapeLayer layer];
-        self.hasReportedDraggingEvent = NO;
+        
+        hasReportedDraggingEvent = NO;
         self.counterPart = nil;
         self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
         [self registerButtonEvents];
@@ -138,6 +139,7 @@
     }
 }
 
+#pragma mark -- Configure Visual Apperarance --
 
 //-----------
 // configure the appearance
@@ -176,7 +178,7 @@
             [self configureDraggingTokenAppearance];
             self.isLineLayerOn = NO;
             self.isCircleLayerOn = NO;
-            self.hasReportedDraggingEvent = YES;
+            hasReportedDraggingEvent = YES;
             break;
         default:
             break;
@@ -281,6 +283,23 @@
     self.constraintLayer.fillColor = nil;
     self.constraintLayer.strokeColor = [UIColor redColor].CGColor;
     self.constraintLayer.opacity = 1.0;
+}
+
+- (void)showAnchorVisualIndicatorAfter:(double) second{
+    
+    if (second < 0.01){
+        self.isCircleLayerOn = YES;
+    }else{
+        // delay to show the circle layer
+        anchorVisualTimer = [NSTimer scheduledTimerWithTimeInterval:second
+                                                    target:self
+                                                  selector:@selector(anchorTimerAction)
+                                                  userInfo:nil repeats:NO];
+    }
+}
+
+-(void)anchorTimerAction{
+    self.isCircleLayerOn = YES;
 }
 
 

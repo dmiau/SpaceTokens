@@ -177,6 +177,9 @@
     }
 }
 
+//-----------------------
+// Display a route on the map
+//-----------------------
 - (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag{
     
     // Remove the previous route if there is any

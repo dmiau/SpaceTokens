@@ -13,35 +13,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1d-oP-Km9">
-                    <frame key="frameInset" minX="15" minY="35" width="43" height="30"/>
-                    <state key="normal" title="pref" image="setup.png"/>
+                    <frame key="frameInset" minX="6" minY="37" width="43" height="30"/>
+                    <state key="normal" image="setup.png"/>
                     <connections>
                         <action selector="prefAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VOy-ms-P1q"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnB-dK-KjN">
-                    <frame key="frameInset" minX="66" minY="25" width="309" height="55"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="55" id="cHD-sC-d4O"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heh-RH-1Bd">
                     <state key="normal" title="data"/>
                     <connections>
                         <action selector="dataAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="o3i-fE-o56"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnB-dK-KjN">
+                    <frame key="frameInset" minX="57" minY="25" width="318" height="55"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="Nz4-io-uMR"/>
+                        <constraint firstAttribute="height" constant="55" id="cHD-sC-d4O"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="z1d-oP-Km9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="GIf-0w-rp4"/>
-                <constraint firstAttribute="trailing" secondItem="heh-RH-1Bd" secondAttribute="trailing" constant="20" id="OFR-my-L4t"/>
-                <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="Pvi-J1-KfI"/>
-                <constraint firstItem="wnB-dK-KjN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="R8n-lM-3sF"/>
-                <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="20" id="TkA-f0-paz"/>
-                <constraint firstItem="z1d-oP-Km9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="vIO-AR-N5s"/>
-                <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="zSK-A9-kr9"/>
+                <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="0Ed-j3-d1Q"/>
+                <constraint firstItem="wnB-dK-KjN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="Amy-cP-BOn"/>
+                <constraint firstItem="z1d-oP-Km9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="WKa-64-Gsq"/>
+                <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="an6-X0-Vqv"/>
+                <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="20" id="bbG-fC-V2D"/>
+                <constraint firstItem="z1d-oP-Km9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="dYi-jS-qDp"/>
+                <constraint firstAttribute="trailing" secondItem="heh-RH-1Bd" secondAttribute="trailing" constant="20" id="lmG-Ma-ELU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
