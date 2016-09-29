@@ -47,12 +47,13 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 // display the anchor circle after some seconds
 - (void)showAnchorVisualIndicatorAfter:(double) second;
 
-- (void) registerButtonEvents;
-
-- (void) configureAppearanceForType: (spaceTokenType) type;
-
 // Exposing the button methods so the buttons can be touched programmatically
 - (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event;
 - (void) buttonUp:(UIButton*)sender forEvent:(UIEvent*)event;
 - (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event;
+
+
+// Internal methods
+- (void) registerButtonEvents;
+- (void) configureAppearanceForType: (spaceTokenType) type;
 @end

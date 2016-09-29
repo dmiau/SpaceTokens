@@ -21,6 +21,7 @@ using namespace std;
 //------------------
 @property NSString *name;
 @property MKRoute *route;
+@property MKPolyline *routePolyline;
 
 @property MKMapItem *source;
 @property MKMapItem *destination;
@@ -28,8 +29,8 @@ using namespace std;
 // the following vectors are used to look up POI, or ROI or a path
 @property vector<double> *mapPointX;
 @property vector<double> *mapPointY;
-@property vector<int> *stepNumber;
-@property vector<int> *indexInStep;
+//@property vector<int> *stepNumber;
+//@property vector<int> *indexInStep;
 @property vector<double> *accumulatedDist;
 
 //------------------

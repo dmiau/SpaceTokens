@@ -9,6 +9,7 @@
 #import "Route.h"
 #import <vector>
 #import <iostream>
+#import "POI.h"
 using namespace std;
 
 template class std::vector<pair<int, int>>;
@@ -39,20 +40,31 @@ template class std::vector<pair<int, int>>;
     //computer the accumulatedDist array
     self.mapPointX = new vector<double>;
     self.mapPointY = new vector<double>;
-    self.stepNumber = new vector<int>;
-    self.indexInStep = new vector<int>;
+//    self.stepNumber = new vector<int>;
+//    self.indexInStep = new vector<int>;
     self.accumulatedDist = new vector<double>;
     
-    // pre-allocate a chunk of memory
-    int pointNumber = 0;
-    for (int i = 0; i < [self.route.steps count]; i++){
-        pointNumber += self.route.steps[i].polyline.pointCount;
-    }
+    //------------
+    // Get the polyline object
+    //------------
+
+    // routePolyline could be loaded from a file
+    if (!self.routePolyline)
+        _routePolyline = self.route.polyline;
+    
+    int pointNumber = _routePolyline.pointCount;
+    
+//    // pre-allocate a chunk of memory
+//    int pointNumber = 0;
+//    for (int i = 0; i < [self.route.steps count]; i++){
+//        pointNumber += self.route.steps[i].polyline.pointCount;
+//    }
+    
     
     self.mapPointX->assign(pointNumber, 0);
     self.mapPointY->assign(pointNumber, 0);
-    self.stepNumber->assign(pointNumber, 0);
-    self.indexInStep->assign(pointNumber, 0);
+//    self.stepNumber->assign(pointNumber, 0);
+//    self.indexInStep->assign(pointNumber, 0);
     self.accumulatedDist->assign(pointNumber, 0);
     
     //------------------
@@ -61,27 +73,47 @@ template class std::vector<pair<int, int>>;
     // This chunk could potentially take some time
     int pointIdx = 0;
     float accumulatedDist = 0;
-    MKMapPoint previousMapPoint = self.route.steps[0].polyline.points[0];
-    for (int i = 0; i < [self.route.steps count]; ++i){
+    MKMapPoint previousMapPoint = _routePolyline.points[0];
+    for (int i = 0; i < pointNumber; ++i){
+        (*self.mapPointX)[i] = _routePolyline.points[i].x;
+        (*self.mapPointY)[i] = _routePolyline.points[i].y;
         
-        for (int j = 0; j < self.route.steps[i].polyline.pointCount; ++j){
-            
-            MKPolyline* aPolyline = self.route.steps[i].polyline;
-            (*self.mapPointX)[pointIdx] = aPolyline.points[j].x;
-            (*self.mapPointY)[pointIdx] = aPolyline.points[j].y;
-            (*self.stepNumber)[pointIdx] = i;
-            (*self.indexInStep)[pointIdx] = j;
-            
-            // Calculate the distance from the current point to the previous point
-            CLLocationDistance dist = MKMetersBetweenMapPoints
-            (previousMapPoint, aPolyline.points[j]);
-            accumulatedDist += dist;
-            (*self.accumulatedDist)[pointIdx] = accumulatedDist;
-            
-            previousMapPoint = aPolyline.points[j];
-            pointIdx++;
-        }
+        // Calculate the distance from the current point to the previous point
+        CLLocationDistance dist = MKMetersBetweenMapPoints
+        (previousMapPoint, _routePolyline.points[i]);
+        accumulatedDist += dist;
+        (*self.accumulatedDist)[i] = accumulatedDist;
+        
+        previousMapPoint = _routePolyline.points[i];
     }
+    
+    
+//    //--------------
+//    //Old code
+//    //--------------
+//    MKMapPoint previousMapPoint = self.route.steps[0].polyline.points[0];
+//    for (int i = 0; i < [self.route.steps count]; ++i){
+//        
+//        for (int j = 0; j < self.route.steps[i].polyline.pointCount; ++j){
+//            
+//            MKPolyline* aPolyline = self.route.steps[i].polyline;
+//            (*self.mapPointX)[pointIdx] = aPolyline.points[j].x;
+//            (*self.mapPointY)[pointIdx] = aPolyline.points[j].y;
+//            (*self.stepNumber)[pointIdx] = i;
+//            (*self.indexInStep)[pointIdx] = j;
+//            
+//            // Calculate the distance from the current point to the previous point
+//            CLLocationDistance dist = MKMetersBetweenMapPoints
+//            (previousMapPoint, aPolyline.points[j]);
+//            accumulatedDist += dist;
+//            (*self.accumulatedDist)[pointIdx] = accumulatedDist;
+//            
+//            previousMapPoint = aPolyline.points[j];
+//            pointIdx++;
+//        }
+//    }
+    
+    
 }
 
 
@@ -257,18 +289,62 @@ double computeOrientationFromA2B
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeObject:self.route forKey:@"route"];
-    [coder encodeObject:self.source forKey:@"source"];
-    [coder encodeObject:self.destination forKey:@"destination"];
+    
+    // Save the source and destination
+    POI *sourcePOI = [[POI alloc] init];
+    sourcePOI.latLon = self.source.placemark.coordinate;
+    sourcePOI.name = self.source.name;
+    
+    POI *destinationPOI = [[POI alloc] init];
+    destinationPOI.latLon = self.destination.placemark.coordinate;
+    destinationPOI.name = self.destination.name;
+    
+    [coder encodeObject: sourcePOI forKey:@"sourcePOI"];
+    [coder encodeObject: destinationPOI forKey:@"destinationPOI"];
+    
+    // Save the MKPolyline
+    NSMutableArray *polylineArrayX = [[NSMutableArray alloc] init];
+    NSMutableArray *polylineArrayY = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [self.routePolyline pointCount]; i++){
+        [polylineArrayX addObject: [NSNumber numberWithDouble:self.routePolyline.points[i].x]];
+        [polylineArrayY addObject: [NSNumber numberWithDouble:self.routePolyline.points[i].y]];
+    }
+    [coder encodeObject: polylineArrayX forKey:@"polylineArrayX"];
+    [coder encodeObject: polylineArrayY forKey:@"polylineArrayY"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [self init];
     self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
-    self.route = [coder decodeObjectOfClass:[MKRoute class] forKey:@"route"];
-    self.source = [coder decodeObjectOfClass:[MKMapItem class] forKey:@"source"];
-    self.destination = [coder decodeObjectOfClass:[MKMapItem class] forKey:@"destination"];
 
+    // Decode source and destination
+    POI *sourcePOI = [coder decodeObjectOfClass:[POI class] forKey:@"sourcePOI"];
+    MKPlacemark *sourcePlacemark = [[MKPlacemark alloc] initWithCoordinate:sourcePOI.latLon addressDictionary:nil];
+    MKMapItem *sourceMapItem = [[MKMapItem alloc] initWithPlacemark:sourcePlacemark];
+    [sourceMapItem setName:sourcePOI.name];
+    self.source = sourceMapItem;
+    
+    POI *destinationPOI = [coder decodeObjectOfClass:[POI class] forKey:@"destinationPOI"];
+    MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:destinationPOI.latLon addressDictionary:nil];
+    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:destinationPlacemark];
+    [destinationMapItem setName:destinationPOI.name];
+    self.destination = destinationMapItem;
+    
+    // Reconstruct the polyline
+    NSMutableArray *polylineArrayX = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"polylineArrayX"];
+    NSMutableArray *polylineArrayY = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"polylineArrayY"];
+    
+    // Construct an array of mappoints
+    MKMapPoint *tempMapPointArray = new MKMapPoint[ [polylineArrayX count] ];
+    for (int i = 0; i < [polylineArrayX count]; i++){
+        MKMapPoint mapPoint = MKMapPointMake([polylineArrayX[i] doubleValue], [polylineArrayY[i] doubleValue]);
+        tempMapPointArray[i] = mapPoint;
+    }
+    
+    self.route = nil;
+    self.routePolyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[polylineArrayX count]];
+    delete[] tempMapPointArray;
     [self computeAccumulatedDistStructure];
     return self;
 }
@@ -278,8 +354,8 @@ double computeOrientationFromA2B
     // destructor
     delete self.mapPointX;
     delete self.mapPointY;
-    delete self.stepNumber;
-    delete self.indexInStep;
+//    delete self.stepNumber;
+//    delete self.indexInStep;
     delete self.accumulatedDist;
 //    NSLog(@"destructor called.");
 }

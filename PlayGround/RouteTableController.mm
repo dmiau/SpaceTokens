@@ -96,30 +96,35 @@
 
 
 - (IBAction)saveAction:(id)sender {
-//    //Save the files using the background thread
-//    //http://stackoverflow.com/questions/12671042/moving-a-function-to-a-background-thread-in-objective-c
-//    
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-//    dispatch_async(queue, ^{
-//        NSString *dirPath = [self.rootViewController.myFileManager currentFullDirectoryPath];
-//        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.route"];
-//        
-//        // Test file saving capability
-//        [routeDatabase saveDatatoFileWithName:fileFullPath];
-//                
-//        // Perform async operation
-//        // Call your method/function here
-//        // Example:
-//        // NSString *result = [anObject calculateSomething];
-//    });
+    //Save the files using the background thread
+    //http://stackoverflow.com/questions/12671042/moving-a-function-to-a-background-thread-in-objective-c
     
-    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        MyFileManager *myFileManager = [MyFileManager sharedManager];
+        
+        NSString *dirPath = [myFileManager currentFullDirectoryPath];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.routedb"];
+        
+        // Test file saving capability
+        [routeDatabase saveDatatoFileWithName:fileFullPath];
+
+    });
 }
 
 - (IBAction)reloadAction:(id)sender {
-//    [routeDatabase loadFromFile:fileFullPath];
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.routedb"];
+    [routeDatabase loadFromFile:fileFullPath];
+    keyArray = [routeDatabase.routeDictionary allKeys];
+    [self.myTableView reloadData];
 }
 
 - (IBAction)clearAction:(id)sender {
+    [routeDatabase.routeDictionary removeAllObjects];
+    keyArray = [routeDatabase.routeDictionary allKeys];
+    [self.myTableView reloadData];
 }
 @end

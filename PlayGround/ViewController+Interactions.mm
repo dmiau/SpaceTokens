@@ -208,11 +208,11 @@
             // Remove previous routes if any
             [self.miniMapView removeRouteOverlays];
             
-            [self.miniMapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
+            [self.miniMapView addOverlay:aRoute.routePolyline level:MKOverlayLevelAboveRoads];
         }
     }
     
-    [self.mapView addOverlay:aRoute.route.polyline level:MKOverlayLevelAboveRoads];
+    [self.mapView addOverlay:aRoute.routePolyline level:MKOverlayLevelAboveRoads];
 }
 
 - (void)removeRoute{

@@ -233,6 +233,8 @@
 		9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
+		9AD7ACA31D9D4D6F00466AD5 /* MetaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */; };
+		9AD7ACA41D9D4D6F00466AD5 /* MetaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */; };
 		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
@@ -400,6 +402,8 @@
 		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
 		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
+		9AD7ACA11D9D4D6E00466AD5 /* MetaToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetaToken.h; path = SpaceBar/MetaToken.h; sourceTree = "<group>"; };
+		9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetaToken.m; path = SpaceBar/MetaToken.m; sourceTree = "<group>"; };
 		9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIDetailViewController.h; sourceTree = "<group>"; };
 		9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIDetailViewController.m; sourceTree = "<group>"; };
 		9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Record.h; path = StudyManager/Record.h; sourceTree = "<group>"; };
@@ -474,8 +478,6 @@
 			children = (
 				9A8BCA261D343D43006C2EDC /* POI.h */,
 				9A8BCA271D343D43006C2EDC /* POI.m */,
-				9A22D0161D22BD9A009BC465 /* Route.h */,
-				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A143B321D2AF56E001EE841 /* CustomMKMapView.h */,
 				9A143B331D2AF56E001EE841 /* CustomMKMapView.m */,
 				9A93F9261D3016690012638A /* CustomMKMapView+MapDisplay.h */,
@@ -492,6 +494,8 @@
 				9A43EAEF1D4008F400080029 /* POIDatabase.m */,
 				9A56B7DF1D4E7C5A00A14B02 /* POIDatabase+iCloud.h */,
 				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
+				9A22D0161D22BD9A009BC465 /* Route.h */,
+				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
 				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
@@ -658,6 +662,8 @@
 				9AC36DD11C60087B0037210F /* SpaceToken.m */,
 				9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */,
 				9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */,
+				9AD7ACA11D9D4D6E00466AD5 /* MetaToken.h */,
+				9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */,
 				9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */,
 				9AC7E1A81D50E08400C2E8BE /* GestureEngine.m */,
 				9A62F1E21C62C6BF00A39DAF /* Tools.h */,
@@ -1129,6 +1135,7 @@
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
+				9AD7ACA31D9D4D6F00466AD5 /* MetaToken.m in Sources */,
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
@@ -1206,6 +1213,7 @@
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
+				9AD7ACA41D9D4D6F00466AD5 /* MetaToken.m in Sources */,
 				9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
