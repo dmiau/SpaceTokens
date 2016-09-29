@@ -19,7 +19,7 @@
         _updateFlag = NO;
         _poi = [[POI alloc] init];
         _poi.name = @"YouRHere";
-        _poi.annotation.pointType = people;
+        _poi.annotation.pointType = YouRHere;
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -98,18 +98,24 @@
     
     // Update the orientation
     UIImage *myImg = [UIImage imageNamed:@"heading.png"];
-    //-------------
-    // rotate the image according to the current heading
-    //-------------
-    myAnnotationView.image = myImg;
     
-    float radians = (self.poi.headingInDegree)/180 * M_PI;
-    
-    //        NSLog(@"camera orientation: %f", self.model->camera_pos.orientation);
-    //        NSLog(@"User orientation: %f", self.model->user_pos.orientation);
-    
-    CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, radians);
-    myAnnotationView.transform = transform;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Your code to run on the main queue/thread
+        
+        //-------------
+        // rotate the image according to the current heading
+        //-------------
+        [myAnnotationView setImage:myImg];
+        [myAnnotationView setNeedsDisplay];
+        
+        float radians = (self.poi.headingInDegree)/180 * M_PI;
+        
+        //        NSLog(@"camera orientation: %f", self.model->camera_pos.orientation);
+        //        NSLog(@"User orientation: %f", self.model->user_pos.orientation);
+        
+        CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, radians);
+        myAnnotationView.transform = transform;
+    });
 }
 
 @end

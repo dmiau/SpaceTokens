@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 @import GoogleMaps;
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -20,6 +21,8 @@
     // Override point for customization after application launch.
     
     [GMSServices provideAPIKey:@"AIzaSyAQkQV_52ZP5rHT23NWHlM8W2VFm5sasUI"];
+    [GMSPlacesClient provideAPIKey:@"AIzaSyDdWWS3g_hyI8UJRmiXyMwkCEgg2GH7rOU"];
+    
     return YES;
 }
 

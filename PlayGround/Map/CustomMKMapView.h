@@ -23,9 +23,9 @@
 - (void) mapTouchEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 @end
 
-//----------------
+//==============================
 // CustomMKMapView
-//----------------
+//==============================
 @interface CustomMKMapView : MKMapView{
     MKMapView *hiddenMap; // for calculations
 }

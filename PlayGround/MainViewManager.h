@@ -17,6 +17,7 @@ typedef enum {SEARCH, DIRECTION, CIRCLECHECKING, TASKBASEPANEL, STREETVIEWPANEL,
 @class TaskBasePanel;
 @class StreetViewPanel;
 @class AuthoringPanel;
+@class SearchPanelView;
 
 //-------------------------
 // ManViewManager
@@ -30,7 +31,7 @@ typedef enum {SEARCH, DIRECTION, CIRCLECHECKING, TASKBASEPANEL, STREETVIEWPANEL,
 
 // Pointers to all the panels
 @property DirectionPanel *directionPanel;
-@property SearchPanel *searchPanel;
+@property SearchPanelView *searchPanel;
 @property CircleCheckingPanel *circleCheckingPanel;
 @property TaskBasePanel *taskBasePanel;
 @property StreetViewPanel *streetViewPanel;

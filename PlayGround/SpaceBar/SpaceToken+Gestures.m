@@ -153,11 +153,12 @@
         if ((locationInView.x - self.initialTouchLocationInView.x) >
             self.frame.size.width/3)
         {
-            NSLog(@"current touch: %g, initial touch: %g",
-                  locationInView.x,
-                  self.initialTouchLocationInView.x);
             
-            [self handleRemoveToken];
+            if ([self.poi.name isEqualToString:@"YouRHere"]){
+                // YouRHere cannot be removed.
+            }else{
+                [self handleRemoveToken];
+            }
         }
         
     }else if (self.isDraggable){

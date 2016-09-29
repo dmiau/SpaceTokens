@@ -9,11 +9,13 @@
 #import "MainViewManager.h"
 #import "ViewController.h"
 #import "Views/DirectionPanel.h"
-#import "Views/SearchPanel.h"
+
 #import "Views/CircleCheckingPanel.h"
 #import "Views/TaskBasePanel.h"
 #import "Views/StreetViewPanel.h"
 #import "Views/AuthoringPanel.h"
+#import "SearchPanelView.h"
+//#import "Views/SearchPanel.h"
 
 @implementation MainViewManager
 
@@ -28,11 +30,11 @@
         self.rootViewController.mapView.frame.size.height;
         
         // Initialize all the panels
-        self.searchPanel = [[SearchPanel alloc]
-                            initWithFrame:
-                            CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
-                            ViewController:self.rootViewController];
-        [self showDefaultPanel];
+//        self.searchPanel = [[SearchPanel alloc]
+//                            initWithFrame:
+//                            CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
+//                            ViewController:self.rootViewController];
+
         
         self.directionPanel = [[DirectionPanel alloc] initWithFrame:
                                CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
@@ -60,6 +62,22 @@
                 self.authoringPanel = (AuthoringPanel*) aView;
             }
         }
+        
+        // Note this method needs to be here
+        view_array =
+        [[NSBundle mainBundle] loadNibNamed:@"ExtraPanels"
+                                      owner:self options:nil];
+        
+        for (UIView *aView in view_array){
+            if ([[aView restorationIdentifier] isEqualToString:@"SearchPanel"]){
+                self.searchPanel = (SearchPanelView*) aView;
+            }
+//            else if([[aView restorationIdentifier] isEqualToString:@"AuthoringPanel"]){
+//                self.authoringPanel = (AuthoringPanel*) aView;
+//            }
+        }
+        
+        [self showDefaultPanel];
         
     }
     return self;

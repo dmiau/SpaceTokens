@@ -133,7 +133,7 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
                                                 inSection:gestureRecognizer.view.tag];
     if (indexPath.row == 0) {
         [self updateSnapshotFileList];
-        expandCollectionSection = !expandCollectionSection;        
+        expandCollectionSection = !expandCollectionSection;
         [self.myTableView reloadData];
     }
 }

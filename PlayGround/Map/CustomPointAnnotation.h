@@ -12,7 +12,7 @@ typedef enum {
     landmark,
     dropped,
     search_result,
-    heading,
+    YouRHere,
     people,
     answer
 } location_enum;
