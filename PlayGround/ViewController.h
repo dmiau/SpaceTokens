@@ -46,7 +46,5 @@
 // SpaceToken related methods
 - (void)refreshSpaceTokens;
 
-// UI Panels
-- (void) directionButtonAction;
 @end
 

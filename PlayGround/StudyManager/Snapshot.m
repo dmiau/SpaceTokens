@@ -127,11 +127,13 @@
 //    [coder encodeDouble:self.latLon.latitude forKey:@"latLon.latitdue"];
 //    [coder encodeDouble:self.latLon.longitude forKey:@"latLon.longitude"];
 //    [coder encodeObject:self.name forKey:@"name"];
+
     
     [coder encodeObject:self.instructions forKey:@"instructions"];
     [coder encodeObject:self.highlightedPOIs forKey:@"highlightedPOIs"];
     [coder encodeObject:self.poisForSpaceTokens forKey:@"poisForSpaceTokens"];
     [coder encodeObject:self.targetedPOIs forKey:@"targetedPOIs"];
+    [coder encodeObject:[NSNumber numberWithInt:self.condition] forKey:@"condition"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -141,6 +143,11 @@
     self.highlightedPOIs = [coder decodeObjectOfClass:[NSString class] forKey:@"highlightedPOIs"];
     self.poisForSpaceTokens = [coder decodeObjectOfClass:[NSString class] forKey:@"poisForSpaceTokens"];
     self.targetedPOIs = [coder decodeObjectOfClass:[NSString class] forKey:@"targetedPOIs"];
+    
+    // Restore condition
+    self.condition = (Condition)
+    [[coder decodeObjectOfClass:[NSString class] forKey:@"condition"] integerValue];
+    
     return self;
 }
 
