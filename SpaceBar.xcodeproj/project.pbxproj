@@ -130,6 +130,7 @@
 		9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
+		9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62C3F61DCCD0B50048E44C /* Speech.framework */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
 		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
@@ -154,6 +155,8 @@
 		9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B5E521D5D659300A32DC9 /* MiniMapView.m */; };
 		9A8BCA281D343D43006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
 		9A8BCA2B1D344892006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
+		9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */; };
+		9A8D5E801DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */; };
 		9A8EC9E11D6112CD0012C769 /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
 		9A8EC9E21D6112CD0012C769 /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
 		9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */; };
@@ -182,6 +185,8 @@
 		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9AB2854C1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
 		9AB2854D1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
+		9AB5AAF31DD10DBD0094996B /* ConstraintDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */; };
+		9AB5AAF41DD10DBD0094996B /* ConstraintDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */; };
 		9AB76B761D9C5C110096C444 /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B751D9C5C110096C444 /* setup.png */; };
 		9AB76B771D9C5C110096C444 /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B751D9C5C110096C444 /* setup.png */; };
 		9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */; };
@@ -231,6 +236,8 @@
 		9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */; };
+		9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
+		9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AD7ACA31D9D4D6F00466AD5 /* MetaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */; };
@@ -316,6 +323,7 @@
 		9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RouteDatabase.mm; path = Map/RouteDatabase.mm; sourceTree = "<group>"; };
 		9A5D40581D3D2D7600CC91BE /* SpaceBar+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Annotations.h"; path = "SpaceBar/SpaceBar+Annotations.h"; sourceTree = "<group>"; };
 		9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SpaceBar+Annotations.mm"; path = "SpaceBar/SpaceBar+Annotations.mm"; sourceTree = "<group>"; };
+		9A62C3F61DCCD0B50048E44C /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
 		9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Annotations.h"; sourceTree = "<group>"; };
@@ -344,6 +352,7 @@
 		9A8B5E521D5D659300A32DC9 /* MiniMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMapView.m; path = Map/MiniMapView.m; sourceTree = "<group>"; };
 		9A8BCA261D343D43006C2EDC /* POI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POI.h; path = Map/POI.h; sourceTree = "<group>"; };
 		9A8BCA271D343D43006C2EDC /* POI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POI.m; path = Map/POI.m; sourceTree = "<group>"; };
+		9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConstraintDebugView.xib; path = ConstraintEngine/ConstraintDebugView.xib; sourceTree = "<group>"; };
 		9A8EC9DF1D6112CD0012C769 /* StreetViewPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreetViewPanel.h; path = Views/StreetViewPanel.h; sourceTree = "<group>"; };
 		9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = StreetViewPanel.mm; path = Views/StreetViewPanel.mm; sourceTree = "<group>"; };
 		9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
@@ -373,6 +382,8 @@
 		9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SnapshotProgress.mm; path = StudyManager/SnapshotProgress.mm; sourceTree = "<group>"; };
 		9AB2854A1D88C10700773166 /* SpaceBar+Anchors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Anchors.h"; path = "SpaceBar/SpaceBar+Anchors.h"; sourceTree = "<group>"; };
 		9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Anchors.m"; path = "SpaceBar/SpaceBar+Anchors.m"; sourceTree = "<group>"; };
+		9AB5AAF11DD10DBD0094996B /* ConstraintDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstraintDebugView.h; path = ConstraintEngine/ConstraintDebugView.h; sourceTree = "<group>"; };
+		9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstraintDebugView.m; path = ConstraintEngine/ConstraintDebugView.m; sourceTree = "<group>"; };
 		9AB76B751D9C5C110096C444 /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setup.png; path = icons/setup.png; sourceTree = "<group>"; };
 		9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grayYouRHere.png; path = icons/grayYouRHere.png; sourceTree = "<group>"; };
 		9ABA3B451D7B749300895175 /* ViewController+SpaceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+SpaceToken.h"; sourceTree = "<group>"; };
@@ -400,6 +411,8 @@
 		9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceBar iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBar copy-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBar copy-Info.plist"; sourceTree = "<absolute>"; };
 		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
+		9AD503311DC94303005A05D6 /* SpeechEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechEngine.h; path = ConstraintEngine/SpeechEngine.h; sourceTree = "<group>"; };
+		9AD503321DC94303005A05D6 /* SpeechEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechEngine.m; path = ConstraintEngine/SpeechEngine.m; sourceTree = "<group>"; };
 		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
 		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
 		9AD7ACA11D9D4D6E00466AD5 /* MetaToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetaToken.h; path = SpaceBar/MetaToken.h; sourceTree = "<group>"; };
@@ -437,6 +450,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */,
 				9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */,
 				9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */,
 				5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */,
@@ -458,6 +472,7 @@
 		0143FC2420AD43B364D84109 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A62C3F61DCCD0B50048E44C /* Speech.framework */,
 				9A73C4101D86527200CF2BF1 /* AVFoundation.framework */,
 				51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */,
 			);
@@ -599,6 +614,7 @@
 		9A5301401C5AD6A6008D584B /* PlayGround */ = {
 			isa = PBXGroup;
 			children = (
+				9AD503301DC94175005A05D6 /* Constraint Engine */,
 				9A836D361C6933B6007D9520 /* Tests */,
 				9A22D0151D22B97C009BC465 /* Map */,
 				9AC36DC31C5FF2220037210F /* SpaceBar Project */,
@@ -753,6 +769,18 @@
 			name = SeguePanels;
 			sourceTree = "<group>";
 		};
+		9AD503301DC94175005A05D6 /* Constraint Engine */ = {
+			isa = PBXGroup;
+			children = (
+				9AD503311DC94303005A05D6 /* SpeechEngine.h */,
+				9AD503321DC94303005A05D6 /* SpeechEngine.m */,
+				9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */,
+				9AB5AAF11DD10DBD0094996B /* ConstraintDebugView.h */,
+				9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */,
+			);
+			name = "Constraint Engine";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -895,6 +923,7 @@
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
+				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,6 +938,7 @@
 				9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */,
 				9AB76B7A1D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
 				9AB76B771D9C5C110096C444 /* setup.png in Resources */,
+				9A8D5E801DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
 				9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */,
 				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
@@ -1120,6 +1150,7 @@
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */,
 				9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
+				9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */,
 				9AC7E1A91D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
@@ -1127,6 +1158,7 @@
 				9AB2854C1D88C10700773166 /* SpaceBar+Anchors.m in Sources */,
 				9A8EC9E11D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
+				9AB5AAF31DD10DBD0094996B /* ConstraintDebugView.m in Sources */,
 				9AAAA1861D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -1198,6 +1230,7 @@
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */,
 				9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
+				9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */,
 				9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
@@ -1205,6 +1238,7 @@
 				9AB2854D1D88C10700773166 /* SpaceBar+Anchors.m in Sources */,
 				9A8EC9E21D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
+				9AB5AAF41DD10DBD0094996B /* ConstraintDebugView.m in Sources */,
 				9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,

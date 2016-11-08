@@ -15,7 +15,7 @@
 #import "Views/StreetViewPanel.h"
 #import "Views/AuthoringPanel.h"
 #import "SearchPanelView.h"
-//#import "Views/SearchPanel.h"
+
 
 @implementation MainViewManager
 
@@ -29,12 +29,6 @@
         float topPanelHeight = self.rootViewController.view.frame.size.height -
         self.rootViewController.mapView.frame.size.height;
         
-        // Initialize all the panels
-//        self.searchPanel = [[SearchPanel alloc]
-//                            initWithFrame:
-//                            CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
-//                            ViewController:self.rootViewController];
-
         
         self.directionPanel = [[DirectionPanel alloc] initWithFrame:
                                CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
@@ -63,6 +57,10 @@
             }
         }
         
+        //--------------------
+        // Load the search panel
+        //--------------------
+        
         // Note this method needs to be here
         view_array =
         [[NSBundle mainBundle] loadNibNamed:@"ExtraPanels"
@@ -76,6 +74,11 @@
 //                self.authoringPanel = (AuthoringPanel*) aView;
 //            }
         }
+        
+        // Configure the dimesion of the panel
+        self.searchPanel.frame =
+        CGRectMake(0, 0,
+                   self.rootViewController.view.frame.size.width, topPanelHeight);
         
         [self showDefaultPanel];
         

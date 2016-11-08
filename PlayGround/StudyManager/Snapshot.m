@@ -124,10 +124,6 @@
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];    
-//    [coder encodeDouble:self.latLon.latitude forKey:@"latLon.latitdue"];
-//    [coder encodeDouble:self.latLon.longitude forKey:@"latLon.longitude"];
-//    [coder encodeObject:self.name forKey:@"name"];
-
     
     [coder encodeObject:self.instructions forKey:@"instructions"];
     [coder encodeObject:self.highlightedPOIs forKey:@"highlightedPOIs"];
@@ -162,6 +158,7 @@
     object.poisForSpaceTokens = [[NSMutableArray alloc] initWithArray:self.poisForSpaceTokens copyItems:YES];
     object.targetedPOIs = [[NSMutableArray alloc] initWithArray:self.targetedPOIs copyItems:YES];
     
+    object.condition = self.condition;    
     return object;
 }
 

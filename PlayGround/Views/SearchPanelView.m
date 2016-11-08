@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "CustomMKMapView.h"
+#import "SpeechEngine.h"
 
 @implementation SearchPanelView
 
@@ -218,6 +219,11 @@
     
     [rootViewController performSegueWithIdentifier:@"DataSegue"
                                             sender:nil];
+}
+
+// MARK: -- Speech button action
+- (IBAction)speechAction:(id)sender {
+    [self.rootViewController.speechEngine showDebugLayer];
 }
 
 #pragma mark -- Search Initialization --

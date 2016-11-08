@@ -19,6 +19,7 @@
 @class Route;
 @class RouteDatabase;
 @class GameManager;
+@class SpeechEngine;
 
 @interface ViewController : UIViewController
 <SpaceBarDelegate, MKMapViewDelegate, CustomMKMapViewDelegate>
@@ -29,6 +30,10 @@
 @property MiniMapView *miniMapView;
 @property SpaceBar *spaceBar;
 @property GMSPanoramaView *panoView; //cache a pointer to the StreetView object
+
+// MARK: Constraint Engine
+@property SpeechEngine *speechEngine;
+
 
 // Databases
 @property POIDatabase *poiDatabase;

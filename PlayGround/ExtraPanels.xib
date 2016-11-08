@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,35 +16,47 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1d-oP-Km9">
-                    <frame key="frameInset" minX="6" minY="37" width="43" height="30"/>
+                    <rect key="frame" x="6" y="37" width="43" height="30"/>
                     <state key="normal" image="setup.png"/>
                     <connections>
                         <action selector="prefAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VOy-ms-P1q"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heh-RH-1Bd">
+                    <rect key="frame" x="324" y="100" width="31" height="30"/>
                     <state key="normal" title="data"/>
                     <connections>
                         <action selector="dataAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="o3i-fE-o56"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnB-dK-KjN">
-                    <frame key="frameInset" minX="57" minY="25" width="318" height="55"/>
+                    <rect key="frame" x="57" y="25" width="318" height="55"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="Nz4-io-uMR"/>
                         <constraint firstAttribute="height" constant="55" id="cHD-sC-d4O"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCg-TV-1O4">
+                    <rect key="frame" x="253" y="100" width="51" height="30"/>
+                    <state key="normal" title="speech"/>
+                    <connections>
+                        <action selector="speechAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="2DN-Us-gqZ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="0Ed-j3-d1Q"/>
                 <constraint firstItem="wnB-dK-KjN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="Amy-cP-BOn"/>
+                <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="CaH-Ot-227"/>
+                <constraint firstAttribute="bottom" secondItem="fCg-TV-1O4" secondAttribute="bottom" constant="20" id="EOv-aM-zeK"/>
+                <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="FFF-Jp-O39"/>
                 <constraint firstItem="z1d-oP-Km9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="WKa-64-Gsq"/>
                 <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="an6-X0-Vqv"/>
                 <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="20" id="bbG-fC-V2D"/>
                 <constraint firstItem="z1d-oP-Km9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="dYi-jS-qDp"/>
+                <constraint firstItem="heh-RH-1Bd" firstAttribute="leading" secondItem="fCg-TV-1O4" secondAttribute="trailing" constant="20" id="ef6-Vt-jr4"/>
                 <constraint firstAttribute="trailing" secondItem="heh-RH-1Bd" secondAttribute="trailing" constant="20" id="lmG-Ma-ELU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

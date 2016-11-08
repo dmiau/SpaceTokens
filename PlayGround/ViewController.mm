@@ -15,6 +15,7 @@
 #import "Map/MiniMapView.h"
 #import "StudyManager/GameManager.h"
 #import "StudyManager/SnapshotDatabase.h"
+#import "SpeechEngine.h"
 
 // This is an extension (similar to a category)
 @interface ViewController ()
@@ -112,6 +113,11 @@
 //    // Run the test
 //    Tester *tester = [[Tester alloc] init];
 //    [tester runTests];
+    
+    //----------------
+    // Initialize SpeechRecognizer
+    //----------------
+    self.speechEngine = [[SpeechEngine alloc] init];    
 }
 
 

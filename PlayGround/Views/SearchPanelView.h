@@ -19,7 +19,7 @@
 
 - (IBAction)prefAction:(id)sender;
 - (IBAction)dataAction:(id)sender;
-
+- (IBAction)speechAction:(id)sender;
 
 //---------------
 // Search Bar related items
