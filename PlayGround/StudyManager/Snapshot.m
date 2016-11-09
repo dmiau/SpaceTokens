@@ -150,10 +150,16 @@
 // Deep copy
 -(id) copyWithZone:(NSZone *) zone
 {
+    
+    // Copy important POI data
+    
     Snapshot *object = [[[self class] allocWithZone:zone] init];
     object.latLon = self.latLon;
     object.name = self.name;
     object.coordSpan = self.coordSpan;
+    
+    // Copy Snapshot specific data
+    object.instructions = [self.instructions copy];
     object.highlightedPOIs = [[NSMutableArray alloc] initWithArray:self.highlightedPOIs copyItems:YES];
     object.poisForSpaceTokens = [[NSMutableArray alloc] initWithArray:self.poisForSpaceTokens copyItems:YES];
     object.targetedPOIs = [[NSMutableArray alloc] initWithArray:self.targetedPOIs copyItems:YES];
