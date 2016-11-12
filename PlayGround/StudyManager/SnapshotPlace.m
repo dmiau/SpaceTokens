@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "Record.h"
 #import "GameManager.h"
+#import "PlaceInstructionView.h"
 
 @implementation SnapshotPlace
 
@@ -40,8 +41,14 @@
         spaceBar.isTokenDraggingEnabled = YES;
     }
     
-    // Start the timer
-    [self.record start];
+    
+    //----------------
+    // Present the instruction panel
+    //----------------
+    PlaceInstructionView *instructionView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceInstructionView" owner:self options:nil] firstObject];
+    
+    [instructionView prepareInstruction:self];
+    [instructionView showInstruction];
 }
 
 @end

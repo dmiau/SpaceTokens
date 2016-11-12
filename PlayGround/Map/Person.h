@@ -11,6 +11,7 @@
 
 @interface Person : NSObject <CLLocationManagerDelegate>
 
+@property double headingInDegree;
 @property BOOL updateFlag;
 @property POI *poi;
 

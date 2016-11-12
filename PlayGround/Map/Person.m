@@ -20,6 +20,7 @@
         _poi = [[POI alloc] init];
         _poi.name = @"YouRHere";
         _poi.annotation.pointType = YouRHere;
+        _headingInDegree = 0;
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -84,7 +85,7 @@
 - (void)locationManager:(CLLocationManager *)manager
        didUpdateHeading:(CLHeading *)newHeading
 {
-    self.poi.headingInDegree = [newHeading trueHeading];
+    self.headingInDegree = [newHeading trueHeading];
     // heading is in degree
     [self updateMapAnnotation];
 }
@@ -108,7 +109,7 @@
         [myAnnotationView setImage:myImg];
         [myAnnotationView setNeedsDisplay];
         
-        float radians = (self.poi.headingInDegree)/180 * M_PI;
+        float radians = (self.headingInDegree)/180 * M_PI;
         
         //        NSLog(@"camera orientation: %f", self.model->camera_pos.orientation);
         //        NSLog(@"User orientation: %f", self.model->user_pos.orientation);

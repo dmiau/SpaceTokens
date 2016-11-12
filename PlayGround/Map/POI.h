@@ -9,23 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "CustomPointAnnotation.h"
-
+#import "SpatialEntity.h"
 
 //-------------------
 // POI
 //-------------------
-@interface POI : NSObject
+@interface POI : SpatialEntity
 
-- (id)initWithCoder:(NSCoder *)coder;
-- (void)encodeWithCoder:(NSCoder *)coder;
 
-//---properties
-@property CLLocationCoordinate2D latLon;
-@property MKCoordinateSpan coordSpan;
-@property double headingInDegree;
-@property NSString *name;
-@property CustomPointAnnotation *annotation;
-@property bool isEnabled;
-@property BOOL isMapAnnotationEnabled;
-@property (weak) id linkedObj; // a POI can be linked another object, e.g., a SpaceToken
 @end

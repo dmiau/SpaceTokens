@@ -173,6 +173,8 @@
 		9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
+		9AA57F6F1DD624D800347B1A /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.m */; };
+		9AA57F701DD624D800347B1A /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.m */; };
 		9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
@@ -244,6 +246,10 @@
 		9AD7ACA41D9D4D6F00466AD5 /* MetaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */; };
 		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
+		9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */; };
+		9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */; };
+		9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
+		9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
 		9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
@@ -369,6 +375,8 @@
 		9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapshotTableController.m; sourceTree = "<group>"; };
 		9AA454DD1D52D160008D4FCF /* MyFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFileManager.h; sourceTree = "<group>"; };
 		9AA454DE1D52D160008D4FCF /* MyFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFileManager.m; sourceTree = "<group>"; };
+		9AA57F6D1DD624D800347B1A /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpatialEntity.h; path = Map/SpatialEntity.h; sourceTree = "<group>"; };
+		9AA57F6E1DD624D800347B1A /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpatialEntity.m; path = Map/SpatialEntity.m; sourceTree = "<group>"; };
 		9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotDatabase.h; path = StudyManager/SnapshotDatabase.h; sourceTree = "<group>"; };
 		9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotDatabase.m; path = StudyManager/SnapshotDatabase.m; sourceTree = "<group>"; };
 		9AA617611D5635D1003CD946 /* SnapshotProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProtocol.h; path = StudyManager/SnapshotProtocol.h; sourceTree = "<group>"; };
@@ -419,6 +427,9 @@
 		9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetaToken.m; path = SpaceBar/MetaToken.m; sourceTree = "<group>"; };
 		9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIDetailViewController.h; sourceTree = "<group>"; };
 		9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIDetailViewController.m; sourceTree = "<group>"; };
+		9AE1D2A21DD39E2D0092B1D4 /* PlaceInstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceInstructionView.h; path = StudyManager/PlaceInstructionView.h; sourceTree = "<group>"; };
+		9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceInstructionView.m; path = StudyManager/PlaceInstructionView.m; sourceTree = "<group>"; };
+		9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceInstructionView.xib; path = StudyManager/PlaceInstructionView.xib; sourceTree = "<group>"; };
 		9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Record.h; path = StudyManager/Record.h; sourceTree = "<group>"; };
 		9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Record.m; path = StudyManager/Record.m; sourceTree = "<group>"; };
 		9AF100021D57FA720063CB63 /* StudyPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyPanels.xib; sourceTree = "<group>"; };
@@ -517,6 +528,8 @@
 				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
 				9A27222C1D6CB79C002AE953 /* Person.h */,
 				9A27222D1D6CB79C002AE953 /* Person.m */,
+				9AA57F6D1DD624D800347B1A /* SpatialEntity.h */,
+				9AA57F6E1DD624D800347B1A /* SpatialEntity.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -559,6 +572,9 @@
 				9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */,
 				9ACCEA181D81FB7400E145D7 /* SnapshotPlace.h */,
 				9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */,
+				9AE1D2A21DD39E2D0092B1D4 /* PlaceInstructionView.h */,
+				9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */,
+				9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */,
 				9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */,
 				9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */,
 				9A485B451D906BD500C43255 /* RecordDatabase.h */,
@@ -920,6 +936,7 @@
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
 				9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
+				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
@@ -944,6 +961,7 @@
 				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
 				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
+				9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,12 +1158,14 @@
 				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
 				9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */,
+				9AA57F6F1DD624D800347B1A /* SpatialEntity.m in Sources */,
 				9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
 				9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
 				9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
+				9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */,
@@ -1220,12 +1240,14 @@
 				9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
 				9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */,
+				9AA57F701DD624D800347B1A /* SpatialEntity.m in Sources */,
 				9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
 				9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
+				9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
 				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */,
