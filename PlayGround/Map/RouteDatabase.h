@@ -13,6 +13,8 @@
 @property NSString *name;
 @property NSMutableDictionary <NSString*, Route *> *routeDictionary;
 
++(RouteDatabase*)sharedManager;
+
 -(void)reloadRouteDB; // a temporary method
 
 // iCloud related methods

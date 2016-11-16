@@ -19,6 +19,7 @@
 @class Route;
 @class RouteDatabase;
 @class GameManager;
+@class EntityDatabase;
 @class SpeechEngine;
 
 @interface ViewController : UIViewController
@@ -37,11 +38,12 @@
 
 // Databases
 @property POIDatabase *poiDatabase;
+@property EntityDatabase *entityDatabase;
 @property GameManager *gameManager;
+@property RouteDatabase *routeDatabase;
+
 
 // Route related methods
-@property RouteDatabase *routeDatabase;
-@property Route* activeRoute;
 - (void)showRouteFromDatabaseWithName:(NSString*) name
                        zoomToOverview: (BOOL) overviewFlag;
 - (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag;

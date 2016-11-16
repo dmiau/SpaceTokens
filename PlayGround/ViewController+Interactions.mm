@@ -14,11 +14,11 @@
 // The following two are SpaceBar delegate method
 - (void)spaceBarOnePointTouched:(float)percentage{
     
-    if (self.activeRoute){
+    if (self.spaceBar.activeRoute){
         CLLocationCoordinate2D coord;
         double orientationInDegree;
                 
-        [self.activeRoute convertPercentage: percentage
+        [self.spaceBar.activeRoute convertPercentage: percentage
                              toLatLon: coord orientation:orientationInDegree];
         
         [self.mapView setRegion: MKCoordinateRegionMake(coord,
@@ -32,7 +32,7 @@
 // Two points are touched.
 -(void)spaceBarTwoPointsTouchedLow:(float)low high:(float)high{
 
-    if (self.activeRoute){
+    if (self.spaceBar.activeRoute){
         // look up the coordinates
         CLLocationCoordinate2D coord1, coord2;
         CGPoint xy1, xy2;
@@ -40,7 +40,7 @@
         
         //======== 1st point =========
         
-        [self.activeRoute convertPercentage: low
+        [self.spaceBar.activeRoute convertPercentage: low
                              toLatLon: coord1 orientation:orientationInDegree];
         
         // find the (x, y) coordinates based on the current orientation
@@ -48,7 +48,7 @@
         
         
         //======== 2nd point =========
-        [self.activeRoute convertPercentage: high
+        [self.spaceBar.activeRoute convertPercentage: high
                              toLatLon: coord2 orientation:orientationInDegree];
         
         xy2 = [self.mapView convertCoordinate:coord2 toPointToView:self.mapView];
@@ -93,16 +93,16 @@
         
         // The bottom one (lower value) should be the anchor
         // find the (lat, lon) of the bottom one
-        [self.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
-        [self.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
+        [self.spaceBar.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
+        [self.spaceBar.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:anchor
                                                                        toB:target];
         [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
     }else{
        // Move from high to low
-        [self.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
-        [self.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
+        [self.spaceBar.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
+        [self.spaceBar.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:target
                                                                        toB:anchor];
@@ -111,7 +111,7 @@
 }
 
 //-----------------
-// This method does the following things
+// Show routes from database
 //-----------------
 - (void)showRouteFromDatabaseWithName:(NSString*) name
                        zoomToOverview: (BOOL) overviewFlag
@@ -138,17 +138,17 @@
 - (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag{
     
     // Remove the previous route if there is any
-    if (self.activeRoute){
+    if (self.spaceBar.activeRoute){
         [self.mapView removeOverlay:
-         self.activeRoute.route.polyline];
-        self.activeRoute = nil;
+         self.spaceBar.activeRoute.route.polyline];
+        self.spaceBar.activeRoute = nil;
     }
 
     // Show the new route
-    self.activeRoute = aRoute;
+    self.spaceBar.activeRoute = aRoute;
     // Remove old annotations and add new ones
     [self.spaceBar removeRouteAnnotations];
-    [self.spaceBar addAnnotationsFromRoute:self.activeRoute];
+    [self.spaceBar addAnnotationsFromRoute:self.spaceBar.activeRoute];
     
     // Only enable SpaceBar after a route is added
     self.spaceBar.spaceBarMode = PATH;
@@ -159,7 +159,7 @@
         
         // If the mini map is on, zoom the map to fit the entire route
         if (self.miniMapView.superview){            
-            [self.miniMapView zoomToFitRoute:self.activeRoute];
+            [self.miniMapView zoomToFitRoute:self.spaceBar.activeRoute];
             // Remove previous routes if any
             [self.miniMapView removeRouteOverlays];
             
@@ -172,10 +172,10 @@
 
 - (void)removeRoute{
     // Remove the previous route if there is any
-    if (self.activeRoute){
+    if (self.spaceBar.activeRoute){
         [self.mapView removeOverlay:
-         self.activeRoute.route.polyline];
-        self.activeRoute = nil;
+         self.spaceBar.activeRoute.route.polyline];
+        self.spaceBar.activeRoute = nil;
     }
     // Reset Spacebar
     [self.spaceBar resetSpaceBar];

@@ -46,6 +46,9 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 
 @property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
+// Cache the active route object
+@property Route* activeRoute;
+
 @property NSMutableArray <POI*> *poiArrayDataSource;
 @property NSMutableArray <SpaceToken*> *buttonArray;
 @property NSMutableSet <SpaceToken*> *dotSet;

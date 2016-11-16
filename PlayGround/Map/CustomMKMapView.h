@@ -35,8 +35,6 @@
 @property (nonatomic, weak) id<MKMapViewDelegate, CustomMKMapViewDelegate> delegate;
 @property MKUserLocation *customUserLocation;
 
-//@property
-
 @property UIEdgeInsets edgeInsets;// this is for the zoom-to-fit feature
 
 @property BOOL isDebugModeOn;

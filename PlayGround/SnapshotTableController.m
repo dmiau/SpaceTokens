@@ -153,9 +153,6 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
     int section_id = [indexPath section];
     int i = [indexPath row];
     
-    // Configure Cell
-    cell.textLabel.text = snapshotDatabase.snapshotArray[i].name;
-    
     if (section_id == COLLECTIONS){
         cell.textLabel.text = snapshotFileArray[i];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", i];

@@ -10,13 +10,15 @@
 #import <vector>
 #import <iostream>
 #import "POI.h"
+#import "CustomMKMapView.h"
+
 using namespace std;
 
 template class std::vector<pair<int, int>>;
 
-//------------------
+//============================
 // Route class
-//------------------
+//============================
 @implementation Route
 
 
@@ -31,6 +33,23 @@ template class std::vector<pair<int, int>>;
         [self computeAccumulatedDistStructure];
     }
     return self;
+}
+
+
+//-----------------
+// Setters
+//-----------------
+-(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
+    self.isMapAnnotationEnabled = isMapAnnotationEnabled;
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    if (isMapAnnotationEnabled){
+        // Add the annotation
+        [mapView addOverlay:self.routePolyline level:MKOverlayLevelAboveRoads];
+    }else{
+        // Remove the annotation
+        [mapView removeOverlay: self.routePolyline];
+    }
 }
 
 //-----------------
@@ -284,7 +303,7 @@ double computeOrientationFromA2B
 }
 
 //----------------
-// Save the route
+#pragma mark -- Save the route --
 //----------------
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {

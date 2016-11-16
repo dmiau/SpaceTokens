@@ -12,6 +12,7 @@
 #import "Map/Route.h"
 #import "Map/POIDatabase.h"
 #import "Map/RouteDatabase.h"
+#import "EntityDatabase.h"
 #import "Map/MiniMapView.h"
 #import "StudyManager/GameManager.h"
 #import "StudyManager/SnapshotDatabase.h"
@@ -54,11 +55,17 @@
     //----------------
     // Initialize a Route DB
     //----------------
-    self.routeDatabase = [[RouteDatabase alloc] init];
-    [self.routeDatabase reloadRouteDB];
+    self.routeDatabase = [RouteDatabase sharedManager];
+    [self.routeDatabase reloadRouteDB];    
     
     //----------------
-    // Initialize a Snashot DB
+    // Initialize an Entity DB
+    //----------------
+    self.entityDatabase = [EntityDatabase sharedManager];
+    [self.entityDatabase debugInit];
+    
+    //----------------
+    // Initialize a Snapshot DB
     //----------------
     SnapshotDatabase *mySnapshotDatabase = [SnapshotDatabase sharedManager];
     mySnapshotDatabase.name = @"Study";

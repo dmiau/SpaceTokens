@@ -8,6 +8,7 @@
 
 #import "CustomMKMapView+Annotations.h"
 
+
 @implementation CustomMKMapView (Annotations)
 
 //------------------
@@ -121,6 +122,27 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+
+#pragma mark --Routes--
+//------------------
+// For route overlay
+//------------------
+- (MKOverlayRenderer *) rendererForOverlay:(id < MKOverlay >)overlay
+{
+    if ([overlay isKindOfClass:[MKCircle class]]){
+        MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+        //        renderer.strokeColor = [UIColor redColor];
+        renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+        return renderer;
+    }else{
+        MKPolylineRenderer *renderer =
+        [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        renderer.strokeColor = [UIColor blueColor];
+        renderer.lineWidth = 5.0;
+        return renderer;
+    }
 }
 
 @end

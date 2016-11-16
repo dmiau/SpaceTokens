@@ -10,16 +10,17 @@
 #import <MapKit/MapKit.h>
 #include <vector>
 #include <utility>
+#include "SpatialEntity.h"
 
 using namespace std;
 
 #pragma mark RouteInterface
-@interface Route : NSObject
+@interface Route : SpatialEntity
 
 //------------------
 // properties
 //------------------
-@property NSString *name;
+
 @property MKRoute *route;
 @property MKPolyline *routePolyline;
 
@@ -36,6 +37,9 @@ using namespace std;
 //------------------
 // methods
 //------------------
+
+
+
 
 // Constructors
 - (id)initWithMKRoute: (MKRoute *) aRoute Source: (MKMapItem*) source

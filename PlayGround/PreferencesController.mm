@@ -136,13 +136,13 @@
         
         // Add the route if there is an active route
         
-        if (self.rootViewController.activeRoute){
-            [self.rootViewController.miniMapView zoomToFitRoute:self.rootViewController.activeRoute];
+        if (self.rootViewController.spaceBar.activeRoute){
+            [self.rootViewController.miniMapView zoomToFitRoute:self.rootViewController.spaceBar.activeRoute];
             // Remove previous routes if any
             [self.rootViewController.miniMapView removeRouteOverlays];
             
             [self.rootViewController.miniMapView
-             addOverlay:self.rootViewController.activeRoute.route.polyline
+             addOverlay:self.rootViewController.spaceBar.activeRoute.route.polyline
              level:MKOverlayLevelAboveRoads];
         }
     }else if ([label isEqualToString:@"Off"]){

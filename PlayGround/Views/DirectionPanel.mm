@@ -61,8 +61,8 @@
     // Do some clean up
     // Remove route annotation and the route
     [self.rootViewController.mapView removeOverlay:
-     self.rootViewController.activeRoute.route.polyline];
-    self.rootViewController.activeRoute = nil;
+     self.rootViewController.spaceBar.activeRoute.route.polyline];
+    self.rootViewController.spaceBar.activeRoute = nil;
     
     // Reset Spacebar
     [self.rootViewController.spaceBar resetSpaceBar];

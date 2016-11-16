@@ -10,6 +10,18 @@
 #import "POI.h"
 
 @implementation RouteDatabase
+
++(RouteDatabase*)sharedManager{
+    static RouteDatabase *sharedRouteDatabase = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedRouteDatabase = [[RouteDatabase alloc] init];
+    });
+    
+    return sharedRouteDatabase;
+}
+
 - (id) init{
     self = [super init];
     if (self){

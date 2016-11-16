@@ -173,8 +173,8 @@
 		9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
-		9AA57F6F1DD624D800347B1A /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.m */; };
-		9AA57F701DD624D800347B1A /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.m */; };
+		9AA57F6F1DD624D800347B1A /* SpatialEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */; };
+		9AA57F701DD624D800347B1A /* SpatialEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */; };
 		9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
@@ -263,6 +263,8 @@
 		9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
 		9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
+		9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
+		9AFC0A681DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
 		9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
 /* End PBXBuildFile section */
@@ -376,7 +378,7 @@
 		9AA454DD1D52D160008D4FCF /* MyFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFileManager.h; sourceTree = "<group>"; };
 		9AA454DE1D52D160008D4FCF /* MyFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFileManager.m; sourceTree = "<group>"; };
 		9AA57F6D1DD624D800347B1A /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpatialEntity.h; path = Map/SpatialEntity.h; sourceTree = "<group>"; };
-		9AA57F6E1DD624D800347B1A /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpatialEntity.m; path = Map/SpatialEntity.m; sourceTree = "<group>"; };
+		9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SpatialEntity.mm; path = Map/SpatialEntity.mm; sourceTree = "<group>"; };
 		9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotDatabase.h; path = StudyManager/SnapshotDatabase.h; sourceTree = "<group>"; };
 		9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotDatabase.m; path = StudyManager/SnapshotDatabase.m; sourceTree = "<group>"; };
 		9AA617611D5635D1003CD946 /* SnapshotProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProtocol.h; path = StudyManager/SnapshotProtocol.h; sourceTree = "<group>"; };
@@ -443,6 +445,8 @@
 		9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckingPanel.m; path = Views/CheckingPanel.m; sourceTree = "<group>"; };
 		9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthoringPanel.h; path = Views/AuthoringPanel.h; sourceTree = "<group>"; };
 		9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanel.m; path = Views/AuthoringPanel.m; sourceTree = "<group>"; };
+		9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityDatabase.h; path = Map/EntityDatabase.h; sourceTree = "<group>"; };
+		9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EntityDatabase.mm; path = Map/EntityDatabase.mm; sourceTree = "<group>"; };
 		9AFFFFF01D85B85A00111E6C /* Snapshot+Validators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Snapshot+Validators.h"; path = "StudyManager/Snapshot+Validators.h"; sourceTree = "<group>"; };
 		9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Snapshot+Validators.m"; path = "StudyManager/Snapshot+Validators.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -502,8 +506,6 @@
 		9A22D0151D22B97C009BC465 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				9A8BCA261D343D43006C2EDC /* POI.h */,
-				9A8BCA271D343D43006C2EDC /* POI.m */,
 				9A143B321D2AF56E001EE841 /* CustomMKMapView.h */,
 				9A143B331D2AF56E001EE841 /* CustomMKMapView.m */,
 				9A93F9261D3016690012638A /* CustomMKMapView+MapDisplay.h */,
@@ -516,6 +518,12 @@
 				9A8B5E521D5D659300A32DC9 /* MiniMapView.m */,
 				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
 				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
+				9AA57F6D1DD624D800347B1A /* SpatialEntity.h */,
+				9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */,
+				9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */,
+				9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */,
+				9A8BCA261D343D43006C2EDC /* POI.h */,
+				9A8BCA271D343D43006C2EDC /* POI.m */,
 				9A43EAEE1D4008F400080029 /* POIDatabase.h */,
 				9A43EAEF1D4008F400080029 /* POIDatabase.m */,
 				9A56B7DF1D4E7C5A00A14B02 /* POIDatabase+iCloud.h */,
@@ -528,8 +536,6 @@
 				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
 				9A27222C1D6CB79C002AE953 /* Person.h */,
 				9A27222D1D6CB79C002AE953 /* Person.m */,
-				9AA57F6D1DD624D800347B1A /* SpatialEntity.h */,
-				9AA57F6E1DD624D800347B1A /* SpatialEntity.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -1138,6 +1144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */,
+				9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
@@ -1158,7 +1165,7 @@
 				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
 				9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */,
-				9AA57F6F1DD624D800347B1A /* SpatialEntity.m in Sources */,
+				9AA57F6F1DD624D800347B1A /* SpatialEntity.mm in Sources */,
 				9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
@@ -1220,6 +1227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A246D701D55589B00888A74 /* SettingsButton.m in Sources */,
+				9AFC0A681DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
 				9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
@@ -1240,7 +1248,7 @@
 				9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
 				9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */,
-				9AA57F701DD624D800347B1A /* SpatialEntity.m in Sources */,
+				9AA57F701DD624D800347B1A /* SpatialEntity.mm in Sources */,
 				9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
