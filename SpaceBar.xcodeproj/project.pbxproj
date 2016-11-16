@@ -13,6 +13,8 @@
 		9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
+		9A1985A61DDCEE460016696F /* PathToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.m */; };
+		9A1985A71DDCEE460016696F /* PathToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.m */; };
 		9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
@@ -278,6 +280,8 @@
 		9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceBar.entitlements; sourceTree = "<group>"; };
 		9A143B321D2AF56E001EE841 /* CustomMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKMapView.h; path = Map/CustomMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* CustomMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKMapView.m; path = Map/CustomMKMapView.m; sourceTree = "<group>"; };
+		9A1985A41DDCEE460016696F /* PathToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathToken.h; path = SpaceBar/PathToken.h; sourceTree = "<group>"; };
+		9A1985A51DDCEE460016696F /* PathToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathToken.m; path = SpaceBar/PathToken.m; sourceTree = "<group>"; };
 		9A1CA2B41D4671210098957A /* CustomTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabController.h; path = Views/CustomTabController.h; sourceTree = "<group>"; };
 		9A1CA2B51D4671210098957A /* CustomTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabController.m; path = Views/CustomTabController.m; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
@@ -700,6 +704,8 @@
 				9AC36DD11C60087B0037210F /* SpaceToken.m */,
 				9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */,
 				9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */,
+				9A1985A41DDCEE460016696F /* PathToken.h */,
+				9A1985A51DDCEE460016696F /* PathToken.m */,
 				9AD7ACA11D9D4D6E00466AD5 /* MetaToken.h */,
 				9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */,
 				9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */,
@@ -1207,6 +1213,7 @@
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
 				9ABA3B471D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
+				9A1985A61DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */,
 				9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */,
@@ -1290,6 +1297,7 @@
 				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
 				9ABA3B481D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
+				9A1985A71DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */,
 				9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */,

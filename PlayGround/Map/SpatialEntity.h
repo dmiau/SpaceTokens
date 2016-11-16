@@ -22,7 +22,6 @@
 @property CLLocationCoordinate2D latLon;
 @property MKCoordinateSpan coordSpan;
 
-@property MKCoordinateRegion coordRegion;
 
 @property BOOL isEnabled; // Whether this entity is enabled or not
 @property BOOL isMapAnnotationEnabled;

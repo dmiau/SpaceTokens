@@ -11,6 +11,7 @@
 #import <iostream>
 #import "POI.h"
 #import "CustomMKMapView.h"
+#include <cmath>
 
 using namespace std;
 
@@ -30,7 +31,7 @@ template class std::vector<pair<int, int>>;
         self.source = source;
         self.destination = destination;
         self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
-        [self computeAccumulatedDistStructure];
+        [self populateInternalRouteProperties];
     }
     return self;
 }
@@ -55,7 +56,7 @@ template class std::vector<pair<int, int>>;
 //-----------------
 // Compute accumulatedDist structure
 //-----------------
--(void)computeAccumulatedDistStructure{
+-(void)populateInternalRouteProperties{
     //computer the accumulatedDist array
     self.mapPointX = new vector<double>;
     self.mapPointY = new vector<double>;
@@ -133,6 +134,32 @@ template class std::vector<pair<int, int>>;
 //    }
     
     
+    //----------------
+    // Populate SpatialEntity properties
+    //----------------
+    
+    // Get the latLon at the mid point
+    CLLocationCoordinate2D midLatLon;
+    double segmentOrientation;
+    [self convertPercentage: 50 toLatLon: midLatLon orientation: segmentOrientation];
+
+    self.latLon = midLatLon;
+    
+    CLLocationCoordinate2D startLatLon;
+    [self convertPercentage: 0 toLatLon: startLatLon orientation: segmentOrientation];
+    
+    CLLocationCoordinate2D endLatLon;
+    [self convertPercentage: 100 toLatLon: endLatLon orientation: segmentOrientation];
+    
+    CLLocationCoordinate2D centerCoordinate;
+    centerCoordinate.latitude = (startLatLon.latitude + endLatLon.latitude)/2;
+    centerCoordinate.longitude = (startLatLon.longitude + endLatLon.longitude)/2;
+    
+    MKCoordinateSpan coordSpan;
+    coordSpan.latitudeDelta = abs(startLatLon.latitude - endLatLon.latitude);
+    coordSpan.longitudeDelta = abs(startLatLon.longitude - endLatLon.longitude);
+    
+    self.coordSpan = coordSpan;
 }
 
 
@@ -364,7 +391,7 @@ double computeOrientationFromA2B
     self.route = nil;
     self.routePolyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[polylineArrayX count]];
     delete[] tempMapPointArray;
-    [self computeAccumulatedDistStructure];
+    [self populateInternalRouteProperties];
     return self;
 }
 
