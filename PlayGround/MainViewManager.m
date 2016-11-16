@@ -134,7 +134,7 @@
     // Refresh SpaceTokens
     [self.rootViewController.spaceBar removeAllSpaceTokens];
     [self.rootViewController.spaceBar
-     addSpaceTokensFromPOIArray:self.rootViewController.poiDatabase.poiArray];
+     addSpaceTokensFromEntityArray:self.rootViewController.poiDatabase.poiArray];
 }
 
 - (void)showDirectionPanel{

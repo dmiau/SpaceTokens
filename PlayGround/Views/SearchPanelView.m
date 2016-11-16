@@ -64,7 +64,7 @@
     [self.rootViewController.view addSubview:self];
     [self.rootViewController removeRoute];
     [self.rootViewController.spaceBar
-     addSpaceTokensFromPOIArray: self.rootViewController.poiDatabase.poiArray];
+     addSpaceTokensFromEntityArray: self.rootViewController.poiDatabase.poiArray];
     
     self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     

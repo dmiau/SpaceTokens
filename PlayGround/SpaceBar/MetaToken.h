@@ -11,5 +11,5 @@
 
 @interface MetaToken : SpaceToken
 
-@property NSMutableArray <POI*> *poiArray;
+@property NSMutableArray <SpatialEntity*> *entityArray;
 @end

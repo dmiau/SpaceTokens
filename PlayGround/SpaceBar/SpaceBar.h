@@ -49,7 +49,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // Cache the active route object
 @property Route* activeRoute;
 
-@property NSMutableArray <POI*> *poiArrayDataSource;
+@property NSMutableArray <SpatialEntity*> *entityArrayDataSource;
 @property NSMutableArray <SpaceToken*> *buttonArray;
 @property NSMutableSet <SpaceToken*> *dotSet;
 
@@ -87,8 +87,8 @@ unsigned int spaceBarElevatorMoved:1;
 // --------------
 // SpaceToken management
 // --------------
-- (SpaceToken*) addSpaceTokenFromPOI:(POI*) poi;
-- (void)addSpaceTokensFromPOIArray: (NSMutableArray <POI*> *) poiArray;
+- (SpaceToken*) addSpaceTokenFromEntity:(SpatialEntity*) spatialEntity;
+- (void)addSpaceTokensFromEntityArray: (NSMutableArray <SpatialEntity*> *) entityArray;
 - (void)removeAllSpaceTokens;
 - (void)resetSpaceBar;
 - (void)clearAllTouchedTokens;

@@ -37,7 +37,7 @@
         [self.buttonArray removeObject:currentSpaceToken];
         // Duplicate the button
         SpaceToken* newSpaceToken =
-        [self addSpaceTokenFromPOI:currentSpaceToken.poi];
+        [self addSpaceTokenFromEntity:currentSpaceToken.spatialEntity];
         newSpaceToken.frame = currentSpaceToken.frame;
         
         currentSpaceToken.counterPart = newSpaceToken;
@@ -65,7 +65,7 @@
 #pragma mark --Order SpaceToken--
 
 - (void) updateSpecialPOIs{
-    self.mapCentroid.poi.latLon = self.mapView.centerCoordinate;
+    self.mapCentroid.spatialEntity.latLon = self.mapView.centerCoordinate;
 }
 
 
@@ -151,14 +151,14 @@
 //----------------
 // add a SpaceToken
 //----------------
-- (SpaceToken*) addSpaceTokenFromPOI:(POI *)poi{
+- (SpaceToken*) addSpaceTokenFromEntity:(SpatialEntity *)spatialEntity{
     
     SpaceToken *aSpaceToken = [[SpaceToken alloc] init];
     [aSpaceToken configureAppearanceForType:DOCKED];
     
-    [aSpaceToken setTitle:poi.name forState:UIControlStateNormal];
-    aSpaceToken.poi = poi;
-    poi.linkedObj = aSpaceToken; // Establish the connection
+    [aSpaceToken setTitle:spatialEntity.name forState:UIControlStateNormal];
+    aSpaceToken.spatialEntity = spatialEntity;
+    spatialEntity.linkedObj = aSpaceToken; // Establish the connection
     aSpaceToken.isDraggable = self.isTokenDraggingEnabled;
     
     if (aSpaceToken){
@@ -182,19 +182,19 @@
 //----------------
 // Add SpaceTokens from poiArray
 //----------------
-- (void)addSpaceTokensFromPOIArray: (NSMutableArray <POI*> *) poiArray{
+- (void)addSpaceTokensFromEntityArray: (NSMutableArray <SpatialEntity*> *) entityArray{
     // Remove all SpaceTokens first
     [self removeAllSpaceTokens];
     
-    self.poiArrayDataSource = poiArray;
+    self.entityArrayDataSource = entityArray;
     
-    for (POI* aPOI in poiArray){
+    for (SpatialEntity* anEntity in entityArray){
         
         // Only show the enabled ones
-        if (aPOI.isEnabled){
-            [self addSpaceTokenFromPOI:aPOI];
+        if (anEntity.isEnabled){
+            [self addSpaceTokenFromEntity:anEntity];
             // Add the annotation
-            aPOI.isMapAnnotationEnabled = YES;
+            anEntity.isMapAnnotationEnabled = YES;
         }
     }
 
@@ -205,7 +205,7 @@
         POI *specialPOI = [[POI alloc] init];
         specialPOI.name = @"YouRHere";
         specialPOI.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110);
-        self.youAreHere = [self addSpaceTokenFromPOI:specialPOI];
+        self.youAreHere = [self addSpaceTokenFromEntity:specialPOI];
         // Create a person
         Person *person = [[Person alloc] init];
         self.youAreHere.person = person;

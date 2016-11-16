@@ -300,7 +300,7 @@
     [self.rootViewController.poiDatabase loadFromFile:fileFullPath];
     // Need to reconnec the data source
     [self.rootViewController.spaceBar
-     addSpaceTokensFromPOIArray: self.rootViewController.poiDatabase.poiArray];
+     addSpaceTokensFromEntityArray: self.rootViewController.poiDatabase.poiArray];
     // Reload the table
     [self.myTableView reloadData];
 }

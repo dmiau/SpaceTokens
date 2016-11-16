@@ -31,7 +31,7 @@
     self = [super init];
     
     if (self){
-        self.poi = [[POI alloc] init];
+        self.spatialEntity = [[SpatialEntity alloc] init];
         self.mapViewXY = CGPointMake(0, 0);
         
 
@@ -104,7 +104,7 @@
 
 - (void)setPerson:(Person *)person{
     _person = person;
-    _poi = person.poi;
+    _spatialEntity = person.poi;
 }
 
 - (void)setSelected:(BOOL)selected{
@@ -215,7 +215,7 @@
                                  -height -radius + self.frame.size.height/2,
                                  width, height)];
     
-    label.text = self.poi.name;
+    label.text = self.spatialEntity.name;
     label.textAlignment = NSTextAlignmentCenter;
     [label setTextColor:[UIColor redColor]];
     [label setBackgroundColor:[UIColor clearColor]];
@@ -262,7 +262,7 @@
                                        self.frame.size.height/2)];
     // Get the map object
     CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
-    CGPoint shiftedPOIXY = [myMapView convertCoordinate:self.poi.latLon
+    CGPoint shiftedPOIXY = [myMapView convertCoordinate:self.spatialEntity.latLon
                                           toPointToView:self];
     
     [linePath addLineToPoint: shiftedPOIXY];
@@ -308,7 +308,7 @@
     NSString *mapViewString = NSStringFromCGPoint(self.mapViewXY);
     NSString *pointerString = [NSString stringWithFormat:@"%p", self.touch];
     NSString *latLonString = [NSString stringWithFormat:@"lat: %g, long: %g",
-                              self.poi.latLon.latitude, self.poi.latLon.longitude];
+                              self.spatialEntity.latLon.latitude, self.spatialEntity.latLon.longitude];
     
     NSArray *stringArray = [[NSArray alloc] initWithObjects:tokenInfo, mapViewString, pointerString, latLonString, nil];
     NSString *joinedString = [stringArray componentsJoinedByString:@"\n"];

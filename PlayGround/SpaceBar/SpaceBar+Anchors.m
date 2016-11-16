@@ -37,9 +37,9 @@
             
             // Position the SpaceToken correctly
             aToken.center = mapXY;
-            aToken.poi.latLon = coord;
+            aToken.spatialEntity.latLon = coord;
             aToken.mapViewXY = mapXY;
-            aToken.poi.name = [NSString stringWithFormat:@"Anchor%d", counter++];
+            aToken.spatialEntity.name = [NSString stringWithFormat:@"Anchor%d", counter++];
             aToken.touch = aTouch;
             [self.anchorArray addObject:aToken];
             
@@ -105,11 +105,11 @@
 - (void) convertAnchorToRealToken: (SpaceToken*) token{
     // Create a new SpaceToken based on anchor
     SpaceToken* newSpaceToken =
-    [self addSpaceTokenFromPOI:token.poi];
+    [self addSpaceTokenFromEntity:token.spatialEntity];
     [self removeAnchor: token];
     [self orderButtonArray];
     
-    [self.poiArrayDataSource addObject:token.poi];
+    [self.entityArrayDataSource addObject:token.spatialEntity];
 }
 
 @end

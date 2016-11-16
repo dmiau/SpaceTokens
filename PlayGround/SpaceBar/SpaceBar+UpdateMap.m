@@ -27,7 +27,7 @@
 // This is useful for POI sorting on SpaceBar
 - (void) fillMapXYsForSet: (NSSet*) aSet{
     for (SpaceToken* aToken in aSet){
-        aToken.mapViewXY = [self.mapView convertCoordinate:aToken.poi.latLon
+        aToken.mapViewXY = [self.mapView convertCoordinate:aToken.spatialEntity.latLon
                                            toPointToView:self.mapView];
     }
 }
@@ -61,12 +61,12 @@
         NSMutableSet <POI*>* poiSet =
         [[NSMutableSet alloc] init];
         for (SpaceToken* aToken in self.touchingSet){
-            [poiSet addObject: aToken.poi];
+            [poiSet addObject: aToken.spatialEntity];
         }
         
         // Put POIs in anchorArray into a poiSet
         for (SpaceToken *aToken in self.anchorArray){
-            [poiSet addObject:aToken.poi];
+            [poiSet addObject:aToken.spatialEntity];
             // Draw the constraint line
             aToken.isConstraintLineOn = YES;
         }
@@ -108,7 +108,7 @@
         // Snap to one SpaceToken
         //----------------------
         SpaceToken *aToken = [tokenSet anyObject];
-        [self.mapView snapOneCoordinate: aToken.poi.latLon toXY: aToken.mapViewXY
+        [self.mapView snapOneCoordinate: aToken.spatialEntity.latLon toXY: aToken.mapViewXY
                         withOrientation:self.mapView.camera.heading animated:NO];
     }else if ([tokenSet count] == 2){
         
@@ -131,13 +131,13 @@
     
     // To initialize the search
     SpaceToken *aToken = [tokenSet anyObject];
-    CGPoint aCGPoint = [self.mapView convertCoordinate: aToken.poi.latLon
+    CGPoint aCGPoint = [self.mapView convertCoordinate: aToken.spatialEntity.latLon
                                          toPointToView: self.mapView];
     minCGPointX = aCGPoint.x; maxCGPointX = aCGPoint.x;
     minCGPointY = aCGPoint.y; maxCGPointY = aCGPoint.y;
     
     for (SpaceToken *aToken in tokenSet){
-        CGPoint tempMapPoint = [self.mapView convertCoordinate: aToken.poi.latLon
+        CGPoint tempMapPoint = [self.mapView convertCoordinate: aToken.spatialEntity.latLon
                                                  toPointToView: self.mapView];
         minCGPointX = MIN(minCGPointX, tempMapPoint.x);
         maxCGPointX = MAX(maxCGPointX, tempMapPoint.x);
@@ -276,7 +276,7 @@ void findTargetedMinMax(double leftEdge, double anchorMapPoint, double rightEdge
     CGPoint cgPoints[2];
     int i = 0;
     for (SpaceToken *aToken in tokenSet){
-        coords[i] = aToken.poi.latLon;
+        coords[i] = aToken.spatialEntity.latLon;
         cgPoints[i] = aToken.mapViewXY;
         i++;
     }

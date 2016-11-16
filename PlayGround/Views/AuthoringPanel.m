@@ -331,7 +331,7 @@ static AuthoringPanel *instance;
         
         // Create a SpaceToken
         poi.name = @"token";
-        SpaceToken* aToken = [self.rootViewController.spaceBar addSpaceTokenFromPOI:poi];
+        SpaceToken* aToken = [self.rootViewController.spaceBar addSpaceTokenFromEntity:poi];
         [self.rootViewController.spaceBar orderButtonArray];
         textSinkObject = aToken;
     }
@@ -354,7 +354,7 @@ static AuthoringPanel *instance;
     if ([textSinkObject isKindOfClass:[SpaceToken class]]){
         SpaceToken *aToken = textSinkObject;
         aToken.titleLabel.text = textField.text;
-        aToken.poi.name = textField.text;
+        aToken.spatialEntity.name = textField.text;
     }else if ([textSinkObject isKindOfClass:[Snapshot class]]){
         snapShot.instructions = textField.text;
     }

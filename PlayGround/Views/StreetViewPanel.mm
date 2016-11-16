@@ -85,7 +85,7 @@
     panorama.coordinate;
     
     // Also update the YouAreHere indicator
-    self.rootViewController.spaceBar.youAreHere.poi.latLon = panorama.coordinate;
+    self.rootViewController.spaceBar.youAreHere.spatialEntity.latLon = panorama.coordinate;
 }
 
 /*

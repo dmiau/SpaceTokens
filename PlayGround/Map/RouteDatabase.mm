@@ -7,6 +7,7 @@
 //
 
 #import "RouteDatabase.h"
+#import "MyFileManager.h"
 #import "POI.h"
 
 @implementation RouteDatabase
@@ -32,11 +33,24 @@
 
 // Pre-load some routes into memory
 - (void)reloadRouteDB{
+
+//    [self getRoutesFromNetwork];
+    
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.routedb"];
+    [self loadFromFile:fileFullPath];
+    
+}
+
+- (void) getRoutesFromNetwork
+{
     // New York to Boston
     POI *NewYork = [[POI alloc] init];
     NewYork.latLon = CLLocationCoordinate2DMake(40.712784, -74.005941);
     NewYork.name = @"New York";
-
+    
     POI *Boston = [[POI alloc] init];
     Boston.latLon = CLLocationCoordinate2DMake(42.360082, -71.058880);
     Boston.name = @"Boston";
@@ -53,7 +67,7 @@
     Cambridge.name = @"Cambridge";
     
     [self addRouteWithSource:London Destination:Cambridge];
-
+    
     
     // Edgewater, NJ to Columbia
     POI *Edgewater = [[POI alloc] init];
@@ -65,7 +79,7 @@
     Columbia.name = @"Columbia";
     
     [self addRouteWithSource:Edgewater Destination:Columbia];
-
+    
     // Munich to Copenhagen
     POI *Munich = [[POI alloc] init];
     Munich.latLon = CLLocationCoordinate2DMake(48.135125, 11.581981);
@@ -76,7 +90,6 @@
     Copenhagen.name = @"Copenhagen";
     
     [self addRouteWithSource:Munich Destination:Copenhagen];
-    
 }
 
 - (void) addRouteWithSource:(POI*) source Destination:(POI*) destination
@@ -84,13 +97,13 @@
     // Get the direction from New York to Boston
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
     
-    // Start map item (New York)
+    // Start map item
     MKPlacemark *startPlacemark = [[MKPlacemark alloc] initWithCoordinate:source.latLon addressDictionary:nil];
     MKMapItem *startMapItem = [[MKMapItem alloc] initWithPlacemark:startPlacemark];
     [startMapItem setName:source.name];
     request.source = startMapItem;
     
-    // End map item (Boston)
+    // End map item
     MKPlacemark *endPlacemark = [[MKPlacemark alloc] initWithCoordinate:destination.latLon addressDictionary:nil];
     MKMapItem *endMapItem = [[MKMapItem alloc] initWithPlacemark:endPlacemark];
     [endMapItem setName:destination.name];

@@ -55,7 +55,7 @@
     SpaceBar *spaceBar = self.rootViewController.spaceBar;
     spaceBar.isYouAreHereEnabled = NO;
     [spaceBar removeAllSpaceTokens];
-    [spaceBar addSpaceTokensFromPOIArray:self.poisForSpaceTokens];
+    [spaceBar addSpaceTokensFromEntityArray:self.poisForSpaceTokens];
     
     
     // Remove all annotations

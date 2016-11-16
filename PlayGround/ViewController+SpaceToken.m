@@ -14,7 +14,7 @@
     // Remove all the SpaceTokens
     [self.spaceBar removeAllSpaceTokens];
     [self.spaceBar
-     addSpaceTokensFromPOIArray: self.spaceBar.poiArrayDataSource];
+     addSpaceTokensFromEntityArray: self.spaceBar.entityArrayDataSource];
     self.spaceBar.spaceBarMode = TOKENONLY;
 }
 @end

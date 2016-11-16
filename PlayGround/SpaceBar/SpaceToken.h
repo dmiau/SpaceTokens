@@ -6,7 +6,7 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "POI.h"
+#import "SpatialEntity.h"
 
 @class Person;
 
@@ -36,7 +36,7 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
 // When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
 @property (weak) SpaceToken *counterPart;
 @property TokenAppearanceType appearanceType;
-@property (strong) POI* poi;
+@property (strong) SpatialEntity* spatialEntity;
 @property Person* person; // A SpaceToken can be linked to a Person object
 
 @property CGPoint mapViewXY;

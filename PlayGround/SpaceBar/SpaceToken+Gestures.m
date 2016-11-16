@@ -154,7 +154,7 @@
             self.frame.size.width/3)
         {
             
-            if ([self.poi.name isEqualToString:@"YouRHere"]){
+            if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
                 // YouRHere cannot be removed.
             }else{
                 [self handleRemoveToken];
@@ -222,7 +222,7 @@
       RemoveFromTouchingSetNotification object:self userInfo:nil]];
     
     [self removeFromSuperview];
-    self.poi.isEnabled = NO;
+    self.spatialEntity.isEnabled = NO;
     // Remove from the button set
     [[ NSNotificationCenter defaultCenter] postNotification:
      [NSNotification notificationWithName:RemoveFromButtonArrayNotification
