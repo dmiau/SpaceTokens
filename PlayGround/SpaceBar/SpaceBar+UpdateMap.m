@@ -15,7 +15,7 @@
 // fillDraggingMapXYs should only apply to SpaceTokens
 - (void) fillDraggingMapXYs{
     for(SpaceToken* anItem in self.draggingSet) {
-        if (anItem.type != ANCHORTOKEN){
+        if (anItem.appearanceType != ANCHORTOKEN){
             SpaceToken* aMark = (SpaceToken*)anItem;
             aMark.mapViewXY = aMark.center;
         }

@@ -134,7 +134,7 @@
     // Position the SpaceToken and dots
     for (int i = 0; i < [self.buttonArray count]; i++){
         SpaceToken *aToken = self.buttonArray[i];
-        if (aToken.type == DOCKED){
+        if (aToken.appearanceType == DOCKED){
             aToken.frame = CGRectMake(viewWidth - aToken.frame.size.width,
                                       gap * (i+1), aToken.frame.size.width,
                                       aToken.frame.size.height);

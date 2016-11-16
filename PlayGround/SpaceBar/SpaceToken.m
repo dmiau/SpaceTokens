@@ -144,8 +144,8 @@
 //-----------
 // configure the appearance
 //-----------
-- (void) configureAppearanceForType:(spaceTokenType)type{
-    self.type = type;
+- (void) configureAppearanceForType:(TokenAppearanceType)type{
+    self.appearanceType = type;
     switch (type) {
         case DOCKED:
             [self addSubview:self.titleLabel];

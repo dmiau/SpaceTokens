@@ -51,7 +51,7 @@
 - (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event {
     
     // Do nothing if the event is not triggered by self
-    if (sender != self || self.type !=DOCKED)
+    if (sender != self || self.appearanceType !=DOCKED)
         return;
     
     //    NSLog(@"Touch down!");

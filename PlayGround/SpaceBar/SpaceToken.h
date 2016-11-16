@@ -10,7 +10,7 @@
 
 @class Person;
 
-typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
+typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
 
 //----------------------------------------
 // SpaceToken interface
@@ -35,7 +35,7 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 
 // When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
 @property (weak) SpaceToken *counterPart;
-@property spaceTokenType type;
+@property TokenAppearanceType appearanceType;
 @property (strong) POI* poi;
 @property Person* person; // A SpaceToken can be linked to a Person object
 
@@ -55,5 +55,5 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN, DOT} spaceTokenType;
 
 // Internal methods
 - (void) registerButtonEvents;
-- (void) configureAppearanceForType: (spaceTokenType) type;
+- (void) configureAppearanceForType: (TokenAppearanceType) type;
 @end
