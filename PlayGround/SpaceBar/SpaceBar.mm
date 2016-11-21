@@ -89,7 +89,7 @@
 // Initialize common parts among all display types
 - (void) initializeCommon {
     
-    self.buttonArray = [[NSMutableArray alloc] init];
+    self.tokenCollection = [TokenCollection sharedManager];
     self.dotSet = [[NSMutableSet alloc] init];
     
     self.touchingSet = [[NSMutableSet alloc] init];
@@ -172,7 +172,7 @@
     _isTokenDraggingEnabled = isTokenDraggingEnabled;
     
     // iterate over all the SpaceTokens
-    for (SpaceToken* aToken in self.buttonArray){
+    for (SpaceToken* aToken in self.tokenCollection.tokenArray){
         aToken.isDraggable = isTokenDraggingEnabled;
     }    
 }
@@ -187,10 +187,10 @@
 }
 
 - (void)updateBasedOnConstraints{
-    // if buttonArray is not empty, update the map
-    if ([self.buttonArray count] > 0){
+    // if tokenCollection.tokenArray is not empty, update the map
+    if ([self.tokenCollection.tokenArray count] > 0){
         //        [self orderSpaceTokens];
-        [self fillMapXYsForSet:self.buttonArray];
+        [self fillMapXYsForSet:self.tokenCollection.tokenArray];
     }
         
     if ([self.draggingSet count] > 0

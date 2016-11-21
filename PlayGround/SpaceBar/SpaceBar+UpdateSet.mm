@@ -26,7 +26,7 @@
     
     // handle the notification based on event name
     if (aNotification.name == AddToButtonArrayNotification){
-        [self.buttonArray addObject:aNotification.object];
+        [self.tokenCollection.tokenArray addObject:aNotification.object];
     }else if (aNotification.name == AddToTouchingSetNotification){
         [self addTokenToTouchingSet:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
@@ -36,7 +36,7 @@
         
         // remove from the display set
         SpaceToken *currentSpaceToken = aNotification.object;
-        [self.buttonArray removeObject:currentSpaceToken];
+        [self.tokenCollection.tokenArray removeObject:currentSpaceToken];
         // Duplicate the button
         SpaceToken* newSpaceToken =
         [self addSpaceTokenFromEntity:currentSpaceToken.spatialEntity];
@@ -55,7 +55,7 @@
     
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonArrayNotification){
-        [self.buttonArray removeObject:aNotification.object];        
+        [self.tokenCollection.tokenArray removeObject:aNotification.object];        
     }else if (aNotification.name == RemoveFromTouchingSetNotification){        
         [self removeTokenFromTouchingSet:aNotification.object];
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
@@ -76,17 +76,17 @@
 //----------------
 -(void) orderButtonArray{
     // equally distribute the POIs
-    if ([self.buttonArray count] == 0 || [self.touchingSet count] > 0){
+    if ([self.tokenCollection.tokenArray count] == 0 || [self.touchingSet count] > 0){
         // only reorder when the user is not touching a button
         return;
     }
     
     // Fill in mapXY
-    [self fillMapXYsForSet:self.buttonArray];
+    [self fillMapXYsForSet:self.tokenCollection.tokenArray];
     
     if (self.isAutoOrderSpaceTokenEnabled){
         // Form a new set for sorting
-        NSMutableSet *allTokens = [NSMutableSet setWithArray:self.buttonArray];
+        NSMutableSet *allTokens = [NSMutableSet setWithArray:self.tokenCollection.tokenArray];
         
         // Take YouAreHere from the set (YouAreHere should be at the bottom)
         [allTokens removeObject: self.youAreHere];
@@ -117,10 +117,10 @@
              }
          }];
         
-        self.buttonArray = [NSMutableArray arrayWithArray:sortedArray];
+        self.tokenCollection.tokenArray = [NSMutableArray arrayWithArray:sortedArray];
         
         if (self.isYouAreHereEnabled){
-            [self.buttonArray addObject:self.youAreHere];
+            [self.tokenCollection.tokenArray addObject:self.youAreHere];
         }
     }
     
@@ -131,11 +131,11 @@
     // Place the sorted button on to the grid
     CGFloat viewWidth = self.mapView.frame.size.width;
     CGFloat barHeight = self.mapView.frame.size.height;
-    CGFloat gap = barHeight / ([self.buttonArray count] + 1);
+    CGFloat gap = barHeight / ([self.tokenCollection.tokenArray count] + 1);
     
     // Position the SpaceToken and dots
-    for (int i = 0; i < [self.buttonArray count]; i++){
-        SpaceToken *aToken = self.buttonArray[i];
+    for (int i = 0; i < [self.tokenCollection.tokenArray count]; i++){
+        SpaceToken *aToken = self.tokenCollection.tokenArray[i];
         if (aToken.appearanceType == DOCKED){
             aToken.frame = CGRectMake(viewWidth - aToken.frame.size.width,
                                       gap * (i+1), aToken.frame.size.width,
@@ -173,7 +173,7 @@
     if (aSpaceToken){
         // Add to the canvas
         [self.mapView addSubview:aSpaceToken];
-        [self.buttonArray addObject:aSpaceToken];
+        [self.tokenCollection.tokenArray addObject:aSpaceToken];
     }else{
         // error
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
@@ -237,7 +237,7 @@
         [aToken removeFromSuperview];
     }
 
-    for (SpaceToken* aToken in self.buttonArray){
+    for (SpaceToken* aToken in self.tokenCollection.tokenArray){
         [aToken removeFromSuperview];
     }
     
@@ -245,7 +245,7 @@
     [self.draggingSet removeAllObjects];
     [self clearAllTouchedTokens];
     [self.dotSet removeAllObjects];
-    [self.buttonArray removeAllObjects];
+    [self.tokenCollection.tokenArray removeAllObjects];
 }
 
 

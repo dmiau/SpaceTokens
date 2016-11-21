@@ -10,7 +10,7 @@
 #import "../Map/CustomMKMapView.h"
 #import "SpaceToken.h"
 #import "RangeSlider/CERangeSlider.h"
-
+#import "TokenCollection.h"
 
 @class Route;
 @class GestureEngine;
@@ -50,7 +50,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property Route* activeRoute;
 
 @property NSMutableArray <SpatialEntity*> *entityArrayDataSource;
-@property NSMutableArray <SpaceToken*> *buttonArray;
+@property TokenCollection *tokenCollection;
 @property NSMutableSet <SpaceToken*> *dotSet;
 
 // This is a convenient set to cache the references of all the
@@ -97,7 +97,7 @@ unsigned int spaceBarElevatorMoved:1;
 // Constraint engine
 // --------------
 - (void)updateBasedOnConstraints;
-- (SpaceToken*)findTouchedTokenFromTouch:(UITouch*)aTouch;
+
 
 // --------------
 // Implemented in annotation category

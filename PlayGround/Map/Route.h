@@ -13,6 +13,7 @@
 #include "SpatialEntity.h"
 
 using namespace std;
+@class POI;
 
 #pragma mark RouteInterface
 @interface Route : SpatialEntity
@@ -34,10 +35,6 @@ using namespace std;
 //@property vector<int> *indexInStep;
 @property vector<double> *accumulatedDist;
 
-//------------------
-// properties (overriding)
-//------------------
-
 
 //------------------
 // methods
@@ -56,4 +53,10 @@ using namespace std;
 // Get the bounding box of the route in terms of MKMapPoints
 -(void)getMinMapX: (double&) minMapX andMaxMapX: (double&) maxMapX
        andMinMapY: (double&) minMapY andMaxMapY: (double&) maxMapY;
+
+//------------------
+// tools
+//------------------
++ (void) addRouteWithSource:(POI*) source Destination:(POI*) destination;
+
 @end

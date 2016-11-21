@@ -50,7 +50,7 @@
     // Initialize a POI DB
     //----------------
     self.poiDatabase = [POIDatabase sharedManager];
-    [self.poiDatabase debugInit];
+//    [self.poiDatabase debugInit];
     
     //----------------
     // Initialize a Route DB

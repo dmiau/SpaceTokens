@@ -63,7 +63,7 @@
                 [aTouch previousLocationInView:self.spaceBar.mapView];
     
     // Iterate over SpaceTokens and perform hittest
-    for (SpaceToken *aToken in self.spaceBar.buttonArray){
+    for (SpaceToken *aToken in self.spaceBar.tokenCollection.tokenArray){
         
         CGRect buttonFrame = aToken.frame;
         if (CGRectContainsPoint(buttonFrame, touchPoint) &&
@@ -72,27 +72,6 @@
             [aToken sendActionsForControlEvents:UIControlEventTouchDown];
         }
     }
-}
-
-// This method performs hitTest of all the SpaceToken and finds that one that is touched
-- (SpaceToken*)findTouchedTokenFromTouch:(UITouch*)aTouch{
-    SpaceToken *resultToken = nil;
-    
-
-    CGPoint touchPoint = [aTouch locationInView:self.spaceBar.mapView];
-    CGPoint previoustouchPoint =
-    [aTouch previousLocationInView:self.spaceBar.mapView];
-    
-    // Iterate over SpaceTokens and perform hittest
-    for (SpaceToken *aToken in self.spaceBar.buttonArray){
-        
-        CGRect buttonFrame = aToken.frame;
-        if (CGRectContainsPoint(buttonFrame, touchPoint))
-        {
-            resultToken = aToken;
-        }
-    }
-    return resultToken;
 }
 
 @end

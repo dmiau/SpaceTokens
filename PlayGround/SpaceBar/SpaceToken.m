@@ -208,31 +208,29 @@
     
     [[self layer] addSublayer:self.circleLayer];
     
-    float width = 100;
-    float height = 30;
     
     //--------------------
     // Add a label on top of the circle
     //--------------------
-    UILabel *label = [[UILabel alloc] initWithFrame:
-                      CGRectMake(-width/2 + self.frame.size.width/2,
-                                 -height -radius + self.frame.size.height/2,
-                                 width, height)];
-    
-    label.text = self.spatialEntity.name;
-    label.textAlignment = NSTextAlignmentCenter;
-    [label setTextColor:[UIColor redColor]];
-    [label setBackgroundColor:[UIColor clearColor]];
-    [label setFont: [UIFont fontWithName:@"Trebuchet MS" size:12.0f]];
-    [self addSubview:label];
+//    float width = 100;
+//    float height = 30;
+//    UILabel *label = [[UILabel alloc] initWithFrame:
+//                      CGRectMake(-width/2 + self.frame.size.width/2,
+//                                 -height -radius + self.frame.size.height/2,
+//                                 width, height)];
+//    
+//    label.text = self.spatialEntity.name;
+//    label.textAlignment = NSTextAlignmentCenter;
+//    [label setTextColor:[UIColor redColor]];
+//    [label setBackgroundColor:[UIColor clearColor]];
+//    [label setFont: [UIFont fontWithName:@"Trebuchet MS" size:12.0f]];
+//    [self addSubview:label];
     
     //--------------------
     // Add a connection tool on top of the circle
     //--------------------
     ConnectionTool *connectionTool = [[ConnectionTool alloc] init];
     [connectionTool attachToSpaceToken: self];
-    
-    //            [[self layer] addSublayer:self.lineLayer];
 }
 
 

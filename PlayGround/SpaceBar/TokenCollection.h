@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SpaceBar.h"
+
+@class SpaceBar; // Forward declaration
+@class SpaceToken;
 
 @interface TokenCollection : NSObject
 

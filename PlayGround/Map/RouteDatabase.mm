@@ -120,7 +120,7 @@
              // Handle Error
          } else {
              // A response is received
-             [self initRouteoBject:response];
+             [self initRouteObject:response];
              NSLog(@"Direction response received!");
          }
          //         [self updateSpaceBar];
@@ -128,7 +128,7 @@
 }
 
 // Initialize the route object
-- (void) initRouteoBject: (MKDirectionsResponse *) response{
+- (void) initRouteObject: (MKDirectionsResponse *) response{
     
     // There could be multiple routes
     for (MKRoute *route in response.routes)

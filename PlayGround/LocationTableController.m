@@ -288,7 +288,7 @@
         MyFileManager *myFileManager = [MyFileManager sharedManager];
         
         NSString *dirPath = [myFileManager currentFullDirectoryPath];
-        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.entitydb"];
         
         // Test file saving capability
         [self.rootViewController.entityDatabase saveDatatoFileWithName:fileFullPath];
@@ -299,7 +299,7 @@
     MyFileManager *myFileManager = [MyFileManager sharedManager];
     
     NSString *dirPath = [myFileManager currentFullDirectoryPath];
-    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.entitydb"];
     
     [self.rootViewController.entityDatabase loadFromFile:fileFullPath];
     // Need to reconnec the data source

@@ -10,8 +10,11 @@
 #import "SpaceToken.h"
 #import "CustomMKMapView.h"
 #import "SpaceBar.h"
+#import "TokenCollection.h"
+#import "POI.h"
+#import "Route.h"
 
-#define CONNECTION_TOOL_WIDTH 60
+#define CONNECTION_TOOL_WIDTH 100
 #define CONNECTION_TOOL_HEIGHT 30
 
 
@@ -48,9 +51,12 @@
     hasReportedDraggingEvent = false;
     
     [self registerButtonEvents];
+    
+    // Configure appearance
     self.frame = CGRectMake(0, 0, CONNECTION_TOOL_WIDTH, CONNECTION_TOOL_HEIGHT);
-    self.titleLabel.text = @"Test";
-
+    [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [self.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    
     return self;
 }
 
@@ -62,27 +68,16 @@
     float width = CONNECTION_TOOL_WIDTH;
     float height = CONNECTION_TOOL_HEIGHT;
     
-//    CGPoint tokenOrigin = [spaceToken convertPoint:spaceToken.center toView:<#(nullable UIView *)#>];
-//    CGPoint tokenCentroid = spaceToken.center;
-    
-    
-    
-//    // Configure the frame
-//    self.frame = CGRectMake(-width/2 + spaceToken.frame.size.width/2 + tokenCentroid.x,
-//                            -height -40 + spaceToken.frame.size.height/2 +
-//                            tokenCentroid.y,
-//                            width, height);
-
-  
-    
     // Configure the appearance
-    [self setBackgroundColor:[UIColor whiteColor]];
-    self.titleLabel.text = spaceToken.spatialEntity.name;
-    [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self setTitle: spaceToken.spatialEntity.name forState:UIControlStateNormal];
+
     
-    // Need to attach to the main map view?
+    // Need to attach to the main map view, not the SpaceToken,
+    // so Connection Tool can be touched when SpaceToken is touched
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     [mapView addSubview:self];
+    
+    // This is necessary to specify constraints programmatically
     self.translatesAutoresizingMaskIntoConstraints = NO;
     
     // Add the constraints
@@ -109,7 +104,7 @@
                                   attribute:NSLayoutAttributeWidth
                                   relatedBy:NSLayoutRelationEqual
                                      toItem:nil
-                                  attribute:0
+                                  attribute:NSLayoutAttributeNotAnAttribute
                                  multiplier:0
                                    constant:CONNECTION_TOOL_WIDTH]];
 
@@ -118,7 +113,7 @@
                                   attribute:NSLayoutAttributeHeight
                                   relatedBy:NSLayoutRelationEqual
                                      toItem:nil
-                                  attribute:0
+                                  attribute:NSLayoutAttributeNotAnAttribute
                                  multiplier:0
                                    constant:CONNECTION_TOOL_HEIGHT]];
     
@@ -269,16 +264,45 @@
         
     }
     
-    // Check if the connection tool touch any of the SpaceTokens
+    // Check if the connection tool touches any of the SpaceTokens
+    SpaceToken *resultToken = nil;
     
+    // Get the TokenCollection object
+    TokenCollection *tokenCollection = [TokenCollection sharedManager];
     
-    
+    // Get the touch coordinates in mapView
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    UIView *hitView = [mapView hitTest:locationInView withEvent:nil];
+    CGPoint touchPoint = [touch locationInView:mapView];
+    CGPoint previoustouchPoint =
+    [touch previousLocationInView:mapView];
     
-    if ([hitView isKindOfClass:[SpaceToken class]]){
-        SpaceToken *aToken = hitView;
-        NSLog(@"SpaceToken: %@ tapped.", aToken.spatialEntity.name);
+    for (SpaceToken *aToken in tokenCollection.tokenArray){
+        CGRect buttonFrame = aToken.frame;
+        
+        // Make sure the route creation tool is only triggered once
+        if (CGRectContainsPoint(buttonFrame, touchPoint)
+            &&
+            !CGRectContainsPoint(buttonFrame, previoustouchPoint))
+        {
+            resultToken = aToken;
+            NSLog(@"SpaceToken: %@ tapped.", aToken.spatialEntity.name);
+            
+            
+            // Connection tool only supports the connection of POI
+            
+            if ([aToken.spatialEntity isKindOfClass:[POI class]] &&
+                [counterPart.spatialEntity isKindOfClass:[POI class]])
+            {
+                // Create a route
+                POI *sourcePOI = counterPart.spatialEntity;
+                POI *destinationPOI = aToken.spatialEntity;
+                [Route addRouteWithSource:sourcePOI Destination:destinationPOI];
+            }
+            
+            break;
+        }
     }
+    
 }
+
 @end

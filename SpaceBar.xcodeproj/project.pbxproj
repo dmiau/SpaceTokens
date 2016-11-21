@@ -11,6 +11,8 @@
 		5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
+		9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */; };
+		9A0FEE8C1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */; };
 		9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A1985A61DDCEE460016696F /* PathToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.m */; };
@@ -134,8 +136,8 @@
 		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62C3F61DCCD0B50048E44C /* Speech.framework */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
-		9A62FB831DDF7CC500245BD6 /* ConnectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */; };
-		9A62FB841DDF7CC500245BD6 /* ConnectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */; };
+		9A62FB831DDF7CC500245BD6 /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
+		9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
 		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A6F56311D9BCB490037C8A1 /* ExtraPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */; };
@@ -281,6 +283,8 @@
 		53C4608EBA85F4149B795060 /* Pods-SpaceBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.debug.xcconfig"; sourceTree = "<group>"; };
 		9A0E063B1D54FCB800E5722D /* ViewController+MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MapView.h"; sourceTree = "<group>"; };
 		9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+MapView.mm"; sourceTree = "<group>"; };
+		9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Route+Tools.h"; path = "Map/Route+Tools.h"; sourceTree = "<group>"; };
+		9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "Route+Tools.mm"; path = "Map/Route+Tools.mm"; sourceTree = "<group>"; };
 		9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceBar.entitlements; sourceTree = "<group>"; };
 		9A143B321D2AF56E001EE841 /* CustomMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKMapView.h; path = Map/CustomMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* CustomMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKMapView.m; path = Map/CustomMKMapView.m; sourceTree = "<group>"; };
@@ -343,7 +347,7 @@
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
 		9A62FB811DDF7CC500245BD6 /* ConnectionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionTool.h; path = SpaceBar/ConnectionTool.h; sourceTree = "<group>"; };
-		9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionTool.m; path = SpaceBar/ConnectionTool.m; sourceTree = "<group>"; };
+		9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ConnectionTool.mm; path = SpaceBar/ConnectionTool.mm; sourceTree = "<group>"; };
 		9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Annotations.h"; sourceTree = "<group>"; };
 		9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Annotations.m"; sourceTree = "<group>"; };
 		9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraPanels.xib; sourceTree = "<group>"; };
@@ -542,6 +546,8 @@
 				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
 				9A22D0161D22BD9A009BC465 /* Route.h */,
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
+				9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */,
+				9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */,
 				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
 				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
@@ -725,7 +731,7 @@
 				9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */,
 				9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */,
 				9A62FB811DDF7CC500245BD6 /* ConnectionTool.h */,
-				9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */,
+				9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */,
 				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
 				9AB3BDD81DE290B100334EF9 /* TokenCollection.m */,
 			);
@@ -1180,6 +1186,7 @@
 				9A56B7E11D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */,
 				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
+				9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
@@ -1229,7 +1236,7 @@
 				9A1985A61DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */,
-				9A62FB831DDF7CC500245BD6 /* ConnectionTool.m in Sources */,
+				9A62FB831DDF7CC500245BD6 /* ConnectionTool.mm in Sources */,
 				9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
@@ -1266,6 +1273,7 @@
 				9A56B7E21D4E7C5A00A14B02 /* POIDatabase+iCloud.m in Sources */,
 				9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
+				9A0FEE8C1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
 				9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
@@ -1315,7 +1323,7 @@
 				9A1985A71DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */,
-				9A62FB841DDF7CC500245BD6 /* ConnectionTool.m in Sources */,
+				9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */,
 				9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,

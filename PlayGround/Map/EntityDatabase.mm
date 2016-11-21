@@ -77,20 +77,20 @@
     MyFileManager *myFileManager = [MyFileManager sharedManager];
     
     NSString *dirPath = [myFileManager currentFullDirectoryPath];
-    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.entitydb"];
     
-    // Load a POIDatabase and a RouteDatabase from file
-    POIDatabase *poiDatabase = [POIDatabase sharedManager];
-    NSMutableArray <POI*> *poiArray = poiDatabase.poiArray;
+//    // Load a POIDatabase and a RouteDatabase from file
+//    POIDatabase *poiDatabase = [POIDatabase sharedManager];
+//    NSMutableArray <POI*> *poiArray = poiDatabase.poiArray;
+//    
+//    RouteDatabase *routeDatabase = [RouteDatabase sharedManager];
+//    NSMutableArray <Route*> *routeArray = [[routeDatabase.routeDictionary allValues] mutableCopy];
+//    
+//    // Add the items to entityArray
+//    [self.entityArray addObjectsFromArray:poiArray];
+//    [self.entityArray addObjectsFromArray:routeArray];
     
-    RouteDatabase *routeDatabase = [RouteDatabase sharedManager];
-    NSMutableArray <Route*> *routeArray = [[routeDatabase.routeDictionary allValues] mutableCopy];
-    
-    // Add the items to entityArray
-    [self.entityArray addObjectsFromArray:poiArray];
-    [self.entityArray addObjectsFromArray:routeArray];
-    
-//    [self loadFromFile:fileFullPath];
+    [self loadFromFile:fileFullPath];
 }
 
 // Good reference: http://www.idev101.com/code/Objective-C/Saving_Data/NSKeyedArchiver.html
