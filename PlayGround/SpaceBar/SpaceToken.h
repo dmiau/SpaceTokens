@@ -47,7 +47,7 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
 // display the anchor circle after some seconds
 - (void)showAnchorVisualIndicatorAfter:(double) second;
 
-// Exposing the button methods so the buttons can be touched programmatically
+// Exposing the button methods so the buttons can be touched programmatically (this is for the swipe selection in the gesture engine)
 - (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event;
 - (void) buttonUp:(UIButton*)sender forEvent:(UIEvent*)event;
 - (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event;

@@ -12,6 +12,7 @@
 #import "CustomMKMapView.h"
 #import "SpeechEngine.h"
 
+
 @implementation SearchPanelView
 
 /*
@@ -64,7 +65,7 @@
     [self.rootViewController.view addSubview:self];
     [self.rootViewController removeRoute];
     [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray: self.rootViewController.poiDatabase.poiArray];
+     addSpaceTokensFromEntityArray: self.rootViewController.entityArraySource];
     
     self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     

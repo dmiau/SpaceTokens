@@ -97,6 +97,7 @@ unsigned int spaceBarElevatorMoved:1;
 // Constraint engine
 // --------------
 - (void)updateBasedOnConstraints;
+- (SpaceToken*)findTouchedTokenFromTouch:(UITouch*)aTouch;
 
 // --------------
 // Implemented in annotation category

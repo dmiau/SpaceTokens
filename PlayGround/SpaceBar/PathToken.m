@@ -18,4 +18,13 @@
 }
 */
 
+- (id) init{
+    self = [super init];
+    
+    // Add the outline
+    [[self layer] setBorderWidth:1.0f];
+    [[self layer] setBorderColor:[UIColor orangeColor].CGColor];
+    
+    return self;
+}
 @end

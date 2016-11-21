@@ -10,6 +10,8 @@
 #import "Constants.h"
 #import "Tools.h"
 #import "../Map/Person.h"
+#import "PathToken.h"
+#import "Route.h"
 
 @implementation SpaceBar (UpdateSet)
 
@@ -153,7 +155,14 @@
 //----------------
 - (SpaceToken*) addSpaceTokenFromEntity:(SpatialEntity *)spatialEntity{
     
-    SpaceToken *aSpaceToken = [[SpaceToken alloc] init];
+    // Depending on the type of spatialEntity, instantiate a corresponding spaceToken
+    SpaceToken *aSpaceToken;
+    if ([spatialEntity isKindOfClass:[POI class]]){
+        aSpaceToken = [[SpaceToken alloc] init];
+    }else if ([spatialEntity isKindOfClass:[Route class]]){
+        aSpaceToken = [[PathToken alloc] init];
+    }
+    
     [aSpaceToken configureAppearanceForType:DOCKED];
     
     [aSpaceToken setTitle:spatialEntity.name forState:UIControlStateNormal];

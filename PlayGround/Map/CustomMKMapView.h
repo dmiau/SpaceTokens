@@ -7,9 +7,9 @@
 //
 
 #import <MapKit/MapKit.h>
-#import "POI.h"
 
 // Forward declration
+@class SpatialEntity;
 @class Route;
 
 //----------------
@@ -52,7 +52,7 @@
 - (void) snapTwoCoordinates: (CLLocationCoordinate2D[2]) coords
                     toTwoXY: (CGPoint[2]) viewXYs;
 
-- (void) zoomToFitPOIs: (NSSet<POI*> *) poiSet;
+- (void) zoomToFitEntities: (NSSet<SpatialEntity*> *) entitySet;
 - (void) zoomToFitRoute:(Route*) aRoute;
 
 // Tools

@@ -16,12 +16,12 @@
 using namespace std;
 
 template class std::vector<pair<int, int>>;
+template class std::vector<double>;
 
 //============================
 // Route class
 //============================
 @implementation Route
-
 
 - (id)initWithMKRoute: (MKRoute *) aRoute Source:(MKMapItem *)source Destination:(MKMapItem *)destination
 {
@@ -41,7 +41,8 @@ template class std::vector<pair<int, int>>;
 // Setters
 //-----------------
 -(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
-    self.isMapAnnotationEnabled = isMapAnnotationEnabled;
+    [super setIsMapAnnotationEnabled:isMapAnnotationEnabled];
+    
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     if (isMapAnnotationEnabled){
@@ -141,7 +142,7 @@ template class std::vector<pair<int, int>>;
     // Get the latLon at the mid point
     CLLocationCoordinate2D midLatLon;
     double segmentOrientation;
-    [self convertPercentage: 50 toLatLon: midLatLon orientation: segmentOrientation];
+    [self convertPercentage: 0.5 toLatLon: midLatLon orientation: segmentOrientation];
 
     self.latLon = midLatLon;
     
@@ -149,7 +150,7 @@ template class std::vector<pair<int, int>>;
     [self convertPercentage: 0 toLatLon: startLatLon orientation: segmentOrientation];
     
     CLLocationCoordinate2D endLatLon;
-    [self convertPercentage: 100 toLatLon: endLatLon orientation: segmentOrientation];
+    [self convertPercentage: 1 toLatLon: endLatLon orientation: segmentOrientation];
     
     CLLocationCoordinate2D centerCoordinate;
     centerCoordinate.latitude = (startLatLon.latitude + endLatLon.latitude)/2;
@@ -277,6 +278,11 @@ double computeOrientationFromA2B
             orientation: (double&) degree
 {
     
+    // Percentage needs to be between 0 and 1
+    if (percentage < 0 || percentage > 1){
+        [NSException raise:@"Programming error." format:@"Percentage must be between 0 and 1."];
+    }
+    
     // find out the segment correspond to the percetage
     double totalDist = self.accumulatedDist->back();
     
@@ -327,6 +333,20 @@ double computeOrientationFromA2B
     
     // prepare the outputs
     latLon = MKCoordinateForMapPoint(mapPointBetween);
+}
+
+
+-(void)getMinMapX: (double&) minMapX andMaxMapX: (double&) maxMapX
+       andMinMapY: (double&) minMapY andMaxMapY: (double&) maxMapY{
+    vector<double>::iterator result = min_element(self.mapPointX->begin(), self.mapPointX->end());
+    minMapX = *result;
+    result = max_element(self.mapPointX->begin(), self.mapPointX->end());
+    maxMapX = *result;
+    
+    result = min_element(self.mapPointY->begin(), self.mapPointY->end());
+    minMapY = *result;
+    result = max_element(self.mapPointY->begin(), self.mapPointY->end());
+    maxMapY = *result;
 }
 
 //----------------

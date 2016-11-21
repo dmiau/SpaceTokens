@@ -11,14 +11,14 @@
 @implementation POIDetailViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.nameOutlet.text = self.poi.name;
+    self.nameOutlet.text = self.spatialEntity.name;
 }
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.nameOutlet resignFirstResponder];
-    self.poi.name = self.nameOutlet.text;
+    self.spatialEntity.name = self.nameOutlet.text;
     return YES;
 }
 

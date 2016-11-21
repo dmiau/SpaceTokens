@@ -23,6 +23,7 @@
         _annotation = [[CustomPointAnnotation alloc] init];
         
         _isEnabled = YES;
+        _isMapAnnotationEnabled = YES;
     }
     return self;
 }
@@ -84,7 +85,7 @@
 // Deep copy
 -(id) copyWithZone:(NSZone *) zone
 {
-    POI *object = [[POI alloc] init];
+    SpatialEntity *object = [[SpatialEntity alloc] init];
     object.latLon = self.latLon;
     object.coordSpan = self.coordSpan;
     object.name = self.name;

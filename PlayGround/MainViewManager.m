@@ -15,6 +15,7 @@
 #import "Views/StreetViewPanel.h"
 #import "Views/AuthoringPanel.h"
 #import "SearchPanelView.h"
+#import "EntityDatabase.h"
 
 
 @implementation MainViewManager
@@ -134,7 +135,7 @@
     // Refresh SpaceTokens
     [self.rootViewController.spaceBar removeAllSpaceTokens];
     [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray:self.rootViewController.poiDatabase.poiArray];
+     addSpaceTokensFromEntityArray:self.rootViewController.entityArraySource];
 }
 
 - (void)showDirectionPanel{

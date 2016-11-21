@@ -35,11 +35,13 @@ using namespace std;
 @property vector<double> *accumulatedDist;
 
 //------------------
-// methods
+// properties (overriding)
 //------------------
 
 
-
+//------------------
+// methods
+//------------------
 
 // Constructors
 - (id)initWithMKRoute: (MKRoute *) aRoute Source: (MKMapItem*) source
@@ -50,4 +52,8 @@ using namespace std;
 -(void)convertPercentage: (float)percentage
                toLatLon: (CLLocationCoordinate2D&) latLon
             orientation: (double&) degree;
+
+// Get the bounding box of the route in terms of MKMapPoints
+-(void)getMinMapX: (double&) minMapX andMaxMapX: (double&) maxMapX
+       andMinMapY: (double&) minMapY andMaxMapY: (double&) maxMapY;
 @end

@@ -30,10 +30,10 @@
             
             // create a new POI for anchor if an anchor does not exist
             SpaceToken *aToken = [[SpaceToken alloc] init];
-            [aToken configureAppearanceForType:ANCHORTOKEN];
             
             // Add the anchor to the map
             [self.mapView addSubview:aToken];
+            [aToken configureAppearanceForType:ANCHORTOKEN];
             
             // Position the SpaceToken correctly
             aToken.center = mapXY;

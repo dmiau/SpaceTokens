@@ -10,13 +10,17 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "POIDetailViewController.h"
+#import "EntityDatabase.h"
 
-#pragma mark --POI Cell--
+#pragma mark --Entity Cell--
+//---------------------
+// landmarkCell interface
+//---------------------
 @interface landmarkCell :UITableViewCell
 
 @property UISwitch* mySwitch;
 @property ViewController* rootViewController;
-@property POI* poi;
+@property SpatialEntity* spatialEntity;
 @property bool isUserLocation;
 
 @end
@@ -57,9 +61,9 @@
 
 - (void) flipSingleLandmark:(UISwitch*)sender{
     if (sender.isOn) {
-        self.poi.isEnabled = true;
+        self.spatialEntity.isEnabled = true;
     } else {
-        self.poi.isEnabled = false;
+        self.spatialEntity.isEnabled = false;
     }
 }
 
@@ -70,8 +74,8 @@
         [self setEditingAccessoryType: UITableViewCellAccessoryDetailButton];
     }else{
         [self.mySwitch setHidden:NO];
-        if (self.poi)
-            self.mySwitch.on = self.poi.isEnabled;
+        if (self.spatialEntity)
+            self.mySwitch.on = self.spatialEntity.isEnabled;
         [self setEditingAccessoryType: UITableViewCellAccessoryNone];
     }
     [super setEditing:editing animated:animate];
@@ -136,12 +140,12 @@
 
 #pragma mark -----Table View Data Source Methods-----
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Three sections: user location, the location file listing, and bookmarks
+    // Location table has only one section currently
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.rootViewController.poiDatabase.poiArray count];
+    return [self.rootViewController.entityArraySource count];
 }
 
 //----------------
@@ -159,10 +163,10 @@
     int i = [indexPath row];
     
     // Configure Cell
-    cell.textLabel.text = self.rootViewController.poiDatabase.poiArray[i].name;
-    cell.poi = self.rootViewController.poiDatabase.poiArray[i];
+    cell.textLabel.text = self.rootViewController.entityArraySource[i].name;
+    cell.spatialEntity = self.rootViewController.entityArraySource[i];
     
-    cell.mySwitch.on = cell.poi.isEnabled;
+    cell.mySwitch.on = cell.spatialEntity.isEnabled;
     return cell;
 }
 
@@ -193,7 +197,7 @@
     
     // Perform segue
     [self performSegueWithIdentifier:@"POIDetailVC"
-                              sender:self.rootViewController.poiDatabase.poiArray[i]];
+                              sender:self.rootViewController.entityArraySource[i]];
 }
 
 
@@ -221,11 +225,11 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     // Get the object
-    POIDatabase *poiDatabase = self.rootViewController.poiDatabase;
+    NSMutableArray <SpatialEntity*> *entityArray = self.rootViewController.entityArraySource;
     
-    POI *aPOI = poiDatabase.poiArray[sourceIndexPath.row];
-    [poiDatabase.poiArray removeObjectAtIndex:sourceIndexPath.row];
-    [poiDatabase.poiArray insertObject:aPOI atIndex:destinationIndexPath.row];
+    SpatialEntity *anEntity = entityArray[sourceIndexPath.row];
+    [entityArray removeObjectAtIndex:sourceIndexPath.row];
+    [entityArray insertObject:anEntity atIndex:destinationIndexPath.row];
 }
 
 //-------------
@@ -240,11 +244,11 @@
         int i = [indexPath row];
 
         // Remove the annotation
-        self.rootViewController.poiDatabase.poiArray[i].isMapAnnotationEnabled = NO;
+        self.rootViewController.entityArraySource[i].isMapAnnotationEnabled = NO;
         
-        // Remove the POI
-        [self.rootViewController.poiDatabase.poiArray removeObject:
-         self.rootViewController.poiDatabase.poiArray[i]];
+        // Remove the Entity
+        [self.rootViewController.entityArraySource removeObject:
+         self.rootViewController.entityArraySource[i]];
         
         // Then, delete the row
         [self.myTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -257,7 +261,7 @@
 //------------------
 // Prepare for the detail view
 //------------------
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(POI*)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(SpatialEntity*)sender
 {
     if ([segue.identifier isEqualToString:@"POIDetailVC"])
     {
@@ -265,7 +269,7 @@
         segue.destinationViewController;
         
         // grab the annotation from the sender
-        destinationViewController.poi = sender;
+        destinationViewController.spatialEntity = sender;
     }
 }
 
@@ -287,7 +291,7 @@
         NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
         
         // Test file saving capability
-        [self.rootViewController.poiDatabase saveDatatoFileWithName:fileFullPath];
+        [self.rootViewController.entityDatabase saveDatatoFileWithName:fileFullPath];
     });
 }
 
@@ -297,10 +301,10 @@
     NSString *dirPath = [myFileManager currentFullDirectoryPath];
     NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.data"];
     
-    [self.rootViewController.poiDatabase loadFromFile:fileFullPath];
+    [self.rootViewController.entityDatabase loadFromFile:fileFullPath];
     // Need to reconnec the data source
     [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray: self.rootViewController.poiDatabase.poiArray];
+     addSpaceTokensFromEntityArray: self.rootViewController.entityArraySource];
     // Reload the table
     [self.myTableView reloadData];
 }

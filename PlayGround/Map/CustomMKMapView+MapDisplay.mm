@@ -7,6 +7,7 @@
 //
 
 #import "CustomMKMapView+MapDisplay.h"
+#import "POI.h"
 #import "Route.h"
 
 @implementation CustomMKMapView (MapDisplay)
@@ -151,22 +152,34 @@
 //---------------------
 // Zoom-to-fit
 //---------------------
-- (void) zoomToFitPOIs: (NSSet<POI*> *) poiSet{
+
+// Zoom the map to fit the entities
+- (void) zoomToFitEntities: (NSSet<SpatialEntity*> *) entitySet{
     
-    if ([poiSet count] == 0){
+    if ([entitySet count] == 0){
         return;
-    }else if ([poiSet count] == 1){
+    }else if ([entitySet count] == 1){
         //----------------
-        // One POI
+        // One Entity
         //----------------
-        POI *aPOI = [poiSet anyObject];
-        MKCoordinateRegion region;
-        region.center = aPOI.latLon;
-        MKCoordinateSpan span = aPOI.coordSpan;
-        span.latitudeDelta = max(0.01, span.latitudeDelta);
-        span.longitudeDelta = max(0.01, span.longitudeDelta);
-        region.span = span;
-        [self setRegion:region animated:NO];
+        
+        // Handle the entity differently, depending on the type of entity
+        SpatialEntity *spatialEntity = [entitySet anyObject];
+        
+        if ([spatialEntity isKindOfClass:[POI class]]){
+            POI *aPOI = spatialEntity;
+            MKCoordinateRegion region;
+            region.center = aPOI.latLon;
+            MKCoordinateSpan span = aPOI.coordSpan;
+            span.latitudeDelta = max(0.01, span.latitudeDelta);
+            span.longitudeDelta = max(0.01, span.longitudeDelta);
+            region.span = span;
+            [self setRegion:region animated:NO];
+        }else if ([spatialEntity isKindOfClass:[Route class]]){
+            Route *aRoute = spatialEntity;
+            [self zoomToFitRoute: aRoute];
+        }
+        
     }else{
         
         //----------------------------------
@@ -177,20 +190,31 @@
         // minMapPointY, maxMapPointY
         CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
         
-        POI *aPOI = [poiSet anyObject];
-        MKMapPoint aMapPoint = MKMapPointForCoordinate(aPOI.latLon);
+        SpatialEntity *anEntity = [entitySet anyObject];
+        MKMapPoint aMapPoint = MKMapPointForCoordinate(anEntity.latLon);
         minMapPointX = aMapPoint.x; maxMapPointX = aMapPoint.x;
         minMapPointY = aMapPoint.y; maxMapPointY = aMapPoint.y;
         
-        for (POI *aPOI in poiSet){
-            MKMapPoint tempMapPoint = MKMapPointForCoordinate(aPOI.latLon);
-            minMapPointX = MIN(minMapPointX, tempMapPoint.x);
-            maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
-            minMapPointY = MIN(minMapPointY, tempMapPoint.y);
-            maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
+        for (SpatialEntity *anEntity in entitySet){
+            
+            if ([anEntity isKindOfClass:[POI class]]){
+                MKMapPoint tempMapPoint = MKMapPointForCoordinate(anEntity.latLon);
+                minMapPointX = MIN(minMapPointX, tempMapPoint.x);
+                maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
+                minMapPointY = MIN(minMapPointY, tempMapPoint.y);
+                maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
+            }else if ([anEntity isKindOfClass:[Route class]]){
+                double minMapX, maxMapX, minMapY, maxMapY;
+                Route *aRoute = anEntity;
+                [aRoute getMinMapX:minMapX andMaxMapX:maxMapX andMinMapY:minMapY andMaxMapY:maxMapY];
+                
+                minMapPointX = MIN(minMapPointX, minMapX);
+                maxMapPointX = MAX(maxMapPointX, maxMapX);
+                minMapPointY = MIN(minMapPointY, minMapY);
+                maxMapPointY = MAX(maxMapPointY, maxMapY);
+            }
         }
-        
-        
+                
         // Find out the mid point
         MKMapPoint midPoint = {.x = .5*(maxMapPointX + minMapPointX),
             .y= .5*(maxMapPointY + minMapPointY)};
@@ -220,6 +244,7 @@
     }
 }
 
+// Zoom the map to fit the route
 - (void)zoomToFitRoute:(Route*) aRoute{
     POI *startPOI = [[POI alloc] init];
     POI *endPOI = [[POI alloc] init];
@@ -230,7 +255,7 @@
     (MKMapPointMake((*aRoute.mapPointX)[length-1],
                     (*aRoute.mapPointY)[length-1]));
     NSSet *poiSet = [NSSet setWithObjects:startPOI, endPOI, nil];
-    [self zoomToFitPOIs:poiSet];
+    [self zoomToFitEntities:poiSet];
 }
 
 @end

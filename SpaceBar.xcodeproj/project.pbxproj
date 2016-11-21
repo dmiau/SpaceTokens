@@ -76,7 +76,7 @@
 		9A234B501D8A1C6D00F3EE21 /* ViewController+SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */; };
 		9A234B511D8A1C6D00F3EE21 /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9A234B521D8A1C6D00F3EE21 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
-		9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
+		9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
 		9A234B541D8A1C6D00F3EE21 /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A234B551D8A1C6D00F3EE21 /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9A234B561D8A1C6D00F3EE21 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
@@ -134,6 +134,8 @@
 		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62C3F61DCCD0B50048E44C /* Speech.framework */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
+		9A62FB831DDF7CC500245BD6 /* ConnectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */; };
+		9A62FB841DDF7CC500245BD6 /* ConnectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */; };
 		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A6F56311D9BCB490037C8A1 /* ExtraPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */; };
@@ -150,7 +152,7 @@
 		9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */; };
 		9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */; };
 		9A836D391C69372C007D9520 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
-		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
+		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
 		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
 		9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
 		9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B5E521D5D659300A32DC9 /* MiniMapView.m */; };
@@ -189,6 +191,8 @@
 		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9AB2854C1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
 		9AB2854D1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
+		9AB3BDD91DE290B100334EF9 /* TokenCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3BDD81DE290B100334EF9 /* TokenCollection.m */; };
+		9AB3BDDA1DE290B100334EF9 /* TokenCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3BDD81DE290B100334EF9 /* TokenCollection.m */; };
 		9AB5AAF31DD10DBD0094996B /* ConstraintDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */; };
 		9AB5AAF41DD10DBD0094996B /* ConstraintDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */; };
 		9AB76B761D9C5C110096C444 /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B751D9C5C110096C444 /* setup.png */; };
@@ -230,7 +234,7 @@
 		9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
 		9AD0F43B1C7CF71800AEF928 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
 		9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
-		9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */; };
+		9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
 		9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
 		9AD0F4421C7CF71800AEF928 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
@@ -338,6 +342,8 @@
 		9A62C3F61DCCD0B50048E44C /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
+		9A62FB811DDF7CC500245BD6 /* ConnectionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionTool.h; path = SpaceBar/ConnectionTool.h; sourceTree = "<group>"; };
+		9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionTool.m; path = SpaceBar/ConnectionTool.m; sourceTree = "<group>"; };
 		9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Annotations.h"; sourceTree = "<group>"; };
 		9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Annotations.m"; sourceTree = "<group>"; };
 		9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraPanels.xib; sourceTree = "<group>"; };
@@ -355,7 +361,7 @@
 		9A836D371C69372C007D9520 /* tester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tester.h; path = tester/tester.h; sourceTree = "<group>"; };
 		9A836D381C69372C007D9520 /* tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tester.m; path = tester/tester.m; sourceTree = "<group>"; };
 		9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+UpdateSet.h"; path = "SpaceBar/SpaceBar+UpdateSet.h"; sourceTree = "<group>"; };
-		9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+UpdateSet.m"; path = "SpaceBar/SpaceBar+UpdateSet.m"; sourceTree = "<group>"; };
+		9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SpaceBar+UpdateSet.mm"; path = "SpaceBar/SpaceBar+UpdateSet.mm"; sourceTree = "<group>"; };
 		9A8413671C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+UpdateMap.h"; path = "SpaceBar/SpaceBar+UpdateMap.h"; sourceTree = "<group>"; };
 		9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+UpdateMap.m"; path = "SpaceBar/SpaceBar+UpdateMap.m"; sourceTree = "<group>"; };
 		9A84136C1C6FB39B004DF8D1 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = SpaceBar/Constants.m; sourceTree = "<group>"; };
@@ -396,6 +402,8 @@
 		9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SnapshotProgress.mm; path = StudyManager/SnapshotProgress.mm; sourceTree = "<group>"; };
 		9AB2854A1D88C10700773166 /* SpaceBar+Anchors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Anchors.h"; path = "SpaceBar/SpaceBar+Anchors.h"; sourceTree = "<group>"; };
 		9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Anchors.m"; path = "SpaceBar/SpaceBar+Anchors.m"; sourceTree = "<group>"; };
+		9AB3BDD71DE290B100334EF9 /* TokenCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenCollection.h; path = SpaceBar/TokenCollection.h; sourceTree = "<group>"; };
+		9AB3BDD81DE290B100334EF9 /* TokenCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenCollection.m; path = SpaceBar/TokenCollection.m; sourceTree = "<group>"; };
 		9AB5AAF11DD10DBD0094996B /* ConstraintDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstraintDebugView.h; path = ConstraintEngine/ConstraintDebugView.h; sourceTree = "<group>"; };
 		9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstraintDebugView.m; path = ConstraintEngine/ConstraintDebugView.m; sourceTree = "<group>"; };
 		9AB76B751D9C5C110096C444 /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setup.png; path = icons/setup.png; sourceTree = "<group>"; };
@@ -699,7 +707,7 @@
 				9A8413671C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.h */,
 				9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */,
 				9A8413641C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.h */,
-				9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m */,
+				9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */,
 				9AC36DD01C60087B0037210F /* SpaceToken.h */,
 				9AC36DD11C60087B0037210F /* SpaceToken.m */,
 				9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */,
@@ -716,6 +724,10 @@
 				9A84136E1C6FB3B4004DF8D1 /* Constants.h */,
 				9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */,
 				9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */,
+				9A62FB811DDF7CC500245BD6 /* ConnectionTool.h */,
+				9A62FB821DDF7CC500245BD6 /* ConnectionTool.m */,
+				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
+				9AB3BDD81DE290B100334EF9 /* TokenCollection.m */,
 			);
 			name = "SpaceBar Project";
 			sourceTree = "<group>";
@@ -1134,7 +1146,7 @@
 				9A234B501D8A1C6D00F3EE21 /* ViewController+SpaceToken.m in Sources */,
 				9A234B511D8A1C6D00F3EE21 /* SnapshotTableController.m in Sources */,
 				9A234B521D8A1C6D00F3EE21 /* GameManager.m in Sources */,
-				9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.m in Sources */,
+				9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A234B541D8A1C6D00F3EE21 /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9A234B551D8A1C6D00F3EE21 /* FileTableController.m in Sources */,
 				9A234B561D8A1C6D00F3EE21 /* CircleCheckingPanel.m in Sources */,
@@ -1157,6 +1169,7 @@
 				9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
+				9AB3BDD91DE290B100334EF9 /* TokenCollection.m in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
 				9AAAA1821D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
 				9AF2D5501D5E8886001FCA6E /* CheckingPanel.m in Sources */,
@@ -1216,8 +1229,9 @@
 				9A1985A61DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */,
+				9A62FB831DDF7CC500245BD6 /* ConnectionTool.m in Sources */,
 				9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */,
-				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.m in Sources */,
+				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */,
@@ -1241,6 +1255,7 @@
 				9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
+				9AB3BDDA1DE290B100334EF9 /* TokenCollection.m in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AAAA1831D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
 				9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */,
@@ -1300,8 +1315,9 @@
 				9A1985A71DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */,
+				9A62FB841DDF7CC500245BD6 /* ConnectionTool.m in Sources */,
 				9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */,
-				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.m in Sources */,
+				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */,

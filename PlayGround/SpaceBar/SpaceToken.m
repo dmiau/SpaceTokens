@@ -12,6 +12,7 @@
 #import "../Map/CustomPointAnnotation.h"
 #import "../Map/Person.h"
 #import "../Map/CustomMKMapView.h"
+#import "ConnectionTool.h"
 
 
 #define SPACE_TOKEN_WIDTH 60
@@ -209,7 +210,10 @@
     
     float width = 100;
     float height = 30;
+    
+    //--------------------
     // Add a label on top of the circle
+    //--------------------
     UILabel *label = [[UILabel alloc] initWithFrame:
                       CGRectMake(-width/2 + self.frame.size.width/2,
                                  -height -radius + self.frame.size.height/2,
@@ -221,6 +225,13 @@
     [label setBackgroundColor:[UIColor clearColor]];
     [label setFont: [UIFont fontWithName:@"Trebuchet MS" size:12.0f]];
     [self addSubview:label];
+    
+    //--------------------
+    // Add a connection tool on top of the circle
+    //--------------------
+    ConnectionTool *connectionTool = [[ConnectionTool alloc] init];
+    [connectionTool attachToSpaceToken: self];
+    
     //            [[self layer] addSublayer:self.lineLayer];
 }
 

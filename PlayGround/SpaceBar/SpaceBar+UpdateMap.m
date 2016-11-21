@@ -7,6 +7,7 @@
 //
 
 #import "SpaceBar+UpdateMap.h"
+#import "POI.h"
 
 @implementation SpaceBar (UpdateMap)
 
@@ -72,7 +73,7 @@
         }
         
         // Zoom to fit
-        [self.mapView zoomToFitPOIs:poiSet];
+        [self.mapView zoomToFitEntities:poiSet];
     }
 }
 

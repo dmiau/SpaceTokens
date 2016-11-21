@@ -37,6 +37,7 @@
 
 
 // Databases
+@property NSMutableArray <SpatialEntity*> *entityArraySource;
 @property POIDatabase *poiDatabase;
 @property EntityDatabase *entityDatabase;
 @property GameManager *gameManager;

@@ -7,7 +7,7 @@
 //
 
 #import "CustomMKMapView+Annotations.h"
-
+#import "CustomPointAnnotation.h"
 
 @implementation CustomMKMapView (Annotations)
 

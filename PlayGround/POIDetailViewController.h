@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Map/POI.h"
+#import "SpatialEntity.h"
 
 @interface POIDetailViewController : UIViewController
 
-@property POI *poi;
+@property SpatialEntity *spatialEntity;
 @property (weak, nonatomic) IBOutlet UITextField *nameOutlet;
 
 

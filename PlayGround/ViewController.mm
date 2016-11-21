@@ -65,6 +65,11 @@
     [self.entityDatabase debugInit];
     
     //----------------
+    // Initialize the entity array source
+    //----------------
+    self.entityArraySource = self.entityDatabase.entityArray;    
+    
+    //----------------
     // Initialize a Snapshot DB
     //----------------
     SnapshotDatabase *mySnapshotDatabase = [SnapshotDatabase sharedManager];
