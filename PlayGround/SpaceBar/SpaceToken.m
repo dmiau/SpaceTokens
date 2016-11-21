@@ -18,7 +18,9 @@
 #define SPACE_TOKEN_WIDTH 60
 #define SPACE_TOKEN_HEIGHT 20
 
-@implementation SpaceToken
+@implementation SpaceToken{
+    NSTimer *tokenFlashTimer;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -107,6 +109,7 @@
     _person = person;
     _spatialEntity = person.poi;
 }
+
 
 - (void)setSelected:(BOOL)selected{
     super.selected = selected;
@@ -292,6 +295,20 @@
     self.constraintLayer.fillColor = nil;
     self.constraintLayer.strokeColor = [UIColor redColor].CGColor;
     self.constraintLayer.opacity = 1.0;
+}
+
+- (void)flashToken{
+    [self setBackgroundColor:[UIColor redColor]];
+    
+    // Timer action to disable the highlight
+    tokenFlashTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                         target:self
+                                                       selector:@selector(flashTimerAction)
+                                                       userInfo:nil repeats:NO];
+}
+
+- (void)flashTimerAction{
+    [self setBackgroundColor:[UIColor grayColor]];
 }
 
 - (void)showAnchorVisualIndicatorAfter:(double) second{

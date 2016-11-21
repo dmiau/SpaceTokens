@@ -37,7 +37,7 @@
     //-------------------
     // Generate tasks for PLACE
     //-------------------
-    NSMutableDictionary *placeTaskDictionary = [self generatePlaceDictionary];
+    NSMutableDictionary *placeTaskDictionary = [self p_generatePlaceDictionary];
     // Need to handle multiple conditions
     for (NSString *aKey in placeTaskDictionary){
         SnapshotPlace *snapshot = placeTaskDictionary[aKey];
@@ -55,7 +55,7 @@
     //-------------------
     // Generate tasks for ANCHOR
     //-------------------
-    NSMutableDictionary *anchorTaskDictionary = [self generateAnchorPlusDictionary];
+    NSMutableDictionary *anchorTaskDictionary = [self p_generateAnchorPlusDictionary];
     // Need to handle multiple conditions
     for (NSString *aKey in anchorTaskDictionary){
         SnapshotPlace *snapshot = anchorTaskDictionary[aKey];
@@ -80,148 +80,13 @@
     return taskArray;
 }
 
-//---------------------
-// Method to generate tasks for PLACE
-//---------------------
-- (NSMutableDictionary<NSString*, SnapshotPlace*> * )generatePlaceDictionary{
-    NSMutableDictionary *outDictionary = [[NSMutableDictionary alloc] init];
-    
-    //---------------------
-    // Initial condition
-    //---------------------
-    MKCoordinateRegion initRegion =
-    MKCoordinateRegionMake(
-                           CLLocationCoordinate2DMake(40.7534, -73.9415),
-                           MKCoordinateSpanMake(0.0104439, 0.0100001));
-    
-    //---------------------
-    // Create a POI (SpaceToken)
-    //---------------------
-    
-    // Grand Central for now
-    POI *tokenPOI = [[POI alloc] init];
-    tokenPOI.name = @"Grand Central";
-    tokenPOI.latLon = CLLocationCoordinate2DMake(40.7527, -73.9772);
-    tokenPOI.coordSpan = MKCoordinateSpanMake(0.0104439, 0.01);
 
-    
-    //---------------------
-    // Create a target POI (one for each snapshot)
-    //---------------------
-    NSDictionary *angleDictionary = @{@"east": @0, @"northeast": @45,
-                                      @"north": @90, @"northwest": @135,
-                                      @"west": @180, @"southwest": @225,
-                                      @"south": @270, @"southeast": @315};
-    
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    
-    // 8 directions
-    for (NSString *aKey in [angleDictionary allKeys]){
-        
-        double degree = [angleDictionary[aKey] doubleValue];
-        
-        // Create a snapshot
-        SnapshotPlace *placeSnapshot = [[SnapshotPlace alloc] init];
-        
-        // Set the initial condition
-        placeSnapshot.latLon = initRegion.center;
-        placeSnapshot.coordSpan = initRegion.span;
-        
-        // Assemble the POI for SpaceToken
-        [placeSnapshot.poisForSpaceTokens addObject:tokenPOI];
-        
-        // Assemble the POI for the target area
-        POI *target = [self generateTargetForReferencePOI:tokenPOI withAngle:degree
-                                           offSetDistance:20+ mapView.frame.size.width * 0.4];
-        
-        [placeSnapshot.targetedPOIs addObject:target];
-        
-        // Generate the ID and instructions
-        placeSnapshot.name = [NSString stringWithFormat:@"PLACE:%@", aKey];
-        placeSnapshot.instructions =
-        [NSString stringWithFormat:@"Inspect the area %@ of Grand Central.", aKey];
-        outDictionary[placeSnapshot.name] = placeSnapshot;
-    }
-    
-    return outDictionary;
-}
 
-//=====================
-// Method to generate tasks for Anchor + Place
-//=====================
-- (NSMutableDictionary<NSString*, SnapshotAnchorPlus*> * )generateAnchorPlusDictionary{
-    NSMutableDictionary *outDictionary = [[NSMutableDictionary alloc] init];
-    
-    //---------------------
-    // Initial condition
-    //---------------------
-    
-    // London City Hall
-    MKCoordinateRegion initRegion =
-    MKCoordinateRegionMake(
-                           CLLocationCoordinate2DMake(51.5044, -0.0772236),
-                           MKCoordinateSpanMake(0.00432843, 0.00504386));
-    
-    //---------------------
-    // Create an anchor (at centroid)
-    //---------------------
-    
-    // Grand Central for now
-    POI *anchorPOI = [[POI alloc] init];
-    anchorPOI.name = @"London City Hall";
-    anchorPOI.latLon = initRegion.center;
-    anchorPOI.coordSpan = initRegion.span;
-    
-    
-    //---------------------
-    // Create a target SpaceToken POI (one for each snapshot)
-    //---------------------
-    NSDictionary *angleDictionary = @{@"east": @0, @"northeast": @45,
-                                      @"north": @90, @"northwest": @135,
-                                      @"west": @180, @"southwest": @225,
-                                      @"south": @270, @"southeast": @315};
-    
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    
-    // 8 directions
-    for (NSString *aKey in [angleDictionary allKeys]){
-        
-        double degree = [angleDictionary[aKey] doubleValue];
-        
-        // Create a snapshot
-        SnapshotAnchorPlus *anchorSnapshot = [[SnapshotAnchorPlus alloc] init];
-        
-        // Set the initial condition
-        anchorSnapshot.latLon = initRegion.center;
-        anchorSnapshot.coordSpan = initRegion.span;
-        
-        // Assemble the POI for the anchor
-        [anchorSnapshot.highlightedPOIs addObject:anchorPOI];
-        
-        // Assemble the POI for the spacetoken
-        POI *token = [self generateTargetForReferencePOI:anchorPOI withAngle:degree
-                                           offSetDistance:mapView.frame.size.height * 2];
-        token.name = @"Hotel";
-        [anchorSnapshot.poisForSpaceTokens addObject:token];
-        
-        // Assemble the POI for the targeted area
-        [anchorSnapshot.targetedPOIs addObject:anchorPOI];
-        [anchorSnapshot.targetedPOIs addObject:token];
-        
-        // Generate the ID and instructions
-        anchorSnapshot.name = [NSString stringWithFormat:@"ANCHOR:%@", aKey];
-        anchorSnapshot.instructions =
-        [NSString stringWithFormat:@"Inspect the area between the anchor and hotel."];
-        outDictionary[anchorSnapshot.name] = anchorSnapshot;
-    }
-    
-    return outDictionary;
-}
 
 //----------------
 // Generate a target POI
 //----------------
-- (POI*)generateTargetForReferencePOI: (POI*) tokenPOI withAngle: (double)degree offSetDistance: (double) offset{
+- (POI*)p_generateTargetForReferencePOI: (POI*) tokenPOI withAngle: (double)degree offSetDistance: (double) offset{
     POI* outPOI = [[POI alloc] init];
     
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];

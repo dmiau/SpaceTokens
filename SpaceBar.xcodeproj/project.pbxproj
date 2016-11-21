@@ -13,6 +13,10 @@
 		9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */; };
 		9A0FEE8C1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */; };
+		9A0FEE951DE3A1BA00D4DFF1 /* TaskGenerator+Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE941DE3A1BA00D4DFF1 /* TaskGenerator+Place.m */; };
+		9A0FEE961DE3A1BA00D4DFF1 /* TaskGenerator+Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE941DE3A1BA00D4DFF1 /* TaskGenerator+Place.m */; };
+		9A0FEE991DE3A23400D4DFF1 /* TaskGenerator+Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE981DE3A23400D4DFF1 /* TaskGenerator+Anchor.m */; };
+		9A0FEE9A1DE3A23400D4DFF1 /* TaskGenerator+Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE981DE3A23400D4DFF1 /* TaskGenerator+Anchor.m */; };
 		9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A1985A61DDCEE460016696F /* PathToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.m */; };
@@ -285,6 +289,10 @@
 		9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+MapView.mm"; sourceTree = "<group>"; };
 		9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Route+Tools.h"; path = "Map/Route+Tools.h"; sourceTree = "<group>"; };
 		9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "Route+Tools.mm"; path = "Map/Route+Tools.mm"; sourceTree = "<group>"; };
+		9A0FEE931DE3A1BA00D4DFF1 /* TaskGenerator+Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TaskGenerator+Place.h"; path = "StudyManager/TaskGenerator+Place.h"; sourceTree = "<group>"; };
+		9A0FEE941DE3A1BA00D4DFF1 /* TaskGenerator+Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Place.m"; path = "StudyManager/TaskGenerator+Place.m"; sourceTree = "<group>"; };
+		9A0FEE971DE3A23400D4DFF1 /* TaskGenerator+Anchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TaskGenerator+Anchor.h"; path = "StudyManager/TaskGenerator+Anchor.h"; sourceTree = "<group>"; };
+		9A0FEE981DE3A23400D4DFF1 /* TaskGenerator+Anchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Anchor.m"; path = "StudyManager/TaskGenerator+Anchor.m"; sourceTree = "<group>"; };
 		9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceBar.entitlements; sourceTree = "<group>"; };
 		9A143B321D2AF56E001EE841 /* CustomMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKMapView.h; path = Map/CustomMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* CustomMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKMapView.m; path = Map/CustomMKMapView.m; sourceTree = "<group>"; };
@@ -519,6 +527,84 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9A0FEE8D1DE39F7A00D4DFF1 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				9ACCEA181D81FB7400E145D7 /* SnapshotPlace.h */,
+				9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */,
+				9AE1D2A21DD39E2D0092B1D4 /* PlaceInstructionView.h */,
+				9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */,
+				9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */,
+			);
+			name = Place;
+			sourceTree = "<group>";
+		};
+		9A0FEE8E1DE39F9600D4DFF1 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				9A2495EB1D9929CC00A92207 /* TaskGenerator.h */,
+				9A2495EC1D9929CC00A92207 /* TaskGenerator.m */,
+				9A0FEE931DE3A1BA00D4DFF1 /* TaskGenerator+Place.h */,
+				9A0FEE941DE3A1BA00D4DFF1 /* TaskGenerator+Place.m */,
+				9A0FEE971DE3A23400D4DFF1 /* TaskGenerator+Anchor.h */,
+				9A0FEE981DE3A23400D4DFF1 /* TaskGenerator+Anchor.m */,
+			);
+			name = Generator;
+			sourceTree = "<group>";
+		};
+		9A0FEE8F1DE39FBE00D4DFF1 /* Database+Records */ = {
+			isa = PBXGroup;
+			children = (
+				9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */,
+				9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */,
+				9AAAA1841D7C70EA003F4AA3 /* SnapshotDatabase+Debug.h */,
+				9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */,
+				9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */,
+				9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */,
+				9A485B451D906BD500C43255 /* RecordDatabase.h */,
+				9A485B461D906BD500C43255 /* RecordDatabase.m */,
+			);
+			name = "Database+Records";
+			sourceTree = "<group>";
+		};
+		9A0FEE901DE39FE700D4DFF1 /* Anchor */ = {
+			isa = PBXGroup;
+			children = (
+				9AAAA1801D7C6BEE003F4AA3 /* SnapshotAnchorPlus.h */,
+				9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */,
+			);
+			name = Anchor;
+			sourceTree = "<group>";
+		};
+		9A0FEE911DE3A01600D4DFF1 /* Checking */ = {
+			isa = PBXGroup;
+			children = (
+				9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */,
+				9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */,
+			);
+			name = Checking;
+			sourceTree = "<group>";
+		};
+		9A0FEE921DE3A01B00D4DFF1 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */,
+				9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
+		9A0FEE9B1DE3A54700D4DFF1 /* SnapshotBase */ = {
+			isa = PBXGroup;
+			children = (
+				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
+				9ACCEA151D81EFD700E145D7 /* Snapshot.m */,
+				9AFFFFF01D85B85A00111E6C /* Snapshot+Validators.h */,
+				9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */,
+			);
+			name = SnapshotBase;
+			sourceTree = "<group>";
+		};
 		9A22D0151D22B97C009BC465 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,33 +662,16 @@
 		9A437FAF1D55082700F28E61 /* GameManager */ = {
 			isa = PBXGroup;
 			children = (
+				9A437FB81D55482B00F28E61 /* StudyPanels */,
+				9A0FEE8F1DE39FBE00D4DFF1 /* Database+Records */,
+				9A0FEE8E1DE39F9600D4DFF1 /* Generator */,
+				9A0FEE9B1DE3A54700D4DFF1 /* SnapshotBase */,
+				9A0FEE8D1DE39F7A00D4DFF1 /* Place */,
+				9A0FEE901DE39FE700D4DFF1 /* Anchor */,
+				9A0FEE911DE3A01600D4DFF1 /* Checking */,
+				9A0FEE921DE3A01B00D4DFF1 /* Progress */,
 				9A437FB01D550C7A00F28E61 /* GameManager.h */,
 				9A437FB11D550C7A00F28E61 /* GameManager.m */,
-				9A2495EB1D9929CC00A92207 /* TaskGenerator.h */,
-				9A2495EC1D9929CC00A92207 /* TaskGenerator.m */,
-				9AA617611D5635D1003CD946 /* SnapshotProtocol.h */,
-				9ACCEA151D81EFD700E145D7 /* Snapshot.m */,
-				9AFFFFF01D85B85A00111E6C /* Snapshot+Validators.h */,
-				9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */,
-				9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */,
-				9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */,
-				9AAAA1841D7C70EA003F4AA3 /* SnapshotDatabase+Debug.h */,
-				9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */,
-				9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */,
-				9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */,
-				9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */,
-				9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */,
-				9AAAA1801D7C6BEE003F4AA3 /* SnapshotAnchorPlus.h */,
-				9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */,
-				9ACCEA181D81FB7400E145D7 /* SnapshotPlace.h */,
-				9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */,
-				9AE1D2A21DD39E2D0092B1D4 /* PlaceInstructionView.h */,
-				9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */,
-				9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */,
-				9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */,
-				9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */,
-				9A485B451D906BD500C43255 /* RecordDatabase.h */,
-				9A485B461D906BD500C43255 /* RecordDatabase.m */,
 			);
 			name = GameManager;
 			sourceTree = "<group>";
@@ -659,6 +728,7 @@
 				9A22D0151D22B97C009BC465 /* Map */,
 				9AC36DC31C5FF2220037210F /* SpaceBar Project */,
 				9AC36DC91C5FFBE30037210F /* View */,
+				9A437FAF1D55082700F28E61 /* GameManager */,
 				9AC36DD31C60098A0037210F /* Controller */,
 				9A5301451C5AD6A6008D584B /* AppDelegate.m */,
 				9A5301441C5AD6A6008D584B /* AppDelegate.h */,
@@ -756,7 +826,6 @@
 		9AC36DD31C60098A0037210F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9A437FAF1D55082700F28E61 /* GameManager */,
 				9AC7E1AC1D51164600C2E8BE /* SeguePanels */,
 				9A5301471C5AD6A6008D584B /* ViewController.h */,
 				9A5301481C5AD6A6008D584B /* ViewController.mm */,
@@ -777,7 +846,6 @@
 		9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */ = {
 			isa = PBXGroup;
 			children = (
-				9A437FB81D55482B00F28E61 /* StudyPanels */,
 				9ACD6CDB1D352E8600E3BF9C /* DirectionPanel.h */,
 				9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */,
 				9A48C1361D5273EA0038FBA5 /* MainViewManager.h */,
@@ -1192,6 +1260,7 @@
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
 				9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */,
 				9AA57F6F1DD624D800347B1A /* SpatialEntity.mm in Sources */,
+				9A0FEE991DE3A23400D4DFF1 /* TaskGenerator+Anchor.m in Sources */,
 				9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
@@ -1228,6 +1297,7 @@
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
 				9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */,
+				9A0FEE951DE3A1BA00D4DFF1 /* TaskGenerator+Place.m in Sources */,
 				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
@@ -1279,6 +1349,7 @@
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
 				9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */,
 				9AA57F701DD624D800347B1A /* SpatialEntity.mm in Sources */,
+				9A0FEE9A1DE3A23400D4DFF1 /* TaskGenerator+Anchor.m in Sources */,
 				9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */,
 				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
@@ -1315,6 +1386,7 @@
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
 				9A485B4C1D90910400C43255 /* RecordTableViewController.m in Sources */,
+				9A0FEE961DE3A1BA00D4DFF1 /* TaskGenerator+Place.m in Sources */,
 				9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,

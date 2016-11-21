@@ -287,6 +287,8 @@
             resultToken = aToken;
             NSLog(@"SpaceToken: %@ tapped.", aToken.spatialEntity.name);
             
+            // Flash the touched SpaceToken
+            [aToken flashToken];
             
             // Connection tool only supports the connection of POI
             

@@ -44,6 +44,9 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
 // corrresponding to latlon
 
 
+// flash the token
+- (void)flashToken;
+
 // display the anchor circle after some seconds
 - (void)showAnchorVisualIndicatorAfter:(double) second;
 
