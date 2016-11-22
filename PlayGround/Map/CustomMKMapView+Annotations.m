@@ -39,11 +39,14 @@
         }
         
         if (annotation.pointType == landmark){
-            //            [pinView setAnimatesDrop:NO];
-            UIImage *starImg = [UIImage imageNamed:@"star-128.png"];
             
-            pinView.image = [self resizeImage:starImg
-                                      newSize:CGSizeMake(12, 12)];
+            pinView.image = annotation.annotationImage;
+            
+            // Add a label to the annoation
+            if (annotation.isLableOn && annotation.aLabel){
+                [annotation.aLabel removeFromSuperview];
+                [pinView addSubview: annotation.aLabel];
+            }
         }else{
             //            [pinView setAnimatesDrop:YES];
             
@@ -87,43 +90,13 @@
         }
         [pinView setCanShowCallout:NO];
         
-        UIImage *starImg = [UIImage imageNamed:@"grayYouRHere.png"];
-        
-        pinView.image = [self resizeImage:starImg
-                                  newSize:CGSizeMake(12, 12)];
+        pinView.image = annotation.annotationImage;
         return pinView;
     }else{
         MKAnnotationView *pinView = [[MKPinAnnotationView alloc] init];
         return pinView;
     }
 }
-
-
-- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {
-    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-    CGImageRef imageRef = image.CGImage;
-    
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    // Set the quality level to use when rescaling
-    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
-    
-    CGContextConcatCTM(context, flipVertical);
-    // Draw into the context; this scales the image
-    CGContextDrawImage(context, newRect, imageRef);
-    
-    // Get the resized image from the context and a UIImage
-    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
-    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-    
-    CGImageRelease(newImageRef);
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 
 #pragma mark --Routes--
 //------------------

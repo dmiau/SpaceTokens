@@ -32,7 +32,7 @@
     
     // Grand Central for now
     POI *tokenPOI = [[POI alloc] init];
-    tokenPOI.name = @"Grand Central";
+    tokenPOI.name = @"station";
     tokenPOI.latLon = CLLocationCoordinate2DMake(40.7527, -73.9772);
     tokenPOI.coordSpan = MKCoordinateSpanMake(0.0104439, 0.01);
     

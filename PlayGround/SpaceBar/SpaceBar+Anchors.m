@@ -7,6 +7,7 @@
 //
 
 #import "SpaceBar+Anchors.h"
+#import "POI.h"
 
 @implementation SpaceBar (Anchors)
 
@@ -37,9 +38,16 @@
             
             // Position the SpaceToken correctly
             aToken.center = mapXY;
-            aToken.spatialEntity.latLon = coord;
             aToken.mapViewXY = mapXY;
-            aToken.spatialEntity.name = [NSString stringWithFormat:@"Anchor%d", counter++];
+            
+            // Create a POI for the anchor
+            POI* aPOI = [[POI alloc] init];
+            aPOI.latLon = coord;
+            aPOI.name = [NSString stringWithFormat:@"Anchor%d", counter++];
+            aPOI.coordSpan = self.mapView.region.span;
+            aToken.spatialEntity = aPOI;
+            
+            
             aToken.touch = aTouch;
             [self.anchorArray addObject:aToken];
             

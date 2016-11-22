@@ -161,6 +161,15 @@
         aSpaceToken = [[SpaceToken alloc] init];
     }else if ([spatialEntity isKindOfClass:[Route class]]){
         aSpaceToken = [[PathToken alloc] init];
+    }else{
+        // error
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
+                                                        message:@"Unimplemented code path."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
     }
     
     [aSpaceToken configureAppearanceForType:DOCKED];

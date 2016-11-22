@@ -41,7 +41,22 @@
                                       @"south": @270, @"southeast": @315};
     double angle = [angleDictionary[direction] doubleValue];
     
-    NSString *anchorName = @"station";
+    // Get the name from the snapshot POI
+    POI* aPOI;
+    if ([snapShotPlace.poisForSpaceTokens count] != 1){
+        // Alert the user something is wrong
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Snapshot Data Error."
+                            message:@"SnapshotPlace should contain one token POI."
+                            delegate:self
+                            cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }else{
+        aPOI = snapShotPlace.poisForSpaceTokens[0];
+    }
+    
+    NSString *anchorName = aPOI.name;
 
     CAShapeLayer *baseLayer = [CAShapeLayer layer];
     //----------------------
@@ -68,7 +83,7 @@
     
     // Translate the text layer
     double thetaInCGCoord = -angle + 180;
-    double leg = radius * 1.5;
+    double leg = radius * 1.3;
     double xOffset = cos(thetaInCGCoord/180*M_PI) * leg;
     double yOffset = sin(thetaInCGCoord/180*M_PI) * leg;
     

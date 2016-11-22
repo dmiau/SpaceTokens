@@ -576,22 +576,22 @@
 			name = Anchor;
 			sourceTree = "<group>";
 		};
-		9A0FEE911DE3A01600D4DFF1 /* Checking */ = {
+		9A0FEE911DE3A01600D4DFF1 /* RouteChecking */ = {
 			isa = PBXGroup;
 			children = (
 				9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */,
 				9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */,
 			);
-			name = Checking;
+			name = RouteChecking;
 			sourceTree = "<group>";
 		};
-		9A0FEE921DE3A01B00D4DFF1 /* Progress */ = {
+		9A0FEE921DE3A01B00D4DFF1 /* RouteProgress */ = {
 			isa = PBXGroup;
 			children = (
 				9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */,
 				9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */,
 			);
-			name = Progress;
+			name = RouteProgress;
 			sourceTree = "<group>";
 		};
 		9A0FEE9B1DE3A54700D4DFF1 /* SnapshotBase */ = {
@@ -608,8 +608,10 @@
 		9A22D0151D22B97C009BC465 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				9A143B321D2AF56E001EE841 /* CustomMKMapView.h */,
+				9ACA1C431DE49F2600185CB1 /* annotations */,
+				9ACA1C441DE49F5E00185CB1 /* entities */,
 				9A143B331D2AF56E001EE841 /* CustomMKMapView.m */,
+				9A143B321D2AF56E001EE841 /* CustomMKMapView.h */,
 				9A93F9261D3016690012638A /* CustomMKMapView+MapDisplay.h */,
 				9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */,
 				9ACCEA1C1D821FEE00E145D7 /* CustomMKMapView+Tools.h */,
@@ -620,26 +622,6 @@
 				9A8B5E521D5D659300A32DC9 /* MiniMapView.m */,
 				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
 				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
-				9AA57F6D1DD624D800347B1A /* SpatialEntity.h */,
-				9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */,
-				9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */,
-				9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */,
-				9A8BCA261D343D43006C2EDC /* POI.h */,
-				9A8BCA271D343D43006C2EDC /* POI.m */,
-				9A43EAEE1D4008F400080029 /* POIDatabase.h */,
-				9A43EAEF1D4008F400080029 /* POIDatabase.m */,
-				9A56B7DF1D4E7C5A00A14B02 /* POIDatabase+iCloud.h */,
-				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
-				9A22D0161D22BD9A009BC465 /* Route.h */,
-				9A22D0171D22BD9A009BC465 /* Route.mm */,
-				9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */,
-				9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */,
-				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
-				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
-				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
-				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
-				9A27222C1D6CB79C002AE953 /* Person.h */,
-				9A27222D1D6CB79C002AE953 /* Person.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -668,8 +650,8 @@
 				9A0FEE9B1DE3A54700D4DFF1 /* SnapshotBase */,
 				9A0FEE8D1DE39F7A00D4DFF1 /* Place */,
 				9A0FEE901DE39FE700D4DFF1 /* Anchor */,
-				9A0FEE911DE3A01600D4DFF1 /* Checking */,
-				9A0FEE921DE3A01B00D4DFF1 /* Progress */,
+				9A0FEE911DE3A01600D4DFF1 /* RouteChecking */,
+				9A0FEE921DE3A01B00D4DFF1 /* RouteProgress */,
 				9A437FB01D550C7A00F28E61 /* GameManager.h */,
 				9A437FB11D550C7A00F28E61 /* GameManager.m */,
 			);
@@ -883,6 +865,40 @@
 			name = SeguePanels;
 			sourceTree = "<group>";
 		};
+		9ACA1C431DE49F2600185CB1 /* annotations */ = {
+			isa = PBXGroup;
+			children = (
+				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
+				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
+			);
+			name = annotations;
+			sourceTree = "<group>";
+		};
+		9ACA1C441DE49F5E00185CB1 /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				9AA57F6D1DD624D800347B1A /* SpatialEntity.h */,
+				9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */,
+				9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */,
+				9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */,
+				9A8BCA261D343D43006C2EDC /* POI.h */,
+				9A8BCA271D343D43006C2EDC /* POI.m */,
+				9A43EAEE1D4008F400080029 /* POIDatabase.h */,
+				9A43EAEF1D4008F400080029 /* POIDatabase.m */,
+				9A56B7DF1D4E7C5A00A14B02 /* POIDatabase+iCloud.h */,
+				9A56B7E01D4E7C5A00A14B02 /* POIDatabase+iCloud.m */,
+				9A22D0161D22BD9A009BC465 /* Route.h */,
+				9A22D0171D22BD9A009BC465 /* Route.mm */,
+				9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */,
+				9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */,
+				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
+				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
+				9A27222C1D6CB79C002AE953 /* Person.h */,
+				9A27222D1D6CB79C002AE953 /* Person.m */,
+			);
+			name = entities;
+			sourceTree = "<group>";
+		};
 		9AD503301DC94175005A05D6 /* Constraint Engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,12 +918,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A234B6A1D8A1C6D00F3EE21 /* Build configuration list for PBXNativeTarget "Test" */;
 			buildPhases = (
-				9A234B171D8A1C6D00F3EE21 /* [CP] Check Pods Manifest.lock */,
 				9A234B181D8A1C6D00F3EE21 /* Sources */,
 				9A234B5B1D8A1C6D00F3EE21 /* Frameworks */,
 				9A234B5F1D8A1C6D00F3EE21 /* Resources */,
-				9A234B681D8A1C6D00F3EE21 /* [CP] Embed Pods Frameworks */,
-				9A234B691D8A1C6D00F3EE21 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1078,52 +1091,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9A234B171D8A1C6D00F3EE21 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9A234B681D8A1C6D00F3EE21 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A234B691D8A1C6D00F3EE21 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FACD0185EF46FAFFB57D9B6F /* [CP] Copy Pods Resources */ = {
