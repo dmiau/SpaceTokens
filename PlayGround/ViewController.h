@@ -43,6 +43,8 @@
 @property GameManager *gameManager;
 @property RouteDatabase *routeDatabase;
 
+// Common access method
++ (id)sharedManager;
 
 // Route related methods
 - (void)showRouteFromDatabaseWithName:(NSString*) name

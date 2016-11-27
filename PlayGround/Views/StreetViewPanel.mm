@@ -67,7 +67,6 @@
                         MKCoordinateSpanMake(0.003, 0.003))];
     
     // Add the preference button
-    settingsButton.frame = CGRectMake(0, 30, 30, 30);
     [self.rootViewController.view addSubview: settingsButton];    
 }
 

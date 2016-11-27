@@ -170,4 +170,24 @@
     // Clean up
     // Terminate the task
 }
+
+#pragma mark --TwoPoints--
+//------------------------
+// Segment control validator
+//------------------------
+
+// This method is called when the user tap the "next" button
+- (void)segmentControlValidator{
+    [self.record end];
+    
+    // Check the answer
+    self.record.correctSegmentAnswer = self.correctAnswers;
+    
+    self.record.isCorrect = [self.record.userAnswer isEqualToSet:self.correctAnswers];
+    
+    // Report the result
+    GameManager *gameManager = [GameManager sharedManager];
+    [gameManager reportCompletionFromSnashot:self];    
+}
+
 @end

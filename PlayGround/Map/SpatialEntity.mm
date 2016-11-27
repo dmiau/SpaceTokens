@@ -68,6 +68,7 @@
     self.coordSpan = MKCoordinateSpanMake(
                                           [coder decodeDoubleForKey:@"latitudeDelta"],
                                           [coder decodeDoubleForKey:@"longitudeDelta"]);
+    self.isEnabled = [coder decodeBoolForKey:@"isEnabled"];
     return self;
 }
 
@@ -80,15 +81,19 @@
     [coder encodeDouble:self.coordSpan.latitudeDelta forKey:@"latitudeDelta"];
     [coder encodeDouble:self.coordSpan.longitudeDelta forKey:@"longitudeDelta"];
     [coder encodeObject:self.name forKey:@"name"];
+    
+    [coder encodeBool:self.isEnabled forKey:@"isEnabled"];
 }
 
 // Deep copy
 -(id) copyWithZone:(NSZone *) zone
 {
-    SpatialEntity *object = [[SpatialEntity alloc] init];
+    // This is very important, since a child class might call this method too.
+    SpatialEntity *object = [[[self class] alloc] init];
     object.latLon = self.latLon;
     object.coordSpan = self.coordSpan;
     object.name = self.name;
+    object.isEnabled = self.isEnabled;
     return object;
 }
 

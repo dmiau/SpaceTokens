@@ -21,9 +21,8 @@
 }
 
 - (void)initPreferenceButton{
-    
-    self.frame = CGRectZero;
-//    CGRectMake(self.frame.size.width*0.05, self.frame.size.height*0.5, 60, 20);
+    ViewController *rootViewController = [ViewController sharedManager];
+    self.frame = CGRectMake(rootViewController.view.frame.size.width-30, 15, 30, 30);
     [self setTitle:@"S." forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     [self setBackgroundColor:[UIColor grayColor]];

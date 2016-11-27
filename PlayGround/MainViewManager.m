@@ -53,6 +53,7 @@
         for (UIView *aView in view_array){
             if ([[aView restorationIdentifier] isEqualToString:@"TaskBasePanel"]){
                 self.taskBasePanel = (TaskBasePanel*) aView;
+                
             }else if([[aView restorationIdentifier] isEqualToString:@"AuthoringPanel"]){
                 self.authoringPanel = (AuthoringPanel*) aView;
             }

@@ -17,10 +17,18 @@
 @property ViewController *rootViewController;
 
 @property (weak, nonatomic) IBOutlet UILabel *counterOutlet;
-@property (weak, nonatomic) IBOutlet UILabel *instructionsOutlet;
+
+@property (weak, nonatomic) IBOutlet UITextView *instructionsOutlet;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *timeOutlet;
 
 +(id)sharedManager;
 - (IBAction)stopTimerAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControlOutlet;
+- (IBAction)segmentControlAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *nextButtonOutlet;
+- (IBAction)nextButtonAction:(id)sender;
 
 @end

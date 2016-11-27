@@ -354,8 +354,8 @@ double computeOrientationFromA2B
 //----------------
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.name forKey:@"name"];
-    
+    [super encodeWithCoder:coder];
+
     // Save the source and destination
     POI *sourcePOI = [[POI alloc] init];
     sourcePOI.latLon = self.source.placemark.coordinate;
@@ -380,10 +380,9 @@ double computeOrientationFromA2B
     [coder encodeObject: polylineArrayY forKey:@"polylineArrayY"];
 }
 
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [self init];
-    self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
-
+- (id)initWithCoder:(NSCoder *)coder {    
+    self = [super initWithCoder:coder];
+    
     // Decode source and destination
     POI *sourcePOI = [coder decodeObjectOfClass:[POI class] forKey:@"sourcePOI"];
     MKPlacemark *sourcePlacemark = [[MKPlacemark alloc] initWithCoordinate:sourcePOI.latLon addressDictionary:nil];
@@ -412,6 +411,7 @@ double computeOrientationFromA2B
     self.routePolyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[polylineArrayX count]];
     delete[] tempMapPointArray;
     [self populateInternalRouteProperties];
+    
     return self;
 }
 

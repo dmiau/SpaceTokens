@@ -98,7 +98,7 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSArray *list = @[@"Snapshot files", snapshotDatabase.name];
+    NSArray *list = @[@"Snapshot files", snapshotDatabase.currentFileName];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
     /* Create custom view to display section header... */
@@ -185,7 +185,6 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
         
         NSString *dirPath = [myFileManager currentFullDirectoryPath];
         NSString *fileFullPath = [dirPath stringByAppendingPathComponent:snapshotFileArray[row_id]];
-        
         [snapshotDatabase loadFromFile:fileFullPath];
         
         expandCollectionSection = false;

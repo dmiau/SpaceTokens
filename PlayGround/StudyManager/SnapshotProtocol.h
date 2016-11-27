@@ -41,8 +41,13 @@ typedef enum {CONTROL, EXPERIMENT} Condition;
 
 @property NSString *instructions;
 @property NSMutableArray <POI*> *highlightedPOIs;
-@property NSMutableArray <POI*> *poisForSpaceTokens; // poi to generate SpaceToken
+@property NSMutableArray <POI*> *poisForSpaceTokens; // pois to generate SpaceToken
 @property NSMutableArray <POI*> *targetedPOIs;
+
+// For those tasks that require multiple selections
+@property NSArray *segmentOptions;
+@property NSSet *correctAnswers;
+
 @property Record *record;
 @property Condition condition;
 
@@ -53,6 +58,7 @@ typedef enum {CONTROL, EXPERIMENT} Condition;
 - (void)onePointValidator;
 - (void)twoPointsValidator;
 
+- (void)segmentControlValidator;
 @end
 
 #endif /* SnapshotProtocol_h */

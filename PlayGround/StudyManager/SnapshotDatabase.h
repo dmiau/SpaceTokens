@@ -13,6 +13,7 @@
 @interface SnapshotDatabase : NSObject
 
 @property NSString *name;
+@property NSString *currentFileName;
 @property NSMutableArray <Snapshot*> *snapshotArray;
 
 +(id)sharedManager;

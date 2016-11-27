@@ -14,4 +14,6 @@
 
 @interface SnapshotAnchorPlus : Snapshot
 
+
+
 @end

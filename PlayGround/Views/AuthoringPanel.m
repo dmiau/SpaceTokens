@@ -89,7 +89,7 @@ static AuthoringPanel *instance;
 
 - (id)initWithFrame:(CGRect)frame ViewController:(ViewController*) viewController{
     
-    self = [TaskBasePanel sharedManager];
+    self = [AuthoringPanel sharedManager];
     self.frame = frame;
     if (self){
         
@@ -121,7 +121,6 @@ static AuthoringPanel *instance;
     targetRectBox = CGRectMake(0.1*mapWidth, (mapHeight - diameter)/2, diameter, diameter);
     
     // Add the preference button
-    settingsButton.frame = CGRectMake(0, 30, 30, 30);
     [self.rootViewController.view addSubview: settingsButton];
     
     self.isAuthoringVisualAidOn = NO;

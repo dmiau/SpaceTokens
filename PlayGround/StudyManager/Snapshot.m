@@ -34,6 +34,9 @@
         self.targetedPOIs = [[NSMutableArray alloc] init];
         self.poisForSpaceTokens = [[NSMutableArray alloc] init];
         
+        // Initialize the multi-selection array
+//        self.segmentOptions = [];
+        
         // Initialize the record object
         self.record = [[Record alloc] init];
     }
@@ -129,6 +132,11 @@
     [coder encodeObject:self.highlightedPOIs forKey:@"highlightedPOIs"];
     [coder encodeObject:self.poisForSpaceTokens forKey:@"poisForSpaceTokens"];
     [coder encodeObject:self.targetedPOIs forKey:@"targetedPOIs"];
+    
+    // For multiple selections
+    [coder encodeObject:self.segmentOptions forKey:@"segmentOptions"];
+    [coder encodeObject:self.correctAnswers forKey:@"correctAnswers"];
+    
     [coder encodeObject:[NSNumber numberWithInt:self.condition] forKey:@"condition"];
 }
 
@@ -136,9 +144,12 @@
     
     self = [super initWithCoder:coder];    
     self.instructions = [coder decodeObjectOfClass:[NSString class] forKey:@"instructions"];
-    self.highlightedPOIs = [coder decodeObjectOfClass:[NSString class] forKey:@"highlightedPOIs"];
-    self.poisForSpaceTokens = [coder decodeObjectOfClass:[NSString class] forKey:@"poisForSpaceTokens"];
-    self.targetedPOIs = [coder decodeObjectOfClass:[NSString class] forKey:@"targetedPOIs"];
+    self.highlightedPOIs = [[coder decodeObjectOfClass:[NSArray class] forKey:@"highlightedPOIs"] mutableCopy];
+    self.poisForSpaceTokens = [[coder decodeObjectOfClass:[NSArray class] forKey:@"poisForSpaceTokens"] mutableCopy];
+    self.targetedPOIs = [[coder decodeObjectOfClass:[NSArray class] forKey:@"targetedPOIs"] mutableCopy];
+    
+    self.segmentOptions = [coder decodeObjectOfClass:[NSArray class] forKey:@"segmentOptions"];
+    self.correctAnswers = [coder decodeObjectOfClass:[NSSet class]  forKey:@"correctAnswers"];
     
     // Restore condition
     self.condition = (Condition)

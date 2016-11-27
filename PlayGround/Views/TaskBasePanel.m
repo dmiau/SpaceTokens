@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "SettingsButton.h"
 #import "TaskBasePanel.h"
-#import "../StudyManager/SnapshotProgress.h"
-#import "../StudyManager/SnapshotChecking.h"
+#import "SnapshotProgress.h"
+#import "SnapshotChecking.h"
+#import "SnapshotAnchorPlus.h"
 #import "GameManager.h"
 
 @implementation TaskBasePanel{
@@ -114,7 +115,6 @@ static TaskBasePanel *instance;
     [self.rootViewController.view addSubview:self];
     
     // Add the preference button
-    settingsButton.frame = CGRectMake(0, 30, 30, 30);
     [self.rootViewController.view addSubview: settingsButton];
 }
 
@@ -140,6 +140,22 @@ static TaskBasePanel *instance;
     self.instructionsOutlet.text = gameManager.activeSnapshot.instructions;
     self.counterOutlet.text = [NSString stringWithFormat:@"%d", gameManager.gameCounter];
     
+    
+    //-------------
+    // The panel needs to be set up differently based on the type of snapshot
+    //-------------
+    if ([gameManager.activeSnapshot isKindOfClass:[SnapshotAnchorPlus class]]){
+        
+        // Need to configure the segmentation controller
+        [self enableAndConfigureSegmentControlFromSnapshot:
+         gameManager.activeSnapshot];
+        
+        
+        
+    }else{
+        [self disableSegmentControl];
+    }
+    
     // Start to update the timer
     startDate = [NSDate date];
     
@@ -154,6 +170,35 @@ static TaskBasePanel *instance;
     [[NSRunLoop mainRunLoop] addTimer:updateTimer forMode:NSRunLoopCommonModes];
 }
 
+- (void)enableAndConfigureSegmentControlFromSnapshot:(Snapshot*) aSnapshot{
+    // Unhide and enable the segment control and the button
+    [self.segmentControlOutlet setHidden:NO];
+    [self.segmentControlOutlet setEnabled:YES];
+    
+    // Configure the segment control
+    [self.segmentControlOutlet removeAllSegments];
+    
+    int idx = 0;
+    for (NSString *segment in aSnapshot.segmentOptions) {
+        [self.segmentControlOutlet insertSegmentWithTitle:segment atIndex:idx++ animated:NO];
+    }
+    
+    [self.nextButtonOutlet setHidden:NO];
+    [self.nextButtonOutlet setEnabled:NO];
+    
+    // validation happens when the "next" button is pressed
+    
+}
+
+- (void)disableSegmentControl{
+    [self.segmentControlOutlet setHidden:YES];
+    [self.segmentControlOutlet setEnabled:NO];
+    
+    [self.nextButtonOutlet setHidden:YES];
+    [self.nextButtonOutlet setEnabled:NO];
+}
+
+
 - (void)timerAction{
     double elapsedTime = fabs([startDate timeIntervalSinceNow]);
     self.timeOutlet.text =
@@ -164,4 +209,26 @@ static TaskBasePanel *instance;
     [updateTimer invalidate];
 }
 
+- (IBAction)segmentControlAction:(id)sender {
+    // The next button will be enabled only after an answer is provided.
+    [self.nextButtonOutlet setEnabled:YES];
+}
+
+- (IBAction)nextButtonAction:(id)sender {
+    // Get the gameManager
+    GameManager *gameManager = [GameManager sharedManager];
+    Snapshot *activeSnapshot = gameManager.activeSnapshot;
+    
+    // Collect the answer
+    int answerIndex = (int)(self.segmentControlOutlet.selectedSegmentIndex);
+    if (answerIndex == -1){
+        // This should not happen.
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Answer" message:@"You need to provide an answer to proceed."
+            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    }else{
+        NSString *answer = activeSnapshot.segmentOptions[answerIndex];
+        activeSnapshot.record.userAnswer = [[NSSet alloc] initWithObjects:answer, nil];
+        [activeSnapshot segmentControlValidator];
+    }
+}
 @end

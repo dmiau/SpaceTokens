@@ -110,7 +110,7 @@
 // Deep copy
 -(id) copyWithZone:(NSZone *) zone
 {
-    SnapshotDatabase *object = [[SnapshotDatabase alloc] init];
+    SnapshotDatabase *object = [[[self class] alloc] init];
     object.name = self.name;
     object.snapshotArray = self.snapshotArray;
 
@@ -140,10 +140,15 @@
         SnapshotDatabase *snapshotDB = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         self.name = snapshotDB.name;
         self.snapshotArray = snapshotDB.snapshotArray;
+        
+        // Store the current file name
+        self.currentFileName = [fullPathFileName lastPathComponent];
+        
         return YES;
     }else{
         NSLog(@"%@ does not exist.", fullPathFileName);
         return NO;
     }
+
 }
 @end

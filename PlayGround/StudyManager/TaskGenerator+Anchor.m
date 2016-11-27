@@ -15,8 +15,18 @@
 //=====================
 // Method to generate tasks for Anchor + Place
 //=====================
-- (NSMutableDictionary<NSString*, SnapshotAnchorPlus*> * )p_generateAnchorPlusDictionary{
+- (NSMutableDictionary<NSString*, SnapshotAnchorPlus*> * )p_generateAnchorPlusDictionary
+{
+    
+    //
+    //         hotel---------------------museum
+    //        /
+    //   cafe/
+    //
+    
     NSMutableDictionary *outDictionary = [[NSMutableDictionary alloc] init];
+
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     //---------------------
     // Initial condition
@@ -28,33 +38,68 @@
                            CLLocationCoordinate2DMake(51.5044, -0.0772236),
                            MKCoordinateSpanMake(0.00432843, 0.00504386));
     
-    //---------------------
-    // Create an anchor (at centroid)
-    //---------------------
+    // Shift the map to London
+    [mapView setRegion:initRegion];
     
-    // Grand Central for now
-    POI *anchorPOI = [[POI alloc] init];
-    anchorPOI.name = @"London City Hall";
-    anchorPOI.latLon = initRegion.center;
-    anchorPOI.coordSpan = initRegion.span;
+    //---------------------
+    // Create a hotel
+    //---------------------
+    CGPoint hotelCGPoint = mapView.center;
     
     
     //---------------------
-    // Create a target SpaceToken POI (one for each snapshot)
+    // Create a museum
     //---------------------
-    NSDictionary *angleDictionary = @{@"east": @0, @"northeast": @45,
-                                      @"north": @90, @"northwest": @135,
-                                      @"west": @180, @"southwest": @225,
-                                      @"south": @270, @"southeast": @315};
+    double museumDistance = 1200; // in pixels
+    double museumAngle = 0; // in degree, 0 is E, CCW
+    CGPoint museumCGPoint = CGPointMake(
+            mapView.center.x + museumDistance * cos(museumAngle/180 * M_PI),
+            mapView.center.y + museumDistance * sin(museumAngle/180 * M_PI));
     
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    //---------------------
+    // Create a cafe
+    //---------------------
+    double cafeDistance = 500;
+    NSArray *cafeAngles = @[@0, @30, @150, @210];
     
-    // 8 directions
-    for (NSString *aKey in [angleDictionary allKeys]){
+    for (NSNumber *anAngle in cafeAngles){
         
-        double degree = [angleDictionary[aKey] doubleValue];
+        double degee = [anAngle doubleValue];
+        CGPoint cafeCGPoint = CGPointMake(
+            mapView.center.x + cafeDistance * cos(degee/180 * M_PI),
+            mapView.center.y + cafeDistance * sin(degee/180 * M_PI));
         
-        // Create a snapshot
+        // Compute all the coordinates and generate snapshot
+        
+        // Calculate the relative distnaces to the cafe
+        
+        
+        // ===== Museum POI
+        museumCGPoint.x = museumCGPoint.x - cafeCGPoint.x + mapView.center.x;
+        museumCGPoint.y = museumCGPoint.y - cafeCGPoint.y + mapView.center.y;
+        POI* museumPOI = [[POI alloc] init];
+        museumPOI.name = @"museum";
+        museumPOI.latLon = [mapView
+                            convertPoint:museumCGPoint toCoordinateFromView:mapView];
+        museumPOI.coordSpan = initRegion.span;
+        
+        // ===== Hotel POI
+        hotelCGPoint.x = hotelCGPoint.x - cafeCGPoint.x + mapView.center.x;
+        hotelCGPoint.y = hotelCGPoint.y - cafeCGPoint.y + mapView.center.y;
+        POI* hotelPOI = [[POI alloc] init];
+        hotelPOI.name = @"hotel";
+        hotelPOI.latLon = [mapView
+                            convertPoint:hotelCGPoint toCoordinateFromView:mapView];
+        hotelPOI.coordSpan = initRegion.span;
+    
+        // ===== Cafe POI
+        POI* cafePOI = [[POI alloc] init];
+        cafePOI.name = @"cafe";
+        cafePOI.latLon = [mapView
+                           convertPoint:mapView.center toCoordinateFromView:mapView];
+        cafePOI.coordSpan = initRegion.span;
+        
+        // Create a SpaceToken
         SnapshotAnchorPlus *anchorSnapshot = [[SnapshotAnchorPlus alloc] init];
         
         // Set the initial condition
@@ -62,22 +107,26 @@
         anchorSnapshot.coordSpan = initRegion.span;
         
         // Assemble the POI for the anchor
-        [anchorSnapshot.highlightedPOIs addObject:anchorPOI];
+        [anchorSnapshot.highlightedPOIs addObject:cafePOI];
+        [anchorSnapshot.highlightedPOIs addObject:hotelPOI];
+        [anchorSnapshot.highlightedPOIs addObject:museumPOI];
+        
         
         // Assemble the POI for the spacetoken
-        POI *token = [self p_generateTargetForReferencePOI:anchorPOI withAngle:degree
-                                          offSetDistance:mapView.frame.size.height * 2];
-        token.name = @"Hotel";
-        [anchorSnapshot.poisForSpaceTokens addObject:token];
+        [anchorSnapshot.poisForSpaceTokens addObject:hotelPOI];
+        [anchorSnapshot.poisForSpaceTokens addObject:museumPOI];
         
-        // Assemble the POI for the targeted area
-        [anchorSnapshot.targetedPOIs addObject:anchorPOI];
-        [anchorSnapshot.targetedPOIs addObject:token];
-        
+
         // Generate the ID and instructions
+        NSString *aKey = [NSString stringWithFormat:@"%@", anAngle];
         anchorSnapshot.name = [NSString stringWithFormat:@"ANCHOR:%@", aKey];
         anchorSnapshot.instructions =
-        [NSString stringWithFormat:@"Inspect the area between the anchor and hotel."];
+        [NSString stringWithFormat:@"Is the cafe on the way (from hotel to the museum)?"];
+        
+        // Generate the questions and answers
+        anchorSnapshot.segmentOptions = @[@"Yes", @"No"];
+        anchorSnapshot.correctAnswers = [[NSSet alloc] initWithObjects:@"Yes", nil];
+        
         outDictionary[anchorSnapshot.name] = anchorSnapshot;
     }
     

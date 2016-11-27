@@ -36,6 +36,18 @@
 //-------------------
 @implementation ViewController
 
+static ViewController *instance;
+
++ (id)sharedManager { return instance; }
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self){
+        instance = self;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
