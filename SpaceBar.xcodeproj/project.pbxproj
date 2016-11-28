@@ -111,6 +111,8 @@
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9A27222E1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9A27222F1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
+		9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
+		9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
 		9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
 		9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
 		9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
@@ -262,6 +264,8 @@
 		9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */; };
 		9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
 		9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
+		9AE443B21DEB5CCC006963DC /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
+		9AE443B31DEB5CCC006963DC /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
 		9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
@@ -318,6 +322,8 @@
 		9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderTrackLayer.m; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
 		9A27222C1D6CB79C002AE953 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Map/Person.h; sourceTree = "<group>"; };
 		9A27222D1D6CB79C002AE953 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Map/Person.m; sourceTree = "<group>"; };
+		9A31C13D1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+TouchInteractions.h"; path = "Map/CustomMKMapView+TouchInteractions.h"; sourceTree = "<group>"; };
+		9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+TouchInteractions.m"; path = "Map/CustomMKMapView+TouchInteractions.m"; sourceTree = "<group>"; };
 		9A437FB01D550C7A00F28E61 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = StudyManager/GameManager.h; sourceTree = "<group>"; };
 		9A437FB11D550C7A00F28E61 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = StudyManager/GameManager.m; sourceTree = "<group>"; };
 		9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleCheckingPanel.h; path = Views/CircleCheckingPanel.h; sourceTree = "<group>"; };
@@ -456,6 +462,8 @@
 		9AE1D2A21DD39E2D0092B1D4 /* PlaceInstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceInstructionView.h; path = StudyManager/PlaceInstructionView.h; sourceTree = "<group>"; };
 		9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceInstructionView.m; path = StudyManager/PlaceInstructionView.m; sourceTree = "<group>"; };
 		9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceInstructionView.xib; path = StudyManager/PlaceInstructionView.xib; sourceTree = "<group>"; };
+		9AE443B01DEB5CCC006963DC /* SnapshotShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotShow.h; path = StudyManager/SnapshotShow.h; sourceTree = "<group>"; };
+		9AE443B11DEB5CCC006963DC /* SnapshotShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotShow.m; path = StudyManager/SnapshotShow.m; sourceTree = "<group>"; };
 		9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Record.h; path = StudyManager/Record.h; sourceTree = "<group>"; };
 		9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Record.m; path = StudyManager/Record.m; sourceTree = "<group>"; };
 		9AF100021D57FA720063CB63 /* StudyPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyPanels.xib; sourceTree = "<group>"; };
@@ -608,6 +616,7 @@
 		9A22D0151D22B97C009BC465 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				9A31C1411DEC9A6700CF4D4E /* TouchInteractions */,
 				9ACA1C431DE49F2600185CB1 /* annotations */,
 				9ACA1C441DE49F5E00185CB1 /* entities */,
 				9A143B331D2AF56E001EE841 /* CustomMKMapView.m */,
@@ -620,8 +629,6 @@
 				9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */,
 				9A8B5E511D5D659300A32DC9 /* MiniMapView.h */,
 				9A8B5E521D5D659300A32DC9 /* MiniMapView.m */,
-				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
-				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -641,6 +648,17 @@
 			name = Track;
 			sourceTree = "<group>";
 		};
+		9A31C1411DEC9A6700CF4D4E /* TouchInteractions */ = {
+			isa = PBXGroup;
+			children = (
+				9A31C13D1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.h */,
+				9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */,
+				9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */,
+				9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */,
+			);
+			name = TouchInteractions;
+			sourceTree = "<group>";
+		};
 		9A437FAF1D55082700F28E61 /* GameManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +668,7 @@
 				9A0FEE9B1DE3A54700D4DFF1 /* SnapshotBase */,
 				9A0FEE8D1DE39F7A00D4DFF1 /* Place */,
 				9A0FEE901DE39FE700D4DFF1 /* Anchor */,
+				9AE443AF1DEB5C49006963DC /* Show */,
 				9A0FEE911DE3A01600D4DFF1 /* RouteChecking */,
 				9A0FEE921DE3A01B00D4DFF1 /* RouteProgress */,
 				9A437FB01D550C7A00F28E61 /* GameManager.h */,
@@ -909,6 +928,15 @@
 				9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */,
 			);
 			name = "Constraint Engine";
+			sourceTree = "<group>";
+		};
+		9AE443AF1DEB5C49006963DC /* Show */ = {
+			isa = PBXGroup;
+			children = (
+				9AE443B01DEB5CCC006963DC /* SnapshotShow.h */,
+				9AE443B11DEB5CCC006963DC /* SnapshotShow.m */,
+			);
+			name = Show;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1210,6 +1238,7 @@
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
+				9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AB3BDD91DE290B100334EF9 /* TokenCollection.m in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
@@ -1243,6 +1272,7 @@
 				9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */,
 				9AC7E1A91D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
+				9AE443B21DEB5CCC006963DC /* SnapshotShow.m in Sources */,
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9AB2854C1D88C10700773166 /* SpaceBar+Anchors.m in Sources */,
@@ -1299,6 +1329,7 @@
 				9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
+				9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9AB3BDDA1DE290B100334EF9 /* TokenCollection.m in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
@@ -1332,6 +1363,7 @@
 				9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */,
 				9AC7E1AA1D50E08400C2E8BE /* GestureEngine.m in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
+				9AE443B31DEB5CCC006963DC /* SnapshotShow.m in Sources */,
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
 				9AB2854D1D88C10700773166 /* SpaceBar+Anchors.m in Sources */,

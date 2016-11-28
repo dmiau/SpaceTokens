@@ -28,6 +28,13 @@
 //==============================
 @interface CustomMKMapView : MKMapView{
     MKMapView *hiddenMap; // for calculations
+    
+    struct {
+        unsigned int regionDidChangeAnimated:1;
+        unsigned int mapTouchBegin:1;
+        unsigned int mapTouchMoved:1;
+        unsigned int mapTouchEnded:1;
+    } _delegateRespondsTo;
 }
 
 + (id)sharedManager; // Singleton method
@@ -60,5 +67,11 @@
                                             toB: (CLLocationCoordinate2D) coordB;
 
 + (MKMapRect)MKMapRectForCoordinateRegion:(MKCoordinateRegion)region;
+
+
+//==============================
+// Private Methods
+//==============================
+- (void)p_initGestureRecognizer;
 
 @end
