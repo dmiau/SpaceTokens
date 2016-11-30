@@ -21,6 +21,7 @@
         _latLon = CLLocationCoordinate2DMake(0, 0);
         _coordSpan = MKCoordinateSpanMake(0.01, 0.01);
         _annotation = [[CustomPointAnnotation alloc] init];
+        _tag = @"";
         
         _isEnabled = YES;
         _isMapAnnotationEnabled = YES;
@@ -64,7 +65,7 @@
     self = [self init];
     self.latLon = CLLocationCoordinate2DMake([coder decodeDoubleForKey:@"latLon.latitdue"], [coder decodeDoubleForKey:@"latLon.longitude"]);
     self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
-    
+    self.tag = [coder decodeObjectOfClass:[NSString class] forKey:@"tag"];
     self.coordSpan = MKCoordinateSpanMake(
                                           [coder decodeDoubleForKey:@"latitudeDelta"],
                                           [coder decodeDoubleForKey:@"longitudeDelta"]);
@@ -81,7 +82,7 @@
     [coder encodeDouble:self.coordSpan.latitudeDelta forKey:@"latitudeDelta"];
     [coder encodeDouble:self.coordSpan.longitudeDelta forKey:@"longitudeDelta"];
     [coder encodeObject:self.name forKey:@"name"];
-    
+    [coder encodeObject:self.tag forKey:@"tag"];
     [coder encodeBool:self.isEnabled forKey:@"isEnabled"];
 }
 

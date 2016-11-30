@@ -88,11 +88,14 @@
 }
 
 
+//---------------------------
+// Touch began
+//---------------------------
 -(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (_delegateRespondsTo.mapTouchBegin)
     {
         [self.delegate mapTouchBegan: touches withEvent:event];
-    }
+    }    
     
     if (self.isDebugModeOn){
         
@@ -121,6 +124,9 @@
     }
 }
 
+//---------------------------
+// Touch moved
+//---------------------------
 -(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (_delegateRespondsTo.mapTouchMoved)
     {
@@ -128,6 +134,9 @@
     }
 }
 
+//---------------------------
+// Touch ended
+//---------------------------
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (_delegateRespondsTo.mapTouchEnded){
         [self.delegate mapTouchEnded: touches withEvent:(UIEvent *)event];

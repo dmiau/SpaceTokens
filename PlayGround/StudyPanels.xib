@@ -90,18 +90,19 @@
                 <outlet property="segmentControlOutlet" destination="EDN-bh-F1t" id="y1Y-7m-rQ7"/>
                 <outlet property="timeOutlet" destination="wQ8-oe-gXZ" id="yvd-1W-5Jm"/>
             </connections>
-            <point key="canvasLocation" x="220" y="254.5"/>
+            <point key="canvasLocation" x="220" y="100"/>
         </view>
         <view contentMode="scaleToFill" restorationIdentifier="AuthoringPanel" id="8zU-s4-PTW" customClass="AuthoringPanel">
             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A3f-PF-qXH">
-                    <rect key="frame" x="27" y="8" width="123" height="29"/>
+                    <rect key="frame" x="27" y="8" width="177" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
                         <segment title="Place"/>
                         <segment title="Anchor"/>
+                        <segment title="Show"/>
                     </segments>
                     <connections>
                         <action selector="taskTypeAction:" destination="8zU-s4-PTW" eventType="valueChanged" id="GbC-eC-eq3"/>
@@ -183,7 +184,7 @@
                 <outlet property="spaceTokenPOIOutlet" destination="sjy-yY-vRA" id="AT7-Pi-eNO"/>
                 <outlet property="taskTypeOutlet" destination="A3f-PF-qXH" id="oVY-y8-Bqk"/>
             </connections>
-            <point key="canvasLocation" x="217.5" y="476"/>
+            <point key="canvasLocation" x="217.5" y="344"/>
         </view>
     </objects>
 </document>

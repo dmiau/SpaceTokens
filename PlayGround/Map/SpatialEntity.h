@@ -15,6 +15,7 @@
 // MARK: Properties
 
 @property NSString *name;
+@property NSString *tag;
 @property CustomPointAnnotation *annotation;
 
 // Did not use MKCoordinateRegion because I want to use

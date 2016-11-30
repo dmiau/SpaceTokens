@@ -10,10 +10,11 @@
 #import "ViewController.h"
 #import "Views/DirectionPanel.h"
 
-#import "Views/CircleCheckingPanel.h"
-#import "Views/TaskBasePanel.h"
-#import "Views/StreetViewPanel.h"
-#import "Views/AuthoringPanel.h"
+#import "CircleCheckingPanel.h"
+#import "TaskBasePanel.h"
+#import "StreetViewPanel.h"
+#import "AuthoringPanel.h"
+#import "ShowAuthoringPanel.h"
 #import "SearchPanelView.h"
 #import "EntityDatabase.h"
 
@@ -58,6 +59,9 @@
                 self.authoringPanel = (AuthoringPanel*) aView;
             }
         }
+        
+        // Load the ShowAuthoring panel
+        self.authoringPanelShowTask = [[[NSBundle mainBundle] loadNibNamed:@"ShowAuthoringPanel" owner:self options:nil] firstObject];
         
         //--------------------
         // Load the search panel
@@ -113,6 +117,9 @@
         case AUTHORINGPANEL:
             [self showAuthoringPanel];
             break;
+        case SHOWAUTHORINGPANEL:
+            [self showAuthoringPanelShowTask];
+            break;
         case STREETVIEWPANEL:
             [self showStreetViewPanel];
             break;
@@ -136,7 +143,7 @@
     // Refresh SpaceTokens
     [self.rootViewController.spaceBar removeAllSpaceTokens];
     [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray:self.rootViewController.entityArraySource];
+     addSpaceTokensFromEntityArray: [[EntityDatabase sharedManager] entityArray]];
 }
 
 - (void)showDirectionPanel{
@@ -153,13 +160,6 @@
     self.activePanel = self.taskBasePanel;
 }
 
-- (void)showAuthoringPanel{
-    [self removeActivePanel];
-    // add the panel to the main view if it has been instantiated
-    [self.authoringPanel addPanel];
-    self.activePanel = self.authoringPanel;
-}
-
 - (void)showCircleCheckingPanel{
     [self.circleCheckingPanel addPanel];
     self.filterPanel = self.circleCheckingPanel;
@@ -172,4 +172,20 @@
     [self.streetViewPanel addPanel];
     self.activePanel = self.streetViewPanel;
 }
+
+
+- (void)showAuthoringPanel{
+    [self removeActivePanel];
+    // add the panel to the main view if it has been instantiated
+    [self.authoringPanel addPanel];
+    self.activePanel = self.authoringPanel;
+}
+
+- (void)showAuthoringPanelShowTask{
+    [self removeActivePanel];
+    
+    [self.authoringPanelShowTask addPanel];
+    self.activePanel = self.authoringPanelShowTask;
+}
+
 @end

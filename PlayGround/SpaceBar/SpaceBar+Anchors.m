@@ -8,6 +8,7 @@
 
 #import "SpaceBar+Anchors.h"
 #import "POI.h"
+#import "EntityDatabase.h"
 
 @implementation SpaceBar (Anchors)
 
@@ -117,7 +118,7 @@
     [self removeAnchor: token];
     [self orderButtonArray];
     
-    [self.entityArrayDataSource addObject:token.spatialEntity];
+    [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];
 }
 
 @end

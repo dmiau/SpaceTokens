@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="ShowAuthoringPanel" id="iN0-l3-epB" customClass="ShowAuthoringPanel">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ed8-KG-rD4">
+                    <rect key="frame" x="335" y="110" width="30" height="30"/>
+                    <state key="normal" title="Add"/>
+                    <connections>
+                        <action selector="addAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5G8-RE-zWC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBZ-yH-Ek1">
+                    <rect key="frame" x="281" y="110" width="39" height="30"/>
+                    <state key="normal" title="Reset"/>
+                    <connections>
+                        <action selector="resetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="0yM-x0-0kV"/>
+                    </connections>
+                </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="Fif-M0-bkh">
+                    <rect key="frame" x="16" y="13" width="184" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Place"/>
+                        <segment title="Anchor"/>
+                        <segment title="Show"/>
+                    </segments>
+                    <connections>
+                        <action selector="taskTypeAction:" destination="iN0-l3-epB" eventType="valueChanged" id="FaQ-DJ-Rup"/>
+                    </connections>
+                </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-VH-XUK">
+                    <rect key="frame" x="10" y="49" width="125" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Cap-StartCond(0)"/>
+                    <connections>
+                        <action selector="captureStartAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="adC-R5-hui"/>
+                    </connections>
+                </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="Llr-6C-j1z">
+                    <rect key="frame" x="16" y="86" width="239" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="cafe-ans"/>
+                        <segment title="cafe-no"/>
+                        <segment title="distractor"/>
+                    </segments>
+                    <connections>
+                        <action selector="poiTypeSegmentAction:" destination="iN0-l3-epB" eventType="valueChanged" id="P3P-i3-SNn"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ed8-KG-rD4" secondAttribute="trailing" constant="10" id="6bL-Dh-Itd"/>
+                <constraint firstItem="ed8-KG-rD4" firstAttribute="leading" secondItem="PBZ-yH-Ek1" secondAttribute="trailing" constant="15" id="Jao-HC-ckv"/>
+                <constraint firstAttribute="bottom" secondItem="ed8-KG-rD4" secondAttribute="bottom" constant="10" id="Mmd-yj-kgR"/>
+                <constraint firstAttribute="bottom" secondItem="PBZ-yH-Ek1" secondAttribute="bottom" constant="10" id="yas-wR-Wj7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="captureStartCondOutlet" destination="Kfc-VH-XUK" id="YMG-W6-jzV"/>
+                <outlet property="poiTypeSegmentOutlet" destination="Llr-6C-j1z" id="B0n-0z-h3i"/>
+            </connections>
+            <point key="canvasLocation" x="14.5" y="-178"/>
+        </view>
+    </objects>
+</document>

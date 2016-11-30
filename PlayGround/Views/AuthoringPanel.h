@@ -9,31 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TaskBasePanel.h"
 #import "topPanel.h"
+#import "AuthoringPanelBase.h"
 
 @class ViewController;
 @class SettingsButton;
 
-@interface AuthoringPanel : UIView <TopPanel, UITextFieldDelegate>{
-    SettingsButton *settingsButton;
-    Snapshot *snapShot;
-    NSMutableArray *highlightedPOIsArray;
-    NSMutableArray *spaceTokenPOIsArray;
-    NSMutableArray *targetedPOIsArray;
-    
-    CGRect targetRectBox;
-    CAShapeLayer *authoringVisualAidLayer;
-    
-    // Adding an UIVeiw to capture gestures
-    UIView *gestureView;
-    NSMutableArray *captureArray;
-    
-    // textSink (to capture the text for SpaceToken and the instructions)
-    id textSinkObject;
-    
-}
+@interface AuthoringPanel : AuthoringPanelBase
 
-@property ViewController *rootViewController;
-@property BOOL isAuthoringVisualAidOn;
+
 
 // Initialization
 +(id)sharedManager;

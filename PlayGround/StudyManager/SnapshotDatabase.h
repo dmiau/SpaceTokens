@@ -22,10 +22,16 @@
 - (NSArray*)allSnapshotIDs;
 
 // iCloud related methods
+-(bool)saveToCurrentFile;
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
 
 // Debug methods
 - (void)debugInit;
 - (void)generateNewTasks;
+
+// Convenient method to load a specific snapshot database
+- (void)loadGameTemplateDatabase;
+- (void)loadGameDatabaseWithID:(int)ID;
+
 @end

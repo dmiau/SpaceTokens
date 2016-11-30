@@ -204,8 +204,6 @@
     // Remove all SpaceTokens first
     [self removeAllSpaceTokens];
     
-    self.entityArrayDataSource = entityArray;
-    
     for (SpatialEntity* anEntity in entityArray){
         
         // Only show the enabled ones

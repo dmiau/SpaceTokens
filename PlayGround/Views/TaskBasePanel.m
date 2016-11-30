@@ -151,7 +151,6 @@ static TaskBasePanel *instance;
          gameManager.activeSnapshot];
         
         
-        
     }else{
         [self disableSegmentControl];
     }

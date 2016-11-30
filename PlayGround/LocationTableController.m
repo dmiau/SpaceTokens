@@ -145,7 +145,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.rootViewController.entityArraySource count];
+    return [[[EntityDatabase sharedManager] entityArray] count];
 }
 
 //----------------
@@ -163,8 +163,9 @@
     int i = [indexPath row];
     
     // Configure Cell
-    cell.textLabel.text = self.rootViewController.entityArraySource[i].name;
-    cell.spatialEntity = self.rootViewController.entityArraySource[i];
+    
+    cell.textLabel.text = [[EntityDatabase sharedManager] entityArray][i].name;
+    cell.spatialEntity = [[EntityDatabase sharedManager] entityArray][i];
     
     cell.mySwitch.on = cell.spatialEntity.isEnabled;
     return cell;
@@ -197,7 +198,7 @@
     
     // Perform segue
     [self performSegueWithIdentifier:@"POIDetailVC"
-                              sender:self.rootViewController.entityArraySource[i]];
+                              sender:[[EntityDatabase sharedManager] entityArray][i]];
 }
 
 
@@ -225,7 +226,7 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     // Get the object
-    NSMutableArray <SpatialEntity*> *entityArray = self.rootViewController.entityArraySource;
+    NSMutableArray <SpatialEntity*> *entityArray = [[EntityDatabase sharedManager] entityArray];
     
     SpatialEntity *anEntity = entityArray[sourceIndexPath.row];
     [entityArray removeObjectAtIndex:sourceIndexPath.row];
@@ -244,11 +245,11 @@
         int i = [indexPath row];
 
         // Remove the annotation
-        self.rootViewController.entityArraySource[i].isMapAnnotationEnabled = NO;
+        [[EntityDatabase sharedManager] entityArray][i].isMapAnnotationEnabled = NO;
         
         // Remove the Entity
-        [self.rootViewController.entityArraySource removeObject:
-         self.rootViewController.entityArraySource[i]];
+        [[[EntityDatabase sharedManager] entityArray] removeObject:
+         [[EntityDatabase sharedManager] entityArray][i]];
         
         // Then, delete the row
         [self.myTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -304,7 +305,7 @@
     [self.rootViewController.entityDatabase loadFromFile:fileFullPath];
     // Need to reconnec the data source
     [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray: self.rootViewController.entityArraySource];
+     addSpaceTokensFromEntityArray: [[EntityDatabase sharedManager] entityArray]];
     // Reload the table
     [self.myTableView reloadData];
 }

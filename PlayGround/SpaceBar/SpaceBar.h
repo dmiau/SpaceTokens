@@ -49,7 +49,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // Cache the active route object
 @property Route* activeRoute;
 
-@property NSMutableArray <SpatialEntity*> *entityArrayDataSource;
 @property TokenCollection *tokenCollection;
 @property NSMutableSet <SpaceToken*> *dotSet;
 

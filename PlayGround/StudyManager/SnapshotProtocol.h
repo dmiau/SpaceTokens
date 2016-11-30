@@ -23,9 +23,11 @@ typedef enum {CONTROL, EXPERIMENT} Condition;
 //----------------------
 @protocol SnapshotProtocol <NSObject>
 
+- (void)cleanup;
+
 @required
 - (void)setup;
-- (void)cleanup;
+
 
 @end
 

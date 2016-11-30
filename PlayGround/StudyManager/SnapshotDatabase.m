@@ -9,6 +9,12 @@
 #import "SnapshotDatabase.h"
 #import "SnapshotProtocol.h"
 #import <UIKit/UIkit.h>
+#import "MyFileManager.h"
+
+//--------------------
+// Global contants
+static NSString *const TEMPLATE_DB_NAME = @"gameTemplate.snapshot";
+//--------------------
 
 @implementation SnapshotDatabase
 
@@ -117,7 +123,31 @@
     return object;
 }
 
-// iCloud related methods
+#pragma mark -- convenient method to load a specific snapshot --
+- (void)loadGameTemplateDatabase{    
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:TEMPLATE_DB_NAME];
+    if (![self loadFromFile:fileFullPath]){
+        self.snapshotArray = [[NSMutableArray alloc] init];
+    }
+    self.currentFileName = TEMPLATE_DB_NAME;
+}
+
+- (bool)saveToCurrentFile{
+    // Save the generated snapshot into a new file
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:self.currentFileName];
+    [self saveDatatoFileWithName:fileFullPath];
+    return YES;
+}
+
+- (void)loadGameDatabaseWithID:(int)ID{
+    
+}
+
+#pragma mark -- save and load --
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName{
     // Save the entire database to a file
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject: self];

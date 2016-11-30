@@ -7,6 +7,7 @@
 //
 
 #import "ViewController+SpaceToken.h"
+#import "EntityDatabase.h"
 
 @implementation ViewController (SpaceToken)
 
@@ -14,7 +15,7 @@
     // Remove all the SpaceTokens
     [self.spaceBar removeAllSpaceTokens];
     [self.spaceBar
-     addSpaceTokensFromEntityArray: self.spaceBar.entityArrayDataSource];
+     addSpaceTokensFromEntityArray: [[EntityDatabase sharedManager] entityArray]];
     self.spaceBar.spaceBarMode = TOKENONLY;
 }
 @end

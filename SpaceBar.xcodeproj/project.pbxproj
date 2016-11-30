@@ -183,6 +183,10 @@
 		9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
+		9AA32CE51DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */; };
+		9AA32CE61DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */; };
+		9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */; };
+		9AA32CE91DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */; };
 		9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AA57F6F1DD624D800347B1A /* SpatialEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */; };
@@ -197,6 +201,8 @@
 		9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */; };
 		9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
+		9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE092C1DECDAE800BAE14C /* AuthoringPanelBase.m */; };
+		9AAE092E1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE092C1DECDAE800BAE14C /* AuthoringPanelBase.m */; };
 		9AB2854C1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
 		9AB2854D1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
 		9AB3BDD91DE290B100334EF9 /* TokenCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3BDD81DE290B100334EF9 /* TokenCollection.m */; };
@@ -403,6 +409,9 @@
 		9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotChecking.m; path = StudyManager/SnapshotChecking.m; sourceTree = "<group>"; };
 		9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotTableController.h; sourceTree = "<group>"; };
 		9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapshotTableController.m; sourceTree = "<group>"; };
+		9AA32CE31DEDD6D200D16738 /* ShowAuthoringPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowAuthoringPanel.h; path = Views/ShowAuthoringPanel.h; sourceTree = "<group>"; };
+		9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowAuthoringPanel.m; path = Views/ShowAuthoringPanel.m; sourceTree = "<group>"; };
+		9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowAuthoringPanel.xib; path = Views/ShowAuthoringPanel.xib; sourceTree = "<group>"; };
 		9AA454DD1D52D160008D4FCF /* MyFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFileManager.h; sourceTree = "<group>"; };
 		9AA454DE1D52D160008D4FCF /* MyFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFileManager.m; sourceTree = "<group>"; };
 		9AA57F6D1DD624D800347B1A /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpatialEntity.h; path = Map/SpatialEntity.h; sourceTree = "<group>"; };
@@ -418,6 +427,8 @@
 		9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SnapshotDatabase+Debug.m"; path = "StudyManager/SnapshotDatabase+Debug.m"; sourceTree = "<group>"; };
 		9AADAD141D57AB7400A96AE2 /* SnapshotProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProgress.h; path = StudyManager/SnapshotProgress.h; sourceTree = "<group>"; };
 		9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SnapshotProgress.mm; path = StudyManager/SnapshotProgress.mm; sourceTree = "<group>"; };
+		9AAE092B1DECDAE800BAE14C /* AuthoringPanelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthoringPanelBase.h; path = Views/AuthoringPanelBase.h; sourceTree = "<group>"; };
+		9AAE092C1DECDAE800BAE14C /* AuthoringPanelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanelBase.m; path = Views/AuthoringPanelBase.m; sourceTree = "<group>"; };
 		9AB2854A1D88C10700773166 /* SpaceBar+Anchors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Anchors.h"; path = "SpaceBar/SpaceBar+Anchors.h"; sourceTree = "<group>"; };
 		9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceBar+Anchors.m"; path = "SpaceBar/SpaceBar+Anchors.m"; sourceTree = "<group>"; };
 		9AB3BDD71DE290B100334EF9 /* TokenCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenCollection.h; path = SpaceBar/TokenCollection.h; sourceTree = "<group>"; };
@@ -680,6 +691,7 @@
 		9A437FB81D55482B00F28E61 /* StudyPanels */ = {
 			isa = PBXGroup;
 			children = (
+				9AA32CE21DEDD66900D16738 /* Authoring */,
 				9AF1FFFE1D57CA770063CB63 /* TaskBasePanel.h */,
 				9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */,
 				9AF100021D57FA720063CB63 /* StudyPanels.xib */,
@@ -690,8 +702,6 @@
 				9A8EC9DF1D6112CD0012C769 /* StreetViewPanel.h */,
 				9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */,
 				9A43EAED1D40029D00080029 /* topPanel.h */,
-				9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */,
-				9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */,
 			);
 			name = StudyPanels;
 			sourceTree = "<group>";
@@ -756,6 +766,20 @@
 				9A836D381C69372C007D9520 /* tester.m */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		9AA32CE21DEDD66900D16738 /* Authoring */ = {
+			isa = PBXGroup;
+			children = (
+				9AAE092B1DECDAE800BAE14C /* AuthoringPanelBase.h */,
+				9AAE092C1DECDAE800BAE14C /* AuthoringPanelBase.m */,
+				9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */,
+				9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */,
+				9AA32CE31DEDD6D200D16738 /* ShowAuthoringPanel.h */,
+				9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */,
+				9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */,
+			);
+			name = Authoring;
 			sourceTree = "<group>";
 		};
 		9AC338211D63A680000272D9 /* icons */ = {
@@ -1078,6 +1102,7 @@
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
+				9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 			);
@@ -1098,6 +1123,7 @@
 				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
 				9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */,
 				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
+				9AA32CE91DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
 				9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
@@ -1266,6 +1292,7 @@
 				9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
 				9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
+				9AA32CE51DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */,
 				9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
@@ -1291,6 +1318,7 @@
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
+				9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
@@ -1357,6 +1385,7 @@
 				9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
 				9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
 				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
+				9AA32CE61DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */,
 				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
 				9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */,
 				9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
@@ -1382,6 +1411,7 @@
 				9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
+				9AAE092E1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
