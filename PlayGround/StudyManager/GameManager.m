@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "MainViewManager.h"
+#import "EntityDatabase.h"
 
 NSString *const GameSetupNotification = @"GameSetupNotification";
 NSString *const GameCleanupNotification = @"GameCleanupNotification";
@@ -45,15 +46,15 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     MainViewManager *mainViewManager = rootViewController.mainViewManager;
     
     _gameManagerStatus = gameManagerStatus;
-    POIDatabase *poiDB = [POIDatabase sharedManager];
+    EntityDatabase *entityDB = [EntityDatabase sharedManager];
     switch (gameManagerStatus) {
         case OFF:
             // Turn off the game
             
             rootViewController.spaceBar.isYouAreHereEnabled = YES;
             
-            // set the POIDatabase to use the temporary POIArray
-            [poiDB removeTempPOIArray];
+            // set the EntityDatabase to use the normal entityArray
+            [entityDB removeGameEntityArray];
             
             [mainViewManager showDefaultPanel];
             
@@ -97,9 +98,9 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
                                                                  object:self userInfo:nil];
     [[ NSNotificationCenter defaultCenter] postNotification:notification];
     
-    // set the POIDatabase to use the temporary POIArray
-    POIDatabase *poiDB = [POIDatabase sharedManager];
-    [poiDB useTempPOIArray:aSnapshot.poisForSpaceTokens];
+    // set the EntityDatabase to use the temporary POIArray
+    EntityDatabase *entityDB = [EntityDatabase sharedManager];
+    [entityDB useGameEntityArray:aSnapshot.poisForSpaceTokens];
     [aSnapshot setup];
 }
 

@@ -12,7 +12,7 @@
 #import "CustomMKMapView.h"
 #import "SpeechEngine.h"
 #import "EntityDatabase.h"
-
+#import "POI.h"
 
 @implementation SearchPanelView
 

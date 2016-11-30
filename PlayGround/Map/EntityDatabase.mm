@@ -10,7 +10,6 @@
 #import "SpatialEntity.h"
 #import "MyFileManager.h"
 
-#import "POIDatabase.h"
 #import "RouteDatabase.h"
 
 @implementation EntityDatabase
@@ -78,18 +77,6 @@
     
     NSString *dirPath = [myFileManager currentFullDirectoryPath];
     NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.entitydb"];
-    
-//    // Load a POIDatabase and a RouteDatabase from file
-//    POIDatabase *poiDatabase = [POIDatabase sharedManager];
-//    NSMutableArray <POI*> *poiArray = poiDatabase.poiArray;
-//    
-//    RouteDatabase *routeDatabase = [RouteDatabase sharedManager];
-//    NSMutableArray <Route*> *routeArray = [[routeDatabase.routeDictionary allValues] mutableCopy];
-//    
-//    // Add the items to entityArray
-//    [self.entityArray addObjectsFromArray:poiArray];
-//    [self.entityArray addObjectsFromArray:routeArray];
-    
     [self loadFromFile:fileFullPath];
 }
 

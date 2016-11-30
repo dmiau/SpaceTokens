@@ -11,7 +11,6 @@
 #import "SpaceBar/SpaceBar.h"
 #import "Map/CustomMKMapView.h"
 #import "Map/MiniMapView.h"
-#import "Map/POIDatabase.h"
 #import "MainViewManager.h"
 #import "MyFileManager.h"
 #import <GoogleMaps/GoogleMaps.h>
@@ -37,7 +36,6 @@
 
 
 // Databases
-@property POIDatabase *poiDatabase;
 @property EntityDatabase *entityDatabase;
 @property GameManager *gameManager;
 @property RouteDatabase *routeDatabase;

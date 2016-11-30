@@ -7,7 +7,7 @@
 //
 
 #import "SpaceBar+Interactions.h"
-#import "POIDatabase.h"
+
 
 @implementation SpaceBar (Interactions)
 

@@ -10,7 +10,6 @@
 #import "ViewController.h"
 #import "tester.h"
 #import "Map/Route.h"
-#import "Map/POIDatabase.h"
 #import "Map/RouteDatabase.h"
 #import "EntityDatabase.h"
 #import "Map/MiniMapView.h"
@@ -57,12 +56,6 @@ static ViewController *instance;
     //----------------
     self.myFileManager = [MyFileManager sharedManager];
     self.myFileManager.directorPartialPath = @"test";
-    
-    //----------------
-    // Initialize a POI DB
-    //----------------
-    self.poiDatabase = [POIDatabase sharedManager];
-//    [self.poiDatabase debugInit];
     
     //----------------
     // Initialize a Route DB
