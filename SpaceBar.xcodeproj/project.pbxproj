@@ -876,24 +876,16 @@
 		9AC7E1AC1D51164600C2E8BE /* SeguePanels */ = {
 			isa = PBXGroup;
 			children = (
+				9ACA58E11DEF32E2001EDB1D /* EntityTable */,
+				9ACA58E21DEF32EC001EDB1D /* Game(Snapshot) Table */,
 				9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */,
 				9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */,
-				9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */,
-				9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */,
-				9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */,
-				9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */,
 				9AD639F11D50267C00C91F1B /* FileTableController.h */,
 				9AD639F21D50267C00C91F1B /* FileTableController.m */,
 				9A1CA2B41D4671210098957A /* CustomTabController.h */,
 				9A1CA2B51D4671210098957A /* CustomTabController.m */,
 				9A75D8981D54C20B0071F6A6 /* RouteTableController.h */,
 				9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */,
-				9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */,
-				9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */,
-				9A81DBEB1D877EE3006DA5A1 /* SnapshotDetailViewController.h */,
-				9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */,
-				9A485B491D90910400C43255 /* RecordTableViewController.h */,
-				9A485B4A1D90910400C43255 /* RecordTableViewController.m */,
 			);
 			name = SeguePanels;
 			sourceTree = "<group>";
@@ -926,6 +918,30 @@
 				9A27222D1D6CB79C002AE953 /* Person.m */,
 			);
 			name = entities;
+			sourceTree = "<group>";
+		};
+		9ACA58E11DEF32E2001EDB1D /* EntityTable */ = {
+			isa = PBXGroup;
+			children = (
+				9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */,
+				9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */,
+				9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */,
+				9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */,
+			);
+			name = EntityTable;
+			sourceTree = "<group>";
+		};
+		9ACA58E21DEF32EC001EDB1D /* Game(Snapshot) Table */ = {
+			isa = PBXGroup;
+			children = (
+				9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */,
+				9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */,
+				9A81DBEB1D877EE3006DA5A1 /* SnapshotDetailViewController.h */,
+				9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */,
+				9A485B491D90910400C43255 /* RecordTableViewController.h */,
+				9A485B4A1D90910400C43255 /* RecordTableViewController.m */,
+			);
+			name = "Game(Snapshot) Table";
 			sourceTree = "<group>";
 		};
 		9AD503301DC94175005A05D6 /* Constraint Engine */ = {

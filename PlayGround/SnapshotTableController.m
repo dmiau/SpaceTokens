@@ -332,7 +332,8 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
         MyFileManager *myFileManager = [MyFileManager sharedManager];
         
         NSString *dirPath = [myFileManager currentFullDirectoryPath];
-        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"mySnapshotDB.snapshot"];
+        NSString *fileFullPath =
+        [dirPath stringByAppendingPathComponent:snapshotDatabase.currentFileName];
         
         // Test file saving capability
         [snapshotDatabase saveDatatoFileWithName:fileFullPath];
@@ -343,7 +344,7 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
     MyFileManager *myFileManager = [MyFileManager sharedManager];
     
     NSString *dirPath = [myFileManager currentFullDirectoryPath];
-    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"mySnapshotDB.snapshot"];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:snapshotDatabase.currentFileName];
     
     [snapshotDatabase loadFromFile:fileFullPath];
 

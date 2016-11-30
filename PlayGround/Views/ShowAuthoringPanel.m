@@ -78,10 +78,10 @@ static ShowAuthoringPanel *instance;
 - (void)removePanel{
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     [mapView removeGestureRecognizer:lpgr];
-    
-    [super removePanel];
     SnapshotDatabase *snapshotDatabase = [SnapshotDatabase sharedManager];
     [snapshotDatabase saveToCurrentFile];
+    
+    [super removePanel];
 }
 
 
@@ -147,7 +147,7 @@ static ShowAuthoringPanel *instance;
 //-------------------
 - (IBAction)addAction:(id)sender {
 
-    snapShot.poisForSpaceTokens = spaceTokenPOIsArray;
+    snapShot.poisForSpaceTokens = [spaceTokenPOIsArray mutableCopy];
     // Get the SnapshotDatabase
     SnapshotDatabase *snapshotDatabase = [SnapshotDatabase sharedManager];
     

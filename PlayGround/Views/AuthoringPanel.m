@@ -277,38 +277,10 @@ static AuthoringPanel *instance;
     return YES;
 }
 
-- (void)resetInterface{
-    // Reset segement controls and initialize instant variables
-    self.taskTypeOutlet.selectedSegmentIndex = 0;
-    [self taskTypeAction:self.taskTypeOutlet];
-}
-
-- (void)restartAuthoringFlow{
-    // Reinitialize some instance variables
-    [highlightedPOIsArray removeAllObjects];
-    [spaceTokenPOIsArray removeAllObjects];
-    [targetedPOIsArray removeAllObjects];
-    
-    self.instructionOutlet.text = @"";
-    self.captureStartCondOutlet.titleLabel.text = @"Cap-StartCond(0)";
-    self.captureEndCondOutlet.titleLabel.text =
-    [NSString stringWithFormat:@"Cap-EndCond(%d)", 0];
-    self.highlightedPOIOutlet.titleLabel.text = @"Anchor(0)";
-    self.spaceTokenPOIOutlet.titleLabel.text = @"SpaceToken(0)";
-    
-    // Remove all overlays
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    [mapView removeOverlays:mapView.overlays];
- 
-    // Remove all SpaceTokens
-    [self.rootViewController.spaceBar removeAllSpaceTokens];
-}
-
-
 - (IBAction)addAction:(id)sender {
     // Assemble the snapshot
-    snapShot.highlightedPOIs = highlightedPOIsArray;
-    snapShot.poisForSpaceTokens = spaceTokenPOIsArray;
+    snapShot.highlightedPOIs = [highlightedPOIsArray mutableCopy];
+    snapShot.poisForSpaceTokens = [spaceTokenPOIsArray mutableCopy];
     
     // Assemble snapshot differently based on Snapshot type
     if ([snapShot isKindOfClass:[SnapshotAnchorPlus class]]){
@@ -319,7 +291,7 @@ static AuthoringPanel *instance;
     }
     
     // In case the user forgets to press the return key
-    snapShot.targetedPOIs = targetedPOIsArray;
+    snapShot.targetedPOIs = [targetedPOIsArray mutableCopy];
     
     // Get the SnapshotDatabase
     SnapshotDatabase *snapshotDatabase = [SnapshotDatabase sharedManager];
@@ -343,6 +315,36 @@ static AuthoringPanel *instance;
     // Reset the panel
     [self resetInterface];
 }
+
+
+#pragma mark -- reset and reinitialize the interface --
+- (void)resetInterface{
+    // Reset segement controls and initialize instant variables
+    self.taskTypeOutlet.selectedSegmentIndex = 0;
+    [self taskTypeAction:self.taskTypeOutlet];
+}
+
+- (void)restartAuthoringFlow{
+    // Reinitialize some instance variables
+    [highlightedPOIsArray removeAllObjects];
+    [spaceTokenPOIsArray removeAllObjects];
+    [targetedPOIsArray removeAllObjects];
+    
+    self.instructionOutlet.text = @"";
+    self.captureStartCondOutlet.titleLabel.text = @"Cap-StartCond(0)";
+    self.captureEndCondOutlet.titleLabel.text =
+    [NSString stringWithFormat:@"Cap-EndCond(%d)", 0];
+    self.highlightedPOIOutlet.titleLabel.text = @"Anchor(0)";
+    self.spaceTokenPOIOutlet.titleLabel.text = @"SpaceToken(0)";
+    
+    // Remove all overlays
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    [mapView removeOverlays:mapView.overlays];
+    
+    // Remove all SpaceTokens
+    [self.rootViewController.spaceBar removeAllSpaceTokens];
+}
+
 
 // A helper function
 NSString* SnapshotTypeToPrefix( Snapshot *aSnapshot){

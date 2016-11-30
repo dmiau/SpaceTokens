@@ -95,9 +95,7 @@
     // Remove the settings button
     [settingsButton removeFromSuperview];
     [self removeFromSuperview];
-    
-
-    
+        
     // Restore the location of the map
     float panelHeight = self.rootViewController.view.frame.size.height -
     self.rootViewController.mapView.frame.size.height;
