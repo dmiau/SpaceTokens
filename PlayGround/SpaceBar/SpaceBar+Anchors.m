@@ -12,11 +12,13 @@
 
 @implementation SpaceBar (Anchors)
 
+// Add anchors to the candidateArray first, move anchors to anchorSet when
+// SpaceToken mode is enabled.
+
 - (void) addAnchorForTouches:(NSSet<UITouch *> *)touches{
     
     static int counter = 0;
     // Note: there could be more than one touch point
-    // For now, let's only handle the case when there is only one touch point
     for (UITouch *aTouch in touches){
         
         CGPoint mapXY = [aTouch locationInView:self.mapView];
@@ -50,18 +52,28 @@
             
             
             aToken.touch = aTouch;
-            [self.anchorArray addObject:aToken];
             
-            [self.draggingSet addObject:aToken];
-            [aToken showAnchorVisualIndicatorAfter:1];
+            if (self.isSpaceTokenEnabled){
+                [self.anchorSet addObject:aToken];
+                [self.draggingSet addObject:aToken];
+                [aToken showAnchorVisualIndicatorAfter:0];
+            }else{
+                [self.anchorCandidateSet addObject:aToken];
+            }
         }
     }
 }
 
 
+
 - (SpaceToken*) findRelatedToAnchor:(UITouch*) touch{
     SpaceToken *foundToken = nil;
-    for (SpaceToken *aToken in self.anchorArray){
+    for (SpaceToken *aToken in self.anchorSet){
+        if (aToken.touch == touch)
+            return aToken;
+    }
+    
+    for (SpaceToken *aToken in self.anchorCandidateSet){
         if (aToken.touch == touch)
             return aToken;
     }
@@ -101,12 +113,17 @@
     // remove the anchor from the dragging set
     [self.draggingSet removeObject:aToken];
     [aToken removeFromSuperview];
-    [self.anchorArray removeObject:aToken];
+    [self.anchorSet removeObject:aToken];
+    [self.anchorCandidateSet removeObject:aToken];
     aToken = nil;
 }
 
 - (void) removeAllAnchors{    
-    for (SpaceToken *aToken in self.anchorArray){
+    for (SpaceToken *aToken in self.anchorSet){
+        [self removeAnchor: aToken];
+    }
+    
+    for (SpaceToken *aToken in self.anchorCandidateSet){
         [self removeAnchor: aToken];
     }
 }

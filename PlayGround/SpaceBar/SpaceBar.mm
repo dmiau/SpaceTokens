@@ -23,6 +23,10 @@
 
 @implementation SpaceBar
 
+static SpaceBar *sharedInstance;
+
++(id)sharedManager{return sharedInstance;}
+
 //----------------
 // initialization
 //----------------
@@ -39,7 +43,9 @@
         
         // Init the frame
         float spaceBarWidth = 40;
-        _frame = CGRectMake(self.mapView.frame.size.width - spaceBarWidth, 0,
+        
+        // self.mapView.frame.size.width - spaceBarWidth
+        _frame = CGRectMake(0, 0,
                                 spaceBarWidth,
                                 self.mapView.frame.size.height);
         
@@ -59,6 +65,8 @@
         // Add the gesture engine
         self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
         [self.mapView addSubview:self.gestureEngine];
+        
+        sharedInstance = self;
     }
     return self;
 }
@@ -94,7 +102,8 @@
     
     self.touchingSet = [[NSMutableSet alloc] init];
     self.draggingSet = [[NSMutableSet alloc] init];        
-    self.anchorArray = [[NSMutableArray alloc] init];
+    self.anchorSet = [[NSMutableSet alloc] init];
+    self.anchorCandidateSet = [[NSMutableSet alloc] init];
     
     self.isTokenDraggingEnabled = YES;
     
@@ -105,6 +114,8 @@
     self.isYouAreHereEnabled = YES;
 
     self.isAutoOrderSpaceTokenEnabled = YES;
+    
+    self.isSpaceTokenEnabled = YES;
     
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -192,16 +203,28 @@
         //        [self orderSpaceTokens];
         [self fillMapXYsForSet:self.tokenCollection.tokenArray];
     }
-        
+    
     if ([self.draggingSet count] > 0
         && [self.touchingSet count] == 0)
     {
         [self fillDraggingMapXYs];
         [self updateMapToFitPOIPreferences:self.draggingSet];
-    }else
+    }else{
         if ([self.touchingSet count] > 0){
             [self zoomMapToFitTouchSet];
         }
+    }
+    
+    // If both the anchorSet and draggingSet are empty, turn off the SpaceToken mode
+    if ([self.anchorSet count] == 0 &&
+        [self.draggingSet count] ==0)
+    {
+        self.isSpaceTokenEnabled = NO;
+    }else{
+        // Output the count of anchor and dragging set
+//        NSLog(@"Anchor count: %d", (int)[self.anchorSet count]);
+//        NSLog(@"Dragging count: %d", (int)[self.draggingSet count]);
+    }
 }
 
 

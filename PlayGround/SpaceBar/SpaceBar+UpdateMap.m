@@ -11,9 +11,9 @@
 
 @implementation SpaceBar (UpdateMap)
 
-// This is for the SpaceTokens being dragged only
-// Note that a draggingSet could contain POIs (e.g., ANCHOR) or SpaceTokens
 // fillDraggingMapXYs should only apply to SpaceTokens
+// Note that a draggingSet could contain ANCHORs or SpaceTokens
+
 - (void) fillDraggingMapXYs{
     for(SpaceToken* anItem in self.draggingSet) {
         if (anItem.appearanceType != ANCHORTOKEN){
@@ -38,12 +38,28 @@
 //----------------
 - (void) zoomMapToFitTouchSet{
     
-    if ([self.anchorArray count]==1){
+    if ([self.anchorSet count]==1){
         //--------------
         // One anchor
         //--------------
         // Show the anchor and one desired location
-        SpaceToken *oneAnchor = self.anchorArray[0];
+        SpaceToken *oneAnchor = [self.anchorSet anyObject];
+        
+        MKMapRect mapRect = [self computerBoundingPOIsForTokenSets: self.touchingSet
+                                                         andAnchor: oneAnchor];
+        
+        // Turn on the debug visual
+        oneAnchor.isLineLayerOn = YES;
+        oneAnchor.isConstraintLineOn = YES;
+        [self.mapView setVisibleMapRect:mapRect edgePadding:self.mapView.edgeInsets
+                               animated:NO];
+        
+    }else if ([self.draggingSet count]==1){
+        //--------------
+        // One dragging token
+        //--------------
+        // Show the anchor and one desired location
+        SpaceToken *oneAnchor = [self.draggingSet anyObject];
         
         MKMapRect mapRect = [self computerBoundingPOIsForTokenSets: self.touchingSet
                                                          andAnchor: oneAnchor];
@@ -65,8 +81,8 @@
             [poiSet addObject: aToken.spatialEntity];
         }
         
-        // Put POIs in anchorArray into a poiSet
-        for (SpaceToken *aToken in self.anchorArray){
+        // Put POIs in anchorSet into a poiSet
+        for (SpaceToken *aToken in self.anchorSet){
             [poiSet addObject:aToken.spatialEntity];
             // Draw the constraint line
             aToken.isConstraintLineOn = YES;
@@ -83,9 +99,9 @@
 - (void) updateMapToFitPOIPreferences: (NSMutableSet*) tokenSet{
     
     BOOL isAnchorInDraggingSet = NO;
-    if ([self.anchorArray count]>0){
+    if ([self.anchorSet count]>0){
         NSMutableSet *intersectSet = [NSMutableSet setWithSet:tokenSet];
-        [intersectSet intersectSet:[NSSet setWithArray:self.anchorArray]];
+        [intersectSet intersectSet:self.anchorSet];
         if ([intersectSet count] > 0){
             isAnchorInDraggingSet = YES;
         }
@@ -95,9 +111,9 @@
     // one anchor + one dragging SpaceToken
     if ([tokenSet count] == 1
         && !isAnchorInDraggingSet
-        && [self.anchorArray count]==1)
+        && [self.anchorSet count]==1)
     {
-        SpaceToken *anchor = self.anchorArray[0];
+        SpaceToken *anchor = [self.anchorSet anyObject];
         anchor.isCircleLayerOn = YES;
         [self.draggingSet addObject:anchor];
     }

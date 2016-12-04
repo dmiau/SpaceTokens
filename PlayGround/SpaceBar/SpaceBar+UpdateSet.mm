@@ -28,6 +28,8 @@
     if (aNotification.name == AddToButtonArrayNotification){
         [self.tokenCollection.tokenArray addObject:aNotification.object];
     }else if (aNotification.name == AddToTouchingSetNotification){
+        // Enable the SpaceToken mode
+        [self moveCandidateAnchorsToAnchorSet];
         [self addTokenToTouchingSet:aNotification.object];
     }else if (aNotification.name == AddToDraggingSetNotification){
         
@@ -44,10 +46,20 @@
         
         currentSpaceToken.counterPart = newSpaceToken;
 
+        // Enable the SpaceToken mode
+        [self moveCandidateAnchorsToAnchorSet];
         [self.draggingSet addObject:currentSpaceToken];
     }
 }
 
+- (void)moveCandidateAnchorsToAnchorSet{
+    for (SpaceToken *aToken in self.anchorCandidateSet){
+        [self.anchorSet addObject:aToken];
+        [self.draggingSet addObject:aToken];
+        [self.anchorCandidateSet removeObject:aToken];
+    }
+    self.isSpaceTokenEnabled = YES;
+}
 
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification
 {
@@ -62,7 +74,6 @@
         [self.draggingSet removeObject:aNotification.object];
     }
 }
-
 
 #pragma mark --Order SpaceToken--
 

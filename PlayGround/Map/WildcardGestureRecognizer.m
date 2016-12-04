@@ -7,6 +7,7 @@
 //
 
 #import "WildcardGestureRecognizer.h"
+#import "SpaceBar.h"
 
 //http://stackoverflow.com/questions/1049889/how-to-intercept-touches-events-on-a-mkmapview-or-uiwebview-objects
 
@@ -21,15 +22,20 @@
     return self;
 }
 
+//-----------------
+// handle touches
+//-----------------
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (_touchesBeganCallback)
         _touchesBeganCallback(touches, event);
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
+    if (_touchesMovedCallback)
+        _touchesMovedCallback(touches, event);
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -38,11 +44,12 @@
         _touchesEndedCallback(touches, event);
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (_touchesMovedCallback)
-        _touchesMovedCallback(touches, event);
+    if (_touchesCancelledCallback)
+        _touchesCancelledCallback(touches, event);
 }
+
 
 - (void)reset
 {
@@ -54,12 +61,21 @@
 
 - (BOOL)canBePreventedByGestureRecognizer:(UIGestureRecognizer *)preventingGestureRecognizer
 {
-    return NO;
+//    if ([preventingGestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]]){
+//        return YES;
+//    }else{
+        return NO;
+//    }
 }
 
 - (BOOL)canPreventGestureRecognizer:(UIGestureRecognizer *)preventedGestureRecognizer
 {
-    return NO;
+//    if ([preventedGestureRecognizer isKindOfClass:[UIRotationGestureRecognizer class]]){
+//        return YES;
+//    }else{
+        return NO;
+//    }
 }
+
 
 @end

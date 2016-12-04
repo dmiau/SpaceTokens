@@ -35,6 +35,7 @@
         unsigned int mapTouchMoved:1;
         unsigned int mapTouchEnded:1;
     } _delegateRespondsTo;
+    
 }
 
 + (id)sharedManager; // Singleton method

@@ -49,7 +49,7 @@
     // Initialize the custom user location
     _customUserLocation = [[MKUserLocation alloc] init];
     self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
-    self.isDebugModeOn = YES;
+    self.isDebugModeOn = NO;
     
     //-----------------
     // Initialize a hidden map

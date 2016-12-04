@@ -12,6 +12,7 @@
 #import "SnapshotProgress.h"
 #import "SnapshotChecking.h"
 #import "SnapshotAnchorPlus.h"
+#import "SnapshotShow.h"
 #import "GameManager.h"
 
 @implementation TaskBasePanel{
@@ -151,6 +152,12 @@ static TaskBasePanel *instance;
          gameManager.activeSnapshot];
         
         
+    }else if ([gameManager.activeSnapshot isKindOfClass:[SnapshotShow class]]){
+        [self disableSegmentControl];
+        
+        // But enable the next button
+        [self.nextButtonOutlet setHidden:NO];
+        [self.nextButtonOutlet setEnabled:YES];
     }else{
         [self disableSegmentControl];
     }

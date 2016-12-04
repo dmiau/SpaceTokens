@@ -130,12 +130,9 @@
         self.camera.heading = 0;
         
         MKMapRect aRect = hiddenMap.visibleMapRect;
-        NSLog(@"(%g, %g), (%g, %g)",
-              aRect.origin.x, aRect.origin.y, aRect.size.width, aRect.size.height);
-        
         self.visibleMapRect = hiddenMap.visibleMapRect;
         self.camera.heading = heading;
-//        self.centerCoordinate = targetCentroidLatlon;                
+//        self.centerCoordinate = targetCentroidLatlon;
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to position the map."
                                                         message:@"Center coordinate is invalid, try again."

@@ -67,7 +67,9 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property BOOL isConstrainEngineON;
 @property BOOL isYouAreHereEnabled;
 @property BOOL isAutoOrderSpaceTokenEnabled;
-@property NSMutableArray <SpaceToken*> *anchorArray;
+@property BOOL isSpaceTokenEnabled;
+@property NSMutableSet <SpaceToken*> *anchorCandidateSet;
+@property NSMutableSet <SpaceToken*> *anchorSet;
 
 @property NSTimer *privateTouchingSetTimer;
 // timer for touchingSet
@@ -79,6 +81,8 @@ unsigned int spaceBarOnePointTouched:1;
 unsigned int spaceBarTwoPointsTouched:1;
 unsigned int spaceBarElevatorMoved:1;
 } delegateRespondsTo;
+
++ (id)sharedManager;
 
 // Constructors
 - (id)initWithMapView: (MKMapView *) myMapView;
