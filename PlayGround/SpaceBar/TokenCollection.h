@@ -11,6 +11,11 @@
 @class SpaceBar; // Forward declaration
 @class SpaceToken;
 
+
+//---------------------------
+// TokenCollection is a convenient structure which holds
+// references to all the SpaceTokens on the dock
+//---------------------------
 @interface TokenCollection : NSObject
 
 + (TokenCollection*)sharedManager;

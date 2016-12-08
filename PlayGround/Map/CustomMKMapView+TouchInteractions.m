@@ -76,7 +76,7 @@
     // Add gesture recognizers
     //--------------------------
     [gestureView setHidden:YES];
-    [self addGestureRecognizer:tapInterceptor];
+//    [self addGestureRecognizer:tapInterceptor];
 
 //     //Let the gesture layer to handle the gesture
 //     [gestureView addGestureRecognizer:tapInterceptor];

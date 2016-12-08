@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "CERangeSlider.h"
 #import "GestureEngine.h"
+#import "TokenCollectionViewController.h"
 
 
 // SpaceBar extension
@@ -66,6 +67,18 @@ static SpaceBar *sharedInstance;
         self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
         [self.mapView addSubview:self.gestureEngine];
         
+        // Initialize a collection view controller
+        UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
+        
+//        // Configure the layout object
+//        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//        layout.sectionInset = UIEdgeInsetsMake
+//        (10, self.mapView.frame.size.width-60, 0, 0);
+        
+        // Initialize a collection view controller
+        self.tokenCollectionViewController =
+        [[TokenCollectionViewController alloc] initWithCollectionViewLayout:layout];
+                
         sharedInstance = self;
     }
     return self;

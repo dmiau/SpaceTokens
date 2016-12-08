@@ -14,11 +14,12 @@
 
 @class Route;
 @class GestureEngine;
+@class TokenCollectionViewController;
 
 #pragma mark - SpaceBarProtocol
-//----------------------------
+//--------------------------------------------------------
 // SpaceBar (delegate)
-//----------------------------
+//--------------------------------------------------------
 @protocol SpaceBarDelegate <NSObject>
 
 // SpaceToken delegate methods
@@ -33,14 +34,21 @@
 #pragma mark - SpaceBarInterface
 typedef enum {TOKENONLY, PATH} SpaceBarMode;
 
-//----------------------------
+//--------------------------------------------------------
 // SpaceBar
-//----------------------------
-@interface SpaceBar : NSObject <CERangeSliderDelegate>
+//--------------------------------------------------------
+@interface SpaceBar : NSObject <CERangeSliderDelegate>{
+    NSTimer *privateTouchingSetTimer;
+    // timer for touchingSet
+}
+
+
 @property SpaceBarMode spaceBarMode;
 @property CGRect frame;
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 @property (weak) CustomMKMapView *mapView;
+@property TokenCollectionViewController *tokenCollectionViewController;
+
 @property CERangeSlider* sliderContainer;
 @property GestureEngine *gestureEngine;
 
@@ -71,8 +79,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property NSMutableSet <SpaceToken*> *anchorCandidateSet;
 @property NSMutableSet <SpaceToken*> *anchorSet;
 
-@property NSTimer *privateTouchingSetTimer;
-// timer for touchingSet
+
 
 // Use bit field to track if delegate is set properly
 //http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/

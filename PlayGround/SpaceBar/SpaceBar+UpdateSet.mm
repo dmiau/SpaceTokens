@@ -12,6 +12,9 @@
 #import "../Map/Person.h"
 #import "PathToken.h"
 #import "Route.h"
+#import "TokenCollectionViewController.h"
+#import "ViewController.h"
+
 
 @implementation SpaceBar (UpdateSet)
 
@@ -215,6 +218,33 @@
     // Remove all SpaceTokens first
     [self removeAllSpaceTokens];
     
+    //-------------------------
+    // Test the collection view
+    //-------------------------
+    float mapWidth = self.mapView.frame.size.width;
+    float mapHeight = self.mapView.frame.size.height;
+    
+//    CGRect collectionViewFrame = CGRectMake(mapWidth - 60, 0, 60, mapHeight);
+    
+    self.tokenCollectionViewController.view.frame =
+    CGRectMake(0, 0, mapWidth, mapHeight);
+    
+    
+//    // Add the collection view to the map view
+//    [self.mapView addSubview:self.tokenCollectionViewController.view];
+    
+    ViewController *rootController = [ViewController sharedManager];
+    UIView *aView = [[UIView alloc] initWithFrame:rootController.view.frame];
+    [rootController.view addSubview:aView];
+    [rootController.view addSubview:self.tokenCollectionViewController.view];
+    
+    [self.tokenCollectionViewController viewWillAppear:NO];
+    
+    return;
+    
+    //-------------------------
+    // Original code
+    //-------------------------
     for (SpatialEntity* anEntity in entityArray){
         
         // Only show the enabled ones
@@ -272,12 +302,12 @@
 //----------------
 - (void)addTokenToTouchingSet: (SpaceToken*) aToken
 {
-    if (self.privateTouchingSetTimer){
-        [self.privateTouchingSetTimer invalidate];
-        self.privateTouchingSetTimer = nil;
+    if (privateTouchingSetTimer){
+        [privateTouchingSetTimer invalidate];
+        privateTouchingSetTimer = nil;
     }
     [self.touchingSet addObject:aToken];
-    self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
+    privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
                                                          target:self
                                                        selector:@selector(setTimerAction)
                                                        userInfo:nil
@@ -289,12 +319,12 @@
 {
     
     if ([self.touchingSet count] >1){
-        if (self.privateTouchingSetTimer){
-            [self.privateTouchingSetTimer invalidate];
-            self.privateTouchingSetTimer = nil;
+        if (privateTouchingSetTimer){
+            [privateTouchingSetTimer invalidate];
+            privateTouchingSetTimer = nil;
         }
         
-        self.privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
+        privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
                                                                         target:self
                                                                       selector:@selector(setTimerAction)
                                                                       userInfo:nil
@@ -306,7 +336,7 @@
 
 
 - (void)clearAllTouchedTokens{
-    self.privateTouchingSetTimer = nil;
+    privateTouchingSetTimer = nil;
     for (SpaceToken* aToken in self.touchingSet){
         aToken.selected = NO;
     }
