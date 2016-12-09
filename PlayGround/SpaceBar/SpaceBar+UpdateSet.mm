@@ -12,7 +12,7 @@
 #import "../Map/Person.h"
 #import "PathToken.h"
 #import "Route.h"
-#import "TokenCollectionViewController.h"
+#import "TokenCollectionView.h"
 #import "ViewController.h"
 
 
@@ -226,20 +226,17 @@
     
 //    CGRect collectionViewFrame = CGRectMake(mapWidth - 60, 0, 60, mapHeight);
     
-    self.tokenCollectionViewController.view.frame =
-    CGRectMake(0, 0, mapWidth, mapHeight);
+    self.tokenCollectionView.frame = self.mapView.frame;
     
     
 //    // Add the collection view to the map view
 //    [self.mapView addSubview:self.tokenCollectionViewController.view];
     
     ViewController *rootController = [ViewController sharedManager];
-    UIView *aView = [[UIView alloc] initWithFrame:rootController.view.frame];
-    [rootController.view addSubview:aView];
-    [rootController.view addSubview:self.tokenCollectionViewController.view];
-    
-    [self.tokenCollectionViewController viewWillAppear:NO];
-    
+//    UIView *aView = [[UIView alloc] initWithFrame:rootController.view.frame];
+//    [rootController.view addSubview:aView];
+    [rootController.view addSubview:self.tokenCollectionView];
+
     return;
     
     //-------------------------

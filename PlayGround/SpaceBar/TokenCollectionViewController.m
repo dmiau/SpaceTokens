@@ -42,7 +42,7 @@ static NSString * const CellID = @"cellID";   // UICollectionViewCell storyboard
 //        customCollectionView.tokenWidth = CELL_WIDTH;        
 //        self.collectionView = customCollectionView;
         
-        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];                
         
         // Register a custom cell
         [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:CellID];

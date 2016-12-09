@@ -14,7 +14,7 @@
 
 @class Route;
 @class GestureEngine;
-@class TokenCollectionViewController;
+@class TokenCollectionView;
 
 #pragma mark - SpaceBarProtocol
 //--------------------------------------------------------
@@ -47,7 +47,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property CGRect frame;
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 @property (weak) CustomMKMapView *mapView;
-@property TokenCollectionViewController *tokenCollectionViewController;
+@property TokenCollectionView *tokenCollectionView;
 
 @property CERangeSlider* sliderContainer;
 @property GestureEngine *gestureEngine;

@@ -135,9 +135,6 @@
 		9A5CCBAC1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5CCBAD1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5CCBAE1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
-		9A5CCBAF1DF86D21009B56DF /* TokenCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBAB1DF86D21009B56DF /* TokenCollectionViewController.m */; };
-		9A5CCBB01DF86D21009B56DF /* TokenCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBAB1DF86D21009B56DF /* TokenCollectionViewController.m */; };
-		9A5CCBB11DF86D21009B56DF /* TokenCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBAB1DF86D21009B56DF /* TokenCollectionViewController.m */; };
 		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62C3F61DCCD0B50048E44C /* Speech.framework */; };
@@ -179,9 +176,9 @@
 		9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A94DD091D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
 		9A94DD0A1D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
-		9A9792D21DF906020062ED6F /* CustomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792D11DF906020062ED6F /* CustomCollectionView.m */; };
-		9A9792D31DF906020062ED6F /* CustomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792D11DF906020062ED6F /* CustomCollectionView.m */; };
-		9A9792D41DF906020062ED6F /* CustomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792D11DF906020062ED6F /* CustomCollectionView.m */; };
+		9A9792E21DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
+		9A9792E31DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
+		9A9792E41DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
@@ -511,8 +508,8 @@
 		9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "CustomMKMapView+MapDisplay.mm"; path = "Map/CustomMKMapView+MapDisplay.mm"; sourceTree = "<group>"; };
 		9A94DD071D9C194D00F94256 /* CustomMKMapView+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+Annotations.h"; path = "Map/CustomMKMapView+Annotations.h"; sourceTree = "<group>"; };
 		9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+Annotations.m"; path = "Map/CustomMKMapView+Annotations.m"; sourceTree = "<group>"; };
-		9A9792D01DF906020062ED6F /* CustomCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCollectionView.h; path = SpaceBar/CustomCollectionView.h; sourceTree = "<group>"; };
-		9A9792D11DF906020062ED6F /* CustomCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCollectionView.m; path = SpaceBar/CustomCollectionView.m; sourceTree = "<group>"; };
+		9A9792E01DFA19EB0062ED6F /* TokenCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenCollectionView.h; path = SpaceBar/TokenCollectionView.h; sourceTree = "<group>"; };
+		9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenCollectionView.m; path = SpaceBar/TokenCollectionView.m; sourceTree = "<group>"; };
 		9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotChecking.h; path = StudyManager/SnapshotChecking.h; sourceTree = "<group>"; };
 		9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotChecking.m; path = StudyManager/SnapshotChecking.m; sourceTree = "<group>"; };
 		9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotTableController.h; sourceTree = "<group>"; };
@@ -888,8 +885,8 @@
 			children = (
 				9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */,
 				9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */,
-				9A9792D01DF906020062ED6F /* CustomCollectionView.h */,
-				9A9792D11DF906020062ED6F /* CustomCollectionView.m */,
+				9A9792E01DFA19EB0062ED6F /* TokenCollectionView.h */,
+				9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */,
 				9A5CCBAA1DF86D21009B56DF /* TokenCollectionViewController.h */,
 				9A5CCBAB1DF86D21009B56DF /* TokenCollectionViewController.m */,
 			);
@@ -1519,13 +1516,11 @@
 				9AF2D5501D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
-				9A9792D21DF906020062ED6F /* CustomCollectionView.m in Sources */,
 				9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
-				9A5CCBAF1DF86D21009B56DF /* TokenCollectionViewController.m in Sources */,
 				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
 				9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */,
@@ -1583,6 +1578,7 @@
 				9A62FB831DDF7CC500245BD6 /* ConnectionTool.mm in Sources */,
 				9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm in Sources */,
+				9A9792E21DFA19EB0062ED6F /* TokenCollectionView.m in Sources */,
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */,
@@ -1613,13 +1609,11 @@
 				9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
-				9A9792D31DF906020062ED6F /* CustomCollectionView.m in Sources */,
 				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
 				9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9A0FEE8C1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
-				9A5CCBB01DF86D21009B56DF /* TokenCollectionViewController.m in Sources */,
 				9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
 				9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */,
@@ -1677,6 +1671,7 @@
 				9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */,
 				9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */,
 				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.mm in Sources */,
+				9A9792E31DFA19EB0062ED6F /* TokenCollectionView.m in Sources */,
 				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */,
@@ -1707,13 +1702,11 @@
 				9AE13B5B1DF0D148008612DA /* CheckingPanel.m in Sources */,
 				9AE13B5C1DF0D148008612DA /* LocationTableController.m in Sources */,
 				9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */,
-				9A9792D41DF906020062ED6F /* CustomCollectionView.m in Sources */,
 				9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */,
 				9AE13B5F1DF0D148008612DA /* SpaceToken+Gestures.m in Sources */,
 				9AE13B601DF0D148008612DA /* ViewController.mm in Sources */,
 				9AE13B611DF0D148008612DA /* Route+Tools.mm in Sources */,
 				9AE13B621DF0D148008612DA /* AppDelegate.m in Sources */,
-				9A5CCBB11DF86D21009B56DF /* TokenCollectionViewController.m in Sources */,
 				9AE13B631DF0D148008612DA /* SnapshotDetailViewController.m in Sources */,
 				9AE13B641DF0D148008612DA /* Tools.m in Sources */,
 				9AE13B651DF0D148008612DA /* AuthoringPanel.m in Sources */,
@@ -1771,6 +1764,7 @@
 				9AE13B981DF0D148008612DA /* ConnectionTool.mm in Sources */,
 				9AE13B991DF0D148008612DA /* TaskGenerator.m in Sources */,
 				9AE13B9A1DF0D148008612DA /* SpaceBar+UpdateSet.mm in Sources */,
+				9A9792E41DFA19EB0062ED6F /* TokenCollectionView.m in Sources */,
 				9AE13B9B1DF0D148008612DA /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AE13B9C1DF0D148008612DA /* FileTableController.m in Sources */,
 				9AE13B9D1DF0D148008612DA /* RecordDatabase.m in Sources */,
