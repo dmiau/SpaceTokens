@@ -255,7 +255,7 @@
     [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
                                        self.frame.size.height/2)];
     [linePath addLineToPoint:
-     [self convertPoint:self.mapViewXY fromView:self.superview]];
+     [self convertPoint:self.mapViewXY fromView:[CustomMKMapView sharedManager]]];
     
     self.lineLayer.path=linePath.CGPath;
     self.lineLayer.fillColor = nil;

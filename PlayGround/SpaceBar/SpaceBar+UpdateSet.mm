@@ -42,6 +42,7 @@
         // remove from the display set
         SpaceToken *currentSpaceToken = aNotification.object;
         [self.tokenCollection.tokenArray removeObject:currentSpaceToken];
+        
         // Duplicate the button
         SpaceToken* newSpaceToken =
         [self addSpaceTokenFromEntity:currentSpaceToken.spatialEntity];
@@ -224,19 +225,12 @@
     float mapWidth = self.mapView.frame.size.width;
     float mapHeight = self.mapView.frame.size.height;
     
-//    CGRect collectionViewFrame = CGRectMake(mapWidth - 60, 0, 60, mapHeight);
-    
     self.tokenCollectionView.frame = self.mapView.frame;
     
-    
-//    // Add the collection view to the map view
-//    [self.mapView addSubview:self.tokenCollectionViewController.view];
-    
     ViewController *rootController = [ViewController sharedManager];
-//    UIView *aView = [[UIView alloc] initWithFrame:rootController.view.frame];
-//    [rootController.view addSubview:aView];
     [rootController.view addSubview:self.tokenCollectionView];
-
+    [self.tokenCollectionView reloadData];
+    
     return;
     
     //-------------------------

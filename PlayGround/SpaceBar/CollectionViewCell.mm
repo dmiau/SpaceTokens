@@ -77,6 +77,7 @@
         [self addSubview:aSpaceToken];
         [[TokenCollection sharedManager].tokenArray
          addObject:aSpaceToken];
+        spatialEntity.isMapAnnotationEnabled = YES;
     }else{
         // error
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"

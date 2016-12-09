@@ -8,7 +8,6 @@
 
 #import "ConnectionTool.h"
 #import "SpaceToken.h"
-#import "CustomMKMapView.h"
 #import "SpaceBar.h"
 #import "TokenCollection.h"
 #import "POI.h"
@@ -72,10 +71,10 @@
     [self setTitle: spaceToken.spatialEntity.name forState:UIControlStateNormal];
 
     
-    // Need to attach to the main map view, not the SpaceToken,
+    // Need to attach to tokenCollectionView, not the SpaceToken,
     // so Connection Tool can be touched when SpaceToken is touched
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    [mapView addSubview:self];
+    UIView *tokenSuperView = [spaceToken superview];
+    [tokenSuperView addSubview:self];
     
     // This is necessary to specify constraints programmatically
     self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -117,8 +116,7 @@
                                  multiplier:0
                                    constant:CONNECTION_TOOL_HEIGHT]];
     
-    [mapView addConstraints:constraintsArray];
-//    [spaceToken addSubview:self];
+    [tokenSuperView addConstraints:constraintsArray];
 }
 
 

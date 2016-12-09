@@ -8,11 +8,26 @@
 
 #import "TokenCollectionView.h"
 #import "CollectionViewCell.h"
+#import "EntityDatabase.h"
+#import "SpatialEntity.h"
 
-NSString *kDetailedViewControllerID = @"DetailView";    // view controller storyboard id
+#define CELL_WIDTH 60
+#define CELL_HEIGHT 20
+
 NSString *CellID = @"cellID";                          // UICollectionViewCell storyboard id
 
-@implementation TokenCollectionView
+@implementation TokenCollectionView{
+    NSMutableArray *enabledEntityArray;
+}
+
+static TokenCollectionView *sharedInstance;
+
++(id)sharedManager{    
+    if (!sharedInstance){
+        [NSException raise:@"Structure error" format:@"sharedInstance is not ready before access."];
+    }
+    return sharedInstance;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -26,9 +41,13 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     self = [super initWithFrame:frame collectionViewLayout:layout];
 
     if (self){
+        
+        // Initialize instance variable
+        enabledEntityArray = [[NSMutableArray alloc] init];        
+        
         [self setBackgroundColor:[UIColor clearColor]];
         
-        self.tokenWidth = 0;
+        self.tokenWidth = CELL_WIDTH;
         
         // Register the cell class
         //http://stackoverflow.com/questions/15184968/uicollectionview-adding-uicollectioncell
@@ -46,6 +65,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
         self.delegate = self;
         self.dataSource = self;
         
+        sharedInstance = self;
     }
     
 
@@ -90,24 +110,39 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    [enabledEntityArray removeAllObjects];
+    
+    // Collect a list of enabled entities
+    for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] entityArray])
+    {
+        if (anEntity.isEnabled){
+            [enabledEntityArray addObject:anEntity];
+        }
+    }
+//    return [enabledEntityArray count];
+    
     return 30;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     // Configure the cell
+    int row = indexPath.row;
     
-    // we're going to use a custom UICollectionViewCell, which will hold an image and its label
-    //
     CollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
+    
+    if (row < ([enabledEntityArray count]-1)){
+        [cell configureSpaceTokenFromEntity:enabledEntityArray[row]];
+    }
     
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(60, 30);
+    return CGSizeMake(CELL_WIDTH, CELL_HEIGHT);
 }
 
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
@@ -116,4 +151,35 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     NSLog(@"Item moved.");
 }
 
+
+#pragma mark <UICollectionViewDelegate>
+
+/*
+ // Uncomment this method to specify if the specified item should be highlighted during tracking
+ - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+	return YES;
+ }
+ */
+
+/*
+ // Uncomment this method to specify if the specified item should be selected
+ - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+ return YES;
+ }
+ */
+
+/*
+ // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+ - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
+	return NO;
+ }
+ 
+ - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+	return NO;
+ }
+ 
+ - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+	
+ }
+ */
 @end

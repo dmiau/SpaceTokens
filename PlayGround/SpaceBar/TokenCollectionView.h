@@ -12,4 +12,6 @@
 
 @property double tokenWidth; // this parameter is also used to decide the hitTest area
 
++(id)sharedManager;
+
 @end
