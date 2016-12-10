@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class SpaceBar; // Forward declaration
+@class SpatialEntity;
 @class SpaceToken;
-
 
 //---------------------------
 // TokenCollection is a convenient structure which holds
@@ -21,5 +20,10 @@
 + (TokenCollection*)sharedManager;
 
 @property NSMutableArray <SpaceToken*> *tokenArray;
+@property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
+
+-(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity;
+
+
 
 @end

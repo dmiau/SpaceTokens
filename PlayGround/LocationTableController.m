@@ -303,9 +303,7 @@
     NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.entitydb"];
     
     [self.rootViewController.entityDatabase loadFromFile:fileFullPath];
-    // Need to reconnec the data source
-    [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray: [[EntityDatabase sharedManager] entityArray]];
+
     // Reload the table
     [self.myTableView reloadData];
 }

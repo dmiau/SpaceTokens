@@ -65,8 +65,7 @@
 -(void)addPanel{
     [self.rootViewController.view addSubview:self];
     [self.rootViewController removeRoute];
-    [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray: [[EntityDatabase sharedManager] entityArray]];
+    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;
     
     self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     

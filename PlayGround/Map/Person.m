@@ -17,9 +17,11 @@
     self = [super init];
     if (self){
         _updateFlag = NO;
-        _poi = [[POI alloc] init];
-        _poi.name = @"YouRHere";
-        _poi.annotation.pointType = YouRHere;
+        
+        self.name = @"YouRHere";
+        self.annotation.pointType = YouRHere;
+        self.latLon = CLLocationCoordinate2DMake(40.807722, -73.964110); // assign a default location
+        
         _headingInDegree = 0;
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
@@ -31,8 +33,6 @@
 
 -(void)setUpdateFlag:(BOOL)updateFlag{
     _updateFlag = updateFlag;
-    // Get the map object
-    CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     
     if (_updateFlag){
         // Turn on the location flag
@@ -49,12 +49,12 @@
         
         [locationManager startUpdatingLocation];
         [locationManager startUpdatingHeading];
-        self.poi.isMapAnnotationEnabled = YES;
+        self.isMapAnnotationEnabled = YES;
     }else{
         // Stop Location Manager
         [locationManager stopUpdatingLocation];
         [locationManager stopUpdatingHeading];
-        self.poi.isMapAnnotationEnabled = NO;
+        self.isMapAnnotationEnabled = NO;
     }
 }
 
@@ -74,7 +74,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocation* myLocation = [locations lastObject];
-    self.poi.latLon = myLocation.coordinate;
+    self.latLon = myLocation.coordinate;
     
     [self updateMapAnnotation];
 }
@@ -95,7 +95,7 @@
     // Get the map object
     CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     
-    MKAnnotationView *myAnnotationView = [myMapView viewForAnnotation: self.poi.annotation];
+    MKAnnotationView *myAnnotationView = [myMapView viewForAnnotation: self.annotation];
     
     // Update the orientation
     UIImage *myImg = [UIImage imageNamed:@"heading.png"];

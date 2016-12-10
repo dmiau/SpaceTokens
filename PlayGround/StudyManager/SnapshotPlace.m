@@ -13,6 +13,7 @@
 #import "Record.h"
 #import "GameManager.h"
 #import "PlaceInstructionView.h"
+#import "TokenCollection.h"
 
 @implementation SnapshotPlace
 
@@ -36,11 +37,10 @@
     
     // Set up the environment based on the condition
     if (self.condition == CONTROL){
-        spaceBar.isTokenDraggingEnabled = NO;
+        [TokenCollection sharedManager].isTokenDraggingEnabled = NO;
     }else{
-        spaceBar.isTokenDraggingEnabled = YES;
-    }
-    
+        [TokenCollection sharedManager].isTokenDraggingEnabled = YES;
+    }    
     
     //----------------
     // Present the instruction panel

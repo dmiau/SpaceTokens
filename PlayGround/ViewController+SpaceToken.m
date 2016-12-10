@@ -13,9 +13,7 @@
 
 - (void)refreshSpaceTokens{
     // Remove all the SpaceTokens
-    [self.spaceBar removeAllSpaceTokens];
-    [self.spaceBar
-     addSpaceTokensFromEntityArray: [[EntityDatabase sharedManager] entityArray]];
+    self.spaceBar.isTokenCollectionViewEnabled = YES;
     self.spaceBar.spaceBarMode = TOKENONLY;
 }
 @end

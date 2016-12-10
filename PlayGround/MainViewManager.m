@@ -142,8 +142,7 @@
     
     // Refresh SpaceTokens
     [self.rootViewController.spaceBar removeAllSpaceTokens];
-    [self.rootViewController.spaceBar
-     addSpaceTokensFromEntityArray: [[EntityDatabase sharedManager] entityArray]];
+    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;
 }
 
 - (void)showDirectionPanel{

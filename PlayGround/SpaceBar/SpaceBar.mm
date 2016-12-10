@@ -11,6 +11,7 @@
 #import "CERangeSlider.h"
 #import "GestureEngine.h"
 #import "TokenCollectionView.h"
+#import "ViewController.h"
 
 
 // SpaceBar extension
@@ -83,6 +84,9 @@ static SpaceBar *sharedInstance;
         
         self.tokenCollectionView.tokenWidth = 60;
         
+        // Add the tokenCollectionView panel
+        self.isTokenCollectionViewEnabled = YES;
+        
         sharedInstance = self;
     }
     return self;
@@ -121,8 +125,6 @@ static SpaceBar *sharedInstance;
     self.draggingSet = [[NSMutableSet alloc] init];        
     self.anchorSet = [[NSMutableSet alloc] init];
     self.anchorCandidateSet = [[NSMutableSet alloc] init];
-    
-    self.isTokenDraggingEnabled = YES;
     
     self.isConstrainEngineON = YES;
     
@@ -196,15 +198,22 @@ static SpaceBar *sharedInstance;
     }
 }
 
-- (void)setIsTokenDraggingEnabled:(BOOL)isTokenDraggingEnabled{
-    _isTokenDraggingEnabled = isTokenDraggingEnabled;
-    
-    // iterate over all the SpaceTokens
-    for (SpaceToken* aToken in self.tokenCollection.tokenArray){
-        aToken.isDraggable = isTokenDraggingEnabled;
-    }    
-}
+// Controls the visibility of the tokenCollectionView panel
+- (void)setIsTokenCollectionViewEnabled:(BOOL)isTokenCollectionViewEnabled{
+    _isTokenCollectionViewEnabled = isTokenCollectionViewEnabled;
+    // Remove all SpaceTokens first
+    [self removeAllSpaceTokens];
 
+    if (_isTokenCollectionViewEnabled){
+        self.tokenCollectionView.frame = self.mapView.frame;
+        
+        ViewController *rootController = [ViewController sharedManager];
+        [rootController.view addSubview:self.tokenCollectionView];
+        [self.tokenCollectionView reloadData];
+    }else{
+        [self.tokenCollectionView removeFromSuperview];
+    }
+}
 
 //----------------
 // timer
@@ -238,7 +247,7 @@ static SpaceBar *sharedInstance;
     {
         self.isSpaceTokenEnabled = NO;
     }else{
-        // Output the count of anchor and dragging set
+//        // Output the count of anchor and dragging set
 //        NSLog(@"Anchor count: %d", (int)[self.anchorSet count]);
 //        NSLog(@"Dragging count: %d", (int)[self.draggingSet count]);
     }

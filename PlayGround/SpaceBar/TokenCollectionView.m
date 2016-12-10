@@ -98,7 +98,8 @@ static TokenCollectionView *sharedInstance;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return (point.x > self.frame.size.width - self.tokenWidth);
+    return ((point.x > self.frame.size.width - self.tokenWidth)
+            &&(point.y > 0));
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -112,14 +113,7 @@ static TokenCollectionView *sharedInstance;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     [enabledEntityArray removeAllObjects];
-    
-    // Collect a list of enabled entities
-    for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] entityArray])
-    {
-        if (anEntity.isEnabled){
-            [enabledEntityArray addObject:anEntity];
-        }
-    }
+    enabledEntityArray = [[EntityDatabase sharedManager] getEnabledEntities];
 //    return [enabledEntityArray count];
     
     return 30;
@@ -133,7 +127,7 @@ static TokenCollectionView *sharedInstance;
     CollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
-    if (row < ([enabledEntityArray count]-1)){
+    if (row < [enabledEntityArray count]){
         [cell configureSpaceTokenFromEntity:enabledEntityArray[row]];
     }
     

@@ -47,7 +47,9 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property CGRect frame;
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 @property (weak) CustomMKMapView *mapView;
+
 @property TokenCollectionView *tokenCollectionView;
+@property BOOL isTokenCollectionViewEnabled; // controls the visibility of the view
 
 @property CERangeSlider* sliderContainer;
 @property GestureEngine *gestureEngine;
@@ -71,11 +73,11 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // Some special POIs are cached in SpaceBar
 @property SpaceToken* mapCentroid;
 @property SpaceToken* youAreHere;
-@property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
+
 @property BOOL isConstrainEngineON;
 @property BOOL isYouAreHereEnabled;
 @property BOOL isAutoOrderSpaceTokenEnabled;
-@property BOOL isSpaceTokenEnabled;
+@property BOOL isSpaceTokenEnabled; // Wildcard gesture recognizer is used when this mode is on (so the behavior of interacting with the map will be a big different)
 @property NSMutableSet <SpaceToken*> *anchorCandidateSet;
 @property NSMutableSet <SpaceToken*> *anchorSet;
 
@@ -97,8 +99,7 @@ unsigned int spaceBarElevatorMoved:1;
 // --------------
 // SpaceToken management
 // --------------
-- (SpaceToken*) addSpaceTokenFromEntity:(SpatialEntity*) spatialEntity;
-- (void)addSpaceTokensFromEntityArray: (NSMutableArray <SpatialEntity*> *) entityArray;
+
 - (void)removeAllSpaceTokens;
 - (void)resetSpaceBar;
 - (void)clearAllTouchedTokens;
@@ -130,7 +131,7 @@ unsigned int spaceBarElevatorMoved:1;
 // Implemented in updateSet category
 // --------------
 - (void) updateSpecialPOIs;
-- (void) orderButtonArray;
+//- (void) orderButtonArray;
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification;
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification;
 

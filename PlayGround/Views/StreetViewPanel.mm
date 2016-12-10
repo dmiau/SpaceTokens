@@ -55,9 +55,6 @@
                self.rootViewController.view.frame.size.height-
                streetViewHeight);
     
-    // Adjust the spacing of SpaceTokens
-    [self.rootViewController.spaceBar orderButtonArray];
-    
     // Position the map and StreetView to Paris
     [self.panoView moveNearCoordinate:CLLocationCoordinate2DMake(48.857624, 2.351482)];
      

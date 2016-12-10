@@ -58,8 +58,7 @@
     SpaceBar *spaceBar = self.rootViewController.spaceBar;
     spaceBar.isYouAreHereEnabled = NO;
     [spaceBar removeAllSpaceTokens];
-    [spaceBar addSpaceTokensFromEntityArray:self.poisForSpaceTokens];
-    
+    spaceBar.isTokenCollectionViewEnabled = YES;    
     
     // Remove all annotations
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];

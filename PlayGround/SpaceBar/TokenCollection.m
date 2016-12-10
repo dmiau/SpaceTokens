@@ -8,6 +8,9 @@
 
 #import "TokenCollection.h"
 
+#import "SpatialEntity.h"
+#import "SpaceToken.h"
+
 @implementation TokenCollection
 
 
@@ -17,7 +20,29 @@
     dispatch_once(&onceToken, ^{
         sharedTokenCollection = [[TokenCollection alloc] init];
         sharedTokenCollection.tokenArray = [[NSMutableArray alloc] init];
+        sharedTokenCollection.isTokenDraggingEnabled = YES;
+
     });
     return sharedTokenCollection;
 }
+
+-(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity{
+    SpaceToken *outToken = nil;
+    
+    for (SpaceToken *aToken in self.tokenArray){
+        if ([aToken isEqual:entity]){
+            outToken = aToken;
+        }
+    }
+    return outToken;
+}
+
+-(void)setIsTokenDraggingEnabled:(BOOL)isTokenDraggingEnabled{
+    _isTokenDraggingEnabled = isTokenDraggingEnabled;
+    
+    for (SpaceToken *aToken in self.tokenArray){
+        aToken.isDraggable = _isTokenDraggingEnabled;
+    }
+}
+
 @end

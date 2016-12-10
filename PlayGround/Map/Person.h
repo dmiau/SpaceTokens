@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "POI.h"
+#import "SpatialEntity.h"
 
-@interface Person : NSObject <CLLocationManagerDelegate>
+@interface Person : SpatialEntity <CLLocationManagerDelegate>
 
 @property double headingInDegree;
 @property BOOL updateFlag;
-@property POI *poi;
 
 @end

@@ -130,12 +130,11 @@
 
 - (void) convertAnchorToRealToken: (SpaceToken*) token{
     // Create a new SpaceToken based on anchor
-    SpaceToken* newSpaceToken =
-    [self addSpaceTokenFromEntity:token.spatialEntity];
-    [self removeAnchor: token];
-    [self orderButtonArray];
     
     [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];
+    
+    self.isTokenCollectionViewEnabled = YES; // refresh the token panel
+    [self removeAnchor: token];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "SnapshotDatabase.h"
 #import "ViewController.h"
 #import "CustomMKMapView.h"
+#import "EntityDatabase.h"
 #import "SnapshotShow.h"
 
 typedef enum {NONANSWER, ANSWER, DISTRACTOR} DROP_POI_TYPE;
@@ -138,8 +139,9 @@ static ShowAuthoringPanel *instance;
     // Add the POI to the array
     [spaceTokenPOIsArray addObject:poi];
     
-    SpaceToken* aToken = [self.rootViewController.spaceBar addSpaceTokenFromEntity:poi];
-    [self.rootViewController.spaceBar orderButtonArray];
+    [[[EntityDatabase sharedManager] entityArray] addObject:poi];
+    
+    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES; // refresh the token panel
 }
 
 //-------------------

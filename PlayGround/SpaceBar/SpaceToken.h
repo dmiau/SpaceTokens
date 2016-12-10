@@ -37,7 +37,6 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
 @property (weak) SpaceToken *counterPart;
 @property TokenAppearanceType appearanceType;
 @property (strong) SpatialEntity* spatialEntity;
-@property Person* person; // A SpaceToken can be linked to a Person object
 
 @property CGPoint mapViewXY;
 // mapViewXY caches the Mercator (x, y) coordinates

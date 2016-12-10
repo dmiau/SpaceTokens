@@ -11,6 +11,7 @@
 #import "TokenCollection.h"
 #import "POI.h"
 #import "Route.h"
+#import "Person.h"
 #import "SpaceToken.h"
 #import "PathToken.h"
 
@@ -43,7 +44,8 @@
     
     // Depending on the type of spatialEntity, instantiate a corresponding spaceToken
     SpaceToken *aSpaceToken;
-    if ([spatialEntity isKindOfClass:[POI class]]){
+    if ([spatialEntity isKindOfClass:[POI class]] ||
+        [spatialEntity isKindOfClass:[Person class]]){
         aSpaceToken = [[SpaceToken alloc] init];
     }else if ([spatialEntity isKindOfClass:[Route class]]){
         aSpaceToken = [[PathToken alloc] init];

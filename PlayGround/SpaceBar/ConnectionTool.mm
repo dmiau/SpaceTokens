@@ -13,6 +13,9 @@
 #import "POI.h"
 #import "Route.h"
 
+#import "CustomMKMapView.h"
+
+
 #define CONNECTION_TOOL_WIDTH 100
 #define CONNECTION_TOOL_HEIGHT 30
 
@@ -73,8 +76,8 @@
     
     // Need to attach to tokenCollectionView, not the SpaceToken,
     // so Connection Tool can be touched when SpaceToken is touched
-    UIView *tokenSuperView = [spaceToken superview];
-    [tokenSuperView addSubview:self];
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    [mapView addSubview:self];
     
     // This is necessary to specify constraints programmatically
     self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -116,7 +119,7 @@
                                  multiplier:0
                                    constant:CONNECTION_TOOL_HEIGHT]];
     
-    [tokenSuperView addConstraints:constraintsArray];
+    [mapView addConstraints:constraintsArray];
 }
 
 

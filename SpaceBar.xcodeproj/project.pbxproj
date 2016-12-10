@@ -19,6 +19,9 @@
 		9A0FEE9A1DE3A23400D4DFF1 /* TaskGenerator+Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE981DE3A23400D4DFF1 /* TaskGenerator+Anchor.m */; };
 		9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
+		9A177FCD1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */; };
+		9A177FCE1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */; };
+		9A177FCF1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */; };
 		9A1985A61DDCEE460016696F /* PathToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.m */; };
 		9A1985A71DDCEE460016696F /* PathToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.m */; };
 		9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
@@ -262,8 +265,6 @@
 		9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
-		9AD7ACA31D9D4D6F00466AD5 /* MetaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */; };
-		9AD7ACA41D9D4D6F00466AD5 /* MetaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */; };
 		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
@@ -321,7 +322,6 @@
 		9AE13B831DF0D148008612DA /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9AE13B841DF0D148008612DA /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AE13B851DF0D148008612DA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
-		9AE13B861DF0D148008612DA /* MetaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */; };
 		9AE13B871DF0D148008612DA /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
 		9AE13B881DF0D148008612DA /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
@@ -409,6 +409,8 @@
 		9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceBar.entitlements; sourceTree = "<group>"; };
 		9A143B321D2AF56E001EE841 /* CustomMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKMapView.h; path = Map/CustomMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* CustomMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKMapView.m; path = Map/CustomMKMapView.m; sourceTree = "<group>"; };
+		9A177FCB1DFB09A70035D056 /* SpaceToken+Dragging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Dragging.h"; path = "SpaceBar/SpaceToken+Dragging.h"; sourceTree = "<group>"; };
+		9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceToken+Dragging.m"; path = "SpaceBar/SpaceToken+Dragging.m"; sourceTree = "<group>"; };
 		9A1985A41DDCEE460016696F /* PathToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathToken.h; path = SpaceBar/PathToken.h; sourceTree = "<group>"; };
 		9A1985A51DDCEE460016696F /* PathToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathToken.m; path = SpaceBar/PathToken.m; sourceTree = "<group>"; };
 		9A1CA2B41D4671210098957A /* CustomTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabController.h; path = Views/CustomTabController.h; sourceTree = "<group>"; };
@@ -571,8 +573,6 @@
 		9AD503321DC94303005A05D6 /* SpeechEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechEngine.m; path = ConstraintEngine/SpeechEngine.m; sourceTree = "<group>"; };
 		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
 		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
-		9AD7ACA11D9D4D6E00466AD5 /* MetaToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetaToken.h; path = SpaceBar/MetaToken.h; sourceTree = "<group>"; };
-		9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetaToken.m; path = SpaceBar/MetaToken.m; sourceTree = "<group>"; };
 		9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIDetailViewController.h; sourceTree = "<group>"; };
 		9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIDetailViewController.m; sourceTree = "<group>"; };
 		9AE13BBD1DF0D148008612DA /* SpaceBarBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBarBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -900,10 +900,10 @@
 				9AC36DD11C60087B0037210F /* SpaceToken.m */,
 				9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */,
 				9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */,
+				9A177FCB1DFB09A70035D056 /* SpaceToken+Dragging.h */,
+				9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */,
 				9A1985A41DDCEE460016696F /* PathToken.h */,
 				9A1985A51DDCEE460016696F /* PathToken.m */,
-				9AD7ACA11D9D4D6E00466AD5 /* MetaToken.h */,
-				9AD7ACA21D9D4D6F00466AD5 /* MetaToken.m */,
 			);
 			name = Tokens;
 			sourceTree = "<group>";
@@ -1503,6 +1503,7 @@
 			files = (
 				9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */,
 				9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
+				9A177FCD1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
@@ -1557,7 +1558,6 @@
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
-				9AD7ACA31D9D4D6F00466AD5 /* MetaToken.m in Sources */,
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
@@ -1596,6 +1596,7 @@
 			files = (
 				9A246D701D55589B00888A74 /* SettingsButton.m in Sources */,
 				9AFC0A681DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
+				9A177FCE1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
 				9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
@@ -1650,7 +1651,6 @@
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
-				9AD7ACA41D9D4D6F00466AD5 /* MetaToken.m in Sources */,
 				9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
@@ -1689,6 +1689,7 @@
 			files = (
 				9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */,
 				9AE13B501DF0D148008612DA /* EntityDatabase.mm in Sources */,
+				9A177FCF1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
 				9AE13B511DF0D148008612DA /* ViewController+MapView.mm in Sources */,
 				9AE13B521DF0D148008612DA /* Record.m in Sources */,
 				9AE13B531DF0D148008612DA /* PreferencesController.mm in Sources */,
@@ -1743,7 +1744,6 @@
 				9AE13B831DF0D148008612DA /* Route.mm in Sources */,
 				9AE13B841DF0D148008612DA /* POIDetailViewController.m in Sources */,
 				9AE13B851DF0D148008612DA /* Person.m in Sources */,
-				9AE13B861DF0D148008612DA /* MetaToken.m in Sources */,
 				9AE13B871DF0D148008612DA /* Snapshot.m in Sources */,
 				9AE13B881DF0D148008612DA /* RouteDatabase.mm in Sources */,
 				9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */,

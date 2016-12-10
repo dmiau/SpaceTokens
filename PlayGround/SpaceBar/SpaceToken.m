@@ -12,11 +12,19 @@
 #import "../Map/CustomPointAnnotation.h"
 #import "../Map/Person.h"
 #import "../Map/CustomMKMapView.h"
-#import "ConnectionTool.h"
 
+
+#import "TokenCollectionView.h"
 
 #define SPACE_TOKEN_WIDTH 60
 #define SPACE_TOKEN_HEIGHT 20
+
+@interface SpaceToken ()
+
+// Private methods
+- (void)privateConfigureDraggingTokenAppearance;
+
+@end
 
 @implementation SpaceToken{
     NSTimer *tokenFlashTimer;
@@ -104,14 +112,21 @@
     }
 }
 
-
-- (void)setPerson:(Person *)person{
-    _person = person;
-    _spatialEntity = person.poi;
+- (void)setSpatialEntity:(SpatialEntity *)spatialEntity{
+    _spatialEntity = spatialEntity;
+    [self setTitle:spatialEntity.name forState:UIControlStateNormal];
+    spatialEntity.linkedObj = self;
 }
 
-
 - (void)setSelected:(BOOL)selected{
+    
+    // A dragged SpaceToken does not care about being selected or not.
+    // Also, the background should be transparent.
+    if (self.appearanceType == DRAGGING){
+        [self setBackgroundColor:[UIColor clearColor]];
+        return;
+    }
+    
     super.selected = selected;
     if (selected){
         self.backgroundColor = [UIColor redColor];
@@ -123,13 +138,10 @@
     }
     
     // A SpaceToken may be linked to a dynamic locaiton, such as a person
-    if (self.person){
-        
-        // Get the map object
-        CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
-        
+    if ([self.spatialEntity isKindOfClass:[Person class]]){
+        Person *aPerson = (Person*)self.spatialEntity;
         if (selected){
-            self.person.updateFlag = YES;
+            aPerson.updateFlag = YES;
         }else{
             // http://stackoverflow.com/questions/14924892/nstimer-with-anonymous-function-block
             int64_t delayInSeconds = 5; // Your Game Interval as mentioned above by you
@@ -137,7 +149,7 @@
             
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 // Update your label here.
-                self.person.updateFlag = NO;
+                aPerson.updateFlag = NO;
             });
         }
     }
@@ -156,7 +168,6 @@
             [self setTitle:@"SpaceToken" forState:UIControlStateNormal];
             [self setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
             self.titleLabel.font = [UIFont systemFontOfSize:12];
-//            [self setBackgroundColor:[UIColor grayColor]];
             self.selected = NO;
             
             [self setTitleColor: [UIColor whiteColor]
@@ -176,10 +187,10 @@
             
             break;
         case DRAGGING:
-            [self configureDraggingTokenAppearance];
+            [self privateConfigureDraggingTokenAppearance];
             break;
         case ANCHORTOKEN:
-            [self configureDraggingTokenAppearance];
+            [self privateConfigureDraggingTokenAppearance];
             self.isLineLayerOn = NO;
             self.isCircleLayerOn = NO;
             hasReportedDraggingEvent = YES;
@@ -190,52 +201,6 @@
     
     
 }
-
-//-------------------
-// Configure the token as a dragging token
-//-------------------
-- (void)configureDraggingTokenAppearance{
-    self.selected = NO;
-    [self setBackgroundColor:[UIColor clearColor]];
-    [self.titleLabel removeFromSuperview];
-    
-    // Draw a circle under the centroid of the button
-    
-    float radius = 30;
-    [self.circleLayer setStrokeColor:[[UIColor blueColor] CGColor]];
-    [self.circleLayer setFillColor:[[UIColor clearColor] CGColor]];
-    [self.circleLayer setPath:[[UIBezierPath
-                                bezierPathWithOvalInRect:
-                                CGRectMake(-radius + self.frame.size.width/2, -radius + self.frame.size.height/2, 2*radius, 2*radius)]
-                               CGPath]];
-    
-    [[self layer] addSublayer:self.circleLayer];
-    
-    
-    //--------------------
-    // Add a label on top of the circle
-    //--------------------
-//    float width = 100;
-//    float height = 30;
-//    UILabel *label = [[UILabel alloc] initWithFrame:
-//                      CGRectMake(-width/2 + self.frame.size.width/2,
-//                                 -height -radius + self.frame.size.height/2,
-//                                 width, height)];
-//    
-//    label.text = self.spatialEntity.name;
-//    label.textAlignment = NSTextAlignmentCenter;
-//    [label setTextColor:[UIColor redColor]];
-//    [label setBackgroundColor:[UIColor clearColor]];
-//    [label setFont: [UIFont fontWithName:@"Trebuchet MS" size:12.0f]];
-//    [self addSubview:label];
-    
-    //--------------------
-    // Add a connection tool on top of the circle
-    //--------------------
-    ConnectionTool *connectionTool = [[ConnectionTool alloc] init];
-    [connectionTool attachToSpaceToken: self];
-}
-
 
 - (void)mapUpdateHandler{
     if (self.selected){
@@ -339,6 +304,24 @@
     NSArray *stringArray = [[NSArray alloc] initWithObjects:tokenInfo, mapViewString, pointerString, latLonString, nil];
     NSString *joinedString = [stringArray componentsJoinedByString:@"\n"];
     return joinedString;
+}
+
+//------------------
+// Deep copy
+//------------------
+-(id) copyWithZone:(NSZone *) zone
+{
+    // This is very important, since a child class might call this method too.
+    SpaceToken *newToken = [[[self class] alloc] init];
+    
+    [newToken configureAppearanceForType:self.appearanceType];
+    
+    [newToken setTitle:self.spatialEntity.name forState:UIControlStateNormal];
+    newToken.spatialEntity = self.spatialEntity;
+    newToken.spatialEntity.linkedObj = self; // Establish the connection
+    newToken.isDraggable = self.isDraggable;
+        
+    return newToken;
 }
 
 @end

@@ -9,7 +9,7 @@
 #import "EntityDatabase.h"
 #import "SpatialEntity.h"
 #import "MyFileManager.h"
-
+#import "Person.h"
 #import "RouteDatabase.h"
 
 @implementation EntityDatabase
@@ -27,6 +27,8 @@
     self.entityArray = [[NSMutableArray alloc] init];
     cacheDefaultEntityArray = [[NSMutableArray alloc] init];
     useDefaultEntityArray = YES;
+    youRHere = [[Person alloc] init];
+    self.isYouAreHereEnabled = YES;
     return self;
 }
 
@@ -47,6 +49,27 @@
     useDefaultEntityArray = YES;
     self.entityArray = cacheDefaultEntityArray;
 }
+
+//---------------
+// Get a list of enabled entities
+//---------------
+-(NSMutableArray*)getEnabledEntities{
+    NSMutableArray* outArray = [[NSMutableArray alloc] init];
+    
+    for (SpatialEntity *anEntity in self.entityArray){
+        if (anEntity.isEnabled){
+            [outArray addObject:anEntity];
+        }
+    }
+    
+    // Decide if youAreHere should be added
+    if (self.isYouAreHereEnabled && useDefaultEntityArray){
+        [outArray addObject:youRHere];
+    }
+        
+    return outArray;
+}
+
 
 #pragma mark -- Save/Load --
 

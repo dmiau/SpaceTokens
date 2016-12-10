@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "SettingsButton.h"
+#import "EntityDatabase.h"
+#import "TokenCollection.h"
 #import "SnapshotProgress.h"
 #import "SnapshotChecking.h"
 #import "GameManager.h"
@@ -243,11 +245,13 @@ static AuthoringPanel *instance;
         NSString *buttonLabel = [NSString stringWithFormat: @"SpaceToken(%lu)", [spaceTokenPOIsArray count]];
         [self.spaceTokenPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
         
-        // Create a SpaceToken
+        // Put the entity into EntityDatabase
         poi.name = @"token";
-        SpaceToken* aToken = [self.rootViewController.spaceBar addSpaceTokenFromEntity:poi];
-        [self.rootViewController.spaceBar orderButtonArray];
-        textSinkObject = aToken;
+        
+        [[[EntityDatabase sharedManager] entityArray] addObject:poi];
+        
+        self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES; // refresh the token panel
+        textSinkObject = [[TokenCollection sharedManager] findSpaceTokenFromEntity:poi];
     }
     
     // Remove the gesture layer

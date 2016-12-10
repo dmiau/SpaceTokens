@@ -136,9 +136,9 @@ static ViewController *instance;
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
     
-    if (self.spaceBar.spaceBarMode == TOKENONLY){
-        [self refreshSpaceTokens];
-    }
+    // Do a forced refresh if the tokenView is enabled
+    if (self.spaceBar.isTokenCollectionViewEnabled)
+        self.spaceBar.isTokenCollectionViewEnabled = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class SpatialEntity;
+@class Person;
 
 @interface EntityDatabase : NSObject{
     NSMutableArray <SpatialEntity *> *cacheDefaultEntityArray;
     BOOL useDefaultEntityArray;
+    Person *youRHere;
 }
 @property NSString *name;
 @property NSMutableArray <SpatialEntity *> *entityArray;
@@ -27,5 +29,8 @@
 - (void)debugInit; // a temporary method
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
+
+-(NSMutableArray*)getEnabledEntities;
+@property BOOL isYouAreHereEnabled;
 
 @end
