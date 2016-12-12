@@ -17,16 +17,17 @@
 
 
 #define CONNECTION_TOOL_WIDTH 100
-#define CONNECTION_TOOL_HEIGHT 30
+#define CONNECTION_TOOL_HEIGHT 40
+#define CONNECTION_TOOL_OFFSET 60
+
+@interface ConnectionTool ()
+
+// buttonDragging is implemented in the Dragging category
+- (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event;
+@end
 
 
-@implementation ConnectionTool{
-    CGPoint initialTouchLocationInView;
-    CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
-    SpaceToken *counterPart;
-    NSMutableArray <NSLayoutConstraint*> *constraintsArray;
-    BOOL hasReportedDraggingEvent;
-}
+@implementation ConnectionTool
 
 
 /*
@@ -57,7 +58,8 @@
     // Configure appearance
     self.frame = CGRectMake(0, 0, CONNECTION_TOOL_WIDTH, CONNECTION_TOOL_HEIGHT);
     [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [self.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    self.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
     
     return self;
 }
@@ -66,6 +68,7 @@
     
     // Connect the counterpart
     counterPart = spaceToken;
+    spaceToken.connectionTool = self; // dependency injection
     
     float width = CONNECTION_TOOL_WIDTH;
     float height = CONNECTION_TOOL_HEIGHT;
@@ -99,7 +102,7 @@
                                      toItem:spaceToken
                                   attribute:NSLayoutAttributeCenterY
                                  multiplier:1.0
-                                   constant:-spaceToken.frame.size.height/2 - 50]];
+                                   constant:-spaceToken.frame.size.height/2 - CONNECTION_TOOL_OFFSET]];
     
     [constraintsArray addObject:
      [NSLayoutConstraint constraintWithItem:self
@@ -193,119 +196,6 @@
     [self removeFromSuperview];
 }
 
-//-------------------
-// SpaceToken is being dragged
-//-------------------
-- (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event {
-    
-    // Do nothing if the event is not triggered by self
-    if (sender != self)
-        return;
-    
-    // There could be multiple touch events!
-    // Need to find the touch even associated with self
-    UITouch *touch = nil;
-    
-    for (UITouch *aTouch in [event allTouches]){
-        if ([aTouch view] == self)
-            touch = aTouch;
-    }
-    
-    if (self.isDraggable){
-        
-        // handle the dragging event if the button is draggable
-        [self handleDragToScreenAction:touch];
-    }
-}
 
-//---------------
-// Handle dragToScreen action
-//---------------
-- (void)handleDragToScreenAction: (UITouch *) touch{
-    
-    // Instantiate another connection tool if the current one is being dragged out
-    if (!hasReportedDraggingEvent){
-        hasReportedDraggingEvent = YES;
-        self.translatesAutoresizingMaskIntoConstraints = YES;
-        
-        // Create a new connection tool
-        ConnectionTool *connectionTool = [[ConnectionTool alloc] init];
-        [connectionTool attachToSpaceToken: counterPart];
-        
-        // Change the appearance
-        [[self layer] addSublayer: lineLayer];
-    }
-    
-    CGPoint locationInView = [touch locationInView:self.superview];
-    CGPoint previousLoationInView = [touch previousLocationInView:self.superview];
-    CGPoint locationInButton = [touch locationInView:self];
-    
-    
-    // the button should be shifted so the center is coincided with the touch
-    self.center = CGPointMake
-    (self.center.x + locationInView.x - previousLoationInView.x
-     - (self.frame.size.width/2 -locationInButton.x),
-     self.center.y + locationInView.y - previousLoationInView.y
-     - (self.frame.size.height/2 -locationInButton.y));
-    
-    if (counterPart)
-    {
-        // draw the line
-        UIBezierPath *linePath=[UIBezierPath bezierPath];
-        [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
-                                           self.frame.size.height/2)];
-        [linePath addLineToPoint:
-         [self convertPoint:counterPart.center fromView:self.superview]];
-        
-        lineLayer.path=linePath.CGPath;
-        lineLayer.fillColor = nil;
-        lineLayer.opacity = 1.0;
-        lineLayer.strokeColor = [UIColor blueColor].CGColor;
-        
-        
-    }
-    
-    // Check if the connection tool touches any of the SpaceTokens
-    SpaceToken *resultToken = nil;
-    
-    // Get the TokenCollection object
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    
-    // Get the touch coordinates in mapView
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    CGPoint touchPoint = [touch locationInView:mapView];
-    CGPoint previoustouchPoint =
-    [touch previousLocationInView:mapView];
-    
-    for (SpaceToken *aToken in tokenCollection.tokenArray){
-        CGRect buttonFrame = aToken.frame;
-        
-        // Make sure the route creation tool is only triggered once
-        if (CGRectContainsPoint(buttonFrame, touchPoint)
-            &&
-            !CGRectContainsPoint(buttonFrame, previoustouchPoint))
-        {
-            resultToken = aToken;
-            NSLog(@"SpaceToken: %@ tapped.", aToken.spatialEntity.name);
-            
-            // Flash the touched SpaceToken
-            [aToken flashToken];
-            
-            // Connection tool only supports the connection of POI
-            
-            if ([aToken.spatialEntity isKindOfClass:[POI class]] &&
-                [counterPart.spatialEntity isKindOfClass:[POI class]])
-            {
-                // Create a route
-                POI *sourcePOI = counterPart.spatialEntity;
-                POI *destinationPOI = aToken.spatialEntity;
-                [Route addRouteWithSource:sourcePOI Destination:destinationPOI];
-            }
-            
-            break;
-        }
-    }
-    
-}
 
 @end

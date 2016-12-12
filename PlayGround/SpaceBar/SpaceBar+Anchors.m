@@ -35,10 +35,6 @@
             // create a new POI for anchor if an anchor does not exist
             SpaceToken *aToken = [[SpaceToken alloc] init];
             
-            // Add the anchor to the map
-            [self.mapView addSubview:aToken];
-            [aToken configureAppearanceForType:ANCHORTOKEN];
-            
             // Position the SpaceToken correctly
             aToken.center = mapXY;
             aToken.mapViewXY = mapXY;
@@ -49,14 +45,16 @@
             aPOI.name = [NSString stringWithFormat:@"Anchor%d", counter++];
             aPOI.coordSpan = self.mapView.region.span;
             aToken.spatialEntity = aPOI;
-            
-            
             aToken.touch = aTouch;
+            
+            // Add the anchor to the map
+            [self.mapView addSubview:aToken];
+            [aToken configureAppearanceForType:ANCHOR_INVISIBLE];
             
             if (self.isSpaceTokenEnabled){
                 [self.anchorSet addObject:aToken];
                 [self.draggingSet addObject:aToken];
-                [aToken showAnchorVisualIndicatorAfter:0];
+//                [aToken showAnchorVisualIndicatorAfter:0];
             }else{
                 [self.anchorCandidateSet addObject:aToken];
             }
@@ -95,6 +93,13 @@
                 // Position the SpaceToken correctly
                 associatedToken.center = mapXY;
                 associatedToken.mapViewXY = mapXY;
+                
+                // Depending on the pressure, we may need to turn a ANCHOR_INVISIBLE
+                // to a ANCHOR_VISIBLE and enable the SpaceToken mode                
+                if ([aTouch force] > 0.5*[aTouch maximumPossibleForce]){
+                    [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
+                    self.isSpaceTokenEnabled = YES;
+                }
             }
         }
     }

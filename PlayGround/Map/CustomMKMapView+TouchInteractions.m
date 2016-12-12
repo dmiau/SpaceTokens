@@ -53,7 +53,9 @@
     //-----------------
     
     // Q: Why do I need to use a custom gesture recognizer?
-    // A: Because I need to disable the default rotation gesture recognizer
+    // A1: Because I need to disable the default rotation gesture recognizer
+    // A2: I don't want my touch to be cancelled by other gesture recognizer
+    // (http://stackoverflow.com/questions/5818692/how-to-avoid-touches-cancelled-event)
     
     WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     
@@ -69,8 +71,11 @@
         [self customTouchesMoved:touches withEvent:event];
     };
     
-    tapInterceptor.delegate = self;
+    tapInterceptor.touchesCancelledCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesCancelled:touches withEvent:event];
+    };
     
+    tapInterceptor.delegate = self;
     
     //--------------------------
     // Add gesture recognizers
@@ -144,6 +149,7 @@
     {
         [self.delegate mapTouchMoved: touches withEvent:event];
     }
+    UITouch *aTouch = [touches anyObject];
 }
 
 //---------------------------
@@ -154,13 +160,14 @@
     if (_delegateRespondsTo.mapTouchEnded){
         [self.delegate mapTouchEnded: touches withEvent:(UIEvent *)event];
     }
+//    NSLog(@"touch ended");
 }
 
 -(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (_delegateRespondsTo.mapTouchEnded){
         [self.delegate mapTouchEnded: touches withEvent:(UIEvent *)event];
     }
-    NSLog(@"touch canceled");
+//    NSLog(@"touch canceled");
 }
 
 

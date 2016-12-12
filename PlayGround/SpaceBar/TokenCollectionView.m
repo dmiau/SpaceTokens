@@ -12,7 +12,7 @@
 #import "SpatialEntity.h"
 
 #define CELL_WIDTH 60
-#define CELL_HEIGHT 20
+#define CELL_HEIGHT 30
 
 NSString *CellID = @"cellID";                          // UICollectionViewCell storyboard id
 

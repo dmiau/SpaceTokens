@@ -175,6 +175,9 @@
 		9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */; };
 		9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
 		9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
+		9A90C7641DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */; };
+		9A90C7651DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */; };
+		9A90C7661DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */; };
 		9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A94DD091D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
@@ -506,6 +509,8 @@
 		9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreferencesController.mm; sourceTree = "<group>"; };
 		9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableController.h; sourceTree = "<group>"; };
 		9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableController.m; sourceTree = "<group>"; };
+		9A90C7621DFE146500CDC578 /* ConnectionTool+Dragging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ConnectionTool+Dragging.h"; path = "SpaceBar/ConnectionTool+Dragging.h"; sourceTree = "<group>"; };
+		9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ConnectionTool+Dragging.mm"; path = "SpaceBar/ConnectionTool+Dragging.mm"; sourceTree = "<group>"; };
 		9A93F9261D3016690012638A /* CustomMKMapView+MapDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+MapDisplay.h"; path = "Map/CustomMKMapView+MapDisplay.h"; sourceTree = "<group>"; };
 		9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "CustomMKMapView+MapDisplay.mm"; path = "Map/CustomMKMapView+MapDisplay.mm"; sourceTree = "<group>"; };
 		9A94DD071D9C194D00F94256 /* CustomMKMapView+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+Annotations.h"; path = "Map/CustomMKMapView+Annotations.h"; sourceTree = "<group>"; };
@@ -904,6 +909,7 @@
 				9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */,
 				9A1985A41DDCEE460016696F /* PathToken.h */,
 				9A1985A51DDCEE460016696F /* PathToken.m */,
+				9A90C7611DFDB49500CDC578 /* ConnectionTool */,
 			);
 			name = Tokens;
 			sourceTree = "<group>";
@@ -915,6 +921,17 @@
 				9A836D381C69372C007D9520 /* tester.m */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		9A90C7611DFDB49500CDC578 /* ConnectionTool */ = {
+			isa = PBXGroup;
+			children = (
+				9A62FB811DDF7CC500245BD6 /* ConnectionTool.h */,
+				9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */,
+				9A90C7621DFE146500CDC578 /* ConnectionTool+Dragging.h */,
+				9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */,
+			);
+			name = ConnectionTool;
 			sourceTree = "<group>";
 		};
 		9AA32CE21DEDD66900D16738 /* Authoring */ = {
@@ -945,8 +962,8 @@
 		9AC36DC31C5FF2220037210F /* SpaceBar Project */ = {
 			isa = PBXGroup;
 			children = (
-				9A5CCBB21DF8A95F009B56DF /* Tokens */,
 				9A5CCBA71DF86C2E009B56DF /* CollectionView */,
+				9A5CCBB21DF8A95F009B56DF /* Tokens */,
 				9A26CB2C1C7BCCF400E46662 /* Track */,
 				9AC36DC41C5FF4690037210F /* SpaceBar.h */,
 				9AC36DC51C5FF4690037210F /* SpaceBar.mm */,
@@ -968,8 +985,6 @@
 				9A84136E1C6FB3B4004DF8D1 /* Constants.h */,
 				9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */,
 				9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */,
-				9A62FB811DDF7CC500245BD6 /* ConnectionTool.h */,
-				9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */,
 				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
 				9AB3BDD81DE290B100334EF9 /* TokenCollection.m */,
 			);
@@ -1587,6 +1602,7 @@
 				9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
 				9ABB28101D36795C00595A0D /* Elevator.m in Sources */,
+				9A90C7641DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1680,6 +1696,7 @@
 				9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
 				9ABB28111D36795C00595A0D /* Elevator.m in Sources */,
+				9A90C7651DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1773,6 +1790,7 @@
 				9AE13BA01DF0D148008612DA /* SnapshotChecking.m in Sources */,
 				9AE13BA11DF0D148008612DA /* Constants.m in Sources */,
 				9AE13BA21DF0D148008612DA /* Elevator.m in Sources */,
+				9A90C7661DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

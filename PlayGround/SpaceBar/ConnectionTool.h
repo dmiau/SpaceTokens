@@ -11,7 +11,13 @@
 @class SpaceToken;
 @class SpaceBar;
 
-@interface ConnectionTool : UIButton
+@interface ConnectionTool : UIButton{
+    CGPoint initialTouchLocationInView;
+    CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
+    SpaceToken *counterPart;
+    NSMutableArray <NSLayoutConstraint*> *constraintsArray;
+    BOOL hasReportedDraggingEvent;
+}
 
 @property BOOL isLineLayerOn;
 @property BOOL isDraggable;

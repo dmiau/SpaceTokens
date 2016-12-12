@@ -17,13 +17,13 @@
 #import "TokenCollectionView.h"
 
 #define SPACE_TOKEN_WIDTH 60
-#define SPACE_TOKEN_HEIGHT 20
+#define SPACE_TOKEN_HEIGHT 30
 
 @interface SpaceToken ()
 
 // Private methods
 - (void)privateConfigureDraggingTokenAppearance;
-
+- (void)privateConfigureAnchorAppearanceVisible:(BOOL)visibleFlag;
 @end
 
 @implementation SpaceToken{
@@ -42,6 +42,7 @@
     self = [super init];
     
     if (self){
+        [self setBackgroundColor:[UIColor grayColor]];
         self.spatialEntity = [[SpatialEntity alloc] init];
         self.mapViewXY = CGPointMake(0, 0);
         
@@ -77,6 +78,7 @@
 //-----------
 // setters
 //-----------
+
 - (void)setIsCircleLayerOn:(BOOL)isCircleLayerOn{
     _isCircleLayerOn = isCircleLayerOn;
     if (_isCircleLayerOn){
@@ -127,13 +129,19 @@
         return;
     }
     
+    // Need to cache the original background color
+    static UIColor *originalColor;
+    if (!self.selected || !originalColor){
+        originalColor = [[self backgroundColor] copy];
+    }
+    
     super.selected = selected;
     if (selected){
         self.backgroundColor = [UIColor redColor];
         [[self layer] addSublayer:self.lineLayer];
         [self updatePOILine];
     }else{
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = originalColor;
         [self.lineLayer removeFromSuperlayer];
     }
     
@@ -161,7 +169,7 @@
 // configure the appearance
 //-----------
 - (void) configureAppearanceForType:(TokenAppearanceType)type{
-    self.appearanceType = type;
+    
     switch (type) {
         case DOCKED:
             [self addSubview:self.titleLabel];
@@ -189,17 +197,16 @@
         case DRAGGING:
             [self privateConfigureDraggingTokenAppearance];
             break;
-        case ANCHORTOKEN:
-            [self privateConfigureDraggingTokenAppearance];
-            self.isLineLayerOn = NO;
-            self.isCircleLayerOn = NO;
-            hasReportedDraggingEvent = YES;
+        case ANCHOR_INVISIBLE:
+            [self privateConfigureAnchorAppearanceVisible:NO];
+            break;
+        case ANCHOR_VISIBLE:
+            [self privateConfigureAnchorAppearanceVisible:YES];
             break;
         default:
             break;
     }
-    
-    
+    self.appearanceType = type;    
 }
 
 - (void)mapUpdateHandler{

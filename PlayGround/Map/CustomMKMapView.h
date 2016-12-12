@@ -12,16 +12,28 @@
 @class SpatialEntity;
 @class Route;
 
-//----------------
-// CustomMKMapViewDelegate
-//----------------
+
+
+
+
+//==============================
+// CustomMKMapView ******Delegate
+//==============================
 @protocol CustomMKMapViewDelegate <NSObject>
 
 // The following are to support the anchor+x interactions
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 - (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 - (void) mapTouchEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+
 @end
+
+
+
+
+
+
+
 
 //==============================
 // CustomMKMapView

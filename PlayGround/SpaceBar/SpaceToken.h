@@ -9,8 +9,9 @@
 #import "SpatialEntity.h"
 
 @class Person;
+@class ConnectionTool;
 
-typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
+typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanceType;
 
 //----------------------------------------
 // SpaceToken interface
@@ -20,7 +21,6 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
     BOOL hasReportedDraggingEvent;
     NSTimer *anchorVisualTimer;
 }
-
 
 @property BOOL isCircleLayerOn;
 @property BOOL isLineLayerOn;
@@ -35,6 +35,7 @@ typedef enum {DOCKED, DRAGGING, ANCHORTOKEN} TokenAppearanceType;
 
 // When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
 @property (weak) SpaceToken *counterPart;
+@property ConnectionTool *connectionTool;
 @property TokenAppearanceType appearanceType;
 @property (strong) SpatialEntity* spatialEntity;
 

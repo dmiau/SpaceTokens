@@ -14,6 +14,8 @@
 #import "ViewController.h"
 
 
+
+
 // SpaceBar extension
 @interface SpaceBar ()
 {
@@ -76,7 +78,7 @@ static SpaceBar *sharedInstance;
         // Configure the layout object
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         layout.sectionInset = UIEdgeInsetsMake
-        (10, self.mapView.frame.size.width-60, 0, 0);
+        (30, self.mapView.frame.size.width-60, 0, 0);
         
         // Initialize a collection view controller
         self.tokenCollectionView =
@@ -125,7 +127,7 @@ static SpaceBar *sharedInstance;
     self.draggingSet = [[NSMutableSet alloc] init];        
     self.anchorSet = [[NSMutableSet alloc] init];
     self.anchorCandidateSet = [[NSMutableSet alloc] init];
-    
+        
     self.isConstrainEngineON = YES;
     
     self.smallValueOnTopOfBar = true;
@@ -134,7 +136,7 @@ static SpaceBar *sharedInstance;
 
     self.isAutoOrderSpaceTokenEnabled = YES;
     
-    self.isSpaceTokenEnabled = YES;
+    self.isSpaceTokenEnabled = NO;
     
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];

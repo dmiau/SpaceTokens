@@ -152,6 +152,9 @@
     
     // Change the style of the dragging tocken
     [self configureAppearanceForType:DRAGGING];
+    
+    
+    
 }
 
 
@@ -180,6 +183,35 @@
     //--------------------
     ConnectionTool *connectionTool = [[ConnectionTool alloc] init];
     [connectionTool attachToSpaceToken: self];
+//    [connectionTool setHidden:YES]; // Connection tool is hidden by default
+}
+
+- (void)privateConfigureAnchorAppearanceVisible:(BOOL)visibleFlag{
+    
+    TokenAppearanceType targetType = visibleFlag? ANCHOR_VISIBLE : ANCHOR_INVISIBLE;
+    
+    if (self.appearanceType == targetType)
+        return; // do nothing if the current type is equal to the target type
+    
+    // This decides whether the token was dragged from the sidebar or not
+    if (self.appearanceType != ANCHOR_INVISIBLE &&
+        self.appearanceType != ANCHOR_VISIBLE)
+    {
+        [self privateConfigureDraggingTokenAppearance];
+        hasReportedDraggingEvent = YES;
+    }
+    
+    
+    // This decides the visual appearance of the anchor
+    if (targetType == ANCHOR_VISIBLE){
+        self.isLineLayerOn = NO;
+        self.isCircleLayerOn = YES;
+        [self.connectionTool setHidden:NO];
+    }else{
+        self.isLineLayerOn = NO;
+        self.isCircleLayerOn = NO;
+        [self.connectionTool setHidden:YES];
+    }
 }
 
 //---------------

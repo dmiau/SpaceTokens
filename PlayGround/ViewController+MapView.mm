@@ -57,16 +57,8 @@
     return renderer;
 }
 
-- (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
 
-//    UITouch *aTouch = [touches anyObject];
-//    CGPoint aPoint = [aTouch locationInView:self.mapView];
-//    CLLocationCoordinate2D coord = [self.mapView convertPoint:aPoint toCoordinateFromView:self.mapView];
-//    MKMapPoint mapPoint = MKMapPointForCoordinate(coord);
-//    
-//    NSLog(@"CGPoint: %@", NSStringFromCGPoint(aPoint));
-//    NSLog(@"MapPoint: (%g, %g)", mapPoint.x, mapPoint.y);
+- (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     // Remove all the touched SpaceTokens
     [self.spaceBar clearAllTouchedTokens];
@@ -77,13 +69,7 @@
 }
 
 - (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"Map is moved: %@", [touches anyObject]);
-    
-//    NSLog(@"mapTouchMoved");
-//    for (UITouch *aTouch in touches){
-//        NSLog(@"%p", aTouch);
-//    }
-//    
+
     [self.spaceBar updateAnchorForTouches: touches];
 }
 
@@ -93,4 +79,5 @@
     
     [self.spaceBar removeAnchorForTouches:touches];
 }
+
 @end

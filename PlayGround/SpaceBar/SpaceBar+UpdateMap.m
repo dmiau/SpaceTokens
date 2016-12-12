@@ -16,7 +16,9 @@
 
 - (void) fillDraggingMapXYs{
     for(SpaceToken* anItem in self.draggingSet) {
-        if (anItem.appearanceType != ANCHORTOKEN){
+        if (anItem.appearanceType != ANCHOR_VISIBLE
+            || anItem.appearanceType != ANCHOR_INVISIBLE)
+        {
             SpaceToken* aMark = (SpaceToken*)anItem;
             aMark.mapViewXY = aMark.center;
         }
@@ -44,13 +46,13 @@
         //--------------
         // Show the anchor and one desired location
         SpaceToken *oneAnchor = [self.anchorSet anyObject];
+        // Turn on the debug visual
+        [oneAnchor configureAppearanceForType:ANCHOR_VISIBLE];
+        oneAnchor.isConstraintLineOn = YES;
+        
         
         MKMapRect mapRect = [self computerBoundingPOIsForTokenSets: self.touchingSet
                                                          andAnchor: oneAnchor];
-        
-        // Turn on the debug visual
-        oneAnchor.isLineLayerOn = YES;
-        oneAnchor.isConstraintLineOn = YES;
         [self.mapView setVisibleMapRect:mapRect edgePadding:self.mapView.edgeInsets
                                animated:NO];
         
@@ -84,6 +86,8 @@
         // Put POIs in anchorSet into a poiSet
         for (SpaceToken *aToken in self.anchorSet){
             [poiSet addObject:aToken.spatialEntity];
+            
+            [aToken configureAppearanceForType:ANCHOR_VISIBLE];            
             // Draw the constraint line
             aToken.isConstraintLineOn = YES;
         }
@@ -114,7 +118,7 @@
         && [self.anchorSet count]==1)
     {
         SpaceToken *anchor = [self.anchorSet anyObject];
-        anchor.isCircleLayerOn = YES;
+        [anchor configureAppearanceForType:ANCHOR_VISIBLE];
         [self.draggingSet addObject:anchor];
     }
     

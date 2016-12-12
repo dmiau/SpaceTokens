@@ -21,9 +21,8 @@
 - (id) init{
     self = [super init];
     
-    // Add the outline
-    [[self layer] setBorderWidth:1.0f];
-    [[self layer] setBorderColor:[UIColor orangeColor].CGColor];
+    // Change the color to orange
+    [self setBackgroundColor:[UIColor orangeColor]];
     
     return self;
 }
