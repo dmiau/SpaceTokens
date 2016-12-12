@@ -114,14 +114,19 @@
     if (delegate != aDelegate) {
         delegate = aDelegate;
         super.delegate = aDelegate;
+        
         _delegateRespondsTo.regionDidChangeAnimated =
         [delegate respondsToSelector:@selector(mapView: regionDidChangeAnimated:)];
+        
         _delegateRespondsTo.mapTouchBegin =
         [delegate respondsToSelector:@selector(mapTouchBegan: withEvent:)];
+        
         _delegateRespondsTo.mapTouchMoved =
         [delegate respondsToSelector:@selector(mapTouchMoved: withEvent:)];
+        
         _delegateRespondsTo.mapTouchEnded =
         [delegate respondsToSelector:@selector(mapTouchEnded: withEvent:)];
+        
     }
 }
 
