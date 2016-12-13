@@ -10,6 +10,8 @@
 
 typedef enum {
     landmark,
+    path,
+    area,
     dropped,
     search_result,
     YouRHere,

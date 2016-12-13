@@ -139,8 +139,6 @@ static ShowAuthoringPanel *instance;
     // Add the POI to the array
     [spaceTokenPOIsArray addObject:poi];
     
-    [[[EntityDatabase sharedManager] entityArray] addObject:poi];
-    
     self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES; // refresh the token panel
 }
 
@@ -196,6 +194,7 @@ static ShowAuthoringPanel *instance;
     
     // Remove all SpaceTokens
     [self.rootViewController.spaceBar removeAllSpaceTokens];
+    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;
 }
 
 - (IBAction)poiTypeSegmentAction:(UISegmentedControl*)segmentControl {

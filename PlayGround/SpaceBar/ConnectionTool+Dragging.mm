@@ -135,6 +135,8 @@
         POI *sourcePOI = counterPart.spatialEntity;
         
         [Route addRouteWithSource:sourcePOI Destination:destinationPOI];
+        
+        [self removeFromSuperview];
         return;
     }
     
@@ -158,22 +160,24 @@
         if (CGRectContainsPoint(buttonInMapView, touchPoint)
             &&
             !CGRectContainsPoint(buttonInMapView, previoustouchPoint))
-        {
-            resultToken = aToken;
-            NSLog(@"SpaceToken: %@ tapped.", aToken.spatialEntity.name);
-            
-            // Flash the touched SpaceToken
-            [aToken flashToken];
-            
+        {            
             // Connection tool only supports the connection of POI
             
             if ([aToken.spatialEntity isKindOfClass:[POI class]] &&
                 [counterPart.spatialEntity isKindOfClass:[POI class]])
             {
+                NSLog(@"SpaceToken: %@ tapped.", aToken.spatialEntity.name);
+                
+                // Flash the touched SpaceToken
+                [aToken flashToken];
+                
                 // Create a route
                 POI *sourcePOI = counterPart.spatialEntity;
                 POI *destinationPOI = aToken.spatialEntity;
                 [Route addRouteWithSource:sourcePOI Destination:destinationPOI];
+                
+                [self removeFromSuperview];
+
             }
             
             break;

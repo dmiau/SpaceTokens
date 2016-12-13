@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class SpatialEntity;
+
 @interface TokenCollectionView : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property double tokenWidth; // this parameter is also used to decide the hitTest area
 
 +(id)sharedManager;
+
+-(void)addItemFromBottom:(SpatialEntity*)anEntity;
 
 @end

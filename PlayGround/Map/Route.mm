@@ -27,6 +27,7 @@ template class std::vector<double>;
 {
     self = [super init];
     if (self) {
+        self.annotation.pointType = path;
         self.route = aRoute;
         self.source = source;
         self.destination = destination;
@@ -40,6 +41,15 @@ template class std::vector<double>;
 //-----------------
 // Setters
 //-----------------
+-(void)setIsEnabled:(BOOL)isEnabled{
+    [super setIsEnabled:isEnabled];
+    
+    if (!isEnabled){
+        self.isMapAnnotationEnabled = NO;
+    }
+}
+
+
 -(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
     [super setIsMapAnnotationEnabled:isMapAnnotationEnabled];
     
@@ -408,6 +418,7 @@ double computeOrientationFromA2B
     }
     
     self.route = nil;
+    self.annotation.pointType = path;
     self.routePolyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[polylineArrayX count]];
     delete[] tempMapPointArray;
     [self populateInternalRouteProperties];

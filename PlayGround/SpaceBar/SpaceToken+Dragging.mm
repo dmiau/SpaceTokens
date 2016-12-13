@@ -12,7 +12,6 @@
 #import "TokenCollection.h"
 #import "ConnectionTool.h"
 #import "CustomMKMapView.h"
-#import "Route.h"
 
 @implementation SpaceToken (Dragging)
 //-------------------
@@ -227,10 +226,6 @@
     
     [self removeFromSuperview];
     self.spatialEntity.isEnabled = NO;
-    
-//    if ([self.spatialEntity isKindOfClass:[Route class]]){
-//        self.spatialEntity.isMapAnnotationEnabled = NO;
-//    }
     
     // Remove from the button set
     [[ NSNotificationCenter defaultCenter] postNotification:

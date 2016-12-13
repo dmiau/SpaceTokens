@@ -16,14 +16,15 @@
 #import "CustomMKMapView.h"
 
 
-#define CONNECTION_TOOL_WIDTH 100
+#define CONNECTION_TOOL_WIDTH 60
 #define CONNECTION_TOOL_HEIGHT 40
-#define CONNECTION_TOOL_OFFSET 60
+#define CONNECTION_TOOL_OFFSET 50
 
 @interface ConnectionTool ()
 
 // buttonDragging is implemented in the Dragging category
 - (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event;
+
 @end
 
 
@@ -171,7 +172,6 @@
     if (sender != self)
         return;
     
-    NSLog(@"Touch down!");
     
     // There could be multiple touch events!
     // Need to find the touch even associated with self
@@ -189,8 +189,6 @@
     // Do nothing if the event is not triggered by self
     if (sender != self)
         return;
-    
-    NSLog(@"Touch up!");
 
     // Remove self from the super view
     [self removeFromSuperview];

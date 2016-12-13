@@ -114,9 +114,7 @@ static TokenCollectionView *sharedInstance;
     
     [enabledEntityArray removeAllObjects];
     enabledEntityArray = [[EntityDatabase sharedManager] getEnabledEntities];
-//    return [enabledEntityArray count];
-    
-    return 30;
+    return [enabledEntityArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,12 +137,24 @@ static TokenCollectionView *sharedInstance;
     return CGSizeMake(CELL_WIDTH, CELL_HEIGHT);
 }
 
+//----------------
+// Reordering
+//----------------
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{
-    // move your data order
-    NSLog(@"Item moved.");
+{    
+    SpatialEntity *anEntity = enabledEntityArray[sourceIndexPath.row];
+    [enabledEntityArray removeObjectAtIndex:sourceIndexPath.row];
+    [enabledEntityArray insertObject:anEntity atIndex:destinationIndexPath.row];
 }
 
+-(void)addItemFromBottom:(SpatialEntity*)anEntity{    
+    [enabledEntityArray insertObject:anEntity atIndex:[enabledEntityArray count]-2];
+    NSUInteger index = [enabledEntityArray count]  -2;
+    NSArray *indexPaths = [NSArray
+                           arrayWithObject:
+                           [NSIndexPath indexPathForRow:index inSection:0]];
+    [self insertItemsAtIndexPaths:indexPaths];
+}
 
 #pragma mark <UICollectionViewDelegate>
 

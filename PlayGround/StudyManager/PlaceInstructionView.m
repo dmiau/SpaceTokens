@@ -9,6 +9,7 @@
 #import "PlaceInstructionView.h"
 #import "SnapshotPlace.h"
 #import "AppDelegate.h"
+#import "SpaceBar.h"
 
 @implementation PlaceInstructionView
 
@@ -76,7 +77,7 @@
     CATextLayer *label = [[CATextLayer alloc] init];
     [label setFont:@"Helvetica-Bold"];
     [label setFontSize:20];
-    [label setFrame:CGRectMake(0, 0, 60, 30)];
+    [label setFrame:CGRectMake(0, 0, 70, 30)];
     [label setString:@"station"];
     [label setAlignmentMode:kCAAlignmentCenter];
     [label setForegroundColor:[[UIColor blackColor] CGColor]];
@@ -117,12 +118,14 @@
     self.frame = rootViewController.view.frame;
     
     [rootViewController.view addSubview:self];
+    [[SpaceBar sharedManager] setIsTokenCollectionViewEnabled:NO];
 }
 
 - (IBAction)okTapped:(id)sender {
     // Start the timer
     [mySnapShotPlace.record start];
     [self removeFromSuperview];
+    [[SpaceBar sharedManager] setIsTokenCollectionViewEnabled:YES];
 }
 
 @end

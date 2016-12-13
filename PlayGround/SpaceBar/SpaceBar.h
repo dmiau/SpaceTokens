@@ -42,6 +42,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
     // timer for touchingSet
 }
 
+@property BOOL isBarToolHidden;
 
 @property SpaceBarMode spaceBarMode;
 @property CGRect frame;

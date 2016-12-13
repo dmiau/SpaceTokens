@@ -9,6 +9,7 @@
 #import "Route+Tools.h"
 #import "POI.h"
 #import "EntityDatabase.h"
+#import "TokenCollectionView.h"
 
 @implementation Route (Tools)
 
@@ -55,6 +56,10 @@
                  aRoute.isMapAnnotationEnabled = YES;
                  NSLog(@"Direction response received!");
                  NSLog(@"Rooute: %@ added.", aRoute.name);
+                 
+                 // Update the collection view
+                 [[TokenCollectionView sharedManager] addItemFromBottom:aRoute];
+                 
                  break;
              }
              

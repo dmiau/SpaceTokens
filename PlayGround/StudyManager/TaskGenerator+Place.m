@@ -71,7 +71,7 @@
         // Generate the ID and instructions
         placeSnapshot.name = [NSString stringWithFormat:@"PLACE:%@", aKey];
         placeSnapshot.instructions =
-        [NSString stringWithFormat:@"Inspect the area %@ of Grand Central.", aKey];
+        [NSString stringWithFormat:@"Inspect the area %@ of the station.", aKey];
         outDictionary[placeSnapshot.name] = placeSnapshot;
     }
     

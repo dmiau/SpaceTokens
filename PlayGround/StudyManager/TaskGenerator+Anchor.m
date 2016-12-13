@@ -23,6 +23,7 @@
     //        /
     //   cafe/
     //
+    // all angles are in degree, 0 is E, CCW
     
     NSMutableDictionary *outDictionary = [[NSMutableDictionary alloc] init];
 
@@ -50,7 +51,7 @@
     //---------------------
     // Create a museum
     //---------------------
-    double museumDistance = 1200; // in pixels
+    double museumDistance = 2400; // in pixels
     double museumAngle = 0; // in degree, 0 is E, CCW
     CGPoint museumCGPoint = CGPointMake(
             mapView.center.x + museumDistance * cos(museumAngle/180 * M_PI),
@@ -59,7 +60,7 @@
     //---------------------
     // Create a cafe
     //---------------------
-    double cafeDistance = 500;
+    double cafeDistance = 1000;
     NSArray *cafeAngles = @[@0, @30, @150, @210];
     
     for (NSNumber *anAngle in cafeAngles){
@@ -75,8 +76,6 @@
         
         
         // ===== Museum POI
-        museumCGPoint.x = museumCGPoint.x - cafeCGPoint.x + mapView.center.x;
-        museumCGPoint.y = museumCGPoint.y - cafeCGPoint.y + mapView.center.y;
         POI* museumPOI = [[POI alloc] init];
         museumPOI.name = @"museum";
         museumPOI.latLon = [mapView
@@ -84,8 +83,6 @@
         museumPOI.coordSpan = initRegion.span;
         
         // ===== Hotel POI
-        hotelCGPoint.x = hotelCGPoint.x - cafeCGPoint.x + mapView.center.x;
-        hotelCGPoint.y = hotelCGPoint.y - cafeCGPoint.y + mapView.center.y;
         POI* hotelPOI = [[POI alloc] init];
         hotelPOI.name = @"hotel";
         hotelPOI.latLon = [mapView
@@ -96,7 +93,7 @@
         POI* cafePOI = [[POI alloc] init];
         cafePOI.name = @"cafe";
         cafePOI.latLon = [mapView
-                           convertPoint:mapView.center toCoordinateFromView:mapView];
+                           convertPoint:cafeCGPoint toCoordinateFromView:mapView];
         cafePOI.coordSpan = initRegion.span;
         
         // Create a SpaceToken

@@ -92,6 +92,10 @@
         
         pinView.image = annotation.annotationImage;
         return pinView;
+    }else if ([annotation pointType] == path){
+        // Path annotation view should have no icon
+        MKAnnotationView *pinView = [[MKAnnotationView alloc] init];
+        return pinView;
     }else{
         MKAnnotationView *pinView = [[MKPinAnnotationView alloc] init];
         return pinView;

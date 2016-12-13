@@ -17,10 +17,6 @@
 @property ViewController *rootViewController;
 @property UIButton *directionButton;
 
-- (IBAction)prefAction:(id)sender;
-- (IBAction)dataAction:(id)sender;
-- (IBAction)speechAction:(id)sender;
-
 //---------------
 // Search Bar related items
 //---------------
@@ -28,5 +24,26 @@
 
 @property GMSAutocompleteResultsViewController *resultsViewController;
 @property UISearchController *searchController;
+
+
+
+
+
+
+//---------------
+// Search Panel actions
+//---------------
+
+
+- (IBAction)prefAction:(id)sender;
+
+- (IBAction)barToolAction:(id)sender;
+
+
+
+
+- (IBAction)dataAction:(id)sender;
+- (IBAction)speechAction:(id)sender;
+
 
 @end

@@ -9,6 +9,7 @@
 #import "SpaceBar+Anchors.h"
 #import "POI.h"
 #import "EntityDatabase.h"
+#import "Constants.h"
 
 @implementation SpaceBar (Anchors)
 
@@ -98,7 +99,11 @@
                 // to a ANCHOR_VISIBLE and enable the SpaceToken mode                
                 if ([aTouch force] > 0.5*[aTouch maximumPossibleForce]){
                     [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
-                    self.isSpaceTokenEnabled = YES;
+
+                    // This enables the SpaceToken mode
+                    NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
+                                                                                 object:associatedToken userInfo:nil];
+                    [[ NSNotificationCenter defaultCenter] postNotification:notification];
                 }
             }
         }

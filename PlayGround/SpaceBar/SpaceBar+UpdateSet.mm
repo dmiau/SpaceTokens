@@ -62,7 +62,8 @@
     
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonArrayNotification){
-        [self.tokenCollection.tokenArray removeObject:aNotification.object];        
+        [self.tokenCollection.tokenArray removeObject:aNotification.object];
+        self.isTokenCollectionViewEnabled = YES;
     }else if (aNotification.name == RemoveFromTouchingSetNotification){        
         [self removeTokenFromTouchingSet:aNotification.object];
     }else if (aNotification.name == RemoveFromDraggingSetNotification){

@@ -13,7 +13,7 @@
 #import "TokenCollectionView.h"
 #import "ViewController.h"
 
-
+#define SPACEBAR_WIDTH 40
 
 
 // SpaceBar extension
@@ -44,31 +44,30 @@ static SpaceBar *sharedInstance;
         [self initializeCommon];
         
         self.spaceBarMode = TOKENONLY;
-        
-        // Init the frame
-        float spaceBarWidth = 40;
+
         
         // self.mapView.frame.size.width - spaceBarWidth
         _frame = CGRectMake(0, 0,
-                                spaceBarWidth,
+                                SPACEBAR_WIDTH,
                                 self.mapView.frame.size.height);
         
         // Init an annotation view to hold annotations
         self.annotationView = [[UIView alloc] initWithFrame:self.frame];
         self.annotationView.backgroundColor = [UIColor clearColor];
-        [self.mapView addSubview:self.annotationView];
+        
         
         // Init the slider
         self.sliderContainer = [[CERangeSlider alloc] initWithFrame:self.frame];
         self.sliderContainer.delegate = self;
-        self.sliderContainer.trackPaddingInPoints = 30;
+        self.sliderContainer.trackPaddingInPoints = 30; //pad the top and bottom
 
-        [self.mapView addSubview:self.sliderContainer];
+        
         self.sliderContainer.curvatiousness = 0.0;
         
         // Add the gesture engine
         self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
-        [self.mapView addSubview:self.gestureEngine];
+        
+        self.isBarToolHidden = YES;
         
         //--------------------------------
         // Initialize a token collection view
@@ -94,6 +93,29 @@ static SpaceBar *sharedInstance;
     return self;
 }
 
+//-------------------
+// Control the visibility of the bar tool
+//-------------------
+- (void)setIsBarToolHidden:(BOOL)isBarToolHidden{
+    _isBarToolHidden = isBarToolHidden;
+    
+    if (isBarToolHidden){
+        [self.annotationView removeFromSuperview];
+        [self.sliderContainer removeFromSuperview];
+        [self.gestureEngine removeFromSuperview];
+        
+        [self removeRouteAnnotations];
+        self.activeRoute = nil;
+        // Reset Spacebar
+        [self resetSpaceBar];
+        [self.gestureEngine setUserInteractionEnabled:YES];
+        [self.sliderContainer setUserInteractionEnabled: NO];
+    }else{
+        [self.mapView addSubview:self.annotationView];
+        [self.mapView addSubview:self.sliderContainer];
+        [self.mapView addSubview:self.gestureEngine];
+    }
+}
 
 // Change the size of the frame
 - (void)setFrame:(CGRect)frame{
@@ -201,7 +223,8 @@ static SpaceBar *sharedInstance;
 }
 
 // Controls the visibility of the tokenCollectionView panel
-- (void)setIsTokenCollectionViewEnabled:(BOOL)isTokenCollectionViewEnabled{
+- (void)setIsTokenCollectionViewEnabled:(BOOL)isTokenCollectionViewEnabled
+{
     _isTokenCollectionViewEnabled = isTokenCollectionViewEnabled;
     // Remove all SpaceTokens first
     [self removeAllSpaceTokens];
