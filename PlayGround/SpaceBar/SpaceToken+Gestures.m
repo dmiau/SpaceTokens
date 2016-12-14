@@ -83,6 +83,15 @@
         NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
+        
+        //--------------
+        // Highlight the SpatialEntity
+        //--------------
+        self.spatialEntity.annotation.pointType = RED_LANDMARK;
+        
+        // Forced refresh the annotation color
+        self.spatialEntity.isMapAnnotationEnabled = NO;
+        self.spatialEntity.isMapAnnotationEnabled = YES;
     }
 }
 

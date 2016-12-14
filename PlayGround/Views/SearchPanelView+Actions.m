@@ -117,6 +117,16 @@
     spaceBar.isBarToolHidden = !spaceBar.isBarToolHidden;
 }
 
+
+- (IBAction)areaToolAction:(id)sender {
+    
+    if (self.rootViewController.miniMapView.superview){
+        [self.rootViewController.miniMapView removeFromSuperview];
+    }else{
+        [self.rootViewController.mapView addSubview: self.rootViewController.miniMapView];
+    }
+}
+
 - (IBAction)dataAction:(id)sender {
     //-------------------
     // Set the rootViewController

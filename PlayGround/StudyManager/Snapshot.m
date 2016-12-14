@@ -64,10 +64,11 @@
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     [mapView removeAnnotations:mapView.annotations];
     
-    // Add the annotations
+    // Add the needed annotations
     for (POI *aPOI in self.highlightedPOIs){
         aPOI.isMapAnnotationEnabled = YES;
     }
+    
 }
 
 

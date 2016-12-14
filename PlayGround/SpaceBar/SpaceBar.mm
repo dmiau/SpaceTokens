@@ -234,6 +234,10 @@ static SpaceBar *sharedInstance;
         ViewController *rootController = [ViewController sharedManager];
         [rootController.view addSubview:self.tokenCollectionView];
         [self.tokenCollectionView reloadData];
+        
+        // Move the top view to the front
+        // (so the CollectionView will not block the top view after it is scrolled.)
+        [rootController.view bringSubviewToFront: (UIView*) rootController.mainViewManager.activePanel];
     }else{
         [self.tokenCollectionView removeFromSuperview];
     }

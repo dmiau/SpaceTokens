@@ -190,8 +190,8 @@
     }
     
     if ([self.touchingSet count]==0){
-        //
-        
+        // reset the annotation
+        [[TokenCollection sharedManager] resetAnnotationColor];
     }
     
     [self.touchingSet addObject:aToken];

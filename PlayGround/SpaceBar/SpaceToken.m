@@ -118,6 +118,7 @@
     _spatialEntity = spatialEntity;
     [self setTitle:spatialEntity.name forState:UIControlStateNormal];
     spatialEntity.linkedObj = self;
+    [self setSelected:spatialEntity.isHackTokenSelected];
 }
 
 - (void)setSelected:(BOOL)selected{
@@ -136,6 +137,8 @@
     }
     
     super.selected = selected;
+    self.spatialEntity.isHackTokenSelected = selected;
+    
     if (selected){
         self.backgroundColor = [UIColor redColor];
         [[self layer] addSublayer:self.lineLayer];
@@ -312,6 +315,9 @@
     NSString *joinedString = [stringArray componentsJoinedByString:@"\n"];
     return joinedString;
 }
+
+
+
 
 //------------------
 // Deep copy

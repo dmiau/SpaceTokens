@@ -271,6 +271,9 @@
 		9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
+		9AD8D1831E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8D1821E01ADB200BD2BA5 /* TokenSetStructure.m */; };
+		9AD8D1841E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8D1821E01ADB200BD2BA5 /* TokenSetStructure.m */; };
+		9AD8D1851E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8D1821E01ADB200BD2BA5 /* TokenSetStructure.m */; };
 		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
@@ -581,6 +584,8 @@
 		9AD503321DC94303005A05D6 /* SpeechEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechEngine.m; path = ConstraintEngine/SpeechEngine.m; sourceTree = "<group>"; };
 		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
 		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
+		9AD8D1811E01ADB200BD2BA5 /* TokenSetStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenSetStructure.h; path = SpaceBar/TokenSetStructure.h; sourceTree = "<group>"; };
+		9AD8D1821E01ADB200BD2BA5 /* TokenSetStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenSetStructure.m; path = SpaceBar/TokenSetStructure.m; sourceTree = "<group>"; };
 		9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIDetailViewController.h; sourceTree = "<group>"; };
 		9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIDetailViewController.m; sourceTree = "<group>"; };
 		9AE13BBD1DF0D148008612DA /* SpaceBarBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBarBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -791,6 +796,8 @@
 			children = (
 				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
 				9AB3BDD81DE290B100334EF9 /* TokenCollection.m */,
+				9AD8D1811E01ADB200BD2BA5 /* TokenSetStructure.h */,
+				9AD8D1821E01ADB200BD2BA5 /* TokenSetStructure.m */,
 			);
 			name = "Internal Structures for Tokens";
 			sourceTree = "<group>";
@@ -809,6 +816,8 @@
 		9A437FAF1D55082700F28E61 /* GameManager */ = {
 			isa = PBXGroup;
 			children = (
+				9A437FB01D550C7A00F28E61 /* GameManager.h */,
+				9A437FB11D550C7A00F28E61 /* GameManager.m */,
 				9A437FB81D55482B00F28E61 /* StudyPanels */,
 				9A0FEE8F1DE39FBE00D4DFF1 /* Database+Records */,
 				9A0FEE8E1DE39F9600D4DFF1 /* Generator */,
@@ -818,8 +827,6 @@
 				9AE443AF1DEB5C49006963DC /* Show */,
 				9A0FEE911DE3A01600D4DFF1 /* RouteChecking */,
 				9A0FEE921DE3A01B00D4DFF1 /* RouteProgress */,
-				9A437FB01D550C7A00F28E61 /* GameManager.h */,
-				9A437FB11D550C7A00F28E61 /* GameManager.m */,
 			);
 			name = GameManager;
 			sourceTree = "<group>";
@@ -1577,6 +1584,7 @@
 				9A8EC9E11D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
 				9AB5AAF31DD10DBD0094996B /* ConstraintDebugView.m in Sources */,
+				9AD8D1831E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */,
 				9AAAA1861D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -1672,6 +1680,7 @@
 				9A8EC9E21D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9AB5AAF41DD10DBD0094996B /* ConstraintDebugView.m in Sources */,
+				9AD8D1841E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */,
 				9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -1767,6 +1776,7 @@
 				9AE13B7B1DF0D148008612DA /* StreetViewPanel.mm in Sources */,
 				9AE13B7C1DF0D148008612DA /* POI.m in Sources */,
 				9AE13B7D1DF0D148008612DA /* ConstraintDebugView.m in Sources */,
+				9AD8D1851E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */,
 				9AE13B7E1DF0D148008612DA /* SnapshotDatabase+Debug.m in Sources */,
 				9AE13B7F1DF0D148008612DA /* MyFileManager.m in Sources */,
 				9AE13B801DF0D148008612DA /* MainViewManager.m in Sources */,

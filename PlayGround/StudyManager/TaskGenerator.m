@@ -45,10 +45,18 @@
         
         snapshot.name = [snapshot.name stringByAppendingString:@":control"];
         snapshot.condition = CONTROL;
+        NSString *commonInstruction = [snapshot.instructions copy];
+        
+        snapshot.instructions =
+        [NSString stringWithFormat:@"%@\n%@", commonInstruction,
+         @"Tap the SpaceToken, and then pan the map."];
         [controlArray addObject:snapshot];
         
         snapshotCopy.name = [snapshotCopy.name stringByAppendingString:@":experiment"];
         snapshotCopy.condition = EXPERIMENT;
+        snapshotCopy.instructions =
+        [NSString stringWithFormat:@"%@\n%@", commonInstruction,
+         @"Drag the SpaceToken directly."];
         [experimentArray addObject:snapshotCopy];
     }
  

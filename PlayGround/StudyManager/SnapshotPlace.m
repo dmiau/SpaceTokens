@@ -19,7 +19,15 @@
 
 
 - (void)setup{
+    
+
     [self setupMapSpacebar];
+    // Set up the environment based on the condition
+    if (self.condition == CONTROL){
+        [TokenCollection sharedManager].isTokenDraggingEnabled = NO;
+    }else{
+        [TokenCollection sharedManager].isTokenDraggingEnabled = YES;
+    }
     
     //Draw the target
     [self drawOnePointVisualTarget];
@@ -32,15 +40,7 @@
                    name:MapUpdatedNotification
                  object:nil];
     
-    // Get the SpaceBar object
-    SpaceBar *spaceBar = self.rootViewController.spaceBar;
-    
-    // Set up the environment based on the condition
-    if (self.condition == CONTROL){
-        [TokenCollection sharedManager].isTokenDraggingEnabled = NO;
-    }else{
-        [TokenCollection sharedManager].isTokenDraggingEnabled = YES;
-    }    
+
     
     //----------------
     // Present the instruction panel

@@ -26,6 +26,12 @@
     return sharedTokenCollection;
 }
 
+//-(id)init{
+//    self = [super init];
+//    
+//}
+
+
 -(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity{
     SpaceToken *outToken = nil;
     

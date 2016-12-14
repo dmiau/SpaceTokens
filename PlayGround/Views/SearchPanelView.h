@@ -38,6 +38,7 @@
 - (IBAction)prefAction:(id)sender;
 
 - (IBAction)barToolAction:(id)sender;
+- (IBAction)areaToolAction:(id)sender;
 
 
 

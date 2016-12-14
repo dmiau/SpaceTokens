@@ -18,7 +18,8 @@
 - (void)prepareInstruction:(SnapshotPlace*) snapShotPlace;
 - (void)showInstruction;
 
-@property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *instructionLabel;
+
 - (IBAction)okTapped:(id)sender;
 
 @end

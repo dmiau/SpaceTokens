@@ -117,15 +117,17 @@
     // Adjust the size of the view
     self.frame = rootViewController.view.frame;
     
-    [rootViewController.view addSubview:self];
-    [[SpaceBar sharedManager] setIsTokenCollectionViewEnabled:NO];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+        [rootViewController.view addSubview:self];
+        [rootViewController.view bringSubviewToFront:self];
+    }];
+
 }
 
 - (IBAction)okTapped:(id)sender {
+    [self removeFromSuperview];
     // Start the timer
     [mySnapShotPlace.record start];
-    [self removeFromSuperview];
-    [[SpaceBar sharedManager] setIsTokenCollectionViewEnabled:YES];
 }
 
 @end

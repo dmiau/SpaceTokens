@@ -95,18 +95,18 @@ static ViewController *instance;
 //    [self.mapView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 60)];
     self.mapView.showsCompass = YES;
     
-    CLLocationCoordinate2D NYC = CLLocationCoordinate2DMake(40.711801, -74.013120);
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:NYC radius:300]; // radius is measured in meters
-    [self.mapView addOverlay:circle];
+    //CLLocationCoordinate2D NYC = CLLocationCoordinate2DMake(40.711801, -74.013120);
+    //MKCircle *circle = [MKCircle circleWithCenterCoordinate:NYC radius:300]; // radius is measured in meters
+    //[self.mapView addOverlay:circle];
     
     
     //----------------
     // Add a mini map
     //----------------
-    self.miniMapView = [[MiniMapView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                     self.view.frame.size.width/3,
-                                                                     self.mapView.frame.size.height/3)];
-    [self.miniMapView setUserInteractionEnabled:NO];
+    self.miniMapView = [[MiniMapView alloc] initWithFrame:
+                        CGRectMake(50, self.mapView.frame.size.height-130,
+                                   130, 130)];
+    [self.miniMapView setUserInteractionEnabled:YES];
     self.miniMapView.showsCompass = NO;
     
     //----------------

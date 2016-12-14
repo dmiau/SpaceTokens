@@ -25,6 +25,7 @@
         
         _isEnabled = YES;
         _isMapAnnotationEnabled = YES;
+        _isHackTokenSelected = NO;
     }
     return self;
 }

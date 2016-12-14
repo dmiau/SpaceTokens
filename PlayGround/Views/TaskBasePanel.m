@@ -116,7 +116,7 @@ static TaskBasePanel *instance;
     [self.rootViewController.view addSubview:self];
     
     // Add the preference button
-    [self.rootViewController.view addSubview: settingsButton];
+    [self addSubview: settingsButton];
 }
 
 
