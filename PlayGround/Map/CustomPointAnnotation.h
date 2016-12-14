@@ -9,13 +9,14 @@
 #import <MapKit/MapKit.h>
 
 typedef enum {
-    landmark,
+    LANDMARK,
+    RED_LANDMARK,
     path,
-    area,
+    AREA,
     dropped,
     search_result,
     YouRHere,
-    people,
+    PEOPLE,
     answer
 } location_enum;
 

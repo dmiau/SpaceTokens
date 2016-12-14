@@ -20,9 +20,14 @@
 + (TokenCollection*)sharedManager;
 
 @property NSMutableArray <SpaceToken*> *tokenArray;
-@property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
+
 
 -(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity;
+
+
+// Operations to set the properties of all the SpaceTokens
+@property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
+-(void)resetAnnotationColor;
 
 
 

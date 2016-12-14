@@ -61,7 +61,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property Route* activeRoute;
 
 @property TokenCollection *tokenCollection;
-@property NSMutableSet <SpaceToken*> *dotSet;
 
 // This is a convenient set to cache the references of all the
 // POIs that are being touched.

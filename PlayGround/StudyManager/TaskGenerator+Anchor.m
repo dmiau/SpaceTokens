@@ -99,9 +99,9 @@
         // Create a SpaceToken
         SnapshotAnchorPlus *anchorSnapshot = [[SnapshotAnchorPlus alloc] init];
         
-        // Set the initial condition
-        anchorSnapshot.latLon = initRegion.center;
-        anchorSnapshot.coordSpan = initRegion.span;
+        // Set the initial condition (to cafe)
+        anchorSnapshot.latLon = cafePOI.latLon;
+        anchorSnapshot.coordSpan = cafePOI.coordSpan;
         
         // Assemble the POI for the anchor
         [anchorSnapshot.highlightedPOIs addObject:cafePOI];

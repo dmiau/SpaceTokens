@@ -23,83 +23,29 @@
         return nil;
     }
     
-    if ([annotation pointType] == landmark){
-        
-        // try to dequeue an existing pin view first
-        static NSString *landmarkAnnotationID = @"landmarkAnnotationID";
-        
-        MKAnnotationView *pinView =
-        (MKAnnotationView *) [self dequeueReusableAnnotationViewWithIdentifier:landmarkAnnotationID];
-        
-        if (pinView == nil)
-        {
-            pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:landmarkAnnotationID];
-        }else{
-            pinView.annotation = annotation;
-        }
-        
-        if (annotation.pointType == landmark){
-            
-            pinView.image = annotation.annotationImage;
-            
-            // Add a label to the annoation
-            if (annotation.isLableOn && annotation.aLabel){
-                [annotation.aLabel removeFromSuperview];
-                [pinView addSubview: annotation.aLabel];
-            }
-        }else{
-            //            [pinView setAnimatesDrop:YES];
-            
-            
-        }
-        //
-        //        [pinView setCanShowCallout:YES];
-        
-        
-        //        if ([annotation pointType] == dropped){
-        //            //---------------
-        //            // User triggered drop pin
-        //            //---------------
-        //            pinView = [self configureUserDroppedPinView: pinView];
-        //        }else if ([annotation pointType] == landmark){
-        //            //---------------
-        //            // Landmark pin
-        //            //---------------
-        //            pinView = [self configureLandmarkPinView: pinView];
-        //        }else if ([annotation pointType] == search_result){
-        //            //---------------
-        //            // Search pin
-        //            //---------------
-        //            pinView = [self configureUserDroppedPinView: pinView];
-        //        }
-        return pinView;
-    }else if ([annotation pointType] == YouRHere){
-        //---------------
-        // Heading image
-        //---------------
-        static NSString *headingAnnotationID = @"headingAnnotationID";
-        
-        MKAnnotationView *pinView =
-        (MKAnnotationView *) [self dequeueReusableAnnotationViewWithIdentifier:headingAnnotationID];
-        
-        if (pinView == nil)
-        {
-            pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:headingAnnotationID];
-        }else{
-            pinView.annotation = annotation;
-        }
-        [pinView setCanShowCallout:NO];
-        
-        pinView.image = annotation.annotationImage;
-        return pinView;
-    }else if ([annotation pointType] == path){
-        // Path annotation view should have no icon
-        MKAnnotationView *pinView = [[MKAnnotationView alloc] init];
-        return pinView;
-    }else{
-        MKAnnotationView *pinView = [[MKPinAnnotationView alloc] init];
-        return pinView;
+    // try to dequeue an existing pin view first
+    static NSString *landmarkAnnotationID = @"pointAnnotationID";
+    
+    MKAnnotationView *pinView =
+    (MKAnnotationView *) [self dequeueReusableAnnotationViewWithIdentifier:landmarkAnnotationID];
+    
+    if (pinView == nil)
+    {
+        pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:landmarkAnnotationID];
     }
+    pinView.annotation = annotation;
+    
+    if (annotation.annotationImage)
+        pinView.image = annotation.annotationImage;
+    
+    // Add a label to the annoation
+    if (annotation.isLableOn && annotation.aLabel){
+        [annotation.aLabel removeFromSuperview];
+        [pinView addSubview: annotation.aLabel];
+    }
+    
+    [pinView setEnabled:NO];
+    return pinView;
 }
 
 #pragma mark --Routes--

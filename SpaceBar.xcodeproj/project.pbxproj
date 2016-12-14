@@ -786,6 +786,15 @@
 			name = Track;
 			sourceTree = "<group>";
 		};
+		9A2B7CC71E01A08D00D5A86F /* Internal Structures for Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
+				9AB3BDD81DE290B100334EF9 /* TokenCollection.m */,
+			);
+			name = "Internal Structures for Tokens";
+			sourceTree = "<group>";
+		};
 		9A31C1411DEC9A6700CF4D4E /* TouchInteractions */ = {
 			isa = PBXGroup;
 			children = (
@@ -986,8 +995,7 @@
 				9A84136E1C6FB3B4004DF8D1 /* Constants.h */,
 				9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */,
 				9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */,
-				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
-				9AB3BDD81DE290B100334EF9 /* TokenCollection.m */,
+				9A2B7CC71E01A08D00D5A86F /* Internal Structures for Tokens */,
 			);
 			name = "SpaceBar Project";
 			sourceTree = "<group>";

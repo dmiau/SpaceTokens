@@ -10,6 +10,7 @@
 #import "POI.h"
 #import "EntityDatabase.h"
 #import "Constants.h"
+#import "TokenCollectionView.h"
 
 @implementation SpaceBar (Anchors)
 
@@ -97,14 +98,23 @@
                 
                 // Depending on the pressure, we may need to turn a ANCHOR_INVISIBLE
                 // to a ANCHOR_VISIBLE and enable the SpaceToken mode                
-                if ([aTouch force] > 0.5*[aTouch maximumPossibleForce]){
+                if ([aTouch force] > 0.5*[aTouch maximumPossibleForce] &&
+                    associatedToken.appearanceType != ANCHOR_VISIBLE)
+                {
                     [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
 
                     // This enables the SpaceToken mode
                     NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
-                                                                                 object:associatedToken userInfo:nil];
+                        object:associatedToken userInfo:nil];
                     [[ NSNotificationCenter defaultCenter] postNotification:notification];
+                    
+                    // Add the anchor to collection view
+                    [[[EntityDatabase sharedManager] entityArray] addObject:associatedToken.spatialEntity];
+                    
+                    [[TokenCollectionView sharedManager] addItemFromBottom:associatedToken.spatialEntity];
+                    
                 }
+                
             }
         }
     }

@@ -89,7 +89,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     self = [super initWithFrame:frame];
     if (self) {
         _trackHighlightColour = [UIColor colorWithRed:0.0 green:0.45 blue:0.94 alpha:1.0];
-        _trackColour = [UIColor colorWithWhite:0.9 alpha:0.5];
+        _trackColour = [UIColor colorWithWhite:0.6 alpha:0.5];
         _knobColour = [UIColor whiteColor];
         _curvatiousness = 1.0;
         

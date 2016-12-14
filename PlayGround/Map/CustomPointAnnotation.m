@@ -14,7 +14,7 @@
     self = [super init];
     
     _isLableOn = NO;
-    self.pointType = landmark;
+    self.pointType = LANDMARK;
     
     return self;
 }
@@ -22,17 +22,46 @@
 -(void)setPointType:(location_enum)pointType{
     _pointType = pointType;
     
-    if (pointType == YouRHere){
+    if (pointType == LANDMARK){
+        // Create an image for the annotation
+        //        UIImage *starImg = [UIImage imageNamed:@"star-128.png"];
+        //        self.annotationImage = [CustomPointAnnotation resizeImage:starImg
+        //                                newSize:CGSizeMake(12, 12)];
+        
+        // Create a custom gray dot
+        self.annotationImage =
+        [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
+    }else if(pointType == RED_LANDMARK){
+        // Create a custom gray dot
+        self.annotationImage =
+        [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
+    }else if(pointType == YouRHere){
         UIImage *anImg = [UIImage imageNamed:@"grayYouRHere.png"];        
         self.annotationImage = [CustomPointAnnotation resizeImage:anImg
                                   newSize:CGSizeMake(12, 12)];
     }else{
-        // Create an image for the annotation
-        UIImage *starImg = [UIImage imageNamed:@"star-128.png"];
-        self.annotationImage = [CustomPointAnnotation resizeImage:starImg
-                                                          newSize:CGSizeMake(12, 12)];
+        self.annotationImage = nil;
     }
 }
+
+
+-(UIImage *)generateDotImageWithColor: (UIColor *) color andRadius: (float)radius
+{
+    // Create a custom red dot
+    // http://stackoverflow.com/questions/14594782/how-can-i-make-an-uiimage-programatically
+    CGSize size = CGSizeMake(radius*2, radius*2);
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
+    [color setFill];
+    [path fill];
+    UIImage *dotImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return dotImg;
+}
+
 
 
 -(void)setTitle:(NSString *)title{

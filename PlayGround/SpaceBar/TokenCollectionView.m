@@ -11,6 +11,9 @@
 #import "EntityDatabase.h"
 #import "SpatialEntity.h"
 
+//-------------------
+// Parameters
+//-------------------
 #define CELL_WIDTH 60
 #define CELL_HEIGHT 30
 

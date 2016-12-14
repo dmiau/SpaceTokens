@@ -45,4 +45,10 @@
     }
 }
 
+-(void)resetAnnotationColor{
+    for (SpaceToken *aToken in self.tokenArray){
+        aToken.spatialEntity.annotation.pointType = LANDMARK;
+    }
+}
+
 @end

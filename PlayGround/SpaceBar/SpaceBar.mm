@@ -143,7 +143,6 @@ static SpaceBar *sharedInstance;
 - (void) initializeCommon {
     
     self.tokenCollection = [TokenCollection sharedManager];
-    self.dotSet = [[NSMutableSet alloc] init];
     
     self.touchingSet = [[NSMutableSet alloc] init];
     self.draggingSet = [[NSMutableSet alloc] init];        

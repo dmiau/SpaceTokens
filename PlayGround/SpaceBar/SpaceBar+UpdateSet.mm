@@ -16,7 +16,7 @@
 #import "Person.h"
 #import "TokenCollectionView.h"
 #import "ViewController.h"
-
+#import "TokenCollection.h"
 
 @implementation SpaceBar (UpdateSet)
 
@@ -168,10 +168,6 @@
         [aToken removeFromSuperview];
     }
     
-    for (SpaceToken* aToken in self.dotSet){
-        [aToken removeFromSuperview];
-    }
-
     for (SpaceToken* aToken in self.tokenCollection.tokenArray){
         [aToken removeFromSuperview];
     }
@@ -179,7 +175,6 @@
     [self removeAllAnchors];
     [self.draggingSet removeAllObjects];
     [self clearAllTouchedTokens];
-    [self.dotSet removeAllObjects];
     [self.tokenCollection.tokenArray removeAllObjects];
 }
 
@@ -193,6 +188,12 @@
         [privateTouchingSetTimer invalidate];
         privateTouchingSetTimer = nil;
     }
+    
+    if ([self.touchingSet count]==0){
+        //
+        
+    }
+    
     [self.touchingSet addObject:aToken];
     privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
                                                          target:self
