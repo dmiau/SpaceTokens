@@ -13,29 +13,27 @@
 
 @implementation TokenCollection
 
-
 +(TokenCollection*)sharedManager{
     static TokenCollection *sharedTokenCollection = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedTokenCollection = [[TokenCollection alloc] init];
-        sharedTokenCollection.tokenArray = [[NSMutableArray alloc] init];
-        sharedTokenCollection.isTokenDraggingEnabled = YES;
-
     });
     return sharedTokenCollection;
 }
 
-//-(id)init{
-//    self = [super init];
-//    
-//}
-
+-(id)init{
+    self = [super init];
+    tokenArray = [[NSMutableArray alloc] init];
+    self.isTokenDraggingEnabled = YES;
+    self.isStudyModeEnabled = NO;
+    return self;
+}
 
 -(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity{
     SpaceToken *outToken = nil;
     
-    for (SpaceToken *aToken in self.tokenArray){
+    for (SpaceToken *aToken in tokenArray){
         if ([aToken isEqual:entity]){
             outToken = aToken;
         }
@@ -46,15 +44,45 @@
 -(void)setIsTokenDraggingEnabled:(BOOL)isTokenDraggingEnabled{
     _isTokenDraggingEnabled = isTokenDraggingEnabled;
     
-    for (SpaceToken *aToken in self.tokenArray){
+    for (SpaceToken *aToken in tokenArray){
         aToken.isDraggable = _isTokenDraggingEnabled;
     }
 }
 
+-(void)setIsStudyModeEnabled:(BOOL)isStudyModeEnabled{
+    _isStudyModeEnabled = isStudyModeEnabled;
+    for (SpaceToken *aToken in tokenArray){
+        aToken.isStudyModeEnabled = _isStudyModeEnabled;
+    }
+}
+
 -(void)resetAnnotationColor{
-    for (SpaceToken *aToken in self.tokenArray){
+    for (SpaceToken *aToken in tokenArray){
         aToken.spatialEntity.annotation.pointType = LANDMARK;
     }
+}
+
+//------------------
+// Add and remove tokens
+//------------------
+- (void)addToken:(SpaceToken *)aToken{
+    [tokenArray addObject:aToken];
+    aToken.isStudyModeEnabled = self.isStudyModeEnabled;
+    aToken.isDraggable = self.isTokenDraggingEnabled;
+}
+
+
+- (void)removeToken:(SpaceToken *)aToken{
+    [tokenArray removeObject:aToken];
+}
+
+- (void)removeAllTokens{
+    [tokenArray removeAllObjects];
+}
+
+- (NSArray <SpaceToken*>*)getTokenArray{
+    NSArray *outArray = [NSArray arrayWithArray:tokenArray];
+    return outArray;
 }
 
 @end

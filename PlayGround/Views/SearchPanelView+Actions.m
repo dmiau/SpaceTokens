@@ -92,16 +92,13 @@
     UINavigationController *myNavigationController =
     app.window.rootViewController;
     
-    //    ViewController *rootViewController =
-    //    [myNavigationController.viewControllers objectAtIndex:0];
-    //
-    //    [rootViewController performSegueWithIdentifier:@"PreferencesSegue"
-    //                                            sender:nil];
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
     UIViewController *destinationController = (UIViewController *)[sb instantiateViewControllerWithIdentifier:@"PreferenceTabController"];
+    
     CATransition* transition = [CATransition animation];
-    transition.duration = .25;
+    transition.duration = .40;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromLeft;

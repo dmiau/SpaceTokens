@@ -43,6 +43,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 }
 
 @property BOOL isBarToolHidden;
+@property BOOL isStudyModeEnabled;
 
 @property SpaceBarMode spaceBarMode;
 @property CGRect frame;

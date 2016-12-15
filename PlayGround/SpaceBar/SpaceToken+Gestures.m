@@ -28,28 +28,13 @@
     [self addTarget:self
              action:@selector(buttonDragging: forEvent:)
    forControlEvents:UIControlEventTouchDragInside];
-    
-    //    //detect swipe gestures
-    //    UISwipeGestureRecognizer * swipeDown=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(buttonDown:)];
-    //    swipeDown.direction=UISwipeGestureRecognizerDirectionDown;
-    //    [self addGestureRecognizer:swipeDown];
-    //
-    //    UISwipeGestureRecognizer * swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(buttonDown:)];
-    //    swipeUp.direction=UISwipeGestureRecognizerDirectionUp;
-    //    [self addGestureRecognizer:swipeUp];
-
-    
-//    UISwipeGestureRecognizer * swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight:)];
-//    swipeRight.direction=UISwipeGestureRecognizerDirectionRight;
-//    [self addGestureRecognizer:swipeRight];
 }
 
 
 //-----------
 // button methods
 //-----------
-- (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event {
-    
+- (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event {        
     // Do nothing if the event is not triggered by self
     if (sender != self || self.appearanceType !=DOCKED)
         return;

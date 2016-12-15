@@ -31,7 +31,7 @@
     
     // handle the notification based on event name
     if (aNotification.name == AddToButtonArrayNotification){
-        [self.tokenCollection.tokenArray addObject:aNotification.object];
+        [self.tokenCollection addToken:aNotification.object];
     }else if (aNotification.name == AddToTouchingSetNotification){
         // Enable the SpaceToken mode
         [self moveCandidateAnchorsToAnchorSet];
@@ -62,7 +62,7 @@
     
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonArrayNotification){
-        [self.tokenCollection.tokenArray removeObject:aNotification.object];
+        [self.tokenCollection removeToken:aNotification.object];
         self.isTokenCollectionViewEnabled = YES;
     }else if (aNotification.name == RemoveFromTouchingSetNotification){        
         [self removeTokenFromTouchingSet:aNotification.object];
@@ -168,14 +168,14 @@
         [aToken removeFromSuperview];
     }
     
-    for (SpaceToken* aToken in self.tokenCollection.tokenArray){
+    for (SpaceToken* aToken in [self.tokenCollection getTokenArray]){
         [aToken removeFromSuperview];
     }
     
     [self removeAllAnchors];
     [self.draggingSet removeAllObjects];
     [self clearAllTouchedTokens];
-    [self.tokenCollection.tokenArray removeAllObjects];
+    [self.tokenCollection removeAllTokens];
 }
 
 

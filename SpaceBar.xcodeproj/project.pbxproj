@@ -399,6 +399,9 @@
 		9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AFC0A681DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
+		9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
+		9AFED2F11E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
+		9AFED2F21E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
 		9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
 		9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
 /* End PBXBuildFile section */
@@ -610,6 +613,8 @@
 		9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanel.m; path = Views/AuthoringPanel.m; sourceTree = "<group>"; };
 		9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityDatabase.h; path = Map/EntityDatabase.h; sourceTree = "<group>"; };
 		9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EntityDatabase.mm; path = Map/EntityDatabase.mm; sourceTree = "<group>"; };
+		9AFED2EE1E02F0A0007C8317 /* LeftTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftTabController.h; path = Views/LeftTabController.h; sourceTree = "<group>"; };
+		9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftTabController.m; path = Views/LeftTabController.m; sourceTree = "<group>"; };
 		9AFFFFF01D85B85A00111E6C /* Snapshot+Validators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Snapshot+Validators.h"; path = "StudyManager/Snapshot+Validators.h"; sourceTree = "<group>"; };
 		9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Snapshot+Validators.m"; path = "StudyManager/Snapshot+Validators.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1068,10 +1073,12 @@
 				9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */,
 				9AD639F11D50267C00C91F1B /* FileTableController.h */,
 				9AD639F21D50267C00C91F1B /* FileTableController.m */,
-				9A1CA2B41D4671210098957A /* CustomTabController.h */,
-				9A1CA2B51D4671210098957A /* CustomTabController.m */,
 				9A75D8981D54C20B0071F6A6 /* RouteTableController.h */,
 				9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */,
+				9A1CA2B41D4671210098957A /* CustomTabController.h */,
+				9A1CA2B51D4671210098957A /* CustomTabController.m */,
+				9AFED2EE1E02F0A0007C8317 /* LeftTabController.h */,
+				9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */,
 			);
 			name = SeguePanels;
 			sourceTree = "<group>";
@@ -1602,6 +1609,7 @@
 				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
 				9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */,
 				9A0FEE951DE3A1BA00D4DFF1 /* TaskGenerator+Place.m in Sources */,
+				9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
@@ -1698,6 +1706,7 @@
 				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
 				9A485B4C1D90910400C43255 /* RecordTableViewController.m in Sources */,
 				9A0FEE961DE3A1BA00D4DFF1 /* TaskGenerator+Place.m in Sources */,
+				9AFED2F11E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
@@ -1794,6 +1803,7 @@
 				9AE13B8D1DF0D148008612DA /* CustomPointAnnotation.m in Sources */,
 				9AE13B8E1DF0D148008612DA /* RecordTableViewController.m in Sources */,
 				9AE13B8F1DF0D148008612DA /* TaskGenerator+Place.m in Sources */,
+				9AFED2F21E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9AE13B901DF0D148008612DA /* ViewController+Annotations.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,

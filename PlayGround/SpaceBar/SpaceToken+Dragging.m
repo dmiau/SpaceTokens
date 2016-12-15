@@ -18,7 +18,7 @@
 // SpaceToken is being dragged
 //-------------------
 - (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event {
-    
+    NSLog(@"Dragging.");
     // Do nothing if the event is not triggered by self
     if (sender != self)
         return;
@@ -68,7 +68,7 @@
         //----------------------
         // Dragging away from the edge (dragging gesture)
         //----------------------
-        
+
         // handle the dragging event if the button is draggable
         [self handleDragToScreenAction:touch];
     }
@@ -100,21 +100,23 @@
      self.center.y + locationInView.y - previousLoationInView.y
      - (self.frame.size.height/2 -locationInButton.y));
     
-    if (self.counterPart &&
-        (self.counterPart.center.x > self.superview.frame.size.width *0.5))
-    {
-        // draw the line
-        UIBezierPath *linePath=[UIBezierPath bezierPath];
-        [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
-                                           self.frame.size.height/2)];
-        [linePath addLineToPoint:
-         [self convertPoint:self.counterPart.center fromView:self.superview]];
-        
-        self.lineLayer.path=linePath.CGPath;
-        self.lineLayer.fillColor = nil;
-        self.lineLayer.opacity = 1.0;
-        self.lineLayer.strokeColor = [UIColor blueColor].CGColor;
-    }
+    
+    // Not sure what this is about...
+//    if (self.counterPart &&
+//        (self.counterPart.center.x > self.superview.frame.size.width *0.5))
+//    {
+//        // draw the line
+//        UIBezierPath *linePath=[UIBezierPath bezierPath];
+//        [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
+//                                           self.frame.size.height/2)];
+//        [linePath addLineToPoint:
+//         [self convertPoint:self.counterPart.center fromView:self.superview]];
+//        
+//        self.lineLayer.path=linePath.CGPath;
+//        self.lineLayer.fillColor = nil;
+//        self.lineLayer.opacity = 1.0;
+//        self.lineLayer.strokeColor = [UIColor blueColor].CGColor;
+//    }
 }
 
 
@@ -136,10 +138,10 @@
     self.counterPart = newSpaceToken;
     
     // Add the token to TokenCollection
-    [[[TokenCollection sharedManager] tokenArray] addObject:newSpaceToken];
+    [[TokenCollection sharedManager] addToken:newSpaceToken];
     
     // Remove the current token from TokenCollection
-    [[[TokenCollection sharedManager] tokenArray] removeObject:self];
+    [[TokenCollection sharedManager] removeToken:self];
     
     //------------------
     // Attach SpaceToken to mapView, as opposed to TokenCell
@@ -152,9 +154,6 @@
     
     // Change the style of the dragging tocken
     [self configureAppearanceForType:DRAGGING];
-    
-    
-    
 }
 
 
@@ -183,7 +182,6 @@
     //--------------------
     ConnectionTool *connectionTool = [[ConnectionTool alloc] init];
     [connectionTool attachToSpaceToken: self];
-//    [connectionTool setHidden:YES]; // Connection tool is hidden by default
 }
 
 - (void)privateConfigureAnchorAppearanceVisible:(BOOL)visibleFlag{
@@ -218,6 +216,12 @@
 // Remove the SpaceToken
 //---------------
 - (void)handleRemoveToken{
+    
+    //--------------------
+    // User won't be able to remove a SpaceToken in the study
+    //--------------------
+    if (self.isStudyModeEnabled)
+        return;
     
     // Remove from the touching set
     [[ NSNotificationCenter defaultCenter] postNotification:

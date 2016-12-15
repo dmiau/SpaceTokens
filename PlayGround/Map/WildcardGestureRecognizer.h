@@ -14,8 +14,6 @@ typedef void (^TouchesEventBlock)(NSSet * touches, UIEvent * event);
 //    TouchesEventBlock touchesBeganCallback;
 }
 
-
-
 @property(copy) TouchesEventBlock touchesBeganCallback;
 @property(copy) TouchesEventBlock touchesEndedCallback;
 @property(copy) TouchesEventBlock touchesMovedCallback;

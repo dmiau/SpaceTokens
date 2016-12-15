@@ -26,6 +26,7 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 @property BOOL isLineLayerOn;
 @property BOOL isConstraintLineOn;
 @property BOOL isDraggable;
+@property BOOL isStudyModeEnabled; // Certain features (e.g., creation, deletion) need to be disabled in the study mode
 
 @property (weak) UITouch *touch; // to keep tracking of UITouch
 

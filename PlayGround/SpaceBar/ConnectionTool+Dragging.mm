@@ -151,7 +151,7 @@
     
 
     
-    for (SpaceToken *aToken in tokenCollection.tokenArray){
+    for (SpaceToken *aToken in [tokenCollection getTokenArray]){
         
         // Convert buttonFrame to be in mapView
         CGRect buttonInMapView = [aToken.superview convertRect:aToken.frame toView:mapView];

@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="2400" y="-847"/>
         </scene>
-        <!--Custom Tab Controller-->
+        <!--Left Tab Controller-->
         <scene sceneID="v8w-Xj-nna">
             <objects>
-                <tabBarController storyboardIdentifier="PreferenceTabController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rsh-FC-3uW" customClass="CustomTabController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="PreferenceTabController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rsh-FC-3uW" customClass="LeftTabController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9Rr-a8-nuk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -309,11 +309,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ivo-eQ-xMw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ryS-g0-ORR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-lA-AEF">
-                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0rx-MH-vhA"/>
                                 </constraints>
@@ -331,14 +331,14 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aRo-kg-uYB">
-                                <rect key="frame" x="0.0" y="110" width="600" height="397"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="508"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="snapshotCell" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="snapshotCell" textLabel="O2a-eg-P9L" detailTextLabel="Hd0-4K-9Tq" style="IBUITableViewCellStyleSubtitle" id="wv4-GM-4hJ">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wv4-GM-4hJ" id="PA1-Ct-nPx">
-                                            <rect key="frame" x="0.0" y="0.0" width="553" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O2a-eg-P9L">
@@ -365,14 +365,14 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-QG-hCa">
-                                <rect key="frame" x="534" y="72" width="30" height="30"/>
+                                <rect key="frame" x="313" y="28" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editAction:" destination="tDC-Kg-SX0" eventType="touchUpInside" id="SHb-t6-oFF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOj-wv-Cyj">
-                                <rect key="frame" x="456" y="72" width="64" height="30"/>
+                                <rect key="frame" x="235" y="28" width="64" height="30"/>
                                 <state key="normal" title="Generate"/>
                                 <connections>
                                     <action selector="generateTaskAction:" destination="tDC-Kg-SX0" eventType="touchUpInside" id="ZLH-h4-z8p"/>
@@ -413,7 +413,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Z1u-ce-oFY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SUt-Xc-7a8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-KK-fOR">
@@ -452,11 +452,11 @@
                         <viewControllerLayoutGuide type="bottom" id="cii-8g-S8f"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HZe-dP-dh8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaN-kG-v8U">
-                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <rect key="frame" x="-4" y="574" width="383" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="haJ-CI-f3d"/>
                                 </constraints>
@@ -474,18 +474,18 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jz0-E0-mAf">
-                                <rect key="frame" x="0.0" y="157" width="600" height="350"/>
+                                <rect key="frame" x="-4" y="113" width="383" height="461"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTableCell" textLabel="hva-zP-2kz" style="IBUITableViewCellStyleDefault" id="wvx-04-IBL">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wvx-04-IBL" id="wQG-At-MDu">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hva-zP-2kz">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="353" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -511,13 +511,13 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-order SpaceTokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i99-zy-ZRI">
-                                <rect key="frame" x="13" y="123" width="190" height="21"/>
+                                <rect key="frame" x="9" y="79" width="190" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4w-il-8qv">
-                                <rect key="frame" x="556" y="114" width="30" height="30"/>
+                                <rect key="frame" x="335" y="70" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editAction:" destination="bfX-jC-fod" eventType="touchUpInside" id="Nzm-m0-k7T"/>
@@ -653,7 +653,7 @@
                         <viewControllerLayoutGuide type="bottom" id="81f-jb-ZGu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0Wb-Fg-bb3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEC-aR-L9n">
@@ -743,7 +743,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yr2-uI-ub7"/>
-        <segue reference="s1i-U0-S1i"/>
+        <segue reference="BEZ-B1-fPz"/>
+        <segue reference="Ifn-KY-Nr1"/>
     </inferredMetricsTieBreakers>
 </document>

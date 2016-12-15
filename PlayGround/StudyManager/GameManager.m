@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "MainViewManager.h"
 #import "EntityDatabase.h"
+#import "TokenCollection.h"
 
 NSString *const GameSetupNotification = @"GameSetupNotification";
 NSString *const GameCleanupNotification = @"GameCleanupNotification";
@@ -49,9 +50,14 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     EntityDatabase *entityDB = [EntityDatabase sharedManager];
     switch (gameManagerStatus) {
         case OFF:
-            // Turn off the game
             
+            // Clean up if there is an activeSnapshot
+            [self terminateActiveSnapshot];
+            
+            // Turn off the game            
             rootViewController.spaceBar.isYouAreHereEnabled = YES;
+            rootViewController.spaceBar.isStudyModeEnabled = NO;
+            [TokenCollection sharedManager].isStudyModeEnabled = NO;
             
             // set the EntityDatabase to use the normal entityArray
             [entityDB removeGameEntityArray];
@@ -66,6 +72,9 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             [recordDatabase initWithSnapshotArray:snapshotDatabase.snapshotArray];
             
             rootViewController.spaceBar.isYouAreHereEnabled = NO;
+            rootViewController.spaceBar.isStudyModeEnabled = YES;
+            [TokenCollection sharedManager].isStudyModeEnabled = YES;
+            
             [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;
         case DEMO:

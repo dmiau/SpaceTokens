@@ -68,6 +68,7 @@ static SpaceBar *sharedInstance;
         self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
         
         self.isBarToolHidden = YES;
+        self.isStudyModeEnabled = NO;
         
         //--------------------------------
         // Initialize a token collection view
@@ -253,9 +254,9 @@ static SpaceBar *sharedInstance;
 
 - (void)updateBasedOnConstraints{
     // if tokenCollection.tokenArray is not empty, update the map
-    if ([self.tokenCollection.tokenArray count] > 0){
+    if ([[self.tokenCollection getTokenArray] count] > 0){
         //        [self orderSpaceTokens];
-        [self fillMapXYsForSet:self.tokenCollection.tokenArray];
+        [self fillMapXYsForSet:[self.tokenCollection getTokenArray]];
     }
     
     if ([self.draggingSet count] > 0

@@ -149,6 +149,10 @@
 }
 
 - (void) convertAnchorToRealToken: (SpaceToken*) token{
+    // Do nothing in the study mode
+    if (self.isStudyModeEnabled)
+        return;
+    
     // Create a new SpaceToken based on anchor
     
     [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];

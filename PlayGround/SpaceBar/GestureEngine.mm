@@ -86,7 +86,7 @@
                 [aTouch previousLocationInView:self.spaceBar.mapView];
     
     // Iterate over SpaceTokens and perform hittest
-    for (SpaceToken *aToken in self.spaceBar.tokenCollection.tokenArray){
+    for (SpaceToken *aToken in [self.spaceBar.tokenCollection getTokenArray]){
         
         CGRect buttonFrame = aToken.frame;
         if (CGRectContainsPoint(buttonFrame, touchPoint) &&
@@ -143,7 +143,7 @@
     
     CGPoint touchPoint = [self convertPoint:currentLocation toView:mapView];
     CGPoint previoustouchPoint = [self convertPoint:previousLocation toView:mapView];
-    for (SpaceToken *aToken in tokenCollection.tokenArray){
+    for (SpaceToken *aToken in [tokenCollection getTokenArray]){
         
         // Convert buttonFrame to be in mapView
         CGRect buttonInMapView = [aToken.superview convertRect:aToken.frame toView:mapView];
