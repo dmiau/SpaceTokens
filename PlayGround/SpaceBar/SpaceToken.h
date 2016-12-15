@@ -51,11 +51,11 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 // display the anchor circle after some seconds
 - (void)showAnchorVisualIndicatorAfter:(double) second;
 
-// Exposing the button methods so the buttons can be touched programmatically (this is for the swipe selection in the gesture engine)
-- (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event;
-- (void) buttonUp:(UIButton*)sender forEvent:(UIEvent*)event;
-- (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event;
-
+// Custom methods for the gesture recognizer
+-(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+-(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+-(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 
 // Internal methods
 - (void) registerButtonEvents;

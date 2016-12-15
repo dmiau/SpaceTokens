@@ -7,50 +7,67 @@
 //
 #import "Constants.h"
 #import "SpaceToken+Gestures.h"
+#import "WildcardGestureRecognizer.h"
 
 @implementation SpaceToken (Gestures)
 
 - (void) registerButtonEvents{
-    [self addTarget:self
-             action:@selector(buttonDown: forEvent:)
-   forControlEvents:UIControlEventTouchDown];
+//    [self addTarget:self
+//             action:@selector(buttonDown: forEvent:)
+//   forControlEvents:UIControlEventTouchDown];
+//    
+//    [self addTarget:self
+//             action:@selector(buttonUp: forEvent:)
+//   forControlEvents:UIControlEventTouchUpInside];
+//    
+//    
+//    [self addTarget:self
+//             action:@selector(buttonDragging: forEvent:)
+//   forControlEvents:UIControlEventTouchDragInside];
     
-    //    [self addTarget:self
-    //             action:@selector(buttonDown:)
-    //   forControlEvents:UIControlEventTouchDragEnter];
+    //-----------------
+    // Initialize custom gesture recognizer
+    //-----------------
     
+    // Q: Why do I need to use a custom gesture recognizer?
+    // A1: Because I need to disable the default rotation gesture recognizer
+    // A2: I don't want my touch to be cancelled by other gesture recognizer
+    // (http://stackoverflow.com/questions/5818692/how-to-avoid-touches-cancelled-event)
     
-    [self addTarget:self
-             action:@selector(buttonUp: forEvent:)
-   forControlEvents:UIControlEventTouchUpInside];
+    WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     
+    tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesBegan:touches withEvent:event];
+    };
     
-    [self addTarget:self
-             action:@selector(buttonDragging: forEvent:)
-   forControlEvents:UIControlEventTouchDragInside];
+    tapInterceptor.touchesEndedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesEnded:touches withEvent:event];
+    };
+    
+    tapInterceptor.touchesMovedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesMoved:touches withEvent:event];
+    };
+    
+    tapInterceptor.touchesCancelledCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesCancelled:touches withEvent:event];
+    };
+    
+    [self addGestureRecognizer:tapInterceptor];    
 }
 
 
-//-----------
-// button methods
-//-----------
-- (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event {        
-    // Do nothing if the event is not triggered by self
-    if (sender != self || self.appearanceType !=DOCKED)
-        return;
-    
-    //    NSLog(@"Touch down!");
+-(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     hasReportedDraggingEvent = NO;
     
     if (self.selected){
         self.selected = NO;
-
+        
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
     }else{
         self.selected = YES;
-
+        
         //--------------
         // SpaceToken is being turned on
         //--------------
@@ -58,7 +75,7 @@
         // There could be multiple touch events!
         // Need to find the touch even associated with self
         UITouch *touch = nil;
-        for (UITouch *aTouch in [event allTouches]){
+        for (UITouch *aTouch in touches){
             if ([aTouch view] == self)
                 touch = aTouch;
         }
@@ -80,13 +97,8 @@
     }
 }
 
-- (void) buttonUp:(UIButton*)sender forEvent:(UIEvent*)event{
-    
-    // Do nothing if the event is not triggered by self
-    if (sender != self)
-        return;
-    
-    //    NSLog(@"Touch up!");
+-(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
     if (hasReportedDraggingEvent){
         //------------------------
         // The button was dragged.
@@ -97,18 +109,21 @@
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromDraggingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
-    }else{
-        //------------------------
-        // The button was touched.
-        //------------------------
-        //        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
-        //                                                                     object:self userInfo:nil];
-        //        [[ NSNotificationCenter defaultCenter] postNotification:notification];
     }
 }
 
-
-
-
+-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (hasReportedDraggingEvent){
+        //------------------------
+        // The button was dragged.
+        //------------------------
+        hasReportedDraggingEvent = NO;
+        [self.lineLayer removeFromSuperlayer];
+        [self removeFromSuperview];
+        NSNotification *notification = [NSNotification notificationWithName:RemoveFromDraggingSetNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    }
+}
 
 @end

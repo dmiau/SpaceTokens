@@ -14,20 +14,15 @@
 #import "CustomMKMapView.h"
 
 @implementation SpaceToken (Dragging)
-//-------------------
-// SpaceToken is being dragged
-//-------------------
-- (void) buttonDragging:(UIButton *)sender forEvent: (UIEvent *)event {
-    NSLog(@"Dragging.");
-    // Do nothing if the event is not triggered by self
-    if (sender != self)
-        return;
+
+
+-(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     // There could be multiple touch events!
     // Need to find the touch even associated with self
     UITouch *touch = nil;
     
-    for (UITouch *aTouch in [event allTouches]){
+    for (UITouch *aTouch in touches){
         if ([aTouch view] == self)
             touch = aTouch;
     }
@@ -47,7 +42,7 @@
         if (locationInView.y < self.frame.origin.y
             || locationInView.y > self.frame.origin.y + self.frame.size.height)
         {
-            [self buttonUp:self forEvent:nil];
+            [self customTouchesEnded:touches withEvent:event];
             // If the touche moves outside of the button vertically, gesture engine should take over
             return;
         }
@@ -68,11 +63,12 @@
         //----------------------
         // Dragging away from the edge (dragging gesture)
         //----------------------
-
+        
         // handle the dragging event if the button is draggable
         [self handleDragToScreenAction:touch];
     }
 }
+
 
 //---------------
 // Handle dragToScreen action

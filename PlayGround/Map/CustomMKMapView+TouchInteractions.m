@@ -149,7 +149,6 @@
     {
         [self.delegate mapTouchMoved: touches withEvent:event];
     }
-    UITouch *aTouch = [touches anyObject];
 }
 
 //---------------------------
