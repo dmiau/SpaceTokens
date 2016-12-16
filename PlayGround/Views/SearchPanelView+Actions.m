@@ -107,6 +107,7 @@
                                              forKey:kCATransition];
     
     [myNavigationController pushViewController:destinationController animated:NO];
+//    [myNavigationController presentViewController:destinationController animated:NO completion:nil];
 }
 
 - (IBAction)barToolAction:(id)sender {

@@ -10,7 +10,7 @@
 
 typedef enum {
     LANDMARK,
-    RED_LANDMARK,
+    STAR,
     path,
     AREA,
     dropped,
@@ -24,6 +24,7 @@ typedef enum {
 @property location_enum pointType;
 
 @property bool isLableOn;
+@property BOOL isHighlighted;
 @property UIImage *annotationImage;
 @property UILabel *aLabel;
 @end

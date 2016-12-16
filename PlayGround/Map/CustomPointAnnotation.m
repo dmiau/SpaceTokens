@@ -23,22 +23,29 @@
     _pointType = pointType;
     
     if (pointType == LANDMARK){
-        // Create an image for the annotation
-        //        UIImage *starImg = [UIImage imageNamed:@"star-128.png"];
-        //        self.annotationImage = [CustomPointAnnotation resizeImage:starImg
-        //                                newSize:CGSizeMake(12, 12)];
         
+        //--------------------------
         // Create a custom gray dot
+        //--------------------------
         self.annotationImage =
         [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
-    }else if(pointType == RED_LANDMARK){
-        // Create a custom gray dot
-        self.annotationImage =
-        [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
+
     }else if(pointType == YouRHere){
+        
+        //--------------------------
+        // YouRHere
+        //--------------------------
         UIImage *anImg = [UIImage imageNamed:@"grayYouRHere.png"];        
-        self.annotationImage = [CustomPointAnnotation resizeImage:anImg
-                                  newSize:CGSizeMake(12, 12)];
+        self.annotationImage = [CustomPointAnnotation resizeImage:anImg                                  newSize:CGSizeMake(12, 12)];
+        
+    }else if(pointType == STAR){
+
+        //--------------------------
+        // A star image
+        //--------------------------
+        UIImage *starImg = [UIImage imageNamed:@"star-128.png"];
+        self.annotationImage = [CustomPointAnnotation resizeImage:starImg
+                                newSize:CGSizeMake(12, 12)];
     }else{
         self.annotationImage = nil;
     }
@@ -62,7 +69,24 @@
     return dotImg;
 }
 
-
+//--------------
+// Setters
+//--------------
+-(void)setIsHighlighted:(BOOL)isHighlighted{
+    _isHighlighted = isHighlighted;
+    
+    if (isHighlighted){
+        if (self.pointType == LANDMARK)
+            self.annotationImage =
+            [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
+    }else{
+        if (self.pointType == LANDMARK)
+            self.annotationImage =
+            [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
+    }
+    
+    
+}
 
 -(void)setTitle:(NSString *)title{
     [super setTitle:title];

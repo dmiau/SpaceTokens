@@ -9,6 +9,7 @@
 #import "TokenCollection.h"
 
 #import "SpatialEntity.h"
+#import "POI.h"
 #import "SpaceToken.h"
 
 @implementation TokenCollection
@@ -58,7 +59,11 @@
 
 -(void)resetAnnotationColor{
     for (SpaceToken *aToken in tokenArray){
-        aToken.spatialEntity.annotation.pointType = LANDMARK;
+        
+        // Remove the hightlight of all SpaceTokens
+        aToken.spatialEntity.annotation.isHighlighted = NO;
+        aToken.spatialEntity.isMapAnnotationEnabled = NO;
+        aToken.spatialEntity.isMapAnnotationEnabled = YES;
     }
 }
 

@@ -15,7 +15,7 @@
 //    [self addTarget:self
 //             action:@selector(buttonDown: forEvent:)
 //   forControlEvents:UIControlEventTouchDown];
-//    
+//
 //    [self addTarget:self
 //             action:@selector(buttonUp: forEvent:)
 //   forControlEvents:UIControlEventTouchUpInside];
@@ -52,11 +52,20 @@
         [self customTouchesCancelled:touches withEvent:event];
     };
     
-    [self addGestureRecognizer:tapInterceptor];    
+    tapInterceptor.delegate = self;
+    
+    [self addGestureRecognizer:tapInterceptor];
 }
 
 
--(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+//{
+//    return YES;
+//}
+
+
+- (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event {
+    
     hasReportedDraggingEvent = NO;
     
     if (self.selected){
@@ -65,6 +74,7 @@
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
+        self.spatialEntity.annotation.isHighlighted = NO;
     }else{
         self.selected = YES;
         
@@ -75,7 +85,7 @@
         // There could be multiple touch events!
         // Need to find the touch even associated with self
         UITouch *touch = nil;
-        for (UITouch *aTouch in touches){
+        for (UITouch *aTouch in [event allTouches]){
             if ([aTouch view] == self)
                 touch = aTouch;
         }
@@ -89,16 +99,72 @@
         //--------------
         // Highlight the SpatialEntity
         //--------------
-        self.spatialEntity.annotation.pointType = RED_LANDMARK;
-        
-        // Forced refresh the annotation color
-        self.spatialEntity.isMapAnnotationEnabled = NO;
-        self.spatialEntity.isMapAnnotationEnabled = YES;
+        self.spatialEntity.annotation.isHighlighted = YES;
     }
+    // Forced refresh the annotation color
+    self.spatialEntity.isMapAnnotationEnabled = NO;
+    self.spatialEntity.isMapAnnotationEnabled = YES;
+}
+
+- (void) buttonUp:(UIButton*) sender forEvent:(UIEvent*)event {
+}
+
+- (void) buttonDragging:(UIButton*) sender forEvent:(UIEvent*)event {
+    self.isCustomGestureRecognizerEnabled = YES;
+}
+
+-(void) customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    if (!self.isCustomGestureRecognizerEnabled)
+        return;
+    
+    // There could be multiple touch events!
+    // Need to find the touch even associated with self
+    UITouch *touch = nil;
+    for (UITouch *aTouch in touches){
+        if ([aTouch view] == self)
+            touch = aTouch;
+    }
+    
+    hasReportedDraggingEvent = NO;
+    
+    if (self.selected){
+        self.selected = NO;
+        
+        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+        self.spatialEntity.annotation.isHighlighted = NO;
+        
+    }else{
+        self.selected = YES;
+        
+        //--------------
+        // SpaceToken is being turned on
+        //--------------
+        
+        // Cache the initial button down location
+        initialTouchLocationInView = [touch locationInView:self.superview];
+        
+        NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
+                                                                     object:self userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+        
+        //--------------
+        // Highlight the SpatialEntity
+        //--------------
+        self.spatialEntity.annotation.isHighlighted = YES;
+    }
+    
+    // Forced refresh the annotation color
+    self.spatialEntity.isMapAnnotationEnabled = NO;
+    self.spatialEntity.isMapAnnotationEnabled = YES;
 }
 
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-
+    if (!self.isCustomGestureRecognizerEnabled)
+        return;
+    
     if (hasReportedDraggingEvent){
         //------------------------
         // The button was dragged.
@@ -113,6 +179,8 @@
 }
 
 -(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (!self.isCustomGestureRecognizerEnabled)
+        return;
     if (hasReportedDraggingEvent){
         //------------------------
         // The button was dragged.

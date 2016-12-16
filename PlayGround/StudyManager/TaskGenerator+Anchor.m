@@ -103,11 +103,8 @@
         anchorSnapshot.latLon = cafePOI.latLon;
         anchorSnapshot.coordSpan = cafePOI.coordSpan;
         
-        // Assemble the POI for the anchor
+        // Add the anchor POI
         [anchorSnapshot.highlightedPOIs addObject:cafePOI];
-        [anchorSnapshot.highlightedPOIs addObject:hotelPOI];
-        [anchorSnapshot.highlightedPOIs addObject:museumPOI];
-        
         
         // Assemble the POI for the spacetoken
         [anchorSnapshot.poisForSpaceTokens addObject:hotelPOI];

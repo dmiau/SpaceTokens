@@ -66,6 +66,7 @@
     
     // Add the needed annotations
     for (POI *aPOI in self.highlightedPOIs){
+        aPOI.annotation.pointType = STAR;
         aPOI.isMapAnnotationEnabled = YES;
     }
     

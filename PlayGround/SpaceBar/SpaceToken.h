@@ -16,7 +16,7 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 //----------------------------------------
 // SpaceToken interface
 //----------------------------------------
-@interface SpaceToken : UIButton{
+@interface SpaceToken : UIButton <UIGestureRecognizerDelegate>{
     CGPoint initialTouchLocationInView;
     BOOL hasReportedDraggingEvent;
     NSTimer *anchorVisualTimer;
@@ -27,6 +27,7 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 @property BOOL isConstraintLineOn;
 @property BOOL isDraggable;
 @property BOOL isStudyModeEnabled; // Certain features (e.g., creation, deletion) need to be disabled in the study mode
+@property BOOL isCustomGestureRecognizerEnabled;
 
 @property (weak) UITouch *touch; // to keep tracking of UITouch
 

@@ -142,7 +142,7 @@ static ViewController *instance;
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:NO];
+
 }
 
 - (void)didReceiveMemoryWarning {

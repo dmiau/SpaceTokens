@@ -17,24 +17,21 @@
 - (id)initWithCoder:(NSCoder*)aDecoder
 {
     if(self = [super initWithCoder:aDecoder]) {
+        // Add UINavigationBar
+        UINavigationBar *navBar = [[UINavigationBar alloc] init];
+        [navBar setFrame:CGRectMake(0,0,self.view.frame.size.width,60)];
+        self.navigationBar = navBar;
+        [self.view addSubview:navBar];
         
-//        // Add UINavigationBar
-//        UINavigationBar *navBar = [[UINavigationBar alloc] init];
-//        [navBar setFrame:CGRectMake(0,0,self.view.frame.size.width,60)];
-//        self.navigationBar = navBar;
-//        [self.view addSubview:navBar];
-//        
-//        // Add button to the navigation bar
-//        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Hello"
-//                style:UIBarButtonItemStyleDone
-//                target:self
-//                                                                      action:@selector(backToMainView:)];
-//        UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Hello"];
-//        item.rightBarButtonItem = rightButton;
-//        item.hidesBackButton = YES;
-//        [navBar pushNavigationItem:item animated:NO];
-        
-        
+        // Add button to the navigation bar
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                style:UIBarButtonItemStyleDone
+                target:self
+                action:@selector(backToMainView:)];
+        UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Back"];
+        item.rightBarButtonItem = rightButton;
+        item.hidesBackButton = YES;
+        [navBar pushNavigationItem:item animated:NO];
     }
     return self;
 }
@@ -50,20 +47,22 @@
 }
 
 - (void)backToMainView:(id)sender {
+    UINavigationController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
     if ([self.restorationIdentifier isEqualToString:@"PreferenceTabController"]){
         CATransition* transition = [CATransition animation];
-        transition.duration = .45;
+        transition.duration = .40;
         transition.timingFunction =
         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type = kCATransitionPush;
-        transition.subtype = kCATransitionFromLeft;
+        transition.subtype = kCATransitionFromRight;
         
-        [self.navigationController.view.layer addAnimation:transition
+
+        [rootViewController.view.layer addAnimation:transition
                                                     forKey:kCATransition];
         
-        [self.navigationController popToRootViewControllerAnimated:NO];
+        [rootViewController popToRootViewControllerAnimated:NO];
     }else{
-        [self.navigationController popViewControllerAnimated:YES];
+        [rootViewController popViewControllerAnimated:YES];
     }
 }
 @end

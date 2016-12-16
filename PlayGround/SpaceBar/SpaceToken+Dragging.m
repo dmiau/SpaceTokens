@@ -17,6 +17,13 @@
 
 
 -(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+    if (!self.isCustomGestureRecognizerEnabled)
+        return;
+    
+    // Do nothing if the button is not draggable
+    if (!self.isDraggable)
+        return;
     
     // There could be multiple touch events!
     // Need to find the touch even associated with self
@@ -27,31 +34,21 @@
             touch = aTouch;
     }
     
-    CGPoint locationInView = [touch locationInView:self.superview];
+    CGPoint locationInView = [touch locationInView:self];
+    CGPoint previousLocationInView = [touch previousLocationInView:self];
     
     // Threshold the x position to distiguish wheather the button is dragged or clicked
-    if ((self.superview.frame.size.width - locationInView.x) < self.frame.size.width*1.1)
+    if (CGRectContainsPoint(self.frame, locationInView))
     {
         //----------------------
         // Dragging toward the edge (removing gesture)
         //----------------------
-        
-        // Do nothing if the SpaceMark is not dragged far out enough
-        
-        // Cancel the button if the touch is outside of the button
-        if (locationInView.y < self.frame.origin.y
-            || locationInView.y > self.frame.origin.y + self.frame.size.height)
+        if((initialTouchLocationInView.x < self.frame.size.width * 0.5)
+            &&
+            (previousLocationInView.x < self.frame.size.width *0.8 &&
+             locationInView.x > self.frame.size.width *0.8)
+           )
         {
-            [self customTouchesEnded:touches withEvent:event];
-            // If the touche moves outside of the button vertically, gesture engine should take over
-            return;
-        }
-        
-        // If the SpaceToken is dragged outside of the display, delete the SpaceToken
-        if ((locationInView.x - initialTouchLocationInView.x) >
-            self.frame.size.width/3)
-        {
-            
             if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
                 // YouRHere cannot be removed.
             }else{
@@ -59,7 +56,7 @@
             }
         }
         
-    }else if (self.isDraggable){
+    }else{
         //----------------------
         // Dragging away from the edge (dragging gesture)
         //----------------------
@@ -219,17 +216,36 @@
     if (self.isStudyModeEnabled)
         return;
     
-    // Remove from the touching set
-    [[ NSNotificationCenter defaultCenter] postNotification:
-     [NSNotification notificationWithName:
-      RemoveFromTouchingSetNotification object:self userInfo:nil]];
+    self.isDraggable = NO;
+    [self setBackgroundColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5]];
     
-    [self removeFromSuperview];
-    self.spatialEntity.isEnabled = NO;
-    
-    // Remove from the button set
-    [[ NSNotificationCenter defaultCenter] postNotification:
-     [NSNotification notificationWithName:RemoveFromButtonArrayNotification
-                                   object:self userInfo:nil]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // Remove from the touching set
+        [[ NSNotificationCenter defaultCenter] postNotification:
+         [NSNotification notificationWithName:
+          RemoveFromTouchingSetNotification object:self userInfo:nil]];
+        
+        [self removeFromSuperview];
+        self.spatialEntity.isEnabled = NO;
+        
+        // Remove from the button set
+        [[ NSNotificationCenter defaultCenter] postNotification:
+         [NSNotification notificationWithName:RemoveFromButtonArrayNotification
+                                       object:self userInfo:nil]];
+    });
+
 }
+
+
+//- (BOOL)canPreventGestureRecognizer:(UIGestureRecognizer *)preventedGestureRecognizer
+//{
+//    
+//    if ([preventedGestureRecognizer.view isKindOfClass:[TokenCollectionView class]])
+//    {
+//        return YES;
+//    }else{
+//        return NO;
+//    }
+//}
+
 @end

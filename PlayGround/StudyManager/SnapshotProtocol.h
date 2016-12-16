@@ -43,6 +43,8 @@ typedef enum {CONTROL, EXPERIMENT} Condition;
 
 @property NSString *instructions;
 @property NSMutableArray <POI*> *highlightedPOIs;
+// stores the POI need to be highlighted on the map
+// (note that annocations will be added automatically for POIs associated with SpaceTokens)
 @property NSMutableArray <POI*> *poisForSpaceTokens; // pois to generate SpaceToken
 @property NSMutableArray <POI*> *targetedPOIs;
 

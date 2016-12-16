@@ -60,6 +60,7 @@
         self.isConstraintLineOn = NO;
         self.isDraggable = YES;
         self.isStudyModeEnabled = NO;
+        self.isCustomGestureRecognizerEnabled = YES;
         
         self.circleLayer = [CAShapeLayer layer];
         self.lineLayer = [CAShapeLayer layer];
