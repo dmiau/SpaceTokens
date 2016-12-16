@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="TaskBasePanel" id="c9T-ZK-FkO" customClass="TaskBasePanel">
-            <rect key="frame" x="0.0" y="0.0" width="380" height="157"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ml-uK-iJy">
-                    <rect key="frame" x="328" y="126" width="42" height="21"/>
+                    <rect key="frame" x="323" y="119" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQ8-oe-gXZ">
-                    <rect key="frame" x="10" y="126" width="42" height="21"/>
+                    <rect key="frame" x="10" y="119" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="temp instructions" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-Ia-bMW">
-                    <rect key="frame" x="10" y="10" width="360" height="65"/>
+                    <rect key="frame" x="10" y="10" width="355" height="65"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="65" id="OIq-6n-gfk"/>
@@ -59,7 +59,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3Z-I0-OQ1">
-                    <rect key="frame" x="281" y="117" width="32" height="30"/>
+                    <rect key="frame" x="276" y="110" width="32" height="30"/>
                     <state key="normal" title="Stop"/>
                     <connections>
                         <action selector="stopTimerAction:" destination="c9T-ZK-FkO" eventType="touchUpInside" id="7sP-5S-Dya"/>
@@ -91,100 +91,6 @@
                 <outlet property="timeOutlet" destination="wQ8-oe-gXZ" id="yvd-1W-5Jm"/>
             </connections>
             <point key="canvasLocation" x="220" y="100"/>
-        </view>
-        <view contentMode="scaleToFill" restorationIdentifier="AuthoringPanel" id="8zU-s4-PTW" customClass="AuthoringPanel">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A3f-PF-qXH">
-                    <rect key="frame" x="27" y="8" width="177" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <segments>
-                        <segment title="Place"/>
-                        <segment title="Anchor"/>
-                        <segment title="Show"/>
-                    </segments>
-                    <connections>
-                        <action selector="taskTypeAction:" destination="8zU-s4-PTW" eventType="valueChanged" id="GbC-eC-eq3"/>
-                    </connections>
-                </segmentedControl>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdr-jq-JYM">
-                    <rect key="frame" x="337" y="112" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Add"/>
-                    <connections>
-                        <action selector="addAction:" destination="8zU-s4-PTW" eventType="touchUpInside" id="X04-Rh-Kaj"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsT-kW-6hJ">
-                    <rect key="frame" x="278" y="113" width="39" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Reset"/>
-                    <connections>
-                        <action selector="resetAction:" destination="8zU-s4-PTW" eventType="touchUpInside" id="7A4-xz-RdV"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAa-vD-3vN">
-                    <rect key="frame" x="168" y="44" width="69" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Anchor(0)"/>
-                    <connections>
-                        <action selector="highlightPOIAction:" destination="8zU-s4-PTW" eventType="touchUpInside" id="Pkb-Jz-wIY"/>
-                    </connections>
-                </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJM-xn-Xmw">
-                    <rect key="frame" x="7" y="113" width="258" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="8zU-s4-PTW" id="1X9-6G-gsn"/>
-                    </connections>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkS-rh-THz">
-                    <rect key="frame" x="26" y="77" width="117" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Cap-EndCond(0)"/>
-                    <connections>
-                        <action selector="captureEndAction:" destination="8zU-s4-PTW" eventType="touchUpInside" id="4uN-DU-MBI"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R95-3U-R2F">
-                    <rect key="frame" x="168" y="77" width="93" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Instructions"/>
-                    <connections>
-                        <action selector="instructionButtonAction:" destination="8zU-s4-PTW" eventType="touchUpInside" id="yt9-9E-8zb"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fn-PN-K0d">
-                    <rect key="frame" x="26" y="44" width="125" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Cap-StartCond(0)"/>
-                    <connections>
-                        <action selector="captureStartAction:" destination="8zU-s4-PTW" eventType="touchUpInside" id="658-Io-VUG"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjy-yY-vRA">
-                    <rect key="frame" x="246" y="44" width="103" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="SpaceToken(0)"/>
-                    <connections>
-                        <action selector="spaceTokenPOIAction:" destination="8zU-s4-PTW" eventType="touchUpInside" id="0Tl-GS-g8i"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="captureEndCondOutlet" destination="PkS-rh-THz" id="s51-gF-E9S"/>
-                <outlet property="captureStartCondOutlet" destination="1Fn-PN-K0d" id="Gnr-yS-USh"/>
-                <outlet property="highlightedPOIOutlet" destination="TAa-vD-3vN" id="drh-jy-NDF"/>
-                <outlet property="instructionOutlet" destination="tJM-xn-Xmw" id="glq-Rs-3cj"/>
-                <outlet property="spaceTokenPOIOutlet" destination="sjy-yY-vRA" id="AT7-Pi-eNO"/>
-                <outlet property="taskTypeOutlet" destination="A3f-PF-qXH" id="oVY-y8-Bqk"/>
-            </connections>
-            <point key="canvasLocation" x="217.5" y="344"/>
         </view>
     </objects>
 </document>

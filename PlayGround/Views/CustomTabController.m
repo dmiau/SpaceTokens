@@ -58,8 +58,9 @@
         transition.duration = .25;
         transition.timingFunction =
         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        transition.type = kCATransitionPush;
-        transition.subtype = kCATransitionFromRight;
+        
+        transition.type = kCATransitionFromRight;
+//        transition.subtype = kCATransitionFromRight;
         
         [self.navigationController.view.layer addAnimation:transition
                                                     forKey:kCATransition];

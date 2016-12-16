@@ -139,12 +139,12 @@ static AuthoringPanel *instance;
                        titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
     [self restartAuthoringFlow];
     if ([label isEqualToString:@"Place"]){
-        snapShot = [[SnapshotPlace alloc] init];
+        self.snapshot = [[SnapshotPlace alloc] init];
         // Enable some of the buttons
         [self.captureEndCondOutlet setEnabled:YES];
         [self.highlightedPOIOutlet setEnabled:NO];
     }else if ([label isEqualToString:@"Anchor"]){
-        snapShot = [[SnapshotAnchorPlus alloc] init];
+        self.snapshot = [[SnapshotAnchorPlus alloc] init];
         // Disable some of the buttons
         [self.captureEndCondOutlet setEnabled:NO];
         [self.highlightedPOIOutlet setEnabled:YES];
@@ -177,7 +177,7 @@ static AuthoringPanel *instance;
     [super captureEndingMap];
     
     // Update the label of the button
-    NSString *buttonLabel = [NSString stringWithFormat: @"Cap-EndCond(%lu)", [targetedPOIsArray count]];
+    NSString *buttonLabel = [NSString stringWithFormat: @"Cap-EndCond(%lu)", [self.snapshot.targetedPOIs count]];
     [self.captureEndCondOutlet setTitle:buttonLabel forState:UIControlStateNormal];
 }
 
@@ -185,7 +185,7 @@ static AuthoringPanel *instance;
 // Denote an anchor
 //----------------------
 - (IBAction)highlightPOIAction:(id)sender {
-    captureArray = highlightedPOIsArray;
+    captureArray = self.snapshot.highlightedPOIs;
     [self enableGestureLayer];
 }
 
@@ -193,12 +193,12 @@ static AuthoringPanel *instance;
 // Denote a SpaceToken
 //----------------------
 - (IBAction)spaceTokenPOIAction:(id)sender {
-    captureArray = spaceTokenPOIsArray;
+    captureArray = self.snapshot.poisForSpaceTokens;
     [self enableGestureLayer];
 }
 
 - (IBAction)instructionButtonAction:(id)sender {
-    textSinkObject = snapShot;
+    textSinkObject = self.snapshot;
 }
 
 - (void)enableGestureLayer{
@@ -223,26 +223,26 @@ static AuthoringPanel *instance;
     poi.isMapAnnotationEnabled = YES;
     
     
-    if (captureArray == highlightedPOIsArray){
+    if (captureArray == self.snapshot.highlightedPOIs){
         //---------------
         // Capture an anchor
         //---------------
 
-        [highlightedPOIsArray addObject:poi];
+        [self.snapshot.highlightedPOIs addObject:poi];
         
         // Update the label of the button
-        NSString *buttonLabel = [NSString stringWithFormat: @"Anchor(%lu)", [highlightedPOIsArray count]];
+        NSString *buttonLabel = [NSString stringWithFormat: @"Anchor(%lu)", [self.snapshot.highlightedPOIs count]];
         [self.highlightedPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
         
-    }else if (captureArray == spaceTokenPOIsArray){
+    }else if (captureArray == self.snapshot.poisForSpaceTokens){
         //---------------
         // Capture a SpaceToken
         //---------------
         
-        [spaceTokenPOIsArray addObject:poi];
+        [self.snapshot.poisForSpaceTokens addObject:poi];
         
         // Update the label of the button
-        NSString *buttonLabel = [NSString stringWithFormat: @"SpaceToken(%lu)", [spaceTokenPOIsArray count]];
+        NSString *buttonLabel = [NSString stringWithFormat: @"SpaceToken(%lu)", [self.snapshot.poisForSpaceTokens count]];
         [self.spaceTokenPOIOutlet setTitle:buttonLabel forState:UIControlStateNormal];
         
         // Put the entity into EntityDatabase
@@ -274,7 +274,7 @@ static AuthoringPanel *instance;
         aToken.titleLabel.text = textField.text;
         aToken.spatialEntity.name = textField.text;
     }else if ([textSinkObject isKindOfClass:[Snapshot class]]){
-        snapShot.instructions = textField.text;
+        self.snapshot.instructions = textField.text;
     }
     
     [textField resignFirstResponder];
@@ -282,20 +282,7 @@ static AuthoringPanel *instance;
 }
 
 - (IBAction)addAction:(id)sender {
-    // Assemble the snapshot
-    snapShot.highlightedPOIs = [highlightedPOIsArray mutableCopy];
-    snapShot.poisForSpaceTokens = [spaceTokenPOIsArray mutableCopy];
-    
-    // Assemble snapshot differently based on Snapshot type
-    if ([snapShot isKindOfClass:[SnapshotAnchorPlus class]]){
-        // targetedPOIsArray must be empty
-        // Fill in the array with the highlighted POI and the SpaceToken
-        [targetedPOIsArray addObject:highlightedPOIsArray[0]];
-        [targetedPOIsArray addObject:spaceTokenPOIsArray[0]];
-    }
-    
-    // In case the user forgets to press the return key
-    snapShot.targetedPOIs = [targetedPOIsArray mutableCopy];
+
     
     // Get the SnapshotDatabase
     SnapshotDatabase *snapshotDatabase = [SnapshotDatabase sharedManager];
@@ -308,13 +295,13 @@ static AuthoringPanel *instance;
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     
     dateString = [formatter stringFromDate:[NSDate date]];
-    NSString *prefix = SnapshotTypeToPrefix(snapShot);
+    NSString *prefix = SnapshotTypeToPrefix(self.snapshot);
     NSString *snapshotName = [NSString stringWithFormat:@"%@:%@", prefix, dateString];
     
-    snapShot.name = snapshotName;
+    self.snapshot.name = snapshotName;
     
     // Put the snapshot into SnapshotDatabase
-    [snapshotDatabase.snapshotArray addObject: snapShot];
+    [snapshotDatabase.snapshotArray addObject: self.snapshot];
     
     // Reset the panel
     [self resetInterface];
@@ -329,10 +316,6 @@ static AuthoringPanel *instance;
 }
 
 - (void)restartAuthoringFlow{
-    // Reinitialize some instance variables
-    [highlightedPOIsArray removeAllObjects];
-    [spaceTokenPOIsArray removeAllObjects];
-    [targetedPOIsArray removeAllObjects];
     
     self.instructionOutlet.text = @"";
     self.captureStartCondOutlet.titleLabel.text = @"Cap-StartCond(0)";

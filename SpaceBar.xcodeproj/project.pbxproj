@@ -153,6 +153,9 @@
 		9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
+		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
+		9A78F09E1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
+		9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
@@ -491,6 +494,7 @@
 		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
 		9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteTableController.mm; sourceTree = "<group>"; };
+		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
 		9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WildcardGestureRecognizer.h; path = Map/WildcardGestureRecognizer.h; sourceTree = "<group>"; };
@@ -966,6 +970,7 @@
 				9AA32CE31DEDD6D200D16738 /* ShowAuthoringPanel.h */,
 				9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */,
 				9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */,
+				9A78F09C1E0468190070AEE2 /* AuthoringView.xib */,
 			);
 			name = Authoring;
 			sourceTree = "<group>";
@@ -1322,6 +1327,7 @@
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
+				9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
@@ -1346,6 +1352,7 @@
 				9AA32CE91DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
+				9A78F09E1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1365,6 +1372,7 @@
 				9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */,
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
 				9AE13BB41DF0D148008612DA /* RangeSlider in Resources */,
+				9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9AE13BB51DF0D148008612DA /* ShowAuthoringPanel.xib in Resources */,
 				9AE13BB61DF0D148008612DA /* RangeSlider in Resources */,
 				9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */,

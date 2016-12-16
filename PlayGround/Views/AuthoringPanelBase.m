@@ -37,10 +37,7 @@
     //-------------------
     // Initialize instace variables
     //-------------------
-    snapShot = [[Snapshot alloc] init];
-    spaceTokenPOIsArray = [[NSMutableArray alloc] init];
-    highlightedPOIsArray = [[NSMutableArray alloc] init];
-    targetedPOIsArray = [[NSMutableArray alloc] init];
+    self.snapshot = [[Snapshot alloc] init];
     
     //-------------------
     // Set up the view
@@ -52,6 +49,13 @@
     
     authoringVisualAidLayer = [CAShapeLayer layer];
     return self;
+}
+
+-(void)setSnapShot:(Snapshot *)snapShot{
+    _snapshot = snapShot;
+    
+    // Use the temporary POIArray for the POI database
+    [[EntityDatabase sharedManager] useGameEntityArray:snapShot.poisForSpaceTokens];
 }
 
 
@@ -79,15 +83,12 @@
     targetRectBox = CGRectMake(0.1*mapWidth, (mapHeight - diameter)/2, diameter, diameter);
     
     // Add the preference button
-    [self.rootViewController.view addSubview: settingsButton];
+    [self addSubview: settingsButton];
     
     self.isAuthoringVisualAidOn = NO;
     
     // Reset the interface
     [self resetInterface];
-    
-    // Use the temporary POIArray for the POI database
-    [[EntityDatabase sharedManager] useGameEntityArray:spaceTokenPOIsArray];
 }
 
 
@@ -124,8 +125,8 @@
     
     // Save the current map parameters
     MKCoordinateRegion coordinateRegion = mapView.region;
-    snapShot.latLon = coordinateRegion.center;
-    snapShot.coordSpan = coordinateRegion.span;
+    self.snapshot.latLon = coordinateRegion.center;
+    self.snapshot.coordSpan = coordinateRegion.span;
     
     // Need to get a square out of the rectangle
     MKMapRect mapRect = mapView.visibleMapRect;
@@ -151,7 +152,7 @@
     poi.latLon = coordinateRegion.center;
     poi.coordSpan = coordinateRegion.span;
     
-    [targetedPOIsArray addObject:poi];
+    [self.snapshot.targetedPOIs addObject:poi];
     
     // Visualize the end circle
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
@@ -159,7 +160,7 @@
                         [CustomMKMapView MKMapRectForCoordinateRegion:coordinateRegion]];
     [mapView addOverlay:circle];
 
-    textSinkObject = snapShot;
+    textSinkObject = self.snapshot;
 }
 
 -(MKCoordinateRegion)getTargetCoordinatRegion{

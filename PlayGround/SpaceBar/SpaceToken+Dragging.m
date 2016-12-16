@@ -118,6 +118,11 @@
 //---------------
 - (void)convertSelfToClone{
     
+    // Temporary disable the scrolling of TokenCollectionView
+    // This is a hack to prevent the dragging gesture from
+    // coupling with the scrolling gesture
+    [[TokenCollectionView sharedManager] setScrollEnabled:NO];
+    
     // A dragging token should not be selected
     self.selected = NO;
     
@@ -147,6 +152,8 @@
     
     // Change the style of the dragging tocken
     [self configureAppearanceForType:DRAGGING];
+    
+    [[TokenCollectionView sharedManager] setScrollEnabled:YES];
 }
 
 

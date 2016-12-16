@@ -54,7 +54,7 @@ static ShowAuthoringPanel *instance;
         
         // Initialize instance variables
         drop_poi_type = DISTRACTOR;
-        snapShot = [[SnapshotShow alloc] init];
+        self.snapshot = [[SnapshotShow alloc] init];
         
         // Long press gesture recognizer
         lpgr = [[UILongPressGestureRecognizer alloc]
@@ -126,7 +126,6 @@ static ShowAuthoringPanel *instance;
     poi.isMapAnnotationEnabled = YES;
     
     if (drop_poi_type==ANSWER){
-//        poi.annotation.pointType = answer;
         poi.name = @"answer";
     }else if (drop_poi_type==NONANSWER){
         poi.name = @"non-answer";
@@ -137,7 +136,7 @@ static ShowAuthoringPanel *instance;
     }
     
     // Add the POI to the array
-    [spaceTokenPOIsArray addObject:poi];
+    [self.snapshot.poisForSpaceTokens addObject:poi];
     
     self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES; // refresh the token panel
 }
@@ -147,7 +146,6 @@ static ShowAuthoringPanel *instance;
 //-------------------
 - (IBAction)addAction:(id)sender {
 
-    snapShot.poisForSpaceTokens = [spaceTokenPOIsArray mutableCopy];
     // Get the SnapshotDatabase
     SnapshotDatabase *snapshotDatabase = [SnapshotDatabase sharedManager];
     
@@ -162,10 +160,10 @@ static ShowAuthoringPanel *instance;
     NSString *prefix = @"Show";
     NSString *snapshotName = [NSString stringWithFormat:@"%@:%@", prefix, dateString];
     
-    snapShot.name = snapshotName;
+    self.snapshot.name = snapshotName;
     
     // Put the snapshot into SnapshotDatabase
-    [snapshotDatabase.snapshotArray addObject: snapShot];
+    [snapshotDatabase.snapshotArray addObject: self.snapshot];
     
     // Reset the panel
     [self resetInterface];
@@ -176,8 +174,6 @@ static ShowAuthoringPanel *instance;
 }
 
 - (void)resetInterface{
-    // Reinitialize some instance variables
-    [spaceTokenPOIsArray removeAllObjects];
     
     // Remove all overlays
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];

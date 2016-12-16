@@ -16,10 +16,7 @@
 @interface AuthoringPanelBase : UIView <TopPanel, UITextFieldDelegate>{
     SettingsButton *settingsButton;
     
-    Snapshot *snapShot;
-    NSMutableArray *spaceTokenPOIsArray;
-    NSMutableArray *highlightedPOIsArray;
-    NSMutableArray *targetedPOIsArray;
+
     
     CGRect targetRectBox;
     CAShapeLayer *authoringVisualAidLayer;
@@ -31,6 +28,7 @@
 
 @property ViewController *rootViewController;
 @property BOOL isAuthoringVisualAidOn;
+@property Snapshot *snapshot;
 
 //-------------
 // TopPanel required methods
