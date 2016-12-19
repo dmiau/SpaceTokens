@@ -117,6 +117,8 @@
     // Adjust the size of the view
     self.frame = rootViewController.view.frame;
     
+    // Need to put the instruction view in front (from the main thread)
+    // to cover SnapTokenCollectionView
     [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
         [rootViewController.view addSubview:self];
         [rootViewController.view bringSubviewToFront:self];
