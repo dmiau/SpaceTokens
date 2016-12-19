@@ -161,6 +161,10 @@ static TokenCollectionView *sharedInstance;
 
 #pragma mark <UICollectionViewDelegate>
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"An item is selected");
+}
+
 /*
  // Uncomment this method to specify if the specified item should be highlighted during tracking
  - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {

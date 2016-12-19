@@ -33,6 +33,7 @@
 //                   name:MapUpdatedNotification
 //                 object:nil];
     
+    [[CustomMKMapView sharedManager] camera].heading = 0;
     // Start the timer
     [self.record start];
     

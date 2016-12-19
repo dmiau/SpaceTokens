@@ -77,6 +77,7 @@
         
         self.spaceToken = aSpaceToken;
         [self addSubview:aSpaceToken];
+        
         [[TokenCollection sharedManager] addToken:aSpaceToken];
         spatialEntity.isMapAnnotationEnabled = YES;
     }else{

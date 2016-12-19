@@ -55,15 +55,27 @@ using namespace std;
     // Generate a list of distances and orientations for points
     //--------------------
     
-    // Shuffle a list of distances
+    // generate a list of distances
     vector<float> distanceVector;
     for (int i=1; i<=anchorTaskNumber+1; ++i) distanceVector.push_back(i*baseDistance);
     // Remove the middle distance
     float hotelDistance = *(distanceVector.begin()+anchorTaskNumber/2);
     distanceVector.erase(distanceVector.begin()+anchorTaskNumber/2);
-    
     random_shuffle ( distanceVector.begin(), distanceVector.end() );
     
+    // Generate a list of museum distance
+    // This requires some attention. The distance of museum should lie in two ranges.
+    // 0.25-0.5    2-3
+    vector<float> museumDistanceVector;
+    float closeStart = 0.25 * hotelDistance;
+    float closeStep = 0.25 * hotelDistance / (anchorTaskNumber/2 -1);
+    float farStart = 2 * hotelDistance;
+    float farStep = hotelDistance / (anchorTaskNumber/2 -1);
+    for (int i = 0; i< anchorTaskNumber/2; i++){
+        museumDistanceVector.push_back(closeStart + i*closeStep);
+        museumDistanceVector.push_back(farStart + i* farStep);
+    }
+    random_shuffle ( museumDistanceVector.begin(), museumDistanceVector.end() );
     
     // Generate a list of orientation
     vector<float> orientationVecotr;
@@ -154,7 +166,11 @@ using namespace std;
         // museum
         //--------------------
         // Generate a point for the museum
-        CGPoint museumPoint = cgPointVector[i];
+        float degree = orientationVecotr[i];
+        float distance = museumDistanceVector[i];
+        CGPoint museumPoint = CGPointMake(
+                    cafePoint.x + distance * cos(degree/180 * M_PI),
+                    cafePoint.y + distance * sin(degree/180 * M_PI));
         
         POI* museumPOI = [[POI alloc] init];
         museumPOI.name = @"museum";
@@ -208,6 +224,10 @@ using namespace std;
         
         outDictionary[anchorSnapshot.name] = anchorSnapshot;
     }
+    
+    // Rotate the map back
+    mapView.camera.heading = 0;
+    
     
     return outDictionary;
 }

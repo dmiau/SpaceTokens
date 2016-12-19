@@ -12,6 +12,7 @@
 @implementation SpaceToken (Gestures)
 
 - (void) registerButtonEvents{
+    
 //    [self addTarget:self
 //             action:@selector(buttonDown: forEvent:)
 //   forControlEvents:UIControlEventTouchDown];
