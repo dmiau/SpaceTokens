@@ -79,6 +79,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property BOOL isYouAreHereEnabled;
 @property BOOL isAutoOrderSpaceTokenEnabled;
 @property BOOL isSpaceTokenEnabled; // Wildcard gesture recognizer is used when this mode is on (so the behavior of interacting with the map will be a big different)
+@property BOOL isAnchorAllowed;
 @property NSMutableSet <SpaceToken*> *anchorCandidateSet;
 @property NSMutableSet <SpaceToken*> *anchorSet;
 

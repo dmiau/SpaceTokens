@@ -1,12 +1,12 @@
 //
-//  TaskGenerator+Anchor.m
+//  AnchorTaskGenerator.m
 //  SpaceBar
 //
-//  Created by Daniel on 11/21/16.
+//  Created by dmiau on 12/19/16.
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "TaskGenerator+Anchor.h"
+#import "AnchorTaskGenerator.h"
 #import "SnapshotAnchorPlus.h"
 #import "CustomMKMapView.h"
 #import <vector>
@@ -15,18 +15,24 @@
 
 using namespace std;
 
+@implementation AnchorTaskGenerator
 
-@implementation TaskGenerator (Anchor)
+- (id)init{
+    self = [super init];
+    if (self){
+        self.taskNumber = 10;
+        self.randomSeed = 127; // This is to generate the random map orientations
+        self.baseDistanceInPixel = 600;
+        self.initRegion = MKCoordinateRegionMake(
+                CLLocationCoordinate2DMake(51.5044, -0.0772236),
+                MKCoordinateSpanMake(0.00432843, 0.00504386));
+        self.dataSetID = @"normal"; // either normal of mutant
+    }
+    return self;
+}
 
-#define ANCHOR_TASK_NUMBER 10 // Note the anchor task number should always be even
-#define RANDOM_SEED 127
-
-
-//=====================
-// Method to generate tasks for Anchor + Place
-//=====================
-- (NSMutableDictionary<NSString*, SnapshotAnchorPlus*> * )p_generateAnchorPlusDictionary
-{
+- (NSMutableDictionary<NSString*, SnapshotAnchorPlus*> * )generateSnapshotDictionary{
+    
     // The idea of this task:
     // Given a cafe, the user needs to decide whether this cafe is closer to the
     // hotel or the museum.
@@ -47,8 +53,7 @@ using namespace std;
     // of each task, so the museum is not always at the 0 degree (east).
     
     
-    int anchorTaskNumber = ANCHOR_TASK_NUMBER;
-    float baseDistance = 600;
+    int anchorTaskNumber = self.taskNumber;
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     //--------------------
@@ -57,7 +62,8 @@ using namespace std;
     
     // generate a list of distances
     vector<float> distanceVector;
-    for (int i=1; i<=anchorTaskNumber+1; ++i) distanceVector.push_back(i*baseDistance);
+    for (int i=1; i<=anchorTaskNumber+1; ++i)
+        distanceVector.push_back(i* self.baseDistanceInPixel);
     // Remove the middle distance
     float hotelDistance = *(distanceVector.begin()+anchorTaskNumber/2);
     distanceVector.erase(distanceVector.begin()+anchorTaskNumber/2);
@@ -89,13 +95,13 @@ using namespace std;
     // Generate anchorTaskNumber map rotation
     vector<float> mapRotationInDegree;
     
-    std::mt19937 rng(RANDOM_SEED);
+    std::mt19937 rng(self.randomSeed);
     std::uniform_int_distribution<int> gen(0, 359); // uniform, unbiased
     
     for (int i = 0; i < anchorTaskNumber; i++){
         mapRotationInDegree.push_back(gen(rng));
     }
-
+    
     //--------------------
     // Generate cafe and hotel points
     //--------------------
@@ -135,10 +141,7 @@ using namespace std;
         //---------------------
         
         // London City Hall
-        MKCoordinateRegion initRegion =
-        MKCoordinateRegionMake(
-                               CLLocationCoordinate2DMake(51.5044, -0.0772236),
-                               MKCoordinateSpanMake(0.00432843, 0.00504386));
+        MKCoordinateRegion initRegion = self.initRegion;
         
         // Shift the map to London
         [mapView setRegion:initRegion];
@@ -146,7 +149,7 @@ using namespace std;
         // Rotate the map
         mapView.camera.heading = mapRotationInDegree[i];
         
-
+        
         //--------------------
         // cafe + hotel
         //--------------------
@@ -159,7 +162,7 @@ using namespace std;
         POI* hotelPOI = [[POI alloc] init];
         hotelPOI.name = @"hotel";
         hotelPOI.latLon = [mapView
-                          convertPoint:hotelPoint toCoordinateFromView:mapView];
+                           convertPoint:hotelPoint toCoordinateFromView:mapView];
         hotelPOI.coordSpan = initRegion.span;
         
         //--------------------
@@ -169,13 +172,13 @@ using namespace std;
         float degree = orientationVecotr[i];
         float distance = museumDistanceVector[i];
         CGPoint museumPoint = CGPointMake(
-                    cafePoint.x + distance * cos(degree/180 * M_PI),
-                    cafePoint.y + distance * sin(degree/180 * M_PI));
+                                          cafePoint.x + distance * cos(degree/180 * M_PI),
+                                          cafePoint.y + distance * sin(degree/180 * M_PI));
         
         POI* museumPOI = [[POI alloc] init];
         museumPOI.name = @"museum";
         museumPOI.latLon = [mapView
-                           convertPoint:museumPoint toCoordinateFromView:mapView];
+                            convertPoint:museumPoint toCoordinateFromView:mapView];
         museumPOI.coordSpan = initRegion.span;
         
         vector<CGPoint> distractorVector = cgPointVector;
@@ -207,9 +210,13 @@ using namespace std;
         [anchorSnapshot.poisForSpaceTokens shuffle];
         
         // Generate the ID and instructions
-        anchorSnapshot.name = [NSString stringWithFormat:@"ANCHOR:%g", orientationVecotr[i]];
-        anchorSnapshot.instructions =
-        [NSString stringWithFormat:@"Is the cafe closer to the hotel or the museum?"];
+        anchorSnapshot.name =
+        [NSString stringWithFormat:@"ANCHOR:%@:%d", self.dataSetID, i];
+        
+        anchorSnapshot.controlInstructions = @"Which location is closer to the cafe? Hotel or museum?";
+        anchorSnapshot.spaceTokenInstructions = @"Which location is closer to the cafe? Hotel or museum?";
+        
+        anchorSnapshot.instructions = @"Which location is closer to the cafe? Hotel or museum?";
         
         // Generate the questions and answers
         anchorSnapshot.segmentOptions = @[@"hotel", @"museum"];
@@ -230,7 +237,9 @@ using namespace std;
     
     
     return outDictionary;
+    
 }
+
 
 -(NSMutableArray*)createPOIsFromCGPointArray:(vector<CGPoint>)cgPointVector{
     NSMutableArray *outArray = [[NSMutableArray alloc] init];
@@ -243,12 +252,11 @@ using namespace std;
         POI *aPOI = [[POI alloc] init];
         aPOI.name = [NSString stringWithFormat:@"distractor-%d", i];
         aPOI.latLon = [mapView
-                           convertPoint:aPoint toCoordinateFromView:mapView];
+                       convertPoint:aPoint toCoordinateFromView:mapView];
         aPOI.coordSpan = mapView.region.span;
         
         [outArray addObject:aPOI];
     }
     return outArray;
 }
-
 @end

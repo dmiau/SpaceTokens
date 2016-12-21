@@ -8,7 +8,7 @@
 
 #import "SnapshotPlace.h"
 #import "ViewController.h"
-#import "../Map/CustomMKMapView.h"
+#import "CustomMKMapView.h"
 #import "Constants.h"
 #import "Record.h"
 #import "GameManager.h"

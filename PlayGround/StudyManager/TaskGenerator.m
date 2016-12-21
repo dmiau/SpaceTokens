@@ -7,10 +7,14 @@
 //
 
 #import "TaskGenerator.h"
-#import <MapKit/MapKit.h>
 #import "SnapshotPlace.h"
 #import "SnapshotAnchorPlus.h"
 #import "CustomMKMapView.h"
+#import "AnchorTaskGenerator.h"
+#import "PlaceTaskGenerator.h"
+#import "SnapshotDatabase.h"
+#import "MyFileManager.h"
+#import "NSMutableArray+Tools.h"
 
 @implementation TaskGenerator
 
@@ -26,104 +30,308 @@
 }
 
 #pragma mark --Task Generation--
-//---------------------
-// Method to generate tasks for PLACE
-//---------------------
-- (NSMutableArray*)generateTasks{
-    NSMutableArray* controlArray = [[NSMutableArray alloc] init];
-    NSMutableArray* experimentArray = [[NSMutableArray alloc] init];
+
+
+- (void)generateTaskFiles:(int)fileCount{
     
+    SnapshotDatabase *snapshotDatabase = [SnapshotDatabase sharedManager];
+    // This is a hack. Essentailly I use SnapshotDatabase to save several copy of SnapshotDatabase
+    // Each participant has her own snapshot database
+    // Cache the current active snapshot array
+    NSMutableArray <Snapshot*> *cachedSnapshotArray = [snapshotDatabase.snapshotArray mutableCopy];
+    
+    
+    //--------------------
+    // Generate task dictionary
+    //--------------------
+    [self generateTaskDictionary];
+
+    //--------------------
+    // Generate game vectors
+    //--------------------
+    [self generateGameVectors:fileCount];
+    
+    //--------------------
+    // Save the temporary files to the disk
+    //--------------------
+    [self saveIntermediateFiles];
+    
+    //--------------------
+    // Generate a snapshot database for each game vector
+    //--------------------
+    int i = 0;
+    for (NSArray *aVector in self.gameVectorCollection){
+        snapshotDatabase.snapshotArray =
+        [self generateSnapshotArrayFromGameVector:aVector];
+
+        // Save the generated snapshot into a new file
+        MyFileManager *myFileManager = [MyFileManager sharedManager];
+        NSString *dirPath = [myFileManager currentFullDirectoryPath];
+        NSString *fileName = [NSString stringWithFormat:@"study%d.snapshot", i];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:fileName];
+        [snapshotDatabase saveDatatoFileWithName:fileFullPath];
+        i++;
+    }
+
+    // Restore the original snapshotArray
+    snapshotDatabase.snapshotArray = cachedSnapshotArray;
+}
+
+//------------------------------
+// Generate a snapshotArray for a given game vector
+//------------------------------
+- (NSMutableArray*)generateSnapshotArrayFromGameVector:(NSArray*) gameVector{
+
+    NSMutableArray* snapshotArray = [[NSMutableArray alloc] init];
+    
+    for (NSString *category in gameVector){
+        // Here are some examples of gameVector
+        // control:anchor:normal,
+        // control:place:normal,
+        // spacetoken:anchor:mutant,
+        // spacetoken:place:mutant
+        
+        // Essentially: technique:task:dataset
+        
+        NSArray *components = [category componentsSeparatedByString:@":"];
+        NSString *technique = components[0];
+        NSString *taskAndDataID = [NSString stringWithFormat:
+                                   @"%@:%@", components[1], components[2]];
+        
+        // Get a list of tasks associated with a given category
+        NSMutableArray *taskIDArray = [taskByCategory[taskAndDataID] mutableCopy];
+        
+        //------------------
+        // Shuffle the tasks
+        //------------------
+        [taskIDArray shuffle];
+        
+        //------------------
+        // Prepare an array of snapshot
+        //------------------
+        Condition condition;
+        NSString *techniqueString;
+        if ([technique isEqualToString:@"control"]){
+            // control condition
+            condition = CONTROL;
+            techniqueString = @"control";
+        }else{
+            // spacetoken
+            condition = EXPERIMENT;
+            techniqueString = @"spacetoken";
+        }
+        NSMutableArray *tempSnapshotArray = [[NSMutableArray alloc] init];
+        for (NSString *taskID in taskIDArray){
+            Snapshot *aSnapshot = [self.gameSnapshotDictionary[taskID] copy];
+            aSnapshot.condition = condition;
+            aSnapshot.name =
+            [NSString stringWithFormat:@"%@:%@", techniqueString, taskID];
+            [tempSnapshotArray addObject:aSnapshot];
+        }
+        
+        // Put the task into the array
+        [snapshotArray addObjectsFromArray:tempSnapshotArray];
+    }
+    
+    return snapshotArray;
+}
+
+//---------------------
+// Generate a task dictionary
+//---------------------
+- (NSMutableDictionary*)generateTaskDictionary{
+    NSMutableDictionary *tempSnapshotDictionary = [[NSMutableDictionary alloc] init];
     
     //-------------------
     // Generate tasks for PLACE
     //-------------------
-    NSMutableDictionary *placeTaskDictionary = [self p_generatePlaceDictionary];
-    // Need to handle multiple conditions
-    for (NSString *aKey in placeTaskDictionary){
-        SnapshotPlace *snapshot = placeTaskDictionary[aKey];
-        SnapshotPlace *snapshotCopy = [snapshot copy];
-        
-        snapshot.name = [snapshot.name stringByAppendingString:@":control"];
-        snapshot.condition = CONTROL;
-        NSString *commonInstruction = [snapshot.instructions copy];
-        
-        snapshot.instructions =
-        [NSString stringWithFormat:@"%@\n%@", commonInstruction,
-         @"Tap the SpaceToken, and then pan the map."];
-        [controlArray addObject:snapshot];
-        
-        snapshotCopy.name = [snapshotCopy.name stringByAppendingString:@":experiment"];
-        snapshotCopy.condition = EXPERIMENT;
-        snapshotCopy.instructions =
-        [NSString stringWithFormat:@"%@\n%@", commonInstruction,
-         @"Drag the SpaceToken directly."];
-        [experimentArray addObject:snapshotCopy];
-    }
- 
+    PlaceTaskGenerator *placeTaskGenerator = [[PlaceTaskGenerator alloc] init];
+    placeTaskGenerator.dataSetID = @"normal";
+    NSMutableDictionary *placeTaskDictionary = [placeTaskGenerator generateSnapshotDictionary];
+    [tempSnapshotDictionary addEntriesFromDictionary:placeTaskDictionary];
+    
+    
+    placeTaskGenerator.dataSetID = @"mutant";
+    placeTaskDictionary = [placeTaskGenerator generateSnapshotDictionary];
+    [tempSnapshotDictionary addEntriesFromDictionary:placeTaskDictionary];
+    
     //-------------------
     // Generate tasks for ANCHOR
     //-------------------
-    NSMutableDictionary *anchorTaskDictionary = [self p_generateAnchorPlusDictionary];
-    // Need to handle multiple conditions
-    for (NSString *aKey in anchorTaskDictionary){
-        SnapshotPlace *snapshot = anchorTaskDictionary[aKey];
-        SnapshotPlace *snapshotCopy = [snapshot copy];
+    
+    AnchorTaskGenerator *anchorTaskGenerator = [[AnchorTaskGenerator alloc] init];
+    anchorTaskGenerator.dataSetID = @"normal";
+    anchorTaskGenerator.randomSeed = 127;
+    NSMutableDictionary *anchorTaskDictionary =
+    [anchorTaskGenerator generateSnapshotDictionary];
+    [tempSnapshotDictionary addEntriesFromDictionary:anchorTaskDictionary];
+    
+    anchorTaskGenerator.dataSetID = @"mutant";
+    anchorTaskGenerator.randomSeed = 100;
+    anchorTaskDictionary =
+    [anchorTaskGenerator generateSnapshotDictionary];
+    [tempSnapshotDictionary addEntriesFromDictionary:anchorTaskDictionary];
+    
+    //-------------------
+    // Cache the generated dictionary
+    //-------------------
+    self.gameSnapshotDictionary = tempSnapshotDictionary;
+    
+    return tempSnapshotDictionary;
+}
+
+- (NSArray*)generateGameVectors:(int) gameCount{
+    NSMutableArray *outArray = [[NSMutableArray alloc] init];
+    
+    NSArray *configruationOrderPool =
+    @[
+      @[@"control:normal", @"spacetoken:mutant"],
+      @[@"spacetoken:normal", @"control:mutant"],
+      @[@"control:mutant", @"spacetoken:normal"],
+      @[@"spacetoken:mutant", @"control:normal"]
+      ];
+    // Each row specifies a possible technique-dataset order combination. There are four in total
+    
+    NSArray *taskOrderPool =
+    @[
+      @[@"anchor:place", @"anchor:place"],
+      @[@"anchor:place", @"place:anchor"],
+      @[@"place:anchor", @"place:anchor"],
+      @[@"place:anchor", @"anchor:place"]
+      ];
+    // Each row specifies one possible task order combination.
+    // Note each study has the same task twice. One for the control technique, the other for the experimental technique.
+    
+    // There are 4x4 = 16 combinations
+    
+    int i = 0;
+    
+    while(i < gameCount){
         
-        snapshot.name = [snapshot.name stringByAppendingString:@":control"];
-        snapshot.condition = CONTROL;
-        [controlArray addObject:snapshot];
-        
-        snapshotCopy.name = [snapshotCopy.name stringByAppendingString:@":experiment"];
-        snapshotCopy.condition = EXPERIMENT;
-        [experimentArray addObject:snapshotCopy];
+        for (NSArray *aConfiguration in configruationOrderPool){
+            // Each configuration contains two elements
+            NSArray *components;
+            components = [(NSString* )aConfiguration[0] componentsSeparatedByString:@":"];
+            NSString *firstTechnique, *firstDataSet, *secondTechnique, *secondDataSet;
+            firstTechnique = components[0];
+            firstDataSet = components[1];
+            
+            components = [(NSString* )aConfiguration[1] componentsSeparatedByString:@":"];
+            secondTechnique = components[0];
+            secondDataSet = components[1];
+            
+            for (NSArray *aTaskOrder in taskOrderPool){
+                components = [(NSString* )aTaskOrder[0] componentsSeparatedByString:@":"];
+                NSString *firstTask, *secondTask, *thirdTask, *fourthTask;
+                firstTask = components[0];
+                secondTask = components[1];
+                
+                components = [(NSString* )aTaskOrder[1] componentsSeparatedByString:@":"];
+                thirdTask = components[0];
+                fourthTask = components[1];
+                
+                NSString *firstDescriptor, *secondDescriptor, *thirdDescriptor, *fourthDescriptor;
+                // Assemble one game vector
+                firstDescriptor = [NSString stringWithFormat:@"%@:%@:%@", firstTechnique, firstTask, firstDataSet];
+                
+                secondDescriptor = [NSString stringWithFormat:@"%@:%@:%@", firstTechnique, secondTask, firstDataSet];
+                
+                thirdDescriptor = [NSString stringWithFormat:@"%@:%@:%@", secondTechnique, thirdTask, secondDataSet];
+                
+                fourthDescriptor = [NSString stringWithFormat:@"%@:%@:%@", secondTechnique, fourthTask, secondDataSet];
+                
+                
+                NSArray *gameVector = [NSArray arrayWithObjects:
+                                       firstDescriptor, secondDescriptor, thirdDescriptor, fourthDescriptor, nil];
+                [outArray addObject:gameVector];
+                i++; if (i == gameCount) goto endloop;
+            }
+        }
     }
     
-
-    //-------------------
-    // Assemble the task vector
-    //-------------------
-    NSMutableArray *taskArray = [[NSMutableArray alloc] init];
-    [taskArray addObjectsFromArray:controlArray];
-    [taskArray addObjectsFromArray:experimentArray];
-    return taskArray;
+    endloop:
+    self.gameVectorCollection = outArray;
+    return outArray;
 }
 
-
-
-
-//----------------
-// Generate a target POI
-//----------------
-- (POI*)p_generateTargetForReferencePOI: (POI*) tokenPOI withAngle: (double)degree offSetDistance: (double) offset{
-    POI* outPOI = [[POI alloc] init];
+-(void)setGameSnapshotDictionary:(NSDictionary *)gameSnapshotDictionary{
+    _gameSnapshotDictionary = gameSnapshotDictionary;
     
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    // Use the map to perform the calculation
-    [mapView snapOneCoordinate:tokenPOI.latLon
-                          toXY:CGPointMake(mapView.frame.size.width/2, mapView.frame.size.height/2) animated:NO];
+    taskByCategory = [[NSMutableDictionary alloc] init];
     
-    // Calculate the desired rect, then the desired region
-    double diameter = mapView.frame.size.width * 0.8;
-    double arm = offset; //20 + diameter/2;
+    // Populate some internal structures
+    NSArray *allKeys = [self.gameSnapshotDictionary allKeys];
     
-    // Calculate the centroid (in CGPoint) of the region
-    CGPoint viewCentroid = CGPointMake(mapView.frame.size.width/2, mapView.frame.size.height/2);
-    CGPoint targetCentroid;
-    targetCentroid.x = viewCentroid.x + arm * cos(degree/180 * M_PI);
-    targetCentroid.y = viewCentroid.y - arm * sin(degree/180 * M_PI);
+    NSArray *categories = @[@"anchor:normal", @"anchor:mutant",
+                            @"place:normal", @"place:mutant"];
     
-    // Calculate the rect
-    CGRect targetRect = CGRectMake(targetCentroid.x - diameter/2,
-                                   targetCentroid.y - diameter/2,
-                                   diameter, diameter);
-    // Convert the rect to latlon and latlon span
-    MKCoordinateRegion targetRegion =
-    [mapView convertRect:targetRect toRegionFromView:mapView];
-    
-    // Assemble the POI
-    outPOI.latLon = targetRegion.center;
-    outPOI.coordSpan = targetRegion.span;
-    return outPOI;
+    for (NSString *category in categories){
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", category];
+        NSArray *result = [allKeys filteredArrayUsingPredicate:predicate];
+        taskByCategory[category] = result;
+    }
 }
 
+//-----------------------
+// File I/O
+//-----------------------
+// saving and loading the object
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.gameVectorCollection forKey:@"gameVectorCollection"];
+    [coder encodeObject:self.gameSnapshotDictionary forKey:@"gameSnapshotDictionary"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [self init];
+    self.gameVectorCollection = [coder decodeObjectForKey:@"gameVectorCollection"];
+    self.gameSnapshotDictionary = [[coder decodeObjectForKey:@"gameSnapshotDictionary"] mutableCopy];
+    return self;
+}
+
+//// Deep copy
+//-(id) copyWithZone:(NSZone *) zone
+//{
+//    TaskGenerator *object = [[[self class] alloc] init];
+//    object.gameVectorCollection = self.gameVectorCollection;
+//    object.gameSnapshotDictionary = self.gameSnapshotDictionary;
+//    return object;
+//}
+
+-(BOOL)saveIntermediateFiles{
+    // Save the generated snapshot into a new file
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"pregeneratedTaskDB.taskdb"];
+    // Save the entire database to a file
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject: self];
+    
+    if ([data writeToFile:fileFullPath atomically:YES]){
+        NSLog(@"%@ saved successfully!", fileFullPath);
+        return YES;
+    }else{
+        NSLog(@"Failed to save %@", fileFullPath);
+        return NO;
+    }
+}
+
+-(BOOL)loadPregeneratedFiles{
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"pregeneratedTaskDB.taskdb"];
+    
+    
+    // Read content from a file
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:fileFullPath]){
+        
+        NSData *data = [NSData dataWithContentsOfFile:fileFullPath];
+        TaskGenerator *tempTaskGenerator = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        self.gameVectorCollection = tempTaskGenerator.gameVectorCollection;
+        self.gameSnapshotDictionary = tempTaskGenerator.gameSnapshotDictionary;
+        return YES;
+    }else{
+        NSLog(@"%@ does not exist.", fileFullPath);
+        return NO;
+    }
+}
 @end

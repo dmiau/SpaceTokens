@@ -48,6 +48,11 @@
 }
 
 - (void)moveCandidateAnchorsToAnchorSet{
+    
+    // Skip this if anchor is disabled
+    if (!self.isAnchorAllowed)
+        return;
+    
     for (SpaceToken *aToken in self.anchorCandidateSet){
         [self.anchorSet addObject:aToken];
         [self.draggingSet addObject:aToken];

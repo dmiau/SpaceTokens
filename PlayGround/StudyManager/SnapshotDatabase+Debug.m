@@ -16,23 +16,6 @@
 @implementation SnapshotDatabase (Debug)
 
 
-- (void)generateNewTasks{
-    TaskGenerator *taskGenerator = [TaskGenerator sharedManager];
-    
-    // Generate tasks
-    NSMutableArray <Snapshot*> *cachedSnapshotArray = [self.snapshotArray mutableCopy];
-    
-    self.snapshotArray = [taskGenerator generateTasks];
-    
-    // Save the generated snapshot into a new file
-    MyFileManager *myFileManager = [MyFileManager sharedManager];
-    NSString *dirPath = [myFileManager currentFullDirectoryPath];
-    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"study0.snapshot"];
-    [self saveDatatoFileWithName:fileFullPath];
-    
-    // Restore the original snapshotArray
-    self.snapshotArray = cachedSnapshotArray;
-}
 
 
 - (void)debugInit{

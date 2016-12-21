@@ -41,7 +41,11 @@ typedef enum {CONTROL, EXPERIMENT} Condition;
 }
 @property ViewController *rootViewController;
 
+// Two instructions will be generated, and only the approricate one (either control or spaceToken, will be used in the study)
+@property NSString *controlInstructions;
+@property NSString *spaceTokenInstructions;
 @property NSString *instructions;
+
 @property NSMutableArray <POI*> *highlightedPOIs;
 // stores the POI need to be highlighted on the map
 // (note that annocations will be added automatically for POIs associated with SpaceTokens)

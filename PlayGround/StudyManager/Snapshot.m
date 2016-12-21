@@ -43,9 +43,23 @@
     return self;
 }
 
+//---------------------
+// setters
+//---------------------
 -(void)setName:(NSString *)name{
     super.name = name;
     _record.name = name;
+}
+
+-(void)setCondition:(Condition)condition{
+    _condition = condition;
+    
+    // Assign the instructions based on the condition
+    if (condition == CONTROL){
+        self.instructions = self.controlInstructions;
+    }else{
+        self.instructions = self.spaceTokenInstructions;
+    }
 }
 
 #pragma mark --CommonSetup--
@@ -130,6 +144,8 @@
     [super encodeWithCoder:coder];    
     
     [coder encodeObject:self.instructions forKey:@"instructions"];
+    [coder encodeObject:self.controlInstructions forKey:@"controlInstructions"];
+    [coder encodeObject:self.spaceTokenInstructions forKey:@"spaceTokenInstructions"];
     [coder encodeObject:self.highlightedPOIs forKey:@"highlightedPOIs"];
     [coder encodeObject:self.poisForSpaceTokens forKey:@"poisForSpaceTokens"];
     [coder encodeObject:self.targetedPOIs forKey:@"targetedPOIs"];
@@ -145,6 +161,8 @@
     
     self = [super initWithCoder:coder];    
     self.instructions = [coder decodeObjectOfClass:[NSString class] forKey:@"instructions"];
+    self.controlInstructions = [coder decodeObjectOfClass:[NSString class] forKey:@"controlInstructions"];
+    self.spaceTokenInstructions = [coder decodeObjectOfClass:[NSString class] forKey:@"spaceTokenInstructions"];
     self.highlightedPOIs = [[coder decodeObjectOfClass:[NSArray class] forKey:@"highlightedPOIs"] mutableCopy];
     self.poisForSpaceTokens = [[coder decodeObjectOfClass:[NSArray class] forKey:@"poisForSpaceTokens"] mutableCopy];
     self.targetedPOIs = [[coder decodeObjectOfClass:[NSArray class] forKey:@"targetedPOIs"] mutableCopy];
@@ -163,8 +181,7 @@
 -(id) copyWithZone:(NSZone *) zone
 {
     
-    // Copy important POI data
-    
+    // Copy important POI data    
     Snapshot *object = [[[self class] allocWithZone:zone] init];
     object.latLon = self.latLon;
     object.name = self.name;
@@ -172,9 +189,14 @@
     
     // Copy Snapshot specific data
     object.instructions = [self.instructions copy];
+    object.controlInstructions = [self.controlInstructions copy];
+    object.spaceTokenInstructions = [self.spaceTokenInstructions copy];
     object.highlightedPOIs = [[NSMutableArray alloc] initWithArray:self.highlightedPOIs copyItems:YES];
     object.poisForSpaceTokens = [[NSMutableArray alloc] initWithArray:self.poisForSpaceTokens copyItems:YES];
     object.targetedPOIs = [[NSMutableArray alloc] initWithArray:self.targetedPOIs copyItems:YES];
+    
+    object.segmentOptions = [[NSArray alloc] initWithArray:self.segmentOptions copyItems:YES];
+    object.correctAnswers = [[NSSet alloc] initWithSet:self.correctAnswers copyItems:YES];    
     
     object.condition = self.condition;    
     return object;

@@ -55,6 +55,10 @@
     for (SpaceToken *aToken in tokenArray){
         aToken.isStudyModeEnabled = _isStudyModeEnabled;
     }
+    
+    if (!isStudyModeEnabled){
+        self.isTokenDraggingEnabled = YES;
+    }
 }
 
 -(void)resetAnnotationColor{

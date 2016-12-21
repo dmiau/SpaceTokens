@@ -12,20 +12,60 @@
 @class SnapshotAnchorPlus;
 @class POI;
 
-@interface TaskGenerator : NSObject
+@interface TaskGenerator : NSObject{
+    NSMutableDictionary <NSString*, NSArray*> *taskByCategory;
+}
+
+@property NSArray<NSArray*> *gameVectorCollection;
+// example output:
+// control:anchor:normal,
+// control:place:normal,
+// spacetoken:anchor:mutant,
+// spacetoken:place:mutant
+
+@property NSDictionary *gameSnapshotDictionary;
+// example output:
+//"ANCHOR:mutant:0" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:1" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:2" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:3" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:4" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:5" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:6" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:7" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:8" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:mutant:9" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:0" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:1" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:2" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:3" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:4" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:5" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:6" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:7" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:8" = "latlon: 51.5044, -0.0772236";
+//"ANCHOR:normal:9" = "latlon: 51.5044, -0.0772236";
+//"PLACE:mutant:east" = "latlon: 40.7534, -73.9415";
+//"PLACE:mutant:north" = "latlon: 40.7534, -73.9415";
+//"PLACE:mutant:northeast" = "latlon: 40.7534, -73.9415";
+//"PLACE:mutant:northwest" = "latlon: 40.7534, -73.9415";
+//"PLACE:mutant:south" = "latlon: 40.7534, -73.9415";
+//"PLACE:mutant:southeast" = "latlon: 40.7534, -73.9415";
+//"PLACE:mutant:southwest" = "latlon: 40.7534, -73.9415";
+//"PLACE:mutant:west" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:east" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:north" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:northeast" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:northwest" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:south" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:southeast" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:southwest" = "latlon: 40.7534, -73.9415";
+//"PLACE:normal:west" = "latlon: 40.7534, -73.9415";
+
 
 +(TaskGenerator*)sharedManager;
-- (NSMutableArray*)generateTasks;
 
-//--------------
-// Private methods
-//--------------
-
-- (POI*)p_generateTargetForReferencePOI: (POI*) tokenPOI withAngle: (double)degree offSetDistance: (double) offset;
-
-- (NSMutableDictionary<NSString*, SnapshotPlace*> * )p_generatePlaceDictionary;
-
-- (NSMutableDictionary<NSString*, SnapshotAnchorPlus*> * )p_generateAnchorPlusDictionary;
-
+// Generated files will be save to the file system
+- (void)generateTaskFiles:(int)fileCount;
 
 @end

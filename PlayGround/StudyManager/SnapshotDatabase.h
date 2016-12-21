@@ -17,9 +17,7 @@
 @property NSMutableArray <Snapshot*> *snapshotArray;
 
 +(id)sharedManager;
-- (NSMutableArray*)generateSnapshotArrayFromGameVector:(NSArray*) gameVector;
 
-- (NSArray*)allSnapshotIDs;
 
 // iCloud related methods
 -(bool)saveToCurrentFile;
@@ -28,7 +26,7 @@
 
 // Debug methods
 - (void)debugInit;
-- (void)generateNewTasks;
+
 
 // Convenient method to load a specific snapshot database
 - (void)loadGameTemplateDatabase;

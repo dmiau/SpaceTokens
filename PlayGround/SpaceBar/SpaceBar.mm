@@ -160,6 +160,8 @@ static SpaceBar *sharedInstance;
     
     self.isSpaceTokenEnabled = NO;
     
+    self.isAnchorAllowed = YES;
+    
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     

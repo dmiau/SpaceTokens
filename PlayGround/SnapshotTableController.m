@@ -13,7 +13,7 @@
 #import "StudyManager/GameManager.h"
 #import "MyFileManager.h"
 #import "SnapshotDetailViewController.h"
-
+#import "TaskGenerator.h"
 
 @implementation SnapshotTableController
 
@@ -317,8 +317,9 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
 
 #pragma mark --Task Generation--
 - (IBAction)generateTaskAction:(id)sender {
+    
     // Generate new tasks
-    [snapshotDatabase generateNewTasks];
+    [[TaskGenerator sharedManager] generateTaskFiles:5];
     
     // Refresh the table
     [self.myTableView reloadData];    

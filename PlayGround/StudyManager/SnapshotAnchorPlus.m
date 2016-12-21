@@ -13,6 +13,8 @@
 #import "Constants.h"
 #import "Record.h"
 #import "GameManager.h"
+#import "SpaceBar.h"
+#import "AnchorInstructionView.h"
 
 @implementation SnapshotAnchorPlus
 
@@ -34,9 +36,24 @@
 //                 object:nil];
     
     [[CustomMKMapView sharedManager] camera].heading = 0;
-    // Start the timer
-    [self.record start];
     
+    
+    //------------------------
+    // Task specific set up
+    //------------------------
+    if (self.condition == CONTROL){
+        [[SpaceBar sharedManager] setIsAnchorAllowed: NO];
+    }else{
+        [[SpaceBar sharedManager] setIsAnchorAllowed: YES];
+    }
+    
+    //----------------
+    // Present the instruction panel
+    //----------------
+    AnchorInstructionView *instructionView = [[[NSBundle mainBundle] loadNibNamed:@"AnchorInstructionView" owner:self options:nil] firstObject];
+    
+    [instructionView prepareInstruction:self];
+    [instructionView showInstruction];
 }
 
 
