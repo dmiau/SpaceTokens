@@ -23,12 +23,13 @@
 
 @property ViewController* rootViewController;
 
+@property (weak, nonatomic) IBOutlet UISwitch *studyOutlet;
+- (IBAction)studyAction:(id)sender;
+
 - (IBAction)saveAction:(id)sender;
 - (IBAction)reloadAction:(id)sender;
-- (IBAction)editAction:(UIButton *)sender;
+
+- (IBAction)editAction:(UIBarButtonItem*)sender;
 - (IBAction)generateTaskAction:(id)sender;
-
-
-
 
 @end

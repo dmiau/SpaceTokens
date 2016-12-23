@@ -21,7 +21,7 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
 
 #pragma mark --Initialization--
 
-+ (id)sharedManager{
++ (GameManager*)sharedManager{
     static GameManager *sharedGameManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -50,7 +50,6 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     EntityDatabase *entityDB = [EntityDatabase sharedManager];
     switch (gameManagerStatus) {
         case OFF:
-            
             // Clean up if there is an activeSnapshot
             [self terminateActiveSnapshot];
             

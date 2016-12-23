@@ -15,6 +15,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *instructionTextField;
+@property (weak, nonatomic) IBOutlet UILabel *demoBanner;
 
 - (void)prepareInstruction:(SnapshotAnchorPlus*) snapShotAnchor;
 - (void)showInstruction;

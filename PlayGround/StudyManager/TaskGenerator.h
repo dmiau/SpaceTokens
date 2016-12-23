@@ -16,6 +16,11 @@
     NSMutableDictionary <NSString*, NSArray*> *taskByCategory;
 }
 
+@property int placeTaskNumber;
+@property int placeDemoNumber;
+@property int anchorTaskNumber;
+@property int anchorDemoNumber;
+
 @property NSArray<NSArray*> *gameVectorCollection;
 // example output:
 // control:anchor:normal,

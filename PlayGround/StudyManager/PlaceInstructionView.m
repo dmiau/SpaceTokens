@@ -34,13 +34,16 @@
     //-----------------------
     NSString *key = snapShotPlace.name;
     NSArray *listItems = [key componentsSeparatedByString:@":"];
-    NSString *direction = [ listItems[1]  lowercaseStringWithLocale:nil]; // the second one is the direciton
+//    NSString *direction = [ listItems[1]  lowercaseStringWithLocale:nil]; // the second one is the direciton
+//    
+//    NSDictionary *angleDictionary = @{@"east": @0, @"northeast": @45,
+//                                      @"north": @90, @"northwest": @135,
+//                                      @"west": @180, @"southwest": @225,
+//                                      @"south": @270, @"southeast": @315};
+//    double angle = [angleDictionary[direction] doubleValue];
     
-    NSDictionary *angleDictionary = @{@"east": @0, @"northeast": @45,
-                                      @"north": @90, @"northwest": @135,
-                                      @"west": @180, @"southwest": @225,
-                                      @"south": @270, @"southeast": @315};
-    double angle = [angleDictionary[direction] doubleValue];
+    
+    double angle = [[listItems lastObject] doubleValue];
     
     // Get the name from the snapshot POI
     POI* aPOI;
@@ -99,6 +102,18 @@
     baseLayer.transform = CATransform3DMakeTranslation(375/2, 667/2, 0);
     
     [[self layer] addSublayer:baseLayer];
+    
+    
+    //--------------------
+    // Modify the instruction background if it is a demo
+    //--------------------
+    if ([snapShotPlace.name rangeOfString:@"demo"].location == NSNotFound) {
+        // Real task
+        [self.demoBanner setHidden:YES];
+    } else {
+        // Demo
+        [self.demoBanner setHidden:NO];
+    }
 }
 
 

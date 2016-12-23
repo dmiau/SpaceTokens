@@ -213,8 +213,8 @@ using namespace std;
         anchorSnapshot.name =
         [NSString stringWithFormat:@"ANCHOR:%@:%d", self.dataSetID, i];
         
-        anchorSnapshot.controlInstructions = @"Which location is closer to the cafe? Hotel or museum?";
-        anchorSnapshot.spaceTokenInstructions = @"Which location is closer to the cafe? Hotel or museum?";
+        anchorSnapshot.controlInstructions = @"Which location is closer to the cafe? Hotel or museum?\nTap the museum and hotel tokens, one at a time, to investigate.";
+        anchorSnapshot.spaceTokenInstructions = @"Which location is closer to the cafe? Hotel or museum?\nPress the cafe as an anchor, and tap the museum and the hotel tokens to investigate.";
         
         anchorSnapshot.instructions = @"Which location is closer to the cafe? Hotel or museum?";
         

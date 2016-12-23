@@ -30,7 +30,7 @@ typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 @property Snapshot *activeSnapshot;
 
 // Initialization
-+ (id)sharedManager; // Singleton method
++ (GameManager*)sharedManager; // Singleton method
 
 // Game execution
 - (void)runSnapshotIndex:(int)index;

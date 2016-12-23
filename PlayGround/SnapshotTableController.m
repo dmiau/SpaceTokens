@@ -14,6 +14,7 @@
 #import "MyFileManager.h"
 #import "SnapshotDetailViewController.h"
 #import "TaskGenerator.h"
+#import "GameManager.h"
 
 @implementation SnapshotTableController
 
@@ -273,14 +274,14 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
 //----------------
 // Reorder the cell
 //----------------
-- (IBAction)editAction:(UIButton *)button {
+- (IBAction)editAction:(UIBarButtonItem*) button {
     
-    if ([button.titleLabel.text isEqualToString:@"Edit"]){
+    if ([button.title isEqualToString:@"Edit"]){
         [self.myTableView setEditing:YES animated:YES];
-        [button setTitle:@"Done" forState:UIControlStateNormal];
+        [button setTitle:@"Done"];
     }else{
         [self.myTableView setEditing:NO animated:YES];
-        [button setTitle:@"Edit" forState:UIControlStateNormal];
+        [button setTitle:@"Edit"];
     }
 }
 
@@ -326,6 +327,14 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
 }
 
 #pragma mark --Save/Reload--
+- (IBAction)studyAction:(UISwitch*)sender {
+    if (sender.isEnabled){
+        [GameManager sharedManager].gameManagerStatus = STUDY;
+    }else{
+        [GameManager sharedManager].gameManagerStatus = OFF;
+    }
+}
+
 - (IBAction)saveAction:(id)sender {
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);

@@ -19,6 +19,7 @@
 - (void)showInstruction;
 
 @property (weak, nonatomic) IBOutlet UITextView *instructionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *demoBanner;
 
 - (IBAction)okTapped:(id)sender;
 

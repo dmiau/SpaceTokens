@@ -27,6 +27,18 @@
     // Populate the instructions
     //-----------------------
     self.instructionTextField.text = snapShotAnchor.instructions;
+    
+    //--------------------
+    // Modify the instruction background if it is a demo
+    //--------------------
+    if ([snapShotAnchor.name rangeOfString:@"demo"].location == NSNotFound) {
+        // Real task
+        [self.demoBanner setHidden:YES];
+    } else {
+        // Demo
+        [self.demoBanner setHidden:NO];
+    }
+    
 }
 
 - (void)showInstruction{

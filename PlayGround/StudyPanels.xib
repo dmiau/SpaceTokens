@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,13 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EDN-bh-F1t">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="temp instructions" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-Ia-bMW">
+                    <rect key="frame" x="10" y="10" width="355" height="105"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EDN-bh-F1t">
                     <rect key="frame" x="10" y="84" width="121" height="29"/>
                     <segments>
                         <segment title="First"/>
@@ -48,16 +54,6 @@
                         <action selector="nextButtonAction:" destination="c9T-ZK-FkO" eventType="touchUpInside" id="6Wb-V4-a70"/>
                     </connections>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="temp instructions" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-Ia-bMW">
-                    <rect key="frame" x="10" y="10" width="355" height="65"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="65" id="OIq-6n-gfk"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="Qmo-kv-HaI"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3Z-I0-OQ1">
                     <rect key="frame" x="276" y="110" width="32" height="30"/>
                     <state key="normal" title="Stop"/>
@@ -68,19 +64,20 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="5rs-Ia-bMW" firstAttribute="leading" secondItem="c9T-ZK-FkO" secondAttribute="leading" constant="10" id="37x-47-8kG"/>
-                <constraint firstItem="rud-iR-OF9" firstAttribute="leading" secondItem="EDN-bh-F1t" secondAttribute="trailing" constant="25" id="7TJ-Mu-UQz"/>
+                <constraint firstAttribute="bottom" secondItem="rud-iR-OF9" secondAttribute="bottom" constant="35" id="7Oa-9V-yKG"/>
+                <constraint firstItem="EDN-bh-F1t" firstAttribute="leading" secondItem="c9T-ZK-FkO" secondAttribute="leading" constant="10" id="9Wu-Es-9lN"/>
+                <constraint firstItem="wQ8-oe-gXZ" firstAttribute="top" secondItem="5rs-Ia-bMW" secondAttribute="bottom" constant="4" id="KvP-2F-rUk"/>
                 <constraint firstItem="3Ml-uK-iJy" firstAttribute="leading" secondItem="x3Z-I0-OQ1" secondAttribute="trailing" constant="15" id="MWR-7L-7cP"/>
                 <constraint firstAttribute="bottom" secondItem="x3Z-I0-OQ1" secondAttribute="bottom" constant="10" id="Nrd-vs-Q53"/>
+                <constraint firstItem="5rs-Ia-bMW" firstAttribute="leading" secondItem="c9T-ZK-FkO" secondAttribute="leading" constant="10" id="ONY-YU-Rww"/>
+                <constraint firstItem="wQ8-oe-gXZ" firstAttribute="top" secondItem="EDN-bh-F1t" secondAttribute="bottom" constant="7" id="UgW-8O-Bn9"/>
                 <constraint firstAttribute="trailing" secondItem="3Ml-uK-iJy" secondAttribute="trailing" constant="10" id="buc-S6-APO"/>
-                <constraint firstItem="EDN-bh-F1t" firstAttribute="leading" secondItem="c9T-ZK-FkO" secondAttribute="leading" constant="10" id="c4G-we-kQt"/>
                 <constraint firstItem="wQ8-oe-gXZ" firstAttribute="leading" secondItem="c9T-ZK-FkO" secondAttribute="leading" constant="10" id="fQh-ro-1P5"/>
-                <constraint firstAttribute="trailing" secondItem="5rs-Ia-bMW" secondAttribute="trailing" constant="10" id="kNZ-VO-WoN"/>
+                <constraint firstItem="5rs-Ia-bMW" firstAttribute="top" secondItem="c9T-ZK-FkO" secondAttribute="top" constant="10" id="ghY-tx-DyL"/>
                 <constraint firstAttribute="bottom" secondItem="wQ8-oe-gXZ" secondAttribute="bottom" constant="10" id="p0A-x0-UAP"/>
                 <constraint firstAttribute="bottom" secondItem="3Ml-uK-iJy" secondAttribute="bottom" constant="10" id="p9J-z0-uVJ"/>
-                <constraint firstItem="rud-iR-OF9" firstAttribute="top" secondItem="5rs-Ia-bMW" secondAttribute="bottom" constant="10" id="ptw-cB-phn"/>
-                <constraint firstItem="EDN-bh-F1t" firstAttribute="top" secondItem="5rs-Ia-bMW" secondAttribute="bottom" constant="10" id="rBF-ik-jNG"/>
-                <constraint firstItem="5rs-Ia-bMW" firstAttribute="top" secondItem="c9T-ZK-FkO" secondAttribute="top" constant="10" id="xnw-Oh-ReF"/>
+                <constraint firstAttribute="trailing" secondItem="5rs-Ia-bMW" secondAttribute="trailing" constant="10" id="rab-ms-Qo4"/>
+                <constraint firstItem="rud-iR-OF9" firstAttribute="leading" secondItem="EDN-bh-F1t" secondAttribute="trailing" constant="25" id="uYO-29-6Rw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -90,7 +87,7 @@
                 <outlet property="segmentControlOutlet" destination="EDN-bh-F1t" id="y1Y-7m-rQ7"/>
                 <outlet property="timeOutlet" destination="wQ8-oe-gXZ" id="yvd-1W-5Jm"/>
             </connections>
-            <point key="canvasLocation" x="220" y="100"/>
+            <point key="canvasLocation" x="219.5" y="100"/>
         </view>
     </objects>
 </document>

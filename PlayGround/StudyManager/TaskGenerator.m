@@ -30,7 +30,16 @@
 }
 
 #pragma mark --Task Generation--
-
+- (id)init{
+    self = [super init];
+    if (self){
+        self.placeTaskNumber = 8;
+        self.placeDemoNumber = 3;
+        self.anchorTaskNumber = 10;
+        self.anchorDemoNumber = 3;
+    }
+    return self;
+}
 
 - (void)generateTaskFiles:(int)fileCount{
     
@@ -60,10 +69,14 @@
     // Generate a snapshot database for each game vector
     //--------------------
     int i = 0;
+    NSMutableArray *linesArray = [[NSMutableArray alloc] init];
     for (NSArray *aVector in self.gameVectorCollection){
         snapshotDatabase.snapshotArray =
         [self generateSnapshotArrayFromGameVector:aVector];
 
+        // Save the key to a line for debug purpose
+        [linesArray addObject:[self snapshotArrayToTaskKeyString:snapshotDatabase.snapshotArray]];
+        
         // Save the generated snapshot into a new file
         MyFileManager *myFileManager = [MyFileManager sharedManager];
         NSString *dirPath = [myFileManager currentFullDirectoryPath];
@@ -73,8 +86,28 @@
         i++;
     }
 
+    //--------------------
+    // Save debug info
+    //--------------------
+    NSString *fileString = [linesArray componentsJoinedByString:@"\n\n"];
+    // Save the generated snapshot into a new file
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"gameVectorCollectionFull.txt"];
+    
+    BOOL txtSuccessFlag = [fileString writeToFile:fileFullPath atomically:YES encoding:NSUTF8StringEncoding error:nil]? YES: NO;
+    
+    
     // Restore the original snapshotArray
     snapshotDatabase.snapshotArray = cachedSnapshotArray;
+}
+
+- (NSString*)snapshotArrayToTaskKeyString:(NSArray*) snapshotArray{
+    NSMutableArray *taskKeyArray = [[NSMutableArray alloc] init];
+    for (Snapshot *aSnapshot in snapshotArray){
+        [taskKeyArray addObject: aSnapshot.name];
+    }
+    return [taskKeyArray componentsJoinedByString:@", "];
 }
 
 //------------------------------
@@ -98,17 +131,6 @@
         NSString *taskAndDataID = [NSString stringWithFormat:
                                    @"%@:%@", components[1], components[2]];
         
-        // Get a list of tasks associated with a given category
-        NSMutableArray *taskIDArray = [taskByCategory[taskAndDataID] mutableCopy];
-        
-        //------------------
-        // Shuffle the tasks
-        //------------------
-        [taskIDArray shuffle];
-        
-        //------------------
-        // Prepare an array of snapshot
-        //------------------
         Condition condition;
         NSString *techniqueString;
         if ([technique isEqualToString:@"control"]){
@@ -120,7 +142,43 @@
             condition = EXPERIMENT;
             techniqueString = @"spacetoken";
         }
+        
+        //------------------
+        // Add demo tasks before each technique
+        //------------------
+        // Get a list of demos associated with a given category
+        NSString *tempDemoKey = [NSString stringWithFormat:@"%@:demo", components[1]];
+        NSMutableArray *demoIDArray = [taskByCategory[tempDemoKey] mutableCopy];
+        [demoIDArray shuffle];
+        
+        
+        //------------------
+        // Prepare an array of snapshot
+        //------------------
         NSMutableArray *tempSnapshotArray = [[NSMutableArray alloc] init];
+        for (NSString *taskID in demoIDArray){
+            Snapshot *aSnapshot = [self.gameSnapshotDictionary[taskID] copy];
+            aSnapshot.condition = condition;
+            aSnapshot.name =
+            [NSString stringWithFormat:@"%@:%@", techniqueString, taskID];
+            [tempSnapshotArray addObject:aSnapshot];
+        }
+        
+        // Put the task into the array
+        [snapshotArray addObjectsFromArray:tempSnapshotArray];
+        
+        
+        //------------------
+        // Shuffle the tasks
+        //------------------
+        // Get a list of tasks associated with a given category
+        NSMutableArray *taskIDArray = [taskByCategory[taskAndDataID] mutableCopy];
+        [taskIDArray shuffle];
+        
+        //------------------
+        // Prepare an array of snapshot
+        //------------------
+        [tempSnapshotArray removeAllObjects];
         for (NSString *taskID in taskIDArray){
             Snapshot *aSnapshot = [self.gameSnapshotDictionary[taskID] copy];
             aSnapshot.condition = condition;
@@ -136,6 +194,7 @@
     return snapshotArray;
 }
 
+
 //---------------------
 // Generate a task dictionary
 //---------------------
@@ -147,13 +206,27 @@
     //-------------------
     PlaceTaskGenerator *placeTaskGenerator = [[PlaceTaskGenerator alloc] init];
     placeTaskGenerator.dataSetID = @"normal";
-    NSMutableDictionary *placeTaskDictionary = [placeTaskGenerator generateSnapshotDictionary];
-    [tempSnapshotDictionary addEntriesFromDictionary:placeTaskDictionary];
+    [tempSnapshotDictionary addEntriesFromDictionary:
+     [placeTaskGenerator generateSnapshotDictionary]];
     
     
     placeTaskGenerator.dataSetID = @"mutant";
-    placeTaskDictionary = [placeTaskGenerator generateSnapshotDictionary];
-    [tempSnapshotDictionary addEntriesFromDictionary:placeTaskDictionary];
+    [tempSnapshotDictionary addEntriesFromDictionary:
+     [placeTaskGenerator generateSnapshotDictionary]];
+    
+    placeTaskGenerator.dataSetID = @"demo";
+    placeTaskGenerator.randomSeed = 200;
+    NSMutableDictionary *placeTaskDictionary =
+    [placeTaskGenerator generateSnapshotDictionary];
+    
+    // shuffle and select the appropriate number for demo
+    NSMutableArray *demoKeys = [[placeTaskDictionary allKeys] mutableCopy];
+    [demoKeys shuffle];
+    NSMutableDictionary *demoPlaceTaskDictionary = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < self.placeDemoNumber; i++){
+        demoPlaceTaskDictionary[demoKeys[i]] = placeTaskDictionary[demoKeys[i]];
+    }
+    [tempSnapshotDictionary addEntriesFromDictionary:demoPlaceTaskDictionary];
     
     //-------------------
     // Generate tasks for ANCHOR
@@ -162,15 +235,26 @@
     AnchorTaskGenerator *anchorTaskGenerator = [[AnchorTaskGenerator alloc] init];
     anchorTaskGenerator.dataSetID = @"normal";
     anchorTaskGenerator.randomSeed = 127;
-    NSMutableDictionary *anchorTaskDictionary =
-    [anchorTaskGenerator generateSnapshotDictionary];
-    [tempSnapshotDictionary addEntriesFromDictionary:anchorTaskDictionary];
+    [tempSnapshotDictionary addEntriesFromDictionary:[anchorTaskGenerator generateSnapshotDictionary]];
     
     anchorTaskGenerator.dataSetID = @"mutant";
     anchorTaskGenerator.randomSeed = 100;
-    anchorTaskDictionary =
+    [tempSnapshotDictionary addEntriesFromDictionary:[anchorTaskGenerator generateSnapshotDictionary]];
+    
+    
+    anchorTaskGenerator.dataSetID = @"demo";
+    anchorTaskGenerator.randomSeed = 200;
+    NSMutableDictionary *anchorTaskDictionary =
     [anchorTaskGenerator generateSnapshotDictionary];
-    [tempSnapshotDictionary addEntriesFromDictionary:anchorTaskDictionary];
+    
+    // shuffle and select the appropriate number for demo
+    demoKeys = [[anchorTaskDictionary allKeys] mutableCopy];
+    [demoKeys shuffle];
+    NSMutableDictionary *demoAnchorTaskDictionary = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < self.anchorDemoNumber; i++){
+        demoAnchorTaskDictionary[demoKeys[i]] = anchorTaskDictionary[demoKeys[i]];
+    }
+    [tempSnapshotDictionary addEntriesFromDictionary:demoAnchorTaskDictionary];
     
     //-------------------
     // Cache the generated dictionary
@@ -262,8 +346,8 @@
     // Populate some internal structures
     NSArray *allKeys = [self.gameSnapshotDictionary allKeys];
     
-    NSArray *categories = @[@"anchor:normal", @"anchor:mutant",
-                            @"place:normal", @"place:mutant"];
+    NSArray *categories = @[@"anchor:normal", @"anchor:mutant", @"anchor:demo",
+                            @"place:normal", @"place:mutant", @"place:demo"];
     
     for (NSString *category in categories){
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", category];
@@ -298,6 +382,8 @@
 //}
 
 -(BOOL)saveIntermediateFiles{
+    BOOL successFlag = NO;
+    
     // Save the generated snapshot into a new file
     MyFileManager *myFileManager = [MyFileManager sharedManager];
     NSString *dirPath = [myFileManager currentFullDirectoryPath];
@@ -307,11 +393,22 @@
     
     if ([data writeToFile:fileFullPath atomically:YES]){
         NSLog(@"%@ saved successfully!", fileFullPath);
-        return YES;
+        successFlag = YES;
     }else{
         NSLog(@"Failed to save %@", fileFullPath);
-        return NO;
+        successFlag = NO;
     }
+    
+    // Save gameVector collection to a text file for reviewing
+    NSMutableArray *lines = [[NSMutableArray alloc] init];
+    for (NSArray *gameVector in self.gameVectorCollection){
+        [lines addObject: [gameVector componentsJoinedByString:@", "]];
+    }
+    
+    NSString *fileString = [lines componentsJoinedByString:@"\n\n"];
+    fileFullPath = [dirPath stringByAppendingPathComponent:@"gameVectorCollectionCompact.txt"];
+    BOOL txtSuccessFlag = [fileString writeToFile:fileFullPath atomically:YES encoding:NSUTF8StringEncoding error:nil]? YES: NO;
+    return txtSuccessFlag && successFlag;
 }
 
 -(BOOL)loadPregeneratedFiles{

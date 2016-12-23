@@ -69,6 +69,10 @@
         
         double degree = [angleDictionary[aKey] doubleValue];
         
+        // Add a random variation to the angle
+        NSUInteger noise = arc4random_uniform(11);
+        degree = degree + (double)noise - 5;
+        
         // Create a snapshot
         SnapshotPlace *placeSnapshot = [[SnapshotPlace alloc] init];
         
@@ -86,8 +90,8 @@
         [placeSnapshot.targetedPOIs addObject:target];
         
         // Generate the ID and instructions
-        placeSnapshot.name = [NSString stringWithFormat:@"PLACE:%@:%@",
-                              self.dataSetID, aKey];
+        placeSnapshot.name = [NSString stringWithFormat:@"PLACE:%@:%@:%.0f",
+                              self.dataSetID, aKey, degree];
         
         NSString * commonMessage =
         [NSString stringWithFormat:@"Inspect the area %@ of the station.", aKey];
