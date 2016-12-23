@@ -33,7 +33,6 @@
 		9A234B1F1D8A1C6D00F3EE21 /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A234B201D8A1C6D00F3EE21 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9A234B211D8A1C6D00F3EE21 /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
-		9A234B221D8A1C6D00F3EE21 /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
 		9A234B231D8A1C6D00F3EE21 /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
 		9A234B251D8A1C6D00F3EE21 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9A234B261D8A1C6D00F3EE21 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
@@ -63,7 +62,6 @@
 		9A234B3F1D8A1C6D00F3EE21 /* SnapshotDatabase+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */; };
 		9A234B411D8A1C6D00F3EE21 /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9A234B421D8A1C6D00F3EE21 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
-		9A234B431D8A1C6D00F3EE21 /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */; };
 		9A234B441D8A1C6D00F3EE21 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A234B451D8A1C6D00F3EE21 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9A234B461D8A1C6D00F3EE21 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
@@ -82,14 +80,13 @@
 		9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
 		9A234B541D8A1C6D00F3EE21 /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A234B551D8A1C6D00F3EE21 /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
-		9A234B561D8A1C6D00F3EE21 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
 		9A234B571D8A1C6D00F3EE21 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9A234B581D8A1C6D00F3EE21 /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9A234B591D8A1C6D00F3EE21 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
 		9A234B5A1D8A1C6D00F3EE21 /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9A234B5C1D8A1C6D00F3EE21 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9A234B5D1D8A1C6D00F3EE21 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
-		9A234B601D8A1C6D00F3EE21 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
+		9A234B601D8A1C6D00F3EE21 /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
 		9A234B611D8A1C6D00F3EE21 /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
 		9A234B621D8A1C6D00F3EE21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
 		9A234B631D8A1C6D00F3EE21 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
@@ -112,8 +109,6 @@
 		9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
 		9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
 		9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
-		9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
-		9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
 		9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
@@ -296,7 +291,6 @@
 		9AE13B581DF0D148008612DA /* TokenCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3BDD81DE290B100334EF9 /* TokenCollection.m */; };
 		9AE13B591DF0D148008612DA /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9AE13B5A1DF0D148008612DA /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
-		9AE13B5B1DF0D148008612DA /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
 		9AE13B5C1DF0D148008612DA /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
 		9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
@@ -334,7 +328,6 @@
 		9AE13B7F1DF0D148008612DA /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AE13B801DF0D148008612DA /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
 		9AE13B811DF0D148008612DA /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
-		9AE13B821DF0D148008612DA /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */; };
 		9AE13B831DF0D148008612DA /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9AE13B841DF0D148008612DA /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AE13B851DF0D148008612DA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
@@ -360,7 +353,6 @@
 		9AE13B9B1DF0D148008612DA /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9AE13B9C1DF0D148008612DA /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9AE13B9D1DF0D148008612DA /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
-		9AE13B9E1DF0D148008612DA /* CircleCheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */; };
 		9AE13B9F1DF0D148008612DA /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9AE13BA01DF0D148008612DA /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9AE13BA11DF0D148008612DA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
@@ -370,7 +362,7 @@
 		9AE13BA61DF0D148008612DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AE13BA71DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9AE13BA81DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
-		9AE13BAA1DF0D148008612DA /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
+		9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
 		9AE13BAB1DF0D148008612DA /* ExtraPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */; };
 		9AE13BAC1DF0D148008612DA /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
 		9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
@@ -397,13 +389,9 @@
 		9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
 		9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
-		9AF100031D57FA720063CB63 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
-		9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* StudyPanels.xib */; };
+		9AF100031D57FA720063CB63 /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
+		9AF100041D57FA720063CB63 /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
 		9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
-		9AF2D54C1D5E85C0001FCA6E /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */; };
-		9AF2D54D1D5E85C0001FCA6E /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */; };
-		9AF2D5501D5E8886001FCA6E /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
-		9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */; };
 		9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
@@ -457,8 +445,6 @@
 		9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+TouchInteractions.m"; path = "Map/CustomMKMapView+TouchInteractions.m"; sourceTree = "<group>"; };
 		9A437FB01D550C7A00F28E61 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = StudyManager/GameManager.h; sourceTree = "<group>"; };
 		9A437FB11D550C7A00F28E61 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = StudyManager/GameManager.m; sourceTree = "<group>"; };
-		9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleCheckingPanel.h; path = Views/CircleCheckingPanel.h; sourceTree = "<group>"; };
-		9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleCheckingPanel.m; path = Views/CircleCheckingPanel.m; sourceTree = "<group>"; };
 		9A43EAED1D40029D00080029 /* topPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topPanel.h; path = Views/topPanel.h; sourceTree = "<group>"; };
 		9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Gestures.h"; path = "SpaceBar/SpaceToken+Gestures.h"; sourceTree = "<group>"; };
 		9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceToken+Gestures.m"; path = "SpaceBar/SpaceToken+Gestures.m"; sourceTree = "<group>"; };
@@ -616,15 +602,11 @@
 		9AE443B11DEB5CCC006963DC /* SnapshotShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotShow.m; path = StudyManager/SnapshotShow.m; sourceTree = "<group>"; };
 		9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Record.h; path = StudyManager/Record.h; sourceTree = "<group>"; };
 		9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Record.m; path = StudyManager/Record.m; sourceTree = "<group>"; };
-		9AF100021D57FA720063CB63 /* StudyPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyPanels.xib; sourceTree = "<group>"; };
+		9AF100021D57FA720063CB63 /* TaskBasePanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskBasePanel.xib; sourceTree = "<group>"; };
 		9AF1FFFE1D57CA770063CB63 /* TaskBasePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskBasePanel.h; path = Views/TaskBasePanel.h; sourceTree = "<group>"; };
 		9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskBasePanel.m; path = Views/TaskBasePanel.m; sourceTree = "<group>"; };
 		9AF2267B1C7412890051FE30 /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Extensions.h"; path = "SpaceBar/UIButton+Extensions.h"; sourceTree = "<group>"; };
 		9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Extensions.m"; path = "SpaceBar/UIButton+Extensions.m"; sourceTree = "<group>"; };
-		9AF2D54A1D5E85C0001FCA6E /* ProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressPanel.h; path = Views/ProgressPanel.h; sourceTree = "<group>"; };
-		9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressPanel.m; path = Views/ProgressPanel.m; sourceTree = "<group>"; };
-		9AF2D54E1D5E8886001FCA6E /* CheckingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckingPanel.h; path = Views/CheckingPanel.h; sourceTree = "<group>"; };
-		9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckingPanel.m; path = Views/CheckingPanel.m; sourceTree = "<group>"; };
 		9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthoringPanel.h; path = Views/AuthoringPanel.h; sourceTree = "<group>"; };
 		9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanel.m; path = Views/AuthoringPanel.m; sourceTree = "<group>"; };
 		9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityDatabase.h; path = Map/EntityDatabase.h; sourceTree = "<group>"; };
@@ -865,14 +847,7 @@
 				9AA32CE21DEDD66900D16738 /* Authoring */,
 				9AF1FFFE1D57CA770063CB63 /* TaskBasePanel.h */,
 				9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */,
-				9AF100021D57FA720063CB63 /* StudyPanels.xib */,
-				9AF2D54A1D5E85C0001FCA6E /* ProgressPanel.h */,
-				9AF2D54B1D5E85C0001FCA6E /* ProgressPanel.m */,
-				9AF2D54E1D5E8886001FCA6E /* CheckingPanel.h */,
-				9AF2D54F1D5E8886001FCA6E /* CheckingPanel.m */,
-				9A8EC9DF1D6112CD0012C769 /* StreetViewPanel.h */,
-				9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */,
-				9A43EAED1D40029D00080029 /* topPanel.h */,
+				9AF100021D57FA720063CB63 /* TaskBasePanel.xib */,
 			);
 			name = StudyPanels;
 			sourceTree = "<group>";
@@ -1075,15 +1050,16 @@
 				9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */,
 				9A48C1361D5273EA0038FBA5 /* MainViewManager.h */,
 				9A48C1371D5273EA0038FBA5 /* MainViewManager.m */,
-				9A437FB41D5528C200F28E61 /* CircleCheckingPanel.h */,
-				9A437FB51D5528C200F28E61 /* CircleCheckingPanel.m */,
 				9A246D6D1D55589B00888A74 /* SettingsButton.h */,
 				9A246D6E1D55589B00888A74 /* SettingsButton.m */,
 				9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */,
 				9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */,
 				9A90C7671DFF337E00CDC578 /* SearchPanelView+Actions.h */,
 				9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */,
+				9A8EC9DF1D6112CD0012C769 /* StreetViewPanel.h */,
+				9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */,
 				9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */,
+				9A43EAED1D40029D00080029 /* topPanel.h */,
 			);
 			name = RootViewPanels;
 			sourceTree = "<group>";
@@ -1320,7 +1296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A234B601D8A1C6D00F3EE21 /* StudyPanels.xib in Resources */,
+				9A234B601D8A1C6D00F3EE21 /* TaskBasePanel.xib in Resources */,
 				9A234B611D8A1C6D00F3EE21 /* star-128.png in Resources */,
 				9A234B621D8A1C6D00F3EE21 /* LaunchScreen.storyboard in Resources */,
 				9A234B631D8A1C6D00F3EE21 /* heading.png in Resources */,
@@ -1335,7 +1311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AF100031D57FA720063CB63 /* StudyPanels.xib in Resources */,
+				9AF100031D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
 				9A6F56311D9BCB490037C8A1 /* ExtraPanels.xib in Resources */,
 				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
@@ -1368,7 +1344,7 @@
 				9A8D5E801DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 				9A82A0871E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
-				9AF100041D57FA720063CB63 /* StudyPanels.xib in Resources */,
+				9AF100041D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
 				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
 				9AA32CE91DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
@@ -1382,7 +1358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AE13BAA1DF0D148008612DA /* StudyPanels.xib in Resources */,
+				9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */,
 				9AE13BAB1DF0D148008612DA /* ExtraPanels.xib in Resources */,
 				9AE13BAC1DF0D148008612DA /* star-128.png in Resources */,
 				9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */,
@@ -1510,7 +1486,6 @@
 				9A234B1F1D8A1C6D00F3EE21 /* ViewController+Interactions.mm in Sources */,
 				9A234B201D8A1C6D00F3EE21 /* UIButton+Extensions.m in Sources */,
 				9A234B211D8A1C6D00F3EE21 /* SnapshotAnchorPlus.m in Sources */,
-				9A234B221D8A1C6D00F3EE21 /* CheckingPanel.m in Sources */,
 				9A234B231D8A1C6D00F3EE21 /* LocationTableController.m in Sources */,
 				9A234B251D8A1C6D00F3EE21 /* CERangeSliderKnobLayer.m in Sources */,
 				9A234B261D8A1C6D00F3EE21 /* CustomMKMapView.m in Sources */,
@@ -1540,7 +1515,6 @@
 				9A234B3F1D8A1C6D00F3EE21 /* SnapshotDatabase+Debug.m in Sources */,
 				9A234B411D8A1C6D00F3EE21 /* MyFileManager.m in Sources */,
 				9A234B421D8A1C6D00F3EE21 /* MainViewManager.m in Sources */,
-				9A234B431D8A1C6D00F3EE21 /* ProgressPanel.m in Sources */,
 				9A234B441D8A1C6D00F3EE21 /* Route.mm in Sources */,
 				9A234B451D8A1C6D00F3EE21 /* POIDetailViewController.m in Sources */,
 				9A234B461D8A1C6D00F3EE21 /* Person.m in Sources */,
@@ -1559,7 +1533,6 @@
 				9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A234B541D8A1C6D00F3EE21 /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9A234B551D8A1C6D00F3EE21 /* FileTableController.m in Sources */,
-				9A234B561D8A1C6D00F3EE21 /* CircleCheckingPanel.m in Sources */,
 				9A234B571D8A1C6D00F3EE21 /* CERangeSliderTrackLayer.m in Sources */,
 				9A234B581D8A1C6D00F3EE21 /* SnapshotChecking.m in Sources */,
 				9A234B591D8A1C6D00F3EE21 /* Constants.m in Sources */,
@@ -1585,7 +1558,6 @@
 				9AB3BDD91DE290B100334EF9 /* TokenCollection.m in Sources */,
 				9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */,
 				9AAAA1821D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
-				9AF2D5501D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
@@ -1627,7 +1599,6 @@
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9A94DD091D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */,
-				9AF2D54C1D5E85C0001FCA6E /* ProgressPanel.m in Sources */,
 				9A22D0181D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
@@ -1657,7 +1628,6 @@
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */,
-				9A437FB61D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
 				9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
@@ -1684,7 +1654,6 @@
 				9AB3BDDA1DE290B100334EF9 /* TokenCollection.m in Sources */,
 				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9AAAA1831D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
-				9AF2D5511D5E8886001FCA6E /* CheckingPanel.m in Sources */,
 				9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
 				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
@@ -1726,7 +1695,6 @@
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
 				9A94DD0A1D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */,
-				9AF2D54D1D5E85C0001FCA6E /* ProgressPanel.m in Sources */,
 				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
 				9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
@@ -1756,7 +1724,6 @@
 				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */,
-				9A437FB71D5528C200F28E61 /* CircleCheckingPanel.m in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
 				9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
@@ -1783,7 +1750,6 @@
 				9AE13B581DF0D148008612DA /* TokenCollection.m in Sources */,
 				9AE13B591DF0D148008612DA /* UIButton+Extensions.m in Sources */,
 				9AE13B5A1DF0D148008612DA /* SnapshotAnchorPlus.m in Sources */,
-				9AE13B5B1DF0D148008612DA /* CheckingPanel.m in Sources */,
 				9AE13B5C1DF0D148008612DA /* LocationTableController.m in Sources */,
 				9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */,
 				9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */,
@@ -1825,7 +1791,6 @@
 				9AE13B7F1DF0D148008612DA /* MyFileManager.m in Sources */,
 				9AE13B801DF0D148008612DA /* MainViewManager.m in Sources */,
 				9AE13B811DF0D148008612DA /* CustomMKMapView+Annotations.m in Sources */,
-				9AE13B821DF0D148008612DA /* ProgressPanel.m in Sources */,
 				9AE13B831DF0D148008612DA /* Route.mm in Sources */,
 				9AE13B841DF0D148008612DA /* POIDetailViewController.m in Sources */,
 				9AE13B851DF0D148008612DA /* Person.m in Sources */,
@@ -1855,7 +1820,6 @@
 				9AE13B9B1DF0D148008612DA /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AE13B9C1DF0D148008612DA /* FileTableController.m in Sources */,
 				9AE13B9D1DF0D148008612DA /* RecordDatabase.m in Sources */,
-				9AE13B9E1DF0D148008612DA /* CircleCheckingPanel.m in Sources */,
 				9AE13B9F1DF0D148008612DA /* CERangeSliderTrackLayer.m in Sources */,
 				9AE13BA01DF0D148008612DA /* SnapshotChecking.m in Sources */,
 				9AE13BA11DF0D148008612DA /* Constants.m in Sources */,

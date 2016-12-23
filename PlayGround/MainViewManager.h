@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "topPanel.h"
 
-typedef enum {SEARCH, DIRECTION, CIRCLECHECKING, TASKBASEPANEL,
+typedef enum {SEARCH, DIRECTION, TASKBASEPANEL,
     STREETVIEWPANEL, AUTHORINGPANEL, SHOWAUTHORINGPANEL} PanelType;
 @class ViewController;
 @class DirectionPanel;
 @class SearchPanel;
-@class CircleCheckingPanel;
 @class TaskBasePanel;
 @class StreetViewPanel;
 @class AuthoringPanel;
@@ -34,7 +33,6 @@ typedef enum {SEARCH, DIRECTION, CIRCLECHECKING, TASKBASEPANEL,
 // Pointers to all the panels
 @property DirectionPanel *directionPanel;
 @property SearchPanelView *searchPanel;
-@property CircleCheckingPanel *circleCheckingPanel;
 @property TaskBasePanel *taskBasePanel;
 @property StreetViewPanel *streetViewPanel;
 @property AuthoringPanel *authoringPanel;

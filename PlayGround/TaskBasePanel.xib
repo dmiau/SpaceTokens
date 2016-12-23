@@ -87,7 +87,7 @@
                 <outlet property="segmentControlOutlet" destination="EDN-bh-F1t" id="y1Y-7m-rQ7"/>
                 <outlet property="timeOutlet" destination="wQ8-oe-gXZ" id="yvd-1W-5Jm"/>
             </connections>
-            <point key="canvasLocation" x="219.5" y="100"/>
+            <point key="canvasLocation" x="286" y="100"/>
         </view>
     </objects>
 </document>

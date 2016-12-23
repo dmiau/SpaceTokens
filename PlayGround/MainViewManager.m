@@ -10,7 +10,6 @@
 #import "ViewController.h"
 #import "Views/DirectionPanel.h"
 
-#import "CircleCheckingPanel.h"
 #import "TaskBasePanel.h"
 #import "StreetViewPanel.h"
 #import "AuthoringPanel.h"
@@ -35,20 +34,17 @@
         self.directionPanel = [[DirectionPanel alloc] initWithFrame:
                                CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
                                                      ViewController:self.rootViewController];
-        self.circleCheckingPanel = [[CircleCheckingPanel alloc] initWithFrame:
-                                    CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
-                                                          ViewController:self.rootViewController];
         
         self.streetViewPanel = [[StreetViewPanel alloc] initWithFrame:
                               CGRectMake(0, 0, self.rootViewController.view.frame.size.width, topPanelHeight)
                                                    ViewController:self.rootViewController];
         
         //----------------------
-        // Load all the panels from xib
+        // Load the task panel
         //----------------------
         // Note this method needs to be here
         NSArray *view_array =
-        [[NSBundle mainBundle] loadNibNamed:@"StudyPanels"
+        [[NSBundle mainBundle] loadNibNamed:@"TaskBasePanel"
                                       owner:self options:nil];
         
         for (UIView *aView in view_array){
@@ -58,7 +54,9 @@
             }
         }
         
+        //----------------------
         // Load the AuhoringPanel
+        //----------------------
         self.authoringPanel = [[[NSBundle mainBundle] loadNibNamed:@"AuthoringView" owner:self options:nil] firstObject];
         
         // Load the ShowAuthoring panel
@@ -77,9 +75,6 @@
             if ([[aView restorationIdentifier] isEqualToString:@"SearchPanel"]){
                 self.searchPanel = (SearchPanelView*) aView;
             }
-//            else if([[aView restorationIdentifier] isEqualToString:@"AuthoringPanel"]){
-//                self.authoringPanel = (AuthoringPanel*) aView;
-//            }
         }
         
         // Configure the dimesion of the panel
@@ -108,9 +103,6 @@
             break;
         case DIRECTION:
             [self showDirectionPanel];
-            break;
-        case CIRCLECHECKING:
-            [self showCircleCheckingPanel];
             break;
         case TASKBASEPANEL:
             [self showTaskBasePanel];
@@ -159,12 +151,6 @@
     [self.taskBasePanel addPanel];
     self.activePanel = self.taskBasePanel;
 }
-
-- (void)showCircleCheckingPanel{
-    [self.circleCheckingPanel addPanel];
-    self.filterPanel = self.circleCheckingPanel;
-}
-
 
 - (void)showStreetViewPanel{
     [self removeActivePanel];
