@@ -82,6 +82,10 @@
     [self.directionButton removeFromSuperview];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [ViewController sharedManager].isStatusBarHidden = NO;
+}
+
 #pragma mark -- button actions --
 
 - (void)initDirectionButton{

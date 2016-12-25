@@ -15,6 +15,7 @@
 #import "GameManager.h"
 #import "SpaceBar.h"
 #import "AnchorInstructionView.h"
+#import "TokenCollection.h"
 
 @implementation SnapshotAnchorPlus
 
@@ -47,6 +48,16 @@
         [[SpaceBar sharedManager] setIsAnchorAllowed: YES];
     }
     
+    
+    // Turn on the labels
+    for (POI *aPOI in self.poisForSpaceTokens){
+        aPOI.annotation.isLableOn = YES;
+    }    
+    
+    for (POI *aPOI in self.highlightedPOIs){
+        aPOI.annotation.isLableOn = YES;
+    }
+    
     //----------------
     // Present the instruction panel
     //----------------
@@ -54,6 +65,11 @@
     
     [instructionView prepareInstruction:self];
     [instructionView showInstruction];
+}
+
+-(void)cleanup{
+    
+    [super cleanup];
 }
 
 

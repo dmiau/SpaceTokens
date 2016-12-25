@@ -92,12 +92,12 @@
     [super setTitle:title];
     
     // Set up the label
-    self.aLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-    self.aLabel.backgroundColor = [UIColor whiteColor];
+    self.aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
+    self.aLabel.backgroundColor = [UIColor clearColor];
     self.aLabel.textColor = [UIColor blackColor];
-    self.aLabel.alpha = 0.5;
+//    self.aLabel.alpha = 0.5;
     self.aLabel.text = title;
-    self.aLabel.adjustsFontSizeToFitWidth = YES;
+    self.aLabel.adjustsFontSizeToFitWidth = NO;
 }
 
 -(void)setIsLableOn:(bool)isLableOn{

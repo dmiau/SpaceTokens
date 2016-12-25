@@ -28,6 +28,7 @@
     tokenArray = [[NSMutableArray alloc] init];
     self.isTokenDraggingEnabled = YES;
     self.isStudyModeEnabled = NO;
+    self.isTokenLabelEnabled = NO;
     return self;
 }
 
@@ -58,6 +59,13 @@
     
     if (!isStudyModeEnabled){
         self.isTokenDraggingEnabled = YES;
+    }
+}
+
+-(void)setIsTokenLabelEnabled:(BOOL)isTokenLabelEnabled{
+    _isTokenLabelEnabled = isTokenLabelEnabled;
+    for (SpaceToken *aToken in tokenArray){
+        aToken.spatialEntity.annotation.isLableOn = isTokenLabelEnabled;
     }
 }
 

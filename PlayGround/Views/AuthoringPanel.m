@@ -16,6 +16,7 @@
 #import "SnapshotChecking.h"
 #import "GameManager.h"
 
+#import "SnapshotDatabase.h"
 #import "SnapshotPlace.h"
 #import "SnapshotAnchorPlus.h"
 

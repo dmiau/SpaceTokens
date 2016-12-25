@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SnapshotProtocol.h"
-#import "SnapshotDatabase.h"
-#import "RecordDatabase.h"
+
 
 FOUNDATION_EXPORT NSString *const GameSetupNotification;
 FOUNDATION_EXPORT NSString *const GameCleanupNotification;
@@ -17,17 +16,27 @@ FOUNDATION_EXPORT NSString *const GameCleanupNotification;
 typedef enum {OFF, STUDY, DEMO, AUTHORING} GameManagerStatus;
 typedef enum {CHECKING, PROGRESS, SCLAE, JUMP, ZOOMTOFIT} TaskType;
 
+// Game flow statistics to display for the player
+typedef struct {
+    int indexInCategory;
+    int countInCategory;
+} TaskInformationStruct;
+
+@class SnapshotDatabase;
+@class RecordDatabase;
+
 //-----------------
 // GameManager interface
 //-----------------
-@interface GameManager : NSObject{
-    SnapshotDatabase *snapshotDatabase;
-    RecordDatabase *recordDatabase;
-}
-
+@interface GameManager : NSObject
 @property GameManagerStatus gameManagerStatus;
 @property int gameCounter;
+
+@property SnapshotDatabase *snapshotDatabase;
+@property RecordDatabase *recordDatabase;
+
 @property Snapshot *activeSnapshot;
+@property TaskInformationStruct activeTaskInformationStruct;
 
 // Initialization
 + (GameManager*)sharedManager; // Singleton method

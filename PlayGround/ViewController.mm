@@ -37,12 +37,13 @@
 
 static ViewController *instance;
 
-+ (id)sharedManager { return instance; }
++ (ViewController*)sharedManager { return instance; }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self){
         instance = self;
+        self.isStatusBarHidden = NO;
     }
     return self;
 }
@@ -132,6 +133,11 @@ static ViewController *instance;
     self.speechEngine = [[SpeechEngine alloc] init];    
 }
 
+- (void)setIsStatusBarHidden:(BOOL)isStatusBarHidden{
+    _isStatusBarHidden = isStatusBarHidden;
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
@@ -139,10 +145,17 @@ static ViewController *instance;
     // Do a forced refresh if the tokenView is enabled
     if (self.spaceBar.isTokenCollectionViewEnabled)
         self.spaceBar.isTokenCollectionViewEnabled = YES;
+    
+    // TopPanel viewWillAppaer
+    [self.mainViewManager.activePanel viewWillAppear:NO];    
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
 
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return self.isStatusBarHidden;
 }
 
 - (void)didReceiveMemoryWarning {

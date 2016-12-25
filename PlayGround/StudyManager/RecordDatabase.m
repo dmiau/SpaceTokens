@@ -8,6 +8,7 @@
 
 #import "RecordDatabase.h"
 #import "SnapshotProtocol.h"
+#import "MyFileManager.h"
 
 @implementation RecordDatabase
 
@@ -21,7 +22,14 @@
     return sharedRecordDatabase;
 }
 
-
+-(id)init{
+    self = [super init];
+    if (self){
+        self.recordDictionary = [[NSMutableDictionary alloc] init];
+        self.name = @"unnamedRecordDB";
+    }
+    return self;
+}
 
 - (void)initWithSnapshotArray:(NSMutableArray*) snapshotArray{
     [self.recordDictionary removeAllObjects];
@@ -50,7 +58,19 @@
     return true;
 }
 
+- (bool)saveToCurrentFile{
+    // Save the generated snapshot into a new file
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:
+                              [NSString stringWithFormat:@"%@.csv", self.name]];
+    [self saveDatatoFileWithName:fileFullPath];
+    return YES;
+}
+
+
 -(bool)loadFromFile:(NSString*) fullPathFileName{
+    
     return true;
 }
 @end

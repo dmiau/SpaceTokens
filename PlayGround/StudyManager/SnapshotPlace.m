@@ -14,6 +14,7 @@
 #import "GameManager.h"
 #import "PlaceInstructionView.h"
 #import "TokenCollection.h"
+#import "TokenCollectionView.h"
 
 @implementation SnapshotPlace
 
@@ -39,8 +40,12 @@
                selector:@selector(onePointValidator)
                    name:MapUpdatedNotification
                  object:nil];
-    
-
+ 
+    //----------------
+    // Modify CollectionView inset
+    //----------------
+    TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
+    [tokenCollectionView setTopAlignmentOffset:tokenCollectionView.frame.size.height/2-30];
     
     //----------------
     // Present the instruction panel
@@ -49,6 +54,15 @@
     
     [instructionView prepareInstruction:self];
     [instructionView showInstruction];
+}
+
+- (void)cleanup{
+    //----------------
+    // Modify CollectionView inset
+    //----------------
+    TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
+    [tokenCollectionView setTopAlignmentOffset:30];
+    [super cleanup];
 }
 
 @end

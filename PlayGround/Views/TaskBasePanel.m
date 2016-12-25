@@ -103,16 +103,6 @@ static TaskBasePanel *instance;
 }
 
 - (void)addPanel{
-    
-    float panelHeight = self.rootViewController.view.frame.size.height -
-    self.rootViewController.mapView.frame.size.height;
-    // Move the map to the top
-    float mapWidth = self.rootViewController.mapView.frame.size.width;
-    float mapHeight = self.rootViewController.mapView.frame.size.height;
-//    self.rootViewController.mapView.frame = CGRectMake(0, 0, mapWidth, mapHeight);
-    
-    // Set up the frame of the panel
-    self.frame = CGRectMake(0, 0, mapWidth, panelHeight);
     [self.rootViewController.view addSubview:self];
     
     // Add the preference button
@@ -134,13 +124,29 @@ static TaskBasePanel *instance;
     self.rootViewController.mapView.frame = CGRectMake(0, panelHeight, mapWidth, mapHeight);
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [ViewController sharedManager].isStatusBarHidden = YES;
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    // UIView will be "transparent" for touch events if we return NO
+    return (point.y <  (self.frame.size.height - mapView.frame.size.height) );
+}
+
 #pragma makr --Update--
+//------------------------
+// updatePanel is triggered when the "GameSetupNotification" notification is received
+//------------------------
 - (void)updatePanel{
     // Get the gameManager
     GameManager *gameManager = [GameManager sharedManager];
     self.instructionsOutlet.text = gameManager.activeSnapshot.instructions;
-    self.counterOutlet.text = [NSString stringWithFormat:@"%d", gameManager.gameCounter];
-    
+    self.counterOutlet.text =
+    [NSString stringWithFormat:@"%d, %d/%d", gameManager.gameCounter,
+     gameManager.activeTaskInformationStruct.indexInCategory + 1,
+     gameManager.activeTaskInformationStruct.countInCategory];
     
     //-------------
     // The panel needs to be set up differently based on the type of snapshot

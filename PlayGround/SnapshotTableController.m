@@ -159,8 +159,15 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", i];
     }else{
         // Configure Cell
-        cell.textLabel.text = snapshotDatabase.snapshotArray[i].name;
+        Snapshot *aSnapshot = snapshotDatabase.snapshotArray[i];
+        cell.textLabel.text = aSnapshot.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", i];
+        
+        if (aSnapshot.record.isAnswered){
+            [cell setBackgroundColor:[UIColor greenColor]];
+        }else{
+            [cell setBackgroundColor:[UIColor whiteColor]];
+        }        
     }
     
     return cell;
@@ -170,10 +177,6 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
 #pragma mark -----Table Interaction Methods-----
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path {
     GameManager *gameManager = [GameManager sharedManager];
-    // Enable the study interface if it is not already enabled
-    if (gameManager.gameManagerStatus != STUDY){
-        gameManager.gameManagerStatus = STUDY;
-    }
     
     int row_id = [path row];
     int section_id = [path section];
@@ -187,11 +190,15 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
         NSString *dirPath = [myFileManager currentFullDirectoryPath];
         NSString *fileFullPath = [dirPath stringByAppendingPathComponent:snapshotFileArray[row_id]];
         [snapshotDatabase loadFromFile:fileFullPath];
-        
+        gameManager.snapshotDatabase = snapshotDatabase;
         expandCollectionSection = false;
         [self.myTableView reloadData];
         
     }else{
+        
+        if ([GameManager sharedManager].gameManagerStatus == OFF){
+            [GameManager sharedManager].gameManagerStatus = DEMO;
+        }
         // execute the snapshot
         [gameManager runSnapshotIndex:row_id];
         //--------------
@@ -329,6 +336,7 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
 #pragma mark --Save/Reload--
 - (IBAction)studyAction:(UISwitch*)sender {
     if (sender.isEnabled){
+        [GameManager sharedManager].snapshotDatabase = snapshotDatabase;
         [GameManager sharedManager].gameManagerStatus = STUDY;
     }else{
         [GameManager sharedManager].gameManagerStatus = OFF;

@@ -123,6 +123,18 @@
     renderer.fillColor = [[UIColor clearColor] colorWithAlphaComponent:0];
 }
 
+#pragma mark --Tools--
+-(NSString*)firstNComponentsFromCode:(int)n{
+    NSArray *components = [self.name componentsSeparatedByString:@":"];
+    NSString *key;
+    
+    if ([components count] < n){
+        key = self.name;
+    }else{
+        key = [[components  subarrayWithRange:NSMakeRange(0, n)] componentsJoinedByString:@":"];
+    }
+    return key;
+}
 
 #pragma mark --Clean up--
 - (void)cleanup{

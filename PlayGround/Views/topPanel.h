@@ -23,6 +23,8 @@
 
 -(void)addPanel;
 -(void)removePanel;
+-(void)viewWillAppear:(BOOL)animated;
+
 @end
 
 #endif /* topPanel_h */

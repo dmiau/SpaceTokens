@@ -7,17 +7,24 @@
 //
 
 #import "GameManager.h"
-
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "MainViewManager.h"
 #import "EntityDatabase.h"
 #import "TokenCollection.h"
+#import "SnapshotDatabase.h"
+#import "RecordDatabase.h"
+#import <vector>
 
+using namespace std;
 NSString *const GameSetupNotification = @"GameSetupNotification";
 NSString *const GameCleanupNotification = @"GameCleanupNotification";
 
-@implementation GameManager
+@implementation GameManager{
+
+    ViewController *rootViewController;
+    vector<TaskInformationStruct> taskInformationVector;
+}
 
 #pragma mark --Initialization--
 
@@ -26,24 +33,32 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedGameManager = [[GameManager alloc] init];
-        sharedGameManager.gameManagerStatus = OFF;
-        sharedGameManager.gameCounter = -1; // set the game counter to an invalid integer
+
     });
     return sharedGameManager;
+}
+
+- (id)init{
+    self = [super init];
+    if (self){
+        self.gameManagerStatus = OFF;
+        self.gameCounter = -1; // set the game counter to an invalid integer
+        
+        //-------------------
+        // Set the rootViewController (this part can be refactored with a singleton)
+        //-------------------
+        AppDelegate *app = [[UIApplication sharedApplication] delegate];
+        
+        UINavigationController *myNavigationController =
+        app.window.rootViewController;
+        rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
+    }
+    return self;
 }
 
 #pragma mark --Setter--
 
 - (void)setGameManagerStatus:(GameManagerStatus)gameManagerStatus{
-    
-    //-------------------
-    // Set the rootViewController (this part can be refactored with a singleton)
-    //-------------------
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
-    UINavigationController *myNavigationController =
-    app.window.rootViewController;
-    ViewController *rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
     MainViewManager *mainViewManager = rootViewController.mainViewManager;
     
     _gameManagerStatus = gameManagerStatus;
@@ -67,18 +82,16 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             break;
         case STUDY:
             // Turn on the game
-            snapshotDatabase = [SnapshotDatabase sharedManager];
-            recordDatabase = [RecordDatabase sharedManager];
-            [recordDatabase initWithSnapshotArray:snapshotDatabase.snapshotArray];
-            
             rootViewController.spaceBar.isYouAreHereEnabled = NO;
             rootViewController.spaceBar.isStudyModeEnabled = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = YES;
-            
             [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;
         case DEMO:
-            //<#statements#>
+            rootViewController.spaceBar.isYouAreHereEnabled = NO;
+            rootViewController.spaceBar.isStudyModeEnabled = YES;
+            [TokenCollection sharedManager].isStudyModeEnabled = YES;
+            [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;
         case AUTHORING:
             [mainViewManager showPanelWithType: AUTHORINGPANEL];
@@ -87,6 +100,47 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             break;
     }
 }
+
+-(void)setSnapshotDatabase:(SnapshotDatabase *)snapshotDatabase{
+    _snapshotDatabase = snapshotDatabase;
+    
+    self.recordDatabase = [RecordDatabase sharedManager];
+    [self.recordDatabase initWithSnapshotArray:_snapshotDatabase.snapshotArray];    
+    self.recordDatabase.name = [_snapshotDatabase.currentFileName stringByDeletingPathExtension];
+    
+    // Compute the statistics of the gameVector
+    taskInformationVector.clear();
+    
+    NSMutableDictionary *taskKeyDictionary = [[NSMutableDictionary alloc] init];
+    
+    NSMutableArray *taskKeyArray = [[NSMutableArray alloc] init];
+    for (Snapshot *aSnapshot in snapshotDatabase.snapshotArray){
+        // Get the first three components
+        
+        NSString *key = [aSnapshot firstNComponentsFromCode:3];
+        if (![taskKeyDictionary objectForKey:key]){
+            taskKeyDictionary[key] = [NSNumber numberWithInt:0];
+        }else{
+            taskKeyDictionary[key] = [NSNumber numberWithInt:
+                                      [taskKeyDictionary[key] intValue] + 1];
+        }
+        TaskInformationStruct taskInfoStruct;
+        taskInfoStruct.indexInCategory = [taskKeyDictionary[key] intValue];
+        taskInformationVector.push_back(taskInfoStruct);
+    }
+    
+    // Fill in count in category
+    int i = 0;
+    for (Snapshot *aSnapshot in snapshotDatabase.snapshotArray){
+        // Get the first three components
+        
+        NSString *key = [aSnapshot firstNComponentsFromCode:3];
+        taskInformationVector[i].countInCategory =
+        [taskKeyDictionary[key] intValue] + 1;
+        i++;
+    }
+}
+
 
 #pragma mark --Game Execution--
 
@@ -98,9 +152,9 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
     
     self.gameCounter = index;
     
-    Snapshot *aSnapshot = snapshotDatabase.snapshotArray[index];
+    Snapshot *aSnapshot = _snapshotDatabase.snapshotArray[index];
     self.activeSnapshot = aSnapshot;
-    
+    self.activeTaskInformationStruct = taskInformationVector[index];
     
     // Broadcast a notification about the changing map
     NSNotification *notification = [NSNotification notificationWithName:GameSetupNotification
@@ -115,7 +169,7 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
 
 - (void)runNextSnapshot{
     // Check the bound
-    if ((self.gameCounter + 1) == [snapshotDatabase.snapshotArray count]){
+    if ((self.gameCounter + 1) == [_snapshotDatabase.snapshotArray count]){
         // We have reached the end of the game, display ending message
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"End of the game!"
                                                         message:@"Please notify the study coordinator."
@@ -133,7 +187,7 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
 
 - (void)reportCompletionFromSnashot:(id<SnapshotProtocol>) snapshot{
     
-    Snapshot *aSnapshot = snapshotDatabase.snapshotArray[self.gameCounter];
+    Snapshot *aSnapshot = _snapshotDatabase.snapshotArray[self.gameCounter];
     
     
     
@@ -170,6 +224,8 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
         
+        // Save the record
+        [self.recordDatabase saveToCurrentFile];
         self.activeSnapshot = nil;
     }
 }

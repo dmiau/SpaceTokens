@@ -78,13 +78,14 @@ static SpaceBar *sharedInstance;
         // Configure the layout object
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         layout.sectionInset = UIEdgeInsetsMake
-        (30, self.mapView.frame.size.width-60, 0, 0);
+        (0, self.mapView.frame.size.width-60, 0, 0);
         
         // Initialize a collection view controller
         self.tokenCollectionView =
         [[TokenCollectionView alloc] initWithFrame:self.mapView.frame collectionViewLayout:layout];
         
         self.tokenCollectionView.tokenWidth = 60;
+        [self.tokenCollectionView setTopAlignmentOffset:30];
         
         // Add the tokenCollectionView panel
         self.isTokenCollectionViewEnabled = YES;

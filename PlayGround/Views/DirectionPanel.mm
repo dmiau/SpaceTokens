@@ -52,6 +52,10 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+}
+
 - (void)addPanel{
     [self.rootViewController.view addSubview:self];
     self.rootViewController.spaceBar.spaceBarMode = PATH;

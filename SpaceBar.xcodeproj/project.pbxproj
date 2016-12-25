@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		01538A9F2BB2A28D93FC11D0 /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
+		9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
+		9A0571391E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
+		9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */; };
@@ -76,7 +79,7 @@
 		9A234B4F1D8A1C6D00F3EE21 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
 		9A234B501D8A1C6D00F3EE21 /* ViewController+SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */; };
 		9A234B511D8A1C6D00F3EE21 /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
-		9A234B521D8A1C6D00F3EE21 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
+		9A234B521D8A1C6D00F3EE21 /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
 		9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
 		9A234B541D8A1C6D00F3EE21 /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A234B551D8A1C6D00F3EE21 /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
@@ -107,8 +110,8 @@
 		9A27222F1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
 		9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
-		9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
-		9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
+		9A437FB21D550C7A00F28E61 /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
+		9A437FB31D550C7A00F28E61 /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
 		9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
@@ -142,6 +145,9 @@
 		9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
 		9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
 		9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
+		9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
+		9A7594D01E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
+		9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
 		9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
@@ -346,7 +352,7 @@
 		9AE13B941DF0D148008612DA /* ViewController+SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA3B461D7B749300895175 /* ViewController+SpaceToken.m */; };
 		9AE13B951DF0D148008612DA /* PathToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.m */; };
 		9AE13B961DF0D148008612DA /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
-		9AE13B971DF0D148008612DA /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.m */; };
+		9AE13B971DF0D148008612DA /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
 		9AE13B981DF0D148008612DA /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
 		9AE13B991DF0D148008612DA /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2495EC1D9929CC00A92207 /* TaskGenerator.m */; };
 		9AE13B9A1DF0D148008612DA /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
@@ -410,6 +416,7 @@
 		2C7C28C2EEBD466FC9796535 /* Pods-SpaceBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.release.xcconfig"; sourceTree = "<group>"; };
 		51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpaceBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53C4608EBA85F4149B795060 /* Pods-SpaceBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.debug.xcconfig"; sourceTree = "<group>"; };
+		9A0571371E0ED82E00A09E06 /* anchorInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anchorInstructions.png; sourceTree = "<group>"; };
 		9A0E063B1D54FCB800E5722D /* ViewController+MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MapView.h"; sourceTree = "<group>"; };
 		9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+MapView.mm"; sourceTree = "<group>"; };
 		9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Route+Tools.h"; path = "Map/Route+Tools.h"; sourceTree = "<group>"; };
@@ -444,7 +451,7 @@
 		9A31C13D1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+TouchInteractions.h"; path = "Map/CustomMKMapView+TouchInteractions.h"; sourceTree = "<group>"; };
 		9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+TouchInteractions.m"; path = "Map/CustomMKMapView+TouchInteractions.m"; sourceTree = "<group>"; };
 		9A437FB01D550C7A00F28E61 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = StudyManager/GameManager.h; sourceTree = "<group>"; };
-		9A437FB11D550C7A00F28E61 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = StudyManager/GameManager.m; sourceTree = "<group>"; };
+		9A437FB11D550C7A00F28E61 /* GameManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameManager.mm; path = StudyManager/GameManager.mm; sourceTree = "<group>"; };
 		9A43EAED1D40029D00080029 /* topPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topPanel.h; path = Views/topPanel.h; sourceTree = "<group>"; };
 		9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Gestures.h"; path = "SpaceBar/SpaceToken+Gestures.h"; sourceTree = "<group>"; };
 		9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SpaceToken+Gestures.m"; path = "SpaceBar/SpaceToken+Gestures.m"; sourceTree = "<group>"; };
@@ -483,6 +490,8 @@
 		9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanelView.h; path = Views/SearchPanelView.h; sourceTree = "<group>"; };
 		9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanelView.m; path = Views/SearchPanelView.m; sourceTree = "<group>"; };
 		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9A7594CD1E0DEEC50047BC66 /* TaskGenerator+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TaskGenerator+Tools.h"; path = "StudyManager/TaskGenerator+Tools.h"; sourceTree = "<group>"; };
+		9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Tools.m"; path = "StudyManager/TaskGenerator+Tools.m"; sourceTree = "<group>"; };
 		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
 		9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteTableController.mm; sourceTree = "<group>"; };
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
@@ -700,6 +709,8 @@
 			children = (
 				9A2495EB1D9929CC00A92207 /* TaskGenerator.h */,
 				9A2495EC1D9929CC00A92207 /* TaskGenerator.m */,
+				9A7594CD1E0DEEC50047BC66 /* TaskGenerator+Tools.h */,
+				9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */,
 				9AFED2F31E0869EA007C8317 /* NSMutableArray+Tools.h */,
 				9AFED2F41E0869EA007C8317 /* NSMutableArray+Tools.m */,
 				9AE27CA11E08D04D006D4F31 /* AnchorTaskGenerator.h */,
@@ -733,6 +744,7 @@
 				9A82A0891E0B2DE600B436AC /* AnchorInstructionView.h */,
 				9A82A08A1E0B2DE600B436AC /* AnchorInstructionView.m */,
 				9A82A0851E0B2D9900B436AC /* AnchorInstructionView.xib */,
+				9A0571371E0ED82E00A09E06 /* anchorInstructions.png */,
 			);
 			name = Anchor;
 			sourceTree = "<group>";
@@ -827,7 +839,7 @@
 			isa = PBXGroup;
 			children = (
 				9A437FB01D550C7A00F28E61 /* GameManager.h */,
-				9A437FB11D550C7A00F28E61 /* GameManager.m */,
+				9A437FB11D550C7A00F28E61 /* GameManager.mm */,
 				9A437FB81D55482B00F28E61 /* StudyPanels */,
 				9A0FEE8F1DE39FBE00D4DFF1 /* Database+Records */,
 				9A0FEE8E1DE39F9600D4DFF1 /* Generator */,
@@ -1315,6 +1327,7 @@
 				9A6F56311D9BCB490037C8A1 /* ExtraPanels.xib in Resources */,
 				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
+				9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
 				9A82A0861E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9AC338241D63AA1C000272D9 /* heading.png in Resources */,
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
@@ -1343,6 +1356,7 @@
 				9AB76B771D9C5C110096C444 /* setup.png in Resources */,
 				9A8D5E801DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 				9A82A0871E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
+				9A0571391E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
 				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
 				9AF100041D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
 				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
@@ -1362,6 +1376,7 @@
 				9AE13BAB1DF0D148008612DA /* ExtraPanels.xib in Resources */,
 				9AE13BAC1DF0D148008612DA /* star-128.png in Resources */,
 				9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */,
+				9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
 				9A82A0881E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9AE13BAE1DF0D148008612DA /* heading.png in Resources */,
 				9AE13BAF1DF0D148008612DA /* setup.png in Resources */,
@@ -1529,7 +1544,7 @@
 				9A234B4F1D8A1C6D00F3EE21 /* tester.m in Sources */,
 				9A234B501D8A1C6D00F3EE21 /* ViewController+SpaceToken.m in Sources */,
 				9A234B511D8A1C6D00F3EE21 /* SnapshotTableController.m in Sources */,
-				9A234B521D8A1C6D00F3EE21 /* GameManager.m in Sources */,
+				9A234B521D8A1C6D00F3EE21 /* GameManager.mm in Sources */,
 				9A234B531D8A1C6D00F3EE21 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A234B541D8A1C6D00F3EE21 /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9A234B551D8A1C6D00F3EE21 /* FileTableController.m in Sources */,
@@ -1564,6 +1579,7 @@
 				9A90C7691DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
 				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
+				9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
 				9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
@@ -1619,7 +1635,7 @@
 				9ABA3B471D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A1985A61DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
-				9A437FB21D550C7A00F28E61 /* GameManager.m in Sources */,
+				9A437FB21D550C7A00F28E61 /* GameManager.mm in Sources */,
 				9A82A0821E09A26700B436AC /* PlaceTaskGenerator.m in Sources */,
 				9A62FB831DDF7CC500245BD6 /* ConnectionTool.mm in Sources */,
 				9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */,
@@ -1660,6 +1676,7 @@
 				9A90C76A1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
 				9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
+				9A7594D01E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
 				9A0FEE8C1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
 				9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
@@ -1715,7 +1732,7 @@
 				9ABA3B481D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A1985A71DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
-				9A437FB31D550C7A00F28E61 /* GameManager.m in Sources */,
+				9A437FB31D550C7A00F28E61 /* GameManager.mm in Sources */,
 				9A82A0831E09A26700B436AC /* PlaceTaskGenerator.m in Sources */,
 				9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */,
 				9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */,
@@ -1756,6 +1773,7 @@
 				9A90C76B1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
 				9AE13B5F1DF0D148008612DA /* SpaceToken+Gestures.m in Sources */,
 				9AE13B601DF0D148008612DA /* ViewController.mm in Sources */,
+				9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
 				9AE13B611DF0D148008612DA /* Route+Tools.mm in Sources */,
 				9AE13B621DF0D148008612DA /* AppDelegate.m in Sources */,
 				9AE13B631DF0D148008612DA /* SnapshotDetailViewController.m in Sources */,
@@ -1811,7 +1829,7 @@
 				9AE13B941DF0D148008612DA /* ViewController+SpaceToken.m in Sources */,
 				9AE13B951DF0D148008612DA /* PathToken.m in Sources */,
 				9AE13B961DF0D148008612DA /* SnapshotTableController.m in Sources */,
-				9AE13B971DF0D148008612DA /* GameManager.m in Sources */,
+				9AE13B971DF0D148008612DA /* GameManager.mm in Sources */,
 				9A82A0841E09A26700B436AC /* PlaceTaskGenerator.m in Sources */,
 				9AE13B981DF0D148008612DA /* ConnectionTool.mm in Sources */,
 				9AE13B991DF0D148008612DA /* TaskGenerator.m in Sources */,

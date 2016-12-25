@@ -96,7 +96,8 @@
         MyFileManager *myFileManager = [MyFileManager sharedManager];
         
         NSString *dirPath = [myFileManager currentFullDirectoryPath];
-        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myRecordDB.csv"];
+        NSString *fileFullPath = [dirPath stringByAppendingPathComponent:
+                [NSString stringWithFormat:@"%@.csv", recordDatabase.name]];
         
         // Test file saving capability
         [recordDatabase saveDatatoFileWithName:fileFullPath];

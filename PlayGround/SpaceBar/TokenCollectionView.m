@@ -105,6 +105,14 @@ static TokenCollectionView *sharedInstance;
             &&(point.y > 0));
 }
 
+-(void)setTopAlignmentOffset:(int)offSet{
+    UIEdgeInsets edgeInsets = self.contentInset;
+    edgeInsets.top = offSet;
+    self.contentInset = edgeInsets;
+    [self setNeedsDisplay];
+}
+
+
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

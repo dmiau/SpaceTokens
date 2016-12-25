@@ -18,4 +18,5 @@
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 
+-(void)setTopAlignmentOffset:(int)offSet;
 @end

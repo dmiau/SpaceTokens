@@ -19,6 +19,7 @@
 
 // iCloud related methods
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
+- (bool)saveToCurrentFile;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
 
 @end

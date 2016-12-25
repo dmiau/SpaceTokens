@@ -47,16 +47,6 @@
     fileArray = [[NSFileManager defaultManager]
                  contentsOfDirectoryAtPath:
                  [self.rootViewController.myFileManager currentFullDirectoryPath] error:NULL];
-    
-    //    NSMutableArray *poiFiles = [[NSMutableArray alloc] init];
-    //    [dirs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    //        NSString *filename = (NSString *)obj;
-    //        NSString *extension = [[filename pathExtension] lowercaseString];
-    //        if ([extension isEqualToString:@"data"]) {
-    //            [poiFiles addObject:filename];
-    //            NSLog(@"%@", filename);
-    //        }
-    //    }];
 }
 
 #pragma mark -----Table View Data Source Methods-----

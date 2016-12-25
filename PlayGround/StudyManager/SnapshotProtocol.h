@@ -67,6 +67,8 @@ typedef enum {CONTROL, EXPERIMENT} Condition;
 - (void)twoPointsValidator;
 
 - (void)segmentControlValidator;
+
+- (NSString*)firstNComponentsFromCode:(int)n;
 @end
 
 #endif /* SnapshotProtocol_h */

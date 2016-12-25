@@ -30,6 +30,7 @@
 @property MiniMapView *miniMapView;
 @property SpaceBar *spaceBar;
 @property GMSPanoramaView *panoView; //cache a pointer to the StreetView object
+@property BOOL isStatusBarHidden;
 
 // MARK: Constraint Engine
 @property SpeechEngine *speechEngine;
@@ -41,7 +42,7 @@
 @property RouteDatabase *routeDatabase;
 
 // Common access method
-+ (id)sharedManager;
++ (ViewController*)sharedManager;
 
 // Route related methods
 - (void)showRouteFromDatabaseWithName:(NSString*) name

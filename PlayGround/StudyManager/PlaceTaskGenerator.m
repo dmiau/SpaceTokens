@@ -55,6 +55,15 @@
     
     
     //---------------------
+    // Generate several distractor
+    //---------------------
+    
+    
+    
+    
+    
+    
+    //---------------------
     // Create a target POI (one for each snapshot)
     //---------------------
     NSDictionary *angleDictionary = @{@"east": @0, @"northeast": @45,
@@ -96,9 +105,9 @@
         NSString * commonMessage =
         [NSString stringWithFormat:@"Inspect the area %@ of the station.", aKey];
         
-        placeSnapshot.controlInstructions = [[commonMessage copy] stringByAppendingString:@"Tap the SpaceToken, and then pan the map."];
+        placeSnapshot.controlInstructions = [[commonMessage copy] stringByAppendingString:@"\nTap the SpaceToken, and then pan the map."];
         
-        placeSnapshot.spaceTokenInstructions = [[commonMessage copy] stringByAppendingString:@"Drag the SpaceToken directly."];
+        placeSnapshot.spaceTokenInstructions = [[commonMessage copy] stringByAppendingString:@"\nDrag the SpaceToken directly."];
         
         placeSnapshot.instructions = @"empty";
         

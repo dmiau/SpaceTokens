@@ -37,6 +37,7 @@
 // Operations to set the properties of all the SpaceTokens
 @property BOOL isStudyModeEnabled;
 @property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
+@property BOOL isTokenLabelEnabled;
 -(void)resetAnnotationColor;
 
 @end
