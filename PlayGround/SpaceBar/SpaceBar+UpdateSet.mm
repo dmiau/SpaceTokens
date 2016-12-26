@@ -51,7 +51,10 @@
     if (!self.isAnchorAllowed)
         return;
     
-    for (SpaceToken *aToken in self.anchorCandidateSet){
+    // Need to use a temp set to enumertate the items in self.anchorCandidateSet
+    // and then remove them from self.anchorCandidateSet
+    NSSet *tempSet = [NSSet setWithSet:self.anchorCandidateSet];
+    for (SpaceToken *aToken in tempSet){
         [self.anchorSet addObject:aToken];
         [self.draggingSet addObject:aToken];
         [self.anchorCandidateSet removeObject:aToken];
@@ -181,15 +184,15 @@
 //----------------
 - (void)addTokenToTouchingSet: (SpaceToken*) aToken
 {
+
+    if (!self.isMultipleTokenSelectionEnabled){
+        // Clear the touching set before adding new ones
+        [self clearAllTouchedTokens];
+    }
     
     if ([self.touchingSet count]==0){
         // reset the annotation
         [[TokenCollection sharedManager] resetAnnotationColor];
-    }
-    
-    if (!self.isMultipleTokenSelectionEnabled){
-        // Clear the touching set before adding new ones
-        [self clearAllTouchedTokens];
     }
     
     [self.touchingSet addObject:aToken];
