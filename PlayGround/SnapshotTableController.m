@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "SnapshotDatabase.h"
-#import "StudyManager/GameManager.h"
+#import "GameManager.h"
 #import "MyFileManager.h"
 #import "SnapshotDetailViewController.h"
 #import "TaskGenerator.h"

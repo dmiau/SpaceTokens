@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TaskBasePanel.h"
 #import "topPanel.h"
+#import "SnapshotProtocol.h"
 
 @class ViewController;
 @class SettingsButton;

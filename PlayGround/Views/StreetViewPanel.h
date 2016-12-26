@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "topPanel.h"
-#import "../StudyManager/GameManager.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 @class ViewController;

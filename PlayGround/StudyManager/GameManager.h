@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SnapshotProtocol.h"
 
-
 FOUNDATION_EXPORT NSString *const GameSetupNotification;
 FOUNDATION_EXPORT NSString *const GameCleanupNotification;
 

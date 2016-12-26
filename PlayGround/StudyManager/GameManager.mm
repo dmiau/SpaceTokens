@@ -71,8 +71,9 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             // Turn off the game
             rootViewController.spaceBar.isStudyModeEnabled = NO;
             rootViewController.spaceBar.isAnchorAllowed = YES;
+            rootViewController.spaceBar.isMultipleTokenSelectionEnabled = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = NO;
-            
+                        
             // set the EntityDatabase to use the normal entityArray
             [entityDB removeGameEntityArray];
             
