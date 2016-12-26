@@ -23,13 +23,13 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf0-nG-hsM">
-                    <rect key="frame" x="300" y="524" width="60" height="56"/>
+                    <rect key="frame" x="264" y="516" width="96" height="64"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="56" id="R7P-Ji-qlX"/>
-                        <constraint firstAttribute="width" constant="60" id="teH-VY-fwm"/>
+                        <constraint firstAttribute="height" constant="64" id="R7P-Ji-qlX"/>
+                        <constraint firstAttribute="width" constant="96" id="teH-VY-fwm"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <state key="normal" title="OK"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <state key="normal" title="start"/>
                     <connections>
                         <action selector="okTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="FQU-LQ-mXo"/>
                     </connections>
@@ -45,7 +45,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="hf0-nG-hsM" secondAttribute="bottom" constant="20" id="8wa-Bs-4AX"/>
                 <constraint firstAttribute="trailing" secondItem="R7x-dZ-ysL" secondAttribute="trailing" constant="33" id="Ytr-pc-8se"/>
-                <constraint firstItem="hf0-nG-hsM" firstAttribute="top" secondItem="R7x-dZ-ysL" secondAttribute="bottom" constant="8" id="n3e-Pa-7KB"/>
+                <constraint firstItem="hf0-nG-hsM" firstAttribute="top" secondItem="R7x-dZ-ysL" secondAttribute="bottom" id="n3e-Pa-7KB"/>
                 <constraint firstAttribute="trailing" secondItem="hf0-nG-hsM" secondAttribute="trailing" constant="16" id="qSD-WV-pRr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

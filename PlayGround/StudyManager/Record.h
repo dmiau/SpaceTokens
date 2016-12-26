@@ -10,8 +10,10 @@
 
 @interface Record : NSObject
 
-@property NSString *name;
+@property NSString *name; // store the task key
+@property int order; //store the order in the task
 @property BOOL isAnswered;
+@property BOOL isCorrect;
 
 // Capture the time
 @property NSDate *startDate;
@@ -21,7 +23,6 @@
 // Capture the answers from segment controls
 @property NSSet *correctSegmentAnswer;
 @property NSSet *userAnswer;
-@property BOOL isCorrect;
 
 - (void)start;
 - (void)end;

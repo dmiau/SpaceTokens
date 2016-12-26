@@ -150,7 +150,7 @@
 
 - (void) convertAnchorToRealToken: (SpaceToken*) token{
     // Do nothing in the study mode
-    if (self.isStudyModeEnabled)
+    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
         return;
     
     // Create a new SpaceToken based on anchor

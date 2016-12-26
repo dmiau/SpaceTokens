@@ -68,8 +68,7 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             // Clean up if there is an activeSnapshot
             [self terminateActiveSnapshot];
             
-            // Turn off the game            
-            rootViewController.spaceBar.isYouAreHereEnabled = YES;
+            // Turn off the game
             rootViewController.spaceBar.isStudyModeEnabled = NO;
             rootViewController.spaceBar.isAnchorAllowed = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = NO;
@@ -82,13 +81,11 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             break;
         case STUDY:
             // Turn on the game
-            rootViewController.spaceBar.isYouAreHereEnabled = NO;
             rootViewController.spaceBar.isStudyModeEnabled = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = YES;
             [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;
         case DEMO:
-            rootViewController.spaceBar.isYouAreHereEnabled = NO;
             rootViewController.spaceBar.isStudyModeEnabled = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = YES;
             [mainViewManager showPanelWithType: TASKBASEPANEL];

@@ -14,10 +14,10 @@
 @interface EntityDatabase : NSObject{
     NSMutableArray <SpatialEntity *> *cacheDefaultEntityArray;
     BOOL useDefaultEntityArray;
-    Person *youRHere;
 }
 @property NSString *name;
 @property NSMutableArray <SpatialEntity *> *entityArray;
+@property Person *youRHere;
 
 +(EntityDatabase*)sharedManager;
 

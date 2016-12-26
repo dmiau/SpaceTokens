@@ -11,7 +11,8 @@
 #import "ViewController.h"
 #import "SettingsButton.h"
 #import <MapKit/MapKit.h>
-
+#import "EntityDatabase.h"
+#import "Person.h"
 
 @implementation StreetViewPanel{
     SettingsButton *settingsButton;
@@ -81,7 +82,7 @@
     panorama.coordinate;
     
     // Also update the YouAreHere indicator
-    self.rootViewController.spaceBar.youAreHere.spatialEntity.latLon = panorama.coordinate;
+    [EntityDatabase sharedManager].youRHere.latLon = panorama.coordinate;
 }
 
 /*

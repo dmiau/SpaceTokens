@@ -33,7 +33,14 @@
 
 - (void)initWithSnapshotArray:(NSMutableArray*) snapshotArray{
     [self.recordDictionary removeAllObjects];
+    int i = 0;
     for (Snapshot *aSnapshot in snapshotArray){
+        
+        //---------------
+        // Fill in details of the record
+        //---------------
+        aSnapshot.record.order = i++;
+        aSnapshot.record.name = aSnapshot.name;
         self.recordDictionary[aSnapshot.name] = aSnapshot.record;
     }
 }
@@ -43,14 +50,30 @@
 // iCloud related methods
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName{
     
-    NSMutableString *writeString = [NSMutableString stringWithCapacity:0]; //don't worry about the capacity, it will expand as necessary
+    NSMutableArray *lineArray = [[NSMutableArray alloc] init];
+    //---------------------
+    // Generate one line per task
+    //---------------------
+    
+    // header
+    NSString *header = @"id, order, isAnswered, isCorrect, elapsedTime, startTime, endTime";
+    [lineArray addObject:header];
     
     for (NSString *aKey in [self.recordDictionary allKeys]) {
-        
         Record *aRecord = self.recordDictionary[aKey];
-        [writeString appendString:[NSString stringWithFormat:@"%@, %g\n"
-                                                 , aKey, aRecord.elapsedTime]]; //the \n will put a newline in
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat: @"HH:mm:ss"];
+        NSString *startDateString = [dateFormat stringFromDate:aRecord.startDate];
+        NSString *endDateString = [dateFormat stringFromDate:aRecord.endDate];
+        
+        NSString *taskLine = [NSString stringWithFormat:
+                              @"%@, %d, %d, %d, %f, %@, %@",
+                aRecord.name, aRecord.order, aRecord.isAnswered, aRecord.isCorrect,  aRecord.elapsedTime, startDateString, endDateString];
+        [lineArray addObject:taskLine];
     }
+    
+    NSString *writeString = [lineArray componentsJoinedByString:@"\n"];
     
     [writeString writeToFile:fullPathFileName atomically:NO
                     encoding:NSUTF8StringEncoding

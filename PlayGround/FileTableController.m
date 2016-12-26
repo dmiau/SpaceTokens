@@ -78,6 +78,33 @@
     return cell;
 }
 
+
+
+//-------------
+// Deleting rows
+//-------------
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //https://developer.apple.com/library/ios/documentation/userexperience/conceptual/tableview_iphone/ManageInsertDeleteRow/ManageInsertDeleteRow.html
+    
+    int section_id = [indexPath section];
+    //-----------------------
+    // Delete a snapshot file
+    //-----------------------
+    int i = [indexPath row];
+    
+    MyFileManager *myFileManager = [MyFileManager sharedManager];
+    
+    NSString *dirPath = [myFileManager currentFullDirectoryPath];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent: fileArray[i]];
+    
+    // delete a file
+    [myFileManager removeItemAtPath:fileFullPath error:nil];
+    
+    [self initFileList];
+    [self.myTableView reloadData];
+}
+
 // Reload the directory
 - (IBAction)reloadICloud:(id)sender {
     

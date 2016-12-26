@@ -17,8 +17,6 @@
 
 @implementation TaskBasePanel{
     SettingsButton *settingsButton;
-    NSDate *startDate;
-    NSTimer *updateTimer;
 }
 
 // http://stackoverflow.com/questions/4609609/use-singleton-in-interface-builder
@@ -79,13 +77,7 @@ static TaskBasePanel *instance;
         [center addObserver:self
                    selector:@selector(updatePanel)
                        name:GameSetupNotification
-                     object:nil];
-        
-        [center addObserver:self
-                   selector:@selector(stopTimerAction:)
-                       name:GameCleanupNotification
-                     object:nil];
-        
+                     object:nil];        
     }
     return self;
 }
@@ -143,10 +135,22 @@ static TaskBasePanel *instance;
     // Get the gameManager
     GameManager *gameManager = [GameManager sharedManager];
     self.instructionsOutlet.text = gameManager.activeSnapshot.instructions;
-    self.counterOutlet.text =
-    [NSString stringWithFormat:@"%d, %d/%d", gameManager.gameCounter,
-     gameManager.activeTaskInformationStruct.indexInCategory + 1,
-     gameManager.activeTaskInformationStruct.countInCategory];
+    
+    
+    //--------------
+    // Counter
+    //--------------
+    if (gameManager.gameManagerStatus == STUDY){
+        self.counterOutlet.text =
+        [NSString stringWithFormat:@"%d/%d",
+         gameManager.activeTaskInformationStruct.indexInCategory + 1,
+         gameManager.activeTaskInformationStruct.countInCategory];
+    }else{
+        self.counterOutlet.text =
+        [NSString stringWithFormat:@"%d, %d/%d", gameManager.gameCounter,
+         gameManager.activeTaskInformationStruct.indexInCategory + 1,
+         gameManager.activeTaskInformationStruct.countInCategory];
+    }
     
     //-------------
     // The panel needs to be set up differently based on the type of snapshot
@@ -168,18 +172,6 @@ static TaskBasePanel *instance;
         [self disableSegmentControl];
     }
     
-    // Start to update the timer
-    startDate = [NSDate date];
-    
-    // this function is to check wheter the map has been touched
-    float timer_interval = 0.06;
-    updateTimer = [NSTimer timerWithTimeInterval:timer_interval
-                                             target:self
-                                           selector:@selector(timerAction)
-                                           userInfo:nil
-                                            repeats:YES];
-    
-    [[NSRunLoop mainRunLoop] addTimer:updateTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)enableAndConfigureSegmentControlFromSnapshot:(Snapshot*) aSnapshot{
@@ -210,16 +202,6 @@ static TaskBasePanel *instance;
     [self.nextButtonOutlet setEnabled:NO];
 }
 
-
-- (void)timerAction{
-    double elapsedTime = fabs([startDate timeIntervalSinceNow]);
-    self.timeOutlet.text =
-    [NSString stringWithFormat:@"Elapsed time: %g", elapsedTime];
-}
-
-- (IBAction)stopTimerAction:(id)sender {
-    [updateTimer invalidate];
-}
 
 - (IBAction)segmentControlAction:(id)sender {
     // The next button will be enabled only after an answer is provided.

@@ -21,10 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *instructionsOutlet;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *timeOutlet;
-
 +(id)sharedManager;
-- (IBAction)stopTimerAction:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControlOutlet;
 - (IBAction)segmentControlAction:(id)sender;

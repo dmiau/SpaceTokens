@@ -40,14 +40,15 @@
     
     
     //------------------------
-    // Task specific set up
+    // Set up the environment according to the condition
     //------------------------
     if (self.condition == CONTROL){
         [[SpaceBar sharedManager] setIsAnchorAllowed: NO];
+        [SpaceBar sharedManager].isMultipleTokenSelectionEnabled = NO;
     }else{
         [[SpaceBar sharedManager] setIsAnchorAllowed: YES];
+        [SpaceBar sharedManager].isMultipleTokenSelectionEnabled = YES;
     }
-    
     
     // Turn on the labels
     for (POI *aPOI in self.poisForSpaceTokens){

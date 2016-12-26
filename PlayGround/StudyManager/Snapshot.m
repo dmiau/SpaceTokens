@@ -34,9 +34,6 @@
         self.targetedPOIs = [[NSMutableArray alloc] init];
         self.poisForSpaceTokens = [[NSMutableArray alloc] init];
         
-        // Initialize the multi-selection array
-//        self.segmentOptions = [];
-        
         // Initialize the record object
         self.record = [[Record alloc] init];
     }
@@ -70,7 +67,6 @@
     
     // Set up the SpaceToken correctly
     SpaceBar *spaceBar = self.rootViewController.spaceBar;
-    spaceBar.isYouAreHereEnabled = NO;
     [spaceBar removeAllSpaceTokens];
     spaceBar.isTokenCollectionViewEnabled = YES;    
     

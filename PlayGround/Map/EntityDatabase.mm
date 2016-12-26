@@ -27,7 +27,7 @@
     self.entityArray = [[NSMutableArray alloc] init];
     cacheDefaultEntityArray = [[NSMutableArray alloc] init];
     useDefaultEntityArray = YES;
-    youRHere = [[Person alloc] init];
+    self.youRHere = [[Person alloc] init];
     self.isYouAreHereEnabled = YES;
     return self;
 }
@@ -64,7 +64,7 @@
     
     // Decide if youAreHere should be added
     if (self.isYouAreHereEnabled && useDefaultEntityArray){
-        [outArray addObject:youRHere];
+        [outArray addObject:self.youRHere];
     }
         
     return outArray;

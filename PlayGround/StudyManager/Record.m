@@ -16,6 +16,8 @@
         self.elapsedTime = 0;
         self.isAnswered = NO;
         self.name = @"";
+        self.order = 0;
+        self.isCorrect = NO;
     }
     return self;
 }

@@ -37,20 +37,17 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 //--------------------------------------------------------
 // SpaceBar
 //--------------------------------------------------------
-@interface SpaceBar : NSObject <CERangeSliderDelegate>{
-    NSTimer *privateTouchingSetTimer;
-    // timer for touchingSet
-}
+@interface SpaceBar : NSObject <CERangeSliderDelegate>
 
 @property BOOL isBarToolHidden;
 @property BOOL isStudyModeEnabled;
-
 @property SpaceBarMode spaceBarMode;
 @property CGRect frame;
 @property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 @property (weak) CustomMKMapView *mapView;
 
 @property TokenCollectionView *tokenCollectionView;
+@property TokenCollection *tokenCollection;
 @property BOOL isTokenCollectionViewEnabled; // controls the visibility of the view
 
 @property CERangeSlider* sliderContainer;
@@ -61,7 +58,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // Cache the active route object
 @property Route* activeRoute;
 
-@property TokenCollection *tokenCollection;
 
 // This is a convenient set to cache the references of all the
 // POIs that are being touched.
@@ -71,18 +67,13 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 // POIs that are being dragged
 @property NSMutableSet <SpaceToken*> *draggingSet;
 
-// Some special POIs are cached in SpaceBar
-@property SpaceToken* mapCentroid;
-@property SpaceToken* youAreHere;
-
 @property BOOL isConstrainEngineON;
-@property BOOL isYouAreHereEnabled;
 @property BOOL isAutoOrderSpaceTokenEnabled;
 @property BOOL isSpaceTokenEnabled; // Wildcard gesture recognizer is used when this mode is on (so the behavior of interacting with the map will be a big different)
 @property BOOL isAnchorAllowed;
 @property NSMutableSet <SpaceToken*> *anchorCandidateSet;
 @property NSMutableSet <SpaceToken*> *anchorSet;
-
+@property BOOL isMultipleTokenSelectionEnabled;
 
 
 // Use bit field to track if delegate is set properly
@@ -93,7 +84,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 unsigned int spaceBarElevatorMoved:1;
 } delegateRespondsTo;
 
-+ (id)sharedManager;
++ (SpaceBar*)sharedManager;
 
 // Constructors
 - (id)initWithMapView: (MKMapView *) myMapView;
@@ -132,7 +123,6 @@ unsigned int spaceBarElevatorMoved:1;
 // --------------
 // Implemented in updateSet category
 // --------------
-- (void) updateSpecialPOIs;
 //- (void) orderButtonArray;
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification;
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification;

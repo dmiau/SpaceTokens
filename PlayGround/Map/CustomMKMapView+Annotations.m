@@ -32,6 +32,13 @@
     if (pinView == nil)
     {
         pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:landmarkAnnotationID];
+    }else{
+        // Need to clear the existing annotations
+        for (UIView *aView in pinView.subviews){
+            if ([aView isKindOfClass:[UILabel class]]){
+                [aView removeFromSuperview];
+            }
+        }
     }
     pinView.annotation = annotation;
     

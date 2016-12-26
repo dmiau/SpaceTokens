@@ -27,8 +27,6 @@
 //----------------
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification
 {
-//    NSLog(@"addToSetBasedOnNotification");
-    
     // handle the notification based on event name
     if (aNotification.name == AddToButtonArrayNotification){
         [self.tokenCollection addToken:aNotification.object];
@@ -63,8 +61,6 @@
 
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification
 {
-//    NSLog(@"removeFromSetBasedOnNotification");
-    
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonArrayNotification){
         [self.tokenCollection removeToken:aNotification.object];
@@ -77,10 +73,6 @@
 }
 
 #pragma mark --Order SpaceToken--
-
-- (void) updateSpecialPOIs{
-    self.mapCentroid.spatialEntity.latLon = self.mapView.centerCoordinate;
-}
 
 
 ////----------------
@@ -189,55 +181,30 @@
 //----------------
 - (void)addTokenToTouchingSet: (SpaceToken*) aToken
 {
-    if (privateTouchingSetTimer){
-        [privateTouchingSetTimer invalidate];
-        privateTouchingSetTimer = nil;
-    }
     
     if ([self.touchingSet count]==0){
         // reset the annotation
         [[TokenCollection sharedManager] resetAnnotationColor];
     }
     
+    if (!self.isMultipleTokenSelectionEnabled){
+        // Clear the touching set before adding new ones
+        [self clearAllTouchedTokens];
+    }
+    
     [self.touchingSet addObject:aToken];
-    privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
-                                                         target:self
-                                                       selector:@selector(setTimerAction)
-                                                       userInfo:nil
-                                                        repeats:NO];
 }
-
 
 - (void)removeTokenFromTouchingSet: (SpaceToken*) aToken
 {
-    
-    if ([self.touchingSet count] >1){
-        if (privateTouchingSetTimer){
-            [privateTouchingSetTimer invalidate];
-            privateTouchingSetTimer = nil;
-        }
-        
-        privateTouchingSetTimer = [NSTimer scheduledTimerWithTimeInterval:10
-                                                                        target:self
-                                                                      selector:@selector(setTimerAction)
-                                                                      userInfo:nil
-                                                                       repeats:NO];
-    }
-    
     [self.touchingSet removeObject:aToken];
 }
 
-
 - (void)clearAllTouchedTokens{
-    privateTouchingSetTimer = nil;
     for (SpaceToken* aToken in self.touchingSet){
         aToken.selected = NO;
     }
     [self.touchingSet removeAllObjects];
-}
-
-- (void) setTimerAction{
-//    [self clearAllTouchedTokens];
 }
 
 @end

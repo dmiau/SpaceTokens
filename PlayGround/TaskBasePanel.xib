@@ -19,14 +19,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3Z-I0-OQ1">
-                            <rect key="frame" x="335" y="115" width="32" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Stop"/>
-                            <connections>
-                                <action selector="stopTimerAction:" destination="c9T-ZK-FkO" eventType="touchUpInside" id="7sP-5S-Dya"/>
-                            </connections>
-                        </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="temp instructions" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-Ia-bMW">
                             <rect key="frame" x="8" y="8" width="346" height="95"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -63,13 +55,6 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQ8-oe-gXZ">
-                    <rect key="frame" x="16" y="626" width="224" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
@@ -77,7 +62,6 @@
                 <outlet property="instructionsOutlet" destination="5rs-Ia-bMW" id="EcD-uH-cx2"/>
                 <outlet property="nextButtonOutlet" destination="rud-iR-OF9" id="EgJ-hk-Kb7"/>
                 <outlet property="segmentControlOutlet" destination="EDN-bh-F1t" id="y1Y-7m-rQ7"/>
-                <outlet property="timeOutlet" destination="wQ8-oe-gXZ" id="yvd-1W-5Jm"/>
             </connections>
             <point key="canvasLocation" x="272.5" y="-123.5"/>
         </view>

@@ -243,14 +243,21 @@ using namespace std;
 
 -(NSMutableArray*)createPOIsFromCGPointArray:(vector<CGPoint>)cgPointVector{
     NSMutableArray *outArray = [[NSMutableArray alloc] init];
-    
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    NSArray *distractorNames =
+  @[@"arbor", @"omega", @"bar", @"sigma", @"delta", @"epsilon", @"gamma", @"lamda",
+    @"kappa", @"rho", @"tau"];
+    
+    if (cgPointVector.size() > [distractorNames count]){
+        [NSException raise:@"sourcCodeNeedsUpdate" format:@"distractorNames needs to be updated."];
+    }
     
     for (int i = 0; i < cgPointVector.size(); i++){
         CGPoint aPoint = cgPointVector[i];
         
         POI *aPOI = [[POI alloc] init];
-        aPOI.name = [NSString stringWithFormat:@"distractor-%d", i];
+        aPOI.name = distractorNames[i];
         aPOI.latLon = [mapView
                        convertPoint:aPoint toCoordinateFromView:mapView];
         aPOI.coordSpan = mapView.region.span;

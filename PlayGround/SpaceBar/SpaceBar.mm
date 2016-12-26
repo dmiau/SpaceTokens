@@ -29,7 +29,7 @@
 
 static SpaceBar *sharedInstance;
 
-+(id)sharedManager{return sharedInstance;}
++(SpaceBar*)sharedManager{return sharedInstance;}
 
 //----------------
 // initialization
@@ -69,6 +69,7 @@ static SpaceBar *sharedInstance;
         
         self.isBarToolHidden = YES;
         self.isStudyModeEnabled = NO;
+        self.isMultipleTokenSelectionEnabled = YES;
         
         //--------------------------------
         // Initialize a token collection view
@@ -154,8 +155,6 @@ static SpaceBar *sharedInstance;
     self.isConstrainEngineON = YES;
     
     self.smallValueOnTopOfBar = true;
-    
-    self.isYouAreHereEnabled = YES;
 
     self.isAutoOrderSpaceTokenEnabled = YES;
     

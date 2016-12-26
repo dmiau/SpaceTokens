@@ -15,7 +15,8 @@
     
     _isLableOn = NO;
     self.pointType = LANDMARK;
-    
+    // Initialize the label
+    self.aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
     return self;
 }
 
@@ -90,9 +91,6 @@
 
 -(void)setTitle:(NSString *)title{
     [super setTitle:title];
-    
-    // Set up the label
-    self.aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
     self.aLabel.backgroundColor = [UIColor clearColor];
     self.aLabel.textColor = [UIColor blackColor];
 //    self.aLabel.alpha = 0.5;
