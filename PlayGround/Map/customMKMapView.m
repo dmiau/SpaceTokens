@@ -263,4 +263,15 @@ double computeOrientationFromA2B
     // Drawing code
 }
 */
+
+- (NSString*)description{
+    NSMutableArray *lineArray = [NSMutableArray array];
+    NSString *line = [NSString stringWithFormat:@"Map center coordinate: (%f, %f)", self.region.center.latitude, self.region.center.longitude];
+    [lineArray addObject:line];
+    
+    line = [NSString stringWithFormat:@"Map span: (%f, %f)",
+            self.region.span.latitudeDelta, self.region.span.longitudeDelta];
+    [lineArray addObject:line];
+    return [lineArray componentsJoinedByString:@"\n"];
+}
 @end
