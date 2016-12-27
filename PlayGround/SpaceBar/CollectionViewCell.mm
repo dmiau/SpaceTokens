@@ -38,58 +38,21 @@
     return self;
 }
 
-
-
 - (void)configureSpaceTokenFromEntity:(SpatialEntity *)spatialEntity{
     
-    // Depending on the type of spatialEntity, instantiate a corresponding spaceToken
-    SpaceToken *aSpaceToken;
-    if ([spatialEntity isKindOfClass:[POI class]] ||
-        [spatialEntity isKindOfClass:[Person class]]){
-        aSpaceToken = [[SpaceToken alloc] init];
-    }else if ([spatialEntity isKindOfClass:[Route class]]){
-        aSpaceToken = [[PathToken alloc] init];
-    }else{
-        // error
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
-                                                        message:@"Unimplemented code path."
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
+    TokenCollection *tokenCollection = [TokenCollection sharedManager];
+    SpaceToken* aToken = [tokenCollection findSpaceTokenFromEntity:spatialEntity];
+    
+    if (!aToken){
+        aToken = [tokenCollection addTokenFromSpatialEntity:spatialEntity];
     }
     
-    [aSpaceToken configureAppearanceForType:DOCKED];
-    
-    [aSpaceToken setTitle:spatialEntity.name forState:UIControlStateNormal];
-    aSpaceToken.spatialEntity = spatialEntity;
-    spatialEntity.linkedObj = aSpaceToken; // Establish the connection
-    
-    
-    if (aSpaceToken){
-        // Add to the cell
-        
-        if (self.spaceToken){
-            [self.spaceToken removeFromSuperview];
-            self.spaceToken = nil; // destroy the current SpaceToken
-        }
-        
-        self.spaceToken = aSpaceToken;
-        [self addSubview:aSpaceToken];
-        
-        [[TokenCollection sharedManager] addToken:aSpaceToken];
-        spatialEntity.isMapAnnotationEnabled = YES;
-    }else{
-        // error
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SpaceToken Error"
-                                                        message:@"Cannot add new SpaceToken."
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
+    if (aToken != self.spaceToken){
+        [self.spaceToken removeFromSuperview];
+        self.spaceToken = aToken;
+        [self addSubview:aToken];        
     }
+    spatialEntity.isMapAnnotationEnabled = YES;
 }
 
 @end

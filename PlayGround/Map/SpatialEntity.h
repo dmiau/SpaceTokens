@@ -28,8 +28,6 @@
 @property BOOL isMapAnnotationEnabled;
 @property (weak) id linkedObj; // a POI can be linked another object,
 
-@property BOOL isHackTokenSelected;
-// a hack to cache the token selection status, since scrolling a collection view erases the token selection status
 
 // MARK: Methods
 - (id)initWithCoder:(NSCoder *)coder;

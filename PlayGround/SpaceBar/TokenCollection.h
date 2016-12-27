@@ -28,7 +28,8 @@
 - (NSArray <SpaceToken*>*)getTokenArray;
 - (void)removeToken: (SpaceToken*)aToken;
 - (void)removeAllTokens;
-
+- (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity;
+- (void)addTokensFromEntityArray:(NSArray <SpatialEntity*>*)entityArray;
 
 // Operations to set the properties of all the SpaceTokens
 @property BOOL isStudyModeEnabled;

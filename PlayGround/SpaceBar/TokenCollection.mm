@@ -10,7 +10,10 @@
 
 #import "SpatialEntity.h"
 #import "POI.h"
+#import "Route.h"
+#import "Person.h"
 #import "SpaceToken.h"
+#import "PathToken.h"
 
 @implementation TokenCollection
 
@@ -109,6 +112,31 @@
     aToken.isCustomGestureRecognizerEnabled = self.isCustomGestureRecognizerEnabled;
 }
 
+- (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity{
+    SpaceToken *aSpaceToken;
+    if ([spatialEntity isKindOfClass:[POI class]] ||
+        [spatialEntity isKindOfClass:[Person class]]){
+        aSpaceToken = [[SpaceToken alloc] init];
+    }else if ([spatialEntity isKindOfClass:[Route class]]){
+        aSpaceToken = [[PathToken alloc] init];
+    }
+    
+    [aSpaceToken configureAppearanceForType:DOCKED];
+    
+    [aSpaceToken setTitle:spatialEntity.name forState:UIControlStateNormal];
+    aSpaceToken.spatialEntity = spatialEntity;
+    spatialEntity.linkedObj = aSpaceToken; // Establish the connection
+    
+    spatialEntity.isMapAnnotationEnabled = YES;
+    [self addToken:aSpaceToken];
+    return aSpaceToken;
+}
+
+- (void)addTokensFromEntityArray:(NSArray <SpatialEntity*>*)entityArray{
+    for (SpatialEntity *spatialEntity in entityArray){
+        [self addTokenFromSpatialEntity:spatialEntity];
+    }
+}
 
 - (void)removeToken:(SpaceToken *)aToken{
     [tokenArray removeObject:aToken];

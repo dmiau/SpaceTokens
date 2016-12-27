@@ -122,7 +122,6 @@
     _spatialEntity = spatialEntity;
     [self setTitle:spatialEntity.name forState:UIControlStateNormal];
     spatialEntity.linkedObj = self;
-    [self setSelected:spatialEntity.isHackTokenSelected];
 }
 
 - (void)setSelected:(BOOL)selected{
@@ -141,7 +140,6 @@
     }
     
     super.selected = selected;
-    self.spatialEntity.isHackTokenSelected = selected;
     
     if (selected){
         self.backgroundColor = [UIColor redColor];
