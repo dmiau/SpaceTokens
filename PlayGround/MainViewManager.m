@@ -50,7 +50,8 @@
         for (UIView *aView in view_array){
             if ([[aView restorationIdentifier] isEqualToString:@"TaskBasePanel"]){
                 self.taskBasePanel = (TaskBasePanel*) aView;
-                
+                // This is necessary so iPad will get the right view size
+                [self.taskBasePanel setFrame:self.rootViewController.view.frame];
             }
         }
         

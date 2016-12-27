@@ -10,6 +10,7 @@
 #import "CollectionViewCell.h"
 #import "EntityDatabase.h"
 #import "SpatialEntity.h"
+#import "TokenCollection.h"
 
 //-------------------
 // Parameters
@@ -125,6 +126,13 @@ static TokenCollectionView *sharedInstance;
     
     [enabledEntityArray removeAllObjects];
     enabledEntityArray = [[EntityDatabase sharedManager] getEnabledEntities];
+    
+    if ([enabledEntityArray count] > 12){
+        [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = NO;
+    }else{
+        [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = YES;
+    }
+    
     return [enabledEntityArray count];
 }
 

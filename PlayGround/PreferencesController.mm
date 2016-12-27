@@ -13,6 +13,8 @@
 #import "Map/Route.h"
 #import "MainViewManager.h"
 #import <AVFoundation/AVFoundation.h>
+#import "CustomMKMapView.h"
+#import "TokenCollection.h"
 
 @implementation PreferencesController
 
@@ -83,7 +85,11 @@
         self.syncMiniMapRotationOutlet.selectedSegmentIndex = 1;
     }else{
         self.syncMiniMapRotationOutlet.selectedSegmentIndex = 0;
-    }    
+    }
+    
+    
+    // Display debug info
+    [self displayDebugInfo];
 }
 
 //------------------
@@ -175,4 +181,12 @@
     }
     
 }
+
+-(void)displayDebugInfo{
+    NSMutableArray *lineArray = [NSMutableArray array];
+    [lineArray addObject: [[CustomMKMapView sharedManager] description]];
+    [lineArray addObject: [[TokenCollection sharedManager] description]];
+    self.debugInfoOutlet.text = [lineArray componentsJoinedByString:@"\n"];
+}
+
 @end

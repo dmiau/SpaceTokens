@@ -60,7 +60,6 @@
         self.isConstraintLineOn = NO;
         self.isDraggable = YES;
         self.isStudyModeEnabled = NO;
-        self.isCustomGestureRecognizerEnabled = YES;
         
         self.circleLayer = [CAShapeLayer layer];
         self.lineLayer = [CAShapeLayer layer];
@@ -69,9 +68,12 @@
         hasReportedDraggingEvent = NO;
         self.counterPart = nil;
         self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
-        [self registerButtonEvents];
         
-        
+        //----------------
+        // Use gesture recognizer by default
+        //----------------
+        [self initializeGestureRecognizer];
+        self.isCustomGestureRecognizerEnabled = YES;
     }
     return self;
 }
@@ -165,6 +167,17 @@
                 aPerson.updateFlag = NO;
             });
         }
+    }
+}
+
+-(void)setIsCustomGestureRecognizerEnabled:(BOOL)isCustomGestureRecognizerEnabled{
+    _isCustomGestureRecognizerEnabled = isCustomGestureRecognizerEnabled;
+    if (isCustomGestureRecognizerEnabled){
+        [self removeButtonActions];
+        [self addGestureRecognizer:tapInterceptor];
+    }else{
+        [self removeGestureRecognizer:tapInterceptor];
+        [self addButtonActions];
     }
 }
 

@@ -29,6 +29,7 @@
     self.isTokenDraggingEnabled = YES;
     self.isStudyModeEnabled = NO;
     self.isTokenLabelEnabled = NO;
+    self.isCustomGestureRecognizerEnabled = YES;
     return self;
 }
 
@@ -41,6 +42,20 @@
         }
     }
     return outToken;
+}
+
+//----------------------
+// Setters
+//----------------------
+- (void)setIsCustomGestureRecognizerEnabled:(BOOL)isCustomGestureRecognizerEnabled{
+    _isCustomGestureRecognizerEnabled = isCustomGestureRecognizerEnabled;
+    
+    for (SpaceToken *aToken in tokenArray){
+        if (aToken.isCustomGestureRecognizerEnabled != isCustomGestureRecognizerEnabled)
+        {
+            aToken.isCustomGestureRecognizerEnabled = isCustomGestureRecognizerEnabled;
+        }
+    }
 }
 
 -(void)setIsTokenDraggingEnabled:(BOOL)isTokenDraggingEnabled{
@@ -83,9 +98,15 @@
 // Add and remove tokens
 //------------------
 - (void)addToken:(SpaceToken *)aToken{
+    
+    if ([tokenArray count] > 12){
+        self.isCustomGestureRecognizerEnabled = NO;
+    }
+    
     [tokenArray addObject:aToken];
     aToken.isStudyModeEnabled = self.isStudyModeEnabled;
     aToken.isDraggable = self.isTokenDraggingEnabled;
+    aToken.isCustomGestureRecognizerEnabled = self.isCustomGestureRecognizerEnabled;
 }
 
 
@@ -100,6 +121,13 @@
 - (NSArray <SpaceToken*>*)getTokenArray{
     NSArray *outArray = [NSArray arrayWithArray:tokenArray];
     return outArray;
+}
+
+-(NSString*)description{
+    NSMutableArray *lineArray = [NSMutableArray array];
+    NSString *line = [NSString stringWithFormat:@"Gesture Mode: %d", self.isCustomGestureRecognizerEnabled];
+    [lineArray addObject:line];
+    return [lineArray componentsJoinedByString:@"\n"];
 }
 
 @end

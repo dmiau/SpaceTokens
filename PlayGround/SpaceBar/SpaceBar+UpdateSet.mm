@@ -17,6 +17,7 @@
 #import "TokenCollectionView.h"
 #import "ViewController.h"
 #import "TokenCollection.h"
+#import "EntityDatabase.h"
 
 @implementation SpaceBar (UpdateSet)
 
@@ -207,6 +208,13 @@
     for (SpaceToken* aToken in self.touchingSet){
         aToken.selected = NO;
     }
+    
+    // This is necessary because some of the touched token could be invisible
+    // (thus not in touchingSet) due to the scrolled collection view.
+    for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] entityArray]){
+        anEntity.isHackTokenSelected = NO;
+    }
+    
     [self.touchingSet removeAllObjects];
 }
 

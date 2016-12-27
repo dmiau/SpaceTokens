@@ -62,7 +62,7 @@ static TaskBasePanel *instance;
         UINavigationController *myNavigationController =
         app.window.rootViewController;
         self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
-        
+                
         //-------------------
         // Set up the view
         //-------------------

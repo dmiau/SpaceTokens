@@ -29,4 +29,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *camSegmentOutlet;
 - (IBAction)camSegmentAction:(id)sender;
 
+// Debug info.
+@property (weak, nonatomic) IBOutlet UITextView *debugInfoOutlet;
+
 @end

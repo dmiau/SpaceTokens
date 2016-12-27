@@ -15,24 +15,10 @@
 
 @implementation SpaceToken (Dragging)
 
-
--(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-
-    if (!self.isCustomGestureRecognizerEnabled)
-        return;
-    
+-(void)touchMoved:(UITouch*)touch{
     // Do nothing if the button is not draggable
     if (!self.isDraggable)
         return;
-    
-    // There could be multiple touch events!
-    // Need to find the touch even associated with self
-    UITouch *touch = nil;
-    
-    for (UITouch *aTouch in touches){
-        if ([aTouch view] == self)
-            touch = aTouch;
-    }
     
     CGPoint locationInView = [touch locationInView:self];
     CGPoint previousLocationInView = [touch previousLocationInView:self];
@@ -44,9 +30,9 @@
         // Dragging toward the edge (removing gesture)
         //----------------------
         if((initialTouchLocationInView.x < self.frame.size.width * 0.5)
-            &&
-            (previousLocationInView.x < self.frame.size.width *0.8 &&
-             locationInView.x > self.frame.size.width *0.8)
+           &&
+           (previousLocationInView.x < self.frame.size.width *0.8 &&
+            locationInView.x > self.frame.size.width *0.8)
            )
         {
             if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
@@ -64,6 +50,24 @@
         // handle the dragging event if the button is draggable
         [self handleDragToScreenAction:touch];
     }
+}
+
+
+
+-(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+    if (!self.isCustomGestureRecognizerEnabled)
+        return;
+    
+    // There could be multiple touch events!
+    // Need to find the touch even associated with self
+    UITouch *touch = nil;
+    
+    for (UITouch *aTouch in touches){
+        if ([aTouch view] == self)
+            touch = aTouch;
+    }
+    [self touchMoved:touch];
 }
 
 

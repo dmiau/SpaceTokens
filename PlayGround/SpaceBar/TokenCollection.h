@@ -20,10 +20,6 @@
 }
 
 + (TokenCollection*)sharedManager;
-
-//@property NSMutableArray <SpaceToken*> *tokenArray;
-
-
 -(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity;
 
 // Common methods to add/remove tokens
@@ -38,6 +34,7 @@
 @property BOOL isStudyModeEnabled;
 @property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
 @property BOOL isTokenLabelEnabled;
+@property BOOL isCustomGestureRecognizerEnabled;
 -(void)resetAnnotationColor;
 
 @end

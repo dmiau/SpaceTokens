@@ -10,6 +10,7 @@
 
 @class Person;
 @class ConnectionTool;
+@class WildcardGestureRecognizer;
 
 typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanceType;
 
@@ -20,6 +21,7 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
     CGPoint initialTouchLocationInView;
     BOOL hasReportedDraggingEvent;
     NSTimer *anchorVisualTimer;
+    WildcardGestureRecognizer * tapInterceptor;
 }
 
 @property BOOL isCircleLayerOn;
@@ -27,8 +29,9 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 @property BOOL isConstraintLineOn;
 @property BOOL isDraggable;
 @property BOOL isStudyModeEnabled; // Certain features (e.g., creation, deletion) need to be disabled in the study mode
-@property BOOL isCustomGestureRecognizerEnabled;
 
+// Touch related properties
+@property BOOL isCustomGestureRecognizerEnabled;
 @property (weak) UITouch *touch; // to keep tracking of UITouch
 
 @property CAShapeLayer *circleLayer; // signifies the touch poing
@@ -52,13 +55,22 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 // display the anchor circle after some seconds
 - (void)showAnchorVisualIndicatorAfter:(double) second;
 
+//-------------------
+// Gesture recognition related items
+//-------------------
+
 // Custom methods for the gesture recognizer
+-(void)initializeGestureRecognizer;
+-(void)addButtonActions;
+-(void)removeButtonActions;
+
+
 -(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 -(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 -(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+-(void)touchMoved:(UITouch*)touch;
 
 // Internal methods
-- (void) registerButtonEvents;
 - (void) configureAppearanceForType: (TokenAppearanceType) type;
 @end

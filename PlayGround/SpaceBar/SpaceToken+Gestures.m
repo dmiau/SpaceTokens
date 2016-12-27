@@ -11,21 +11,17 @@
 
 @implementation SpaceToken (Gestures)
 
-- (void) registerButtonEvents{
-    
-//    [self addTarget:self
-//             action:@selector(buttonDown: forEvent:)
-//   forControlEvents:UIControlEventTouchDown];
-//
-//    [self addTarget:self
-//             action:@selector(buttonUp: forEvent:)
-//   forControlEvents:UIControlEventTouchUpInside];
-//    
-//    
-//    [self addTarget:self
-//             action:@selector(buttonDragging: forEvent:)
-//   forControlEvents:UIControlEventTouchDragInside];
-    
+//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+//{
+//    return YES;
+//}
+
+
+
+//-------------------
+// Initialize gesture recognizer
+//-------------------
+-(void)initializeGestureRecognizer{
     //-----------------
     // Initialize custom gesture recognizer
     //-----------------
@@ -35,7 +31,7 @@
     // A2: I don't want my touch to be cancelled by other gesture recognizer
     // (http://stackoverflow.com/questions/5818692/how-to-avoid-touches-cancelled-event)
     
-    WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
+    tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     
     tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
         [self customTouchesBegan:touches withEvent:event];
@@ -54,71 +50,98 @@
     };
     
     tapInterceptor.delegate = self;
-    
-    [self addGestureRecognizer:tapInterceptor];
 }
 
+//-------------------
+// Add button actions
+//-------------------
+-(void)addButtonActions{
+        [self addTarget:self
+                 action:@selector(buttonDown: forEvent:)
+       forControlEvents:UIControlEventTouchDown];
+    
+        [self addTarget:self
+                 action:@selector(buttonUp: forEvent:)
+       forControlEvents:UIControlEventTouchUpInside];
+    
+        [self addTarget:self
+                 action:@selector(buttonUp: forEvent:)
+       forControlEvents:UIControlEventTouchCancel];
+    
+        [self addTarget:self
+                 action:@selector(buttonUp: forEvent:)
+       forControlEvents:UIControlEventTouchUpOutside];
+    
+        [self addTarget:self
+                 action:@selector(buttonDragging: forEvent:)
+       forControlEvents:UIControlEventTouchDragInside];
+}
 
-//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-//{
-//    return YES;
-//}
+//-------------------
+// Remove button actions
+//-------------------
+-(void)removeButtonActions{
+    [self removeTarget:nil
+             action:NULL
+   forControlEvents:UIControlEventTouchDown];
+    
+    [self removeTarget:nil
+             action:NULL
+   forControlEvents:UIControlEventTouchUpInside];
+    
+    [self removeTarget:nil
+             action:NULL
+   forControlEvents:UIControlEventTouchCancel];
+    
+    [self removeTarget:nil
+             action:NULL
+   forControlEvents:UIControlEventTouchUpOutside];
+    
+    [self removeTarget:nil
+             action:NULL
+   forControlEvents:UIControlEventTouchDragInside];
+}
 
+#pragma mark -- UIControl methods --
 
 - (void) buttonDown:(UIButton*) sender forEvent:(UIEvent*)event {
     
-    hasReportedDraggingEvent = NO;
-    
-    if (self.selected){
-        self.selected = NO;
-        
-        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
-                                                                     object:self userInfo:nil];
-        [[ NSNotificationCenter defaultCenter] postNotification:notification];
-        self.spatialEntity.annotation.isHighlighted = NO;
-    }else{
-        self.selected = YES;
-        
-        //--------------
-        // SpaceToken is being turned on
-        //--------------
-        
-        // There could be multiple touch events!
-        // Need to find the touch even associated with self
-        UITouch *touch = nil;
-        for (UITouch *aTouch in [event allTouches]){
-            if ([aTouch view] == self)
-                touch = aTouch;
-        }
-        // Cache the initial button down location
-        initialTouchLocationInView = [touch locationInView:self.superview];
-        
-        NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
-                                                                     object:self userInfo:nil];
-        [[ NSNotificationCenter defaultCenter] postNotification:notification];
-        
-        //--------------
-        // Highlight the SpatialEntity
-        //--------------
-        self.spatialEntity.annotation.isHighlighted = YES;
+    // There could be multiple touch events!
+    // Need to find the touch even associated with self
+    UITouch *touch = nil;
+    for (UITouch *aTouch in [event allTouches]){
+        if ([aTouch view] == self)
+            touch = aTouch;
     }
-    // Forced refresh the annotation color
-    self.spatialEntity.isMapAnnotationEnabled = NO;
-    self.spatialEntity.isMapAnnotationEnabled = YES;
+    [self touchBegan:touch];
 }
 
 - (void) buttonUp:(UIButton*) sender forEvent:(UIEvent*)event {
+    // There could be multiple touch events!
+    // Need to find the touch even associated with self
+    UITouch *touch = nil;
+    for (UITouch *aTouch in [event allTouches]){
+        if ([aTouch view] == self)
+            touch = aTouch;
+    }
+    [self touchEnded];
 }
 
 - (void) buttonDragging:(UIButton*) sender forEvent:(UIEvent*)event {
-    self.isCustomGestureRecognizerEnabled = YES;
+    // There could be multiple touch events!
+    // Need to find the touch even associated with self
+    UITouch *touch = nil;
+    for (UITouch *aTouch in [event allTouches]){
+        if ([aTouch view] == self)
+            touch = aTouch;
+    }
+    [self touchMoved:touch];
 }
 
+#pragma mark -- Gesture methods --
 -(void) customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    if (!self.isCustomGestureRecognizerEnabled)
-        return;
-    
+//    [super touchesBegan:touches withEvent:event];
+
     // There could be multiple touch events!
     // Need to find the touch even associated with self
     UITouch *touch = nil;
@@ -126,6 +149,29 @@
         if ([aTouch view] == self)
             touch = aTouch;
     }
+    [self touchBegan:touch];
+}
+
+-(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self touchEnded];
+}
+
+-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self touchEnded];
+}
+
+
+#pragma mark -- Common touch methods --
+
+-(void)touchBegan:(UITouch*)touch{
+    
+    static int touchAddress = 0;
+    // Each touch should only trigger touchBegan once
+    if (touchAddress != (int)touch){
+        touchAddress = (int)touch;
+    }else{
+        return;
+    }
     
     hasReportedDraggingEvent = NO;
     
@@ -162,10 +208,8 @@
     self.spatialEntity.isMapAnnotationEnabled = YES;
 }
 
--(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    if (!self.isCustomGestureRecognizerEnabled)
-        return;
-    
+- (void)touchEnded{
+
     if (hasReportedDraggingEvent){
         //------------------------
         // The button was dragged.
@@ -178,24 +222,5 @@
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
     }
 }
-
--(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    if (!self.isCustomGestureRecognizerEnabled)
-        return;
-    if (hasReportedDraggingEvent){
-        //------------------------
-        // The button was dragged.
-        //------------------------
-        hasReportedDraggingEvent = NO;
-        [self.lineLayer removeFromSuperlayer];
-        [self removeFromSuperview];
-        NSNotification *notification = [NSNotification notificationWithName:RemoveFromDraggingSetNotification
-                                                                     object:self userInfo:nil];
-        [[ NSNotificationCenter defaultCenter] postNotification:notification];
-    }
-}
-
-
-
 
 @end
