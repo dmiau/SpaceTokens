@@ -140,8 +140,8 @@
 		9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
 		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
-		9A6F56311D9BCB490037C8A1 /* ExtraPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */; };
-		9A6F56321D9BCB490037C8A1 /* ExtraPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */; };
+		9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
+		9A6F56321D9BCB490037C8A1 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
 		9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
 		9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
@@ -369,7 +369,7 @@
 		9AE13BA71DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9AE13BA81DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
-		9AE13BAB1DF0D148008612DA /* ExtraPanels.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */; };
+		9AE13BAB1DF0D148008612DA /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9AE13BAC1DF0D148008612DA /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
 		9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
 		9AE13BAE1DF0D148008612DA /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
@@ -486,7 +486,7 @@
 		9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ConnectionTool.mm; path = SpaceBar/ConnectionTool.mm; sourceTree = "<group>"; };
 		9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Annotations.h"; sourceTree = "<group>"; };
 		9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Annotations.m"; sourceTree = "<group>"; };
-		9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraPanels.xib; sourceTree = "<group>"; };
+		9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchPanel.xib; sourceTree = "<group>"; };
 		9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanelView.h; path = Views/SearchPanelView.h; sourceTree = "<group>"; };
 		9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanelView.m; path = Views/SearchPanelView.m; sourceTree = "<group>"; };
 		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1070,7 +1070,7 @@
 				9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */,
 				9A8EC9DF1D6112CD0012C769 /* StreetViewPanel.h */,
 				9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */,
-				9A6F56301D9BCB490037C8A1 /* ExtraPanels.xib */,
+				9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */,
 				9A43EAED1D40029D00080029 /* topPanel.h */,
 			);
 			name = RootViewPanels;
@@ -1324,7 +1324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AF100031D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
-				9A6F56311D9BCB490037C8A1 /* ExtraPanels.xib in Resources */,
+				9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */,
 				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
 				9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
@@ -1350,7 +1350,7 @@
 				9AD0F4441C7CF71800AEF928 /* LaunchScreen.storyboard in Resources */,
 				9AD0F4451C7CF71800AEF928 /* Assets.xcassets in Resources */,
 				9AD0F4461C7CF71800AEF928 /* Main.storyboard in Resources */,
-				9A6F56321D9BCB490037C8A1 /* ExtraPanels.xib in Resources */,
+				9A6F56321D9BCB490037C8A1 /* SearchPanel.xib in Resources */,
 				9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */,
 				9AB76B7A1D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
 				9AB76B771D9C5C110096C444 /* setup.png in Resources */,
@@ -1373,7 +1373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */,
-				9AE13BAB1DF0D148008612DA /* ExtraPanels.xib in Resources */,
+				9AE13BAB1DF0D148008612DA /* SearchPanel.xib in Resources */,
 				9AE13BAC1DF0D148008612DA /* star-128.png in Resources */,
 				9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */,
 				9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */,

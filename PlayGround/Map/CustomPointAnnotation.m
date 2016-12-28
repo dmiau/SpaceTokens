@@ -85,8 +85,10 @@
             self.annotationImage =
             [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
     }
-    
-    
+    // remove the current annotation from the map and add it back
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    [mapView removeAnnotation:self];
+    [mapView addAnnotation: self];
 }
 
 -(void)setTitle:(NSString *)title{

@@ -13,6 +13,10 @@
 
 #import "EntityDatabase.h"
 #import "POI.h"
+@import GoogleMaps;
+@import GooglePlaces;
+#import <GoogleMaps/GoogleMaps.h>
+
 
 @implementation SearchPanelView
 
@@ -54,8 +58,6 @@
     // set up the color of the view
     [self setBackgroundColor:[UIColor colorWithRed: 0.97 green:0.97 blue:0.97
                                              alpha:1.0]];
-    
-//    [self initDirectionButton];
     [self initSearchBar];
 }
 
@@ -122,20 +124,21 @@
                          initWithSearchResultsController:_resultsViewController];
     _searchController.searchResultsUpdater = _resultsViewController;
     
-    
-    
     UIView *subView = _searchPlaceHolder;
     
     [subView addSubview:_searchController.searchBar];
     [_searchController.searchBar sizeToFit];
+    
+    _searchHandlingBlock = nil;
     
     // When UISearchController presents the results view, present it in
     // this view controller, not one further up the chain.
 //    self.rootViewController.definesPresentationContext = YES;
 }
 
-
+//-------------------------------˙
 // Handle the user's selection.
+//-------------------------------
 - (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
  didAutocompleteWithPlace:(GMSPlace *)place {
     [self.rootViewController dismissViewControllerAnimated:YES completion:nil];
@@ -151,26 +154,36 @@
     aPOI.annotation.pointType = dropped;
     aPOI.isMapAnnotationEnabled = YES;
     
-    // Get the map object
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-
-    GMSCoordinateBounds *viewport = place.viewport;
-    // Calculate a suitable region
-    MKMapPoint northEast = MKMapPointForCoordinate(viewport.northEast);
-    MKMapPoint southWest = MKMapPointForCoordinate(viewport.southWest);
-    
-    MKMapRect mapRect = MKMapRectMake(southWest.x, northEast.y, northEast.x - southWest.x, southWest.y - northEast.y);
-    
-    if (mapRect.size.width > 0 && mapRect.size.height > 0){
-        // Shift the map to show the location
-        [mapView setVisibleMapRect: mapRect
-                       edgePadding: UIEdgeInsetsMake(0, 0, 0, 0) animated:YES];
+    if (!self.searchHandlingBlock){
+        //----------------------
+        // Show the POI if the handling block is empty
+        //----------------------
+        
+        // Get the map object
+        CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+        GMSCoordinateBounds *viewport = place.viewport;
+        // Calculate a suitable region
+        MKMapPoint northEast = MKMapPointForCoordinate(viewport.northEast);
+        MKMapPoint southWest = MKMapPointForCoordinate(viewport.southWest);
+        
+        MKMapRect mapRect = MKMapRectMake(southWest.x, northEast.y, northEast.x - southWest.x, southWest.y - northEast.y);
+        
+        if (mapRect.size.width > 0 && mapRect.size.height > 0){
+            // Shift the map to show the location
+            [mapView setVisibleMapRect: mapRect
+                           edgePadding: UIEdgeInsetsMake(0, 0, 0, 0) animated:YES];
+        }else{
+            MKCoordinateRegion region =
+            MKCoordinateRegionMake(place.coordinate, MKCoordinateSpanMake(0.01, 0.01));
+            [mapView setRegion:region animated:YES];
+        }
     }else{
-        MKCoordinateRegion region =
-        MKCoordinateRegionMake(place.coordinate, MKCoordinateSpanMake(0.01, 0.01));
-        [mapView setRegion:region animated:YES];
+        //----------------------
+        // Use the handling block to handle the POI
+        //----------------------
+        self.searchHandlingBlock(aPOI);
+        self.searchHandlingBlock = nil;
     }
-
 }
 
 - (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController

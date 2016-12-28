@@ -230,6 +230,9 @@
     self.isDraggable = NO;
     [self setBackgroundColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5]];
     
+    //--------------------
+    // Token will be removed after some time delay
+    //--------------------
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // Remove from the touching set
         [[ NSNotificationCenter defaultCenter] postNotification:
@@ -238,6 +241,7 @@
         
         [self removeFromSuperview];
         self.spatialEntity.isEnabled = NO;
+        self.spatialEntity.isMapAnnotationEnabled = NO;
         
         // Remove from the button set
         [[ NSNotificationCenter defaultCenter] postNotification:

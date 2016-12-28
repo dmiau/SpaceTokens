@@ -92,8 +92,6 @@
         
         // Remove the hightlight of all SpaceTokens
         aToken.spatialEntity.annotation.isHighlighted = NO;
-        aToken.spatialEntity.isMapAnnotationEnabled = NO;
-        aToken.spatialEntity.isMapAnnotationEnabled = YES;
     }
 }
 

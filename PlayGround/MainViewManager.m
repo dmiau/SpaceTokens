@@ -69,7 +69,7 @@
         
         // Note this method needs to be here
         view_array =
-        [[NSBundle mainBundle] loadNibNamed:@"ExtraPanels"
+        [[NSBundle mainBundle] loadNibNamed:@"SearchPanel"
                                       owner:self options:nil];
         
         for (UIView *aView in view_array){

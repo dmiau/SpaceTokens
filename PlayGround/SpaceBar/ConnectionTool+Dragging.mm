@@ -14,7 +14,9 @@
 #import "Route.h"
 
 #import "CustomMKMapView.h"
-
+#import "ViewController.h"
+#import "MainViewManager.h"
+#import "SearchPanelView.h"
 
 @implementation ConnectionTool (Dragging)
 
@@ -148,9 +150,6 @@
     
     // Get the TokenCollection object
     TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    
-
-    
     for (SpaceToken *aToken in [tokenCollection getTokenArray]){
         
         // Convert buttonFrame to be in mapView
@@ -182,6 +181,36 @@
             
             break;
         }
+    }
+    
+    //------------------------
+    // Else, check if the connection tool touches the search tool
+    //------------------------
+    
+    // Get the search box
+    ViewController *rootViewController = [ViewController sharedManager];
+    MainViewManager *mainViewManager = rootViewController.mainViewManager;
+    SearchPanelView *searchPanelView = mainViewManager.searchPanel;
+    UISearchBar *searchBar = searchPanelView.searchController.searchBar;
+    
+    // Check if the token connects the search box
+    
+    // Convert buttonFrame to be in mapView
+    CGRect searchBarRectInView = [searchBar
+                                  convertRect:searchBar.frame toView:mapView];
+    if (CGRectContainsPoint(searchBarRectInView, touchPoint)){
+        
+        // Dynamically create a block
+        void (^routeCreationBlock)(POI *destinationPOI) = ^(POI *destinationPOI){
+            // Create a route
+            POI *sourcePOI = counterPart.spatialEntity;
+            [Route addRouteWithSource:sourcePOI Destination:destinationPOI];
+        };
+        searchPanelView.searchHandlingBlock = routeCreationBlock;
+        
+        // Perform some actions when the connection tool touches the search box
+        [searchBar becomeFirstResponder];        
+        [self removeFromSuperview];
     }
 }
 

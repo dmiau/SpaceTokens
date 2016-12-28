@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "topPanel.h"
-@import GoogleMaps;
-@import GooglePlaces;
-#import <GoogleMaps/GoogleMaps.h>
+
+@class POI;
+@class GMSAutocompleteResultsViewController;
 
 @interface SearchPanelView : UIView <TopPanel>
 
@@ -24,11 +24,7 @@
 
 @property GMSAutocompleteResultsViewController *resultsViewController;
 @property UISearchController *searchController;
-
-
-
-
-
+@property (nonatomic, copy) void (^searchHandlingBlock)(POI *destinationPOI);
 
 //---------------
 // Search Panel actions
