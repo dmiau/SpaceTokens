@@ -155,6 +155,15 @@
 		9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
+		9A7DB27C1E14494000226D42 /* DrawingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB27B1E14494000226D42 /* DrawingView.mm */; };
+		9A7DB27D1E14494000226D42 /* DrawingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB27B1E14494000226D42 /* DrawingView.mm */; };
+		9A7DB27E1E14494000226D42 /* DrawingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB27B1E14494000226D42 /* DrawingView.mm */; };
+		9A7DB2811E145C3B00226D42 /* UIBezierPath+Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */; };
+		9A7DB2821E145C3B00226D42 /* UIBezierPath+Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */; };
+		9A7DB2831E145C3B00226D42 /* UIBezierPath+Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */; };
+		9A7DB2861E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */; };
+		9A7DB2871E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */; };
+		9A7DB2881E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */; };
 		9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */; };
@@ -497,6 +506,12 @@
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
+		9A7DB27A1E14494000226D42 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView.h; path = Views/DrawingView.h; sourceTree = "<group>"; };
+		9A7DB27B1E14494000226D42 /* DrawingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DrawingView.mm; path = Views/DrawingView.mm; sourceTree = "<group>"; };
+		9A7DB27F1E145C3B00226D42 /* UIBezierPath+Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Points.h"; path = "Views/UIBezierPath+Points.h"; sourceTree = "<group>"; };
+		9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Points.m"; path = "Views/UIBezierPath+Points.m"; sourceTree = "<group>"; };
+		9A7DB2841E14762F00226D42 /* NSValue+MKMapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+MKMapPoint.h"; path = "Map/NSValue+MKMapPoint.h"; sourceTree = "<group>"; };
+		9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+MKMapPoint.m"; path = "Map/NSValue+MKMapPoint.m"; sourceTree = "<group>"; };
 		9A8180CF1D2DD45100F4D0C2 /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WildcardGestureRecognizer.h; path = Map/WildcardGestureRecognizer.h; sourceTree = "<group>"; };
 		9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WildcardGestureRecognizer.m; path = Map/WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		9A81DBEB1D877EE3006DA5A1 /* SnapshotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotDetailViewController.h; sourceTree = "<group>"; };
@@ -946,6 +961,22 @@
 			name = Tokens;
 			sourceTree = "<group>";
 		};
+		9A7DB2791E1448E500226D42 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */,
+				9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */,
+				9A90C7671DFF337E00CDC578 /* SearchPanelView+Actions.h */,
+				9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */,
+				9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */,
+				9A7DB27A1E14494000226D42 /* DrawingView.h */,
+				9A7DB27B1E14494000226D42 /* DrawingView.mm */,
+				9A7DB27F1E145C3B00226D42 /* UIBezierPath+Points.h */,
+				9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */,
+			);
+			name = SearchView;
+			sourceTree = "<group>";
+		};
 		9A836D361C6933B6007D9520 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1058,19 +1089,15 @@
 		9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */ = {
 			isa = PBXGroup;
 			children = (
+				9A7DB2791E1448E500226D42 /* SearchView */,
 				9ACD6CDB1D352E8600E3BF9C /* DirectionPanel.h */,
 				9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */,
 				9A48C1361D5273EA0038FBA5 /* MainViewManager.h */,
 				9A48C1371D5273EA0038FBA5 /* MainViewManager.m */,
 				9A246D6D1D55589B00888A74 /* SettingsButton.h */,
 				9A246D6E1D55589B00888A74 /* SettingsButton.m */,
-				9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */,
-				9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */,
-				9A90C7671DFF337E00CDC578 /* SearchPanelView+Actions.h */,
-				9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */,
 				9A8EC9DF1D6112CD0012C769 /* StreetViewPanel.h */,
 				9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */,
-				9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */,
 				9A43EAED1D40029D00080029 /* topPanel.h */,
 			);
 			name = RootViewPanels;
@@ -1121,6 +1148,8 @@
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
 				9A27222C1D6CB79C002AE953 /* Person.h */,
 				9A27222D1D6CB79C002AE953 /* Person.m */,
+				9A7DB2841E14762F00226D42 /* NSValue+MKMapPoint.h */,
+				9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */,
 			);
 			name = entities;
 			sourceTree = "<group>";
@@ -1611,6 +1640,7 @@
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
 				9AB5AAF31DD10DBD0094996B /* ConstraintDebugView.m in Sources */,
 				9AD8D1831E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */,
+				9A7DB2811E145C3B00226D42 /* UIBezierPath+Points.m in Sources */,
 				9AAAA1861D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -1628,6 +1658,8 @@
 				9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */,
 				9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
+				9A7DB2861E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
+				9A7DB27C1E14494000226D42 /* DrawingView.mm in Sources */,
 				9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
@@ -1708,6 +1740,7 @@
 				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
 				9AB5AAF41DD10DBD0094996B /* ConstraintDebugView.m in Sources */,
 				9AD8D1841E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */,
+				9A7DB2821E145C3B00226D42 /* UIBezierPath+Points.m in Sources */,
 				9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
 				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
 				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
@@ -1725,6 +1758,8 @@
 				9A485B4C1D90910400C43255 /* RecordTableViewController.m in Sources */,
 				9AFED2F11E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
+				9A7DB2871E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
+				9A7DB27D1E14494000226D42 /* DrawingView.mm in Sources */,
 				9AFED2F61E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
@@ -1805,6 +1840,7 @@
 				9AE13B7C1DF0D148008612DA /* POI.m in Sources */,
 				9AE13B7D1DF0D148008612DA /* ConstraintDebugView.m in Sources */,
 				9AD8D1851E01ADB200BD2BA5 /* TokenSetStructure.m in Sources */,
+				9A7DB2831E145C3B00226D42 /* UIBezierPath+Points.m in Sources */,
 				9AE13B7E1DF0D148008612DA /* SnapshotDatabase+Debug.m in Sources */,
 				9AE13B7F1DF0D148008612DA /* MyFileManager.m in Sources */,
 				9AE13B801DF0D148008612DA /* MainViewManager.m in Sources */,
@@ -1822,6 +1858,8 @@
 				9AE13B8E1DF0D148008612DA /* RecordTableViewController.m in Sources */,
 				9AFED2F21E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9AE13B901DF0D148008612DA /* ViewController+Annotations.m in Sources */,
+				9A7DB2881E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
+				9A7DB27E1E14494000226D42 /* DrawingView.mm in Sources */,
 				9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,

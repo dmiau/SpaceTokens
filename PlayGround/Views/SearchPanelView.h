@@ -36,6 +36,7 @@
 - (IBAction)barToolAction:(id)sender;
 - (IBAction)areaToolAction:(id)sender;
 
+- (IBAction)drawingAction:(id)sender;
 
 
 

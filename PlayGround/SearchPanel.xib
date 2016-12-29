@@ -47,6 +47,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-eG-dYl">
                     <rect key="frame" x="147" y="115" width="57" height="30"/>
                     <state key="normal" title="Drawing"/>
+                    <connections>
+                        <action selector="drawingAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="SCG-cu-HIj"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2If-vE-ZYE">
                     <rect key="frame" x="6" y="76" width="30" height="30"/>
@@ -105,7 +108,7 @@
             <connections>
                 <outlet property="searchPlaceHolder" destination="wnB-dK-KjN" id="dF2-O3-1ZY"/>
             </connections>
-            <point key="canvasLocation" x="-344" y="-154"/>
+            <point key="canvasLocation" x="-413" y="-152"/>
         </view>
     </objects>
     <resources>

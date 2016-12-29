@@ -44,6 +44,8 @@ using namespace std;
 - (id)initWithMKRoute: (MKRoute *) aRoute Source: (MKMapItem*) source
           Destination: (MKMapItem*) destination;
 
+- (id)initWithMKMapPointArray: (NSArray*) mapPointArray;
+
 -(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:
                                 (MKMapView*) mapView;
 -(void)convertPercentage: (float)percentage

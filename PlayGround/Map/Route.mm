@@ -12,6 +12,7 @@
 #import "POI.h"
 #import "CustomMKMapView.h"
 #include <cmath>
+#include "NSValue+MKMapPoint.h"
 
 using namespace std;
 
@@ -412,6 +413,7 @@ double computeOrientationFromA2B
     
     // Construct an array of mappoints
     MKMapPoint *tempMapPointArray = new MKMapPoint[ [polylineArrayX count] ];
+    
     for (int i = 0; i < [polylineArrayX count]; i++){
         MKMapPoint mapPoint = MKMapPointMake([polylineArrayX[i] doubleValue], [polylineArrayY[i] doubleValue]);
         tempMapPointArray[i] = mapPoint;
@@ -423,6 +425,43 @@ double computeOrientationFromA2B
     delete[] tempMapPointArray;
     [self populateInternalRouteProperties];
     
+    return self;
+}
+
+- (id)initWithMKMapPointArray: (NSArray*) mapPointArray{
+    self = [super init];
+
+    self.annotation.pointType = path;
+    
+    // Construct an array of mappoints
+    MKMapPoint *tempMapPointArray = new MKMapPoint[ [mapPointArray count] ];
+    
+    for (int i = 0; i < [mapPointArray count]; i++){
+        tempMapPointArray[i] = [mapPointArray[i] MKMapPointValue];
+    }
+    self.route = nil;
+    self.annotation.pointType = path;
+    self.routePolyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[mapPointArray count]];
+    delete[] tempMapPointArray;
+
+    // Construct source and destination
+    CLLocationCoordinate2D sourceCoord =
+    MKCoordinateForMapPoint([mapPointArray[0] MKMapPointValue]);
+    MKPlacemark *sourcePlacemark = [[MKPlacemark alloc] initWithCoordinate:sourceCoord addressDictionary:nil];
+    MKMapItem *sourceMapItem = [[MKMapItem alloc] initWithPlacemark:sourcePlacemark];
+    [sourceMapItem setName:@"source"];
+    self.source = sourceMapItem;
+    
+    CLLocationCoordinate2D destinationCoord =
+    MKCoordinateForMapPoint([[mapPointArray lastObject] MKMapPointValue]);
+    MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:
+                                        destinationCoord addressDictionary:nil];
+    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:destinationPlacemark];
+    [destinationMapItem setName:@"destination"];
+    self.destination = destinationMapItem;
+    
+    self.name = [NSString stringWithFormat:@"%@ - %@", self.source.name, self.destination.name];
+    [self populateInternalRouteProperties];
     return self;
 }
 

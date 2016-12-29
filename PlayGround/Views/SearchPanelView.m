@@ -16,7 +16,7 @@
 @import GoogleMaps;
 @import GooglePlaces;
 #import <GoogleMaps/GoogleMaps.h>
-
+#import "DrawingView.h"
 
 @implementation SearchPanelView
 
@@ -67,16 +67,23 @@
 -(void)addPanel{
     [self.rootViewController.view addSubview:self];
     [self.rootViewController removeRoute];
-    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;
-    
+    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;    
     self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     
     // Add the direction button
     float width = self.rootViewController.mapView.frame.size.width;
     float height = self.rootViewController.mapView.frame.size.height;
     
-    self.directionButton.frame = CGRectMake(width*0.1, height*0.9, 60, 20);
-    [self.rootViewController.mapView addSubview:self.directionButton];
+    // Configure the frame
+    // Configure the dimesion of the panel
+    CGRect frame = CGRectZero;
+    frame.size.width = width;
+    frame.size.height = self.rootViewController.view.frame.size.height - height;
+    
+    self.frame = frame;
+    
+//    self.directionButton.frame = CGRectMake(width*0.1, height*0.9, 60, 20);
+//    [self.rootViewController.mapView addSubview:self.directionButton];
 }
 
 -(void)removePanel{
@@ -136,8 +143,8 @@
 //    self.rootViewController.definesPresentationContext = YES;
 }
 
-//-------------------------------˙
-// Handle the user's selection.
+//-------------------------------
+// Handle the user's selection
 //-------------------------------
 - (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
  didAutocompleteWithPlace:(GMSPlace *)place {
@@ -204,4 +211,29 @@ didFailAutocompleteWithError:(NSError *)error {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
+
+//-----------------------
+// Drawing action
+//-----------------------
+- (IBAction)drawingAction:(id)sender {
+    
+    static DrawingView *drawingView;
+    if (!drawingView){
+        // Initialize once
+        drawingView = [[DrawingView alloc] init];
+    }
+    // Get the map object
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    if ([drawingView superview]){
+        // Hide the drawing view
+        [drawingView viewWillDisappear];
+        [drawingView removeFromSuperview];
+    }else{
+        // Show the drawing view
+        drawingView.frame = mapView.frame;
+        [self.rootViewController.view addSubview:drawingView];
+        [drawingView viewWillAppear];
+    }
+}
 @end

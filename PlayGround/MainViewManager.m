@@ -77,12 +77,7 @@
                 self.searchPanel = (SearchPanelView*) aView;
             }
         }
-        
-        // Configure the dimesion of the panel
-        self.searchPanel.frame =
-        CGRectMake(0, 0,
-                   self.rootViewController.view.frame.size.width, topPanelHeight);
-        
+
         [self showDefaultPanel];
         
     }
