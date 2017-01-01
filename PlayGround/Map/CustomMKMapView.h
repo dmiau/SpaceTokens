@@ -73,7 +73,6 @@
                     toTwoXY: (CGPoint[2]) viewXYs;
 
 - (void) zoomToFitEntities: (NSSet<SpatialEntity*> *) entitySet;
-- (void) zoomToFitRoute:(Route*) aRoute;
 
 // Tools
 + (CLLocationDirection) computeOrientationFromA: (CLLocationCoordinate2D) coordA

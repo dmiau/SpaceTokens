@@ -140,7 +140,7 @@
     // Remove the previous route if there is any
     if (self.spaceBar.activeRoute){
         [self.mapView removeOverlay:
-         self.spaceBar.activeRoute.route.polyline];
+         self.spaceBar.activeRoute.polyline];
         self.spaceBar.activeRoute = nil;
     }
 
@@ -159,22 +159,23 @@
         
         // If the mini map is on, zoom the map to fit the entire route
         if (self.miniMapView.superview){            
-            [self.miniMapView zoomToFitRoute:self.spaceBar.activeRoute];
+            [self.miniMapView zoomToFitEntities:
+             [NSSet setWithObject: self.spaceBar.activeRoute]];
             // Remove previous routes if any
             [self.miniMapView removeRouteOverlays];
             
-            [self.miniMapView addOverlay:aRoute.routePolyline level:MKOverlayLevelAboveRoads];
+            [self.miniMapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
         }
     }
     
-    [self.mapView addOverlay:aRoute.routePolyline level:MKOverlayLevelAboveRoads];
+    [self.mapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
 }
 
 - (void)removeRoute{
     // Remove the previous route if there is any
     if (self.spaceBar.activeRoute){
         [self.mapView removeOverlay:
-         self.spaceBar.activeRoute.route.polyline];
+         self.spaceBar.activeRoute.polyline];
         self.spaceBar.activeRoute = nil;
     }
     // Reset Spacebar

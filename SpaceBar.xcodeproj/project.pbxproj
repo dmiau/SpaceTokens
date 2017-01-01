@@ -134,6 +134,18 @@
 		9A5CCBAE1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
+		9A5DA02D1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
+		9A5DA02E1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
+		9A5DA02F1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
+		9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0311E16F2C9002A50B7 /* AreaToken.m */; };
+		9A5DA0331E16F2C9002A50B7 /* AreaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0311E16F2C9002A50B7 /* AreaToken.m */; };
+		9A5DA0341E16F2C9002A50B7 /* AreaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0311E16F2C9002A50B7 /* AreaToken.m */; };
+		9A5DA0371E1708DF002A50B7 /* POIArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0361E1708DF002A50B7 /* POIArray.m */; };
+		9A5DA0381E1708DF002A50B7 /* POIArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0361E1708DF002A50B7 /* POIArray.m */; };
+		9A5DA0391E1708DF002A50B7 /* POIArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0361E1708DF002A50B7 /* POIArray.m */; };
+		9A5DA03C1E170BAC002A50B7 /* LineEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */; };
+		9A5DA03D1E170BAC002A50B7 /* LineEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */; };
+		9A5DA03E1E170BAC002A50B7 /* LineEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */; };
 		9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62C3F61DCCD0B50048E44C /* Speech.framework */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
 		9A62FB831DDF7CC500245BD6 /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
@@ -488,6 +500,14 @@
 		9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CollectionViewCell.mm; path = SpaceBar/CollectionViewCell.mm; sourceTree = "<group>"; };
 		9A5D40581D3D2D7600CC91BE /* SpaceBar+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Annotations.h"; path = "SpaceBar/SpaceBar+Annotations.h"; sourceTree = "<group>"; };
 		9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SpaceBar+Annotations.mm"; path = "SpaceBar/SpaceBar+Annotations.mm"; sourceTree = "<group>"; };
+		9A5DA02B1E16DCE1002A50B7 /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Area.h; path = Map/Area.h; sourceTree = "<group>"; };
+		9A5DA02C1E16DCE1002A50B7 /* Area.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Area.mm; path = Map/Area.mm; sourceTree = "<group>"; };
+		9A5DA0301E16F2C9002A50B7 /* AreaToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AreaToken.h; path = SpaceBar/AreaToken.h; sourceTree = "<group>"; };
+		9A5DA0311E16F2C9002A50B7 /* AreaToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AreaToken.m; path = SpaceBar/AreaToken.m; sourceTree = "<group>"; };
+		9A5DA0351E1708DF002A50B7 /* POIArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIArray.h; path = SpaceBar/POIArray.h; sourceTree = "<group>"; };
+		9A5DA0361E1708DF002A50B7 /* POIArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIArray.m; path = SpaceBar/POIArray.m; sourceTree = "<group>"; };
+		9A5DA03A1E170BAC002A50B7 /* LineEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineEntity.h; path = SpaceBar/LineEntity.h; sourceTree = "<group>"; };
+		9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LineEntity.mm; path = SpaceBar/LineEntity.mm; sourceTree = "<group>"; };
 		9A62C3F61DCCD0B50048E44C /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		9A62F1E21C62C6BF00A39DAF /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = SpaceBar/Tools.h; sourceTree = "<group>"; };
 		9A62F1E31C62C6BF00A39DAF /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = SpaceBar/Tools.m; sourceTree = "<group>"; };
@@ -956,6 +976,8 @@
 				9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */,
 				9A1985A41DDCEE460016696F /* PathToken.h */,
 				9A1985A51DDCEE460016696F /* PathToken.m */,
+				9A5DA0301E16F2C9002A50B7 /* AreaToken.h */,
+				9A5DA0311E16F2C9002A50B7 /* AreaToken.m */,
 				9A90C7611DFDB49500CDC578 /* ConnectionTool */,
 			);
 			name = Tokens;
@@ -1140,12 +1162,18 @@
 				9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */,
 				9A8BCA261D343D43006C2EDC /* POI.h */,
 				9A8BCA271D343D43006C2EDC /* POI.m */,
+				9A5DA0351E1708DF002A50B7 /* POIArray.h */,
+				9A5DA0361E1708DF002A50B7 /* POIArray.m */,
 				9A22D0161D22BD9A009BC465 /* Route.h */,
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */,
 				9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */,
 				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
+				9A5DA03A1E170BAC002A50B7 /* LineEntity.h */,
+				9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */,
+				9A5DA02B1E16DCE1002A50B7 /* Area.h */,
+				9A5DA02C1E16DCE1002A50B7 /* Area.mm */,
 				9A27222C1D6CB79C002AE953 /* Person.h */,
 				9A27222D1D6CB79C002AE953 /* Person.m */,
 				9A7DB2841E14762F00226D42 /* NSValue+MKMapPoint.h */,
@@ -1622,6 +1650,7 @@
 				9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
 				9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
+				9A5DA03C1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9AA32CE51DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */,
@@ -1650,6 +1679,7 @@
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
+				9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
@@ -1663,6 +1693,7 @@
 				9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
+				9A5DA0371E1708DF002A50B7 /* POIArray.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
 				9ABA3B471D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A1985A61DDCEE460016696F /* PathToken.m in Sources */,
@@ -1676,6 +1707,7 @@
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */,
+				9A5DA02D1E16DCE1002A50B7 /* Area.mm in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
 				9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
@@ -1722,6 +1754,7 @@
 				9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
+				9A5DA03D1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
 				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
 				9AA32CE61DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */,
@@ -1750,6 +1783,7 @@
 				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
 				9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
+				9A5DA0331E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AAE092E1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
@@ -1763,6 +1797,7 @@
 				9AFED2F61E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
+				9A5DA0381E1708DF002A50B7 /* POIArray.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
 				9ABA3B481D7B749300895175 /* ViewController+SpaceToken.m in Sources */,
 				9A1985A71DDCEE460016696F /* PathToken.m in Sources */,
@@ -1776,6 +1811,7 @@
 				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */,
+				9A5DA02E1E16DCE1002A50B7 /* Area.mm in Sources */,
 				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
 				9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
@@ -1822,6 +1858,7 @@
 				9AE13B6B1DF0D148008612DA /* SnapshotProgress.mm in Sources */,
 				9AE13B6C1DF0D148008612DA /* CERangeSlider.m in Sources */,
 				9AE13B6D1DF0D148008612DA /* SnapshotPlace.m in Sources */,
+				9A5DA03E1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9AE13B6E1DF0D148008612DA /* PlaceInstructionView.m in Sources */,
 				9AE13B6F1DF0D148008612DA /* CustomTabController.m in Sources */,
 				9AE13B701DF0D148008612DA /* ShowAuthoringPanel.m in Sources */,
@@ -1850,6 +1887,7 @@
 				9AE13B851DF0D148008612DA /* Person.m in Sources */,
 				9AE13B871DF0D148008612DA /* Snapshot.m in Sources */,
 				9AE13B881DF0D148008612DA /* RouteDatabase.mm in Sources */,
+				9A5DA0341E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */,
 				9AE13B8A1DF0D148008612DA /* AuthoringPanelBase.m in Sources */,
 				9AE13B8B1DF0D148008612DA /* SnapshotDatabase.m in Sources */,
@@ -1863,6 +1901,7 @@
 				9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,
+				9A5DA0391E1708DF002A50B7 /* POIArray.m in Sources */,
 				9AE13B931DF0D148008612DA /* tester.m in Sources */,
 				9AE13B941DF0D148008612DA /* ViewController+SpaceToken.m in Sources */,
 				9AE13B951DF0D148008612DA /* PathToken.m in Sources */,
@@ -1876,6 +1915,7 @@
 				9AE13B9B1DF0D148008612DA /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AE13B9C1DF0D148008612DA /* FileTableController.m in Sources */,
 				9AE13B9D1DF0D148008612DA /* RecordDatabase.m in Sources */,
+				9A5DA02F1E16DCE1002A50B7 /* Area.mm in Sources */,
 				9AE13B9F1DF0D148008612DA /* CERangeSliderTrackLayer.m in Sources */,
 				9AE13BA01DF0D148008612DA /* SnapshotChecking.m in Sources */,
 				9AE13BA11DF0D148008612DA /* Constants.m in Sources */,

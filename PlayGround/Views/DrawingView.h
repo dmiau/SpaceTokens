@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface DrawingView : UIView{
-    UIBezierPath *path;
+    NSMutableArray <UIBezierPath*> *bezierPathArray;
+    NSMutableArray *touchPointArray;
+    BOOL isArea;
+
+    UIButton *clearButton;
 }
 
 -(void)viewWillAppear;

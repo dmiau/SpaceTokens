@@ -12,8 +12,10 @@
 #import "POI.h"
 #import "Route.h"
 #import "Person.h"
+#import "Area.h"
 #import "SpaceToken.h"
 #import "PathToken.h"
+#import "AreaToken.h"
 
 @implementation TokenCollection
 
@@ -117,6 +119,10 @@
         aSpaceToken = [[SpaceToken alloc] init];
     }else if ([spatialEntity isKindOfClass:[Route class]]){
         aSpaceToken = [[PathToken alloc] init];
+    }else if ([spatialEntity isKindOfClass:[Area class]]){
+        aSpaceToken = [[AreaToken alloc] init];
+    }else{
+        [NSException raise:@"unimplemented code path" format:@"unknown spatial entity type"];
     }
     
     [aSpaceToken configureAppearanceForType:DOCKED];

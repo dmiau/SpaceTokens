@@ -163,20 +163,13 @@
         // Handle the entity differently, depending on the type of entity
         SpatialEntity *spatialEntity = [entitySet anyObject];
         
-        if ([spatialEntity isKindOfClass:[POI class]]){
-            POI *aPOI = spatialEntity;
-            MKCoordinateRegion region;
-            region.center = aPOI.latLon;
-            MKCoordinateSpan span = aPOI.coordSpan;
-            span.latitudeDelta = max(0.01, span.latitudeDelta);
-            span.longitudeDelta = max(0.01, span.longitudeDelta);
-            region.span = span;
-            [self setRegion:region animated:NO];
-        }else if ([spatialEntity isKindOfClass:[Route class]]){
-            Route *aRoute = spatialEntity;
-            [self zoomToFitRoute: aRoute];
-        }
-        
+        MKCoordinateRegion region;
+        region.center = spatialEntity.latLon;
+        MKCoordinateSpan span = spatialEntity.coordSpan;
+        span.latitudeDelta = max(0.01, span.latitudeDelta);
+        span.longitudeDelta = max(0.01, span.longitudeDelta);
+        region.span = span;
+        [self setRegion:region animated:NO];
     }else{
         
         //----------------------------------
@@ -202,8 +195,10 @@
                 maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
             }else if ([anEntity isKindOfClass:[Route class]]){
                 double minMapX, maxMapX, minMapY, maxMapY;
-                Route *aRoute = anEntity;
-                [aRoute getMinMapX:minMapX andMaxMapX:maxMapX andMinMapY:minMapY andMaxMapY:maxMapY];
+                Route *aRoute = anEntity;                
+                MKMapRect mapRect = [aRoute getBoundingMapRect];
+                minMapX = mapRect.origin.x; maxMapX = mapRect.origin.x + mapRect.size.width;
+                minMapY = mapRect.origin.y; maxMapY = mapRect.origin.y + mapRect.size.height;
                 
                 minMapPointX = MIN(minMapPointX, minMapX);
                 maxMapPointX = MAX(maxMapPointX, maxMapX);
@@ -239,20 +234,6 @@
         [self setVisibleMapRect:zoomRect edgePadding:self.edgeInsets
                        animated:NO];
     }
-}
-
-// Zoom the map to fit the route
-- (void)zoomToFitRoute:(Route*) aRoute{
-    POI *startPOI = [[POI alloc] init];
-    POI *endPOI = [[POI alloc] init];
-    startPOI.latLon = MKCoordinateForMapPoint
-    (MKMapPointMake((*aRoute.mapPointX)[0], (*aRoute.mapPointY)[0]));
-    unsigned long length = aRoute.mapPointX->size();
-    endPOI.latLon = MKCoordinateForMapPoint
-    (MKMapPointMake((*aRoute.mapPointX)[length-1],
-                    (*aRoute.mapPointY)[length-1]));
-    NSSet *poiSet = [NSSet setWithObjects:startPOI, endPOI, nil];
-    [self zoomToFitEntities:poiSet];
 }
 
 @end
