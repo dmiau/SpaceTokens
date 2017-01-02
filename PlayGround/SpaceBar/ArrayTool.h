@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class SpatialEntity;
+@class ArrayEntity;
 
 @interface ArrayTool : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -16,8 +17,9 @@
 
 @property BOOL isVisible;
 
+@property ArrayEntity *arrayEntity;
+
 +(id)sharedManager;
-- (id) initSingleton;
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 

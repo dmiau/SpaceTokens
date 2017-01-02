@@ -80,14 +80,14 @@ static SpaceBar *sharedInstance;
     //--------------------------------
     // Initialize a token collection view
     //--------------------------------
-    self.tokenCollectionView = [[TokenCollectionView alloc] initSingleton];
+    self.tokenCollectionView = [TokenCollectionView sharedManager];
     self.tokenCollectionView.isVisible = YES;
     [self.tokenCollectionView reloadData];
     
     //--------------------------------
     // Initialize an array tool
     //--------------------------------
-    ArrayTool *arrayTool = [[ArrayTool alloc] initSingleton];
+    ArrayTool *arrayTool = [ArrayTool sharedManager];
     
     sharedInstance = self;
     

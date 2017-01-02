@@ -17,7 +17,6 @@
 @property BOOL isVisible;
 
 +(id)sharedManager;
-- (id) initSingleton;
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 

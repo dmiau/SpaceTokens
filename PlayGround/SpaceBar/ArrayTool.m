@@ -15,6 +15,7 @@
 #import "CustomMKMapView.h"
 #import "SpaceBar.h"
 #import "ViewController.h"
+#import "ArrayEntity.h"
 
 //-------------------
 // Parameters
@@ -25,9 +26,9 @@
 NSString *ArrayCellID = @"cellID";                          // UICollectionViewCell storyboard id
 
 
-@implementation ArrayTool{
-    NSMutableArray *enabledEntityArray;
-}
+@implementation ArrayTool
+
+// MARK: Initialization
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -37,12 +38,14 @@ NSString *ArrayCellID = @"cellID";                          // UICollectionViewC
 }
 */
 
-static ArrayTool *sharedInstance;
-
 +(id)sharedManager{
-    if (!sharedInstance){
-        [NSException raise:@"Structure error" format:@"sharedInstance is not ready before access."];
-    }
+    static ArrayTool *sharedInstance = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[ArrayTool alloc] initSingleton];
+    });
+    
     return sharedInstance;
 }
 
@@ -65,7 +68,6 @@ static ArrayTool *sharedInstance;
     self.tokenWidth = 60;
     [self setTopAlignmentOffset:30];
     
-    sharedInstance = self;
     return self;
 }
 
@@ -74,8 +76,8 @@ static ArrayTool *sharedInstance;
 {
     self = [super initWithFrame:frame collectionViewLayout:layout];
     
-    // Initialize instance variable
-    enabledEntityArray = [[NSMutableArray alloc] init];
+    // Initialize properties
+    self.arrayEntity = [[ArrayEntity alloc] init];
     
     [self setBackgroundColor:[UIColor clearColor]];
     
@@ -97,8 +99,13 @@ static ArrayTool *sharedInstance;
     self.delegate = self;
     self.dataSource = self;
     
+    
+    
     return self;
 }
+
+
+// MARK: Gestures
 
 - (void)handleLongGesture:(UILongPressGestureRecognizer*) gesture{
     CGPoint p = [gesture locationInView:self];
@@ -130,7 +137,7 @@ static ArrayTool *sharedInstance;
             &&(point.y > 0));
 }
 
-#pragma mark SETTERS
+// MARK: Setters
 
 
 -(void)setTopAlignmentOffset:(int)offSet{
@@ -159,6 +166,12 @@ static ArrayTool *sharedInstance;
     }
 }
 
+-(void)setArrayEntity:(ArrayEntity *)arrayEntity{
+    
+    
+}
+
+
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -169,16 +182,13 @@ static ArrayTool *sharedInstance;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    [enabledEntityArray removeAllObjects];
-    enabledEntityArray = [[EntityDatabase sharedManager] getEnabledEntities];
-    
-    if ([enabledEntityArray count] > 12){
+    if ([self.arrayEntity.contentArray count] > 12){
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = NO;
     }else{
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = YES;
     }
     
-    return [enabledEntityArray count];
+    return [self.arrayEntity.contentArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -189,8 +199,8 @@ static ArrayTool *sharedInstance;
     CollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:ArrayCellID forIndexPath:indexPath];
     
-    if (row < [enabledEntityArray count]){
-        [cell configureSpaceTokenFromEntity:enabledEntityArray[row]];
+    if (row < [self.arrayEntity.contentArray count]){
+        [cell configureSpaceTokenFromEntity:self.arrayEntity.contentArray[row]];
     }
     
     return cell;
@@ -206,14 +216,14 @@ static ArrayTool *sharedInstance;
 //----------------
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    SpatialEntity *anEntity = enabledEntityArray[sourceIndexPath.row];
-    [enabledEntityArray removeObjectAtIndex:sourceIndexPath.row];
-    [enabledEntityArray insertObject:anEntity atIndex:destinationIndexPath.row];
+    SpatialEntity *anEntity = self.arrayEntity.contentArray[sourceIndexPath.row];
+    [self.arrayEntity.contentArray removeObjectAtIndex:sourceIndexPath.row];
+    [self.arrayEntity.contentArray insertObject:anEntity atIndex:destinationIndexPath.row];
 }
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity{
-    [enabledEntityArray insertObject:anEntity atIndex:[enabledEntityArray count]-2];
-    NSUInteger index = [enabledEntityArray count]  -2;
+    [self.arrayEntity.contentArray insertObject:anEntity atIndex:[self.arrayEntity.contentArray count]-2];
+    NSUInteger index = [self.arrayEntity.contentArray count]  -2;
     NSArray *indexPaths = [NSArray
                            arrayWithObject:
                            [NSIndexPath indexPathForRow:index inSection:0]];

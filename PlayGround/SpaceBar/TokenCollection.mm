@@ -41,11 +41,13 @@
 -(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity{
     SpaceToken *outToken = nil;
     
-    for (SpaceToken *aToken in tokenArray){
-        if ([aToken isEqual:entity]){
-            outToken = aToken;
-        }
-    }
+//    for (SpaceToken *aToken in tokenArray){
+//        if ([aToken isEqual:entity]){
+//            outToken = aToken;
+//        }
+//    }
+    // TODO: This method is useless at the moment.
+    
     return outToken;
 }
 

@@ -27,12 +27,17 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     NSMutableArray *enabledEntityArray;
 }
 
-static TokenCollectionView *sharedInstance;
+
 
 +(id)sharedManager{
-    if (!sharedInstance){
-        [NSException raise:@"Programming error" format:@"sharedInstance is not ready."];
-    }
+    static TokenCollectionView *sharedInstance = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[TokenCollectionView alloc] initSingleton];
+    });
+    
+
     return sharedInstance;
 }
 
@@ -63,7 +68,6 @@ static TokenCollectionView *sharedInstance;
     self.tokenWidth = 60;
     [self setTopAlignmentOffset:30];
     
-    sharedInstance = self;
     return self;
 }
 

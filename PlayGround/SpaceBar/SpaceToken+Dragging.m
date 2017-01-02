@@ -29,16 +29,39 @@
         //----------------------
         // Dragging toward the edge (removing gesture)
         //----------------------
-        if((initialTouchLocationInView.x < self.frame.size.width * 0.5)
-           &&
-           (previousLocationInView.x < self.frame.size.width *0.8 &&
-            locationInView.x > self.frame.size.width *0.8)
-           )
-        {
-            if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
-                // YouRHere cannot be removed.
-            }else{
-                [self handleRemoveToken];
+        
+        // Need to handle token removal detection differently,
+        // depending on the position of a SpaceToken
+        
+        if (self.center.x > self.superview.frame.size.width/2){
+            // SpaceToken is located at the right edge of the display
+            
+            if((initialTouchLocationInView.x < self.frame.size.width * 0.5)
+               &&
+               (previousLocationInView.x < self.frame.size.width *0.8 &&
+                locationInView.x > self.frame.size.width *0.8)
+               )
+            {
+                if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
+                    // YouRHere cannot be removed.
+                }else{
+                    [self handleRemoveToken];
+                }
+            }
+        }else{
+            // SpaceToken is located at the left edge of the display
+            
+            if((initialTouchLocationInView.x > self.frame.size.width * 0.5)
+               &&
+               (previousLocationInView.x > self.frame.size.width *0.2 &&
+                locationInView.x < self.frame.size.width *0.2)
+               )
+            {
+                if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
+                    // YouRHere cannot be removed.
+                }else{
+                    [self handleRemoveToken];
+                }
             }
         }
         
@@ -96,24 +119,6 @@
      - (self.frame.size.width/2 -locationInButton.x),
      self.center.y + locationInView.y - previousLoationInView.y
      - (self.frame.size.height/2 -locationInButton.y));
-    
-    
-    // Not sure what this is about...
-//    if (self.counterPart &&
-//        (self.counterPart.center.x > self.superview.frame.size.width *0.5))
-//    {
-//        // draw the line
-//        UIBezierPath *linePath=[UIBezierPath bezierPath];
-//        [linePath moveToPoint: CGPointMake(self.frame.size.width/2,
-//                                           self.frame.size.height/2)];
-//        [linePath addLineToPoint:
-//         [self convertPoint:self.counterPart.center fromView:self.superview]];
-//        
-//        self.lineLayer.path=linePath.CGPath;
-//        self.lineLayer.fillColor = nil;
-//        self.lineLayer.opacity = 1.0;
-//        self.lineLayer.strokeColor = [UIColor blueColor].CGColor;
-//    }
 }
 
 
