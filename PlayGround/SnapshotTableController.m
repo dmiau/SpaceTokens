@@ -99,7 +99,14 @@ typedef enum {COLLECTIONS, SNAPSHOTS} sectionEnum;
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSArray *list = @[@"Snapshot files", snapshotDatabase.currentFileName];
+    
+    NSArray *list;
+    
+    if (snapshotDatabase.currentFileName){
+        list = @[@"Snapshot files", snapshotDatabase.currentFileName];
+    }else{
+        list = @[@"Snapshot files", @"No file found"];
+    }
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
     /* Create custom view to display section header... */

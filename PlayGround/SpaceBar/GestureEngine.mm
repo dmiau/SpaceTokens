@@ -12,6 +12,7 @@
 #import "CustomMKMapView.h"
 #import "Route.h"
 #import "ViewController.h"
+#import "TokenCollectionView.h"
 
 @implementation GestureEngine{
     CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
@@ -156,8 +157,7 @@
             
 
             
-            // Connection tool only supports the connection of POI
-            
+            // Connection tool only supports the connection to a POI
             if ([aToken.spatialEntity isKindOfClass:[Route class]])
             {
                 // Flash the touched SpaceToken
@@ -169,8 +169,6 @@
                                     zoomToOverview:YES];
                 
                 [lineLayer removeFromSuperlayer];
-                // Refresh TokenView
-                [[SpaceBar sharedManager] setIsTokenCollectionViewEnabled: YES];
             }
             
             return YES;

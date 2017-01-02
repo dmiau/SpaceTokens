@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "SpeechEngine.h"
+#import "ArrayTool.h"
 
 @implementation SearchPanelView (Actions)
 
@@ -112,7 +113,18 @@
 
 - (IBAction)barToolAction:(id)sender {
     SpaceBar *spaceBar = [SpaceBar sharedManager];
-    spaceBar.isBarToolHidden = !spaceBar.isBarToolHidden;
+    ArrayTool *arrayTool = [ArrayTool sharedManager];
+    
+    if (spaceBar.isBarToolHidden){
+        // Turn ON the bar tool
+        spaceBar.isBarToolHidden = NO;
+        arrayTool.isVisible = YES;
+        [arrayTool reloadData];
+    }else{
+        // Turn OFF the bar tool
+        spaceBar.isBarToolHidden = YES;
+        arrayTool.isVisible = NO;
+    }
 }
 
 

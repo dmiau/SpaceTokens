@@ -1,12 +1,13 @@
 //
-//  TokenCollectionView.m
-//  lab_CollectionView
+//  ArrayTool.m
+//  SpaceBar
 //
-//  Created by dmiau on 12/4/16.
-//  Copyright © 2016 dmiau. All rights reserved.
+//  Created by Daniel on 1/1/17.
+//  Copyright © 2017 dmiau. All rights reserved.
 //
 
-#import "TokenCollectionView.h"
+#import "ArrayTool.h"
+#import "CustomMKMapView.h"
 #import "CollectionViewCell.h"
 #import "EntityDatabase.h"
 #import "SpatialEntity.h"
@@ -21,19 +22,11 @@
 #define CELL_WIDTH 60
 #define CELL_HEIGHT 30
 
-NSString *CellID = @"cellID";                          // UICollectionViewCell storyboard id
+NSString *ArrayCellID = @"cellID";                          // UICollectionViewCell storyboard id
 
-@implementation TokenCollectionView{
+
+@implementation ArrayTool{
     NSMutableArray *enabledEntityArray;
-}
-
-static TokenCollectionView *sharedInstance;
-
-+(id)sharedManager{
-    if (!sharedInstance){
-        [NSException raise:@"Programming error" format:@"sharedInstance is not ready."];
-    }
-    return sharedInstance;
 }
 
 /*
@@ -44,8 +37,17 @@ static TokenCollectionView *sharedInstance;
 }
 */
 
+static ArrayTool *sharedInstance;
+
++(id)sharedManager{
+    if (!sharedInstance){
+        [NSException raise:@"Structure error" format:@"sharedInstance is not ready before access."];
+    }
+    return sharedInstance;
+}
+
+// Overwrite super's initSingleton method
 - (id) initSingleton{
-    
     // Get the map view
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
@@ -53,12 +55,12 @@ static TokenCollectionView *sharedInstance;
     // Configure the layout object
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake
-    (0, mapView.frame.size.width-60, 0, 0);
+    (0, 0, 0, mapView.frame.size.width-60);
     
     
     // Initialize a collection view
     self =
-    [[TokenCollectionView alloc] initWithFrame:mapView.frame collectionViewLayout:layout];
+    [[ArrayTool alloc] initWithFrame:mapView.frame collectionViewLayout:layout];
     
     self.tokenWidth = 60;
     [self setTopAlignmentOffset:30];
@@ -68,8 +70,8 @@ static TokenCollectionView *sharedInstance;
 }
 
 
-
-- (id) initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
+- (id) initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
+{
     self = [super initWithFrame:frame collectionViewLayout:layout];
     
     // Initialize instance variable
@@ -81,7 +83,7 @@ static TokenCollectionView *sharedInstance;
     
     // Register the cell class
     //http://stackoverflow.com/questions/15184968/uicollectionview-adding-uicollectioncell
-    [self registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:CellID];
+    [self registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:ArrayCellID];
     
     // Enable multiple selection
     [self setAllowsMultipleSelection:YES];
@@ -124,10 +126,9 @@ static TokenCollectionView *sharedInstance;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return ((point.x > self.frame.size.width - self.tokenWidth)
+    return ((point.x < self.tokenWidth)
             &&(point.y > 0));
 }
-
 
 #pragma mark SETTERS
 
@@ -186,7 +187,7 @@ static TokenCollectionView *sharedInstance;
     int row = indexPath.row;
     
     CollectionViewCell *cell =
-    [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
+    [collectionView dequeueReusableCellWithReuseIdentifier:ArrayCellID forIndexPath:indexPath];
     
     if (row < [enabledEntityArray count]){
         [cell configureSpaceTokenFromEntity:enabledEntityArray[row]];
@@ -204,13 +205,13 @@ static TokenCollectionView *sharedInstance;
 // Reordering
 //----------------
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{    
+{
     SpatialEntity *anEntity = enabledEntityArray[sourceIndexPath.row];
     [enabledEntityArray removeObjectAtIndex:sourceIndexPath.row];
     [enabledEntityArray insertObject:anEntity atIndex:destinationIndexPath.row];
 }
 
--(void)addItemFromBottom:(SpatialEntity*)anEntity{    
+-(void)addItemFromBottom:(SpatialEntity*)anEntity{
     [enabledEntityArray insertObject:anEntity atIndex:[enabledEntityArray count]-2];
     NSUInteger index = [enabledEntityArray count]  -2;
     NSArray *indexPaths = [NSArray
@@ -253,4 +254,5 @@ static TokenCollectionView *sharedInstance;
 	
  }
  */
+
 @end

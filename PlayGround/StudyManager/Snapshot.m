@@ -14,6 +14,7 @@
 #import "Record.h"
 #import "GameManager.h"
 #import "ViewController.h"
+#import "TokenCollectionView.h"
 
 @implementation Snapshot
 
@@ -68,7 +69,9 @@
     // Set up the SpaceToken correctly
     SpaceBar *spaceBar = self.rootViewController.spaceBar;
     [spaceBar removeAllSpaceTokens];
-    spaceBar.isTokenCollectionViewEnabled = YES;    
+    TokenCollectionView* tokenCollectionView = [TokenCollectionView sharedManager];
+    tokenCollectionView.isVisible = YES;
+    [tokenCollectionView reloadData];
     
     // Remove all annotations
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];

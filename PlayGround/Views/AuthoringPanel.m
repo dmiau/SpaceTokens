@@ -12,6 +12,7 @@
 #import "SettingsButton.h"
 #import "EntityDatabase.h"
 #import "TokenCollection.h"
+#import "TokenCollectionView.h"
 #import "SnapshotProgress.h"
 #import "SnapshotChecking.h"
 #import "GameManager.h"
@@ -250,8 +251,9 @@ static AuthoringPanel *instance;
         poi.name = @"token";
         
         [[[EntityDatabase sharedManager] entityArray] addObject:poi];
+        // refresh the token panel
+        [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
         
-        self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES; // refresh the token panel
         textSinkObject = [[TokenCollection sharedManager] findSpaceTokenFromEntity:poi];
     }
     

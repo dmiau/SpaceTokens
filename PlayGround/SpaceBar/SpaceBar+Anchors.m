@@ -157,7 +157,8 @@
     
     [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];
     
-    self.isTokenCollectionViewEnabled = YES; // refresh the token panel
+    // refresh the token panel
+    [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
     [self removeAnchor: token];
 }
 

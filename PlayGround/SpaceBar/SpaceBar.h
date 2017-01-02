@@ -15,6 +15,7 @@
 @class Route;
 @class GestureEngine;
 @class TokenCollectionView;
+@class ArrayTool;
 
 #pragma mark - SpaceBarProtocol
 //--------------------------------------------------------
@@ -48,7 +49,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 
 @property TokenCollectionView *tokenCollectionView;
 @property TokenCollection *tokenCollection;
-@property BOOL isTokenCollectionViewEnabled; // controls the visibility of the view
 
 @property CERangeSlider* sliderContainer;
 @property GestureEngine *gestureEngine;
@@ -92,7 +92,7 @@ unsigned int spaceBarElevatorMoved:1;
 // --------------
 // SpaceToken management
 // --------------
-
+- (void)resetInteractiveTokenStructures; // Clears draggingSet, anchors, and touchingSet
 - (void)removeAllSpaceTokens;
 - (void)resetSpaceBar;
 - (void)clearAllTouchedTokens;

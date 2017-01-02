@@ -23,10 +23,10 @@
     if (self) {
         
         self.backgroundColor = [UIColor clearColor];
-        self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowRadius = 3.0f;
-        self.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
-        self.layer.shadowOpacity = 0.3f;
+//        self.layer.shadowColor = [UIColor blackColor].CGColor;
+//        self.layer.shadowRadius = 3.0f;
+//        self.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
+//        self.layer.shadowOpacity = 0.3f;
         
         // Selected background view
         UIView *backgroundView = [[UIView alloc]initWithFrame:self.bounds];

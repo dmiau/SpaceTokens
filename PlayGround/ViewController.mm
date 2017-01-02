@@ -16,6 +16,7 @@
 #import "StudyManager/GameManager.h"
 #import "StudyManager/SnapshotDatabase.h"
 #import "SpeechEngine.h"
+#import "TokenCollectionView.h"
 
 // This is an extension (similar to a category)
 @interface ViewController ()
@@ -142,9 +143,13 @@ static ViewController *instance;
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
     
+    SpaceBar *spaceBar = [SpaceBar sharedManager];
+    [spaceBar resetInteractiveTokenStructures];
+    
     // Do a forced refresh if the tokenView is enabled
-    if (self.spaceBar.isTokenCollectionViewEnabled)
-        self.spaceBar.isTokenCollectionViewEnabled = YES;
+    TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
+    if (tokenCollectionView.isVisible)
+        [tokenCollectionView reloadData];
     
     // TopPanel viewWillAppaer
     [self.mainViewManager.activePanel viewWillAppear:NO];    

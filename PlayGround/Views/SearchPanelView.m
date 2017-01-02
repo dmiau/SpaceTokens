@@ -17,6 +17,7 @@
 @import GooglePlaces;
 #import <GoogleMaps/GoogleMaps.h>
 #import "DrawingView.h"
+#import "TokenCollectionView.h"
 
 @implementation SearchPanelView
 
@@ -67,23 +68,24 @@
 -(void)addPanel{
     [self.rootViewController.view addSubview:self];
     [self.rootViewController removeRoute];
-    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;    
-    self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     
-    // Add the direction button
-    float width = self.rootViewController.mapView.frame.size.width;
-    float height = self.rootViewController.mapView.frame.size.height;
+    // Reset the SpaceBar interaction environment
+    [self.rootViewController.spaceBar resetInteractiveTokenStructures];
+    
+    // Show the SpaceToken dock
+    ((TokenCollectionView*)[TokenCollectionView sharedManager]).isVisible = YES;
+    self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     
     // Configure the frame
     // Configure the dimesion of the panel
+    float width = self.rootViewController.mapView.frame.size.width;
+    float height = self.rootViewController.mapView.frame.size.height;
+    
     CGRect frame = CGRectZero;
     frame.size.width = width;
     frame.size.height = self.rootViewController.view.frame.size.height - height;
     
     self.frame = frame;
-    
-//    self.directionButton.frame = CGRectMake(width*0.1, height*0.9, 60, 20);
-//    [self.rootViewController.mapView addSubview:self.directionButton];
 }
 
 -(void)removePanel{

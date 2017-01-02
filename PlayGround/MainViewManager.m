@@ -16,7 +16,7 @@
 #import "ShowAuthoringPanel.h"
 #import "SearchPanelView.h"
 #import "EntityDatabase.h"
-
+#import "TokenCollectionView.h"
 
 @implementation MainViewManager
 
@@ -121,17 +121,6 @@
     [self removeActivePanel];
     [self.searchPanel addPanel];
     self.activePanel = self.searchPanel;
-    
-    // Remove the filter panel
-    if (self.filterPanel){
-        UIView *tempPanel = (UIView*) self.filterPanel;
-        [tempPanel removeFromSuperview];
-        self.filterPanel = nil;
-    }
-    
-    // Refresh SpaceTokens
-    [self.rootViewController.spaceBar removeAllSpaceTokens];
-    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;
 }
 
 - (void)showDirectionPanel{

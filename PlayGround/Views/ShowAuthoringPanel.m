@@ -12,6 +12,7 @@
 #import "CustomMKMapView.h"
 #import "EntityDatabase.h"
 #import "SnapshotShow.h"
+#import "TokenCollectionView.h"
 
 typedef enum {NONANSWER, ANSWER, DISTRACTOR} DROP_POI_TYPE;
 
@@ -138,7 +139,8 @@ static ShowAuthoringPanel *instance;
     // Add the POI to the array
     [self.snapshot.poisForSpaceTokens addObject:poi];
     
-    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES; // refresh the token panel
+    // refresh the token collection view
+    [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
 }
 
 //-------------------
@@ -190,7 +192,7 @@ static ShowAuthoringPanel *instance;
     
     // Remove all SpaceTokens
     [self.rootViewController.spaceBar removeAllSpaceTokens];
-    self.rootViewController.spaceBar.isTokenCollectionViewEnabled = YES;
+    [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
 }
 
 - (IBAction)poiTypeSegmentAction:(UISegmentedControl*)segmentControl {

@@ -68,7 +68,7 @@
     // handle the notification based on event name
     if (aNotification.name == RemoveFromButtonArrayNotification){
         [self.tokenCollection removeToken:aNotification.object];
-        self.isTokenCollectionViewEnabled = YES;
+        [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
     }else if (aNotification.name == RemoveFromTouchingSetNotification){        
         [self removeTokenFromTouchingSet:aNotification.object];
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
@@ -163,22 +163,28 @@
 //----------------
 - (void)removeAllSpaceTokens{
 
-    
-    // destory all the SpaceTokens
-    for (SpaceToken* aToken in self.draggingSet){
-        [aToken removeFromSuperview];
-    }
+    [self resetInteractiveTokenStructures];
     
     for (SpaceToken* aToken in [self.tokenCollection getTokenArray]){
         [aToken removeFromSuperview];
     }
-    
-    [self removeAllAnchors];
-    [self.draggingSet removeAllObjects];
-    [self clearAllTouchedTokens];
     [self.tokenCollection removeAllTokens];
 }
 
+// This clears draggingSet, anchor, and touchingSet
+-(void)resetInteractiveTokenStructures{
+    // destory all the dragged tokens
+    for (SpaceToken* aToken in self.draggingSet){
+        [aToken removeFromSuperview];
+    }
+    [self.draggingSet removeAllObjects];
+    
+    // destory all the anchors
+    [self removeAllAnchors];
+    
+    // destory all the touched tokens
+    [self clearAllTouchedTokens];
+}
 
 //----------------
 // TouchingSet managment

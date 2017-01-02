@@ -50,9 +50,5 @@
 - (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag;
 - (void)removeRoute;
 
-
-// SpaceToken related methods
-- (void)refreshSpaceTokens;
-
 @end
 

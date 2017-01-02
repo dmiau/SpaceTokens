@@ -12,6 +12,7 @@
 #import "GestureEngine.h"
 #import "TokenCollectionView.h"
 #import "ViewController.h"
+#import "ArrayTool.h"
 
 #define SPACEBAR_WIDTH 40
 
@@ -29,70 +30,67 @@
 
 static SpaceBar *sharedInstance;
 
-+(SpaceBar*)sharedManager{return sharedInstance;}
++(SpaceBar*)sharedManager{    
+    if (!sharedInstance){
+        [NSException raise:@"Programming error." format:@"Attempt to access uninitialized SpaceBar object."];
+    }
+    return sharedInstance;
+}
 
 //----------------
 // initialization
 //----------------
 - (id)initWithMapView: (MKMapView *) myMapView {
     self = [super init];
-    if (self) {
-        // Initialize the map
-        self.mapView = myMapView;
-        
-        // This part is common for all display types
-        [self initializeCommon];
-        
-        self.spaceBarMode = TOKENONLY;
-
-        
-        // self.mapView.frame.size.width - spaceBarWidth
-        _frame = CGRectMake(0, 0,
-                                SPACEBAR_WIDTH,
-                                self.mapView.frame.size.height);
-        
-        // Init an annotation view to hold annotations
-        self.annotationView = [[UIView alloc] initWithFrame:self.frame];
-        self.annotationView.backgroundColor = [UIColor clearColor];
-        
-        
-        // Init the slider
-        self.sliderContainer = [[CERangeSlider alloc] initWithFrame:self.frame];
-        self.sliderContainer.delegate = self;
-        self.sliderContainer.trackPaddingInPoints = 30; //pad the top and bottom
-
-        
-        self.sliderContainer.curvatiousness = 0.0;
-        
-        // Add the gesture engine
-        self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
-        
-        self.isBarToolHidden = YES;
-        self.isStudyModeEnabled = NO;
-        self.isMultipleTokenSelectionEnabled = YES;
-        
-        //--------------------------------
-        // Initialize a token collection view
-        //--------------------------------
-        UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
-        
-        // Configure the layout object
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.sectionInset = UIEdgeInsetsMake
-        (0, self.mapView.frame.size.width-60, 0, 0);
-        
-        // Initialize a collection view controller
-        self.tokenCollectionView =
-        [[TokenCollectionView alloc] initWithFrame:self.mapView.frame collectionViewLayout:layout];
-        
-        self.tokenCollectionView.tokenWidth = 60;
-        [self.tokenCollectionView setTopAlignmentOffset:30];
-        
-        // Add the tokenCollectionView panel
-        self.isTokenCollectionViewEnabled = YES;
-        
-        sharedInstance = self;
-    }
+    
+    // Initialize the map
+    self.mapView = myMapView;
+    
+    // This part is common for all display types
+    [self initializeCommon];
+    
+    self.spaceBarMode = TOKENONLY;
+    
+    
+    // self.mapView.frame.size.width - spaceBarWidth
+    _frame = CGRectMake(0, 0,
+                        SPACEBAR_WIDTH,
+                        self.mapView.frame.size.height);
+    
+    // Init an annotation view to hold annotations
+    self.annotationView = [[UIView alloc] initWithFrame:self.frame];
+    self.annotationView.backgroundColor = [UIColor clearColor];
+    
+    
+    // Init the slider
+    self.sliderContainer = [[CERangeSlider alloc] initWithFrame:self.frame];
+    self.sliderContainer.delegate = self;
+    self.sliderContainer.trackPaddingInPoints = 30; //pad the top and bottom
+    
+    
+    self.sliderContainer.curvatiousness = 0.0;
+    
+    // Add the gesture engine
+    self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
+    
+    self.isBarToolHidden = YES;
+    self.isStudyModeEnabled = NO;
+    self.isMultipleTokenSelectionEnabled = YES;
+    
+    //--------------------------------
+    // Initialize a token collection view
+    //--------------------------------
+    self.tokenCollectionView = [[TokenCollectionView alloc] initSingleton];
+    self.tokenCollectionView.isVisible = YES;
+    [self.tokenCollectionView reloadData];
+    
+    //--------------------------------
+    // Initialize an array tool
+    //--------------------------------
+    ArrayTool *arrayTool = [[ArrayTool alloc] initSingleton];
+    
+    sharedInstance = self;
+    
     return self;
 }
 
@@ -221,28 +219,6 @@ static SpaceBar *sharedInstance;
         [self removeAllSpaceTokens];
         [self.gestureEngine setUserInteractionEnabled:NO];
         [self.sliderContainer setUserInteractionEnabled: YES];
-    }
-}
-
-// Controls the visibility of the tokenCollectionView panel
-- (void)setIsTokenCollectionViewEnabled:(BOOL)isTokenCollectionViewEnabled
-{
-    _isTokenCollectionViewEnabled = isTokenCollectionViewEnabled;
-    // Remove all SpaceTokens first
-    [self removeAllSpaceTokens];
-
-    if (_isTokenCollectionViewEnabled){
-        self.tokenCollectionView.frame = self.mapView.frame;
-        
-        ViewController *rootController = [ViewController sharedManager];
-        [rootController.view addSubview:self.tokenCollectionView];
-        [self.tokenCollectionView reloadData];
-        
-        // Move the top view to the front
-        // (so the CollectionView will not block the top view after it is scrolled.)
-        [rootController.view bringSubviewToFront: (UIView*) rootController.mainViewManager.activePanel];
-    }else{
-        [self.tokenCollectionView removeFromSuperview];
     }
 }
 
