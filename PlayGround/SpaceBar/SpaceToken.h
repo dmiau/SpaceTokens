@@ -32,17 +32,23 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 
 // Touch related properties
 @property BOOL isCustomGestureRecognizerEnabled;
+
 @property (weak) UITouch *touch; // to keep tracking of UITouch
 
 @property CAShapeLayer *circleLayer; // signifies the touch poing
 @property CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
 @property CAShapeLayer *constraintLayer; //used in the relaxed constraint state
 
-// When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
+
 @property (weak) SpaceToken *counterPart;
+// When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
+
 @property ConnectionTool *connectionTool;
 @property TokenAppearanceType appearanceType;
 @property (strong) SpatialEntity* spatialEntity;
+
+@property id home;
+// The home of a SpaceToken. The home could be mapView (an anchor), TokenCollectionView, or ArrayTool
 
 @property CGPoint mapViewXY;
 // mapViewXY caches the Mercator (x, y) coordinates
@@ -70,6 +76,7 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 -(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 -(void)touchMoved:(UITouch*)touch;
+-(void)touchEnded;
 
 // Internal methods
 - (void) configureAppearanceForType: (TokenAppearanceType) type;

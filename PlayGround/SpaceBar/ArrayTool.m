@@ -167,8 +167,11 @@ NSString *ArrayCellID = @"cellID";                          // UICollectionViewC
 }
 
 -(void)setArrayEntity:(ArrayEntity *)arrayEntity{
+    _arrayEntity = arrayEntity;
     
-    
+    if (_isVisible){
+        [self reloadData];
+    }
 }
 
 
@@ -191,6 +194,9 @@ NSString *ArrayCellID = @"cellID";                          // UICollectionViewC
     return [self.arrayEntity.contentArray count];
 }
 
+//----------------
+// Producing a spacetoken
+//----------------
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     // Configure the cell
@@ -199,9 +205,9 @@ NSString *ArrayCellID = @"cellID";                          // UICollectionViewC
     CollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:ArrayCellID forIndexPath:indexPath];
     
-    if (row < [self.arrayEntity.contentArray count]){
-        [cell configureSpaceTokenFromEntity:self.arrayEntity.contentArray[row]];
-    }
+    
+    SpaceToken *aToken = [cell configureSpaceTokenFromEntity:self.arrayEntity.contentArray[row]];
+    aToken.home = self;
     
     return cell;
 }
@@ -221,6 +227,8 @@ NSString *ArrayCellID = @"cellID";                          // UICollectionViewC
     [self.arrayEntity.contentArray insertObject:anEntity atIndex:destinationIndexPath.row];
 }
 
+// MARK: Insert
+
 -(void)addItemFromBottom:(SpatialEntity*)anEntity{
     [self.arrayEntity.contentArray insertObject:anEntity atIndex:[self.arrayEntity.contentArray count]-2];
     NSUInteger index = [self.arrayEntity.contentArray count]  -2;
@@ -228,6 +236,33 @@ NSString *ArrayCellID = @"cellID";                          // UICollectionViewC
                            arrayWithObject:
                            [NSIndexPath indexPathForRow:index inSection:0]];
     [self insertItemsAtIndexPaths:indexPaths];
+}
+
+
+
+
+// This decide whether an achor is in the insertion zone or not.
+-(BOOL)isTokenInInsertionZone:(SpaceToken*)spaceToken{
+    
+    if (!self.isVisible)
+        return NO;
+    
+    CGPoint tokenPoint = [spaceToken.superview convertPoint:spaceToken.center
+                                           toView:self];
+    if (tokenPoint.x < self.tokenWidth * 0.5){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+-(void) insertTokenToArrayTool: (SpaceToken*) token{    
+    // Create a new SpaceToken based on anchor
+    ArrayTool *arrayTool = [ArrayTool sharedManager];
+    [arrayTool.arrayEntity.contentArray addObject:token.spatialEntity];
+    
+    // refresh the token panel
+    [arrayTool reloadData];
 }
 
 #pragma mark <UICollectionViewDelegate>

@@ -15,6 +15,6 @@
 
 @property SpaceToken *spaceToken;
 
-- (void)configureSpaceTokenFromEntity:(SpatialEntity *)spatialEntity;
+- (SpaceToken*)configureSpaceTokenFromEntity:(SpatialEntity *)spatialEntity;
 
 @end

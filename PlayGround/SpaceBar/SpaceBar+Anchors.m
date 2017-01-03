@@ -11,6 +11,8 @@
 #import "EntityDatabase.h"
 #import "Constants.h"
 #import "TokenCollectionView.h"
+#import "ArrayTool.h"
+#import "ArrayEntity.h"
 
 @implementation SpaceBar (Anchors)
 
@@ -88,9 +90,22 @@
         if (associatedToken){
             CGPoint mapXY = [aTouch locationInView:self.mapView];
             
+            // Check if the token is in the insertion zone of TokenCollectionView or ArrayTool
+            ArrayTool *arrayTool = [ArrayTool sharedManager];
+            
+            
             // Create a SpaceToken if the touch falls into the creation zone
             if (mapXY.x > 0.95 * self.mapView.frame.size.width){
-                [self convertAnchorToRealToken:associatedToken];
+                [self insertAnchorToDock:associatedToken];
+            }else if ([arrayTool isTokenInInsertionZone:associatedToken]){
+
+                // Do nothing in the study mode
+                if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+                    return;
+                
+                [arrayTool insertTokenToArrayTool:associatedToken];
+                [self removeAnchor: associatedToken];
+                
             }else{
                 // Position the SpaceToken correctly
                 associatedToken.center = mapXY;
@@ -148,7 +163,7 @@
     }
 }
 
-- (void) convertAnchorToRealToken: (SpaceToken*) token{
+- (void) insertAnchorToDock: (SpaceToken*) token{
     // Do nothing in the study mode
     if (self.isStudyModeEnabled || !self.isAnchorAllowed)
         return;
@@ -159,6 +174,20 @@
     
     // refresh the token panel
     [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
+    [self removeAnchor: token];
+}
+
+-(void) insertAnchorToArrayTool: (SpaceToken*) token{
+    // Do nothing in the study mode
+    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+        return;
+    
+    // Create a new SpaceToken based on anchor
+    ArrayTool *arrayTool = [ArrayTool sharedManager];
+    [arrayTool.arrayEntity.contentArray addObject:token.spatialEntity];
+    
+    // refresh the token panel
+    [arrayTool reloadData];
     [self removeAnchor: token];
 }
 

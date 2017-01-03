@@ -940,12 +940,12 @@
 		9A5CCBA71DF86C2E009B56DF /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
+				9AB3BDD81DE290B100334EF9 /* TokenCollection.mm */,
 				9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */,
 				9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */,
 				9A9792E01DFA19EB0062ED6F /* TokenCollectionView.h */,
 				9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */,
-				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
-				9AB3BDD81DE290B100334EF9 /* TokenCollection.mm */,
 				9A665B041E196EC0000D8902 /* ArrayTool.h */,
 				9A665B051E196EC0000D8902 /* ArrayTool.m */,
 			);

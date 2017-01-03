@@ -38,7 +38,7 @@
     return self;
 }
 
-- (void)configureSpaceTokenFromEntity:(SpatialEntity *)spatialEntity{
+- (SpaceToken*)configureSpaceTokenFromEntity:(SpatialEntity *)spatialEntity{
     
     TokenCollection *tokenCollection = [TokenCollection sharedManager];
     SpaceToken* aToken = [tokenCollection findSpaceTokenFromEntity:spatialEntity];
@@ -53,6 +53,7 @@
         [self addSubview:aToken];        
     }
     spatialEntity.isMapAnnotationEnabled = YES;
+    return aToken;
 }
 
 @end

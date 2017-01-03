@@ -118,7 +118,6 @@ unsigned int spaceBarElevatorMoved:1;
 - (void) updateAnchorForTouches: (NSSet<UITouch *> *)touches;
 - (void) removeAnchorForTouches: (NSSet<UITouch *> *)touches;
 - (void) removeAllAnchors;
-- (void) convertAnchorToRealToken: (SpaceToken*) token;
 
 // --------------
 // Implemented in updateSet category

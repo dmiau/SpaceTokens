@@ -12,6 +12,7 @@
 #import "TokenCollection.h"
 #import "ConnectionTool.h"
 #import "CustomMKMapView.h"
+#import "ArrayTool.h"
 
 @implementation SpaceToken (Dragging)
 
@@ -27,13 +28,17 @@
     if (CGRectContainsPoint(self.frame, locationInView))
     {
         //----------------------
-        // Dragging toward the edge (removing gesture)
+        // Removing gesture (Dragging toward the edge)
         //----------------------
         
         // Need to handle token removal detection differently,
         // depending on the position of a SpaceToken
         
-        if (self.center.x > self.superview.frame.size.width/2){
+        CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+        CGPoint tokenCenter = [self.superview convertPoint:self.center
+                                                    toView:mapView];
+        
+        if (tokenCenter.x > mapView.frame.size.width/2){
             // SpaceToken is located at the right edge of the display
             
             if((initialTouchLocationInView.x < self.frame.size.width * 0.5)
@@ -119,6 +124,18 @@
      - (self.frame.size.width/2 -locationInButton.x),
      self.center.y + locationInView.y - previousLoationInView.y
      - (self.frame.size.height/2 -locationInButton.y));
+    
+    // Check if the token is to be inserted into any of the structure
+    
+    // Check if the token is in ArraTool's insertion zone
+    ArrayTool *arrayTool = [ArrayTool sharedManager];
+    
+    if (self.home != arrayTool){
+        if ([arrayTool isTokenInInsertionZone:self]){
+            [arrayTool insertTokenToArrayTool:self];
+            [self touchEnded];
+        }
+    }
 }
 
 

@@ -184,6 +184,9 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     return [enabledEntityArray count];
 }
 
+//----------------
+// Producing a spacetoken
+//----------------
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     // Configure the cell
@@ -192,9 +195,9 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     CollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
-    if (row < [enabledEntityArray count]){
-        [cell configureSpaceTokenFromEntity:enabledEntityArray[row]];
-    }
+
+    SpaceToken *aToken = [cell configureSpaceTokenFromEntity:enabledEntityArray[row]];
+    aToken.home = self;
     
     return cell;
 }

@@ -10,6 +10,7 @@
 
 @class SpatialEntity;
 @class ArrayEntity;
+@class SpaceToken;
 
 @interface ArrayTool : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -23,6 +24,11 @@
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 
+-(void)insertTokenToArrayTool: (SpaceToken*) token;
+
 -(void)setTopAlignmentOffset:(int)offSet;
+
+// This decide whether an achor is in the insertion zone or not
+-(BOOL)isTokenInInsertionZone:(SpaceToken*)spaceToken;
 
 @end
