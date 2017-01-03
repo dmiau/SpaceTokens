@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class SpatialEntity;
+@class ArrayEntity;
+@class SpaceToken;
 
 @interface TokenCollectionView : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -16,9 +18,15 @@
 
 @property BOOL isVisible;
 
+@property ArrayEntity *arrayEntity;
+
 +(id)sharedManager;
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 
+-(void)insertToken: (SpaceToken*) token;
+
 -(void)setTopAlignmentOffset:(int)offSet;
+
+
 @end

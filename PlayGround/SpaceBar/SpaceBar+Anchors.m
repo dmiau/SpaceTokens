@@ -103,7 +103,7 @@
                 if (self.isStudyModeEnabled || !self.isAnchorAllowed)
                     return;
                 
-                [arrayTool insertTokenToArrayTool:associatedToken];
+                [arrayTool insertToken:associatedToken];
                 [self removeAnchor: associatedToken];
                 
             }else{

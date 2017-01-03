@@ -14,6 +14,7 @@
 #import "CustomMKMapView.h"
 #import "SpaceBar.h"
 #import "ViewController.h"
+#import "ArrayEntity.h"
 
 //-------------------
 // Parameters
@@ -23,10 +24,7 @@
 
 NSString *CellID = @"cellID";                          // UICollectionViewCell storyboard id
 
-@implementation TokenCollectionView{
-    NSMutableArray *enabledEntityArray;
-}
-
+@implementation TokenCollectionView
 
 
 +(id)sharedManager{
@@ -76,8 +74,8 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 - (id) initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
     self = [super initWithFrame:frame collectionViewLayout:layout];
     
-    // Initialize instance variable
-    enabledEntityArray = [[NSMutableArray alloc] init];
+    // Initialize properties
+    self.arrayEntity = [[ArrayEntity alloc] init];
     
     [self setBackgroundColor:[UIColor clearColor]];
     
@@ -101,6 +99,8 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     
     return self;
 }
+
+// MARK: Gestures
 
 - (void)handleLongGesture:(UILongPressGestureRecognizer*) gesture{
     CGPoint p = [gesture locationInView:self];
@@ -162,6 +162,14 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     }
 }
 
+-(void)setArrayEntity:(ArrayEntity *)arrayEntity{
+    _arrayEntity = arrayEntity;
+    
+    if (_isVisible){
+        [self reloadData];
+    }
+}
+
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -172,16 +180,16 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    [enabledEntityArray removeAllObjects];
-    enabledEntityArray = [[EntityDatabase sharedManager] getEnabledEntities];
+    self.arrayEntity.contentArray
+    = [[EntityDatabase sharedManager] getEnabledEntities];
     
-    if ([enabledEntityArray count] > 12){
+    if ([self.arrayEntity.contentArray count] > 12){
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = NO;
     }else{
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = YES;
     }
     
-    return [enabledEntityArray count];
+    return [self.arrayEntity.contentArray count];
 }
 
 //----------------
@@ -196,7 +204,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
 
-    SpaceToken *aToken = [cell configureSpaceTokenFromEntity:enabledEntityArray[row]];
+    SpaceToken *aToken = [cell configureSpaceTokenFromEntity:self.arrayEntity.contentArray[row]];
     aToken.home = self;
     
     return cell;
@@ -212,19 +220,31 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 //----------------
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {    
-    SpatialEntity *anEntity = enabledEntityArray[sourceIndexPath.row];
-    [enabledEntityArray removeObjectAtIndex:sourceIndexPath.row];
-    [enabledEntityArray insertObject:anEntity atIndex:destinationIndexPath.row];
+    SpatialEntity *anEntity = self.arrayEntity.contentArray[sourceIndexPath.row];
+    [self.arrayEntity.contentArray removeObjectAtIndex:sourceIndexPath.row];
+    [self.arrayEntity.contentArray insertObject:anEntity atIndex:destinationIndexPath.row];
 }
 
+// MARK: Insert
+
 -(void)addItemFromBottom:(SpatialEntity*)anEntity{    
-    [enabledEntityArray insertObject:anEntity atIndex:[enabledEntityArray count]-2];
-    NSUInteger index = [enabledEntityArray count]  -2;
+    [self.arrayEntity.contentArray insertObject:anEntity atIndex:[self.arrayEntity.contentArray count]-2];
+    NSUInteger index = [self.arrayEntity.contentArray count]  -2;
     NSArray *indexPaths = [NSArray
                            arrayWithObject:
                            [NSIndexPath indexPathForRow:index inSection:0]];
     [self insertItemsAtIndexPaths:indexPaths];
 }
+
+
+-(void) insertToken: (SpaceToken*) token{
+    // Create a new SpaceToken based on anchor
+    [self.arrayEntity.contentArray addObject:token.spatialEntity];
+    
+    // refresh the token panel
+    [self reloadData];
+}
+
 
 #pragma mark <UICollectionViewDelegate>
 

@@ -132,7 +132,7 @@
     
     if (self.home != arrayTool){
         if ([arrayTool isTokenInInsertionZone:self]){
-            [arrayTool insertTokenToArrayTool:self];
+            [arrayTool insertToken:self];
             [self touchEnded];
         }
     }

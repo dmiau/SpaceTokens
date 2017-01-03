@@ -7,26 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TokenCollectionView.h"
 
 @class SpatialEntity;
 @class ArrayEntity;
 @class SpaceToken;
 
-@interface ArrayTool : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
-
-@property double tokenWidth; // this parameter is also used to decide the hitTest area
-
-@property BOOL isVisible;
-
-@property ArrayEntity *arrayEntity;
-
-+(id)sharedManager;
-
--(void)addItemFromBottom:(SpatialEntity*)anEntity;
-
--(void)insertTokenToArrayTool: (SpaceToken*) token;
-
--(void)setTopAlignmentOffset:(int)offSet;
+@interface ArrayTool : TokenCollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 // This decide whether an achor is in the insertion zone or not
 -(BOOL)isTokenInInsertionZone:(SpaceToken*)spaceToken;
