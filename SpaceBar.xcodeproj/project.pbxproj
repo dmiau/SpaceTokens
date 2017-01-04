@@ -109,6 +109,12 @@
 		9A27222F1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
 		9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
+		9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
+		9A3EB3B71E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
+		9A3EB3B81E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
+		9A3EB3BB1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */; };
+		9A3EB3BC1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */; };
+		9A3EB3BD1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */; };
 		9A437FB21D550C7A00F28E61 /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
 		9A437FB31D550C7A00F28E61 /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
 		9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
@@ -467,6 +473,10 @@
 		9A27222D1D6CB79C002AE953 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Map/Person.m; sourceTree = "<group>"; };
 		9A31C13D1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+TouchInteractions.h"; path = "Map/CustomMKMapView+TouchInteractions.h"; sourceTree = "<group>"; };
 		9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+TouchInteractions.m"; path = "Map/CustomMKMapView+TouchInteractions.m"; sourceTree = "<group>"; };
+		9A3EB3B41E1C77FD008FA7FA /* ArrayToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayToken.h; path = SpaceBar/ArrayToken.h; sourceTree = "<group>"; };
+		9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayToken.m; path = SpaceBar/ArrayToken.m; sourceTree = "<group>"; };
+		9A3EB3B91E1C7AEE008FA7FA /* SpaceToken+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Tools.h"; path = "SpaceBar/SpaceToken+Tools.h"; sourceTree = "<group>"; };
+		9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "SpaceToken+Tools.mm"; path = "SpaceBar/SpaceToken+Tools.mm"; sourceTree = "<group>"; };
 		9A437FB01D550C7A00F28E61 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = StudyManager/GameManager.h; sourceTree = "<group>"; };
 		9A437FB11D550C7A00F28E61 /* GameManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameManager.mm; path = StudyManager/GameManager.mm; sourceTree = "<group>"; };
 		9A43EAED1D40029D00080029 /* topPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topPanel.h; path = Views/topPanel.h; sourceTree = "<group>"; };
@@ -957,6 +967,8 @@
 			children = (
 				9AC36DD01C60087B0037210F /* SpaceToken.h */,
 				9AC36DD11C60087B0037210F /* SpaceToken.m */,
+				9A3EB3B91E1C7AEE008FA7FA /* SpaceToken+Tools.h */,
+				9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */,
 				9A4415111D6F67E800576CB4 /* SpaceToken+Gestures.h */,
 				9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */,
 				9A177FCB1DFB09A70035D056 /* SpaceToken+Dragging.h */,
@@ -965,6 +977,8 @@
 				9A1985A51DDCEE460016696F /* PathToken.m */,
 				9A5DA0301E16F2C9002A50B7 /* AreaToken.h */,
 				9A5DA0311E16F2C9002A50B7 /* AreaToken.m */,
+				9A3EB3B41E1C77FD008FA7FA /* ArrayToken.h */,
+				9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */,
 				9A90C7611DFDB49500CDC578 /* ConnectionTool */,
 			);
 			name = Tokens;
@@ -1607,6 +1621,7 @@
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
+				9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
 				9A665B061E196EC0000D8902 /* ArrayTool.m in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
@@ -1634,6 +1649,7 @@
 				9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */,
 				9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
+				9A3EB3BB1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */,
 				9A5DA03C1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9A9809C21E1AEFB2006D7F8D /* ArrayEntity.m in Sources */,
 				9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
@@ -1710,6 +1726,7 @@
 				9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
+				9A3EB3B71E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
 				9A665B071E196EC0000D8902 /* ArrayTool.m in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
@@ -1737,6 +1754,7 @@
 				9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
 				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
 				9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
+				9A3EB3BC1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */,
 				9A5DA03D1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9A9809C31E1AEFB2006D7F8D /* ArrayEntity.m in Sources */,
 				9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
@@ -1813,6 +1831,7 @@
 				9AE13B531DF0D148008612DA /* PreferencesController.mm in Sources */,
 				9AE13B541DF0D148008612DA /* Snapshot+Validators.m in Sources */,
 				9AE13B551DF0D148008612DA /* PlayGround.xcdatamodeld in Sources */,
+				9A3EB3B81E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9AE13B561DF0D148008612DA /* CustomMKMapView+TouchInteractions.m in Sources */,
 				9A665B081E196EC0000D8902 /* ArrayTool.m in Sources */,
 				9AE13B571DF0D148008612DA /* ViewController+Interactions.mm in Sources */,
@@ -1840,6 +1859,7 @@
 				9AE13B6B1DF0D148008612DA /* SnapshotProgress.mm in Sources */,
 				9AE13B6C1DF0D148008612DA /* CERangeSlider.m in Sources */,
 				9AE13B6D1DF0D148008612DA /* SnapshotPlace.m in Sources */,
+				9A3EB3BD1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */,
 				9A5DA03E1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9A9809C41E1AEFB2006D7F8D /* ArrayEntity.m in Sources */,
 				9AE13B6E1DF0D148008612DA /* PlaceInstructionView.m in Sources */,

@@ -9,9 +9,9 @@
 #import "SpaceToken.h"
 #import "UIButton+Extensions.h"
 #import "Constants.h"
-#import "../Map/CustomPointAnnotation.h"
-#import "../Map/Person.h"
-#import "../Map/CustomMKMapView.h"
+#import "CustomPointAnnotation.h"
+#import "Person.h"
+#import "CustomMKMapView.h"
 
 
 #import "TokenCollectionView.h"
@@ -37,6 +37,8 @@
     // Drawing code
 }
 */
+
+
 
 - (id) init{
     self = [super init];

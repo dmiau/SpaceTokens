@@ -97,13 +97,14 @@
             // Create a SpaceToken if the touch falls into the creation zone
             if (mapXY.x > 0.95 * self.mapView.frame.size.width){
                 [self insertAnchorToDock:associatedToken];
-            }else if ([arrayTool isTokenInInsertionZone:associatedToken]){
+            }else if ([arrayTool isTouchInInsertionZone:aTouch]){
 
                 // Do nothing in the study mode
                 if (self.isStudyModeEnabled || !self.isAnchorAllowed)
                     return;
                 
                 [arrayTool insertToken:associatedToken];
+                NSLog(@"Insert from anchor");
                 [self removeAnchor: associatedToken];
                 
             }else{

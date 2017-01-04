@@ -43,13 +43,19 @@ template class std::vector<double>;
     self.annotation.pointType = path;
     self.polyline = polyline;
     self.name = @"unNamedLine";
-    [self populateInternalRouteProperties];
+    
     return self;
 }
 
 //-----------------
 // Setters
 //-----------------
+-(void)setPolyline:(MKPolyline *)polyline{
+    _polyline = polyline;
+    [self populateInternalRouteProperties];
+}
+
+
 -(void)setIsEnabled:(BOOL)isEnabled{
     [super setIsEnabled:isEnabled];
     
@@ -347,7 +353,6 @@ double computeOrientationFromA2B
     self.annotation.pointType = path;
     self.polyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[polylineArrayX count]];
     delete[] tempMapPointArray;
-    [self populateInternalRouteProperties];
     return self;
 }
 

@@ -24,7 +24,7 @@ using namespace std;
 //------------------
 @property MKMapItem *source;
 @property MKMapItem *destination;
-
+@property (nonatomic, copy) void (^routeReadyBlock)();
 
 //------------------
 // methods
@@ -40,4 +40,8 @@ using namespace std;
 //------------------
 + (void) addRouteWithSource:(POI*) source Destination:(POI*) destination;
 
+// Create route with multiple points
++ (Route*) createRouteFromEntities: (NSArray *)entityArray;
+
+-(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination;
 @end

@@ -115,17 +115,8 @@
 }
 
 - (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity{
-    SpaceToken *aSpaceToken;
-    if ([spatialEntity isKindOfClass:[POI class]] ||
-        [spatialEntity isKindOfClass:[Person class]]){
-        aSpaceToken = [[SpaceToken alloc] init];
-    }else if ([spatialEntity isKindOfClass:[Route class]]){
-        aSpaceToken = [[PathToken alloc] init];
-    }else if ([spatialEntity isKindOfClass:[Area class]]){
-        aSpaceToken = [[AreaToken alloc] init];
-    }else{
-        [NSException raise:@"unimplemented code path" format:@"unknown spatial entity type"];
-    }
+    SpaceToken *aSpaceToken =
+    [SpaceToken manufactureTokenForEntity:spatialEntity] ;
     
     [aSpaceToken configureAppearanceForType:DOCKED];
     

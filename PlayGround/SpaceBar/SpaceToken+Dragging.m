@@ -13,6 +13,7 @@
 #import "ConnectionTool.h"
 #import "CustomMKMapView.h"
 #import "ArrayTool.h"
+#import "ArrayEntity.h"
 
 @implementation SpaceToken (Dragging)
 
@@ -131,7 +132,8 @@
     ArrayTool *arrayTool = [ArrayTool sharedManager];
     
     if (self.home != arrayTool){
-        if ([arrayTool isTokenInInsertionZone:self]){
+        if ([arrayTool isTouchInInsertionZone:touch]){
+            NSLog(@"Insert from dragging");
             [arrayTool insertToken:self];
             [self touchEnded];
         }
@@ -262,15 +264,27 @@
           RemoveFromTouchingSetNotification object:self userInfo:nil]];
         
         [self removeFromSuperview];
-        self.spatialEntity.isEnabled = NO;
-        self.spatialEntity.isMapAnnotationEnabled = NO;
         
-        // Remove from the button set
-        [[ NSNotificationCenter defaultCenter] postNotification:
-         [NSNotification notificationWithName:RemoveFromButtonArrayNotification
-                                       object:self userInfo:nil]];
+        // Need to do things differently depending on the parent of the token
+        ArrayTool *arrayTool = [ArrayTool sharedManager];
+        
+        if (self.home != arrayTool){
+            // The parent is the dock
+            self.spatialEntity.isEnabled = NO;
+            self.spatialEntity.isMapAnnotationEnabled = NO;
+            
+            // Remove from the button set
+            [[ NSNotificationCenter defaultCenter] postNotification:
+             [NSNotification notificationWithName:RemoveFromButtonArrayNotification
+                                           object:self userInfo:nil]];
+        }else{
+            // The parent is ArrayTool
+            
+            // TODO: Need to handle duplication
+            [arrayTool.arrayEntity.contentArray removeObject:self.spatialEntity];
+            [arrayTool reloadData];
+        }
     });
-
 }
 
 

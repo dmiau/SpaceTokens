@@ -54,6 +54,7 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 // mapViewXY caches the Mercator (x, y) coordinates
 // corrresponding to latlon
 
++(SpaceToken*)manufactureTokenForEntity:(SpatialEntity*)spatialEntity;
 
 // flash the token
 - (void)flashToken;
