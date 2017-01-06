@@ -11,6 +11,8 @@
 #import "TokenCollection.h"
 #import "CustomMKMapView.h"
 #import "SpaceBar.h"
+#import "Route.h"
+#import "ViewController.h"
 
 #import "ArrayEntity.h"
 
@@ -68,14 +70,39 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return ((point.x < self.tokenWidth)
-            &&(point.y > 0));
+    
+    if (arrayToolMode == ArrayMode){
+        
+        if ((point.x < self.tokenWidth)
+            &&(point.y > 0)){
+            NSLog(@"Point inside");
+        return YES;
+        }else{
+        return NO;
+        }
+        
+        
+    }else if (arrayToolMode == PathMode){
+        if (CGRectContainsPoint(masterToken.frame, point)){
+            return YES;
+        }else if (CGRectContainsPoint(pathModeButton.frame, point)){
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        [NSException raise:@"Programming error." format:@"Unrecognized arrayMode"];
+        return NO;
+    }
 }
 
 
 #pragma mark <UICollectionViewDataSource>
 // TODO: need to implement a viewWillAppear
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    // Reset TokenCollection
+    [[TokenCollection sharedManager] removeAllTokensForStructure:self];
     
     if ([self.arrayEntity.contentArray count] > 12){
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = NO;
@@ -90,6 +117,14 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         outCount = 0;
     }
     return outCount;
+}
+
+-(void) insertToken: (SpaceToken*) token{
+    // Create a new SpaceToken based on anchor
+    [self.arrayEntity.contentArray addObject:token.spatialEntity];
+    
+    // refresh the token panel
+    [self reloadData];
 }
 
 // This decide whether an achor is in the insertion zone or not.
@@ -109,10 +144,9 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 - (void)initMasterToken{
     TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    masterToken = [tokenCollection findSpaceTokenFromEntity:self.arrayEntity];
-    if (!masterToken){
-        masterToken = [tokenCollection addTokenFromSpatialEntity:self.arrayEntity];
-    }
+    masterToken = [tokenCollection addTokenFromSpatialEntity:self.arrayEntity];
+    masterToken.home = self;
+    
     CGRect frame = CGRectZero;
     frame.origin = CGPointMake(0, -30);
     frame.size = CGSizeMake(60, 20);
@@ -154,24 +188,25 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         
         // Clear all the token, expose the bar underneath
 
-        // Construct a route and feed it to SpaceBar
-        //    Route *aRoute = (Route*)aToken.spatialEntity;
-        //    // Load the route to the bar tool
-        //    [[ViewController sharedManager] showRoute:aRoute
-        //                               zoomToOverview:YES];
+        Route *aRoute = [[Route alloc] init];
+        void (^requestCompletionBlock)(void)=^{
+            // Push the route to SpaceBar
+            [[ViewController sharedManager] showRoute:aRoute
+                                       zoomToOverview:YES];
+        };
+        aRoute.routeReadyBlock = requestCompletionBlock;
+        [aRoute requestRouteFromEntities:self.arrayEntity.contentArray];
         
         // Change pointInside detection method
         
     }else{
+        // Disable the scroll bar
+        [[ViewController sharedManager] removeRoute];
         // Switching to ArrayMode
         arrayToolMode = ArrayMode;
     }
     
     [self reloadData];
-    
-    
-
-    
 }
 
 @end

@@ -14,6 +14,7 @@
 #import "CustomMKMapView.h"
 #import "ArrayTool.h"
 #import "ArrayEntity.h"
+#import "ViewController.h"
 
 @implementation SpaceToken (Dragging)
 
@@ -130,7 +131,7 @@
     
     // Check if the token is in ArraTool's insertion zone
     ArrayTool *arrayTool = [ArrayTool sharedManager];
-    
+    TokenCollectionView *collectionView = [TokenCollectionView sharedManager];
     if (self.home != arrayTool){
         if ([arrayTool isTouchInInsertionZone:touch]){
             NSLog(@"Insert from dragging");
@@ -138,6 +139,29 @@
             [self touchEnded];
         }
     }
+    
+    if (self.home != collectionView){
+        if ([collectionView isTouchInInsertionZone:touch]){
+            
+            if (![[TokenCollection sharedManager] findSpaceTokenFromEntity:self.spatialEntity forStructure:collectionView])
+            {
+                NSLog(@"Insert from dragging");
+                [collectionView insertToken:self];
+                [self touchEnded];
+            }else{
+                UIAlertController *alert = [UIAlertController
+                    alertControllerWithTitle:@"Action ignored" message:@"Token already exists" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    
+                    //do something when click button
+                }];
+                [alert addAction:okAction];
+                [[ViewController sharedManager] presentViewController:alert animated:YES completion:nil];
+                
+            }
+        }
+    }
+    
 }
 
 
@@ -264,6 +288,7 @@
           RemoveFromTouchingSetNotification object:self userInfo:nil]];
         
         [self removeFromSuperview];
+        [[TokenCollection sharedManager] removeToken:self];
         
         // Need to do things differently depending on the parent of the token
         ArrayTool *arrayTool = [ArrayTool sharedManager];
@@ -274,9 +299,7 @@
             self.spatialEntity.isMapAnnotationEnabled = NO;
             
             // Remove from the button set
-            [[ NSNotificationCenter defaultCenter] postNotification:
-             [NSNotification notificationWithName:RemoveFromButtonArrayNotification
-                                           object:self userInfo:nil]];
+            [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
         }else{
             // The parent is ArrayTool
             

@@ -38,22 +38,4 @@
     return self;
 }
 
-- (SpaceToken*)configureSpaceTokenFromEntity:(SpatialEntity *)spatialEntity{
-    
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    SpaceToken* aToken = [tokenCollection findSpaceTokenFromEntity:spatialEntity];
-    
-    if (!aToken){
-        aToken = [tokenCollection addTokenFromSpatialEntity:spatialEntity];
-    }
-    
-    if (aToken != self.spaceToken){
-        [self.spaceToken removeFromSuperview];
-        self.spaceToken = aToken;
-        [self addSubview:aToken];        
-    }
-    spatialEntity.isMapAnnotationEnabled = YES;
-    return aToken;
-}
-
 @end

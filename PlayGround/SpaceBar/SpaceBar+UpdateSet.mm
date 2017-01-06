@@ -29,9 +29,7 @@
 - (void) addToSetBasedOnNotification: (NSNotification*) aNotification
 {
     // handle the notification based on event name
-    if (aNotification.name == AddToButtonArrayNotification){
-        [self.tokenCollection addToken:aNotification.object];
-    }else if (aNotification.name == AddToTouchingSetNotification){
+    if (aNotification.name == AddToTouchingSetNotification){
         // Enable the SpaceToken mode
         [self moveCandidateAnchorsToAnchorSet];
         [self addTokenToTouchingSet:aNotification.object];
@@ -66,10 +64,7 @@
 - (void) removeFromSetBasedOnNotification: (NSNotification*) aNotification
 {
     // handle the notification based on event name
-    if (aNotification.name == RemoveFromButtonArrayNotification){
-        [self.tokenCollection removeToken:aNotification.object];
-        [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
-    }else if (aNotification.name == RemoveFromTouchingSetNotification){        
+    if (aNotification.name == RemoveFromTouchingSetNotification){        
         [self removeTokenFromTouchingSet:aNotification.object];
     }else if (aNotification.name == RemoveFromDraggingSetNotification){
         [self.draggingSet removeObject:aNotification.object];

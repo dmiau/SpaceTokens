@@ -92,11 +92,19 @@
             
             // Check if the token is in the insertion zone of TokenCollectionView or ArrayTool
             ArrayTool *arrayTool = [ArrayTool sharedManager];
-            
+            TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
             
             // Create a SpaceToken if the touch falls into the creation zone
-            if (mapXY.x > 0.95 * self.mapView.frame.size.width){
-                [self insertAnchorToDock:associatedToken];
+            if ([tokenCollectionView isTouchInInsertionZone:aTouch]){
+
+                // Do nothing in the study mode
+                if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+                    return;
+                
+                [tokenCollectionView insertToken:associatedToken];
+                NSLog(@"Insert from anchor");
+                [self removeAnchor: associatedToken];
+                
             }else if ([arrayTool isTouchInInsertionZone:aTouch]){
 
                 // Do nothing in the study mode
@@ -162,34 +170,6 @@
     for (SpaceToken *aToken in self.anchorCandidateSet){
         [self removeAnchor: aToken];
     }
-}
-
-- (void) insertAnchorToDock: (SpaceToken*) token{
-    // Do nothing in the study mode
-    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
-        return;
-    
-    // Create a new SpaceToken based on anchor
-    
-    [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];
-    
-    // refresh the token panel
-    [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
-    [self removeAnchor: token];
-}
-
--(void) insertAnchorToArrayTool: (SpaceToken*) token{
-    // Do nothing in the study mode
-    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
-        return;
-    
-    // Create a new SpaceToken based on anchor
-    ArrayTool *arrayTool = [ArrayTool sharedManager];
-    [arrayTool.arrayEntity.contentArray addObject:token.spatialEntity];
-    
-    // refresh the token panel
-    [arrayTool reloadData];
-    [self removeAnchor: token];
 }
 
 @end

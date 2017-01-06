@@ -8,8 +8,7 @@
 
 #import "Constants.h"
 
-NSString *const AddToButtonArrayNotification = @"AddToButtonArrayNotification";
-NSString *const RemoveFromButtonArrayNotification = @"RemoveFromButtonArrayNotification";
+
 NSString *const AddToTouchingSetNotification = @"AddToTouchingSetNotification";
 NSString *const RemoveFromTouchingSetNotification = @"RemoveFromTouchingSetNotification";
 NSString *const AddToDraggingSetNotification = @"AddToDraggingSetNotification";

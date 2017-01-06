@@ -11,6 +11,5 @@
 @interface ArrayEntity : SpatialEntity
 
 @property NSMutableArray <SpatialEntity *> *contentArray;
-
-
+-(void)updateBoundingMapRect;
 @end

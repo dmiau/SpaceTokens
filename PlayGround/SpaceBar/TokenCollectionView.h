@@ -24,9 +24,11 @@
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 
--(void)insertToken: (SpaceToken*) token;
+
 
 -(void)setTopAlignmentOffset:(int)offSet;
 
+-(BOOL)isTouchInInsertionZone:(UITouch*)touch;
 
+-(void)insertToken: (SpaceToken*) token;
 @end

@@ -191,7 +191,6 @@
     switch (type) {
         case DOCKED:
             [self addSubview:self.titleLabel];
-            [self setTitle:@"SpaceToken" forState:UIControlStateNormal];
             [self setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
             self.titleLabel.font = [UIFont systemFontOfSize:12];
             self.selected = NO;
@@ -348,7 +347,7 @@
     newToken.spatialEntity = self.spatialEntity;
     newToken.spatialEntity.linkedObj = self; // Establish the connection
     newToken.isDraggable = self.isDraggable;
-        
+    newToken.home = self.home;
     return newToken;
 }
 

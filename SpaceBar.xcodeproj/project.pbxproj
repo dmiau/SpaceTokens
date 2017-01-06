@@ -154,9 +154,9 @@
 		9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
 		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
-		9A665B061E196EC0000D8902 /* ArrayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.m */; };
-		9A665B071E196EC0000D8902 /* ArrayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.m */; };
-		9A665B081E196EC0000D8902 /* ArrayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.m */; };
+		9A665B061E196EC0000D8902 /* ArrayTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.mm */; };
+		9A665B071E196EC0000D8902 /* ArrayTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.mm */; };
+		9A665B081E196EC0000D8902 /* ArrayTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.mm */; };
 		9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9A6F56321D9BCB490037C8A1 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
@@ -520,7 +520,7 @@
 		9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Annotations.h"; sourceTree = "<group>"; };
 		9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Annotations.m"; sourceTree = "<group>"; };
 		9A665B041E196EC0000D8902 /* ArrayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayTool.h; path = SpaceBar/ArrayTool.h; sourceTree = "<group>"; };
-		9A665B051E196EC0000D8902 /* ArrayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayTool.m; path = SpaceBar/ArrayTool.m; sourceTree = "<group>"; };
+		9A665B051E196EC0000D8902 /* ArrayTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ArrayTool.mm; path = SpaceBar/ArrayTool.mm; sourceTree = "<group>"; };
 		9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchPanel.xib; sourceTree = "<group>"; };
 		9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanelView.h; path = Views/SearchPanelView.h; sourceTree = "<group>"; };
 		9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanelView.m; path = Views/SearchPanelView.m; sourceTree = "<group>"; };
@@ -957,7 +957,7 @@
 				9A9792E01DFA19EB0062ED6F /* TokenCollectionView.h */,
 				9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */,
 				9A665B041E196EC0000D8902 /* ArrayTool.h */,
-				9A665B051E196EC0000D8902 /* ArrayTool.m */,
+				9A665B051E196EC0000D8902 /* ArrayTool.mm */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -1623,7 +1623,7 @@
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
-				9A665B061E196EC0000D8902 /* ArrayTool.m in Sources */,
+				9A665B061E196EC0000D8902 /* ArrayTool.mm in Sources */,
 				9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
 				9A82A08B1E0B2DE600B436AC /* AnchorInstructionView.m in Sources */,
 				9AB3BDD91DE290B100334EF9 /* TokenCollection.mm in Sources */,
@@ -1728,7 +1728,7 @@
 				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
 				9A3EB3B71E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
-				9A665B071E196EC0000D8902 /* ArrayTool.m in Sources */,
+				9A665B071E196EC0000D8902 /* ArrayTool.mm in Sources */,
 				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
 				9A82A08C1E0B2DE600B436AC /* AnchorInstructionView.m in Sources */,
 				9AB3BDDA1DE290B100334EF9 /* TokenCollection.mm in Sources */,
@@ -1833,7 +1833,7 @@
 				9AE13B551DF0D148008612DA /* PlayGround.xcdatamodeld in Sources */,
 				9A3EB3B81E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9AE13B561DF0D148008612DA /* CustomMKMapView+TouchInteractions.m in Sources */,
-				9A665B081E196EC0000D8902 /* ArrayTool.m in Sources */,
+				9A665B081E196EC0000D8902 /* ArrayTool.mm in Sources */,
 				9AE13B571DF0D148008612DA /* ViewController+Interactions.mm in Sources */,
 				9A82A08D1E0B2DE600B436AC /* AnchorInstructionView.m in Sources */,
 				9AE13B581DF0D148008612DA /* TokenCollection.mm in Sources */,

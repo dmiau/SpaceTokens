@@ -17,7 +17,10 @@ using namespace std;
 @class POI;
 
 #pragma mark RouteInterface
-@interface Route : LineEntity
+@interface Route : LineEntity{
+    NSMutableArray *routeSegmentArray; // This is to support the mutli-destination feature
+    
+}
 
 //------------------
 // properties
@@ -25,6 +28,8 @@ using namespace std;
 @property MKMapItem *source;
 @property MKMapItem *destination;
 @property (nonatomic, copy) void (^routeReadyBlock)();
+
+@property BOOL requestCompletionFlag;
 
 //------------------
 // methods
@@ -41,7 +46,7 @@ using namespace std;
 + (void) addRouteWithSource:(POI*) source Destination:(POI*) destination;
 
 // Create route with multiple points
-+ (Route*) createRouteFromEntities: (NSArray *)entityArray;
+-(void)requestRouteFromEntities: (NSArray *)entityArray;
 
 -(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination;
 @end

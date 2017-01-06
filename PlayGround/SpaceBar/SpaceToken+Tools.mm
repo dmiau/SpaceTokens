@@ -41,6 +41,11 @@
     }else{
         [NSException raise:@"unimplemented code path" format:@"unknown spatial entity type"];
     }
+    
+    aSpaceToken.spatialEntity = spatialEntity;
+    
+    spatialEntity.isMapAnnotationEnabled = YES;
+    
     return aSpaceToken;
 }
 @end

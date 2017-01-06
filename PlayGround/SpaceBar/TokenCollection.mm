@@ -38,15 +38,19 @@
     return self;
 }
 
--(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity{
+-(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity
+forStructure:(id)structure
+{
     SpaceToken *outToken = nil;
     
-//    for (SpaceToken *aToken in tokenArray){
-//        if ([aToken isEqual:entity]){
-//            outToken = aToken;
-//        }
-//    }
-    // TODO: This method is useless at the moment.
+    for (SpaceToken *aToken in tokenArray){
+        if ([aToken.spatialEntity isEqual:entity]
+            && [aToken.home isEqual:structure])
+        {
+            outToken = aToken;
+            break;
+        }
+    }
     
     return outToken;
 }
@@ -103,11 +107,6 @@
 // Add and remove tokens
 //------------------
 - (void)addToken:(SpaceToken *)aToken{
-    
-    if ([tokenArray count] > 12){
-        self.isCustomGestureRecognizerEnabled = NO;
-    }
-    
     [tokenArray addObject:aToken];
     aToken.isStudyModeEnabled = self.isStudyModeEnabled;
     aToken.isDraggable = self.isTokenDraggingEnabled;
@@ -117,22 +116,10 @@
 - (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity{
     SpaceToken *aSpaceToken =
     [SpaceToken manufactureTokenForEntity:spatialEntity] ;
-    
     [aSpaceToken configureAppearanceForType:DOCKED];
-    
-    [aSpaceToken setTitle:spatialEntity.name forState:UIControlStateNormal];
-    aSpaceToken.spatialEntity = spatialEntity;
-    spatialEntity.linkedObj = aSpaceToken; // Establish the connection
-    
-    spatialEntity.isMapAnnotationEnabled = YES;
+
     [self addToken:aSpaceToken];
     return aSpaceToken;
-}
-
-- (void)addTokensFromEntityArray:(NSArray <SpatialEntity*>*)entityArray{
-    for (SpatialEntity *spatialEntity in entityArray){
-        [self addTokenFromSpatialEntity:spatialEntity];
-    }
 }
 
 - (void)removeToken:(SpaceToken *)aToken{
@@ -143,6 +130,13 @@
     [tokenArray removeAllObjects];
 }
 
+- (void)removeAllTokensForStructure:(id)structure{
+    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"SELF.home = %@", structure];
+    NSArray *filteredArray = [tokenArray filteredArrayUsingPredicate:bPredicate];
+    [tokenArray removeObjectsInArray:filteredArray];
+}
+
+
 - (NSArray <SpaceToken*>*)getTokenArray{
     NSArray *outArray = [NSArray arrayWithArray:tokenArray];
     return outArray;
@@ -150,8 +144,10 @@
 
 -(NSString*)description{
     NSMutableArray *lineArray = [NSMutableArray array];
-    NSString *line = [NSString stringWithFormat:@"Gesture Mode: %d", self.isCustomGestureRecognizerEnabled];
+    NSString *line = [NSString stringWithFormat:@"TokenCollection Gesture Mode: %d", self.isCustomGestureRecognizerEnabled];
     [lineArray addObject:line];
+    
+    [lineArray addObject:[NSString stringWithFormat:@"TokenCollection #:%lu", [tokenArray count]]];
     return [lineArray componentsJoinedByString:@"\n"];
 }
 

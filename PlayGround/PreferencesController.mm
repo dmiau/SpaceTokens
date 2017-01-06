@@ -188,6 +188,7 @@
     NSMutableArray *lineArray = [NSMutableArray array];
     [lineArray addObject: [[CustomMKMapView sharedManager] description]];
     [lineArray addObject: [[TokenCollection sharedManager] description]];
+    [lineArray addObject: [[SpaceBar sharedManager] description]];
     self.debugInfoOutlet.text = [lineArray componentsJoinedByString:@"\n"];
 }
 

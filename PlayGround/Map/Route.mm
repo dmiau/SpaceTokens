@@ -62,15 +62,7 @@ template class std::vector<double>;
 
 // Make an asynchronous request for a route with the specified source and destination`
 -(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination{
-
-    NSString *requestCompletionNotification = @"RouteRequestCompletionNotification";
-    
-    // listen to the map change event
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self
-               selector:@selector(requestCompletionAction)
-                   name:requestCompletionNotification
-                 object:nil];
+    self.requestCompletionFlag = NO;
     
     // Get the direction from a start map item to an end map item
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
@@ -96,44 +88,45 @@ template class std::vector<double>;
      ^(MKDirectionsResponse *response, NSError *error) {
          if (error) {
              // Handle Error
+             UIAlertView *alert = [[UIAlertView alloc]
+                                   initWithTitle:@"Direction request error."
+                                   message: @"Direction request error."
+                                   delegate:self
+                                   cancelButtonTitle:@"OK"
+                                   otherButtonTitles:nil];
+             [alert show];
          } else {
-             // A response is received
-             //             [self initRouteObject:response];
+             
+             self.annotation.pointType = path;
+             self.source = response.source;
+             self.destination = response.destination;
+             self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
+             
+             NSLog(@"A direction response for the route %@ is received.",
+                   self.name);
              
              // There could be multiple routes
              for (MKRoute *route in response.routes)
              {
                  // Populate a route
-                 self.annotation.pointType = path;
                  self.polyline = route.polyline;
-                 self.source = response.source;
-                 self.destination = response.destination;
-                 self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
               
-                 // Broadcast the ready notification?
-                 [center postNotificationName:requestCompletionNotification
-                                       object:self];
+                 self.requestCompletionFlag = YES;
+                 if (self.routeReadyBlock){
+                     self.routeReadyBlock();
+                     self.routeReadyBlock = nil;
+                 }
                  
                  // There could be multiple routes. Should I store them all?
                  // For now I will save one only
                  break;
              }
-             
          }
          
      }];
 }
 
-- (void)requestCompletionAction{
-    // Remove self from the Notification Center
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self];
-    
-    if (self.routeReadyBlock){
-        self.routeReadyBlock();
-        self.routeReadyBlock = nil;
-    }
-}
+
 
 //----------------
 // MARK: -- Save the route --

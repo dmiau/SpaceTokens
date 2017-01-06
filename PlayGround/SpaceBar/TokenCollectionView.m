@@ -133,6 +133,21 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 }
 
 
+// This decide whether an achor is in the insertion zone or not.
+-(BOOL)isTouchInInsertionZone:(UITouch*)touch{
+    
+    if (!self.isVisible)
+        return NO;
+    
+    CGPoint tokenPoint = [touch locationInView:self];
+    
+    if (tokenPoint.x >  (self.frame.size.width - self.tokenWidth * 0.5)){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 #pragma mark SETTERS
 
 
@@ -166,6 +181,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     _arrayEntity = arrayEntity;
     
     if (_isVisible){
+        [self.arrayEntity updateBoundingMapRect];
         [self reloadData];
     }
 }
@@ -179,6 +195,14 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    if (![self isKindOfClass:[TokenCollectionView class]]){
+        [NSException raise:@"Programming error" format:@"Method should be overloading by subclass."];
+    }
+    
+    // Reset TokenCollection
+    [[TokenCollection sharedManager] removeAllTokensForStructure:self];
+    
     
     self.arrayEntity.contentArray
     = [[EntityDatabase sharedManager] getEnabledEntities];
@@ -203,10 +227,19 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     CollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
-
-    SpaceToken *aToken = [cell configureSpaceTokenFromEntity:self.arrayEntity.contentArray[row]];
-    aToken.home = self;
+    // Generate a SpaceToken if there is none
+    TokenCollection *tokenCollection = [TokenCollection sharedManager];
+    SpatialEntity *spatialEntity = self.arrayEntity.contentArray[row];
+    SpaceToken* aToken = [tokenCollection addTokenFromSpatialEntity:spatialEntity];
+        aToken.home= self;
     
+    if (aToken != cell.spaceToken){
+        [cell.spaceToken removeFromSuperview];
+        cell.spaceToken = aToken;
+        [cell addSubview:aToken];
+    }
+    spatialEntity.isMapAnnotationEnabled = YES;
+         
     return cell;
 }
 
@@ -229,6 +262,8 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity{    
     [self.arrayEntity.contentArray insertObject:anEntity atIndex:[self.arrayEntity.contentArray count]-2];
+    [self.arrayEntity updateBoundingMapRect];
+    
     NSUInteger index = [self.arrayEntity.contentArray count]  -2;
     NSArray *indexPaths = [NSArray
                            arrayWithObject:
@@ -238,10 +273,16 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 
 -(void) insertToken: (SpaceToken*) token{
-    // Create a new SpaceToken based on anchor
-    [self.arrayEntity.contentArray addObject:token.spatialEntity];
     
-    // refresh the token panel
+    if (![self isKindOfClass:[TokenCollectionView class]]){
+        [NSException raise:@"Programming error" format:@"Method should be overloading by subclass."];
+    }
+    
+    // Create a new SpaceToken based on anchor
+    // (Need to insert to entity database directly)
+    
+    [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];
+    
     [self reloadData];
 }
 

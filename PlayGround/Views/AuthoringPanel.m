@@ -254,7 +254,7 @@ static AuthoringPanel *instance;
         // refresh the token panel
         [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
         
-        textSinkObject = [[TokenCollection sharedManager] findSpaceTokenFromEntity:poi];
+        textSinkObject = [[TokenCollection sharedManager] findSpaceTokenFromEntity:poi forStructure:[TokenCollectionView sharedManager]];
     }
     
     // Remove the gesture layer

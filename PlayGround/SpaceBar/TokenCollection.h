@@ -20,7 +20,9 @@
 }
 
 + (TokenCollection*)sharedManager;
--(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity;
+
+-(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity forStructure:(id)structure;
+//At the moment there are two kinds of structures: TokenCollectionView and ArrayTool
 
 // Common methods to add/remove tokens
 // This is necessary because the study needs to do some special setups for the tokens
@@ -28,8 +30,8 @@
 - (NSArray <SpaceToken*>*)getTokenArray;
 - (void)removeToken: (SpaceToken*)aToken;
 - (void)removeAllTokens;
+- (void)removeAllTokensForStructure:(id)structure;
 - (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity;
-- (void)addTokensFromEntityArray:(NSArray <SpatialEntity*>*)entityArray;
 
 // Operations to set the properties of all the SpaceTokens
 @property BOOL isStudyModeEnabled;

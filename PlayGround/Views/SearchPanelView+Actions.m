@@ -118,7 +118,7 @@
     if (spaceBar.isBarToolHidden){
         // Turn ON the bar tool
         spaceBar.isBarToolHidden = NO;
-        arrayTool.isVisible = YES;
+        arrayTool.isVisible = YES;        
         [arrayTool reloadData];
     }else{
         // Turn OFF the bar tool

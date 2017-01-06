@@ -15,8 +15,6 @@
 // http://stackoverflow.com/questions/538996/constants-in-objective-c
 
 // Types of notifications:
-FOUNDATION_EXPORT NSString *const AddToButtonArrayNotification;
-FOUNDATION_EXPORT NSString *const RemoveFromButtonArrayNotification;
 FOUNDATION_EXPORT NSString *const AddToTouchingSetNotification;
 FOUNDATION_EXPORT NSString *const RemoveFromTouchingSetNotification;
 FOUNDATION_EXPORT NSString *const AddToDraggingSetNotification;

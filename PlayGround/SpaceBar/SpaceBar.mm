@@ -162,27 +162,15 @@ static SpaceBar *sharedInstance;
     
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    
-    [center addObserver:self
-        selector:@selector(addToSetBasedOnNotification:)
-        name:AddToButtonArrayNotification
-        object:[[ UIApplication sharedApplication] delegate]];
 
     [center addObserver:self
                selector:@selector(addToSetBasedOnNotification:)
                    name:AddToTouchingSetNotification
                  object:nil];
-    //[[ UIApplication sharedApplication] delegate]
     
     [center addObserver:self
                selector:@selector(addToSetBasedOnNotification:)
                    name:AddToDraggingSetNotification
-                 object:nil];
-    
-
-    [center addObserver:self
-               selector:@selector(removeFromSetBasedOnNotification:)
-                   name:RemoveFromButtonArrayNotification
                  object:nil];
     
     [center addObserver:self
@@ -215,8 +203,6 @@ static SpaceBar *sharedInstance;
         [self.sliderContainer setUserInteractionEnabled: NO];
     }else{
         // Path mode
-        // remove all SpaceTokens
-        [self removeAllSpaceTokens];
         [self.gestureEngine setUserInteractionEnabled:NO];
         [self.sliderContainer setUserInteractionEnabled: YES];
     }
@@ -266,6 +252,16 @@ static SpaceBar *sharedInstance;
     // Setting the lowerValue and upperValue to be both -1 will make the elevator invisible
     float temp[2] = {nanf(""), nanf("")};
     [self updateElevatorFromPercentagePair:temp];
+}
+
+
+- (NSString*) description{
+    NSMutableArray *line = [NSMutableArray array];
+    [line addObject:[NSString stringWithFormat:@"TouchingSet #%lu", (unsigned long)[self.touchingSet count]]];
+    [line addObject:[NSString stringWithFormat:@"DraggingSet #%lu", (unsigned long)[self.draggingSet count]]];
+    [line addObject:[NSString stringWithFormat:@"AnchorSet #%lu", (unsigned long)[self.anchorSet count]]];
+    [line addObject:[NSString stringWithFormat:@"AnchorCandidateSet #%lu", (unsigned long)[self.anchorCandidateSet count]]];    
+    return [line componentsJoinedByString:@"\n"];
 }
 
 
