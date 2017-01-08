@@ -286,6 +286,14 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     [self reloadData];
 }
 
+-(void)removeToken: (SpaceToken*) token{
+    [token removeFromSuperview];
+    [[TokenCollection sharedManager] removeToken:token];
+    
+    token.spatialEntity.isEnabled = NO;
+    token.spatialEntity.isMapAnnotationEnabled = NO;
+    [self reloadData];
+}
 
 #pragma mark <UICollectionViewDelegate>
 

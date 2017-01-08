@@ -15,7 +15,6 @@
 
 @interface ArrayTool : TokenCollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
-// This decide whether an achor is in the insertion zone or not
--(BOOL)isTouchInInsertionZone:(UITouch*)touch;
-
+-(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
+-(void) insertMaster:(SpaceToken*) token;
 @end

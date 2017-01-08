@@ -14,6 +14,7 @@
 #import "CustomMKMapView.h"
 #import "ArrayTool.h"
 #import "ArrayEntity.h"
+#import "ArrayToken.h"
 #import "ViewController.h"
 
 @implementation SpaceToken (Dragging)
@@ -33,12 +34,21 @@
         // Removing gesture (Dragging toward the edge)
         //----------------------
         
+        //--------------------
+        // User won't be able to remove a SpaceToken in the study
+        //--------------------
+        if (self.isStudyModeEnabled
+            || [self.spatialEntity.name isEqualToString:@"YouRHere"])
+            return;
+                
         // Need to handle token removal detection differently,
         // depending on the position of a SpaceToken
         
         CustomMKMapView *mapView = [CustomMKMapView sharedManager];
         CGPoint tokenCenter = [self.superview convertPoint:self.center
                                                     toView:mapView];
+        
+        id structureForRemoval = nil;
         
         if (tokenCenter.x > mapView.frame.size.width/2){
             // SpaceToken is located at the right edge of the display
@@ -49,11 +59,7 @@
                 locationInView.x > self.frame.size.width *0.8)
                )
             {
-                if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
-                    // YouRHere cannot be removed.
-                }else{
-                    [self handleRemoveToken];
-                }
+                    structureForRemoval = [TokenCollectionView sharedManager];
             }
         }else{
             // SpaceToken is located at the left edge of the display
@@ -64,14 +70,37 @@
                 locationInView.x < self.frame.size.width *0.2)
                )
             {
-                if ([self.spatialEntity.name isEqualToString:@"YouRHere"]){
-                    // YouRHere cannot be removed.
-                }else{
-                    [self handleRemoveToken];
-                }
+                structureForRemoval = [ArrayTool sharedManager];
             }
         }
-        
+
+        //---------------
+        // Remove the SpaceToken
+        //---------------
+        if (structureForRemoval){
+            self.isDraggable = NO;
+            [self setBackgroundColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5]];
+            
+            //--------------------
+            // Token will be removed after some time delay
+            //--------------------
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                // Remove from the touching set
+                [[ NSNotificationCenter defaultCenter] postNotification:
+                 [NSNotification notificationWithName:
+                  RemoveFromTouchingSetNotification object:self userInfo:nil]];
+                
+                // The order is important, because ArrayTool is derived from TokenCollectionView
+                if ( [structureForRemoval isKindOfClass:[ArrayTool class]] ){
+                    [[ArrayTool sharedManager] removeToken:self];
+                }else if ( [structureForRemoval isKindOfClass:[TokenCollectionView class]] )
+                {
+                    [[TokenCollectionView sharedManager] removeToken:self];
+                }else{
+                    [NSException raise:@"Unimplemented code path" format:@"Unknow token structure"];
+                }
+            });
+        }        
     }else{
         //----------------------
         // Dragging away from the edge (dragging gesture)
@@ -136,6 +165,11 @@
         if ([arrayTool isTouchInInsertionZone:touch]){
             NSLog(@"Insert from dragging");
             [arrayTool insertToken:self];
+            [self touchEnded];
+        }else if ([arrayTool isTouchInMasterTokenZone:touch]
+                  && [self isKindOfClass:[ArrayToken class]])
+        {
+            [arrayTool insertMaster:self];
             [self touchEnded];
         }
     }
@@ -264,51 +298,7 @@
     }
 }
 
-//---------------
-// Remove the SpaceToken
-//---------------
-- (void)handleRemoveToken{
-    
-    //--------------------
-    // User won't be able to remove a SpaceToken in the study
-    //--------------------
-    if (self.isStudyModeEnabled)
-        return;
-    
-    self.isDraggable = NO;
-    [self setBackgroundColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5]];
-    
-    //--------------------
-    // Token will be removed after some time delay
-    //--------------------
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // Remove from the touching set
-        [[ NSNotificationCenter defaultCenter] postNotification:
-         [NSNotification notificationWithName:
-          RemoveFromTouchingSetNotification object:self userInfo:nil]];
-        
-        [self removeFromSuperview];
-        [[TokenCollection sharedManager] removeToken:self];
-        
-        // Need to do things differently depending on the parent of the token
-        ArrayTool *arrayTool = [ArrayTool sharedManager];
-        
-        if (self.home != arrayTool){
-            // The parent is the dock
-            self.spatialEntity.isEnabled = NO;
-            self.spatialEntity.isMapAnnotationEnabled = NO;
-            
-            // Remove from the button set
-            [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
-        }else{
-            // The parent is ArrayTool
-            
-            // TODO: Need to handle duplication
-            [arrayTool.arrayEntity.contentArray removeObject:self.spatialEntity];
-            [arrayTool reloadData];
-        }
-    });
-}
+
 
 
 //- (BOOL)canPreventGestureRecognizer:(UIGestureRecognizer *)preventedGestureRecognizer

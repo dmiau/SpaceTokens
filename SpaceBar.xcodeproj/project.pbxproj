@@ -414,6 +414,12 @@
 		9AE27CA51E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AE27CA21E08D04D006D4F31 /* AnchorTaskGenerator.mm */; };
 		9AE443B21DEB5CCC006963DC /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
 		9AE443B31DEB5CCC006963DC /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
+		9AED2A5B1E214495004F1A84 /* ToolPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AED2A5A1E214495004F1A84 /* ToolPalette.xib */; };
+		9AED2A5C1E214495004F1A84 /* ToolPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AED2A5A1E214495004F1A84 /* ToolPalette.xib */; };
+		9AED2A5D1E214495004F1A84 /* ToolPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AED2A5A1E214495004F1A84 /* ToolPalette.xib */; };
+		9AED2A601E214786004F1A84 /* ToolPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AED2A5F1E214786004F1A84 /* ToolPalette.m */; };
+		9AED2A611E214786004F1A84 /* ToolPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AED2A5F1E214786004F1A84 /* ToolPalette.m */; };
+		9AED2A621E214786004F1A84 /* ToolPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AED2A5F1E214786004F1A84 /* ToolPalette.m */; };
 		9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
@@ -648,6 +654,9 @@
 		9AE27CA21E08D04D006D4F31 /* AnchorTaskGenerator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AnchorTaskGenerator.mm; path = StudyManager/AnchorTaskGenerator.mm; sourceTree = "<group>"; };
 		9AE443B01DEB5CCC006963DC /* SnapshotShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotShow.h; path = StudyManager/SnapshotShow.h; sourceTree = "<group>"; };
 		9AE443B11DEB5CCC006963DC /* SnapshotShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotShow.m; path = StudyManager/SnapshotShow.m; sourceTree = "<group>"; };
+		9AED2A5A1E214495004F1A84 /* ToolPalette.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ToolPalette.xib; path = Views/ToolPalette.xib; sourceTree = "<group>"; };
+		9AED2A5E1E214786004F1A84 /* ToolPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolPalette.h; path = Views/ToolPalette.h; sourceTree = "<group>"; };
+		9AED2A5F1E214786004F1A84 /* ToolPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToolPalette.m; path = Views/ToolPalette.m; sourceTree = "<group>"; };
 		9AEDBD7B1D7DB5FE00CFAD15 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Record.h; path = StudyManager/Record.h; sourceTree = "<group>"; };
 		9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Record.m; path = StudyManager/Record.m; sourceTree = "<group>"; };
 		9AF100021D57FA720063CB63 /* TaskBasePanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskBasePanel.xib; sourceTree = "<group>"; };
@@ -996,6 +1005,9 @@
 				9A7DB27B1E14494000226D42 /* DrawingView.mm */,
 				9A7DB27F1E145C3B00226D42 /* UIBezierPath+Points.h */,
 				9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */,
+				9AED2A5A1E214495004F1A84 /* ToolPalette.xib */,
+				9AED2A5E1E214786004F1A84 /* ToolPalette.h */,
+				9AED2A5F1E214786004F1A84 /* ToolPalette.m */,
 			);
 			name = SearchView;
 			sourceTree = "<group>";
@@ -1383,6 +1395,7 @@
 				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
 				9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
+				9AED2A5B1E214495004F1A84 /* ToolPalette.xib in Resources */,
 				9A82A0861E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9AC338241D63AA1C000272D9 /* heading.png in Resources */,
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
@@ -1419,6 +1432,7 @@
 				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
 				9A78F09E1E0468190070AEE2 /* AuthoringView.xib in Resources */,
+				9AED2A5C1E214495004F1A84 /* ToolPalette.xib in Resources */,
 				9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1432,6 +1446,7 @@
 				9AE13BAC1DF0D148008612DA /* star-128.png in Resources */,
 				9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */,
 				9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
+				9AED2A5D1E214495004F1A84 /* ToolPalette.xib in Resources */,
 				9A82A0881E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9AE13BAE1DF0D148008612DA /* heading.png in Resources */,
 				9AE13BAF1DF0D148008612DA /* setup.png in Resources */,
@@ -1633,6 +1648,7 @@
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9A90C7691DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
+				9AED2A601E214786004F1A84 /* ToolPalette.m in Sources */,
 				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
@@ -1738,6 +1754,7 @@
 				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
 				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
 				9A90C76A1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
+				9AED2A611E214786004F1A84 /* ToolPalette.m in Sources */,
 				9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9A7594D01E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
@@ -1843,6 +1860,7 @@
 				9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */,
 				9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */,
 				9A90C76B1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
+				9AED2A621E214786004F1A84 /* ToolPalette.m in Sources */,
 				9AE13B5F1DF0D148008612DA /* SpaceToken+Gestures.m in Sources */,
 				9AE13B601DF0D148008612DA /* ViewController.mm in Sources */,
 				9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,

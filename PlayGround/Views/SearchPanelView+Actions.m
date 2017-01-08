@@ -11,6 +11,8 @@
 #import "ViewController.h"
 #import "SpeechEngine.h"
 #import "ArrayTool.h"
+#import "DrawingView.h"
+#import "ToolPalette.h"
 
 @implementation SearchPanelView (Actions)
 
@@ -134,6 +136,32 @@
         [self.rootViewController.miniMapView removeFromSuperview];
     }else{
         [self.rootViewController.mapView addSubview: self.rootViewController.miniMapView];
+    }
+}
+
+//-----------------------
+// Drawing action
+//-----------------------
+- (IBAction)drawingAction:(id)sender {
+    
+    static DrawingView *drawingView;
+    if (!drawingView){
+        // Initialize once
+        drawingView = [[DrawingView alloc] init];
+    }
+    // Get the map object
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    if ([drawingView superview]){
+        // Hide the drawing view
+        [drawingView viewWillDisappear];
+        [drawingView removeFromSuperview];
+
+    }else{
+        // Show the drawing view
+        drawingView.frame = mapView.frame;
+        [self.rootViewController.view addSubview:drawingView];
+        [drawingView viewWillAppear];
     }
 }
 

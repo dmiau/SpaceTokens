@@ -15,6 +15,7 @@
 #import "EntityDatabase.h"
 #import "TokenCollectionView.h"
 #include <algorithm>
+#import "ToolPalette.h"
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM () == UIUserInterfaceIdiomPad)
 
@@ -34,23 +35,77 @@ using namespace std;
 -(id)init{
     self = [super init];
     if (self){
-        [self setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+        self.drawingModeEnabled = NO;
+        
+        //--------------------
+        // Load the tool palette
+        //--------------------
+        self.toolPalette = [[[NSBundle mainBundle] loadNibNamed:@"ToolPalette" owner:self options:nil] firstObject];
+        self.toolPalette.drawingView = self;
+        
     }
     return self;
 }
 
 -(void)viewWillAppear{
-
-    touchPointArray = [NSMutableArray array];
-    isArea = NO;
-    
-    bezierPathArray = [NSMutableArray array];
+    // Add the tool palette to the view (only once)
+    static BOOL once = false;
+    if (!once){
+        // Configure tool palette
+        [self addSubview:self.toolPalette];
+        // Configure the position of toolPalette
+        CGPoint toolPaletteOrigin = CGPointMake(0, self.frame.size.height - self.toolPalette.frame.size.height);
+        CGRect toolPaletteFrame = self.toolPalette.frame;
+        toolPaletteFrame.origin = toolPaletteOrigin;
+        self.toolPalette.frame = toolPaletteFrame;
+        once = true;
+    }
 }
 
 -(void)viewWillDisappear{
+
+}
+
+
+// Control the transparency of the view
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    // UIView will be "transparent" for touch events if we return NO
+    
+    if (self.drawingModeEnabled){
+        if (point.y > 0 && point.y < self.frame.size.height)
+            return YES;
+    }else{
+        CGRect toolRect = self.toolPalette.frame;
+        if (CGRectContainsPoint(toolRect, point)){
+            return YES;
+        }        
+    }
+    return NO;
+}
+
+
+// MARK: Setters
+-(void)setDrawingModeEnabled:(BOOL)drawingModeEnabled{
+    _drawingModeEnabled = drawingModeEnabled;
+    if (drawingModeEnabled){
+        [self setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+        
+        
+        // Prepare the drawing environment
+        touchPointArray = [NSMutableArray array];
+        isArea = NO;
+        
+        bezierPathArray = [NSMutableArray array];
+    }else{
+        [self bakeDrawingToMap];
+        [self setBackgroundColor:[UIColor clearColor]];
+    }
+}
+
+// Bake the drawing to the map
+-(void)bakeDrawingToMap{
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
-
     // Bake the path on to the map
     UIBezierPath *path = [bezierPathArray firstObject];
     NSArray *pointArray = [path points];
@@ -68,7 +123,7 @@ using namespace std;
             CLLocationCoordinate2D coord = [mapView convertPoint:aPoint toCoordinateFromView:self];
             [mapPointArray addObject:[NSValue valueWithMKMapPoint:MKMapPointForCoordinate(coord)]];
         }
-
+        
         SpatialEntity *newEntity;
         if (!isArea){
             // Create a route
@@ -98,11 +153,13 @@ using namespace std;
     [self setNeedsDisplay];
 }
 
-
 #pragma mark -- Handling touches --
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 
+    if (!self.drawingModeEnabled)
+        return;
+    
     // Initialize a new path for the user gesture
     UIBezierPath *path = [UIBezierPath bezierPath];
     path.lineWidth = IS_IPAD ? 8.0f : 4.0f;
@@ -116,6 +173,9 @@ using namespace std;
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    if (!self.drawingModeEnabled)
+        return;
     
     // Add new points to the path
     UITouch *touch = [touches anyObject];
@@ -143,6 +203,8 @@ using namespace std;
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (!self.drawingModeEnabled)
+        return;
     UITouch *touch = [touches anyObject];
     [[bezierPathArray lastObject] addLineToPoint:[touch locationInView:self]];
     [self setNeedsDisplay];
@@ -150,11 +212,15 @@ using namespace std;
 }
 
 -(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (!self.drawingModeEnabled)
+        return;
     [self touchesEnded:touches withEvent:event];
 }
 
 
 - (void)drawRect:(CGRect)rect {
+    if (!self.drawingModeEnabled)
+        return;
     
     UIColor *strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
     [strokeColor setStroke];

@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ToolPalette;
+
 
 @interface DrawingView : UIView{
     NSMutableArray <UIBezierPath*> *bezierPathArray;
     NSMutableArray *touchPointArray;
     BOOL isArea;
-
+    
     UIButton *clearButton;
 }
+
+@property ToolPalette *toolPalette;
+@property BOOL drawingModeEnabled;
 
 -(void)viewWillAppear;
 -(void)viewWillDisappear;

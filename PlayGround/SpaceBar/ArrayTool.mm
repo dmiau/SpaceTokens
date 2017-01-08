@@ -57,12 +57,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     arrayToolMode = ArrayMode;
     
-    // Insert a master token on the top
-    [self initMasterToken];
-    
-    // Insert a path switch on the bottom
-    [self initPathModeSwitch];
-    
     return self;
 }
 
@@ -125,6 +119,75 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     // refresh the token panel
     [self reloadData];
+    
+    if ([self.arrayEntity.contentArray count]==1){
+        // Insert a master token on the top
+        [self initMasterToken];
+    }
+    
+    if ([self.arrayEntity.contentArray count]>=2
+        && !pathModeButton)
+    {
+        // Insert a path switch on the bottom
+        [self initPathModeSwitch];
+    }
+    
+    // Update the bound of the master token
+    [self.arrayEntity updateBoundingMapRect];
+}
+
+-(void) insertMaster:(SpaceToken*) token{
+    if (masterToken){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"A master token already exists."
+                                                        message:@"Please remove the master token first before adding one."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+
+    TokenCollection *tokenCollection = [TokenCollection sharedManager];
+    masterToken = [tokenCollection addTokenFromSpatialEntity:token.spatialEntity];
+    masterToken.home = self;
+    
+    CGRect frame = CGRectZero;
+    frame.size = CGSizeMake(60, 20);
+    [self addSubview:masterToken];
+    
+    self.arrayEntity = masterToken.spatialEntity;
+    [self reloadData];
+}
+
+-(void)removeToken: (SpaceToken*) token{
+    [token removeFromSuperview];
+    [[TokenCollection sharedManager] removeToken:token];
+    
+    // Depending on the token, different things need to be done
+    if (token.spatialEntity == self.arrayEntity){
+        // masterToken is removed
+        self.arrayEntity = [[ArrayEntity alloc] init];
+    }else{
+        [self.arrayEntity.contentArray removeObject:token.spatialEntity];
+    }
+
+    if ([self.arrayEntity.contentArray count] == 0){
+        // Remove the masterToken
+        [masterToken removeFromSuperview];
+        masterToken = nil;
+        
+        // Remove the pathButton
+        [pathModeButton removeFromSuperview];
+        pathModeButton = nil;
+    }
+    
+    if ([self.arrayEntity.contentArray count] < 2){
+        // Remove the pathButton
+        [pathModeButton removeFromSuperview];
+        pathModeButton = nil;
+    }
+    
+    [self reloadData];
 }
 
 // This decide whether an achor is in the insertion zone or not.
@@ -135,20 +198,39 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     CGPoint tokenPoint = [touch locationInView:self];
     
-    if (tokenPoint.x < self.tokenWidth * 0.5){
+    if (tokenPoint.x < self.tokenWidth * 0.5 &&
+        tokenPoint.y > 60)
+    {
         return YES;
     }else{
         return NO;
     }
 }
 
+-(BOOL)isTouchInMasterTokenZone:(UITouch*)touch{
+    if (!self.isVisible)
+        return NO;
+    
+    CGPoint tokenPoint = [touch locationInView:self];
+    
+    if (tokenPoint.x < self.tokenWidth * 0.5 &&
+        tokenPoint.y < 60)
+    {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+//------------------
+// Creating a master token
+//------------------
 - (void)initMasterToken{
     TokenCollection *tokenCollection = [TokenCollection sharedManager];
     masterToken = [tokenCollection addTokenFromSpatialEntity:self.arrayEntity];
     masterToken.home = self;
     
     CGRect frame = CGRectZero;
-    frame.origin = CGPointMake(0, -30);
     frame.size = CGSizeMake(60, 20);
     [self addSubview:masterToken];
 }

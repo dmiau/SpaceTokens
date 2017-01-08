@@ -20,6 +20,7 @@ typedef enum {SEARCH, DIRECTION, TASKBASEPANEL,
 @class SearchPanelView;
 @class ShowAuthoringPanel;
 
+
 //-------------------------
 // ManViewManager
 //-------------------------
@@ -38,6 +39,9 @@ typedef enum {SEARCH, DIRECTION, TASKBASEPANEL,
 @property AuthoringPanel *authoringPanel;
 @property ShowAuthoringPanel *authoringPanelShowTask;
 
+
+
++ (MainViewManager*)sharedManager;
 - (id) initWithViewController:(ViewController*) viewController;
 - (void)showDefaultPanel;
 - (void)showPanelWithType: (PanelType)panelType;

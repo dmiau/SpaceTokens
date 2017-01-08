@@ -19,6 +19,15 @@
 #import "TokenCollectionView.h"
 
 @implementation MainViewManager
+static MainViewManager *sharedInstance;
+
++ (MainViewManager*)sharedManager{
+    
+    if (!sharedInstance){
+        [NSException raise:@"Programming error." format:@"MainViewManager shared instance was requested before it was initialized."];
+    }
+    return sharedInstance;
+}
 
 - (id)initWithViewController:(ViewController *)viewController
 {
@@ -77,10 +86,11 @@
                 self.searchPanel = (SearchPanelView*) aView;
             }
         }
-
+        
         [self showDefaultPanel];
         
     }
+    sharedInstance = self;
     return self;
 }
 

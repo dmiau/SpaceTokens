@@ -16,7 +16,7 @@
 @import GoogleMaps;
 @import GooglePlaces;
 #import <GoogleMaps/GoogleMaps.h>
-#import "DrawingView.h"
+
 #import "TokenCollectionView.h"
 
 @implementation SearchPanelView
@@ -213,29 +213,4 @@ didFailAutocompleteWithError:(NSError *)error {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-
-//-----------------------
-// Drawing action
-//-----------------------
-- (IBAction)drawingAction:(id)sender {
-    
-    static DrawingView *drawingView;
-    if (!drawingView){
-        // Initialize once
-        drawingView = [[DrawingView alloc] init];
-    }
-    // Get the map object
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    
-    if ([drawingView superview]){
-        // Hide the drawing view
-        [drawingView viewWillDisappear];
-        [drawingView removeFromSuperview];
-    }else{
-        // Show the drawing view
-        drawingView.frame = mapView.frame;
-        [self.rootViewController.view addSubview:drawingView];
-        [drawingView viewWillAppear];
-    }
-}
 @end

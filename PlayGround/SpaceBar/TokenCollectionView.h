@@ -31,4 +31,5 @@
 -(BOOL)isTouchInInsertionZone:(UITouch*)touch;
 
 -(void)insertToken: (SpaceToken*) token;
+-(void)removeToken: (SpaceToken*) token;
 @end
