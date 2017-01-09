@@ -13,6 +13,7 @@
 #import "SpaceToken.h"
 #import "TokenCollection.h"
 #import "Constants.h"
+#import "ViewController.h"
 
 //-------------------
 // Parameters
@@ -52,9 +53,15 @@
     self.arrayEntity = [[ArrayEntity alloc] init];
     
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    self.frame = mapView.frame;
+    
+    //----------------
+    // Add a toolView
+    //----------------
     CGRect defaultFrame = CGRectMake(70, mapView.frame.size.height - TOOL_HEIGHT, TOOL_WIDTH, TOOL_HEIGHT);
-    self.frame = defaultFrame;
-    [self setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+    toolView = [[UIView alloc] initWithFrame:defaultFrame];
+    [toolView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+    [self addSubview:toolView];
     
     //----------------
     // Add a mini map
@@ -64,7 +71,7 @@
     [self.miniMapView setUserInteractionEnabled:NO];
     self.miniMapView.showsCompass = NO;
     
-    [self addSubview:self.miniMapView];
+    [toolView addSubview:self.miniMapView];
     // Make the mini map hidden by default
     [self.miniMapView setHidden:YES];
     
@@ -88,7 +95,7 @@
     
     CGRect frame = CGRectZero;
     frame.size = CGSizeMake(60, 20);
-    [self addSubview:masterToken];
+    [toolView addSubview:masterToken];
 }
 
 -(void)updateView{
@@ -132,21 +139,28 @@
     
     if (isVisible){
         CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+        self.frame = mapView.frame;
         
-        [mapView addSubview:self];
+        ViewController *rootController = [ViewController sharedManager];
+        [rootController.view addSubview:self];
+        [self updateView];
+        
+        // Move the top view to the front
+        // (so the CollectionView will not block the top view after it is scrolled.)
+        [rootController.view bringSubviewToFront: (UIView*) rootController.mainViewManager.activePanel];
     }else{
         [self removeFromSuperview];
     }
 }
 
-// MARK: Token management
+// MARK: hit tests
 -(BOOL)isTouchInInsertionZone:(UITouch*)touch{
     if (!self.isVisible)
         return NO;
     
-    CGPoint touchPoint = [touch locationInView:self];
+    CGPoint touchPoint = [touch locationInView:toolView];
     
-    if (CGRectContainsPoint(self.bounds, touchPoint)){
+    if (CGRectContainsPoint(CGRectMake(0, 30, TOOL_WIDTH, TOOL_HEIGHT - 30), touchPoint)){
         return YES;
     }else{
         return NO;
@@ -157,15 +171,21 @@
     if (!self.isVisible)
         return NO;
     
-    CGPoint touchPoint = [touch locationInView:self];
+    CGPoint touchPoint = [touch locationInView:toolView];
     
-    if (CGRectContainsPoint(masterToken.frame, touchPoint)){
+    if (CGRectContainsPoint(CGRectMake(0, 0, 60, 30), touchPoint)){
         return YES;
     }else{
         return NO;
     }
 }
 
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    // UIView will be "transparent" for touch events if we return NO
+    return (CGRectContainsPoint(toolView.frame, point));
+}
+
+// MARK: Token management
 -(void)insertMaster:(SpaceToken*) token{
     
     // Remove the current master
@@ -180,7 +200,7 @@
     
     CGRect frame = CGRectZero;
     frame.size = CGSizeMake(60, 20);
-    [self addSubview:masterToken];
+    [toolView addSubview:masterToken];
     
     self.arrayEntity = masterToken.spatialEntity;
     [self updateView];
@@ -208,8 +228,11 @@
 }
 
 // MARK: view movement
+
+
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    CGPoint touchPoint = [[touches anyObject] locationInView:self];
+    CGPoint touchPoint = [[touches anyObject] locationInView:toolView];
     
     CGRect moveDetectionArea = CGRectMake(60, 0, 90, 30);
     if (CGRectContainsPoint(moveDetectionArea, touchPoint)){
@@ -228,7 +251,7 @@
     CGPoint diff = CGPointMake(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
     
     // Move the view
-    self.center = CGPointMake(self.center.x + diff.x, self.center.y + diff.y);
+    toolView.center = CGPointMake(toolView.center.x + diff.x, toolView.center.y + diff.y);
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

@@ -74,7 +74,12 @@
                 structureForRemoval = [ArrayTool sharedManager];
             }
         }else if ([[SetTool sharedManager] isTouchInMasterTokenZone:touch]){
-            structureForRemoval = [SetTool sharedManager];
+            if(
+               (initialTouchLocationInView.x - locationInView.x) > 30
+               )
+            {
+                structureForRemoval = [SetTool sharedManager];
+            }
         }
 
         //---------------
