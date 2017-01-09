@@ -16,6 +16,7 @@
 #import "ArrayEntity.h"
 #import "ArrayToken.h"
 #import "ViewController.h"
+#import "SetTool.h"
 
 @implementation SpaceToken (Dragging)
 
@@ -50,7 +51,7 @@
         
         id structureForRemoval = nil;
         
-        if (tokenCenter.x > mapView.frame.size.width/2){
+        if (tokenCenter.x > (mapView.frame.size.width - self.frame.size.width)){
             // SpaceToken is located at the right edge of the display
             
             if((initialTouchLocationInView.x < self.frame.size.width * 0.5)
@@ -61,7 +62,7 @@
             {
                     structureForRemoval = [TokenCollectionView sharedManager];
             }
-        }else{
+        }else if (tokenCenter.x < self.frame.size.width){
             // SpaceToken is located at the left edge of the display
             
             if((initialTouchLocationInView.x > self.frame.size.width * 0.5)
@@ -72,6 +73,8 @@
             {
                 structureForRemoval = [ArrayTool sharedManager];
             }
+        }else if ([[SetTool sharedManager] isTouchInMasterTokenZone:touch]){
+            structureForRemoval = [SetTool sharedManager];
         }
 
         //---------------
@@ -96,6 +99,8 @@
                 }else if ( [structureForRemoval isKindOfClass:[TokenCollectionView class]] )
                 {
                     [[TokenCollectionView sharedManager] removeToken:self];
+                }else if([structureForRemoval isKindOfClass:[SetTool class]]){
+                    [[SetTool sharedManager] removeToken:self];
                 }else{
                     [NSException raise:@"Unimplemented code path" format:@"Unknow token structure"];
                 }
@@ -158,9 +163,10 @@
     
     // Check if the token is to be inserted into any of the structure
     
-    // Check if the token is in ArraTool's insertion zone
+    //----------------------
+    // Insert to the AreaTool?
+    //----------------------
     ArrayTool *arrayTool = [ArrayTool sharedManager];
-    TokenCollectionView *collectionView = [TokenCollectionView sharedManager];
     if (self.home != arrayTool){
         if ([arrayTool isTouchInInsertionZone:touch]){
             NSLog(@"Insert from dragging");
@@ -174,6 +180,10 @@
         }
     }
     
+    //----------------------
+    // Insert to Collection View?
+    //----------------------
+    TokenCollectionView *collectionView = [TokenCollectionView sharedManager];
     if (self.home != collectionView){
         if ([collectionView isTouchInInsertionZone:touch]){
             
@@ -193,6 +203,23 @@
                 [[ViewController sharedManager] presentViewController:alert animated:YES completion:nil];
                 
             }
+        }
+    }
+    
+    //----------------------
+    // Insert to AreaTool?
+    //----------------------
+    SetTool *setTool = [SetTool sharedManager];
+    if (self.home != setTool){
+        if ([setTool isTouchInInsertionZone:touch]){
+            NSLog(@"Insert from dragging");
+            [setTool insertToken:self];
+            [self touchEnded];
+        }else if ([setTool isTouchInMasterTokenZone:touch]
+                  && [self isKindOfClass:[ArrayToken class]])
+        {
+            [setTool insertMaster:self];
+            [self touchEnded];
         }
     }
     

@@ -98,11 +98,24 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     // Reset TokenCollection
     [[TokenCollection sharedManager] removeAllTokensForStructure:self];
     
-    if ([self.arrayEntity.contentArray count] > 12){
-        [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = NO;
-    }else{
-        [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = YES;
+    
+    if ([self.arrayEntity.contentArray count]==1
+        && !masterToken)
+    {
+        // Insert a master token on the top
+        [self initMasterToken];
     }
+    
+    if ([self.arrayEntity.contentArray count]>=2
+        && !pathModeButton)
+    {
+        // Insert a path switch on the bottom
+        [self initPathModeSwitch];
+    }
+    
+    // Update the bound of the master token
+    [self.arrayEntity updateBoundingMapRect];
+
     
     NSInteger outCount;
     if (arrayToolMode == ArrayMode){
@@ -119,21 +132,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     // refresh the token panel
     [self reloadData];
-    
-    if ([self.arrayEntity.contentArray count]==1){
-        // Insert a master token on the top
-        [self initMasterToken];
-    }
-    
-    if ([self.arrayEntity.contentArray count]>=2
-        && !pathModeButton)
-    {
-        // Insert a path switch on the bottom
-        [self initPathModeSwitch];
-    }
-    
-    // Update the bound of the master token
-    [self.arrayEntity updateBoundingMapRect];
 }
 
 -(void) insertMaster:(SpaceToken*) token{

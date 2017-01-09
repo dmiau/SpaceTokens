@@ -107,6 +107,9 @@
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9A27222E1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9A27222F1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
+		9A2D6DEB1E23E5A900D64615 /* SetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.m */; };
+		9A2D6DEC1E23E5A900D64615 /* SetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.m */; };
+		9A2D6DED1E23E5A900D64615 /* SetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.m */; };
 		9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
 		9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
 		9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
@@ -477,6 +480,8 @@
 		9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderTrackLayer.m; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
 		9A27222C1D6CB79C002AE953 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Map/Person.h; sourceTree = "<group>"; };
 		9A27222D1D6CB79C002AE953 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Map/Person.m; sourceTree = "<group>"; };
+		9A2D6DE91E23E5A900D64615 /* SetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetTool.h; path = SpaceBar/SetTool.h; sourceTree = "<group>"; };
+		9A2D6DEA1E23E5A900D64615 /* SetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetTool.m; path = SpaceBar/SetTool.m; sourceTree = "<group>"; };
 		9A31C13D1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+TouchInteractions.h"; path = "Map/CustomMKMapView+TouchInteractions.h"; sourceTree = "<group>"; };
 		9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+TouchInteractions.m"; path = "Map/CustomMKMapView+TouchInteractions.m"; sourceTree = "<group>"; };
 		9A3EB3B41E1C77FD008FA7FA /* ArrayToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayToken.h; path = SpaceBar/ArrayToken.h; sourceTree = "<group>"; };
@@ -967,6 +972,8 @@
 				9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */,
 				9A665B041E196EC0000D8902 /* ArrayTool.h */,
 				9A665B051E196EC0000D8902 /* ArrayTool.mm */,
+				9A2D6DE91E23E5A900D64615 /* SetTool.h */,
+				9A2D6DEA1E23E5A900D64615 /* SetTool.m */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -1698,6 +1705,7 @@
 				9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
+				9A2D6DEB1E23E5A900D64615 /* SetTool.m in Sources */,
 				9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
@@ -1804,6 +1812,7 @@
 				9A5DA0331E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AAE092E1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
+				9A2D6DEC1E23E5A900D64615 /* SetTool.m in Sources */,
 				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
 				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
@@ -1910,6 +1919,7 @@
 				9A5DA0341E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */,
 				9AE13B8A1DF0D148008612DA /* AuthoringPanelBase.m in Sources */,
+				9A2D6DED1E23E5A900D64615 /* SetTool.m in Sources */,
 				9AE13B8B1DF0D148008612DA /* SnapshotDatabase.m in Sources */,
 				9AE13B8C1DF0D148008612DA /* SpaceBar+UpdateMap.m in Sources */,
 				9AE13B8D1DF0D148008612DA /* CustomPointAnnotation.m in Sources */,

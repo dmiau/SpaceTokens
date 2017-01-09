@@ -13,6 +13,7 @@
 #import "ArrayTool.h"
 #import "DrawingView.h"
 #import "ToolPalette.h"
+#import "SetTool.h"
 
 @implementation SearchPanelView (Actions)
 
@@ -129,14 +130,13 @@
     }
 }
 
-
+//-----------------------
+// AreaTool (SetTool) action
+//-----------------------
 - (IBAction)areaToolAction:(id)sender {
+    SetTool *setTool = [SetTool sharedManager];
     
-    if (self.rootViewController.miniMapView.superview){
-        [self.rootViewController.miniMapView removeFromSuperview];
-    }else{
-        [self.rootViewController.mapView addSubview: self.rootViewController.miniMapView];
-    }
+    setTool.isVisible = !setTool.isVisible;
 }
 
 //-----------------------
