@@ -59,7 +59,30 @@
 }
 
 //----------------
-#pragma mark --Serialization--
+// MARK: --Interactions--
+//----------------
+- (double)getPointDistanceToTouch:(UITouch*)touch{
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    MKCoordinateSpan span = mapView.region.span;
+    
+    // Check the zoom level
+    if (span.latitudeDelta > 0.05 && span.longitudeDelta > 0.05)
+        return 1000;
+    
+    // Get the entity CGPoint
+    CGPoint entityPoint = [mapView convertCoordinate:self.latLon toPointToView:mapView];
+    
+    // Get the touch CGPoint
+    CGPoint touchPoint = [touch locationInView:mapView];
+    
+    // Compute the distance between them
+    double distanceSquare = pow(entityPoint.x - touchPoint.x, 2) +
+    pow(entityPoint.y - touchPoint.y, 2);        
+    return sqrt(distanceSquare);
+}
+
+//----------------
+// MARK: --Serialization--
 //----------------
 - (id)initWithCoder:(NSCoder *)coder {
     self = [self init];

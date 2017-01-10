@@ -29,7 +29,18 @@
         CLLocationCoordinate2D coord = [self.mapView convertPoint:mapXY
                                              toCoordinateFromView:self.mapView];
         
+        SpatialEntity *touchedKnownEntity = nil;
+        // Check if the user touches any known entity
+        for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] entityArray])
+        {
+            if ([anEntity getPointDistanceToTouch:aTouch] < 10){
+                touchedKnownEntity = anEntity;
+                break;
+            }
+        }
+        
         // Check if the touch is already associated with any anchor
+        // Do nothing if there is an anchor associated with the given touch
         if (![self findRelatedToAnchor:aTouch]){
             
             //------------------
@@ -42,23 +53,26 @@
             // Position the SpaceToken correctly
             aToken.center = mapXY;
             aToken.mapViewXY = mapXY;
-            
-            // Create a POI for the anchor
-            POI* aPOI = [[POI alloc] init];
-            aPOI.latLon = coord;
-            aPOI.name = [NSString stringWithFormat:@"Anchor%d", counter++];
-            aPOI.coordSpan = self.mapView.region.span;
-            aToken.spatialEntity = aPOI;
             aToken.touch = aTouch;
-            
             // Add the anchor to the map
             [self.mapView addSubview:aToken];
-            [aToken configureAppearanceForType:ANCHOR_INVISIBLE];
+            
+            if (!touchedKnownEntity){
+                // Create a POI for the anchor
+                POI* aPOI = [[POI alloc] init];
+                aPOI.latLon = coord;
+                aPOI.name = [NSString stringWithFormat:@"Anchor%d", counter++];
+                aPOI.coordSpan = self.mapView.region.span;
+                aToken.spatialEntity = aPOI;
+                [aToken configureAppearanceForType:ANCHOR_INVISIBLE];
+            }else{
+                aToken.spatialEntity = touchedKnownEntity;
+                [aToken configureAppearanceForType:ANCHOR_VISIBLE];
+            }
             
             if (self.isSpaceTokenEnabled){
                 [self.anchorSet addObject:aToken];
                 [self.draggingSet addObject:aToken];
-//                [aToken showAnchorVisualIndicatorAfter:0];
             }else{
                 [self.anchorCandidateSet addObject:aToken];
             }

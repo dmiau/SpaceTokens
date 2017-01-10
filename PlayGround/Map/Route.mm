@@ -127,6 +127,79 @@ template class std::vector<double>;
 }
 
 
+//----------------
+// MARK: --Interactions--
+//----------------
+- (double)getPointDistanceToTouch:(UITouch*)touch{
+    // TODO: need to clean this part (the algorithm is very inefficient)
+    
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    CGPoint touchPoint = [touch locationInView:mapView];
+    CLLocationCoordinate2D coord = [mapView convertPoint:touchPoint toCoordinateFromView:mapView];
+    MKMapPoint mapPoint = MKMapPointForCoordinate(coord);
+    
+    double distanceInMeters = [self distanceOfPoint:mapPoint toPoly:self.polyline];
+    double maxMeters = [self metersFromPixel:15 atPoint:touchPoint];
+    
+    if (distanceInMeters > maxMeters){
+        return 1000;
+    }else{
+        return (distanceInMeters/maxMeters*15);
+    }
+}
+
+
+// http://stackoverflow.com/questions/11713788/how-to-detect-taps-on-mkpolylines-overlays-like-maps-app
+- (double)distanceOfPoint:(MKMapPoint)pt toPoly:(MKPolyline *)poly
+{
+    double distance = MAXFLOAT;
+    for (int n = 0; n < poly.pointCount - 1; n++) {
+        
+        MKMapPoint ptA = poly.points[n];
+        MKMapPoint ptB = poly.points[n + 1];
+        
+        double xDelta = ptB.x - ptA.x;
+        double yDelta = ptB.y - ptA.y;
+        
+        if (xDelta == 0.0 && yDelta == 0.0) {
+            
+            // Points must not be equal
+            continue;
+        }
+        
+        double u = ((pt.x - ptA.x) * xDelta + (pt.y - ptA.y) * yDelta) / (xDelta * xDelta + yDelta * yDelta);
+        MKMapPoint ptClosest;
+        if (u < 0.0) {
+            
+            ptClosest = ptA;
+        }
+        else if (u > 1.0) {
+            
+            ptClosest = ptB;
+        }
+        else {
+            
+            ptClosest = MKMapPointMake(ptA.x + u * xDelta, ptA.y + u * yDelta);
+        }
+        
+        distance = MIN(distance, MKMetersBetweenMapPoints(ptClosest, pt));
+    }
+    
+    return distance;
+}
+
+/** Converts |px| to meters at location |pt| */
+- (double)metersFromPixel:(NSUInteger)px atPoint:(CGPoint)pt
+{
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    CGPoint ptB = CGPointMake(pt.x + px, pt.y);
+    
+    CLLocationCoordinate2D coordA = [mapView convertPoint:pt toCoordinateFromView:mapView];
+    CLLocationCoordinate2D coordB = [mapView convertPoint:ptB toCoordinateFromView:mapView];
+    
+    return MKMetersBetweenMapPoints(MKMapPointForCoordinate(coordA), MKMapPointForCoordinate(coordB));
+}
+
 
 //----------------
 // MARK: -- Save the route --

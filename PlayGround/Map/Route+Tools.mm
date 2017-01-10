@@ -99,6 +99,12 @@ using namespace std;
     delete[] accumulatedMapPoints;
     self.polyline = polyline;
     
+    //------------------
+    // Populate the annotation information
+    //------------------
+    
+    
+    
     // Execute the route ready block
     if (self.routeReadyBlock){
         self.routeReadyBlock();

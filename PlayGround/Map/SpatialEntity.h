@@ -30,6 +30,7 @@
 
 
 // MARK: Methods
+- (double)getPointDistanceToTouch:(UITouch*)touch;
 - (id)initWithCoder:(NSCoder *)coder;
 - (void)encodeWithCoder:(NSCoder *)coder;
 
