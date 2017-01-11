@@ -96,7 +96,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         // Initialization code
         _minimumValue = 0.0;
         _maximumValue = 10.0;
-        _trackPaddingInPoints = 30;
+        _trackPaddingInPoints = 60;
         
         _blankXBias = frame.size.width/2;
         

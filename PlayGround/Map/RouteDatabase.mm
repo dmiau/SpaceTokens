@@ -132,9 +132,17 @@
     
     // There could be multiple routes
     for (MKRoute *route in response.routes)
-    {
+    {        
+        POI *source = [[POI alloc] init];
+        source.name = response.source.name;
+        source.latLon = response.source.placemark.coordinate;
+        
+        POI *destination = [[POI alloc] init];
+        destination.name = response.destination.name;
+        destination.latLon = response.destination.placemark.coordinate;
+        
         Route *aRoute = [[Route alloc] initWithMKRoute:route
-                                                   Source:response.source Destination:response.destination];
+                Source:source Destination:destination];
         self.routeDictionary[aRoute.name] = aRoute;
         break;
     }

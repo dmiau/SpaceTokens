@@ -65,7 +65,7 @@ static SpaceBar *sharedInstance;
     // Init the slider
     self.sliderContainer = [[CERangeSlider alloc] initWithFrame:self.frame];
     self.sliderContainer.delegate = self;
-    self.sliderContainer.trackPaddingInPoints = 30; //pad the top and bottom
+    self.sliderContainer.trackPaddingInPoints = 60; //pad the top and bottom
     
     
     self.sliderContainer.curvatiousness = 0.0;

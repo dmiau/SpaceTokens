@@ -18,8 +18,8 @@ using namespace std;
 
 + (void) addRouteWithSource:(POI*) source Destination:(POI*) destination
 {
-    
     Route *aRoute = [[Route alloc] init];
+    aRoute.entityArray = [NSMutableArray arrayWithObjects:source, destination, nil];
     void(^completionBlock)(void) = ^{
         // Push the newly created route into the entity database
         EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
@@ -37,6 +37,7 @@ using namespace std;
 
 
 -(void)requestRouteFromEntities: (NSArray *)entityArray{
+    self.entityArray = [entityArray mutableCopy];
     routeSegmentArray = [NSMutableArray array];
     
     // Interate over each pair to get pari-wise routes
@@ -71,6 +72,8 @@ using namespace std;
         allCompletionFlag =
         aRoute.requestCompletionFlag && allCompletionFlag;
     }
+    
+    // Do nothing until all the route requests are completed
     if (!allCompletionFlag)
         return;
     
@@ -80,12 +83,17 @@ using namespace std;
     vector<MKMapPoint*>pointsArray;
     
     int accumulatedCount = 0;
+    NSMutableDictionary <NSNumber*, SpatialEntity*> *indexEntityDictionary = [NSMutableDictionary dictionary];
     for (Route *aRoute in routeSegmentArray){
         pointCountVector.push_back(aRoute.polyline.pointCount);
         pointsArray.push_back(aRoute.polyline.points);
+        
+        indexEntityDictionary[@(accumulatedCount)] = [aRoute.entityArray firstObject];
         accumulatedCount += aRoute.polyline.pointCount;
     }
     MKMapPoint *accumulatedMapPoints = new MKMapPoint[accumulatedCount];
+    indexEntityDictionary[@(accumulatedCount-1)] =
+    [((Route*)[routeSegmentArray lastObject]).entityArray lastObject];
     
     int index = 0;
     for(int i = 0; i < pointCountVector.size(); i++){
@@ -103,8 +111,28 @@ using namespace std;
     // Populate the annotation information
     //------------------
     
+    // Sort the key of self.indexEntityDictionary
+    NSArray *indices = [indexEntityDictionary allKeys];
     
-    
+    // Find out the corresponding percentage for each entity and store the results to indexEntityDictionary
+    double totalDist = self.accumulatedDist->back();
+    self.annotationDictionary = [NSMutableDictionary dictionary];
+    for (NSNumber *index in indices){
+        int i = [index integerValue];
+        double percentage;
+        if (i == 0){
+            // The first one
+            self.annotationDictionary[@0] = indexEntityDictionary[index];
+        }else if (i == accumulatedCount-1){
+            // The last one
+            self.annotationDictionary[@1] = indexEntityDictionary[index];
+        }else{
+            // The ones in the middle
+            percentage = (*self.accumulatedDist)[[index integerValue]]/totalDist;
+            self.annotationDictionary[@(percentage)] = indexEntityDictionary[index];
+        }
+    }
+
     // Execute the route ready block
     if (self.routeReadyBlock){
         self.routeReadyBlock();

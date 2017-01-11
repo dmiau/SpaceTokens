@@ -116,7 +116,7 @@ static ViewController *instance;
     //----------------
     _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];
     self.spaceBar.spaceBarMode = TOKENONLY;
-    self.spaceBar.smallValueOnTopOfBar = false;
+    self.spaceBar.smallValueOnTopOfBar = YES;
     self.spaceBar.delegate = self;
     
     //----------------

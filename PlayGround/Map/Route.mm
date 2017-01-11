@@ -24,13 +24,19 @@ template class std::vector<double>;
 //============================
 @implementation Route
 
-- (id)initWithMKRoute: (MKRoute *) aRoute Source:(MKMapItem *)source Destination:(MKMapItem *)destination
+-(id)init{
+    self = [super init];
+    self.annotation.pointType = path;
+    return self;
+}
+
+// MARK: Initialization
+- (id)initWithMKRoute: (MKRoute *) aRoute Source:(POI *)source Destination:(POI *)destination
 {
     self = [super initWithMKPolyline:aRoute.polyline];
-    
     self.annotation.pointType = path;
-    self.source = source;
-    self.destination = destination;
+    
+    self.entityArray = [NSMutableArray arrayWithObjects:source, destination, nil];
     self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
     return self;
 }
@@ -39,26 +45,22 @@ template class std::vector<double>;
     
     self = [super initWithMKMapPointArray:mapPointArray];
     self.annotation.pointType = path;
-    
     // Construct source and destination
-    CLLocationCoordinate2D sourceCoord =
-    MKCoordinateForMapPoint([mapPointArray[0] MKMapPointValue]);
-    MKPlacemark *sourcePlacemark = [[MKPlacemark alloc] initWithCoordinate:sourceCoord addressDictionary:nil];
-    MKMapItem *sourceMapItem = [[MKMapItem alloc] initWithPlacemark:sourcePlacemark];
-    [sourceMapItem setName:@"source"];
-    self.source = sourceMapItem;
+    POI *sourcePOI = [[POI alloc] init];
+    sourcePOI.name = @"source";
+    sourcePOI.latLon = MKCoordinateForMapPoint([mapPointArray[0] MKMapPointValue]);
     
-    CLLocationCoordinate2D destinationCoord =
-    MKCoordinateForMapPoint([[mapPointArray lastObject] MKMapPointValue]);
-    MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:
-                                         destinationCoord addressDictionary:nil];
-    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:destinationPlacemark];
-    [destinationMapItem setName:@"destination"];
-    self.destination = destinationMapItem;
     
-    self.name = [NSString stringWithFormat:@"%@ - %@", self.source.name, self.destination.name];
+    POI *destinationPOI = [[POI alloc] init];
+    sourcePOI.name = @"destination";
+    sourcePOI.latLon = MKCoordinateForMapPoint([[mapPointArray lastObject] MKMapPointValue]);
+    
+    self.entityArray = [NSMutableArray arrayWithObjects:sourcePOI, destinationPOI, nil];
+    
+    self.name = [NSString stringWithFormat:@"%@ - %@", sourcePOI.name, destinationPOI.name];
     return self;
 }
+
 
 // Make an asynchronous request for a route with the specified source and destination`
 -(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination{
@@ -98,8 +100,11 @@ template class std::vector<double>;
          } else {
              
              self.annotation.pointType = path;
-             self.source = response.source;
-             self.destination = response.destination;
+             self.entityArray = [NSMutableArray arrayWithObjects:source, destination, nil];
+             self.annotationDictionary = [NSMutableDictionary dictionary];
+             self.annotationDictionary[@0] = source;
+             self.annotationDictionary[@1] = destination;
+             
              self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
              
              NSLog(@"A direction response for the route %@ is received.",
@@ -110,7 +115,7 @@ template class std::vector<double>;
              {
                  // Populate a route
                  self.polyline = route.polyline;
-              
+                 
                  self.requestCompletionFlag = YES;
                  if (self.routeReadyBlock){
                      self.routeReadyBlock();
@@ -209,34 +214,16 @@ template class std::vector<double>;
     [super encodeWithCoder:coder];
 
     // Save the source and destination
-    POI *sourcePOI = [[POI alloc] init];
-    sourcePOI.latLon = self.source.placemark.coordinate;
-    sourcePOI.name = self.source.name;
-    
-    POI *destinationPOI = [[POI alloc] init];
-    destinationPOI.latLon = self.destination.placemark.coordinate;
-    destinationPOI.name = self.destination.name;
-    
-    [coder encodeObject: sourcePOI forKey:@"sourcePOI"];
-    [coder encodeObject: destinationPOI forKey:@"destinationPOI"];
-
+    [coder encodeObject: self.entityArray forKey:@"entityArray"];
+    [coder encodeObject: self.annotationDictionary forKey:@"annotationDictionary"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {    
     self = [super initWithCoder:coder];
     
     // Decode source and destination
-    POI *sourcePOI = [coder decodeObjectOfClass:[POI class] forKey:@"sourcePOI"];
-    MKPlacemark *sourcePlacemark = [[MKPlacemark alloc] initWithCoordinate:sourcePOI.latLon addressDictionary:nil];
-    MKMapItem *sourceMapItem = [[MKMapItem alloc] initWithPlacemark:sourcePlacemark];
-    [sourceMapItem setName:sourcePOI.name];
-    self.source = sourceMapItem;
-    
-    POI *destinationPOI = [coder decodeObjectOfClass:[POI class] forKey:@"destinationPOI"];
-    MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:destinationPOI.latLon addressDictionary:nil];
-    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:destinationPlacemark];
-    [destinationMapItem setName:destinationPOI.name];
-    self.destination = destinationMapItem;
+    self.entityArray = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"entityArray"];
+    self.entityArray = [coder decodeObjectOfClass:[NSMutableDictionary class] forKey:@"annotationDictionary"];
     return self;
 }
 

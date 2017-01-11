@@ -7,11 +7,15 @@
 //
 
 #import "SpaceBar+Annotations.h"
-#import "../Map/Route.h"
+#import "Route.h"
+#import "POI.h"
 
 @implementation SpaceBar (Annotations)
 - (void) addAnnotationsFromRoute:(Route *) route{
 
+
+    /*
+    
     // Find the dimensions
     CGPoint sliderContainerOrigin = self.sliderContainer.frame.origin;
     
@@ -48,6 +52,15 @@
     
     UILabel *cLabel = [self generateAnnotationLabelWithName:@"75%" atPercentage:0.75];
     [self.annotationView addSubview:cLabel];
+    */
+    
+    // Add all the annotations
+    for (NSNumber *aKey in [route.annotationDictionary allKeys]){
+        SpatialEntity *anEnity = route.annotationDictionary[aKey];
+        
+        UILabel *cLabel = [self generateAnnotationLabelWithName:anEnity.name atPercentage:[aKey doubleValue]];
+        [self.annotationView addSubview:cLabel];
+    }
     
 }
 

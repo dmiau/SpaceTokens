@@ -178,6 +178,8 @@
          self.spaceBar.activeRoute.polyline];
         self.spaceBar.activeRoute = nil;
     }
+    [self.spaceBar removeRouteAnnotations];
+    
     // Reset Spacebar
     [self.spaceBar resetSpaceBar];
 }
