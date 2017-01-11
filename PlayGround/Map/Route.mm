@@ -36,7 +36,7 @@ template class std::vector<double>;
     self = [super initWithMKPolyline:aRoute.polyline];
     self.annotation.pointType = path;
     
-    self.entityArray = [NSMutableArray arrayWithObjects:source, destination, nil];
+    self.contentArray = [NSMutableArray arrayWithObjects:source, destination, nil];
     self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
     return self;
 }
@@ -55,7 +55,7 @@ template class std::vector<double>;
     sourcePOI.name = @"destination";
     sourcePOI.latLon = MKCoordinateForMapPoint([[mapPointArray lastObject] MKMapPointValue]);
     
-    self.entityArray = [NSMutableArray arrayWithObjects:sourcePOI, destinationPOI, nil];
+    self.contentArray = [NSMutableArray arrayWithObjects:sourcePOI, destinationPOI, nil];
     
     self.name = [NSString stringWithFormat:@"%@ - %@", sourcePOI.name, destinationPOI.name];
     return self;
@@ -100,7 +100,7 @@ template class std::vector<double>;
          } else {
              
              self.annotation.pointType = path;
-             self.entityArray = [NSMutableArray arrayWithObjects:source, destination, nil];
+             self.contentArray = [NSMutableArray arrayWithObjects:source, destination, nil];
              self.annotationDictionary = [NSMutableDictionary dictionary];
              self.annotationDictionary[@0] = source;
              self.annotationDictionary[@1] = destination;
@@ -214,7 +214,6 @@ template class std::vector<double>;
     [super encodeWithCoder:coder];
 
     // Save the source and destination
-    [coder encodeObject: self.entityArray forKey:@"entityArray"];
     [coder encodeObject: self.annotationDictionary forKey:@"annotationDictionary"];
 }
 
@@ -222,8 +221,7 @@ template class std::vector<double>;
     self = [super initWithCoder:coder];
     
     // Decode source and destination
-    self.entityArray = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"entityArray"];
-    self.entityArray = [coder decodeObjectOfClass:[NSMutableDictionary class] forKey:@"annotationDictionary"];
+    self.annotationDictionary = [coder decodeObjectOfClass:[NSMutableDictionary class] forKey:@"annotationDictionary"];
     return self;
 }
 

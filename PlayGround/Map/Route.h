@@ -24,7 +24,6 @@ using namespace std;
 //------------------
 // properties
 //------------------
-@property NSMutableArray *entityArray;
 @property (nonatomic, copy) void (^routeReadyBlock)();
 @property NSMutableDictionary <NSNumber*, SpatialEntity*> *annotationDictionary;
 @property BOOL requestCompletionFlag;

@@ -10,10 +10,11 @@
 #include <vector>
 #include <utility>
 #import "SpatialEntity.h"
+#import "ArrayEntity.h"
 
 using namespace std;
 
-@interface LineEntity : SpatialEntity
+@interface LineEntity : ArrayEntity
 
 @property MKPolyline *polyline;
 

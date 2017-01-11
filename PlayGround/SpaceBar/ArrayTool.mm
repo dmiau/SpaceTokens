@@ -127,8 +127,15 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 }
 
 -(void) insertToken: (SpaceToken*) token{
-    // Create a new SpaceToken based on anchor
-    [self.arrayEntity.contentArray addObject:token.spatialEntity];
+    
+    SpatialEntity *anEntity = token.spatialEntity;
+    
+    if ([anEntity isKindOfClass:[ArrayEntity class]]){
+        [self.arrayEntity.contentArray
+         addObjectsFromArray: ((ArrayEntity*)anEntity).contentArray];
+    }else{
+        [self.arrayEntity.contentArray addObject:token.spatialEntity];
+    }
     
     // refresh the token panel
     [self reloadData];

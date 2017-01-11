@@ -19,7 +19,7 @@ using namespace std;
 + (void) addRouteWithSource:(POI*) source Destination:(POI*) destination
 {
     Route *aRoute = [[Route alloc] init];
-    aRoute.entityArray = [NSMutableArray arrayWithObjects:source, destination, nil];
+    aRoute.contentArray = [NSMutableArray arrayWithObjects:source, destination, nil];
     void(^completionBlock)(void) = ^{
         // Push the newly created route into the entity database
         EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
@@ -37,7 +37,7 @@ using namespace std;
 
 
 -(void)requestRouteFromEntities: (NSArray *)entityArray{
-    self.entityArray = [entityArray mutableCopy];
+    self.contentArray = [entityArray mutableCopy];
     routeSegmentArray = [NSMutableArray array];
     
     // Interate over each pair to get pari-wise routes
@@ -88,12 +88,12 @@ using namespace std;
         pointCountVector.push_back(aRoute.polyline.pointCount);
         pointsArray.push_back(aRoute.polyline.points);
         
-        indexEntityDictionary[@(accumulatedCount)] = [aRoute.entityArray firstObject];
+        indexEntityDictionary[@(accumulatedCount)] = [aRoute.contentArray firstObject];
         accumulatedCount += aRoute.polyline.pointCount;
     }
     MKMapPoint *accumulatedMapPoints = new MKMapPoint[accumulatedCount];
     indexEntityDictionary[@(accumulatedCount-1)] =
-    [((Route*)[routeSegmentArray lastObject]).entityArray lastObject];
+    [((Route*)[routeSegmentArray lastObject]).contentArray lastObject];
     
     int index = 0;
     for(int i = 0; i < pointCountVector.size(); i++){
