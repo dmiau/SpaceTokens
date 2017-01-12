@@ -14,6 +14,7 @@
 #import "TokenCollection.h"
 #import "Constants.h"
 #import "ViewController.h"
+#import "SetCollectionView.h"
 
 //-------------------
 // Parameters
@@ -24,54 +25,45 @@
 @implementation SetTool{
     SpaceToken *masterToken;
     BOOL moveMode;
-    UIView *toolView;
 }
 
 // MARK: Initialization
-+(id)sharedManager{
++(SetTool*)sharedManager{
     static SetTool *sharedInstance = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[SetTool alloc] init];
+        SetTool *aView = (SetTool*)[[[NSBundle mainBundle] loadNibNamed:@"SetTool" owner:nil options:nil] firstObject];
+        [aView initializeObject];
+        sharedInstance = aView;
     });
-    
-    
     return sharedInstance;
 }
 
-- (id) init{
-
-    self = [super init];
-    
+-(void)initializeObject{
     //----------------
     // Initialize properties
     //----------------
-    _isVisible = NO;
+    self.isVisible = NO;
+    self.setToolMode = EmptyMode;
     masterToken = nil;
     moveMode = NO; //
-    self.arrayEntity = [[ArrayEntity alloc] init];
+
     
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     self.frame = mapView.frame;
+
+    //----------------
+    // Set up the toolView
+    //----------------
+    [self.toolView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     
     //----------------
-    // Add a toolView
+    // Set up the mini map
     //----------------
-    CGRect defaultFrame = CGRectMake(70, mapView.frame.size.height - TOOL_HEIGHT, TOOL_WIDTH, TOOL_HEIGHT);
-    toolView = [[UIView alloc] initWithFrame:defaultFrame];
-    [toolView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
-    [self addSubview:toolView];
-    
-    //----------------
-    // Add a mini map
-    //----------------
-    self.miniMapView = [[MiniMapView alloc] initWithFrame:
-                        CGRectMake(0, 30, TOOL_WIDTH, TOOL_HEIGHT)];
     [self.miniMapView setUserInteractionEnabled:NO];
     self.miniMapView.showsCompass = NO;
     
-    [toolView addSubview:self.miniMapView];
     // Make the mini map hidden by default
     [self.miniMapView setHidden:YES];
     
@@ -82,7 +74,13 @@
                    name:MapUpdatedNotification
                  object:nil];
     
-    return self;
+    //----------------
+    // Set up the collection view
+    //----------------
+    [self.setCollectionView initObject];
+    [self.setCollectionView setHidden:NO];
+    
+    self.arrayEntity = [[ArrayEntity alloc] init];    
 }
 
 //------------------
@@ -95,7 +93,7 @@
     
     CGRect frame = CGRectZero;
     frame.size = CGSizeMake(60, 20);
-    [toolView addSubview:masterToken];
+    [self.toolView addSubview:masterToken];
 }
 
 -(void)updateView{
@@ -107,25 +105,37 @@
     {
         // Insert a master token on the top
         [self initMasterToken];
+        self.setToolMode = SetMode;
+    }
+    
+    if ([self.arrayEntity.contentArray count] == 0){
+        self.setToolMode = EmptyMode;
+        // Remove the master token
+        [self removeMaster];
     }
     
     if ([self.arrayEntity.contentArray count] >= 1){
-        // MiniMap should be visible
-        // Make the miniMap visible if it is not visible already
-        if (self.miniMapView.isHidden){
-            [self.miniMapView setHidden:NO];
+        if (self.setToolMode == EmptyMode){
+            self.setToolMode = MapMode;
         }
-        // refresh the map
-        [self.miniMapView zoomToFitEntities: entitySet];
-        
-        // Update the bound of the master token
-        [self.arrayEntity updateBoundingMapRect];
-    }else{
-        // MiniMap should be invisible
-        // Make the miniMap visible if it is not visible already
-        if (!self.miniMapView.isHidden){
-            [self.miniMapView setHidden:YES];
-        }
+    }
+
+    // Update the bound of the master token
+    [self.arrayEntity updateBoundingMapRect];
+    
+    // refresh the map
+    [self.miniMapView zoomToFitEntities: entitySet];
+    
+    [self.setCollectionView reloadData];
+    
+    //---------------
+    // Set up the annotations
+    //---------------
+    // Clear the existing annotation
+    [self.miniMapView removeAnnotations:self.miniMapView.annotations];
+    // Add annotations to the mini map
+    for (SpatialEntity *entity in self.arrayEntity.contentArray){
+        [entity setMapAnnotationEnabled:YES onMap:self.miniMapView];
     }
 }
 
@@ -153,12 +163,47 @@
     }
 }
 
+-(void)setArrayEntity:(ArrayEntity *)arrayEntity{
+    _arrayEntity = arrayEntity;
+    self.setCollectionView.arrayEntity = arrayEntity;
+}
+
+-(void)setSetToolMode:(SetToolMode)setToolMode{
+    
+    if ([self.arrayEntity.contentArray count] == 0){
+        setToolMode = EmptyMode;
+    }
+    
+    _setToolMode = setToolMode;
+    
+    switch (setToolMode) {
+        case SetMode:
+            [self.miniMapView setHidden:YES];
+            [self.setCollectionView setHidden:NO];
+            [self bringSubviewToFront:self.setCollectionView];
+            break;
+        case MapMode:
+            [self.miniMapView setHidden:NO];
+            [self.setCollectionView setHidden:YES];
+            [self bringSubviewToFront:self.miniMapView];
+            break;
+        case EmptyMode:
+            [self.miniMapView setHidden:YES];
+            [self.setCollectionView setHidden:YES];
+            break;
+        default:
+            [self.miniMapView setHidden:YES];
+            [self.setCollectionView setHidden:YES];
+            break;
+    }
+}
+
 // MARK: hit tests
 -(BOOL)isTouchInInsertionZone:(UITouch*)touch{
     if (!self.isVisible)
         return NO;
     
-    CGPoint touchPoint = [touch locationInView:toolView];
+    CGPoint touchPoint = [touch locationInView:self.toolView];
     
     if (CGRectContainsPoint(CGRectMake(0, 30, TOOL_WIDTH, TOOL_HEIGHT - 30), touchPoint)){
         return YES;
@@ -171,7 +216,7 @@
     if (!self.isVisible)
         return NO;
     
-    CGPoint touchPoint = [touch locationInView:toolView];
+    CGPoint touchPoint = [touch locationInView:self.toolView];
     
     if (CGRectContainsPoint(CGRectMake(0, 0, 60, 30), touchPoint)){
         return YES;
@@ -182,7 +227,7 @@
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return (CGRectContainsPoint(toolView.frame, point));
+    return (CGRectContainsPoint(self.toolView.frame, point));
 }
 
 // MARK: Token management
@@ -200,15 +245,19 @@
     
     CGRect frame = CGRectZero;
     frame.size = CGSizeMake(60, 20);
-    [toolView addSubview:masterToken];
+    [self.toolView addSubview:masterToken];
     
     self.arrayEntity = masterToken.spatialEntity;
     [self updateView];
 }
 
 -(void) insertToken: (SpaceToken*) token{
+    // Need to perform set operation
+    NSMutableSet *originalSet = [NSMutableSet setWithArray:self.arrayEntity.contentArray];
+    [originalSet unionSet:[NSSet setWithObject:token.spatialEntity]];
+    NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[originalSet allObjects]];
     // Create a new SpaceToken based on anchor
-    [self.arrayEntity.contentArray addObject:token.spatialEntity];
+    self.arrayEntity.contentArray = tempArray;
     [self updateView];
 }
 
@@ -227,15 +276,35 @@
     [self updateView];
 }
 
+-(void)removeMaster{
+    if (masterToken){
+        [masterToken removeFromSuperview];
+        [[TokenCollection sharedManager] removeToken:masterToken];
+        self.arrayEntity = [[ArrayEntity alloc] init];
+        masterToken = nil;
+    }
+}
+
+// MARK: button actions
+- (IBAction)switchViewAction:(id)sender {
+    if (self.setToolMode==EmptyMode || self.setToolMode == MapMode){
+        self.setToolMode = SetMode;
+    }else{
+        self.setToolMode = MapMode;
+    }
+    [self updateView];
+}
+
 // MARK: view movement
-
-
-
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    CGPoint touchPoint = [[touches anyObject] locationInView:toolView];
+    CGPoint touchPoint = [[touches anyObject] locationInView:self.toolView];
     
-    CGRect moveDetectionArea = CGRectMake(60, 0, 90, 30);
-    if (CGRectContainsPoint(moveDetectionArea, touchPoint)){
+    if (CGRectContainsPoint(masterToken.frame, touchPoint)){
+        moveMode = NO;
+        return;
+    }
+    
+    if (CGRectContainsPoint(self.bounds, touchPoint)){
         moveMode = YES;
     }else{
         moveMode = NO;
@@ -251,7 +320,7 @@
     CGPoint diff = CGPointMake(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
     
     // Move the view
-    toolView.center = CGPointMake(toolView.center.x + diff.x, toolView.center.y + diff.y);
+    self.toolView.center = CGPointMake(self.toolView.center.x + diff.x, self.toolView.center.y + diff.y);
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

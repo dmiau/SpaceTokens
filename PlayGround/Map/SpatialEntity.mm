@@ -58,6 +58,16 @@
     }
 }
 
+- (void)setMapAnnotationEnabled:(BOOL)flag onMap:(MKMapView*)map{
+    if (flag){
+        // Add the annotation
+        [map addAnnotation:self.annotation];
+    }else{
+        // Remove the annotation
+        [map removeAnnotation:self.annotation];
+    }
+}
+
 //----------------
 // MARK: --Interactions--
 //----------------

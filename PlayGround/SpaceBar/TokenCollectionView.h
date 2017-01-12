@@ -24,8 +24,6 @@
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 
-
-
 -(void)setTopAlignmentOffset:(int)offSet;
 
 -(BOOL)isTouchInInsertionZone:(UITouch*)touch;

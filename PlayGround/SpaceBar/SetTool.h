@@ -10,19 +10,29 @@
 @class SpaceToken;
 @class ArrayEntity;
 @class MiniMapView;
+@class SetCollectionView;
+
+typedef enum {SetMode, MapMode, EmptyMode} SetToolMode;
 
 @interface SetTool : UIView
+@property (weak, nonatomic) IBOutlet MiniMapView *miniMapView;
+@property (weak, nonatomic) IBOutlet UIView *toolView;
+@property (weak, nonatomic) IBOutlet SetCollectionView *setCollectionView;
 
-@property BOOL isVisible;
-@property MiniMapView *miniMapView;
-@property ArrayEntity *arrayEntity;
-
-+(id)sharedManager;
+@property SetToolMode setToolMode;
 
 -(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
 -(void)insertMaster:(SpaceToken*) token;
+
++(SetTool*)sharedManager;
+
 -(BOOL)isTouchInInsertionZone:(UITouch*)touch;
 
+
+@property BOOL isVisible;
+@property ArrayEntity *arrayEntity;
 -(void)insertToken: (SpaceToken*) token;
 -(void)removeToken: (SpaceToken*) token;
+- (IBAction)switchViewAction:(id)sender;
+
 @end
