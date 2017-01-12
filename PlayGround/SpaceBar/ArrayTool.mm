@@ -99,14 +99,14 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     [[TokenCollection sharedManager] removeAllTokensForStructure:self];
     
     
-    if ([self.arrayEntity.contentArray count]==1
+    if ([[self.arrayEntity getContentArray] count]==1
         && !masterToken)
     {
         // Insert a master token on the top
         [self initMasterToken];
     }
     
-    if ([self.arrayEntity.contentArray count]>=2
+    if ([[self.arrayEntity getContentArray] count]>=2
         && !pathModeButton)
     {
         // Insert a path switch on the bottom
@@ -119,7 +119,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     NSInteger outCount;
     if (arrayToolMode == ArrayMode){
-        outCount = [self.arrayEntity.contentArray count];
+        outCount = [[self.arrayEntity getContentArray] count];
     }else{
         outCount = 0;
     }
@@ -131,10 +131,10 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     SpatialEntity *anEntity = token.spatialEntity;
     
     if ([anEntity isKindOfClass:[ArrayEntity class]]){
-        [self.arrayEntity.contentArray
-         addObjectsFromArray: ((ArrayEntity*)anEntity).contentArray];
+        [self.arrayEntity
+         addObjectsFromArray: [(ArrayEntity*)anEntity getContentArray]];
     }else{
-        [self.arrayEntity.contentArray addObject:token.spatialEntity];
+        [self.arrayEntity addObject:token.spatialEntity];
     }
     
     // refresh the token panel
@@ -173,10 +173,10 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         // masterToken is removed
         self.arrayEntity = [[ArrayEntity alloc] init];
     }else{
-        [self.arrayEntity.contentArray removeObject:token.spatialEntity];
+        [self.arrayEntity removeObject:token.spatialEntity];
     }
 
-    if ([self.arrayEntity.contentArray count] == 0){
+    if ([[self.arrayEntity getContentArray] count] == 0){
         // Remove the masterToken
         [masterToken removeFromSuperview];
         masterToken = nil;
@@ -186,7 +186,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         pathModeButton = nil;
     }
     
-    if ([self.arrayEntity.contentArray count] < 2){
+    if ([[self.arrayEntity getContentArray] count] < 2){
         // Remove the pathButton
         [pathModeButton removeFromSuperview];
         pathModeButton = nil;
@@ -282,7 +282,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
                                        zoomToOverview:YES];
         };
         aRoute.routeReadyBlock = requestCompletionBlock;
-        [aRoute requestRouteFromEntities:self.arrayEntity.contentArray];
+        [aRoute requestRouteFromEntities:[self.arrayEntity getContentArray]];
         
         // Change pointInside detection method
         

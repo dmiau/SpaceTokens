@@ -207,13 +207,13 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     self.arrayEntity.contentArray
     = [[EntityDatabase sharedManager] getEnabledEntities];
     
-    if ([self.arrayEntity.contentArray count] > 12){
+    if ([[self.arrayEntity getContentArray] count] > 12){
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = NO;
     }else{
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = YES;
     }
     
-    return [self.arrayEntity.contentArray count];
+    return [[self.arrayEntity getContentArray] count];
 }
 
 //----------------
@@ -229,7 +229,8 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     
     // Generate a SpaceToken if there is none
     TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    SpatialEntity *spatialEntity = self.arrayEntity.contentArray[row];
+    NSArray *contentArray = [self.arrayEntity getContentArray];
+    SpatialEntity *spatialEntity = contentArray[row];
     SpaceToken* aToken = [tokenCollection addTokenFromSpatialEntity:spatialEntity];
         aToken.home= self;
     
@@ -252,19 +253,20 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 // Reordering
 //----------------
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{    
-    SpatialEntity *anEntity = self.arrayEntity.contentArray[sourceIndexPath.row];
-    [self.arrayEntity.contentArray removeObjectAtIndex:sourceIndexPath.row];
-    [self.arrayEntity.contentArray insertObject:anEntity atIndex:destinationIndexPath.row];
+{
+    NSArray *contentArray = [self.arrayEntity getContentArray];
+    SpatialEntity *anEntity = contentArray[sourceIndexPath.row];
+    [self.arrayEntity removeObjectAtIndex:sourceIndexPath.row];
+    [self.arrayEntity insertObject:anEntity atIndex:destinationIndexPath.row];
 }
 
 // MARK: Insert
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity{    
-    [self.arrayEntity.contentArray insertObject:anEntity atIndex:[self.arrayEntity.contentArray count]-2];
+    [self.arrayEntity insertObject:anEntity atIndex:[[self.arrayEntity getContentArray] count]-2];
     [self.arrayEntity updateBoundingMapRect];
     
-    NSUInteger index = [self.arrayEntity.contentArray count]  -2;
+    NSUInteger index = [[self.arrayEntity getContentArray] count]  -2;
     NSArray *indexPaths = [NSArray
                            arrayWithObject:
                            [NSIndexPath indexPathForRow:index inSection:0]];

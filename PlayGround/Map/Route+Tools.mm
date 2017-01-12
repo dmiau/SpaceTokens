@@ -88,12 +88,12 @@ using namespace std;
         pointCountVector.push_back(aRoute.polyline.pointCount);
         pointsArray.push_back(aRoute.polyline.points);
         
-        indexEntityDictionary[@(accumulatedCount)] = [aRoute.contentArray firstObject];
+        indexEntityDictionary[@(accumulatedCount)] = [[aRoute getContentArray] firstObject];
         accumulatedCount += aRoute.polyline.pointCount;
     }
     MKMapPoint *accumulatedMapPoints = new MKMapPoint[accumulatedCount];
     indexEntityDictionary[@(accumulatedCount-1)] =
-    [((Route*)[routeSegmentArray lastObject]).contentArray lastObject];
+    [[(Route*)[routeSegmentArray lastObject] getContentArray] lastObject];
     
     int index = 0;
     for(int i = 0; i < pointCountVector.size(); i++){

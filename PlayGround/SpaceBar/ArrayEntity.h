@@ -8,8 +8,21 @@
 
 #import "SpatialEntity.h"
 
-@interface ArrayEntity : SpatialEntity
+@interface ArrayEntity : SpatialEntity{
+    NSMutableArray <SpatialEntity *> *contentArray;
+}
 
-@property NSMutableArray <SpatialEntity *> *contentArray;
+@property (nonatomic, copy) void (^contentUpdatedBlock)();
+
 -(void)updateBoundingMapRect;
+
+// Methods to modify contentArray
+-(void)insertObject:(id)object atIndex:(NSUInteger)index;
+-(void)removeObjectAtIndex:(NSUInteger)index;
+-(void)addObject:(id)object;
+-(void)addObjectsFromArray:(NSArray*)objects;
+-(void)removeObject:(id)object;
+
+-(NSArray <SpatialEntity*> *)getContentArray;
+-(void)setContentArray:(NSArray <SpatialEntity*> *)inputArray;
 @end

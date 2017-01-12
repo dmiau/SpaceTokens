@@ -13,7 +13,7 @@
 -(id)init{
     self = [super init];
     self.name = @"NoNamed";
-    self.contentArray = [NSMutableArray array];
+    contentArray = [NSMutableArray array];
     return self;
 }
 
@@ -21,13 +21,13 @@
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
-    [coder encodeObject: self.contentArray forKey:@"contentArray"];
+    [coder encodeObject: contentArray forKey:@"contentArray"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     // Decode source and destination
-    self.contentArray = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"contentArray"];
+    contentArray = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"contentArray"];
     return self;
 }
 
@@ -36,7 +36,7 @@
     // This is very important, since a child class might call this method too.
     ArrayEntity *object = [[[self class] alloc] init];
     object = [super copy];
-    object.contentArray = [self.contentArray mutableCopy];
+    [object setContentArray:contentArray];
     return object;
 }
 
@@ -51,7 +51,7 @@
     double minMapX = 0.0, maxMapX = 0.0, minMapY = 0.0, maxMapY = 0.0;
     
     int i = 0;
-    for (SpatialEntity *anEntity in self.contentArray){
+    for (SpatialEntity *anEntity in contentArray){
         CLLocationCoordinate2D minLatLon = CLLocationCoordinate2DMake(
         anEntity.latLon.latitude - anEntity.coordSpan.latitudeDelta,
         anEntity.latLon.longitude - anEntity.coordSpan.longitudeDelta                                                          );
@@ -76,6 +76,35 @@
     MKMapRect output = MKMapRectMake(minMapX, minMapY,
                                      maxMapX - minMapX, maxMapY - minMapY);
     return output;
+}
+
+// MARK: Methods to modify contentArray
+-(void)insertObject:(id)object atIndex:(NSUInteger)index{
+    [contentArray insertObject:object atIndex:index];
+}
+
+-(void)addObject:(id)object{
+    [contentArray addObject:object];
+}
+
+-(void)addObjectsFromArray:(NSArray*)objects{
+    [contentArray addObjectsFromArray:objects];
+}
+
+-(void)removeObject:(id)object{
+    [contentArray removeObject:object];
+}
+
+-(void)removeObjectAtIndex:(NSUInteger)index{
+    [contentArray removeObjectAtIndex:index];
+}
+
+-(NSArray <SpatialEntity*> *)getContentArray{
+    return [NSArray arrayWithArray:contentArray];
+}
+
+-(void)setContentArray:(NSArray <SpatialEntity*> *)inputArray{
+    contentArray = [inputArray mutableCopy];
 }
 
 @end
