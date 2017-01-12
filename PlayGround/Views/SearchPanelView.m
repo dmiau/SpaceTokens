@@ -95,6 +95,11 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [ViewController sharedManager].isStatusBarHidden = NO;
+    
+    // Reset the frame (for iPad)
+    CGRect appFrame = self.rootViewController.view.frame;
+    CGRect panelFrame = CGRectMake(0, 0, appFrame.size.width, 150);
+    self.frame = panelFrame;
 }
 
 #pragma mark -- button actions --
@@ -159,9 +164,13 @@
     
     // Add a dropped pin
     POI *aPOI = [[POI alloc] init];
+    aPOI.name = place.name;
     aPOI.latLon = place.coordinate;
     aPOI.annotation.pointType = dropped;
     aPOI.isMapAnnotationEnabled = YES;
+    
+    // Add the restul to entityDB
+    [[[EntityDatabase sharedManager] entityArray] addObject:aPOI];
     
     if (!self.searchHandlingBlock){
         //----------------------

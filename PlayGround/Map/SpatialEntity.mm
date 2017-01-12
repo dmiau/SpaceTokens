@@ -76,7 +76,7 @@
     MKCoordinateSpan span = mapView.region.span;
     
     // Check the zoom level
-    if (span.latitudeDelta > 0.05 && span.longitudeDelta > 0.05)
+    if (span.latitudeDelta > 0.08 && span.longitudeDelta > 0.08)
         return 1000;
     
     // Get the entity CGPoint

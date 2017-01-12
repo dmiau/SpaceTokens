@@ -67,6 +67,9 @@
         self.lineLayer = [CAShapeLayer layer];
         self.constraintLayer = [CAShapeLayer layer];
         
+        self.layer.cornerRadius = 10; // this value vary as per your desire
+        self.clipsToBounds = YES;
+        
         hasReportedDraggingEvent = NO;
         self.counterPart = nil;
         self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);

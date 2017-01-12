@@ -23,6 +23,6 @@
 -(void)addObjectsFromArray:(NSArray*)objects;
 -(void)removeObject:(id)object;
 
--(NSArray <SpatialEntity*> *)getContentArray;
--(void)setContentArray:(NSArray <SpatialEntity*> *)inputArray;
+-(NSArray <SpatialEntity*> *)getContent;
+-(void)setContent:(NSArray <SpatialEntity*> *)inputArray;
 @end

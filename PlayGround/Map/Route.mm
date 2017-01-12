@@ -36,7 +36,7 @@ template class std::vector<double>;
     self = [super initWithMKPolyline:aRoute.polyline];
     self.annotation.pointType = path;
     
-    self.contentArray = [NSMutableArray arrayWithObjects:source, destination, nil];
+    [self setContent: [NSMutableArray arrayWithObjects:source, destination, nil]];
     self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
     return self;
 }
@@ -55,7 +55,7 @@ template class std::vector<double>;
     sourcePOI.name = @"destination";
     sourcePOI.latLon = MKCoordinateForMapPoint([[mapPointArray lastObject] MKMapPointValue]);
     
-    self.contentArray = [NSMutableArray arrayWithObjects:sourcePOI, destinationPOI, nil];
+    [self setContent: [NSMutableArray arrayWithObjects:sourcePOI, destinationPOI, nil]];
     
     self.name = [NSString stringWithFormat:@"%@ - %@", sourcePOI.name, destinationPOI.name];
     return self;
@@ -100,7 +100,7 @@ template class std::vector<double>;
          } else {
              
              self.annotation.pointType = path;
-             self.contentArray = [NSMutableArray arrayWithObjects:source, destination, nil];
+             [self setContent: [NSMutableArray arrayWithObjects:source, destination, nil]];
              self.annotationDictionary = [NSMutableDictionary dictionary];
              self.annotationDictionary[@0] = source;
              self.annotationDictionary[@1] = destination;

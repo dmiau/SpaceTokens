@@ -99,14 +99,14 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     [[TokenCollection sharedManager] removeAllTokensForStructure:self];
     
     
-    if ([[self.arrayEntity getContentArray] count]==1
+    if ([[self.arrayEntity getContent] count]>1
         && !masterToken)
     {
         // Insert a master token on the top
         [self initMasterToken];
     }
     
-    if ([[self.arrayEntity getContentArray] count]>=2
+    if ([[self.arrayEntity getContent] count]>=2
         && !pathModeButton)
     {
         // Insert a path switch on the bottom
@@ -119,7 +119,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     NSInteger outCount;
     if (arrayToolMode == ArrayMode){
-        outCount = [[self.arrayEntity getContentArray] count];
+        outCount = [[self.arrayEntity getContent] count];
     }else{
         outCount = 0;
     }
@@ -132,7 +132,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     if ([anEntity isKindOfClass:[ArrayEntity class]]){
         [self.arrayEntity
-         addObjectsFromArray: [(ArrayEntity*)anEntity getContentArray]];
+         addObjectsFromArray: [(ArrayEntity*)anEntity getContent]];
     }else{
         [self.arrayEntity addObject:token.spatialEntity];
     }
@@ -176,7 +176,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         [self.arrayEntity removeObject:token.spatialEntity];
     }
 
-    if ([[self.arrayEntity getContentArray] count] == 0){
+    if ([[self.arrayEntity getContent] count] == 0){
         // Remove the masterToken
         [masterToken removeFromSuperview];
         masterToken = nil;
@@ -186,7 +186,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         pathModeButton = nil;
     }
     
-    if ([[self.arrayEntity getContentArray] count] < 2){
+    if ([[self.arrayEntity getContent] count] < 2){
         // Remove the pathButton
         [pathModeButton removeFromSuperview];
         pathModeButton = nil;
@@ -282,7 +282,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
                                        zoomToOverview:YES];
         };
         aRoute.routeReadyBlock = requestCompletionBlock;
-        [aRoute requestRouteFromEntities:[self.arrayEntity getContentArray]];
+        [aRoute requestRouteFromEntities:[self.arrayEntity getContent]];
         
         // Change pointInside detection method
         

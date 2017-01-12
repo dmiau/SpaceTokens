@@ -98,9 +98,9 @@
 
 -(void)updateView{
     // Create an entity set
-    NSSet *entitySet = [NSSet setWithArray:[self.arrayEntity getContentArray]];
+    NSSet *entitySet = [NSSet setWithArray:[self.arrayEntity getContent]];
     
-    if ([[self.arrayEntity getContentArray] count]==1
+    if ([[self.arrayEntity getContent] count]==1
         && !masterToken)
     {
         // Insert a master token on the top
@@ -108,13 +108,13 @@
         self.setToolMode = SetMode;
     }
     
-    if ([[self.arrayEntity getContentArray] count] == 0){
+    if ([[self.arrayEntity getContent] count] == 0){
         self.setToolMode = EmptyMode;
         // Remove the master token
         [self removeMaster];
     }
     
-    if ([[self.arrayEntity getContentArray] count] >= 1){
+    if ([[self.arrayEntity getContent] count] >= 1){
         if (self.setToolMode == EmptyMode){
             self.setToolMode = MapMode;
         }
@@ -134,7 +134,7 @@
     // Clear the existing annotation
     [self.miniMapView removeAnnotations:self.miniMapView.annotations];
     // Add annotations to the mini map
-    for (SpatialEntity *entity in [self.arrayEntity getContentArray]){
+    for (SpatialEntity *entity in [self.arrayEntity getContent]){
         [entity setMapAnnotationEnabled:YES onMap:self.miniMapView];
     }
 }
@@ -170,7 +170,7 @@
 
 -(void)setSetToolMode:(SetToolMode)setToolMode{
     
-    if ([[self.arrayEntity getContentArray] count] == 0){
+    if ([[self.arrayEntity getContent] count] == 0){
         setToolMode = EmptyMode;
     }
     
@@ -253,11 +253,11 @@
 
 -(void) insertToken: (SpaceToken*) token{
     // Need to perform set operation
-    NSMutableSet *originalSet = [NSMutableSet setWithArray:[self.arrayEntity getContentArray]];
+    NSMutableSet *originalSet = [NSMutableSet setWithArray:[self.arrayEntity getContent]];
     [originalSet unionSet:[NSSet setWithObject:token.spatialEntity]];
     NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[originalSet allObjects]];
     // Create a new SpaceToken based on anchor
-    self.arrayEntity.contentArray = tempArray;
+    [self.arrayEntity setContent: tempArray];
     [self updateView];
 }
 

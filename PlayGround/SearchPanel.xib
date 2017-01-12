@@ -38,22 +38,18 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei6-ae-Kv5">
-                    <rect key="frame" x="72" y="115" width="60" height="30"/>
-                    <state key="normal" title="AreaTool"/>
+                    <rect key="frame" x="72" y="115" width="52" height="30"/>
+                    <state key="normal" title="SetTool"/>
                     <connections>
                         <action selector="areaToolAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="CSb-k2-GyI"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-eG-dYl">
-                    <rect key="frame" x="147" y="115" width="57" height="30"/>
+                    <rect key="frame" x="139" y="115" width="57" height="30"/>
                     <state key="normal" title="Drawing"/>
                     <connections>
                         <action selector="drawingAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="SCG-cu-HIj"/>
                     </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2If-vE-ZYE">
-                    <rect key="frame" x="6" y="76" width="30" height="30"/>
-                    <state key="normal" title="Map"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEd-dr-ea6">
                     <rect key="frame" x="5" y="115" width="52" height="30"/>
@@ -61,14 +57,6 @@
                     <connections>
                         <action selector="barToolAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="KPh-CY-fJ7"/>
                     </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xul-Uo-2BZ">
-                    <rect key="frame" x="63" y="76" width="58" height="30"/>
-                    <state key="normal" title="TV/HMD"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcI-zb-NdB">
-                    <rect key="frame" x="133" y="76" width="88" height="30"/>
-                    <state key="normal" title="SketchBoard"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heh-RH-1Bd">
                     <rect key="frame" x="328" y="111" width="31" height="30"/>
@@ -88,21 +76,15 @@
                 <constraint firstAttribute="bottom" secondItem="aX5-eG-dYl" secondAttribute="bottom" constant="5" id="BMY-bi-Ffr"/>
                 <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="CaH-Ot-227"/>
                 <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="FFF-Jp-O39"/>
-                <constraint firstItem="AEd-dr-ea6" firstAttribute="top" secondItem="2If-vE-ZYE" secondAttribute="bottom" constant="9" id="JiP-M1-lAf"/>
-                <constraint firstItem="ei6-ae-Kv5" firstAttribute="top" secondItem="Xul-Uo-2BZ" secondAttribute="bottom" constant="9" id="VeG-CK-8me"/>
                 <constraint firstItem="z1d-oP-Km9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="WKa-64-Gsq"/>
                 <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="an6-X0-Vqv"/>
-                <constraint firstItem="RcI-zb-NdB" firstAttribute="leading" secondItem="Xul-Uo-2BZ" secondAttribute="trailing" constant="20" id="ctH-nE-JMF"/>
                 <constraint firstItem="z1d-oP-Km9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="dYi-jS-qDp"/>
                 <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="9" id="ijY-F4-UaO"/>
                 <constraint firstItem="aX5-eG-dYl" firstAttribute="leading" secondItem="ei6-ae-Kv5" secondAttribute="trailing" constant="15" id="oKN-YI-QHm"/>
                 <constraint firstAttribute="bottom" secondItem="fCg-TV-1O4" secondAttribute="bottom" constant="9" id="r6A-Fb-M4d"/>
                 <constraint firstItem="ei6-ae-Kv5" firstAttribute="leading" secondItem="AEd-dr-ea6" secondAttribute="trailing" constant="15" id="rlL-xP-bbK"/>
                 <constraint firstAttribute="bottom" secondItem="AEd-dr-ea6" secondAttribute="bottom" constant="5" id="s9T-Uu-daz"/>
-                <constraint firstItem="2If-vE-ZYE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="sn7-ie-ZGB"/>
-                <constraint firstItem="aX5-eG-dYl" firstAttribute="top" secondItem="RcI-zb-NdB" secondAttribute="bottom" constant="9" id="uy9-xM-IMS"/>
                 <constraint firstItem="heh-RH-1Bd" firstAttribute="leading" secondItem="fCg-TV-1O4" secondAttribute="trailing" constant="24" id="vSv-1a-ALz"/>
-                <constraint firstItem="Xul-Uo-2BZ" firstAttribute="leading" secondItem="2If-vE-ZYE" secondAttribute="trailing" constant="20" id="zsj-vE-UwD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

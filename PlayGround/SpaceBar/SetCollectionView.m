@@ -56,7 +56,7 @@
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     
-    if (self.isHidden || [[self.arrayEntity getContentArray] count] == 0)
+    if (self.isHidden || [[self.arrayEntity getContent] count] == 0)
         return NO;
     
     // UIView will be "transparent" for touch events if we return NO
@@ -87,7 +87,7 @@
     //
     // Update the bound of the master token
 
-    return [[self.arrayEntity getContentArray] count];
+    return [[self.arrayEntity getContent] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

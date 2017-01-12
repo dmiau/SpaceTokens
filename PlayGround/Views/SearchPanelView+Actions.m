@@ -117,15 +117,20 @@
 - (IBAction)barToolAction:(id)sender {
     SpaceBar *spaceBar = [SpaceBar sharedManager];
     ArrayTool *arrayTool = [ArrayTool sharedManager];
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     if (spaceBar.isBarToolHidden){
         // Turn ON the bar tool
         spaceBar.isBarToolHidden = NO;
-        arrayTool.isVisible = YES;        
+        arrayTool.isVisible = YES;
+        
+        // Adjust map padding
+        mapView.edgeInsets = UIEdgeInsetsMake(10, 70, 10, 70);
         [arrayTool reloadData];
     }else{
         // Turn OFF the bar tool
         spaceBar.isBarToolHidden = YES;
+        mapView.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
         arrayTool.isVisible = NO;
     }
 }

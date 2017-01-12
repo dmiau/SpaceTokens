@@ -33,7 +33,8 @@
         // Check if the user touches any known entity
         for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] entityArray])
         {
-            if ([anEntity getPointDistanceToTouch:aTouch] < 10){
+            if (anEntity.isEnabled &&
+                [anEntity getPointDistanceToTouch:aTouch] < 10){
                 touchedKnownEntity = anEntity;
                 break;
             }

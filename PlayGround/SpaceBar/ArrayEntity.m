@@ -28,6 +28,7 @@
     self = [super initWithCoder:coder];
     // Decode source and destination
     contentArray = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"contentArray"];
+    self.contentUpdatedBlock = nil;
     return self;
 }
 
@@ -36,7 +37,7 @@
     // This is very important, since a child class might call this method too.
     ArrayEntity *object = [[[self class] alloc] init];
     object = [super copy];
-    [object setContentArray:contentArray];
+    [object setContent:contentArray];
     return object;
 }
 
@@ -81,30 +82,49 @@
 // MARK: Methods to modify contentArray
 -(void)insertObject:(id)object atIndex:(NSUInteger)index{
     [contentArray insertObject:object atIndex:index];
+    
+    if (self.contentUpdatedBlock){
+        self.contentUpdatedBlock();
+    }
 }
 
 -(void)addObject:(id)object{
     [contentArray addObject:object];
+    if (self.contentUpdatedBlock){
+        self.contentUpdatedBlock();
+    }
 }
 
 -(void)addObjectsFromArray:(NSArray*)objects{
     [contentArray addObjectsFromArray:objects];
+    if (self.contentUpdatedBlock){
+        self.contentUpdatedBlock();
+    }
 }
 
 -(void)removeObject:(id)object{
     [contentArray removeObject:object];
+    if (self.contentUpdatedBlock){
+        self.contentUpdatedBlock();
+    }
 }
 
 -(void)removeObjectAtIndex:(NSUInteger)index{
     [contentArray removeObjectAtIndex:index];
+    if (self.contentUpdatedBlock){
+        self.contentUpdatedBlock();
+    }
 }
 
--(NSArray <SpatialEntity*> *)getContentArray{
+-(NSArray <SpatialEntity*> *)getContent{
     return [NSArray arrayWithArray:contentArray];
 }
 
--(void)setContentArray:(NSArray <SpatialEntity*> *)inputArray{
+-(void)setContent:(NSArray <SpatialEntity*> *)inputArray{
     contentArray = [inputArray mutableCopy];
+    if (self.contentUpdatedBlock){
+        self.contentUpdatedBlock();
+    }
 }
 
 @end

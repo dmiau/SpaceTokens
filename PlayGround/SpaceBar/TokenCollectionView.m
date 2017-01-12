@@ -203,17 +203,15 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // Reset TokenCollection
     [[TokenCollection sharedManager] removeAllTokensForStructure:self];
     
+    [self.arrayEntity setContent: [[EntityDatabase sharedManager] getEnabledEntities]];
     
-    self.arrayEntity.contentArray
-    = [[EntityDatabase sharedManager] getEnabledEntities];
-    
-    if ([[self.arrayEntity getContentArray] count] > 12){
+    if ([[self.arrayEntity getContent] count] > 12){
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = NO;
     }else{
         [TokenCollection sharedManager].isCustomGestureRecognizerEnabled = YES;
     }
     
-    return [[self.arrayEntity getContentArray] count];
+    return [[self.arrayEntity getContent] count];
 }
 
 //----------------
@@ -229,7 +227,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     
     // Generate a SpaceToken if there is none
     TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    NSArray *contentArray = [self.arrayEntity getContentArray];
+    NSArray *contentArray = [self.arrayEntity getContent];
     SpatialEntity *spatialEntity = contentArray[row];
     SpaceToken* aToken = [tokenCollection addTokenFromSpatialEntity:spatialEntity];
         aToken.home= self;
@@ -254,7 +252,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 //----------------
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    NSArray *contentArray = [self.arrayEntity getContentArray];
+    NSArray *contentArray = [self.arrayEntity getContent];
     SpatialEntity *anEntity = contentArray[sourceIndexPath.row];
     [self.arrayEntity removeObjectAtIndex:sourceIndexPath.row];
     [self.arrayEntity insertObject:anEntity atIndex:destinationIndexPath.row];
@@ -263,10 +261,10 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 // MARK: Insert
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity{    
-    [self.arrayEntity insertObject:anEntity atIndex:[[self.arrayEntity getContentArray] count]-2];
+    [self.arrayEntity insertObject:anEntity atIndex:[[self.arrayEntity getContent] count]-2];
     [self.arrayEntity updateBoundingMapRect];
     
-    NSUInteger index = [[self.arrayEntity getContentArray] count]  -2;
+    NSUInteger index = [[self.arrayEntity getContent] count]  -2;
     NSArray *indexPaths = [NSArray
                            arrayWithObject:
                            [NSIndexPath indexPathForRow:index inSection:0]];
@@ -284,7 +282,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // (Need to insert to entity database directly)
     
     [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];
-    
     [self reloadData];
 }
 

@@ -91,16 +91,13 @@ static ViewController *instance;
                                     self.view.frame.size.width, self.view.frame.size.height - topPanelHeight);
     [self.view addSubview:self.mapView];
     [self.mapView setUserInteractionEnabled:YES];
+    MKCoordinateRegion initRegion = MKCoordinateRegionMake(
+    CLLocationCoordinate2DMake(40.761040, -73.977778),
+    MKCoordinateSpanMake(0.171841, 0.164558));
+    [self.mapView setRegion:initRegion];
     
     self.mapView.delegate = self;
-    
-//    [self.mapView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 60)];
     self.mapView.showsCompass = YES;
-    
-    //CLLocationCoordinate2D NYC = CLLocationCoordinate2DMake(40.711801, -74.013120);
-    //MKCircle *circle = [MKCircle circleWithCenterCoordinate:NYC radius:300]; // radius is measured in meters
-    //[self.mapView addOverlay:circle];
-    
     
     //----------------
     // Add a mini map
@@ -145,6 +142,9 @@ static ViewController *instance;
     
     SpaceBar *spaceBar = [SpaceBar sharedManager];
     [spaceBar resetInteractiveTokenStructures];
+    
+    // Clear all annotations
+    [self.mapView removeAnnotations: self.mapView.annotations];
     
     // Do a forced refresh if the tokenView is enabled
     TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
