@@ -38,23 +38,6 @@
     return self;
 }
 
--(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity
-forStructure:(id)structure
-{
-    SpaceToken *outToken = nil;
-    
-    for (SpaceToken *aToken in tokenArray){
-        if ([aToken.spatialEntity isEqual:entity]
-            && [aToken.home isEqual:structure])
-        {
-            outToken = aToken;
-            break;
-        }
-    }
-    
-    return outToken;
-}
-
 //----------------------
 // Setters
 //----------------------
@@ -131,11 +114,27 @@ forStructure:(id)structure
 }
 
 - (void)removeAllTokensForStructure:(id)structure{
-    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"SELF.home = %@", structure];
+    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"SELF.home == %@", structure];
     NSArray *filteredArray = [tokenArray filteredArrayUsingPredicate:bPredicate];
     [tokenArray removeObjectsInArray:filteredArray];
 }
 
+-(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity
+                          forStructure:(id)structure
+{
+    SpaceToken *outToken = nil;
+    
+    for (SpaceToken *aToken in tokenArray){
+        if ([aToken.spatialEntity isEqual:entity]
+            && [aToken.home isEqual:structure])
+        {
+            outToken = aToken;
+            break;
+        }
+    }
+    
+    return outToken;
+}
 
 - (NSArray <SpaceToken*>*)getTokenArray{
     NSArray *outArray = [NSArray arrayWithArray:tokenArray];

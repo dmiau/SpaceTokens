@@ -16,6 +16,8 @@
 #import "ViewController.h"
 #import "SetCollectionView.h"
 
+#import "AdditionTool.h"
+
 //-------------------
 // Parameters
 //-------------------
@@ -25,6 +27,7 @@
 @implementation SetTool{
     SpaceToken *masterToken;
     BOOL moveMode;
+    AdditionTool *additionTool;
 }
 
 // MARK: Initialization
@@ -80,7 +83,24 @@
     [self.setCollectionView initObject];
     [self.setCollectionView setHidden:NO];
     
-    self.arrayEntity = [[ArrayEntity alloc] init];    
+    self.arrayEntity = [[ArrayEntity alloc] init];
+    
+    //----------------
+    // Add an Addition Tool
+    //----------------
+    CGRect toolFrame = self.setCollectionView.bounds;
+    additionTool = [[AdditionTool alloc] initWithFrame:toolFrame];
+    [self.setCollectionView addSubview:additionTool];
+    
+    BOOL (^additionHandlingBlock)(SpaceToken*) = ^(SpaceToken* token){
+        [self insertToken:token];
+        
+        // Flash the touched SpaceToken
+        [token flashToken];
+        return YES;
+    };
+    additionTool.home = self;
+    additionTool.additionHandlingBlock = additionHandlingBlock;    
 }
 
 //------------------

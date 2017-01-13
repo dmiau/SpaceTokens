@@ -15,6 +15,7 @@
 #import "ViewController.h"
 
 #import "ArrayEntity.h"
+#import "AdditionTool.h"
 
 typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
@@ -22,6 +23,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     UIButton *pathModeButton;
     SpaceToken *masterToken;
     ArrayToolMode arrayToolMode;
+    AdditionTool *additionTool;
 }
 
 
@@ -57,6 +59,21 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     arrayToolMode = ArrayMode;
     
+    
+    // Initialize an AdditionTool
+    CGRect toolFrame = CGRectMake(0, 60, 60, self.frame.size.height-120);
+    additionTool = [[AdditionTool alloc] initWithFrame:toolFrame];
+    [self addSubview:additionTool];
+    
+    BOOL (^additionHandlingBlock)(SpaceToken*) = ^(SpaceToken* token){
+        [self insertToken:token];
+        
+        // Flash the touched SpaceToken
+        [token flashToken];
+        return YES;
+    };
+    additionTool.additionHandlingBlock = additionHandlingBlock;
+    additionTool.home = self;
     return self;
 }
 
@@ -66,15 +83,12 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     // UIView will be "transparent" for touch events if we return NO
     
     if (arrayToolMode == ArrayMode){
-        
         if ((point.x < self.tokenWidth)
             &&(point.y > 0)){
-            NSLog(@"Point inside");
-        return YES;
+            return YES;
         }else{
-        return NO;
+            return NO;
         }
-        
         
     }else if (arrayToolMode == PathMode){
         if (CGRectContainsPoint(masterToken.frame, point)){
