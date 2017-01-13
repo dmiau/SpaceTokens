@@ -62,11 +62,28 @@
 - (MKOverlayRenderer *) rendererForOverlay:(id < MKOverlay >)overlay
 {
     if ([overlay isKindOfClass:[MKCircle class]]){
+        
+        //------------
+        // Render a circle
+        //------------
         MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
         //        renderer.strokeColor = [UIColor redColor];
         renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
         return renderer;
+    }else if ([overlay isKindOfClass:[MKPolygon class]]){
+        
+        //------------
+        // Render a polygon
+        //------------
+        MKPolygonRenderer *renderer = [[MKPolygonRenderer alloc] initWithOverlay:overlay];
+        //        renderer.strokeColor = [UIColor redColor];
+        renderer.fillColor = [[UIColor redColor]colorWithAlphaComponent:0.2];
+        return renderer;
     }else{
+        
+        //------------
+        // Render a line
+        //------------
         MKPolylineRenderer *renderer =
         [[MKPolylineRenderer alloc] initWithOverlay:overlay];
         renderer.strokeColor = [UIColor blueColor];

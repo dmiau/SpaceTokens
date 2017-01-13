@@ -10,5 +10,6 @@
 
 @interface Area : LineEntity
 
+@property MKPolygon *polygon;
 
 @end

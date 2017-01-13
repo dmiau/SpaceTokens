@@ -70,13 +70,15 @@
         // calculate the differences and find the logest axis
         
         CLLocationCoordinate2D coords[2];
-        coords[0] = coord1; // 1 is low
-        coords[1] = coord2; // 2 is high
+        coords[0] = coord1; // coord1 is the coordinate on top
+        coords[1] = coord2; // coord1 is the coordinate on the bottom
         
         CGPoint cgPoints[2];
-        cgPoints[0] = CGPointMake(self.mapView.frame.size.width/2,
+        cgPoints[0] =  CGPointMake(self.mapView.frame.size.width/2,0);
+        
+        cgPoints[1] = CGPointMake(self.mapView.frame.size.width/2,
                                   self.mapView.frame.size.height);
-        cgPoints[1] = CGPointMake(self.mapView.frame.size.width/2,0);
+        
         [self.mapView snapTwoCoordinates:coords toTwoXY:cgPoints];
     }
 }
@@ -89,24 +91,31 @@
     CLLocationCoordinate2D anchor; double orientation1;
     CLLocationCoordinate2D target; double orientation2;
     if (directionFlag){
-        // Move from low to high
+        
+        //----------------------------
+        // Move from low to high (from top to bottom)
+        // The map is anchored on top
+        //----------------------------
         
         // The bottom one (lower value) should be the anchor
         // find the (lat, lon) of the bottom one
         [self.spaceBar.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
         [self.spaceBar.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
-        CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:anchor
-                                                                       toB:target];
-        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
+        CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:target
+                                toB:anchor];
+        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree animated:NO];
     }else{
-       // Move from high to low
+        
+        //----------------------------
+        // Move from high to low
+        // The map is anchored on the bottom
+        //----------------------------
         [self.spaceBar.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
         [self.spaceBar.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
-        CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:target
-                                                                       toB:anchor];
-        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree animated:NO];
+        CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:anchor                                                                          toB:target];
+        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
     }
 }
 

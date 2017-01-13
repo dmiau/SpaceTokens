@@ -67,9 +67,6 @@
         self.lineLayer = [CAShapeLayer layer];
         self.constraintLayer = [CAShapeLayer layer];
         
-        self.layer.cornerRadius = 10; // this value vary as per your desire
-        self.clipsToBounds = YES;
-        
         hasReportedDraggingEvent = NO;
         self.counterPart = nil;
         self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
@@ -213,15 +210,20 @@
             self.layer.shadowRadius = 12;
             self.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
             
+            self.layer.cornerRadius = 10; // this value vary as per your desire
+
+            
             break;
         case DRAGGING:
             [self privateConfigureDraggingTokenAppearance];
+
             break;
         case ANCHOR_INVISIBLE:
             [self privateConfigureAnchorAppearanceVisible:NO];
             break;
         case ANCHOR_VISIBLE:
             [self privateConfigureAnchorAppearanceVisible:YES];
+
             break;
         default:
             break;

@@ -16,8 +16,26 @@
     self = [super initWithMKMapPointArray:mapPointArray];
     self.annotation.pointType = AREA;
     self.name = @"UnNamedArea";
+    // Create a polygon
+    self.polygon = [MKPolygon polygonWithPoints:self.polyline.points
+                                          count:self.polyline.pointCount];
+    
     return self;
 }
+
+-(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
+    
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    if (isMapAnnotationEnabled){
+        // Add the annotation
+        [mapView addOverlay:self.polygon level:MKOverlayLevelAboveRoads];
+    }else{
+        // Remove the annotation
+        [mapView removeOverlay: self.polygon];
+    }
+}
+
 
 //-----------------
 // Save/Load
@@ -30,6 +48,9 @@
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     self.annotation.pointType = AREA;
+    // Create a polygon
+    self.polygon = [MKPolygon polygonWithPoints:self.polyline.points
+                                          count:self.polyline.pointCount];
     return self;
 }
 @end

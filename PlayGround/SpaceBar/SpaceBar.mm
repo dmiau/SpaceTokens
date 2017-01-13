@@ -152,7 +152,7 @@ static SpaceBar *sharedInstance;
         
     self.isConstrainEngineON = YES;
     
-    self.smallValueOnTopOfBar = true;
+    self.smallValueOnTopOfBar = YES;
 
     self.isAutoOrderSpaceTokenEnabled = YES;
     
