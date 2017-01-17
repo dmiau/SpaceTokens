@@ -20,7 +20,10 @@
 
 @property ArrayEntity *arrayEntity;
 
-+(id)sharedManager;
++(TokenCollectionView*)sharedManager;
+
+
+-(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)anEntity;
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 

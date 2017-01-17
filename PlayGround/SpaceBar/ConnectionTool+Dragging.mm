@@ -149,8 +149,7 @@
     SpaceToken *resultToken = nil;
     
     // Get the TokenCollection object
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    for (SpaceToken *aToken in [tokenCollection getTokenArray]){
+    for (SpaceToken *aToken in [[TokenCollection sharedManager] getTokenArray]){
         
         // Convert buttonFrame to be in mapView
         CGRect buttonInMapView = [aToken.superview convertRect:aToken.frame toView:mapView];

@@ -217,10 +217,10 @@ static SpaceBar *sharedInstance;
 }
 
 - (void)updateBasedOnConstraints{
-    // if tokenCollection.tokenArray is not empty, update the map
-    if ([[self.tokenCollection getTokenArray] count] > 0){
-        //        [self orderSpaceTokens];
-        [self fillMapXYsForSet:[self.tokenCollection getTokenArray]];
+    
+    NSArray *tokenArray = [[TokenCollection sharedManager] getTokenArray];
+    if ([tokenArray count] > 0){
+        [self fillMapXYsForSet:[NSSet setWithArray:tokenArray]];
     }
     
     if ([self.draggingSet count] > 0
@@ -230,6 +230,7 @@ static SpaceBar *sharedInstance;
         [self updateMapToFitPOIPreferences:self.draggingSet];
     }else{
         if ([self.touchingSet count] > 0){
+            [self fillMapXYsForSet:self.touchingSet];
             [self zoomMapToFitTouchSet];
         }
     }
@@ -243,6 +244,16 @@ static SpaceBar *sharedInstance;
 //        // Output the count of anchor and dragging set
 //        NSLog(@"Anchor count: %d", (int)[self.anchorSet count]);
 //        NSLog(@"Dragging count: %d", (int)[self.draggingSet count]);
+    }
+}
+
+// This method finds the (x, y) corrdinates corresponding to the (lat, lon)
+// of each POI, and fills that information into each POI.
+// This is useful for POI sorting on SpaceBar
+- (void) fillMapXYsForSet: (NSSet*) aSet{
+    for (SpaceToken* aToken in aSet){
+        aToken.mapViewXY = [self.mapView convertCoordinate:aToken.spatialEntity.latLon
+                                             toPointToView:self.mapView];
     }
 }
 

@@ -25,15 +25,7 @@
     }
 }
 
-// This method finds the (x, y) corrdinates corresponding to the (lat, lon)
-// of each POI, and fills that information into each POI.
-// This is useful for POI sorting on SpaceBar
-- (void) fillMapXYsForSet: (NSSet*) aSet{
-    for (SpaceToken* aToken in aSet){
-        aToken.mapViewXY = [self.mapView convertCoordinate:aToken.spatialEntity.latLon
-                                           toPointToView:self.mapView];
-    }
-}
+
 
 //----------------
 // zoom-to-fit

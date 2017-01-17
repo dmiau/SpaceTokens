@@ -27,7 +27,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 }
 
 
-+(id)sharedManager{
++(ArrayTool*)sharedManager{
     static ArrayTool *sharedInstance = nil;
     
     static dispatch_once_t onceToken;
@@ -109,10 +109,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 // TODO: need to implement a viewWillAppear
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    // Reset TokenCollection
-    [[TokenCollection sharedManager] removeAllTokensForStructure:self];
-    
-    
     if ([[self.arrayEntity getContent] count]>1
         && !masterToken)
     {
@@ -166,8 +162,8 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         return;
     }
 
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    masterToken = [tokenCollection addTokenFromSpatialEntity:token.spatialEntity];
+    masterToken = [[TokenCollection sharedManager]
+                   addTokenFromSpatialEntity:token.spatialEntity];
     masterToken.home = self;
     
     CGRect frame = CGRectZero;
@@ -180,7 +176,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 -(void)removeToken: (SpaceToken*) token{
     [token removeFromSuperview];
-    [[TokenCollection sharedManager] removeToken:token];
     
     // Depending on the token, different things need to be done
     if (token.spatialEntity == self.arrayEntity){
@@ -245,8 +240,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 // Creating a master token
 //------------------
 - (void)initMasterToken{
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    masterToken = [tokenCollection addTokenFromSpatialEntity:self.arrayEntity];
+    masterToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:self.arrayEntity];
     masterToken.home = self;
     
     CGRect frame = CGRectZero;

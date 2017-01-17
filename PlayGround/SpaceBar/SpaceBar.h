@@ -133,10 +133,6 @@ unsigned int spaceBarElevatorMoved:1;
 // copy the button centroid to the dragged button's mapXY
 - (void) fillDraggingMapXYs;
 
-// update the (x, y) coordinates for each POI in the set
-- (void) fillMapXYsForSet: (NSArray*) aSet;
-
-
 - (void) zoomMapToFitTouchSet;
 - (void) updateMapToFitPOIPreferences: (NSMutableSet*) poiSet;
 

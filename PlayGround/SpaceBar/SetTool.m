@@ -107,8 +107,7 @@
 // Creating a master token
 //------------------
 - (void)initMasterToken{
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    masterToken = [tokenCollection addTokenFromSpatialEntity:self.arrayEntity];
+    masterToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:self.arrayEntity];
     masterToken.home = self;
     
     CGRect frame = CGRectZero;
@@ -256,11 +255,9 @@
     // Remove the current master
     if (masterToken){
         [masterToken removeFromSuperview];
-        [[TokenCollection sharedManager] removeToken:masterToken];
     }
     
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
-    masterToken = [tokenCollection addTokenFromSpatialEntity:token.spatialEntity];
+    masterToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:token.spatialEntity];
     masterToken.home = self;
     
     CGRect frame = CGRectZero;
@@ -283,7 +280,7 @@
 
 -(void)removeToken: (SpaceToken*) token{
     [token removeFromSuperview];
-    [[TokenCollection sharedManager] removeToken:token];
+
     // Depending on the token, different things need to be done
     if (token.spatialEntity == self.arrayEntity){
         // masterToken is removed
@@ -299,7 +296,6 @@
 -(void)removeMaster{
     if (masterToken){
         [masterToken removeFromSuperview];
-        [[TokenCollection sharedManager] removeToken:masterToken];
         self.arrayEntity = [[ArrayEntity alloc] init];
         masterToken = nil;
     }

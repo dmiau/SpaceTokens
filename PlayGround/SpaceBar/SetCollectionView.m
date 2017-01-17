@@ -67,9 +67,6 @@
 // TODO: need to implement a viewWillAppear
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    // Reset TokenCollection
-    [[TokenCollection sharedManager] removeAllTokensForStructure:self];
-
 //
 //    if ([self.arrayEntity.contentArray count]==1
 //        && !masterToken)

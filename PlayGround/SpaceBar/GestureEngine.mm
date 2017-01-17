@@ -139,12 +139,11 @@
     
     // Check if the connection tool touch any route?
     // Get the TokenCollection object
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     CGPoint touchPoint = [self convertPoint:currentLocation toView:mapView];
     CGPoint previoustouchPoint = [self convertPoint:previousLocation toView:mapView];
-    for (SpaceToken *aToken in [tokenCollection getTokenArray]){
+    for (SpaceToken *aToken in [[TokenCollection sharedManager] getTokenArray]){
         
         // Convert buttonFrame to be in mapView
         CGRect buttonInMapView = [aToken.superview convertRect:aToken.frame toView:mapView];

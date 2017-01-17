@@ -28,7 +28,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 @implementation TokenCollectionView
 
 
-+(id)sharedManager{
++(TokenCollectionView*)sharedManager{
     static TokenCollectionView *sharedInstance = nil;
     
     static dispatch_once_t onceToken;
@@ -201,9 +201,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
         [NSException raise:@"Programming error" format:@"Method should be overloading by subclass."];
     }
     
-    // Reset TokenCollection
-    [[TokenCollection sharedManager] removeAllTokensForStructure:self];
-    
     [self.arrayEntity setContent: [[EntityDatabase sharedManager] getEnabledEntities]];
     
     if ([[self.arrayEntity getContent] count] > 12){
@@ -226,18 +223,27 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     CollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
+    //----------------------
+    // I am not sure why this is necessary...
+    if (cell.spaceToken){
+        [cell.spaceToken removeFromSuperview];
+    }
+    
+    // Clear all the subviews
+    for (UIView *aView in [cell subviews]){
+        [aView removeFromSuperview];
+    }
+    //----------------------
+    
     // Generate a SpaceToken if there is none
-    TokenCollection *tokenCollection = [TokenCollection sharedManager];
     NSArray *contentArray = [self.arrayEntity getContent];
     SpatialEntity *spatialEntity = contentArray[row];
-    SpaceToken* aToken = [tokenCollection addTokenFromSpatialEntity:spatialEntity];
+    SpaceToken* aToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:spatialEntity];
         aToken.home= self;
+
+    cell.spaceToken = aToken;
+    [cell addSubview:aToken];
     
-    if (aToken != cell.spaceToken){
-        [cell.spaceToken removeFromSuperview];
-        cell.spaceToken = aToken;
-        [cell addSubview:aToken];
-    }
     spatialEntity.isMapAnnotationEnabled = YES;
          
     return cell;
@@ -307,7 +313,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 -(void)removeToken: (SpaceToken*) token{
     [token removeFromSuperview];
-    [[TokenCollection sharedManager] removeToken:token];
     
     token.spatialEntity.isEnabled = NO;
     token.spatialEntity.isMapAnnotationEnabled = NO;
@@ -318,6 +323,21 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"An item is selected");
+}
+
+// MARK: Tools
+-(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)anEntity{
+    SpaceToken *outToken = nil;
+    
+    for (CollectionViewCell *cell in [self visibleCells]){
+        if ([cell.spaceToken.spatialEntity isEqual: anEntity])
+        {
+            outToken = cell.spaceToken;
+            break;
+        }
+    }
+    
+    return outToken;
 }
 
 /*

@@ -15,6 +15,8 @@
 
 @interface ArrayTool : TokenCollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
++(ArrayTool*)sharedManager;
+
 -(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
 -(void)insertMaster:(SpaceToken*) token;
 @end

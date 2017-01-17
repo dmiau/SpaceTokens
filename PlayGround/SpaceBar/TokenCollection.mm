@@ -17,6 +17,12 @@
 #import "PathToken.h"
 #import "AreaToken.h"
 
+#import "TokenCollectionView.h"
+#import "ArrayTool.h"
+#import "SetTool.h"
+#import "CollectionViewCell.h"
+#import "SetCollectionView.h"
+
 @implementation TokenCollection
 
 +(TokenCollection*)sharedManager{
@@ -89,55 +95,41 @@
 //------------------
 // Add and remove tokens
 //------------------
-- (void)addToken:(SpaceToken *)aToken{
-    [tokenArray addObject:aToken];
-    aToken.isStudyModeEnabled = self.isStudyModeEnabled;
-    aToken.isDraggable = self.isTokenDraggingEnabled;
-    aToken.isCustomGestureRecognizerEnabled = self.isCustomGestureRecognizerEnabled;
-}
 
 - (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity{
     SpaceToken *aSpaceToken =
     [SpaceToken manufactureTokenForEntity:spatialEntity] ;
     [aSpaceToken configureAppearanceForType:DOCKED];
-
-    [self addToken:aSpaceToken];
+    
+    aSpaceToken.isStudyModeEnabled = self.isStudyModeEnabled;
+    aSpaceToken.isDraggable = self.isTokenDraggingEnabled;
+    aSpaceToken.isCustomGestureRecognizerEnabled = self.isCustomGestureRecognizerEnabled;
+        
     return aSpaceToken;
 }
 
-- (void)removeToken:(SpaceToken *)aToken{
-    [tokenArray removeObject:aToken];
-}
-
-- (void)removeAllTokens{
-    [tokenArray removeAllObjects];
-}
-
-- (void)removeAllTokensForStructure:(id)structure{
-    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"SELF.home == %@", structure];
-    NSArray *filteredArray = [tokenArray filteredArrayUsingPredicate:bPredicate];
-    [tokenArray removeObjectsInArray:filteredArray];
-}
-
--(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)entity
-                          forStructure:(id)structure
-{
-    SpaceToken *outToken = nil;
+- (NSArray <SpaceToken*>*)getTokenArray{
+//    NSArray *outArray = [NSArray arrayWithArray:tokenArray];
     
-    for (SpaceToken *aToken in tokenArray){
-        if ([aToken.spatialEntity isEqual:entity]
-            && [aToken.home isEqual:structure])
-        {
-            outToken = aToken;
-            break;
-        }
+    NSMutableArray *outArray = [NSMutableArray array];
+    // Collect the tokens from TokenCollection
+    for (CollectionViewCell *cell in [[TokenCollectionView sharedManager] visibleCells])
+    {
+        [outArray addObject: cell.spaceToken];
     }
     
-    return outToken;
-}
-
-- (NSArray <SpaceToken*>*)getTokenArray{
-    NSArray *outArray = [NSArray arrayWithArray:tokenArray];
+    // Collect the tokens from ArrayTool
+    for (CollectionViewCell *cell in [[ArrayTool sharedManager] visibleCells])
+    {
+        [outArray addObject: cell.spaceToken];
+    }
+    
+    // Collect the tokens from SetTool
+    for (CollectionViewCell *cell in [[SetTool sharedManager].setCollectionView visibleCells])
+    {
+        [outArray addObject: cell.spaceToken];
+    }
+    tokenArray = outArray;
     return outArray;
 }
 

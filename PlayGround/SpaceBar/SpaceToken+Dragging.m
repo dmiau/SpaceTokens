@@ -192,7 +192,7 @@
     if (self.home != collectionView){
         if ([collectionView isTouchInInsertionZone:touch]){
             
-            if (![[TokenCollection sharedManager] findSpaceTokenFromEntity:self.spatialEntity forStructure:collectionView])
+            if (![collectionView findSpaceTokenFromEntity:self.spatialEntity])
             {
                 NSLog(@"Insert from dragging");
                 [collectionView insertToken:self];
@@ -255,12 +255,6 @@
     [self.superview addSubview:newSpaceToken];
     newSpaceToken.frame = self.frame;
     self.counterPart = newSpaceToken;
-    
-    // Add the token to TokenCollection
-    [[TokenCollection sharedManager] addToken:newSpaceToken];
-    
-    // Remove the current token from TokenCollection
-    [[TokenCollection sharedManager] removeToken:self];
     
     //------------------
     // Attach SpaceToken to mapView, as opposed to TokenCell

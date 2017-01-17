@@ -71,86 +71,6 @@
     }
 }
 
-#pragma mark --Order SpaceToken--
-
-
-////----------------
-//// order the POIs and SpaceTokens on the track
-////----------------
-//-(void) orderButtonArray{
-//    // equally distribute the POIs
-//    if ([self.tokenCollection.tokenArray count] == 0 || [self.touchingSet count] > 0){
-//        // only reorder when the user is not touching a button
-//        return;
-//    }
-//    
-//    // Fill in mapXY
-//    [self fillMapXYsForSet:self.tokenCollection.tokenArray];
-//    
-//    if (self.isAutoOrderSpaceTokenEnabled){
-//        // Form a new set for sorting
-//        NSMutableSet *allTokens = [NSMutableSet setWithArray:self.tokenCollection.tokenArray];
-//        
-//        // Take YouAreHere from the set (YouAreHere should be at the bottom)
-//        [allTokens removeObject: self.youAreHere];
-//        
-//        //Sort the POIs (sort by block)
-//        //http://stackoverflow.com/questions/12917886/nssortdescriptor-custom-comparison-on-multiple-keys-simultaneously
-//        
-//        NSArray *sortedArray =
-//        [[allTokens allObjects]
-//         sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-//             SpaceToken *first = (SpaceToken*)a;
-//             SpaceToken *second = (SpaceToken*)b;
-//             
-//             if (first.mapViewXY.y < second.mapViewXY.y) {
-//                 return NSOrderedAscending;
-//             }
-//             else if (first.mapViewXY.y > second.mapViewXY.y) {
-//                 return NSOrderedDescending;
-//             }else{
-//                 // In the unlikely case that the two POIs have the same y
-//                 if (first.mapViewXY.x < second.mapViewXY.x) {
-//                     return NSOrderedAscending;
-//                 }else if (first.mapViewXY.x > second.mapViewXY.x) {
-//                     return NSOrderedDescending;
-//                 }else{
-//                     return NSOrderedSame;
-//                 }
-//             }
-//         }];
-//        
-//        self.tokenCollection.tokenArray = [NSMutableArray arrayWithArray:sortedArray];
-//        
-//        if (self.isYouAreHereEnabled){
-//            [self.tokenCollection.tokenArray addObject:self.youAreHere];
-//        }
-//    }
-//    
-//    //----------------
-//    // Snap SpaceTokens to grid
-//    //----------------
-//    
-//    // Place the sorted button on to the grid
-//    CGFloat viewWidth = self.mapView.frame.size.width;
-//    CGFloat barHeight = self.mapView.frame.size.height;
-//    CGFloat gap = barHeight / ([self.tokenCollection.tokenArray count] + 1);
-//    
-//    // Position the SpaceToken and dots
-//    for (int i = 0; i < [self.tokenCollection.tokenArray count]; i++){
-//        SpaceToken *aToken = self.tokenCollection.tokenArray[i];
-//        if (aToken.appearanceType == DOCKED){
-//            aToken.frame = CGRectMake(viewWidth - aToken.frame.size.width,
-//                                      gap * (i+1), aToken.frame.size.width,
-//                                      aToken.frame.size.height);
-//        }else{
-//            // calculate the distance from self to the adjancent two
-//            // SpaceTokens
-//            
-//        }
-//    }
-//}
-
 #pragma mark --Add/remove SpaceToken--
 
 //----------------
@@ -163,7 +83,7 @@
     for (SpaceToken* aToken in [self.tokenCollection getTokenArray]){
         [aToken removeFromSuperview];
     }
-    [self.tokenCollection removeAllTokens];
+
 }
 
 // This clears draggingSet, anchor, and touchingSet
