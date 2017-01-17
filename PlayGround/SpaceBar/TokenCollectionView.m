@@ -15,6 +15,7 @@
 #import "SpaceBar.h"
 #import "ViewController.h"
 #import "ArrayEntity.h"
+#import "AreaToken.h"
 
 //-------------------
 // Parameters
@@ -244,12 +245,27 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Get the dimension of the SpaceToken
+    NSArray *contentArray = [self.arrayEntity getContent];
+    SpatialEntity *entity = contentArray[[indexPath row]];
+    CGSize tokenSize;
+    if ([entity isKindOfClass:[ArrayEntity class]]){
+        tokenSize = [ArrayToken getSize];
+    }else{
+        tokenSize = [SpaceToken getSize];
+    }
+    
+//    return CGSizeMake(tokenSize.width, tokenSize.height);
     return CGSizeMake(CELL_WIDTH, CELL_HEIGHT);
 }
 
 //----------------
 // Reordering
 //----------------
+//-(BOOL)beginInteractiveMovementForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    return YES;
+//}
+
 -(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     NSArray *contentArray = [self.arrayEntity getContent];

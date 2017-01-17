@@ -32,7 +32,7 @@ template class std::vector<double>;
     for (int i = 0; i < [mapPointArray count]; i++){
         tempMapPointArray[i] = [mapPointArray[i] MKMapPointValue];
     }
-    MKPolyline *polyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[mapPointArray count]];
+    CustomMKPolyline *polyline = [CustomMKPolyline polylineWithPoints:tempMapPointArray count:[mapPointArray count]];
     delete[] tempMapPointArray;
     self = [self initWithMKPolyline:polyline];
     return self;
@@ -66,7 +66,6 @@ template class std::vector<double>;
 
 
 -(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
-    [super setIsMapAnnotationEnabled:isMapAnnotationEnabled];
     
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
@@ -351,7 +350,7 @@ double computeOrientationFromA2B
         tempMapPointArray[i] = mapPoint;
     }
     self.annotation.pointType = path;
-    self.polyline = [MKPolyline polylineWithPoints:tempMapPointArray count:[polylineArrayX count]];
+    self.polyline = [CustomMKPolyline polylineWithPoints:tempMapPointArray count:[polylineArrayX count]];
     delete[] tempMapPointArray;
     return self;
 }

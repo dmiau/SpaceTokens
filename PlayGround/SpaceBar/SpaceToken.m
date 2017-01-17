@@ -17,7 +17,7 @@
 #import "TokenCollectionView.h"
 
 #define SPACE_TOKEN_WIDTH 60
-#define SPACE_TOKEN_HEIGHT 30
+#define SPACE_TOKEN_HEIGHT 28
 
 @interface SpaceToken ()
 
@@ -38,7 +38,9 @@
 }
 */
 
-
++(CGSize)getSize{
+    return CGSizeMake(SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
+}
 
 - (id) init{
     self = [super init];

@@ -7,9 +7,10 @@
 //
 
 #import "LineEntity.h"
+#import "CustomMKPolygon.h"
 
 @interface Area : LineEntity
 
-@property MKPolygon *polygon;
+@property CustomMKPolygon *polygon;
 
 @end

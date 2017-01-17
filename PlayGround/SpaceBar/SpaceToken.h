@@ -55,7 +55,7 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 // corrresponding to latlon
 
 +(SpaceToken*)manufactureTokenForEntity:(SpatialEntity*)spatialEntity;
-
++(CGSize)getSize;
 // flash the token
 - (void)flashToken;
 

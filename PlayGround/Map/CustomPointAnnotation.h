@@ -25,6 +25,8 @@ typedef enum {
 
 @property bool isLableOn;
 @property BOOL isHighlighted;
-@property UIImage *annotationImage;
-@property UILabel *aLabel;
+
+
+
+-(MKAnnotationView *)generateAnnotationView;
 @end

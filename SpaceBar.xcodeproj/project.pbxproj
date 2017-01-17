@@ -239,6 +239,9 @@
 		9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
+		9A9ECD451E2BF4D3002A094E /* CustomMKPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */; };
+		9A9ECD461E2BF4D3002A094E /* CustomMKPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */; };
+		9A9ECD471E2BF4D3002A094E /* CustomMKPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */; };
 		9AA32CE51DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */; };
 		9AA32CE61DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */; };
 		9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */; };
@@ -441,6 +444,9 @@
 		9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
+		9AF7F6A31E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
+		9AF7F6A41E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
+		9AF7F6A51E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
 		9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AFC0A681DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
@@ -474,6 +480,7 @@
 		9A1985A51DDCEE460016696F /* PathToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathToken.m; path = SpaceBar/PathToken.m; sourceTree = "<group>"; };
 		9A1CA2B41D4671210098957A /* CustomTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabController.h; path = Views/CustomTabController.h; sourceTree = "<group>"; };
 		9A1CA2B51D4671210098957A /* CustomTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabController.m; path = Views/CustomTabController.m; sourceTree = "<group>"; };
+		9A2129F81E2DA9D8008BB5E4 /* AnnotationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationProtocol.h; path = Map/AnnotationProtocol.h; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
 		9A234B6D1D8A1C6D00F3EE21 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -605,6 +612,8 @@
 		9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotChecking.m; path = StudyManager/SnapshotChecking.m; sourceTree = "<group>"; };
 		9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotTableController.h; sourceTree = "<group>"; };
 		9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapshotTableController.m; sourceTree = "<group>"; };
+		9A9ECD431E2BF4D3002A094E /* CustomMKPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKPolygon.h; path = Map/CustomMKPolygon.h; sourceTree = "<group>"; };
+		9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKPolygon.m; path = Map/CustomMKPolygon.m; sourceTree = "<group>"; };
 		9AA32CE31DEDD6D200D16738 /* ShowAuthoringPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowAuthoringPanel.h; path = Views/ShowAuthoringPanel.h; sourceTree = "<group>"; };
 		9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowAuthoringPanel.m; path = Views/ShowAuthoringPanel.m; sourceTree = "<group>"; };
 		9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowAuthoringPanel.xib; path = Views/ShowAuthoringPanel.xib; sourceTree = "<group>"; };
@@ -685,6 +694,8 @@
 		9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Extensions.m"; path = "SpaceBar/UIButton+Extensions.m"; sourceTree = "<group>"; };
 		9AF5F4B91D830075001F62D6 /* AuthoringPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthoringPanel.h; path = Views/AuthoringPanel.h; sourceTree = "<group>"; };
 		9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanel.m; path = Views/AuthoringPanel.m; sourceTree = "<group>"; };
+		9AF7F6A11E2C048A004B11C6 /* CustomMKPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKPolyline.h; path = Map/CustomMKPolyline.h; sourceTree = "<group>"; };
+		9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKPolyline.m; path = Map/CustomMKPolyline.m; sourceTree = "<group>"; };
 		9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityDatabase.h; path = Map/EntityDatabase.h; sourceTree = "<group>"; };
 		9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EntityDatabase.mm; path = Map/EntityDatabase.mm; sourceTree = "<group>"; };
 		9AFED2EE1E02F0A0007C8317 /* LeftTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftTabController.h; path = Views/LeftTabController.h; sourceTree = "<group>"; };
@@ -1183,8 +1194,13 @@
 		9ACA1C431DE49F2600185CB1 /* annotations */ = {
 			isa = PBXGroup;
 			children = (
+				9A2129F81E2DA9D8008BB5E4 /* AnnotationProtocol.h */,
 				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
 				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
+				9A9ECD431E2BF4D3002A094E /* CustomMKPolygon.h */,
+				9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */,
+				9AF7F6A11E2C048A004B11C6 /* CustomMKPolyline.h */,
+				9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */,
 			);
 			name = annotations;
 			sourceTree = "<group>";
@@ -1709,6 +1725,7 @@
 				9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */,
 				9AC7E1A91D50E08400C2E8BE /* GestureEngine.mm in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
+				9AF7F6A31E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
 				9AE443B21DEB5CCC006963DC /* SnapshotShow.m in Sources */,
 				9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
@@ -1742,6 +1759,7 @@
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
+				9A9ECD451E2BF4D3002A094E /* CustomMKPolygon.m in Sources */,
 				9A1985A61DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB21D550C7A00F28E61 /* GameManager.mm in Sources */,
@@ -1818,6 +1836,7 @@
 				9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */,
 				9AC7E1AA1D50E08400C2E8BE /* GestureEngine.mm in Sources */,
 				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
+				9AF7F6A41E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
 				9AE443B31DEB5CCC006963DC /* SnapshotShow.m in Sources */,
 				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
 				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
@@ -1851,6 +1870,7 @@
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
+				9A9ECD461E2BF4D3002A094E /* CustomMKPolygon.m in Sources */,
 				9A1985A71DDCEE460016696F /* PathToken.m in Sources */,
 				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
 				9A437FB31D550C7A00F28E61 /* GameManager.mm in Sources */,
@@ -1927,6 +1947,7 @@
 				9AE13B741DF0D148008612DA /* SpeechEngine.m in Sources */,
 				9AE13B751DF0D148008612DA /* GestureEngine.mm in Sources */,
 				9AE13B761DF0D148008612DA /* SpaceToken.m in Sources */,
+				9AF7F6A51E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
 				9AE13B771DF0D148008612DA /* SnapshotShow.m in Sources */,
 				9AE13B781DF0D148008612DA /* SpaceBar+Annotations.mm in Sources */,
 				9AE13B791DF0D148008612DA /* SpaceBar+Interactions.m in Sources */,
@@ -1960,6 +1981,7 @@
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,
 				9AE13B931DF0D148008612DA /* tester.m in Sources */,
+				9A9ECD471E2BF4D3002A094E /* CustomMKPolygon.m in Sources */,
 				9AE13B951DF0D148008612DA /* PathToken.m in Sources */,
 				9AE13B961DF0D148008612DA /* SnapshotTableController.m in Sources */,
 				9AE13B971DF0D148008612DA /* GameManager.mm in Sources */,

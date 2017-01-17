@@ -8,6 +8,9 @@
 
 #import "ArrayToken.h"
 
+#define ARRAY_TOKEN_WIDTH 60
+#define ARRAY_TOKEN_HEIGHT 37
+
 @implementation ArrayToken
 
 /*
@@ -23,8 +26,12 @@
     
     // Change the color to orange
     [self setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.5]];
-    
+    self.frame = CGRectMake(0, 0, ARRAY_TOKEN_WIDTH, ARRAY_TOKEN_HEIGHT);
+
     return self;
 }
 
++(CGSize)getSize{
+    return CGSizeMake(ARRAY_TOKEN_WIDTH, ARRAY_TOKEN_HEIGHT);
+}
 @end

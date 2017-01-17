@@ -8,6 +8,8 @@
 
 #import "CustomMKMapView+Annotations.h"
 #import "CustomPointAnnotation.h"
+#import "CustomMKPolygon.h"
+#import "CustomMKPolyline.h"
 
 @implementation CustomMKMapView (Annotations)
 
@@ -17,42 +19,7 @@
 
 - (MKAnnotationView *) viewForAnnotation:(CustomPointAnnotation*)annotation
 {
-    // in case it's the user location, we already have an annotation, so just return nil
-    if ([annotation isKindOfClass:[MKUserLocation class]])
-    {
-        return nil;
-    }
-    
-    // try to dequeue an existing pin view first
-    static NSString *landmarkAnnotationID = @"pointAnnotationID";
-    
-    MKAnnotationView *pinView =
-    (MKAnnotationView *) [self dequeueReusableAnnotationViewWithIdentifier:landmarkAnnotationID];
-    
-    if (pinView == nil)
-    {
-        pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:landmarkAnnotationID];
-    }else{
-        // Need to clear the existing annotations
-        for (UIView *aView in pinView.subviews){
-            if ([aView isKindOfClass:[UILabel class]]){
-                [aView removeFromSuperview];
-            }
-        }
-    }
-    pinView.annotation = annotation;
-    
-    if (annotation.annotationImage)
-        pinView.image = annotation.annotationImage;
-    
-    // Add a label to the annoation
-    if (annotation.isLableOn && annotation.aLabel){
-        [annotation.aLabel removeFromSuperview];
-        [pinView addSubview: annotation.aLabel];
-    }
-    
-    [pinView setEnabled:NO];
-    return pinView;
+    return [annotation generateAnnotationView];
 }
 
 #pragma mark --Routes--
@@ -79,16 +46,17 @@
         //        renderer.strokeColor = [UIColor redColor];
         renderer.fillColor = [[UIColor redColor]colorWithAlphaComponent:0.2];
         return renderer;
+        
+        
+        
+        
     }else{
         
         //------------
         // Render a line
         //------------
-        MKPolylineRenderer *renderer =
-        [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-        renderer.strokeColor = [UIColor blueColor];
-        renderer.lineWidth = 5.0;
-        return renderer;
+        CustomMKPolyline *polylineOverlay = overlay;
+        return [polylineOverlay generateOverlayRenderer];
     }
 }
 

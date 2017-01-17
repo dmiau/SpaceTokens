@@ -11,18 +11,17 @@
 #include <utility>
 #import "SpatialEntity.h"
 #import "ArrayEntity.h"
+#import "CustomMKPolyline.h"
 
 using namespace std;
 
 @interface LineEntity : ArrayEntity
 
-@property MKPolyline *polyline;
+@property CustomMKPolyline *polyline;
 
 // the following vectors are used to look up POI, or ROI or a path
 @property vector<double> *mapPointX;
 @property vector<double> *mapPointY;
-//@property vector<int> *stepNumber;
-//@property vector<int> *indexInStep;
 @property vector<double> *accumulatedDist;
 
 
@@ -32,7 +31,7 @@ using namespace std;
 
 // Constructor
 - (id)initWithMKMapPointArray: (NSArray*) mapPointArray;
--(id)initWithMKPolyline:(MKPolyline*)polyline;
+-(id)initWithMKPolyline:(CustomMKPolyline*)polyline;
 
 
 -(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:

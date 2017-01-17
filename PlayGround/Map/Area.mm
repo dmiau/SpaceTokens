@@ -17,7 +17,7 @@
     self.annotation.pointType = AREA;
     self.name = @"UnNamedArea";
     // Create a polygon
-    self.polygon = [MKPolygon polygonWithPoints:self.polyline.points
+    self.polygon = [CustomMKPolygon polygonWithPoints:self.polyline.points
                                           count:self.polyline.pointCount];
     
     return self;
@@ -49,7 +49,7 @@
     self = [super initWithCoder:coder];
     self.annotation.pointType = AREA;
     // Create a polygon
-    self.polygon = [MKPolygon polygonWithPoints:self.polyline.points
+    self.polygon = [CustomMKPolygon polygonWithPoints:self.polyline.points
                                           count:self.polyline.pointCount];
     return self;
 }

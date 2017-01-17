@@ -102,7 +102,7 @@ using namespace std;
         }
     }
     
-    MKPolyline *polyline = [MKPolyline polylineWithPoints:accumulatedMapPoints
+    CustomMKPolyline *polyline = [CustomMKPolyline polylineWithPoints:accumulatedMapPoints
                                                 count:accumulatedCount];
     delete[] accumulatedMapPoints;
     self.polyline = polyline;
