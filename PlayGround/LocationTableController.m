@@ -145,7 +145,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[EntityDatabase sharedManager] entityArray] count];
+    return [[[EntityDatabase sharedManager] getEntityArray] count];
 }
 
 //----------------
@@ -163,9 +163,9 @@
     int i = [indexPath row];
     
     // Configure Cell
-    
-    cell.textLabel.text = [[EntityDatabase sharedManager] entityArray][i].name;
-    cell.spatialEntity = [[EntityDatabase sharedManager] entityArray][i];
+    SpatialEntity *entity = [[EntityDatabase sharedManager] getEntityArray][i];
+    cell.textLabel.text = entity.name;
+    cell.spatialEntity = entity;
     
     cell.mySwitch.on = cell.spatialEntity.isEnabled;
     return cell;
@@ -198,7 +198,7 @@
     
     // Perform segue
     [self performSegueWithIdentifier:@"POIDetailVC"
-                              sender:[[EntityDatabase sharedManager] entityArray][i]];
+                              sender:[[EntityDatabase sharedManager] getEntityArray][i]];
 }
 
 
@@ -226,7 +226,7 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     // Get the object
-    NSMutableArray <SpatialEntity*> *entityArray = [[EntityDatabase sharedManager] entityArray];
+    NSMutableArray <SpatialEntity*> *entityArray = [[EntityDatabase sharedManager] getEntityArray];
     
     SpatialEntity *anEntity = entityArray[sourceIndexPath.row];
     [entityArray removeObjectAtIndex:sourceIndexPath.row];
@@ -245,11 +245,11 @@
         int i = [indexPath row];
 
         // Remove the annotation
-        [[EntityDatabase sharedManager] entityArray][i].isMapAnnotationEnabled = NO;
+        [[EntityDatabase sharedManager] getEntityArray][i].isMapAnnotationEnabled = NO;
         
         // Remove the Entity
-        [[[EntityDatabase sharedManager] entityArray] removeObject:
-         [[EntityDatabase sharedManager] entityArray][i]];
+        [[EntityDatabase sharedManager] removeEntity:
+         [[EntityDatabase sharedManager] getEntityArray][i]];
         
         // Then, delete the row
         [self.myTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]

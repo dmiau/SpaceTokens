@@ -24,19 +24,12 @@
 }
 
 - (id) init{
-    self.entityArray = [[NSMutableArray alloc] init];
+    i_entityArray = [[NSMutableArray alloc] init];
     cacheDefaultEntityArray = [[NSMutableArray alloc] init];
     useDefaultEntityArray = YES;
     self.youRHere = [[Person alloc] init];
     self.isYouAreHereEnabled = YES;
     return self;
-}
-
-- (void)setEntityArray:(NSMutableArray<SpatialEntity *> *)entityArray{
-    if (useDefaultEntityArray){
-        cacheDefaultEntityArray = entityArray;
-    }
-    _entityArray = entityArray;
 }
 
 // methods to support a temporary POI array
@@ -56,7 +49,7 @@
 -(NSMutableArray*)getEnabledEntities{
     NSMutableArray* outArray = [[NSMutableArray alloc] init];
     
-    for (SpatialEntity *anEntity in self.entityArray){
+    for (SpatialEntity *anEntity in i_entityArray){
         if (anEntity.isEnabled){
             [outArray addObject:anEntity];
         }
@@ -70,13 +63,41 @@
     return outArray;
 }
 
+- (void)setEntityArray:(NSMutableArray<SpatialEntity *> *)newEntityArray{
+    if (useDefaultEntityArray){
+        cacheDefaultEntityArray = [newEntityArray mutableCopy];
+    }
+    i_entityArray = [newEntityArray mutableCopy];
+}
+
+- (NSMutableArray*)getEntityArray{
+    return i_entityArray;
+}
+
+- (void)addEntity:(SpatialEntity*)entity{
+    
+    // If the entity already exist, enable the entity
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF == %@", entity];
+    NSArray *filteredArray = [i_entityArray filteredArrayUsingPredicate:predicate];
+    
+    if ([filteredArray count] > 0){
+        SpatialEntity *entity = [filteredArray firstObject];
+        entity.isEnabled = YES;
+    }else{
+        [i_entityArray addObject:entity];
+    }
+}
+
+- (void)removeEntity:(SpatialEntity*)entity{
+    [i_entityArray removeObject:entity];
+}
 
 #pragma mark -- Save/Load --
 
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeObject:self.entityArray forKey:@"entityArray"];
+    [coder encodeObject:i_entityArray forKey:@"entityArray"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -127,7 +148,7 @@
         NSData *data = [NSData dataWithContentsOfFile:fullPathFileName];
         EntityDatabase *entityDB = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         self.name = entityDB.name;
-        self.entityArray = entityDB.entityArray;
+        self.entityArray = [entityDB getEntityArray];
         return YES;
     }else{
         NSLog(@"%@ does not exist.", fullPathFileName);

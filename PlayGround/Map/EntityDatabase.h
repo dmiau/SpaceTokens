@@ -14,9 +14,10 @@
 @interface EntityDatabase : NSObject{
     NSMutableArray <SpatialEntity *> *cacheDefaultEntityArray;
     BOOL useDefaultEntityArray;
+    NSMutableArray <SpatialEntity *> *i_entityArray;
 }
+
 @property NSString *name;
-@property NSMutableArray <SpatialEntity *> *entityArray;
 @property Person *youRHere;
 
 +(EntityDatabase*)sharedManager;
@@ -24,6 +25,12 @@
 // temp POI array
 - (void)useGameEntityArray:(NSMutableArray*)tempArray;
 - (void)removeGameEntityArray;
+
+// Methods to access entities
+- (NSMutableArray<SpatialEntity*>*)getEntityArray;
+- (void)setEntityArray:(NSMutableArray<SpatialEntity *> *)newEntityArray;
+- (void)addEntity:(SpatialEntity*)entity;
+- (void)removeEntity:(SpatialEntity*)entity;
 
 // iCloud related methods
 - (void)debugInit; // a temporary method

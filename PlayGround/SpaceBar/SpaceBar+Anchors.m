@@ -31,7 +31,7 @@
         
         SpatialEntity *touchedKnownEntity = nil;
         // Check if the user touches any known entity
-        for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] entityArray])
+        for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] getEntityArray])
         {
             if (anEntity.isEnabled &&
                 [anEntity getPointDistanceToTouch:aTouch] < 10){
@@ -69,6 +69,9 @@
             }else{
                 aToken.spatialEntity = touchedKnownEntity;
                 [aToken configureAppearanceForType:ANCHOR_VISIBLE];
+                
+                
+                self.isSpaceTokenEnabled = YES;
             }
             
             if (self.isSpaceTokenEnabled){
@@ -148,7 +151,7 @@
                     [[ NSNotificationCenter defaultCenter] postNotification:notification];
                     
                     // Add the anchor to collection view
-                    [[[EntityDatabase sharedManager] entityArray] addObject:associatedToken.spatialEntity];
+                    [[EntityDatabase sharedManager] addEntity:associatedToken.spatialEntity];
                     
                     [[TokenCollectionView sharedManager] addItemFromBottom:associatedToken.spatialEntity];
                     

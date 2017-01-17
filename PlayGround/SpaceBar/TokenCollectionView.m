@@ -294,10 +294,14 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
         [NSException raise:@"Programming error" format:@"Method should be overloading by subclass."];
     }
     
+    // Need to check if an entity already exists (but disabled)
+    
+    
     // Create a new SpaceToken based on anchor
     // (Need to insert to entity database directly)
+    [[EntityDatabase sharedManager] addEntity:token.spatialEntity];
     
-    [[[EntityDatabase sharedManager] entityArray] addObject:token.spatialEntity];
+    
     [self reloadData];
 }
 

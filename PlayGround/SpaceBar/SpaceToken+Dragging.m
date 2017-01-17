@@ -198,6 +198,9 @@
                 [collectionView insertToken:self];
                 [self touchEnded];
             }else{
+                
+                // The item already exists on Collection View
+                
                 UIAlertController *alert = [UIAlertController
                     alertControllerWithTitle:@"Action ignored" message:@"Token already exists" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){

@@ -29,13 +29,16 @@
     _pointType = pointType;
     
     if (pointType == LANDMARK){
-        
         //--------------------------
         // Create a custom gray dot
         //--------------------------
         annotationImage =
         [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
 
+    }else if(pointType == dropped){
+        annotationImage =
+        [self generateDotImageWithColor:[UIColor purpleColor] andRadius:6];
+        
     }else if(pointType == YouRHere){
         
         //--------------------------

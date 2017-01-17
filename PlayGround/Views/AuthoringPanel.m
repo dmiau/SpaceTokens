@@ -250,7 +250,7 @@ static AuthoringPanel *instance;
         // Put the entity into EntityDatabase
         poi.name = @"token";
         
-        [[[EntityDatabase sharedManager] entityArray] addObject:poi];
+        [[EntityDatabase sharedManager] addEntity:poi];
         // refresh the token panel
         [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
         

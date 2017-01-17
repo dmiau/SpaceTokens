@@ -23,7 +23,7 @@ using namespace std;
     void(^completionBlock)(void) = ^{
         // Push the newly created route into the entity database
         EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
-        [entityDatabase.entityArray addObject:aRoute];
+        [entityDatabase addEntity:aRoute];
         aRoute.isMapAnnotationEnabled = YES;
         NSLog(@"Direction response received!");
         NSLog(@"Rooute: %@ added.", aRoute.name);

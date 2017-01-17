@@ -170,7 +170,7 @@
     aPOI.isMapAnnotationEnabled = YES;
     
     // Add the restul to entityDB
-    [[[EntityDatabase sharedManager] entityArray] addObject:aPOI];
+    [[EntityDatabase sharedManager] addEntity:aPOI];
     
     if (!self.searchHandlingBlock){
         //----------------------

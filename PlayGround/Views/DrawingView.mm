@@ -142,7 +142,7 @@ using namespace std;
         
         // Push the newly created route into the entity database
         EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
-        [entityDatabase.entityArray addObject:newEntity];
+        [entityDatabase addEntity:newEntity];
         newEntity.isMapAnnotationEnabled = YES;
         
         // Update the collection view
