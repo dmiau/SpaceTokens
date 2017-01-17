@@ -7,9 +7,10 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "AnnotationProtocol.h"
 
-@interface CustomMKPolygon : MKPolygon
-
+@interface CustomMKPolygon : MKPolygon <AnnotationProtocol>
+@property location_enum pointType;
 @property BOOL isLableOn;
 @property BOOL isHighlighted;
 

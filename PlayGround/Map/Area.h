@@ -12,5 +12,5 @@
 @interface Area : LineEntity
 
 @property CustomMKPolygon *polygon;
-
+@property CustomMKPolygon *annotation;
 @end

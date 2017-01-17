@@ -7,9 +7,10 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "AnnotationProtocol.h"
 
-@interface CustomMKPolyline : MKPolyline
-
+@interface CustomMKPolyline : MKPolyline <AnnotationProtocol>
+@property location_enum pointType;
 @property bool isLableOn;
 @property BOOL isHighlighted;
 

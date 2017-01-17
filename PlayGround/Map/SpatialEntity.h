@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "CustomPointAnnotation.h"
+#import "AnnotationProtocol.h"
 
 @interface SpatialEntity : NSObject
 
@@ -16,7 +16,7 @@
 
 @property NSString *name;
 @property NSString *tag;
-@property CustomPointAnnotation *annotation;
+@property id <AnnotationProtocol> annotation;
 
 // Did not use MKCoordinateRegion because I want to use
 // custom setter for latLon to update the annotation object

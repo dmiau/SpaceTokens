@@ -7,26 +7,13 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "AnnotationProtocol.h"
 
-typedef enum {
-    LANDMARK,
-    STAR,
-    path,
-    AREA,
-    dropped,
-    search_result,
-    YouRHere,
-    PEOPLE,
-    answer
-} location_enum;
-
-@interface CustomPointAnnotation : MKPointAnnotation
+@interface CustomPointAnnotation : MKPointAnnotation <AnnotationProtocol>
 @property location_enum pointType;
 
 @property bool isLableOn;
 @property BOOL isHighlighted;
-
-
 
 -(MKAnnotationView *)generateAnnotationView;
 @end

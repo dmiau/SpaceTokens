@@ -50,9 +50,17 @@ template class std::vector<double>;
 //-----------------
 // Setters
 //-----------------
--(void)setPolyline:(MKPolyline *)polyline{
-    _polyline = polyline;
+-(void)setPolyline:(CustomMKPolyline *)polyline{
+    
+    if (![polyline isKindOfClass:[CustomMKPolyline class]]){
+        CustomMKPolyline *tempPolyline = [CustomMKPolyline polylineWithPoints:polyline.points count:polyline.pointCount];
+        _polyline = tempPolyline;
+    }else{
+        _polyline = polyline;
+    }
+    
     [self populateInternalRouteProperties];
+    self.annotation = _polyline;
 }
 
 

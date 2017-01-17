@@ -11,5 +11,40 @@
 
 @implementation POI
 
+// Custom set methods
+- (void)setLatLon:(CLLocationCoordinate2D)latLon{
+    [super setLatLon:latLon];
+    self.annotation.coordinate = latLon;
+}
+
+
+- (void)setName:(NSString *)name{
+    [super setName:name];
+    self.annotation.title = name;
+}
+
+-(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
+    [super setIsMapAnnotationEnabled:isMapAnnotationEnabled];
+    
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    if (isMapAnnotationEnabled){
+        // Add the annotation
+        [mapView addAnnotation:self.annotation];
+    }else{
+        // Remove the annotation
+        [mapView removeAnnotation:self.annotation];
+    }
+}
+
+- (void)setMapAnnotationEnabled:(BOOL)flag onMap:(MKMapView*)map{
+    if (flag){
+        // Add the annotation
+        [map addAnnotation:self.annotation];
+    }else{
+        // Remove the annotation
+        [map removeAnnotation:self.annotation];
+    }
+}
 
 @end

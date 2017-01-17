@@ -16,5 +16,6 @@
 //-------------------
 @interface POI : SpatialEntity
 
+@property CustomPointAnnotation *annotation;
 
 @end

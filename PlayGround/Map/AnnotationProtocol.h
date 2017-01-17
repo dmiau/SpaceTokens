@@ -8,26 +8,23 @@
 
 #import <MapKit/MapKit.h>
 
-//typedef enum {
-//    LANDMARK,
-//    STAR,
-//    path,
-//    AREA,
-//    dropped,
-//    search_result,
-//    YouRHere,
-//    PEOPLE,
-//    answer
-//} location_enum;
-//
-//@protocol AnnotationProtocol <NSObject>
-//@property location_enum pointType;
-//
-//@property bool isLableOn;
-//@property BOOL isHighlighted;
-//
-//@property UIImage *annotationImage;
-//@property UILabel *aLabel;
-//
-//-(id)generateAnnotationView;
+typedef enum {
+    LANDMARK,
+    STAR,
+    path,
+    AREA,
+    dropped,
+    search_result,
+    YouRHere,
+    PEOPLE,
+    answer
+} location_enum;
+
+@protocol AnnotationProtocol <NSObject>
+@property location_enum pointType;
+
+@property bool isLableOn;
+@property BOOL isHighlighted;
+
+-(id)generateAnnotationView;
 @end

@@ -18,6 +18,7 @@ using namespace std;
 @interface LineEntity : ArrayEntity
 
 @property CustomMKPolyline *polyline;
+@property CustomMKPolyline *annotation;
 
 // the following vectors are used to look up POI, or ROI or a path
 @property vector<double> *mapPointX;

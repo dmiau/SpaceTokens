@@ -36,6 +36,10 @@
     }
 }
 
+-(void)setPolygon:(CustomMKPolygon *)polygon{
+    _polygon = polygon;
+    self.annotation = polygon;
+}
 
 //-----------------
 // Save/Load
