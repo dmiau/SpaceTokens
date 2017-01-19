@@ -8,6 +8,9 @@
 
 #import "ArrayToken.h"
 
+
 @interface PathToken : ArrayToken
+
+@property SpatialEntity* spatialEntity;
 
 @end

@@ -9,5 +9,7 @@
 #import "Route.h"
 
 @interface Route (Tools)
-
+-(void)assembleMutliSegmentRoute;
+-(void)notAnPOIAlert: (SpatialEntity*) entity;
+-(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination;
 @end

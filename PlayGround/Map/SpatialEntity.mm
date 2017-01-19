@@ -25,7 +25,7 @@
         _tag = @"";
         
         _isEnabled = YES;
-        _isMapAnnotationEnabled = YES;
+        _isMapAnnotationEnabled = NO;
     }
     return self;
 }

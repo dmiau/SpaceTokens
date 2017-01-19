@@ -29,7 +29,7 @@
         renderer.strokeColor = [UIColor blueColor];
         renderer.lineWidth = 5.0;
     }else{
-        renderer.strokeColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+        renderer.strokeColor = [[UIColor grayColor] colorWithAlphaComponent:0.6];
         renderer.lineWidth = 3.0;
     }
     return renderer;

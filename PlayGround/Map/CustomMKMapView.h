@@ -50,7 +50,7 @@
     
 }
 
-+ (id)sharedManager; // Singleton method
++ (CustomMKMapView*)sharedManager; // Singleton method
 
 @property (nonatomic, weak) id<MKMapViewDelegate, CustomMKMapViewDelegate> delegate;
 @property MKUserLocation *customUserLocation;

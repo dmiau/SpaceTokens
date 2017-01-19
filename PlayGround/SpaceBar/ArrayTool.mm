@@ -60,6 +60,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     arrayToolMode = ArrayMode;
     
     self.arrayEntity = [[Route alloc] init];
+    self.arrayEntity.appearanceMode = ARRAYMODE;
     
     // Initialize an AdditionTool
     CGRect toolFrame = CGRectMake(0, 60, 60, self.frame.size.height-120);
@@ -211,7 +212,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     // Update the line if there are more than two entities
     if ([[self.arrayEntity getContent] count]>1){
-        [self.arrayEntity updateRouteForContentArray];
+        [self.arrayEntity updateArrayForContentArray];
     }
     
     // refresh the token panel
@@ -223,7 +224,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     [super collectionView: collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
     // Update the line if there are more than two entities
     if ([[self.arrayEntity getContent] count]>1){
-        [self.arrayEntity updateRouteForContentArray];
+        [self.arrayEntity updateArrayForContentArray];
     }
 }
 
@@ -243,6 +244,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         // Remove the annotation before the master token is removed
         self.arrayEntity.isMapAnnotationEnabled = NO;
         self.arrayEntity = [[Route alloc] init];
+        self.arrayEntity.appearanceMode = ARRAYMODE;
     }else{
         [self.arrayEntity removeObjectAtIndex:i];
     }
@@ -260,7 +262,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         pathModeButton = nil;
     }
     
-    [self.arrayEntity updateRouteForContentArray];
+    [self.arrayEntity updateArrayForContentArray];
     [self reloadData];
 }
 
@@ -328,31 +330,31 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 - (void)pathModeButtonAction{
     NSLog(@"Path mode button is pressed.");
-    
+    Route *aRoute = self.arrayEntity;
+    self.arrayEntity.isMapAnnotationEnabled = NO;
     if (arrayToolMode == ArrayMode){
         // Switching to PathMode
         arrayToolMode = PathMode;
         
         // Clear all the token, expose the bar underneath
-
-        Route *aRoute = [[Route alloc] init];
         void (^requestCompletionBlock)(void)=^{
             // Push the route to SpaceBar
             [[ViewController sharedManager] showRoute:aRoute
                                        zoomToOverview:YES];
         };
         aRoute.routeReadyBlock = requestCompletionBlock;
-        [aRoute requestRouteFromEntities:[self.arrayEntity getContent]];
-        
-        // Change pointInside detection method
-        
+        aRoute.appearanceMode = ROUTEMODE;
+        [aRoute updateRouteForContentArray];
     }else{
+        
         // Disable the scroll bar
         [[ViewController sharedManager] removeRoute];
         // Switching to ArrayMode
         arrayToolMode = ArrayMode;
+        aRoute.appearanceMode = ARRAYMODE;
+        [aRoute updateArrayForContentArray];
     }
-    
+    self.arrayEntity.isMapAnnotationEnabled = YES;
     [self reloadData];
 }
 

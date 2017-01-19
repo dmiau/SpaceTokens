@@ -16,6 +16,8 @@
 using namespace std;
 @class POI;
 
+typedef enum {ARRAYMODE, SETMODE, ROUTEMODE} AppeararnceMode;
+
 #pragma mark RouteInterface
 @interface Route : LineEntity{
     NSMutableArray *routeSegmentArray; // This is to support the mutli-destination feature
@@ -25,8 +27,10 @@ using namespace std;
 // properties
 //------------------
 @property (nonatomic, copy) void (^routeReadyBlock)();
+@property (nonatomic, copy) void (^appearanceChangedHandlingBlock)();
 @property NSMutableDictionary <NSNumber*, SpatialEntity*> *annotationDictionary;
 @property BOOL requestCompletionFlag;
+@property AppeararnceMode appearanceMode;
 
 //------------------
 // methods
@@ -42,5 +46,8 @@ using namespace std;
 
 // Create route with multiple points
 -(void)requestRouteFromEntities: (NSArray *)entityArray;
+
 -(void)updateRouteForContentArray;
+-(void)updateArrayForContentArray;
+-(void)updateSetForContentArray;
 @end

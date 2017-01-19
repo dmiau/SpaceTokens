@@ -7,6 +7,7 @@
 //
 
 #import "ArrayEntity.h"
+#import "CustomMKMapView.h"
 
 @implementation ArrayEntity
 // MARK: Initialization
@@ -49,6 +50,13 @@
 }
 
 -(MKMapRect)getBoundingMapRect{
+    
+    if ([contentArray count]==0){
+        
+        return [CustomMKMapView MKMapRectForCoordinateRegion:
+                [[CustomMKMapView sharedManager] region]];
+    }
+    
     double minMapX = 0.0, maxMapX = 0.0, minMapY = 0.0, maxMapY = 0.0;
     
     int i = 0;

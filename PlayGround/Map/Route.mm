@@ -28,6 +28,7 @@ template class std::vector<double>;
 -(id)init{
     self = [super init];
     self.annotation.pointType = path;
+    self.appearanceMode = ROUTEMODE;
     return self;
 }
 
@@ -62,6 +63,16 @@ template class std::vector<double>;
     return self;
 }
 
+
+//----------------
+// MARK: --Setters--
+//----------------
+-(void)setAppearanceMode:(AppeararnceMode)appearanceMode{
+    _appearanceMode = appearanceMode;
+    if (self.appearanceChangedHandlingBlock){
+        self.appearanceChangedHandlingBlock();
+    }
+}
 
 //----------------
 // MARK: --Interactions--
@@ -149,6 +160,7 @@ template class std::vector<double>;
 
     // Save the source and destination
     [coder encodeObject: self.annotationDictionary forKey:@"annotationDictionary"];
+    [coder encodeObject: [NSNumber numberWithInt: self.appearanceMode] forKey:@"appearanceMode"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {    
@@ -156,6 +168,8 @@ template class std::vector<double>;
     
     // Decode source and destination
     self.annotationDictionary = [coder decodeObjectOfClass:[NSMutableDictionary class] forKey:@"annotationDictionary"];
+    self.appearanceMode = (AppeararnceMode)
+    [[coder decodeObjectOfClass:[NSNumber class] forKey:@"appearanceMode"] intValue];
     return self;
 }
 
