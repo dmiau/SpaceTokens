@@ -239,13 +239,17 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     NSArray *contentArray = [self.arrayEntity getContent];
     SpatialEntity *spatialEntity = contentArray[row];
     SpaceToken* aToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:spatialEntity];
-        aToken.home= self;
-
+    aToken.home= self;
     cell.spaceToken = aToken;
     [cell addSubview:aToken];
-    
     spatialEntity.isMapAnnotationEnabled = YES;
-         
+    
+    void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
+        token.home = self;
+        cell.spaceToken = token;
+    };
+    aToken.didCreateClone = cloneCreationHandler;
+    
     return cell;
 }
 

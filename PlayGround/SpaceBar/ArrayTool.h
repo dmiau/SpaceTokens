@@ -20,6 +20,8 @@
 
 @property Route* arrayEntity;
 
+@property PathToken *masterToken;
+
 -(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
 -(void)insertMaster:(PathToken*) token;
 @end

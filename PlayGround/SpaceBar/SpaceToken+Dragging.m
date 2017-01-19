@@ -38,8 +38,12 @@
         //--------------------
         // User won't be able to remove a SpaceToken in the study
         //--------------------
-        if (self.isStudyModeEnabled
-            || [self.spatialEntity.name isEqualToString:@"YouRHere"])
+        if (self.isStudyModeEnabled)
+            return;
+        
+        // User cannot remove YouRHere from TokenCollectionView
+        if ([self.spatialEntity.name isEqualToString:@"YouRHere"] &&
+            self.home == [TokenCollectionView sharedManager])
             return;
                 
         // Need to handle token removal detection differently,
@@ -264,6 +268,10 @@
     self.center = [self.superview convertPoint:self.center
                                         toView:mapView];
     [mapView addSubview:self];
+    
+    if (self.didCreateClone){
+        self.didCreateClone(newSpaceToken);
+    }
     
     // Change the style of the dragging tocken
     [self configureAppearanceForType:DRAGGING];

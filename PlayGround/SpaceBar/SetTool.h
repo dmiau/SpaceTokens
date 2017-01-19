@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class SpaceToken;
+@class PathToken;
 @class ArrayEntity;
 @class MiniMapView;
 @class SetCollectionView;
@@ -21,6 +22,10 @@ typedef enum {SetMode, MapMode, EmptyMode} SetToolMode;
 
 @property SetToolMode setToolMode;
 
+@property PathToken *masterToken;
+@property BOOL isVisible;
+@property ArrayEntity *arrayEntity;
+
 -(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
 -(void)insertMaster:(SpaceToken*) token;
 
@@ -29,8 +34,7 @@ typedef enum {SetMode, MapMode, EmptyMode} SetToolMode;
 -(BOOL)isTouchInInsertionZone:(UITouch*)touch;
 
 
-@property BOOL isVisible;
-@property ArrayEntity *arrayEntity;
+
 -(void)insertToken: (SpaceToken*) token;
 -(void)removeToken: (SpaceToken*) token;
 - (IBAction)switchViewAction:(id)sender;

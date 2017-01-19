@@ -31,7 +31,6 @@ using namespace std;
 //------------------
 // methods
 //------------------
-
 // Constructors
 - (id)initWithMKRoute: (MKRoute *) aRoute Source: (POI*) source
           Destination: (POI*) destination;

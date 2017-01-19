@@ -22,7 +22,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 @implementation ArrayTool{
     UIButton *pathModeButton;
-    PathToken *masterToken;
     ArrayToolMode arrayToolMode;
     AdditionTool *additionTool;
 }
@@ -93,7 +92,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         }
         
     }else if (arrayToolMode == PathMode){
-        if (CGRectContainsPoint(masterToken.frame, point)){
+        if (CGRectContainsPoint(self.masterToken.frame, point)){
             return YES;
         }else if (CGRectContainsPoint(pathModeButton.frame, point)){
             return YES;
@@ -117,7 +116,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     if ([[self.arrayEntity getContent] count]>1
-        && !masterToken)
+        && !self.masterToken)
     {
         // Insert a master token on the top
         [self insertMaster:nil];
@@ -147,7 +146,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 // Insert a master
 //------------------
 -(void) insertMaster:(PathToken*) token{
-    if (masterToken){
+    if (self.masterToken){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"A master token already exists."
                                                         message:@"Please remove the master token first before adding one."
                                                        delegate:self
@@ -159,20 +158,31 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     if (!token){
         // Create a master using the current self.arrayEntity
-        masterToken = [[TokenCollection sharedManager]
+        self.masterToken = [[TokenCollection sharedManager]
                        addTokenFromSpatialEntity:self.arrayEntity];
     }else{
-        masterToken = [[TokenCollection sharedManager]
+        // This is usually called when a user drags a collection token to the position of a master token
+        self.masterToken = [[TokenCollection sharedManager]
                        addTokenFromSpatialEntity:token.spatialEntity];
         
-        self.arrayEntity = masterToken.spatialEntity;
+        self.arrayEntity = self.masterToken.spatialEntity;
     }
     
-    masterToken.home = self;
+    self.masterToken.home = self;
     
     CGRect frame = CGRectZero;
     frame.size = CGSizeMake(60, 20);
-    [self addSubview:masterToken];
+    [self addSubview:self.masterToken];
+    
+    void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
+        
+        if (![token isKindOfClass:[PathToken class]]){
+            [NSException raise:@"Programming error." format:@"ArrayTool's master token needs to be of type PathToken."];
+        }
+        token.home = self;
+        self.masterToken = token;
+    };
+    self.masterToken.didCreateClone = cloneCreationHandler;
     
     // After the route is updated, its annotation needs to be updated, too.
     void (^requestCompletionBlock)(void)=^{
@@ -239,8 +249,8 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
     if ([[self.arrayEntity getContent] count] == 0){
         // Remove the masterToken
-        [masterToken removeFromSuperview];
-        masterToken = nil;
+        [self.masterToken removeFromSuperview];
+        self.masterToken = nil;
     }
     
     // Remove the path button

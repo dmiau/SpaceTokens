@@ -22,6 +22,9 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
     BOOL hasReportedDraggingEvent;
     NSTimer *anchorVisualTimer;
     WildcardGestureRecognizer * tapInterceptor;
+    
+    
+    
 }
 
 @property BOOL isCircleLayerOn;
@@ -53,6 +56,13 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 @property CGPoint mapViewXY;
 // mapViewXY caches the Mercator (x, y) coordinates
 // corrresponding to latlon
+
+
+// Pseudo-delegate methods
+// A "clone" is created when a token is dragged outside its dock. As a result,
+// the newly created "clone" needs to be tied to the original UICollectionView cell.
+// didCreateClone is created for such a purpose.
+@property void (^didCreateClone)(SpaceToken *clone);
 
 +(SpaceToken*)manufactureTokenForEntity:(SpatialEntity*)spatialEntity;
 +(CGSize)getSize;

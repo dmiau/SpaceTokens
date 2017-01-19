@@ -1,4 +1,4 @@
-//
+  //
 //  ArrayEntity.h
 //  SpaceBar
 //

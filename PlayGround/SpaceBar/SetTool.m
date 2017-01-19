@@ -11,6 +11,7 @@
 #import "MiniMapView.h"
 #import "ArrayEntity.h"
 #import "SpaceToken.h"
+#import "PathToken.h"
 #import "TokenCollection.h"
 #import "Constants.h"
 #import "ViewController.h"
@@ -25,7 +26,6 @@
 #define TOOL_HEIGHT 150
 
 @implementation SetTool{
-    SpaceToken *masterToken;
     BOOL moveMode;
     AdditionTool *additionTool;
 }
@@ -49,7 +49,7 @@
     //----------------
     self.isVisible = NO;
     self.setToolMode = EmptyMode;
-    masterToken = nil;
+    self.masterToken = nil;
     moveMode = NO; //
 
     
@@ -103,27 +103,15 @@
     additionTool.additionHandlingBlock = additionHandlingBlock;    
 }
 
-//------------------
-// Creating a master token
-//------------------
-- (void)initMasterToken{
-    masterToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:self.arrayEntity];
-    masterToken.home = self;
-    
-    CGRect frame = CGRectZero;
-    frame.size = CGSizeMake(60, 20);
-    [self.toolView addSubview:masterToken];
-}
-
 -(void)updateView{
     // Create an entity set
     NSSet *entitySet = [NSSet setWithArray:[self.arrayEntity getContent]];
     
     if ([[self.arrayEntity getContent] count]==1
-        && !masterToken)
+        && !self.masterToken)
     {
         // Insert a master token on the top
-        [self initMasterToken];
+        [self insertMaster: nil];
         self.setToolMode = SetMode;
     }
     
@@ -250,21 +238,43 @@
 }
 
 // MARK: Token management
--(void)insertMaster:(SpaceToken*) token{
+
+-(void)insertMaster:(PathToken*) token{
     
     // Remove the current master
-    if (masterToken){
-        [masterToken removeFromSuperview];
+    if (self.masterToken){
+        [self.masterToken removeFromSuperview];
     }
     
-    masterToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:token.spatialEntity];
-    masterToken.home = self;
+    if (!token){
+        // Create a master using the current self.arrayEntity
+        self.masterToken = [[TokenCollection sharedManager]
+                            addTokenFromSpatialEntity:self.arrayEntity];
+    }else{
+        // This is usually called when a user drags a collection token to the position of a master token
+        self.masterToken = [[TokenCollection sharedManager]
+                            addTokenFromSpatialEntity:token.spatialEntity];
+        
+        self.arrayEntity = self.masterToken.spatialEntity;
+    }
+
+    self.masterToken.home = self;
     
     CGRect frame = CGRectZero;
     frame.size = CGSizeMake(60, 20);
-    [self.toolView addSubview:masterToken];
+    [self.toolView addSubview:self.masterToken];
     
-    self.arrayEntity = masterToken.spatialEntity;
+    void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
+        
+        if (![token isKindOfClass:[PathToken class]]){
+            [NSException raise:@"Programming error." format:@"SetTool's master token needs to be of type PathToken."];
+        }
+        token.home = self;
+        self.masterToken = token;
+    };
+    self.masterToken.didCreateClone = cloneCreationHandler;
+    
+    self.arrayEntity = self.masterToken.spatialEntity;
     [self updateView];
 }
 
@@ -285,7 +295,7 @@
     if (token.spatialEntity == self.arrayEntity){
         // masterToken is removed
         self.arrayEntity = [[ArrayEntity alloc] init];
-        masterToken = nil;
+        self.masterToken = nil;
     }else{
         [self.arrayEntity removeObject:token.spatialEntity];
     }
@@ -294,10 +304,10 @@
 }
 
 -(void)removeMaster{
-    if (masterToken){
-        [masterToken removeFromSuperview];
+    if (self.masterToken){
+        [self.masterToken removeFromSuperview];
         self.arrayEntity = [[ArrayEntity alloc] init];
-        masterToken = nil;
+        self.masterToken = nil;
     }
 }
 
@@ -315,7 +325,7 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     CGPoint touchPoint = [[touches anyObject] locationInView:self.toolView];
     
-    if (CGRectContainsPoint(masterToken.frame, touchPoint)){
+    if (CGRectContainsPoint(self.masterToken.frame, touchPoint)){
         moveMode = NO;
         return;
     }
