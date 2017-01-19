@@ -13,6 +13,7 @@
 #import "CustomMKMapView.h"
 #include <cmath>
 #include "NSValue+MKMapPoint.h"
+#include "CustomMKPolyline.h"
 
 using namespace std;
 
@@ -62,82 +63,15 @@ template class std::vector<double>;
 }
 
 
-// Make an asynchronous request for a route with the specified source and destination`
--(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination{
-    self.requestCompletionFlag = NO;
-    
-    // Get the direction from a start map item to an end map item
-    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-    
-    // Start map item
-    MKPlacemark *startPlacemark = [[MKPlacemark alloc] initWithCoordinate:source.latLon addressDictionary:nil];
-    MKMapItem *startMapItem = [[MKMapItem alloc] initWithPlacemark:startPlacemark];
-    [startMapItem setName:source.name];
-    request.source = startMapItem;
-    
-    // End map item
-    MKPlacemark *endPlacemark = [[MKPlacemark alloc] initWithCoordinate:destination.latLon addressDictionary:nil];
-    MKMapItem *endMapItem = [[MKMapItem alloc] initWithPlacemark:endPlacemark];
-    [endMapItem setName:destination.name];
-    request.destination = endMapItem;
-    
-    
-    request.requestsAlternateRoutes = YES;
-    MKDirections *directions =
-    [[MKDirections alloc] initWithRequest:request];
-    
-    [directions calculateDirectionsWithCompletionHandler:
-     ^(MKDirectionsResponse *response, NSError *error) {
-         if (error) {
-             // Handle Error
-             UIAlertView *alert = [[UIAlertView alloc]
-                                   initWithTitle:@"Direction request error."
-                                   message: @"Direction request error."
-                                   delegate:self
-                                   cancelButtonTitle:@"OK"
-                                   otherButtonTitles:nil];
-             [alert show];
-         } else {
-             
-             self.annotation.pointType = path;
-             [self setContent: [NSMutableArray arrayWithObjects:source, destination, nil]];
-             self.annotationDictionary = [NSMutableDictionary dictionary];
-             self.annotationDictionary[@0] = source;
-             self.annotationDictionary[@1] = destination;
-             
-             self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
-             
-             NSLog(@"A direction response for the route %@ is received.",
-                   self.name);
-             
-             // There could be multiple routes
-             for (MKRoute *route in response.routes)
-             {
-                 // Populate a route
-                 self.polyline = route.polyline;
-                 
-                 self.requestCompletionFlag = YES;
-                 if (self.routeReadyBlock){
-                     self.routeReadyBlock();
-                     self.routeReadyBlock = nil;
-                 }
-                 
-                 // There could be multiple routes. Should I store them all?
-                 // For now I will save one only
-                 break;
-             }
-         }
-         
-     }];
-}
-
-
 //----------------
 // MARK: --Interactions--
 //----------------
 - (double)getPointDistanceToTouch:(UITouch*)touch{
-    // TODO: need to clean this part (the algorithm is very inefficient)
     
+    if (!self.polyline)
+        return 1000;
+    
+    // TODO: need to clean this part (the algorithm is very inefficient)
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     CGPoint touchPoint = [touch locationInView:mapView];
     CLLocationCoordinate2D coord = [mapView convertPoint:touchPoint toCoordinateFromView:mapView];

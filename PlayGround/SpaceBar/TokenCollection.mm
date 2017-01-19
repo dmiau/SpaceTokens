@@ -85,8 +85,7 @@
 }
 
 -(void)resetAnnotationColor{
-    for (SpaceToken *aToken in tokenArray){
-        
+    for (SpaceToken *aToken in [self getTokenArray]){
         // Remove the hightlight of all SpaceTokens
         aToken.spatialEntity.annotation.isHighlighted = NO;
     }
@@ -109,7 +108,6 @@
 }
 
 - (NSArray <SpaceToken*>*)getTokenArray{
-//    NSArray *outArray = [NSArray arrayWithArray:tokenArray];
     
     NSMutableArray *outArray = [NSMutableArray array];
     // Collect the tokens from TokenCollection

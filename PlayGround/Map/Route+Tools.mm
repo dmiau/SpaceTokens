@@ -35,15 +35,108 @@ using namespace std;
     [aRoute requestRouteWithSource:source Destination:destination];
 }
 
+// Make an asynchronous request for a route with the specified source and destination`
+-(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination{
+    self.requestCompletionFlag = NO;
+    
+    // Get the direction from a start map item to an end map item
+    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    
+    // Start map item
+    MKPlacemark *startPlacemark = [[MKPlacemark alloc] initWithCoordinate:source.latLon addressDictionary:nil];
+    MKMapItem *startMapItem = [[MKMapItem alloc] initWithPlacemark:startPlacemark];
+    [startMapItem setName:source.name];
+    request.source = startMapItem;
+    
+    // End map item
+    MKPlacemark *endPlacemark = [[MKPlacemark alloc] initWithCoordinate:destination.latLon addressDictionary:nil];
+    MKMapItem *endMapItem = [[MKMapItem alloc] initWithPlacemark:endPlacemark];
+    [endMapItem setName:destination.name];
+    request.destination = endMapItem;
+    
+    
+    request.requestsAlternateRoutes = YES;
+    MKDirections *directions =
+    [[MKDirections alloc] initWithRequest:request];
+    
+    [directions calculateDirectionsWithCompletionHandler:
+     ^(MKDirectionsResponse *response, NSError *error) {
+         if (error) {
+             // Handle Error
+             UIAlertView *alert = [[UIAlertView alloc]
+                                   initWithTitle:@"Direction request error."
+                                   message: @"Direction request error."
+                                   delegate:self
+                                   cancelButtonTitle:@"OK"
+                                   otherButtonTitles:nil];
+             [alert show];
+         } else {
+             
+             self.annotation.pointType = path;
+             [self setContent: [NSMutableArray arrayWithObjects:source, destination, nil]];
+             self.annotationDictionary = [NSMutableDictionary dictionary];
+             self.annotationDictionary[@0] = source;
+             self.annotationDictionary[@1] = destination;
+             
+             self.name = [NSString stringWithFormat:@"%@ - %@", source.name, destination.name];
+             
+             NSLog(@"A direction response for the route %@ is received.",
+                   self.name);
+             
+             // There could be multiple routes
+             for (MKRoute *route in response.routes)
+             {
+                 // Populate a route
+                 self.polyline = [CustomMKPolyline
+                                  polylineWithPoints:route.polyline.points
+                                  count:route.polyline.pointCount];
+                 
+                 self.requestCompletionFlag = YES;
+                 if (self.routeReadyBlock){
+                     self.routeReadyBlock();
+                     self.routeReadyBlock = nil;
+                 }
+                 
+                 // There could be multiple routes. Should I store them all?
+                 // For now I will save one only
+                 break;
+             }
+         }
+         
+     }];
+}
+
 
 -(void)requestRouteFromEntities: (NSArray *)entityArray{
+    
+    // Remove the current annotation if there is any
+    self.isMapAnnotationEnabled = NO;
     [self setContent: [entityArray mutableCopy]];
+    [self updateRouteForContentArray];
+}
+
+
+-(void)updateRouteForContentArray{
+    
+    // Remove the current annotation if there is any
+    self.isMapAnnotationEnabled = NO;
+    
+    if ([contentArray count] < 2){
+        self.polyline = nil;
+        // Execute the route ready block
+        if (self.routeReadyBlock){
+            self.routeReadyBlock();
+        }
+        return;
+    }
+    
+    
     routeSegmentArray = [NSMutableArray array];
     
     // Interate over each pair to get pari-wise routes
-    for (int i = 1; i < [entityArray count]; i++){
-        SpatialEntity *source = entityArray[i-1];
-        SpatialEntity *destination = entityArray[i];
+    for (int i = 1; i < [contentArray count]; i++){
+        SpatialEntity *source = contentArray[i-1];
+        SpatialEntity *destination = contentArray[i];
         
         if (![source isKindOfClass:[POI class]]){
             [self notAnPOIAlert:source];
@@ -64,6 +157,7 @@ using namespace std;
         [aRoute requestRouteWithSource:(POI*)source Destination:(POI*)destination];
     }
 }
+
 
 -(void)assembleMutliSegmentRoute{
     BOOL allCompletionFlag = true;

@@ -41,6 +41,4 @@ using namespace std;
                 toLatLon: (CLLocationCoordinate2D&) latLon
              orientation: (double&) degree;
 
-// Get the bounding box of the LineEntity
--(MKMapRect)getBoundingMapRect;
 @end

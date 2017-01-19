@@ -52,15 +52,26 @@ template class std::vector<double>;
 //-----------------
 -(void)setPolyline:(CustomMKPolyline *)polyline{
     
-    if (![polyline isKindOfClass:[CustomMKPolyline class]]){
-        CustomMKPolyline *tempPolyline = [CustomMKPolyline polylineWithPoints:polyline.points count:polyline.pointCount];
-        _polyline = tempPolyline;
+    if (!polyline){
+        // polyline is nil
+        _polyline = nil;
+        self.annotation = nil;
+        
     }else{
-        _polyline = polyline;
+        if (![polyline isKindOfClass:[CustomMKPolyline class]]){
+            // Why do I need this?
+            // The polyline property needs to be of the type CustomMKPolyline so
+            // it can generate renderer.
+            
+            CustomMKPolyline *tempPolyline = [CustomMKPolyline polylineWithPoints:polyline.points count:polyline.pointCount];
+            _polyline = tempPolyline;
+        }else{
+            _polyline = polyline;
+        }
+        
+        [self populateInternalRouteProperties];
+        self.annotation = _polyline;
     }
-    
-    [self populateInternalRouteProperties];
-    self.annotation = _polyline;
 }
 
 
@@ -77,7 +88,8 @@ template class std::vector<double>;
     
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
-    if (isMapAnnotationEnabled){
+    // No need to display the annotation when there is no polyline
+    if (isMapAnnotationEnabled && self.polyline){
         // Add the annotation
         [mapView addOverlay:self.polyline level:MKOverlayLevelAboveRoads];
     }else{
@@ -130,11 +142,25 @@ template class std::vector<double>;
     //----------------
     MKMapRect mapRect = [self getBoundingMapRect];
     MKCoordinateRegion coordRegion = MKCoordinateRegionForMapRect(mapRect);
-    self.latLon = coordRegion.center;
+    
+    // Get the latLon of the 50% point
+    CLLocationCoordinate2D midLatLon;
+    double midOrientation;
+    [self convertPercentage:0.5 toLatLon:midLatLon orientation:midOrientation];
+    
+    self.latLon = midLatLon;
+    
+    // Need to compute a new coordinate span    
     self.coordSpan = coordRegion.span;
 }
 
 -(MKMapRect)getBoundingMapRect{
+    
+    if (!self.polyline){
+        // If a polyline does not exist, the route object has only one or two entities.
+        return [super getBoundingMapRect];
+    }
+    
     double minMapX, maxMapX, minMapY, maxMapY;
     
     vector<double>::iterator result = min_element(self.mapPointX->begin(), self.mapPointX->end());

@@ -36,7 +36,6 @@ using namespace std;
 - (id)initWithMKRoute: (MKRoute *) aRoute Source: (POI*) source
           Destination: (POI*) destination;
 
-
 //------------------
 // tools
 //------------------
@@ -44,6 +43,5 @@ using namespace std;
 
 // Create route with multiple points
 -(void)requestRouteFromEntities: (NSArray *)entityArray;
-
--(void)requestRouteWithSource:(POI*) source Destination:(POI*) destination;
+-(void)updateRouteForContentArray;
 @end

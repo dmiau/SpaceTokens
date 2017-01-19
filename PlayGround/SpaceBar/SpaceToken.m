@@ -46,7 +46,6 @@
     self = [super init];
     
     if (self){
-        [self setBackgroundColor:[UIColor grayColor]];
         self.spatialEntity = [[SpatialEntity alloc] init];
         self.mapViewXY = CGPointMake(0, 0);
         
@@ -72,6 +71,7 @@
         hasReportedDraggingEvent = NO;
         self.counterPart = nil;
         self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
+        [self restoreDefaultStyle];
         
         //----------------
         // Use gesture recognizer by default
@@ -80,6 +80,10 @@
         self.isCustomGestureRecognizerEnabled = YES;
     }
     return self;
+}
+
+- (void)restoreDefaultStyle{
+    [self setBackgroundColor:[UIColor grayColor]];
 }
 
 #pragma mark --setters--
@@ -304,7 +308,7 @@
 }
 
 - (void)flashTimerAction{
-    [self setBackgroundColor:[UIColor grayColor]];
+    [self restoreDefaultStyle];
 }
 
 - (void)showAnchorVisualIndicatorAfter:(double) second{

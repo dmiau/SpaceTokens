@@ -20,11 +20,12 @@
 
 - (id) init{
     self = [super init];
-    
-    // Change the color to orange
-    [self setBackgroundColor:[UIColor orangeColor]];
-    
+    [self restoreDefaultStyle];
     return self;
+}
+
+- (void)restoreDefaultStyle{
+    [self setBackgroundColor:[UIColor orangeColor]];
 }
 
 @end

@@ -1002,6 +1002,8 @@
 				9A0D20851E26D40400191054 /* SetTool.xib */,
 				9A0D20891E26FB3500191054 /* SetCollectionView.h */,
 				9A0D208A1E26FB3500191054 /* SetCollectionView.m */,
+				9ACE01571E292F9A0010F651 /* AdditionTool.h */,
+				9ACE01581E292F9A0010F651 /* AdditionTool.mm */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -1113,8 +1115,6 @@
 				9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */,
 				9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */,
 				9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */,
-				9ACE01571E292F9A0010F651 /* AdditionTool.h */,
-				9ACE01581E292F9A0010F651 /* AdditionTool.mm */,
 				9A62F1E21C62C6BF00A39DAF /* Tools.h */,
 				9A62F1E31C62C6BF00A39DAF /* Tools.m */,
 				9A84136C1C6FB39B004DF8D1 /* Constants.m */,

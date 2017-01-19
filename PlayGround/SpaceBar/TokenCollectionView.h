@@ -18,7 +18,7 @@
 
 @property BOOL isVisible;
 
-@property ArrayEntity *arrayEntity;
+@property ArrayEntity* arrayEntity;
 
 +(TokenCollectionView*)sharedManager;
 
@@ -33,4 +33,6 @@
 
 -(void)insertToken: (SpaceToken*) token;
 -(void)removeToken: (SpaceToken*) token;
+
+-(int)getIndexOfToken:(SpaceToken*)token;
 @end

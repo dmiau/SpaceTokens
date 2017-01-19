@@ -16,12 +16,13 @@
 
 #import "ArrayEntity.h"
 #import "AdditionTool.h"
+#import "PathToken.h"
 
 typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 @implementation ArrayTool{
     UIButton *pathModeButton;
-    SpaceToken *masterToken;
+    PathToken *masterToken;
     ArrayToolMode arrayToolMode;
     AdditionTool *additionTool;
 }
@@ -59,6 +60,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     arrayToolMode = ArrayMode;
     
+    self.arrayEntity = [[Route alloc] init];
     
     // Initialize an AdditionTool
     CGRect toolFrame = CGRectMake(0, 60, 60, self.frame.size.height-120);
@@ -104,6 +106,11 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     }
 }
 
+// MARK: Setters
+-(void)setArrayEntity:(Route *)arrayEntity{
+    [super setArrayEntity:arrayEntity];
+}
+
 
 #pragma mark <UICollectionViewDataSource>
 // TODO: need to implement a viewWillAppear
@@ -113,7 +120,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         && !masterToken)
     {
         // Insert a master token on the top
-        [self initMasterToken];
+        [self insertMaster:nil];
     }
     
     if ([[self.arrayEntity getContent] count]>=2
@@ -136,6 +143,51 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     return outCount;
 }
 
+//------------------
+// Insert a master
+//------------------
+-(void) insertMaster:(PathToken*) token{
+    if (masterToken){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"A master token already exists."
+                                                        message:@"Please remove the master token first before adding one."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if (!token){
+        // Create a master using the current self.arrayEntity
+        masterToken = [[TokenCollection sharedManager]
+                       addTokenFromSpatialEntity:self.arrayEntity];
+    }else{
+        masterToken = [[TokenCollection sharedManager]
+                       addTokenFromSpatialEntity:token.spatialEntity];
+        
+        self.arrayEntity = masterToken.spatialEntity;
+    }
+    
+    masterToken.home = self;
+    
+    CGRect frame = CGRectZero;
+    frame.size = CGSizeMake(60, 20);
+    [self addSubview:masterToken];
+    
+    // After the route is updated, its annotation needs to be updated, too.
+    void (^requestCompletionBlock)(void)=^{
+        // Show the annotation after the route is ready
+        self.arrayEntity.isMapAnnotationEnabled = YES;
+    };
+    self.arrayEntity.routeReadyBlock = requestCompletionBlock;
+    
+    [self reloadData];
+}
+
+
+//------------------
+// Insert a token
+//------------------
 -(void) insertToken: (SpaceToken*) token{
     
     SpatialEntity *anEntity = token.spatialEntity;
@@ -147,60 +199,58 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         [self.arrayEntity addObject:token.spatialEntity];
     }
     
+    // Update the line if there are more than two entities
+    if ([[self.arrayEntity getContent] count]>1){
+        [self.arrayEntity updateRouteForContentArray];
+    }
+    
     // refresh the token panel
     [self reloadData];
 }
 
--(void) insertMaster:(SpaceToken*) token{
-    if (masterToken){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"A master token already exists."
-                                                        message:@"Please remove the master token first before adding one."
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
+-(void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [super collectionView: collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
+    // Update the line if there are more than two entities
+    if ([[self.arrayEntity getContent] count]>1){
+        [self.arrayEntity updateRouteForContentArray];
     }
-
-    masterToken = [[TokenCollection sharedManager]
-                   addTokenFromSpatialEntity:token.spatialEntity];
-    masterToken.home = self;
-    
-    CGRect frame = CGRectZero;
-    frame.size = CGSizeMake(60, 20);
-    [self addSubview:masterToken];
-    
-    self.arrayEntity = masterToken.spatialEntity;
-    [self reloadData];
 }
 
+//------------------
+// Remove a token
+//------------------
 -(void)removeToken: (SpaceToken*) token{
+    
+    // Get the index of the token
+    int i = [self getIndexOfToken:token];
     [token removeFromSuperview];
     
     // Depending on the token, different things need to be done
     if (token.spatialEntity == self.arrayEntity){
         // masterToken is removed
-        self.arrayEntity = [[ArrayEntity alloc] init];
+        
+        // Remove the annotation before the master token is removed
+        self.arrayEntity.isMapAnnotationEnabled = NO;
+        self.arrayEntity = [[Route alloc] init];
     }else{
-        [self.arrayEntity removeObject:token.spatialEntity];
+        [self.arrayEntity removeObjectAtIndex:i];
     }
 
     if ([[self.arrayEntity getContent] count] == 0){
         // Remove the masterToken
         [masterToken removeFromSuperview];
         masterToken = nil;
-        
-        // Remove the pathButton
-        [pathModeButton removeFromSuperview];
-        pathModeButton = nil;
     }
     
+    // Remove the path button
     if ([[self.arrayEntity getContent] count] < 2){
         // Remove the pathButton
         [pathModeButton removeFromSuperview];
         pathModeButton = nil;
     }
     
+    [self.arrayEntity updateRouteForContentArray];
     [self reloadData];
 }
 
@@ -237,16 +287,8 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 }
 
 //------------------
-// Creating a master token
+// Creating a path button
 //------------------
-- (void)initMasterToken{
-    masterToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:self.arrayEntity];
-    masterToken.home = self;
-    
-    CGRect frame = CGRectZero;
-    frame.size = CGSizeMake(60, 20);
-    [self addSubview:masterToken];
-}
 
 - (void)initPathModeSwitch{
     pathModeButton = [UIButton buttonWithType:UIButtonTypeCustom];

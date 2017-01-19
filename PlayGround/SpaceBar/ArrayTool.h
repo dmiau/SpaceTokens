@@ -11,12 +11,15 @@
 
 @class SpatialEntity;
 @class ArrayEntity;
-@class SpaceToken;
+@class PathToken;
+@class Route;
 
 @interface ArrayTool : TokenCollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 +(ArrayTool*)sharedManager;
 
+@property Route* arrayEntity;
+
 -(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
--(void)insertMaster:(SpaceToken*) token;
+-(void)insertMaster:(PathToken*) token;
 @end

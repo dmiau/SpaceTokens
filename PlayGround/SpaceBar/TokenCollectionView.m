@@ -319,6 +319,18 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     [self reloadData];
 }
 
+-(int)getIndexOfToken:(SpaceToken*)token{
+    int index;
+    int i = 0;
+    for (CollectionViewCell *cell in [self visibleCells]){
+        if (cell.spaceToken == token){
+            return i;
+        }
+        i++;
+    }
+    return index;
+}
+
 #pragma mark <UICollectionViewDelegate>
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

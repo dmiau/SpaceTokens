@@ -25,4 +25,7 @@
 
 -(NSArray <SpatialEntity*> *)getContent;
 -(void)setContent:(NSArray <SpatialEntity*> *)inputArray;
+
+// Get the bounding box of the entities
+-(MKMapRect)getBoundingMapRect;
 @end
