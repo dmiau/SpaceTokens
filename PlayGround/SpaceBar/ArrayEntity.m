@@ -13,7 +13,7 @@
 // MARK: Initialization
 -(id)init{
     self = [super init];
-    self.name = @"NoNamed";
+    self.name = @"UnNamed";
     contentArray = [NSMutableArray array];
     return self;
 }

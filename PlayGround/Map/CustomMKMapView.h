@@ -79,7 +79,7 @@
                                             toB: (CLLocationCoordinate2D) coordB;
 
 + (MKMapRect)MKMapRectForCoordinateRegion:(MKCoordinateRegion)region;
-
++ (BOOL) validateCoordinate:(CLLocationCoordinate2D) coord;
 
 //==============================
 // Private Methods

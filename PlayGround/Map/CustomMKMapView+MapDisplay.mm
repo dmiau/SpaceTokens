@@ -29,9 +29,11 @@
     CLLocationCoordinate2D centroid = [self convertPoint:
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                     toCoordinateFromView: self];
-    [self setRegion:
-     MKCoordinateRegionMake(centroid,MKCoordinateSpanMake(0.01, 0.01))
-     animated:animatedFlag];
+    if ([CustomMKMapView validateCoordinate:centroid]){
+        [self setRegion:
+         MKCoordinateRegionMake(centroid,MKCoordinateSpanMake(0.01, 0.01))
+               animated:animatedFlag];
+    }
 }
 
 // Similar to the above method, but preserves the orientation
@@ -47,8 +49,9 @@
     CLLocationCoordinate2D centroid = [self convertPoint:
                                        CGPointMake(targetCGPoint.x + diffX, targetCGPoint.y + diffY)
                                               toCoordinateFromView: self];
-    [self setCenterCoordinate:centroid animated:animatedFlag];
-
+    if ([CustomMKMapView validateCoordinate:centroid]){
+        [self setCenterCoordinate:centroid animated:animatedFlag];
+    }
     // Set the orientation
     if (orientation){
         self.camera.heading = orientation;
@@ -169,7 +172,10 @@
         span.latitudeDelta = max(0.01, span.latitudeDelta);
         span.longitudeDelta = max(0.01, span.longitudeDelta);
         region.span = span;
-        [self setRegion:region animated:NO];
+        if ([CustomMKMapView validateCoordinate:region.center]){
+            [self setRegion:region animated:NO];
+        }
+ 
     }else{
         
         //----------------------------------

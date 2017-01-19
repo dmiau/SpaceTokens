@@ -194,7 +194,9 @@
         }else{
             MKCoordinateRegion region =
             MKCoordinateRegionMake(place.coordinate, MKCoordinateSpanMake(0.01, 0.01));
-            [mapView setRegion:region animated:YES];
+            if ([CustomMKMapView validateCoordinate:region.center]){
+                [mapView setRegion:region animated:YES];
+            }
         }
     }else{
         //----------------------

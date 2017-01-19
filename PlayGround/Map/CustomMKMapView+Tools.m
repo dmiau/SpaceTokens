@@ -36,4 +36,20 @@
                                                                       region.center.longitude + region.span.longitudeDelta / 2));
     return MKMapRectMake(MIN(a.x,b.x), MIN(a.y,b.y), ABS(a.x-b.x), ABS(a.y-b.y));
 }
+
++ (BOOL) validateCoordinate:(CLLocationCoordinate2D) coord{
+    if (CLLocationCoordinate2DIsValid(coord)){
+        return YES;
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Map error."
+                                                        message:@"setRegion failed. The given coordinate is invalid."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return NO;
+    }
+}
+
+
 @end

@@ -21,9 +21,11 @@
         [self.spaceBar.activeRoute convertPercentage: percentage
                              toLatLon: coord orientation:orientationInDegree];
         
-        [self.mapView setRegion: MKCoordinateRegionMake(coord,
-                                                        MKCoordinateSpanMake(0.1, 0.1))];
-        
+        if ([CustomMKMapView validateCoordinate:coord]){
+            
+            [self.mapView setRegion: MKCoordinateRegionMake(coord,
+                                                            MKCoordinateSpanMake(0.1, 0.1))];
+        }
         // set the orientation
 //        self.mapView.camera.heading = orientationInDegree;
     }

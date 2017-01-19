@@ -52,6 +52,11 @@ template class std::vector<double>;
 //-----------------
 -(void)setPolyline:(CustomMKPolyline *)polyline{
     
+    BOOL cachedAnnotationStatus = self.isMapAnnotationEnabled;
+    
+    // Remove the existing annotation
+    self.isMapAnnotationEnabled = NO;
+    
     if (!polyline){
         // polyline is nil
         _polyline = nil;
@@ -72,6 +77,8 @@ template class std::vector<double>;
         [self populateInternalRouteProperties];
         self.annotation = _polyline;
     }
+    
+    self.isMapAnnotationEnabled = cachedAnnotationStatus;
 }
 
 
@@ -143,20 +150,28 @@ template class std::vector<double>;
     MKMapRect mapRect = [self getBoundingMapRect];
     MKCoordinateRegion coordRegion = MKCoordinateRegionForMapRect(mapRect);
     
-    // Get the latLon of the 50% point
-    CLLocationCoordinate2D midLatLon;
-    double midOrientation;
-    [self convertPercentage:0.5 toLatLon:midLatLon orientation:midOrientation];
-    
-    self.latLon = midLatLon;
-    
-    // Need to compute a new coordinate span    
-    self.coordSpan = coordRegion.span;
+    // 
+    if ([contentArray count] == 0){
+        // The route contains no entities
+        self.latLon = coordRegion.center;
+        // Need to compute a new coordinate span
+        self.coordSpan = coordRegion.span;
+    }else{
+        // Get the latLon of the 50% point
+        CLLocationCoordinate2D midLatLon;
+        double midOrientation;
+        [self convertPercentage:0.5 toLatLon:midLatLon orientation:midOrientation];
+        
+        self.latLon = midLatLon;
+        
+        // Need to compute a new coordinate span
+        self.coordSpan = coordRegion.span;
+    }
 }
 
 -(MKMapRect)getBoundingMapRect{
     
-    if (!self.polyline){
+    if (!self.polyline || [self.polyline pointCount] == 0){
         // If a polyline does not exist, the route object has only one or two entities.
         return [super getBoundingMapRect];
     }

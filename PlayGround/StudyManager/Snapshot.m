@@ -63,7 +63,7 @@
 #pragma mark --CommonSetup--
 - (void) setupMapSpacebar{
     // Position the map to the initial condition
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);    
     [self.rootViewController.mapView setRegion:region animated:NO];
     
     // Set up the SpaceToken correctly

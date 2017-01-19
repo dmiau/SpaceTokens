@@ -70,7 +70,6 @@
     
     CustomMKPolyline *polyline = [CustomMKPolyline polylineWithPoints:tempMapPointArray count:[entityArray count]];
     self.polyline = polyline;
-
 }
 
 

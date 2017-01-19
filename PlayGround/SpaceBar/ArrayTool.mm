@@ -79,8 +79,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     return self;
 }
 
-
-
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
     
@@ -213,6 +211,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     // Update the line if there are more than two entities
     if ([[self.arrayEntity getContent] count]>1){
         [self.arrayEntity updateArrayForContentArray];
+        self.arrayEntity.isMapAnnotationEnabled = YES;
     }
     
     // refresh the token panel
@@ -225,6 +224,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     // Update the line if there are more than two entities
     if ([[self.arrayEntity getContent] count]>1){
         [self.arrayEntity updateArrayForContentArray];
+        self.arrayEntity.isMapAnnotationEnabled = YES;
     }
 }
 
@@ -261,8 +261,12 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         [pathModeButton removeFromSuperview];
         pathModeButton = nil;
     }
-    
+ 
     [self.arrayEntity updateArrayForContentArray];
+    if ([[self.arrayEntity getContent] count]>1){
+        self.arrayEntity.isMapAnnotationEnabled = YES;
+    }
+    
     [self reloadData];
 }
 
