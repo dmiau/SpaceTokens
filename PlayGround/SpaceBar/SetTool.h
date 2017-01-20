@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class SpaceToken;
 @class PathToken;
-@class ArrayEntity;
+@class Route;
 @class MiniMapView;
 @class SetCollectionView;
 
@@ -24,7 +24,7 @@ typedef enum {SetMode, MapMode, EmptyMode} SetToolMode;
 
 @property PathToken *masterToken;
 @property BOOL isVisible;
-@property ArrayEntity *arrayEntity;
+@property Route *arrayEntity;
 
 -(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
 -(void)insertMaster:(SpaceToken*) token;

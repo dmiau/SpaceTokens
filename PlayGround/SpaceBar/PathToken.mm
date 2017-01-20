@@ -43,7 +43,7 @@
                 [self setBackgroundColor:[UIColor purpleColor]];
                 break;
             case SETMODE:
-                [self setBackgroundColor:[UIColor yellowColor]];
+                [self setBackgroundColor:[UIColor brownColor]];
                 break;
             case ROUTEMODE:
                 [self setBackgroundColor:[UIColor orangeColor]];

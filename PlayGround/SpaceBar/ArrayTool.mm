@@ -24,6 +24,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     UIButton *pathModeButton;
     ArrayToolMode arrayToolMode;
     AdditionTool *additionTool;
+    int counter;
 }
 
 
@@ -58,8 +59,9 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     [self setTopAlignmentOffset:0];
     
     arrayToolMode = ArrayMode;
-    
+    counter = 0;
     self.arrayEntity = [[Route alloc] init];
+    self.arrayEntity.name = [NSString stringWithFormat:@"AC-%d", counter++];
     self.arrayEntity.appearanceMode = ARRAYMODE;
     
     // Initialize an AdditionTool
@@ -244,6 +246,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         // Remove the annotation before the master token is removed
         self.arrayEntity.isMapAnnotationEnabled = NO;
         self.arrayEntity = [[Route alloc] init];
+        self.arrayEntity.name = [NSString stringWithFormat:@"AC-%d", counter++];
         self.arrayEntity.appearanceMode = ARRAYMODE;
     }else{
         [self.arrayEntity removeObjectAtIndex:i];

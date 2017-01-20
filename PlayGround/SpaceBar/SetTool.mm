@@ -18,6 +18,7 @@
 #import "SetCollectionView.h"
 
 #import "AdditionTool.h"
+#import "Route.h"
 
 //-------------------
 // Parameters
@@ -28,6 +29,7 @@
 @implementation SetTool{
     BOOL moveMode;
     AdditionTool *additionTool;
+    int counter;
 }
 
 // MARK: Initialization
@@ -51,7 +53,7 @@
     self.setToolMode = EmptyMode;
     self.masterToken = nil;
     moveMode = NO; //
-
+    counter = 0;
     
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     self.frame = mapView.frame;
@@ -83,7 +85,9 @@
     [self.setCollectionView initObject];
     [self.setCollectionView setHidden:NO];
     
-    self.arrayEntity = [[ArrayEntity alloc] init];
+    self.arrayEntity = [[Route alloc] init];
+    self.arrayEntity.name = [NSString stringWithFormat:@"SC-%d", counter++];
+    self.arrayEntity.appearanceMode = SETMODE;
     
     //----------------
     // Add an Addition Tool
@@ -170,7 +174,7 @@
     }
 }
 
--(void)setArrayEntity:(ArrayEntity *)arrayEntity{
+-(void)setArrayEntity:(Route *)arrayEntity{
     _arrayEntity = arrayEntity;
     self.setCollectionView.arrayEntity = arrayEntity;
 }
@@ -294,7 +298,9 @@
     // Depending on the token, different things need to be done
     if (token.spatialEntity == self.arrayEntity){
         // masterToken is removed
-        self.arrayEntity = [[ArrayEntity alloc] init];
+        self.arrayEntity = [[Route alloc] init];
+        self.arrayEntity.name = [NSString stringWithFormat:@"SC-%d", counter++];
+        self.arrayEntity.appearanceMode = SETMODE;
         self.masterToken = nil;
     }else{
         [self.arrayEntity removeObject:token.spatialEntity];
@@ -306,7 +312,9 @@
 -(void)removeMaster{
     if (self.masterToken){
         [self.masterToken removeFromSuperview];
-        self.arrayEntity = [[ArrayEntity alloc] init];
+        self.arrayEntity = [[Route alloc] init];
+        self.arrayEntity.name = [NSString stringWithFormat:@"SC-%d", counter++];
+        self.arrayEntity.appearanceMode = SETMODE;
         self.masterToken = nil;
     }
 }
