@@ -15,6 +15,9 @@
 #import "ToolPalette.h"
 #import "SetTool.h"
 
+
+#import "WildcardGestureRecognizer.h"
+
 @implementation SearchPanelView (Actions)
 
 - (void)directionButtonAction {
@@ -144,31 +147,6 @@
     setTool.isVisible = !setTool.isVisible;
 }
 
-//-----------------------
-// Drawing action
-//-----------------------
-- (IBAction)drawingAction:(id)sender {
-    
-    static DrawingView *drawingView;
-    if (!drawingView){
-        // Initialize once
-        drawingView = [[DrawingView alloc] init];
-    }
-    // Get the map object
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    
-    if ([drawingView superview]){
-        // Hide the drawing view
-        [drawingView viewWillDisappear];
-        [drawingView removeFromSuperview];
-
-    }else{
-        // Show the drawing view
-        drawingView.frame = mapView.frame;
-        [self.rootViewController.view addSubview:drawingView];
-        [drawingView viewWillAppear];
-    }
-}
 
 - (IBAction)dataAction:(id)sender {
     //-------------------
@@ -189,5 +167,88 @@
 - (IBAction)speechAction:(id)sender {
     [self.rootViewController.speechEngine showDebugLayer];
 }
+
+
+
+//-----------------------
+// Drawing action
+//-----------------------
+
+-(void)initDrawingButton{
+    //-----------------
+    // Initialize custom gesture recognizer
+    //-----------------
+    
+    // Q: Why do I need to use a custom gesture recognizer?
+    // A1: Because I need to disable the default rotation gesture recognizer
+    // A2: I don't want my touch to be cancelled by other gesture recognizer
+    // (http://stackoverflow.com/questions/5818692/how-to-avoid-touches-cancelled-event)
+    
+    WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
+    
+    tapInterceptor.touchesBeganCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesBegan:touches withEvent:event];
+    };
+    
+    tapInterceptor.touchesEndedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesEnded:touches withEvent:event];
+    };
+    
+    //    tapInterceptor.touchesMovedCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+    //        [self customTouchesMoved:touches withEvent:event];
+    //    };
+    
+    tapInterceptor.touchesCancelledCallback = ^(NSSet<UITouch*>* touches, UIEvent * event) {
+        [self customTouchesCancelled:touches withEvent:event];
+    };
+    
+    tapInterceptor.delegate = self;
+    
+    //--------------------------
+    // Add gesture recognizers
+    //--------------------------
+    
+    [self.drawingButton addGestureRecognizer:tapInterceptor];
+}
+
+-(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"Drawing touch began.");
+    [self switchDrawingView:YES];
+}
+
+-(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"Drawing touch Ended.");
+    [self switchDrawingView:NO];
+}
+
+-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"Drawing touch Ended.");
+    [self switchDrawingView:NO];
+}
+
+- (void)switchDrawingView:(BOOL)flag {
+    
+    static DrawingView *drawingView;
+    if (!drawingView){
+        // Initialize once
+        drawingView = [[DrawingView alloc] init];
+    }
+    // Get the map object
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    if (!flag){
+        // Hide the drawing view
+        [drawingView viewWillDisappear];
+        [drawingView removeFromSuperview];
+        
+    }else{
+        // Show the drawing view
+        drawingView.frame = mapView.frame;
+        [self.rootViewController.view addSubview:drawingView];
+        [drawingView viewWillAppear];
+    }
+}
+
+
 
 @end

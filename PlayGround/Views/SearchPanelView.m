@@ -18,6 +18,15 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 #import "TokenCollectionView.h"
+#import "SearchPanelView+Actions.h"
+
+
+//-------------------
+// Parameters
+//-------------------
+#define topPanelHeight 120
+#define bottomPanalHeight 40
+
 
 @implementation SearchPanelView
 
@@ -56,10 +65,9 @@
     app.window.rootViewController;
     self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
     
-    // set up the color of the view
-    [self setBackgroundColor:[UIColor colorWithRed: 0.97 green:0.97 blue:0.97
-                                             alpha:1.0]];
     [self initSearchBar];
+    
+    [self initDrawingButton];
 }
 
 //----------------------
@@ -76,19 +84,21 @@
     ((TokenCollectionView*)[TokenCollectionView sharedManager]).isVisible = YES;
     self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
     
-    // Configure the frame
-    // Configure the dimesion of the panel
-    float width = self.rootViewController.mapView.frame.size.width;
-    float height = self.rootViewController.mapView.frame.size.height;
+    self.frame = self.rootViewController.view.frame;
     
-    CGRect frame = CGRectZero;
-    frame.size.width = width;
-    frame.size.height = self.rootViewController.view.frame.size.height - height;
+    // Adjust the frame of MapView
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    CGRect mapFrame = CGRectMake(0, topPanelHeight,
+                                 self.frame.size.width,
+                                 self.frame.size.height - topPanelHeight - bottomPanalHeight);
+    mapView.frame = mapFrame;
     
-    self.frame = frame;
+    // Refresh the position of the tokens
+    [TokenCollectionView sharedManager].isVisible = YES;
 }
 
 -(void)removePanel{
+    [self removeFromSuperview];
     // Remove the direction button
     [self.directionButton removeFromSuperview];
 }
@@ -96,11 +106,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [ViewController sharedManager].isStatusBarHidden = NO;
     
-    // Reset the frame (for iPad)
-    CGRect appFrame = self.rootViewController.view.frame;
-    CGRect panelFrame = CGRectMake(0, 0, appFrame.size.width, 150);
-    self.frame = panelFrame;
 }
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {    
+    // UIView will be "transparent" for touch events if we return NO
+    return (point.y < topPanelHeight || point.y > self.frame.size.height - bottomPanalHeight);
+}
+
 
 #pragma mark -- button actions --
 
@@ -172,7 +184,7 @@
     aPOI.latLon = place.coordinate;
     aPOI.annotation.pointType = dropped;
     aPOI.isMapAnnotationEnabled = YES;
-    aPOI.isEnabled = NO;
+    aPOI.isEnabled = YES;
     
     // Add the restul to entityDB
     [[EntityDatabase sharedManager] addEntity:aPOI];
@@ -228,5 +240,6 @@ didFailAutocompleteWithError:(NSError *)error {
 (GMSAutocompleteResultsViewController *)resultsController {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
+
 
 @end

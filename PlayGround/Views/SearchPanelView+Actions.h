@@ -9,5 +9,9 @@
 #import "SearchPanelView.h"
 
 @interface SearchPanelView (Actions)
+-(void)initDrawingButton;
+-(void)customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+-(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+-(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 
 @end

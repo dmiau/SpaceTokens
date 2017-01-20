@@ -25,6 +25,7 @@
 @property GMSAutocompleteResultsViewController *resultsViewController;
 @property UISearchController *searchController;
 @property (nonatomic, copy) void (^searchHandlingBlock)(POI *destinationPOI);
+@property (weak, nonatomic) IBOutlet UIButton *drawingButton;
 
 //---------------
 // Search Panel actions
@@ -35,10 +36,6 @@
 
 - (IBAction)barToolAction:(id)sender;
 - (IBAction)areaToolAction:(id)sender;
-
-- (IBAction)drawingAction:(id)sender;
-
-
 
 - (IBAction)dataAction:(id)sender;
 - (IBAction)speechAction:(id)sender;

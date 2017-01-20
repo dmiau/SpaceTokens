@@ -60,10 +60,12 @@ using namespace std;
         self.toolPalette.frame = toolPaletteFrame;
         once = true;
     }
+    [self.toolPalette setHidden:YES];
+    self.drawingModeEnabled = YES;
 }
 
 -(void)viewWillDisappear{
-
+    self.drawingModeEnabled = NO;
 }
 
 
@@ -144,7 +146,7 @@ using namespace std;
         EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
         [entityDatabase addEntity:newEntity];
         newEntity.isMapAnnotationEnabled = YES;
-        
+        newEntity.annotation.isHighlighted = YES;
         // Update the collection view
         [[TokenCollectionView sharedManager] addItemFromBottom:newEntity];
     }

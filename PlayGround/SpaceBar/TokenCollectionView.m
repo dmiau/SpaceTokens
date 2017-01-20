@@ -57,14 +57,12 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // Configure the layout object
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake
-    (0, mapView.frame.size.width-60, 0, 0);
+    (0, mapView.frame.size.width- CELL_WIDTH, 0, 0);
     
     
     // Initialize a collection view
     self =
     [[TokenCollectionView alloc] initWithFrame:mapView.frame collectionViewLayout:layout];
-    
-    self.tokenWidth = 60;
     [self setTopAlignmentOffset:30];
     
     return self;
@@ -129,8 +127,17 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return ((point.x > self.frame.size.width - self.tokenWidth)
-            &&(point.y > 0));
+    
+    // Need to covert all points to the mapView coordinate since
+    // the bound of TokenCollection view could change as the number of
+    // tokens increases (this behavior is quite annoying).
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    CGPoint pointInMapView = [self convertPoint:point toView:mapView];
+    
+    CGRect validTokenRect = CGRectMake(mapView.frame.size.width - CELL_WIDTH, CELL_HEIGHT,
+                                       CELL_WIDTH, mapView.frame.size.height);
+    
+    return CGRectContainsPoint(validTokenRect, pointInMapView);
 }
 
 
@@ -142,7 +149,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     
     CGPoint tokenPoint = [touch locationInView:self];
     
-    if (tokenPoint.x >  (self.frame.size.width - self.tokenWidth * 0.5)){
+    if (tokenPoint.x >  (self.frame.size.width - CELL_WIDTH * 0.5)){
         return YES;
     }else{
         return NO;

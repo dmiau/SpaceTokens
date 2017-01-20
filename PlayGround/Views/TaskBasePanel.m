@@ -14,6 +14,7 @@
 #import "SnapshotAnchorPlus.h"
 #import "SnapshotShow.h"
 #import "GameManager.h"
+#import "TokenCollectionView.h"
 
 @implementation TaskBasePanel{
     SettingsButton *settingsButton;
@@ -99,6 +100,16 @@ static TaskBasePanel *instance;
     
     // Add the preference button
     [self addSubview: settingsButton];
+    
+    // Adjust the frame of MapView
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    CGRect mapFrame = CGRectMake(0, 150,
+                                 self.rootViewController.view.frame.size.width,
+                                 self.rootViewController.view.frame.size.height - 150);
+    mapView.frame = mapFrame;
+    
+    // Refresh the position of the tokens
+    [TokenCollectionView sharedManager].isVisible = YES;
 }
 
 
