@@ -23,7 +23,7 @@
 
 //http://www.galloway.me.uk/tutorials/singleton-classes/
 
-+ (id)sharedManager {
++ (CustomMKMapView *)sharedManager {
     static CustomMKMapView *sharedCustomMKMapView = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
