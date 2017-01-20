@@ -134,6 +134,10 @@
     _resultsViewController = [[GMSAutocompleteResultsViewController alloc] init];
     _resultsViewController.delegate = self;
     
+    
+//    _resultsViewController.autocompleteBounds =
+//    [GMSCoordinateBounds initWithCoordinate: coordinate: ];
+    
     _searchController = [[UISearchController alloc]
                          initWithSearchResultsController:_resultsViewController];
     _searchController.searchResultsUpdater = _resultsViewController;

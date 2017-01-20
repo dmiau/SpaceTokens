@@ -95,6 +95,10 @@
     }
     // remove the current annotation from the map and add it back
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+//    MKAnnotationView* anView = [mapView viewForAnnotation: self];
+//    [anView setNeedsDisplay];
+    
     [mapView removeAnnotation:self];
     [mapView addAnnotation: self];
 }
@@ -114,8 +118,9 @@
     // remove the current annotation from the map and add it back
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     [mapView removeAnnotation:self];
-    [mapView addAnnotation: self];    
+    [mapView addAnnotation: self];
 }
+
 
 //--------------
 // Helper method
@@ -186,7 +191,8 @@
         [pinView addSubview: aLabel];
     }
     
-    [pinView setEnabled:NO];
+    // Make the annotation tappable
+    [pinView setEnabled:YES];
     return pinView;
 }
 

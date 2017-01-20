@@ -84,10 +84,11 @@
     }
 }
 
--(void)resetAnnotationColor{
+-(void)resetAnnotations{
     for (SpaceToken *aToken in [self getTokenArray]){
         // Remove the hightlight of all SpaceTokens
         aToken.spatialEntity.annotation.isHighlighted = NO;
+        aToken.spatialEntity.annotation.isLableOn = NO;
     }
 }
 

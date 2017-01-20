@@ -74,8 +74,10 @@ template class std::vector<double>;
             _polyline = polyline;
         }
         
-        [self populateInternalRouteProperties];
-        self.annotation = _polyline;
+        if (polyline.pointCount > 0){
+            [self populateInternalRouteProperties];
+            self.annotation = _polyline;
+        }
     }
     
     self.isMapAnnotationEnabled = cachedAnnotationStatus;

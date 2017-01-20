@@ -11,6 +11,7 @@
 #import "Map/MiniMapView.h"
 #import <MapKit/MapKit.h>
 #import "Constants.h"
+#import "CustomPointAnnotation.h"
 
 @implementation ViewController (MapView)
 
@@ -78,6 +79,16 @@
     [self.spaceBar clearAllTouchedTokens];
     
     [self.spaceBar removeAnchorForTouches:touches];
+}
+
+-(void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    NSLog(@"annotation selected.");
+//    [[TokenCollection sharedManager] resetAnnotations];
+    if ([view.annotation isKindOfClass:[CustomPointAnnotation class]]){
+        CustomPointAnnotation *pointAnnotation = view.annotation;
+        pointAnnotation.isHighlighted = YES;
+        pointAnnotation.isLableOn = YES;
+    }
 }
 
 @end

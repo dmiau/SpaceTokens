@@ -289,6 +289,12 @@
     NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[originalSet allObjects]];
     // Create a new SpaceToken based on anchor
     [self.arrayEntity setContent: tempArray];
+    
+    // Update the line if there are more than two entities
+
+    [self.arrayEntity updateSetForContentArray];
+    self.arrayEntity.isMapAnnotationEnabled = NO;
+
     [self updateView];
 }
 
@@ -305,6 +311,9 @@
     }else{
         [self.arrayEntity removeObject:token.spatialEntity];
     }
+    
+    [self.arrayEntity updateSetForContentArray];
+    self.arrayEntity.isMapAnnotationEnabled = NO;
     
     [self updateView];
 }
