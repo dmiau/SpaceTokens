@@ -81,14 +81,4 @@
     [self.spaceBar removeAnchorForTouches:touches];
 }
 
--(void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
-    NSLog(@"annotation selected.");
-//    [[TokenCollection sharedManager] resetAnnotations];
-    if ([view.annotation isKindOfClass:[CustomPointAnnotation class]]){
-        CustomPointAnnotation *pointAnnotation = view.annotation;
-        pointAnnotation.isHighlighted = YES;
-        pointAnnotation.isLableOn = YES;
-    }
-}
-
 @end

@@ -59,9 +59,9 @@
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     MKCoordinateSpan span = mapView.region.span;
     
-    // Check the zoom level
-    if (span.latitudeDelta > 0.08 && span.longitudeDelta > 0.08)
-        return 1000;
+//    // Check the zoom level
+//    if (span.latitudeDelta > 0.08 && span.longitudeDelta > 0.08)
+//        return 1000;
     
     // Get the entity CGPoint
     CGPoint entityPoint = [mapView convertCoordinate:self.latLon toPointToView:mapView];

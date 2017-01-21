@@ -29,7 +29,8 @@ using namespace std;
         NSLog(@"Rooute: %@ added.", aRoute.name);
         
         // Update the collection view
-        [[TokenCollectionView sharedManager] addItemFromBottom:aRoute];
+        [[EntityDatabase sharedManager] addEntity:aRoute];
+        [[TokenCollectionView sharedManager] reloadData];
     };
     aRoute.routeReadyBlock = completionBlock;
     [aRoute requestRouteWithSource:source Destination:destination];

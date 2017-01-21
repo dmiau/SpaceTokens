@@ -9,6 +9,8 @@
 #import "ViewController+Annotations.h"
 #import "Map/CustomPointAnnotation.h"
 #import <MapKit/MapKit.h>
+#import "CustomMKMapView+Annotations.h"
+
 @implementation ViewController (Annotations)
 
 #pragma mark --annotation related methods--
@@ -17,5 +19,10 @@
 {    
     // Call the map annotation method
     return [self.mapView viewForAnnotation:annotation];
+}
+
+-(void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    // Let the mapView to handle annotation selection
+    [self.mapView didSelectAnnotationView:view];
 }
 @end

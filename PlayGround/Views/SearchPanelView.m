@@ -147,9 +147,6 @@
     _resultsViewController.delegate = self;
     
     
-//    _resultsViewController.autocompleteBounds =
-//    [GMSCoordinateBounds initWithCoordinate: coordinate: ];
-    
     _searchController = [[UISearchController alloc]
                          initWithSearchResultsController:_resultsViewController];
     _searchController.searchResultsUpdater = _resultsViewController;
@@ -159,11 +156,33 @@
     [subView addSubview:_searchController.searchBar];
     [_searchController.searchBar sizeToFit];
     
+    _searchController.searchBar.delegate = self;
+    
     _searchHandlingBlock = nil;
     
     // When UISearchController presents the results view, present it in
     // this view controller, not one further up the chain.
 //    self.rootViewController.definesPresentationContext = YES;
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    // Specify the search bias to the current visible map area
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    CLLocationCoordinate2D northeast =
+    CLLocationCoordinate2DMake
+    (mapView.centerCoordinate.latitude - mapView.region.span.latitudeDelta/2, mapView.centerCoordinate.longitude - mapView.region.span.longitudeDelta/2);
+    
+    CLLocationCoordinate2D southwest =
+    CLLocationCoordinate2DMake
+    (mapView.centerCoordinate.latitude + mapView.region.span.latitudeDelta/2, mapView.centerCoordinate.longitude + mapView.region.span.longitudeDelta/2);
+    
+    _resultsViewController.autocompleteBounds =
+    [[GMSCoordinateBounds alloc]
+     initWithCoordinate: northeast coordinate: southwest];
+    
+    return YES;
 }
 
 //-------------------------------

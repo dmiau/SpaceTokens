@@ -33,8 +33,11 @@
         // Check if the user touches any known entity
         for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] getEntityArray])
         {
-            if (anEntity.isEnabled && ![anEntity isKindOfClass:[ArrayEntity class]]
-                && [anEntity getPointDistanceToTouch:aTouch] < 10)
+            if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon)) &&
+               anEntity.isEnabled && ![anEntity isKindOfClass:[ArrayEntity class]]
+               && anEntity.annotation.isHighlighted
+               && [anEntity getPointDistanceToTouch:aTouch] < 15
+               )
             {
                 touchedKnownEntity = anEntity;
                 break;
@@ -109,56 +112,62 @@
         if (associatedToken){
             CGPoint mapXY = [aTouch locationInView:self.mapView];
             
-            // Check if the token is in the insertion zone of TokenCollectionView or ArrayTool
-            ArrayTool *arrayTool = [ArrayTool sharedManager];
-            TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
             
-            // Create a SpaceToken if the touch falls into the creation zone
-            if ([tokenCollectionView isTouchInInsertionZone:aTouch]){
-
-                // Do nothing in the study mode
-                if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+            // Check if the *highlighted* token is being pushed into the insertion zone
+            if (associatedToken.spatialEntity.annotation.isHighlighted){
+                // Check if the token is in the insertion zone of TokenCollectionView or ArrayTool
+                ArrayTool *arrayTool = [ArrayTool sharedManager];
+                TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
+                
+                // Create a SpaceToken if the touch falls into the creation zone
+                if ([tokenCollectionView isTouchInInsertionZone:aTouch]){
+                    
+                    // Do nothing in the study mode
+                    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+                        return;
+                    
+                    [tokenCollectionView insertToken:associatedToken];
+                    NSLog(@"Insert from anchor");
+                    [self removeAnchor: associatedToken];
                     return;
-                
-                [tokenCollectionView insertToken:associatedToken];
-                NSLog(@"Insert from anchor");
-                [self removeAnchor: associatedToken];
-                
-            }else if ([arrayTool isTouchInInsertionZone:aTouch]){
-
-                // Do nothing in the study mode
-                if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+                }else if ([arrayTool isTouchInInsertionZone:aTouch]){
+                    
+                    // Do nothing in the study mode
+                    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+                        return;
+                    
+                    [arrayTool insertToken:associatedToken];
+                    NSLog(@"Insert from anchor");
+                    [self removeAnchor: associatedToken];
                     return;
-                
-                [arrayTool insertToken:associatedToken];
-                NSLog(@"Insert from anchor");
-                [self removeAnchor: associatedToken];
-                
-            }else{
-                // Position the SpaceToken correctly
-                associatedToken.center = mapXY;
-                associatedToken.mapViewXY = mapXY;
-                
-                // Depending on the pressure, we may need to turn a ANCHOR_INVISIBLE
-                // to a ANCHOR_VISIBLE and enable the SpaceToken mode                
-                if ([aTouch force] > 0.5*[aTouch maximumPossibleForce] &&
-                    associatedToken.appearanceType != ANCHOR_VISIBLE)
-                {
-                    [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
-
-                    // This enables the SpaceToken mode
-                    NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
-                        object:associatedToken userInfo:nil];
-                    [[ NSNotificationCenter defaultCenter] postNotification:notification];
-                    
-                    // Add the anchor to collection view
-                    [[EntityDatabase sharedManager] addEntity:associatedToken.spatialEntity];
-                    
-                    [[TokenCollectionView sharedManager] addItemFromBottom:associatedToken.spatialEntity];
-                    
                 }
+            }
+            
+            // The token is not highlighed and is not being pushed into the insertion zone
+                
+            // Position the SpaceToken correctly
+            associatedToken.center = mapXY;
+            associatedToken.mapViewXY = mapXY;
+            
+            // Depending on the pressure, we may need to turn a ANCHOR_INVISIBLE
+            // to a ANCHOR_VISIBLE and enable the SpaceToken mode
+            if ([aTouch force] > 0.5*[aTouch maximumPossibleForce] &&
+                associatedToken.appearanceType != ANCHOR_VISIBLE)
+            {
+                [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
+                
+                // This enables the SpaceToken mode
+                NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
+                                                                             object:associatedToken userInfo:nil];
+                [[ NSNotificationCenter defaultCenter] postNotification:notification];
+                
+                // Add the anchor to collection view
+                [[EntityDatabase sharedManager] addEntity:associatedToken.spatialEntity];
+                
+                [[TokenCollectionView sharedManager] addItemFromBottom:associatedToken.spatialEntity];
                 
             }
+            
         }
     }
 }
