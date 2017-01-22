@@ -13,6 +13,8 @@
 #import <MapKit/MapKit.h>
 #import "EntityDatabase.h"
 #import "Person.h"
+#import "TokenCollectionView.h"
+#import "Constants.h"
 
 @implementation StreetViewPanel{
     SettingsButton *settingsButton;
@@ -50,6 +52,7 @@
     
     // Adjust the size of the map
     cachedMapFrame = self.rootViewController.mapView.frame;
+
     self.rootViewController.mapView.frame =
     CGRectMake(0, streetViewHeight,
                self.rootViewController.view.frame.size.width,
@@ -68,12 +71,39 @@
     [self.rootViewController.view addSubview: settingsButton];    
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [TokenCollectionView sharedManager].isVisible = YES;
+    //This will reset the position of the TokenCollectionView frame
+    
+    // listen to several notification of interest
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(mapUpdateHandler)
+                   name:MapUpdatedNotification
+                 object:nil];
+    
+    // Draw a dot at the center
+//    CAShapeLayer *circleLayer = [CAShapeLayer layer];
+//    [circleLayer setPath:[[UIBezierPath bezierPathWithOvalInRect:CGRectMake(50, 50, 100, 100)] CGPath]];
+}
+
 -(void)removePanel{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [settingsButton removeFromSuperview];
     // Hide the StreetView
     [self.panoView removeFromSuperview];
     self.rootViewController.mapView.frame = cachedMapFrame; // Move the map back
 }
+
+- (void)mapUpdateHandler{
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
+    // Position the map and StreetView to Paris
+    [self.panoView moveNearCoordinate: mapView.centerCoordinate];
+}
+
 
 // Panorama is moved. Need to update the user's location
 - (void)panoramaView:(GMSPanoramaView *)view didMoveToPanorama:(GMSPanorama *)panorama{

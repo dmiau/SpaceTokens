@@ -125,12 +125,17 @@
     CGPoint currentLocation = [touch locationInView:self];
     CGPoint previousLocation = [[touchHistory lastObject] CGPointValue];
     
+    
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
     if (CGRectContainsPoint(self.bounds, previousLocation) &&
         !CGRectContainsPoint(self.bounds, currentLocation))
     {
         movingOut = YES;
         initOutLocation = previousLocation;
-        [[self layer] addSublayer: lineLayer];
+        
+        // Add the line layer to mapView
+        [[mapView layer] addSublayer: lineLayer];
     }else{
         [touchHistory addObject:[NSNumber valueWithCGPoint:currentLocation]];
         return NO;
@@ -141,8 +146,9 @@
         // Draw a line
         // draw the line
         UIBezierPath *linePath=[UIBezierPath bezierPath];
-        [linePath moveToPoint: initOutLocation];
-        [linePath addLineToPoint: currentLocation];
+        
+        [linePath moveToPoint: [self convertPoint:initOutLocation toView:mapView]];
+        [linePath addLineToPoint: [self convertPoint:currentLocation toView:mapView]];
         
         lineLayer.path=linePath.CGPath;
         lineLayer.fillColor = nil;
@@ -152,7 +158,7 @@
     
     // Check if the connection tool touch any route?
     // Get the TokenCollection object
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    
     
     CGPoint touchPoint = [self convertPoint:currentLocation toView:mapView];
     CGPoint previoustouchPoint = [self convertPoint:previousLocation toView:mapView];

@@ -13,6 +13,12 @@
 @implementation CustomMKMapView{
     NSTimer *_updateUITimer;
 
+    // The following instance variables are used to check if the map is updated
+    double latitude_cache;
+    double longitude_cache;
+    double pitch_cache;
+    double camera_heading;
+    bool   hasChanged;
 }
 
 @synthesize delegate; // this is necessary so the setter could work
@@ -50,6 +56,12 @@
     _customUserLocation = [[MKUserLocation alloc] init];
     self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
     self.isDebugModeOn = NO;
+    
+    latitude_cache = 0.0;
+    longitude_cache = 0.0;
+    pitch_cache = 0.0;
+    camera_heading = 0.0;
+    hasChanged = false;
     
     //-----------------
     // Initialize a hidden map
@@ -132,12 +144,7 @@
 
 #pragma mark --timer--
 -(void)vcTimerFired{
-    
-    static double latitude_cache = 0.0;
-    static double longitude_cache = 0.0;
-    static double pitch_cache = 0.0;
-    static double camera_heading = 0.0;
-    static bool   hasChanged = false;
+
     double epsilon = 0.0000001;
     
     // Note that heading is defined as the negative of
