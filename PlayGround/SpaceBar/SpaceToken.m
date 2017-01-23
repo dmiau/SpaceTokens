@@ -330,13 +330,15 @@
 
 
 - (NSString*)description{
-    NSString *tokenInfo = [NSString stringWithFormat:@"Name: %p", self];
+    NSString *tokenInfo = [NSString stringWithFormat:@"Name: %@", self.titleLabel.text];
+    NSString *addressInfo = [NSString stringWithFormat:@"Address: %p", self];
     NSString *mapViewString = NSStringFromCGPoint(self.mapViewXY);
     NSString *pointerString = [NSString stringWithFormat:@"%p", self.touch];
     NSString *latLonString = [NSString stringWithFormat:@"lat: %g, long: %g",
                               self.spatialEntity.latLon.latitude, self.spatialEntity.latLon.longitude];
     
-    NSArray *stringArray = [[NSArray alloc] initWithObjects:tokenInfo, mapViewString, pointerString, latLonString, nil];
+    NSArray *stringArray = [[NSArray alloc] initWithObjects:tokenInfo, addressInfo,
+                            mapViewString, pointerString, latLonString, nil];
     NSString *joinedString = [stringArray componentsJoinedByString:@"\n"];
     return joinedString;
 }

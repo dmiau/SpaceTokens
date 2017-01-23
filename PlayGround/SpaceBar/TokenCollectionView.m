@@ -247,6 +247,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     SpatialEntity *spatialEntity = contentArray[row];
     SpaceToken* aToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:spatialEntity];
     aToken.home= self;
+    aToken.index = row;
     cell.spaceToken = aToken;
     [cell addSubview:aToken];
     spatialEntity.isMapAnnotationEnabled = YES;
@@ -328,18 +329,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     token.spatialEntity.isEnabled = NO;
     token.spatialEntity.isMapAnnotationEnabled = NO;
     [self reloadData];
-}
-
--(int)getIndexOfToken:(SpaceToken*)token{
-    int index;
-    int i = 0;
-    for (CollectionViewCell *cell in [self visibleCells]){
-        if (cell.spaceToken == token){
-            return i;
-        }
-        i++;
-    }
-    return index;
 }
 
 #pragma mark <UICollectionViewDelegate>

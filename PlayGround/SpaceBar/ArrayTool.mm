@@ -236,7 +236,8 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 -(void)removeToken: (SpaceToken*) token{
     
     // Get the index of the token
-    int i = [self getIndexOfToken:token];
+    int i = token.index; // The index of a SpaceToken
+    
     [token removeFromSuperview];
     
     // Depending on the token, different things need to be done

@@ -117,8 +117,12 @@
 
 
 - (NSString*) description{
-    return [NSString stringWithFormat:@"latlon: %@",
-            [NSString stringWithFormat:@"%g, %g", self.latLon.latitude, self.latLon.longitude]];
+    
+    NSMutableArray *lines = [NSMutableArray array];
+    [lines addObject:[NSString stringWithFormat:@"Name: %@", self.name]];
+    [lines addObject:[NSString stringWithFormat:@"latLon: %g, %g", self.latLon.latitude, self.latLon.longitude]];
+    
+    return [lines componentsJoinedByString:@"\n"];
 }
 
 @end

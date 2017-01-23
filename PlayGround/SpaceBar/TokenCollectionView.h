@@ -34,5 +34,4 @@
 -(void)insertToken: (SpaceToken*) token;
 -(void)removeToken: (SpaceToken*) token;
 
--(int)getIndexOfToken:(SpaceToken*)token;
 @end

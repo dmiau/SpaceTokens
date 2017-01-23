@@ -22,9 +22,6 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
     BOOL hasReportedDraggingEvent;
     NSTimer *anchorVisualTimer;
     WildcardGestureRecognizer * tapInterceptor;
-    
-    
-    
 }
 
 @property BOOL isCircleLayerOn;
@@ -42,7 +39,6 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 @property CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
 @property CAShapeLayer *constraintLayer; //used in the relaxed constraint state
 
-
 @property (weak) SpaceToken *counterPart;
 // When a SpaceToken is dragged out, a copy of the current SpaceToken is created (to stay in the docking position), while the current one moves out of the dock.
 
@@ -52,6 +48,8 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 
 @property id home;
 // The home of a SpaceToken. The home could be mapView (an anchor), TokenCollectionView, or ArrayTool
+@property int index;
+// index is used to track a SpaceToken's position in a structure (e.g., ArrayTool, SetTool), since visibleCell does not return a correct order.
 
 @property CGPoint mapViewXY;
 // mapViewXY caches the Mercator (x, y) coordinates
