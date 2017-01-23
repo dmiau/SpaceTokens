@@ -11,7 +11,7 @@
 
 @interface CustomMKPolygon : MKPolygon <AnnotationProtocol>
 @property location_enum pointType;
-@property BOOL isLableOn;
+@property BOOL isLabelOn;
 @property BOOL isHighlighted;
 
 - (MKOverlayRenderer *)generateOverlayRenderer;

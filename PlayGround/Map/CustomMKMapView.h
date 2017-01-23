@@ -81,6 +81,9 @@
 + (MKMapRect)MKMapRectForCoordinateRegion:(MKCoordinateRegion)region;
 + (BOOL) validateCoordinate:(CLLocationCoordinate2D) coord;
 
+// Annotation control
+-(void)resetAnnotations;
+
 //==============================
 // Private Methods
 //==============================

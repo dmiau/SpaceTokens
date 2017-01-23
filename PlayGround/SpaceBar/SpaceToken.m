@@ -141,21 +141,23 @@
         return;
     }
     
-    // Need to cache the original background color
-    static UIColor *originalColor;
-    if (!self.selected || !originalColor){
-        originalColor = [[self backgroundColor] copy];
-    }
-    
     super.selected = selected;
     
     if (selected){
         self.backgroundColor = [UIColor redColor];
-        [[self layer] addSublayer:self.lineLayer];
-        [self updatePOILine];
+
+        // Only shows the line if self is a point token
+        if ([self isMemberOfClass:[SpaceToken class]]){
+            [[self layer] addSublayer:self.lineLayer];
+            [self updatePOILine];
+        }
+
     }else{
-        self.backgroundColor = originalColor;
-        [self.lineLayer removeFromSuperlayer];
+        [self restoreDefaultStyle];
+        
+        if ([self isMemberOfClass:[SpaceToken class]]){
+            [self.lineLayer removeFromSuperlayer];
+        }
     }
     
     // A SpaceToken may be linked to a dynamic locaiton, such as a person
@@ -189,12 +191,17 @@
 
 @synthesize center;
 -(void)setCenter:(CGPoint)newCenter{
+    
     [super setCenter:newCenter];
     
     // This is to support the anchor + x feature
     if (self.isConstraintLineOn){
         [self updateConstraintLine];
     }
+}
+
+-(CGPoint)center{
+    return super.center;
 }
 
 #pragma mark -- Configure Visual Apperarance --

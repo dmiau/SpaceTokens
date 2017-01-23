@@ -11,7 +11,7 @@
 
 @interface CustomMKPolyline : MKPolyline <AnnotationProtocol>
 @property location_enum pointType;
-@property bool isLableOn;
+@property bool isLabelOn;
 @property BOOL isHighlighted;
 
 - (MKOverlayRenderer *)generateOverlayRenderer;

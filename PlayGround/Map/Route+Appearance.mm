@@ -58,18 +58,21 @@
     
     self.appearanceMode = ARRAYMODE;
     self.isMapAnnotationEnabled = NO;
-    // Generate a polyline of the entities in contentArray
-    NSArray *entityArray = [self getContent];
-    MKMapPoint *tempMapPointArray = new MKMapPoint[[entityArray count]];
+    // No polyline for Array
+    self.polyline = nil;
     
-    int i = 0;
-    for (SpatialEntity *entity in entityArray){
-        MKMapPoint mapPoint = MKMapPointForCoordinate(entity.latLon);
-        tempMapPointArray[i++] = mapPoint;
-    }
-    
-    CustomMKPolyline *polyline = [CustomMKPolyline polylineWithPoints:tempMapPointArray count:[entityArray count]];
-    self.polyline = polyline;
+//    // Generate a polyline of the entities in contentArray
+//    NSArray *entityArray = [self getContent];
+//    MKMapPoint *tempMapPointArray = new MKMapPoint[[entityArray count]];
+//    
+//    int i = 0;
+//    for (SpatialEntity *entity in entityArray){
+//        MKMapPoint mapPoint = MKMapPointForCoordinate(entity.latLon);
+//        tempMapPointArray[i++] = mapPoint;
+//    }
+//    
+//    CustomMKPolyline *polyline = [CustomMKPolyline polylineWithPoints:tempMapPointArray count:[entityArray count]];
+//    self.polyline = polyline;
 }
 
 

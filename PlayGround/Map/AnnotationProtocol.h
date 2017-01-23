@@ -23,7 +23,7 @@ typedef enum {
 @protocol AnnotationProtocol <NSObject>
 @property location_enum pointType;
 
-@property bool isLableOn;
+@property bool isLabelOn;
 @property BOOL isHighlighted;
 
 -(id)generateAnnotationView;

@@ -249,4 +249,30 @@
     }
 }
 
+// Mark: renaming action
+- (IBAction)renamingAction:(id)sender {
+    [self.renamingOutlet setHidden:!self.renamingOutlet.isHidden];
+    
+    if (!self.renamingOutlet.isHidden){
+        [self renameToken:nil];
+    }else{
+        [self.renamingOutlet resignFirstResponder];
+    }
+}
+
+
+- (void)renameToken:(SpaceToken*)token{
+    
+    self.renamingOutlet.text = @"Happy Birthday!";
+    
+    //Show
+    [self.renamingOutlet becomeFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.renamingOutlet resignFirstResponder];
+//    self.spatialEntity.name = self.nameOutlet.text;
+    return YES;
+}
 @end

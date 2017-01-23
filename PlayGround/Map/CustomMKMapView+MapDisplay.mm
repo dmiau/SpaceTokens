@@ -173,7 +173,8 @@
         span.longitudeDelta = max(0.01, span.longitudeDelta);
         region.span = span;
         if ([CustomMKMapView validateCoordinate:region.center]){
-            [self setRegion:region animated:NO];
+            MKCoordinateRegion adjustedRegion = [self regionThatFits:region];
+            [self setRegion:adjustedRegion animated:NO];
         }
  
     }else{

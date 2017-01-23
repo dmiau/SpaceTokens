@@ -18,7 +18,7 @@
 -(id)init{
     self = [super init];
     
-    _isLableOn = NO;
+    _isLabelOn = NO;
     self.pointType = LANDMARK;
     // Initialize the label
     aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
@@ -112,8 +112,8 @@
     aLabel.adjustsFontSizeToFitWidth = NO;
 }
 
--(void)setIsLableOn:(bool)isLableOn{
-    _isLableOn = isLableOn;
+-(void)setIsLabelOn:(bool)isLabelOn{
+    _isLabelOn = isLabelOn;
     
     // remove the current annotation from the map and add it back
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
@@ -186,7 +186,7 @@
         pinView.image = annotationImage;
     
     // Add a label to the annoation
-    if (self.isLableOn && aLabel){
+    if (self.isLabelOn && aLabel){
         [aLabel removeFromSuperview];
         [pinView addSubview: aLabel];
     }

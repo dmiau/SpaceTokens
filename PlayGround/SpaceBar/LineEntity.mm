@@ -60,8 +60,7 @@ template class std::vector<double>;
     if (!polyline){
         // polyline is nil
         _polyline = nil;
-        self.annotation = nil;
-        
+        self.annotation = nil;        
     }else{
         if (![polyline isKindOfClass:[CustomMKPolyline class]]){
             // Why do I need this?

@@ -560,6 +560,7 @@
 		9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanelView.h; path = Views/SearchPanelView.h; sourceTree = "<group>"; };
 		9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanelView.m; path = Views/SearchPanelView.m; sourceTree = "<group>"; };
 		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9A74C6EA1E36B7B60054E113 /* TouchableStructureProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchableStructureProtocol.h; path = SpaceBar/TouchableStructureProtocol.h; sourceTree = "<group>"; };
 		9A7594CD1E0DEEC50047BC66 /* TaskGenerator+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TaskGenerator+Tools.h"; path = "StudyManager/TaskGenerator+Tools.h"; sourceTree = "<group>"; };
 		9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Tools.m"; path = "StudyManager/TaskGenerator+Tools.m"; sourceTree = "<group>"; };
 		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
@@ -994,6 +995,7 @@
 		9A5CCBA71DF86C2E009B56DF /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				9A74C6EA1E36B7B60054E113 /* TouchableStructureProtocol.h */,
 				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
 				9AB3BDD81DE290B100334EF9 /* TokenCollection.mm */,
 				9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */,
@@ -1221,6 +1223,8 @@
 				9A8BCA271D343D43006C2EDC /* POI.m */,
 				9A9809C01E1AEFB2006D7F8D /* ArrayEntity.h */,
 				9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */,
+				9A5DA03A1E170BAC002A50B7 /* LineEntity.h */,
+				9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */,
 				9A22D0161D22BD9A009BC465 /* Route.h */,
 				9A22D0171D22BD9A009BC465 /* Route.mm */,
 				9A0FEE891DE35CD100D4DFF1 /* Route+Tools.h */,
@@ -1229,8 +1233,6 @@
 				9A10B51D1E312BDA0016A2EA /* Route+Appearance.mm */,
 				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
 				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
-				9A5DA03A1E170BAC002A50B7 /* LineEntity.h */,
-				9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */,
 				9A5DA02B1E16DCE1002A50B7 /* Area.h */,
 				9A5DA02C1E16DCE1002A50B7 /* Area.mm */,
 				9A27222C1D6CB79C002AE953 /* Person.h */,

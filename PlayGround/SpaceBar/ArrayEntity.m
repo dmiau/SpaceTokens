@@ -90,7 +90,7 @@
 // MARK: Methods to modify contentArray
 -(void)insertObject:(id)object atIndex:(NSUInteger)index{
     [contentArray insertObject:object atIndex:index];
-    
+    [self updateBoundingMapRect];
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
@@ -98,6 +98,7 @@
 
 -(void)addObject:(id)object{
     [contentArray addObject:object];
+    [self updateBoundingMapRect];
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
@@ -105,6 +106,7 @@
 
 -(void)addObjectsFromArray:(NSArray*)objects{
     [contentArray addObjectsFromArray:objects];
+    [self updateBoundingMapRect];
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
@@ -112,6 +114,7 @@
 
 -(void)removeObject:(id)object{
     [contentArray removeObject:object];
+    [self updateBoundingMapRect];
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
@@ -119,6 +122,7 @@
 
 -(void)removeObjectAtIndex:(NSUInteger)index{
     [contentArray removeObjectAtIndex:index];
+    [self updateBoundingMapRect];
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
@@ -130,6 +134,8 @@
 
 -(void)setContent:(NSArray <SpatialEntity*> *)inputArray{
     contentArray = [inputArray mutableCopy];
+    [self updateBoundingMapRect];
+    
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }

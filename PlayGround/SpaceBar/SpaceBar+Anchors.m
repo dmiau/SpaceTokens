@@ -113,7 +113,7 @@
             CGPoint mapXY = [aTouch locationInView:self.mapView];
             
             
-            // Check if the *highlighted* token is being pushed into the insertion zone
+            // Check if the * highlighted * token is being pushed into the insertion zone
             if (associatedToken.spatialEntity.annotation.isHighlighted){
                 // Check if the token is in the insertion zone of TokenCollectionView or ArrayTool
                 ArrayTool *arrayTool = [ArrayTool sharedManager];

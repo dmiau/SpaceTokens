@@ -80,15 +80,7 @@
 -(void)setIsTokenLabelEnabled:(BOOL)isTokenLabelEnabled{
     _isTokenLabelEnabled = isTokenLabelEnabled;
     for (SpaceToken *aToken in tokenArray){
-        aToken.spatialEntity.annotation.isLableOn = isTokenLabelEnabled;
-    }
-}
-
--(void)resetAnnotations{
-    for (SpaceToken *aToken in [self getTokenArray]){
-        // Remove the hightlight of all SpaceTokens
-        aToken.spatialEntity.annotation.isHighlighted = NO;
-        aToken.spatialEntity.annotation.isLableOn = NO;
+        aToken.spatialEntity.annotation.isLabelOn = isTokenLabelEnabled;
     }
 }
 

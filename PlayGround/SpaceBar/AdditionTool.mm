@@ -14,6 +14,7 @@
 #import "Route.h"
 #import "ViewController.h"
 #import "TokenCollectionView.h"
+#import "ArrayTool.h"
 
 @implementation AdditionTool{
     CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
@@ -147,18 +148,23 @@
         // draw the line
         UIBezierPath *linePath=[UIBezierPath bezierPath];
         
+        // For the array tool, the initial point is always from the center of the tool
+        if (self.home == [ArrayTool sharedManager]){
+            initOutLocation.x = self.bounds.size.width/2;
+        }
+        
         [linePath moveToPoint: [self convertPoint:initOutLocation toView:mapView]];
         [linePath addLineToPoint: [self convertPoint:currentLocation toView:mapView]];
         
         lineLayer.path=linePath.CGPath;
         lineLayer.fillColor = nil;
         lineLayer.opacity = 1.0;
+        lineLayer.lineWidth = 4.0f;
         lineLayer.strokeColor = [UIColor blueColor].CGColor;
     }
     
     // Check if the connection tool touch any route?
-    // Get the TokenCollection object
-    
+    // Get the TokenCollection object    
     
     CGPoint touchPoint = [self convertPoint:currentLocation toView:mapView];
     CGPoint previoustouchPoint = [self convertPoint:previousLocation toView:mapView];

@@ -39,11 +39,11 @@
     
     // Turn on the labels
     for (POI *aPOI in self.poisForSpaceTokens){
-        aPOI.annotation.isLableOn = YES;
+        aPOI.annotation.isLabelOn = YES;
     }    
     
     for (POI *aPOI in self.highlightedPOIs){
-        aPOI.annotation.isLableOn = YES;
+        aPOI.annotation.isLabelOn = YES;
     }
     
     //----------------

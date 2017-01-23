@@ -28,7 +28,7 @@
     if ([view.annotation isKindOfClass:[CustomPointAnnotation class]]){
         CustomPointAnnotation *pointAnnotation = view.annotation;
         pointAnnotation.isHighlighted = YES;
-        pointAnnotation.isLableOn = YES;
+        pointAnnotation.isLabelOn = YES;
     }
     
     // Deselect all other annotations
@@ -38,7 +38,7 @@
         {
             CustomPointAnnotation *pointAnnotation = annotation;
             pointAnnotation.isHighlighted = NO;
-            pointAnnotation.isLableOn = NO;
+            pointAnnotation.isLabelOn = NO;
         }
     }
 }
@@ -81,4 +81,15 @@
     }
 }
 
+
+-(void)resetAnnotations{
+    // Get all the annotations
+    for (id annotation in [self annotations]){
+        if ([annotation isKindOfClass:[CustomPointAnnotation class]]){
+            CustomPointAnnotation *pointAnnotation = annotation;
+            pointAnnotation.isHighlighted = NO;
+            pointAnnotation.isLabelOn = NO;
+        }
+    }
+}
 @end

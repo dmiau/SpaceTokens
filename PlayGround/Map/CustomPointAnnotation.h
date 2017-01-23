@@ -12,7 +12,7 @@
 @interface CustomPointAnnotation : MKPointAnnotation <AnnotationProtocol>
 @property location_enum pointType;
 
-@property bool isLableOn;
+@property bool isLabelOn;
 @property BOOL isHighlighted;
 
 -(MKAnnotationView *)generateAnnotationView;

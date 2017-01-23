@@ -13,7 +13,7 @@
 
 -(id)init{
     self = [super init];
-    self.isLableOn = NO;
+    self.isLabelOn = NO;
     self.isHighlighted = NO;
     return self;
 }

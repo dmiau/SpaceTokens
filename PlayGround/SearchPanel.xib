@@ -33,23 +33,32 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heh-RH-1Bd">
-                            <rect key="frame" x="322" y="71" width="39" height="41"/>
+                            <rect key="frame" x="321" y="71" width="39" height="41"/>
                             <state key="normal" title="data"/>
                             <connections>
                                 <action selector="dataAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="o3i-fE-o56"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xza-w1-qa7">
+                            <rect key="frame" x="261" y="76" width="52" height="30"/>
+                            <state key="normal" title="rename"/>
+                            <connections>
+                                <action selector="renamingAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZhC-2w-a8W"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="heh-RH-1Bd" secondAttribute="trailing" constant="14" id="4d3-8y-98f"/>
+                        <constraint firstAttribute="trailing" secondItem="heh-RH-1Bd" secondAttribute="trailing" constant="15" id="5qa-Dv-Dte"/>
                         <constraint firstAttribute="height" constant="120" id="GeN-8N-fLL"/>
                         <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="Kkg-Rx-fpr"/>
+                        <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="8" id="NC2-Vc-rhW"/>
                         <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="TNs-Yu-wMA"/>
                         <constraint firstItem="wnB-dK-KjN" firstAttribute="top" secondItem="gdd-kI-rfv" secondAttribute="top" constant="19" id="TVL-tG-w2k"/>
-                        <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="8" id="fJh-aR-OnT"/>
                         <constraint firstItem="z1d-oP-Km9" firstAttribute="top" secondItem="gdd-kI-rfv" secondAttribute="top" constant="31" id="lqs-ka-NAh"/>
+                        <constraint firstItem="heh-RH-1Bd" firstAttribute="leading" secondItem="xza-w1-qa7" secondAttribute="trailing" constant="15" id="sBQ-yw-Cqw"/>
                         <constraint firstItem="z1d-oP-Km9" firstAttribute="leading" secondItem="gdd-kI-rfv" secondAttribute="leading" constant="8" id="wEd-2D-aGf"/>
+                        <constraint firstAttribute="bottom" secondItem="xza-w1-qa7" secondAttribute="bottom" constant="8" id="xE3-cQ-mpH"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnF-vO-lAG" userLabel="Bottom View">
@@ -94,6 +103,15 @@
                         <constraint firstItem="aX5-eG-dYl" firstAttribute="leading" secondItem="cnF-vO-lAG" secondAttribute="leading" id="u37-NC-59a"/>
                     </constraints>
                 </view>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LQE-a1-cwF" userLabel="RenamingTextField">
+                    <rect key="frame" x="125" y="128" width="125" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="Dt2-Dy-bIF"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -103,12 +121,15 @@
                 <constraint firstItem="gdd-kI-rfv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Og0-vT-q3j"/>
                 <constraint firstItem="gdd-kI-rfv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tt0-wu-Vzl"/>
                 <constraint firstAttribute="bottom" secondItem="cnF-vO-lAG" secondAttribute="bottom" id="X6E-9L-Pup"/>
+                <constraint firstItem="LQE-a1-cwF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y4d-vb-4AT"/>
+                <constraint firstItem="LQE-a1-cwF" firstAttribute="top" secondItem="gdd-kI-rfv" secondAttribute="bottom" constant="8" id="ga8-uc-hYj"/>
                 <constraint firstItem="cnF-vO-lAG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oSc-Pe-jjV"/>
                 <constraint firstAttribute="trailing" secondItem="cnF-vO-lAG" secondAttribute="trailing" id="qZP-ls-TrS"/>
                 <constraint firstItem="cnF-vO-lAG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qzk-AR-emH"/>
             </constraints>
             <connections>
                 <outlet property="drawingButton" destination="aX5-eG-dYl" id="XGS-gL-8R3"/>
+                <outlet property="renamingOutlet" destination="LQE-a1-cwF" id="k4H-qW-AID"/>
                 <outlet property="searchPlaceHolder" destination="wnB-dK-KjN" id="dF2-O3-1ZY"/>
             </connections>
             <point key="canvasLocation" x="-492.5" y="-168.5"/>
