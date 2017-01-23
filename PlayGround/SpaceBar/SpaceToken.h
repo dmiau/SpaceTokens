@@ -52,9 +52,8 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 // index is used to track a SpaceToken's position in a structure (e.g., ArrayTool, SetTool), since visibleCell does not return a correct order.
 
 @property CGPoint mapViewXY;
-// mapViewXY caches the Mercator (x, y) coordinates
-// corrresponding to latlon
-
+// mapViwXY caches the (u, v) coordinates *in mapView* of the SpaceToken
+@property CGPoint center;
 
 // Pseudo-delegate methods
 // A "clone" is created when a token is dragged outside its dock. As a result,

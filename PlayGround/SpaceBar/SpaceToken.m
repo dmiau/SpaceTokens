@@ -187,6 +187,16 @@
     }
 }
 
+@synthesize center;
+-(void)setCenter:(CGPoint)newCenter{
+    [super setCenter:newCenter];
+    
+    // This is to support the anchor + x feature
+    if (self.isConstraintLineOn){
+        [self updateConstraintLine];
+    }
+}
+
 #pragma mark -- Configure Visual Apperarance --
 
 //-----------

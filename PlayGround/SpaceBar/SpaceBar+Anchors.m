@@ -143,7 +143,7 @@
                 }
             }
             
-            // The token is not highlighed and is not being pushed into the insertion zone
+            // The token is not highlighed and is NOT being pushed into the insertion zone
                 
             // Position the SpaceToken correctly
             associatedToken.center = mapXY;
