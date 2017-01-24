@@ -92,7 +92,7 @@
     }
     
     // Check if the connection tool is activated
-    if ([self probeRouteSource:touches]){
+    if ([self probeEntity:touches]){
         [self touchesEnded:touches withEvent:event];
     }
 
@@ -112,7 +112,7 @@
 // Connection tools
 //-----------------
 
-- (BOOL)probeRouteSource:(NSSet<UITouch *> *)touches{
+- (BOOL)probeEntity:(NSSet<UITouch *> *)touches{
     
     static BOOL movingOut = false;
     static CGPoint initOutLocation;

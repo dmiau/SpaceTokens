@@ -115,12 +115,23 @@
     {
         [outArray addObject: cell.spaceToken];
     }
+    // Add the master token
+    SpaceToken *arrayToolMaster = [[ArrayTool sharedManager] masterToken];
+    if (arrayToolMaster){
+        [outArray addObject: arrayToolMaster];
+    }
     
     // Collect the tokens from SetTool
     for (CollectionViewCell *cell in [[SetTool sharedManager].setCollectionView visibleCells])
     {
         [outArray addObject: cell.spaceToken];
     }
+    // Add the master token
+    SpaceToken *setToolMaster = [[SetTool sharedManager] masterToken];
+    if (setToolMaster){
+        [outArray addObject: setToolMaster];
+    }
+    
     tokenArray = outArray;
     return outArray;
 }

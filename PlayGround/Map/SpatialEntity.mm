@@ -121,7 +121,7 @@
     NSMutableArray *lines = [NSMutableArray array];
     [lines addObject:[NSString stringWithFormat:@"Name: %@", self.name]];
     [lines addObject:[NSString stringWithFormat:@"latLon: %g, %g", self.latLon.latitude, self.latLon.longitude]];
-    
+    [lines addObject:[NSString stringWithFormat:@"Span: %g, %g", self.coordSpan.latitudeDelta, self.coordSpan.longitudeDelta]];
     return [lines componentsJoinedByString:@"\n"];
 }
 

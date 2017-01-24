@@ -254,26 +254,30 @@
     [self.renamingOutlet setHidden:!self.renamingOutlet.isHidden];
     
     if (!self.renamingOutlet.isHidden){
-        [self renameToken:nil];
+        self.renamingOutlet.text = @"Drag tkn here to rename";
     }else{
         [self.renamingOutlet resignFirstResponder];
     }
 }
 
-
-- (void)renameToken:(SpaceToken*)token{
-    
-    self.renamingOutlet.text = @"Rename.";
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    renamedToken.spatialEntity.name = self.renamingOutlet.text;
-    [renamedToken.counterPart
-     setTitle: self.renamingOutlet.text
-                  forState: UIControlStateNormal];
+    //---------------
+    // Rename a token
+    //---------------
+    
+    // Find all the tokens with the same spatial entity
+    for (SpaceToken *token in [[TokenCollection sharedManager] getTokenArray]){
+        if (token.spatialEntity == renamedToken.spatialEntity){
+            [token
+             setTitle: self.renamingOutlet.text
+             forState: UIControlStateNormal];
+        }
+    }
+    
+    
     [self.renamingOutlet resignFirstResponder];
-    self.renamingOutlet.text = @"Rename.";
+    self.renamingOutlet.text = @"Drag tkn here to rename";
     return YES;
 }
 

@@ -29,7 +29,7 @@
     CGPoint previousLocationInView = [touch previousLocationInView:self];
     
     // Threshold the x position to distiguish wheather the button is dragged or clicked
-    if (CGRectContainsPoint(self.frame, locationInView))
+    if (CGRectContainsPoint(self.bounds, locationInView))
     {
         //----------------------
         // Removing gesture (Dragging toward the edge)

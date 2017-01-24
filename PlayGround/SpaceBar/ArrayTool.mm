@@ -64,6 +64,9 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     self.arrayEntity.name = [NSString stringWithFormat:@"AC-%d", counter++];
     self.arrayEntity.appearanceMode = ARRAYMODE;
     
+    // Add a master token landing zone
+    [self initMasterLandingZone];
+    
     // Initialize an AdditionTool
     CGRect toolFrame = CGRectMake(0, 60, 60, self.frame.size.height-120);
     additionTool = [[AdditionTool alloc] initWithFrame:toolFrame];
@@ -79,10 +82,42 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     additionTool.additionHandlingBlock = additionHandlingBlock;
     additionTool.home = self;
     
+    
+    // Register drag action
     [self addDragActionHandlingBlock];
     
     return self;
 }
+
+-(void)initMasterLandingZone{
+    // Add a master token landing zone
+    UIView *masterLandingZone = [[UIView alloc] init];
+    [masterLandingZone setBackgroundColor:[UIColor colorWithWhite:0.6 alpha:0.5]];
+    CGSize arrayTokenSize = [ArrayToken getSize];
+    CGRect masterLandingRect = CGRectMake(0, 20, arrayTokenSize.width, arrayTokenSize.height);
+    masterLandingZone.frame = masterLandingRect;
+    masterLandingZone.layer.cornerRadius = 10; // this value vary as per your desire
+    [self addSubview:masterLandingZone];
+    
+    
+    // Initialize an AdditionTool
+    CGRect toolFrame = CGRectMake(0, 0, 60, 60);
+    additionTool = [[AdditionTool alloc] initWithFrame:toolFrame];
+    [masterLandingZone addSubview:additionTool];
+    
+    BOOL (^additionHandlingBlock)(SpaceToken*) = ^(SpaceToken* token){
+        if ([self insertMaster:token]){
+            // Flash the touched SpaceToken
+            [token flashToken];
+            return YES;
+        }else{
+            return NO;
+        }
+    };
+    additionTool.additionHandlingBlock = additionHandlingBlock;
+    additionTool.home = self;
+}
+
 
 -(void)addDragActionHandlingBlock{
     // Add a dragging handling block to TokenCollection
@@ -182,7 +217,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 //------------------
 // Insert a master
 //------------------
--(void) insertMaster:(PathToken*) token{
+-(BOOL) insertMaster:(PathToken*) token{
     if (self.masterToken){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"A master token already exists."
                                                         message:@"Please remove the master token first before adding one."
@@ -190,7 +225,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        return;
+        return NO;
     }
     
     if (!token){
@@ -198,17 +233,24 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         self.masterToken = [[TokenCollection sharedManager]
                        addTokenFromSpatialEntity:self.arrayEntity];
     }else{
-        // This is usually called when a user drags a collection token to the position of a master token
+        // This part is called when a token is provided as a candidate to the master token
+        
+        if (![token.spatialEntity isKindOfClass:[ArrayEntity class]]){
+            return NO;
+        }
+        
         self.masterToken = [[TokenCollection sharedManager]
                        addTokenFromSpatialEntity:token.spatialEntity];
         
         self.arrayEntity = self.masterToken.spatialEntity;
     }
-    
     self.masterToken.home = self;
     
-    CGRect frame = CGRectZero;
-    frame.size = CGSizeMake(60, 20);
+    // Set up the frame
+    CGRect masterFrame = CGRectMake(0, 20,
+                                    self.masterToken.frame.size.width,
+                                    self.masterToken.frame.size.height);
+    self.masterToken.frame = masterFrame;
     [self addSubview:self.masterToken];
     
     void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
@@ -229,6 +271,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     self.arrayEntity.routeReadyBlock = requestCompletionBlock;
     
     [self reloadData];
+    return YES;
 }
 
 

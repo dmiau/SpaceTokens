@@ -158,29 +158,10 @@
     
     if ([entitySet count] == 0){
         return;
-    }else if ([entitySet count] == 1){
-        //----------------
-        // One Entity
-        //----------------
-        
-        // Handle the entity differently, depending on the type of entity
-        SpatialEntity *spatialEntity = [entitySet anyObject];
-        
-        MKCoordinateRegion region;
-        region.center = spatialEntity.latLon;
-        MKCoordinateSpan span = spatialEntity.coordSpan;
-        span.latitudeDelta = max(0.01, span.latitudeDelta);
-        span.longitudeDelta = max(0.01, span.longitudeDelta);
-        region.span = span;
-        if ([CustomMKMapView validateCoordinate:region.center]){
-            MKCoordinateRegion adjustedRegion = [self regionThatFits:region];
-            [self setRegion:adjustedRegion animated:NO];
-        }
- 
     }else{
         
         //----------------------------------
-        // need to fit more than one point
+        // need to fit the entities (could be one or more)
         //----------------------------------
         
         // Goal: find minMapPointX, maxMapPOintX,

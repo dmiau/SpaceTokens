@@ -141,4 +141,21 @@
     }
 }
 
+- (NSString*) description{
+    NSMutableArray *lines = [NSMutableArray array];
+    
+    [lines addObject:@"ArrayEntity:"];
+    [lines addObject:[super description]];
+    
+    [lines addObject:@"\nContents:\n"];
+    
+    int i = 0;
+    for (SpatialEntity *entity in contentArray){
+        [lines addObject: [NSString stringWithFormat: @"Entity #%d", i++]];
+        [lines addObject:[entity description]];
+        [lines addObject:@"\n"];
+    }
+    
+    return [lines componentsJoinedByString:@"\n"];
+}
 @end
