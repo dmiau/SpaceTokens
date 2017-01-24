@@ -65,10 +65,50 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     [[TokenCollectionView alloc] initWithFrame:mapView.frame collectionViewLayout:layout];
     [self setTopAlignmentOffset:30];
     
+    [self addDragActionHandlingBlock];
+    
     return self;
 }
 
-
+-(void)addDragActionHandlingBlock{
+    // Add a dragging handling block to TokenCollection
+    dragActionHandlingBlock handlingBlock = ^BOOL(UITouch *touch, SpaceToken* token){
+        
+        if (!self.isVisible)
+            return NO;
+        
+        CGPoint tokenPoint = [touch locationInView:self];
+        
+        if (tokenPoint.x >  (self.frame.size.width - CELL_WIDTH * 0.5)){
+            
+            // The touch is in the insertion zone.
+            // Now check if the entity already exists
+            
+            if (![self findSpaceTokenFromEntity:token.spatialEntity])
+            {
+                NSLog(@"Insert from dragging");
+                [self insertToken:token];
+                
+            }else{
+                // The item already exists on Collection View
+                
+                UIAlertController *alert = [UIAlertController
+                                            alertControllerWithTitle:@"Action ignored" message:@"Token already exists" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    
+                    //do something when click button
+                }];
+                [alert addAction:okAction];
+                [[ViewController sharedManager] presentViewController:alert animated:YES completion:nil];
+            }
+            return YES;
+        }else{
+            return NO;
+        }
+    };
+    
+    [[[TokenCollection sharedManager] handlingBlockArray] addObject: handlingBlock];
+}
 
 - (id) initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
     self = [super initWithFrame:frame collectionViewLayout:layout];
@@ -87,7 +127,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // Enable multiple selection
     [self setAllowsMultipleSelection:YES];
     
-    //        self.view = self.collectionView;
     // Add a long-press gesture recognizer
     UILongPressGestureRecognizer *lpgr =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongGesture:)];
@@ -138,22 +177,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
                                        CELL_WIDTH, mapView.frame.size.height);
     
     return CGRectContainsPoint(validTokenRect, pointInMapView);
-}
-
-
-// This decide whether an achor is in the insertion zone or not.
--(BOOL)isTouchInInsertionZone:(UITouch*)touch{
-    
-    if (!self.isVisible)
-        return NO;
-    
-    CGPoint tokenPoint = [touch locationInView:self];
-    
-    if (tokenPoint.x >  (self.frame.size.width - CELL_WIDTH * 0.5)){
-        return YES;
-    }else{
-        return NO;
-    }
 }
 
 #pragma mark SETTERS

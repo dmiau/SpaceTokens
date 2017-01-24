@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TouchableStructureProtocol.h"
+
 
 @class SpatialEntity;
 @class ArrayEntity;
 @class SpaceToken;
 
-@interface TokenCollectionView : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource, TouchableStructureProtocol>
+@interface TokenCollectionView : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property double tokenWidth; // this parameter is also used to decide the hitTest area
 
@@ -29,9 +29,6 @@
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;
 
 -(void)setTopAlignmentOffset:(int)offSet;
-
--(BOOL)isTouchInInsertionZone:(UITouch*)touch;
-
 
 -(void)insertToken: (SpaceToken*) token;
 -(void)removeToken: (SpaceToken*) token;

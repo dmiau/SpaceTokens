@@ -26,13 +26,8 @@ typedef enum {SetMode, MapMode, EmptyMode} SetToolMode;
 @property BOOL isVisible;
 @property Route *arrayEntity;
 
--(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
--(void)insertMaster:(SpaceToken*) token;
-
 +(SetTool*)sharedManager;
-
--(BOOL)isTouchInInsertionZone:(UITouch*)touch;
-
+-(BOOL)isTouchInMasterTokenZone:(UITouch*)touch;
 
 
 -(void)insertToken: (SpaceToken*) token;

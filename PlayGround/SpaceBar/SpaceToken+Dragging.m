@@ -171,72 +171,18 @@
      - (self.frame.size.height/2 -locationInButton.y));
     
     // Check if the token is to be inserted into any of the structure
-    
-    //----------------------
-    // Insert to the AreaTool?
-    //----------------------
-    ArrayTool *arrayTool = [ArrayTool sharedManager];
-    if (self.home != arrayTool){
-        if ([arrayTool isTouchInInsertionZone:touch]){
-            NSLog(@"Insert from dragging");
-            [arrayTool insertToken:self];
-            [self touchEnded];
-        }else if ([arrayTool isTouchInMasterTokenZone:touch]
-                  && [self isKindOfClass:[ArrayToken class]])
-        {
-            [arrayTool insertMaster:self];
-            [self touchEnded];
-        }
-    }
+    NSMutableArray <dragActionHandlingBlock> *handlingBlockArray =
+    [[TokenCollection sharedManager] handlingBlockArray];
     
     //----------------------
     // Insert to Collection View?
     //----------------------
-    TokenCollectionView *collectionView = [TokenCollectionView sharedManager];
-    if (self.home != collectionView){
-        if ([collectionView isTouchInInsertionZone:touch]){
-            
-            if (![collectionView findSpaceTokenFromEntity:self.spatialEntity])
-            {
-                NSLog(@"Insert from dragging");
-                [collectionView insertToken:self];
-                [self touchEnded];
-            }else{
-                
-                // The item already exists on Collection View
-                
-                UIAlertController *alert = [UIAlertController
-                    alertControllerWithTitle:@"Action ignored" message:@"Token already exists" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-                    
-                    //do something when click button
-                }];
-                [alert addAction:okAction];
-                [[ViewController sharedManager] presentViewController:alert animated:YES completion:nil];
-                
-            }
+    for (dragActionHandlingBlock block in handlingBlockArray){
+        if (block(touch, self)){
+            [self touchEnded];
+            break;
         }
     }
-    
-    //----------------------
-    // Insert to AreaTool?
-    //----------------------
-    SetTool *setTool = [SetTool sharedManager];
-    if (self.home != setTool){
-        if ([setTool isTouchInInsertionZone:touch]){
-            NSLog(@"Insert from dragging");
-            [setTool insertToken:self];
-            [self touchEnded];
-        }else if ([setTool isTouchInMasterTokenZone:touch]
-                  && [self isKindOfClass:[ArrayToken class]])
-        {
-            [setTool insertMaster:self];
-            [self touchEnded];
-        }
-    }
-    
-    
-    
 }
 
 
@@ -330,6 +276,10 @@
         self.isLineLayerOn = NO;
         self.isCircleLayerOn = YES;
         [self.connectionTool setHidden:NO];
+        
+        // Tunr on the map annotation
+        self.spatialEntity.isMapAnnotationEnabled = YES;
+        self.spatialEntity.annotation.isHighlighted = YES;
     }else{
         self.isLineLayerOn = NO;
         self.isCircleLayerOn = NO;

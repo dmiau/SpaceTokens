@@ -11,8 +11,11 @@
 
 @class POI;
 @class GMSAutocompleteResultsViewController;
+@class SpaceToken;
 
-@interface SearchPanelView : UIView <TopPanel>
+@interface SearchPanelView : UIView <TopPanel>{
+    SpaceToken *renamedToken; // cache the token that is being renamed
+}
 
 @property ViewController *rootViewController;
 @property UIButton *directionButton;

@@ -37,6 +37,7 @@
 -(id)init{
     self = [super init];
     tokenArray = [[NSMutableArray alloc] init];
+    self.handlingBlockArray = [NSMutableArray array];
     self.isTokenDraggingEnabled = YES;
     self.isStudyModeEnabled = NO;
     self.isTokenLabelEnabled = NO;

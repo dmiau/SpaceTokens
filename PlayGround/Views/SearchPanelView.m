@@ -70,6 +70,8 @@
     [self initSearchBar];
     
     [self initDrawingButton];
+    
+    [self addDragActionHandlingBlock];
 }
 
 //----------------------

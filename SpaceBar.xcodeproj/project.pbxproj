@@ -560,7 +560,6 @@
 		9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanelView.h; path = Views/SearchPanelView.h; sourceTree = "<group>"; };
 		9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanelView.m; path = Views/SearchPanelView.m; sourceTree = "<group>"; };
 		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		9A74C6EA1E36B7B60054E113 /* TouchableStructureProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchableStructureProtocol.h; path = SpaceBar/TouchableStructureProtocol.h; sourceTree = "<group>"; };
 		9A7594CD1E0DEEC50047BC66 /* TaskGenerator+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TaskGenerator+Tools.h"; path = "StudyManager/TaskGenerator+Tools.h"; sourceTree = "<group>"; };
 		9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Tools.m"; path = "StudyManager/TaskGenerator+Tools.m"; sourceTree = "<group>"; };
 		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
@@ -995,7 +994,6 @@
 		9A5CCBA71DF86C2E009B56DF /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				9A74C6EA1E36B7B60054E113 /* TouchableStructureProtocol.h */,
 				9AB3BDD71DE290B100334EF9 /* TokenCollection.h */,
 				9AB3BDD81DE290B100334EF9 /* TokenCollection.mm */,
 				9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */,

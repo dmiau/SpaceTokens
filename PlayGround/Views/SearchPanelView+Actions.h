@@ -14,4 +14,5 @@
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 -(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 
+-(void)addDragActionHandlingBlock;
 @end

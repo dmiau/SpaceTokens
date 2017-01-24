@@ -114,33 +114,26 @@
             
             
             // Check if the * highlighted * token is being pushed into the insertion zone
-            if (associatedToken.spatialEntity.annotation.isHighlighted){
-                // Check if the token is in the insertion zone of TokenCollectionView or ArrayTool
-                ArrayTool *arrayTool = [ArrayTool sharedManager];
-                TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
+            if (associatedToken.spatialEntity.annotation.isHighlighted
+                && !self.isStudyModeEnabled
+                && self.isAnchorAllowed)
+            {
+            
+                // Check if the token is to be inserted into any of the structure
+                NSMutableArray <dragActionHandlingBlock> *handlingBlockArray =
+                [[TokenCollection sharedManager] handlingBlockArray];
                 
-                // Create a SpaceToken if the touch falls into the creation zone
-                if ([tokenCollectionView isTouchInInsertionZone:aTouch]){
-                    
-                    // Do nothing in the study mode
-                    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
+                //----------------------
+                // Insert to a structure?
+                //----------------------
+                for (dragActionHandlingBlock block in handlingBlockArray){
+                    if (block(aTouch, associatedToken)){
+                        NSLog(@"Insert from anchor");
+                        [self removeAnchor: associatedToken];
                         return;
-                    
-                    [tokenCollectionView insertToken:associatedToken];
-                    NSLog(@"Insert from anchor");
-                    [self removeAnchor: associatedToken];
-                    return;
-                }else if ([arrayTool isTouchInInsertionZone:aTouch]){
-                    
-                    // Do nothing in the study mode
-                    if (self.isStudyModeEnabled || !self.isAnchorAllowed)
-                        return;
-                    
-                    [arrayTool insertToken:associatedToken];
-                    NSLog(@"Insert from anchor");
-                    [self removeAnchor: associatedToken];
-                    return;
+                    }
                 }
+                
             }
             
             // The token is not highlighed and is NOT being pushed into the insertion zone
@@ -155,6 +148,8 @@
                 associatedToken.appearanceType != ANCHOR_VISIBLE)
             {
                 [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
+                associatedToken.spatialEntity.isMapAnnotationEnabled = YES;
+                associatedToken.spatialEntity.annotation.isHighlighted = YES;
                 
                 // This enables the SpaceToken mode
                 NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification

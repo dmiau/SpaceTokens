@@ -104,7 +104,40 @@
         return YES;
     };
     additionTool.home = self;
-    additionTool.additionHandlingBlock = additionHandlingBlock;    
+    additionTool.additionHandlingBlock = additionHandlingBlock;
+    
+    [self addDragActionHandlingBlock];
+}
+
+
+-(void)addDragActionHandlingBlock{
+    // Add a dragging handling block to TokenCollection
+    dragActionHandlingBlock handlingBlock = ^BOOL(UITouch *touch, SpaceToken* token){
+        
+        if (!self.isVisible)
+            return NO;
+        
+        CGPoint touchPoint = [touch locationInView:self.toolView];
+        
+        // Check if the touch is in the master token insertion zone
+        if (CGRectContainsPoint(CGRectMake(0, 0, 60, 30), touchPoint))
+        {
+            [self insertMaster:token];
+            return YES;
+        }
+        
+        // Check if the touch is in the general token insertion zone
+        if (CGRectContainsPoint(CGRectMake(0, 30, TOOL_WIDTH, TOOL_HEIGHT - 30), touchPoint))
+        {
+            [self insertToken:token];
+            return YES;
+        }else{
+            return NO;
+        }
+        
+    };
+    
+    [[[TokenCollection sharedManager] handlingBlockArray] addObject: handlingBlock];
 }
 
 -(void)updateView{
@@ -210,19 +243,6 @@
 }
 
 // MARK: hit tests
--(BOOL)isTouchInInsertionZone:(UITouch*)touch{
-    if (!self.isVisible)
-        return NO;
-    
-    CGPoint touchPoint = [touch locationInView:self.toolView];
-    
-    if (CGRectContainsPoint(CGRectMake(0, 30, TOOL_WIDTH, TOOL_HEIGHT - 30), touchPoint)){
-        return YES;
-    }else{
-        return NO;
-    }
-}
-
 -(BOOL)isTouchInMasterTokenZone:(UITouch*)touch{
     if (!self.isVisible)
         return NO;

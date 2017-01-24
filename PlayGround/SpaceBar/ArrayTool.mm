@@ -78,8 +78,44 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     };
     additionTool.additionHandlingBlock = additionHandlingBlock;
     additionTool.home = self;
+    
+    [self addDragActionHandlingBlock];
+    
     return self;
 }
+
+-(void)addDragActionHandlingBlock{
+    // Add a dragging handling block to TokenCollection
+    dragActionHandlingBlock handlingBlock = ^BOOL(UITouch *touch, SpaceToken* token){
+        
+        if (!self.isVisible)
+            return NO;
+        
+        CGPoint tokenPoint = [touch locationInView:self];
+        
+        // Check if the touch is in the master token insertion zone
+        if (tokenPoint.x < self.tokenWidth * 0.5 &&
+            tokenPoint.y < 60)
+        {
+            [self insertMaster:token];
+            return YES;
+        }
+        
+        // Check if the touch is in the general token insertion zone
+        if (tokenPoint.x < self.tokenWidth * 0.5 &&
+            tokenPoint.y > 60)
+        {
+            [self insertToken:token];
+            return YES;
+        }else{
+            return NO;
+        }
+        
+    };
+    
+    [[[TokenCollection sharedManager] handlingBlockArray] addObject: handlingBlock];
+}
+
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
@@ -272,38 +308,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     }
     
     [self reloadData];
-}
-
-// This decide whether an achor is in the insertion zone or not.
--(BOOL)isTouchInInsertionZone:(UITouch*)touch{
-    
-    if (!self.isVisible)
-        return NO;
-    
-    CGPoint tokenPoint = [touch locationInView:self];
-    
-    if (tokenPoint.x < self.tokenWidth * 0.5 &&
-        tokenPoint.y > 60)
-    {
-        return YES;
-    }else{
-        return NO;
-    }
-}
-
--(BOOL)isTouchInMasterTokenZone:(UITouch*)touch{
-    if (!self.isVisible)
-        return NO;
-    
-    CGPoint tokenPoint = [touch locationInView:self];
-    
-    if (tokenPoint.x < self.tokenWidth * 0.5 &&
-        tokenPoint.y < 60)
-    {
-        return YES;
-    }else{
-        return NO;
-    }
 }
 
 //------------------

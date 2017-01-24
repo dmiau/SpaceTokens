@@ -6,10 +6,12 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class SpatialEntity;
 @class SpaceToken;
+
+typedef BOOL(^dragActionHandlingBlock)(UITouch *touch, SpaceToken*);
 
 //---------------------------
 // TokenCollection is a convenient structure which holds
@@ -18,6 +20,14 @@
 @interface TokenCollection : NSObject{
     NSMutableArray <SpaceToken*> *tokenArray;
 }
+
+@property NSMutableArray <dragActionHandlingBlock> *handlingBlockArray;
+
+// Operations to set the properties of all the SpaceTokens
+@property BOOL isStudyModeEnabled;
+@property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
+@property BOOL isTokenLabelEnabled;
+@property BOOL isCustomGestureRecognizerEnabled;
 
 + (TokenCollection*)sharedManager;
 
@@ -31,10 +41,7 @@
 
 - (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity;
 
-// Operations to set the properties of all the SpaceTokens
-@property BOOL isStudyModeEnabled;
-@property BOOL isTokenDraggingEnabled; // Control whether SpaceTokens can be dragged or not
-@property BOOL isTokenLabelEnabled;
-@property BOOL isCustomGestureRecognizerEnabled;
+
+
 
 @end

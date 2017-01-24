@@ -263,16 +263,40 @@
 
 - (void)renameToken:(SpaceToken*)token{
     
-    self.renamingOutlet.text = @"Happy Birthday!";
-    
-    //Show
-    [self.renamingOutlet becomeFirstResponder];
+    self.renamingOutlet.text = @"Rename.";
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    renamedToken.spatialEntity.name = self.renamingOutlet.text;
+    [renamedToken.counterPart
+     setTitle: self.renamingOutlet.text
+                  forState: UIControlStateNormal];
     [self.renamingOutlet resignFirstResponder];
-//    self.spatialEntity.name = self.nameOutlet.text;
+    self.renamingOutlet.text = @"Rename.";
     return YES;
 }
+
+-(void)addDragActionHandlingBlock{
+    // Add a dragging handling block to TokenCollection
+    dragActionHandlingBlock handlingBlock = ^BOOL(UITouch *touch, SpaceToken* token){
+        
+        if (self.renamingOutlet.isHidden)
+            return NO;
+        
+        CGPoint tokenPoint = [touch locationInView:self];
+        
+        if (CGRectContainsPoint(self.renamingOutlet.frame, tokenPoint)){
+            renamedToken = token;
+            self.renamingOutlet.text = token.spatialEntity.name;
+            
+            //Show
+            [self.renamingOutlet becomeFirstResponder];
+        }
+        return NO;
+    };
+    
+    [[[TokenCollection sharedManager] handlingBlockArray] addObject: handlingBlock];
+}
+
 @end
