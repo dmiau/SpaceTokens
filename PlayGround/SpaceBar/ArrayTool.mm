@@ -123,7 +123,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     // Add a dragging handling block to TokenCollection
     dragActionHandlingBlock handlingBlock = ^BOOL(UITouch *touch, SpaceToken* token){
         
-        if (!self.isVisible)
+        if (!self.isVisible || token.home == self)
             return NO;
         
         CGPoint tokenPoint = [touch locationInView:self];

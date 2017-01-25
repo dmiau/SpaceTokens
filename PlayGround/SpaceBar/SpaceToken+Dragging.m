@@ -21,6 +21,7 @@
 @implementation SpaceToken (Dragging)
 
 -(void)touchMoved:(UITouch*)touch{
+    
     // Do nothing if the button is not draggable
     if (!self.isDraggable)
         return;
@@ -29,7 +30,8 @@
     CGPoint previousLocationInView = [touch previousLocationInView:self];
     
     // Threshold the x position to distiguish wheather the button is dragged or clicked
-    if (CGRectContainsPoint(self.bounds, locationInView))
+    if (self.appearanceType == DOCKED &&
+        CGRectContainsPoint(self.bounds, locationInView))
     {
         //----------------------
         // Removing gesture (Dragging toward the edge)

@@ -114,7 +114,7 @@
     // Add a dragging handling block to TokenCollection
     dragActionHandlingBlock handlingBlock = ^BOOL(UITouch *touch, SpaceToken* token){
         
-        if (!self.isVisible)
+        if (!self.isVisible || token.home == self)
             return NO;
         
         CGPoint touchPoint = [touch locationInView:self.toolView];
@@ -122,8 +122,11 @@
         // Check if the touch is in the master token insertion zone
         if (CGRectContainsPoint(CGRectMake(0, 0, 60, 30), touchPoint))
         {
-            [self insertMaster:token];
-            return YES;
+            if ([self insertMaster:token]){
+                return YES;
+            }else{
+                return NO;
+            }
         }
         
         // Check if the touch is in the general token insertion zone
@@ -263,7 +266,7 @@
 
 // MARK: Token management
 
--(void)insertMaster:(PathToken*) token{
+-(BOOL)insertMaster:(PathToken*) token{
     
     // Remove the current master
     if (self.masterToken){
@@ -275,7 +278,12 @@
         self.masterToken = [[TokenCollection sharedManager]
                             addTokenFromSpatialEntity:self.arrayEntity];
     }else{
-        // This is usually called when a user drags a collection token to the position of a master token
+        // This part is called when a token is provided as a candidate to the master token
+        
+        if (![token.spatialEntity isKindOfClass:[ArrayEntity class]]){
+            return NO;
+        }
+        
         self.masterToken = [[TokenCollection sharedManager]
                             addTokenFromSpatialEntity:token.spatialEntity];
         
@@ -300,6 +308,7 @@
     
     self.arrayEntity = self.masterToken.spatialEntity;
     [self updateView];
+    return YES;
 }
 
 -(void) insertToken: (SpaceToken*) token{

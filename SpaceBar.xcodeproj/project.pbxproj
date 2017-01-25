@@ -144,6 +144,9 @@
 		9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
 		9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
 		9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
+		9A5A93561E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
+		9A5A93571E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
+		9A5A93581E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
 		9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A5CCBAC1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
@@ -535,6 +538,7 @@
 		9A5301531C5AD6A6008D584B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SpaceBar iPad.entitlements"; sourceTree = "<group>"; };
+		9A5A93551E38FB8900432972 /* arrayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrayIcon.png; sourceTree = "<group>"; };
 		9A5BAD081D53949D006EDB81 /* RouteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteDatabase.h; path = Map/RouteDatabase.h; sourceTree = "<group>"; };
 		9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RouteDatabase.mm; path = Map/RouteDatabase.mm; sourceTree = "<group>"; };
 		9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = SpaceBar/CollectionViewCell.h; sourceTree = "<group>"; };
@@ -1092,6 +1096,7 @@
 		9AC338211D63A680000272D9 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				9A5A93551E38FB8900432972 /* arrayIcon.png */,
 				9AC338221D63AA1C000272D9 /* heading.png */,
 				9AC338231D63AA1C000272D9 /* star-128.png */,
 				9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */,
@@ -1439,6 +1444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5A93561E38FB8900432972 /* arrayIcon.png in Resources */,
 				9AF100031D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
 				9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */,
 				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
@@ -1480,6 +1486,7 @@
 				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
 				9AA32CE91DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9A0D20871E26D40400191054 /* SetTool.xib in Resources */,
+				9A5A93571E38FB8900432972 /* arrayIcon.png in Resources */,
 				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
 				9A78F09E1E0468190070AEE2 /* AuthoringView.xib in Resources */,
@@ -1492,6 +1499,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5A93581E38FB8900432972 /* arrayIcon.png in Resources */,
 				9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */,
 				9AE13BAB1DF0D148008612DA /* SearchPanel.xib in Resources */,
 				9AE13BAC1DF0D148008612DA /* star-128.png in Resources */,

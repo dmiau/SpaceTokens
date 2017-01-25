@@ -129,6 +129,14 @@
 - (void)setSpatialEntity:(SpatialEntity *)spatialEntity{
     _spatialEntity = spatialEntity;
     [self setTitle:spatialEntity.name forState:UIControlStateNormal];
+    
+    if ([spatialEntity.name length] > 8){
+        self.titleLabel.numberOfLines = 2;
+        [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+        self.titleLabel.adjustsFontSizeToFitWidth = YES;
+        
+    }
+    
     spatialEntity.linkedObj = self;
 }
 
@@ -224,7 +232,7 @@
             self.isCircleLayerOn = NO;
             
             // add drop shadow
-//            self.layer.cornerRadius = 8.0f;
+            self.layer.cornerRadius = 10; // this value vary as per your desire
             self.layer.masksToBounds = NO;
 //            self.layer.borderWidth = 1.0f;
             
@@ -232,10 +240,7 @@
             self.layer.shadowOpacity = 0.8;
             self.layer.shadowRadius = 12;
             self.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
-            
-            self.layer.cornerRadius = 10; // this value vary as per your desire
-
-            
+        
             break;
         case DRAGGING:
             [self privateConfigureDraggingTokenAppearance];
@@ -376,6 +381,7 @@
     newToken.spatialEntity.linkedObj = self; // Establish the connection
     newToken.isDraggable = self.isDraggable;
     newToken.home = self.home;
+    newToken.didCreateClone = self.didCreateClone;
     return newToken;
 }
 

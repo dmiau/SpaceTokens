@@ -265,6 +265,7 @@
     //---------------
     // Rename a token
     //---------------
+    renamedToken.spatialEntity.name = self.renamingOutlet.text;
     
     // Find all the tokens with the same spatial entity
     for (SpaceToken *token in [[TokenCollection sharedManager] getTokenArray]){

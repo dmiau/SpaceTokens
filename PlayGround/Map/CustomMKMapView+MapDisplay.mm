@@ -163,43 +163,23 @@
         //----------------------------------
         // need to fit the entities (could be one or more)
         //----------------------------------
-        
-        // Goal: find minMapPointX, maxMapPOintX,
-        // minMapPointY, maxMapPointY
-        CGFloat minMapPointX, maxMapPointX, minMapPointY, maxMapPointY;
-        
         SpatialEntity *anEntity = [entitySet anyObject];
-        MKMapPoint aMapPoint = MKMapPointForCoordinate(anEntity.latLon);
-        minMapPointX = aMapPoint.x; maxMapPointX = aMapPoint.x;
-        minMapPointY = aMapPoint.y; maxMapPointY = aMapPoint.y;
+                
+        MKMapRect mapRect = [CustomMKMapView MKMapRectForCoordinateRegion:
+                             MKCoordinateRegionMake(anEntity.latLon, anEntity.coordSpan)];
         
         for (SpatialEntity *anEntity in entitySet){
             
-            if ([anEntity isKindOfClass:[POI class]]){
-                MKMapPoint tempMapPoint = MKMapPointForCoordinate(anEntity.latLon);
-                minMapPointX = MIN(minMapPointX, tempMapPoint.x);
-                maxMapPointX = MAX(maxMapPointX, tempMapPoint.x);
-                minMapPointY = MIN(minMapPointY, tempMapPoint.y);
-                maxMapPointY = MAX(maxMapPointY, tempMapPoint.y);
-            }else if ([anEntity isKindOfClass:[Route class]]){
-                double minMapX, maxMapX, minMapY, maxMapY;
-                Route *aRoute = anEntity;                
-                MKMapRect mapRect = [aRoute getBoundingMapRect];
-                minMapX = mapRect.origin.x; maxMapX = mapRect.origin.x + mapRect.size.width;
-                minMapY = mapRect.origin.y; maxMapY = mapRect.origin.y + mapRect.size.height;
-                
-                minMapPointX = MIN(minMapPointX, minMapX);
-                maxMapPointX = MAX(maxMapPointX, maxMapX);
-                minMapPointY = MIN(minMapPointY, minMapY);
-                maxMapPointY = MAX(maxMapPointY, maxMapY);
-            }
+            MKMapRect tempMapRect = [CustomMKMapView MKMapRectForCoordinateRegion:
+                                     MKCoordinateRegionMake(anEntity.latLon, anEntity.coordSpan)];
+            mapRect = MKMapRectUnion(mapRect, tempMapRect);
         }
                 
         // Find out the mid point
-        MKMapPoint midPoint = {.x = .5*(maxMapPointX + minMapPointX),
-            .y= .5*(maxMapPointY + minMapPointY)};
-        CGFloat height = maxMapPointY - minMapPointY;
-        CGFloat width = maxMapPointX - minMapPointX;
+        MKMapPoint midPoint = {.x = mapRect.origin.x + .5*mapRect.size.width,
+            .y= mapRect.origin.y + .5*mapRect.size.height};
+        CGFloat height = mapRect.size.height;
+        CGFloat width = mapRect.size.width;
         
         // Check the aspect ratio to decide xSpan and ySpan
         CGFloat xSpan, ySpan;
