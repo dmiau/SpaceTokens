@@ -84,6 +84,12 @@
 
 - (void)restoreDefaultStyle{
     [self setBackgroundColor:[UIColor grayColor]];
+    
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    if ([self.spatialEntity.name length] > 8){
+        self.titleLabel.numberOfLines = 2;
+        [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+    }
 }
 
 #pragma mark --setters--
@@ -129,15 +135,8 @@
 - (void)setSpatialEntity:(SpatialEntity *)spatialEntity{
     _spatialEntity = spatialEntity;
     [self setTitle:spatialEntity.name forState:UIControlStateNormal];
-    
-    if ([spatialEntity.name length] > 8){
-        self.titleLabel.numberOfLines = 2;
-        [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
-        self.titleLabel.adjustsFontSizeToFitWidth = YES;
-        
-    }
-    
     spatialEntity.linkedObj = self;
+    [self restoreDefaultStyle];
 }
 
 - (void)setSelected:(BOOL)selected{

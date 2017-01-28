@@ -214,7 +214,7 @@
     aPOI.latLon = place.coordinate;
     aPOI.annotation.pointType = dropped;
     aPOI.isMapAnnotationEnabled = YES;
-    aPOI.isEnabled = YES;
+    aPOI.isEnabled = NO;
     
     // Add the restul to entityDB
     [[EntityDatabase sharedManager] addEntity:aPOI];

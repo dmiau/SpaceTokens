@@ -80,7 +80,7 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF == %@", entity];
     NSArray *filteredArray = [i_entityArray filteredArrayUsingPredicate:predicate];
     
-    entity.isEnabled = YES;
+//    entity.isEnabled = YES;
     
     if ([filteredArray count] > 0){
         SpatialEntity *entity = [filteredArray firstObject];

@@ -33,24 +33,34 @@
     {
         [self setBackgroundColor:[UIColor orangeColor]];
     }else{
-//        if (![self.spatialEntity isKindOfClass:[Route class]]){
-//            [NSException raise:@"Programming error." format:@"PathToken's spatialEntity should be of the Route type."];
-//        }
+        UIImage *arrayIcon = [UIImage imageNamed:@"arrayIcon"];
+        UIImage *pathIcon = [UIImage imageNamed:@"pathIcon"];
+        UIImage *setIcon = [UIImage imageNamed:@"setIcon"];
         
         Route *aRoute = self.spatialEntity;
         switch (aRoute.appearanceMode) {
             case ARRAYMODE:
-                [self setBackgroundColor:[UIColor purpleColor]];
+                [self setBackgroundColor:[[UIColor purpleColor] colorWithAlphaComponent:0.5]];
+                [self setBackgroundImage:arrayIcon forState:UIControlStateNormal];
                 break;
             case SETMODE:
                 [self setBackgroundColor:[UIColor brownColor]];
+                [self setBackgroundImage:setIcon forState:UIControlStateNormal];
                 break;
             case ROUTEMODE:
                 [self setBackgroundColor:[UIColor orangeColor]];
+                [self setBackgroundImage:pathIcon forState:UIControlStateNormal];
                 break;
             default:
                 break;
         }
+    }
+    
+    //UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
+    [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    if ([self.spatialEntity.name length] > 6){
+        self.titleLabel.numberOfLines = 2;
     }
 }
 

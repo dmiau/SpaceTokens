@@ -66,7 +66,7 @@
 -(void)updateSetForContentArray{
     // Remove the current annotation if there is any
     
-    self.appearanceMode = ARRAYMODE;
+    self.appearanceMode = SETMODE;
     self.isMapAnnotationEnabled = NO;
     // No polyline for Array
     self.polyline = nil;

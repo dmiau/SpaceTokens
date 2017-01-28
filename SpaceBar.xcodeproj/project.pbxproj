@@ -12,6 +12,9 @@
 		9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A0571391E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
+		9A058C851E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
+		9A058C861E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
+		9A058C871E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
 		9A0D20861E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
 		9A0D20871E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
 		9A0D20881E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
@@ -147,6 +150,12 @@
 		9A5A93561E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
 		9A5A93571E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
 		9A5A93581E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
+		9A5A935B1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
+		9A5A935C1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
+		9A5A935D1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
+		9A5A935E1E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
+		9A5A935F1E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
+		9A5A93601E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
 		9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A5CCBAC1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
@@ -470,6 +479,7 @@
 		51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpaceBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53C4608EBA85F4149B795060 /* Pods-SpaceBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.debug.xcconfig"; sourceTree = "<group>"; };
 		9A0571371E0ED82E00A09E06 /* anchorInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anchorInstructions.png; sourceTree = "<group>"; };
+		9A058C841E393D030045AB0E /* areaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areaIcon.png; sourceTree = "<group>"; };
 		9A0D20851E26D40400191054 /* SetTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetTool.xib; path = SpaceBar/SetTool.xib; sourceTree = "<group>"; };
 		9A0D20891E26FB3500191054 /* SetCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCollectionView.h; path = SpaceBar/SetCollectionView.h; sourceTree = "<group>"; };
 		9A0D208A1E26FB3500191054 /* SetCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCollectionView.m; path = SpaceBar/SetCollectionView.m; sourceTree = "<group>"; };
@@ -539,6 +549,8 @@
 		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SpaceBar iPad.entitlements"; sourceTree = "<group>"; };
 		9A5A93551E38FB8900432972 /* arrayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrayIcon.png; sourceTree = "<group>"; };
+		9A5A93591E39365E00432972 /* pathIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pathIcon.png; sourceTree = "<group>"; };
+		9A5A935A1E39365E00432972 /* setIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setIcon.png; sourceTree = "<group>"; };
 		9A5BAD081D53949D006EDB81 /* RouteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteDatabase.h; path = Map/RouteDatabase.h; sourceTree = "<group>"; };
 		9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RouteDatabase.mm; path = Map/RouteDatabase.mm; sourceTree = "<group>"; };
 		9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = SpaceBar/CollectionViewCell.h; sourceTree = "<group>"; };
@@ -1096,7 +1108,10 @@
 		9AC338211D63A680000272D9 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				9A058C841E393D030045AB0E /* areaIcon.png */,
 				9A5A93551E38FB8900432972 /* arrayIcon.png */,
+				9A5A93591E39365E00432972 /* pathIcon.png */,
+				9A5A935A1E39365E00432972 /* setIcon.png */,
 				9AC338221D63AA1C000272D9 /* heading.png */,
 				9AC338231D63AA1C000272D9 /* star-128.png */,
 				9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */,
@@ -1447,6 +1462,7 @@
 				9A5A93561E38FB8900432972 /* arrayIcon.png in Resources */,
 				9AF100031D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
 				9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */,
+				9A5A935B1E39365E00432972 /* pathIcon.png in Resources */,
 				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
 				9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
@@ -1456,8 +1472,10 @@
 				9AC338241D63AA1C000272D9 /* heading.png in Resources */,
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
+				9A5A935E1E39365E00432972 /* setIcon.png in Resources */,
 				9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
+				9A058C851E393D030045AB0E /* areaIcon.png in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
 				9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */,
@@ -1472,6 +1490,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD0F4441C7CF71800AEF928 /* LaunchScreen.storyboard in Resources */,
+				9A058C861E393D030045AB0E /* areaIcon.png in Resources */,
+				9A5A935C1E39365E00432972 /* pathIcon.png in Resources */,
 				9AD0F4451C7CF71800AEF928 /* Assets.xcassets in Resources */,
 				9AD0F4461C7CF71800AEF928 /* Main.storyboard in Resources */,
 				9A6F56321D9BCB490037C8A1 /* SearchPanel.xib in Resources */,
@@ -1488,6 +1508,7 @@
 				9A0D20871E26D40400191054 /* SetTool.xib in Resources */,
 				9A5A93571E38FB8900432972 /* arrayIcon.png in Resources */,
 				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
+				9A5A935F1E39365E00432972 /* setIcon.png in Resources */,
 				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
 				9A78F09E1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9AED2A5C1E214495004F1A84 /* ToolPalette.xib in Resources */,
@@ -1502,6 +1523,7 @@
 				9A5A93581E38FB8900432972 /* arrayIcon.png in Resources */,
 				9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */,
 				9AE13BAB1DF0D148008612DA /* SearchPanel.xib in Resources */,
+				9A5A935D1E39365E00432972 /* pathIcon.png in Resources */,
 				9AE13BAC1DF0D148008612DA /* star-128.png in Resources */,
 				9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */,
 				9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
@@ -1511,8 +1533,10 @@
 				9AE13BAE1DF0D148008612DA /* heading.png in Resources */,
 				9AE13BAF1DF0D148008612DA /* setup.png in Resources */,
 				9AE13BB01DF0D148008612DA /* Assets.xcassets in Resources */,
+				9A5A93601E39365E00432972 /* setIcon.png in Resources */,
 				9AE13BB11DF0D148008612DA /* grayYouRHere.png in Resources */,
 				9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */,
+				9A058C871E393D030045AB0E /* areaIcon.png in Resources */,
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
 				9AE13BB41DF0D148008612DA /* RangeSlider in Resources */,
 				9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */,

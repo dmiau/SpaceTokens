@@ -76,8 +76,11 @@
     
     // Configure the appearance
     [self setTitle: spaceToken.spatialEntity.name forState:UIControlStateNormal];
-
-    
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    if ([spaceToken.spatialEntity.name length] > 8){
+        self.titleLabel.numberOfLines = 2;
+    }
+        
     // Need to attach to tokenCollectionView, not the SpaceToken,
     // so Connection Tool can be touched when SpaceToken is touched
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];

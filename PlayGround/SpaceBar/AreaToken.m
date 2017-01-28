@@ -22,9 +22,23 @@
     self = [super init];
     
     // Change the color to orange
-    [self setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
-    
+    [self restoreDefaultStyle];    
     return self;
+}
+
+
+- (void)restoreDefaultStyle{
+    UIImage *areaIcon = [UIImage imageNamed:@"areaIcon"];
+    
+    [self setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
+    [self setBackgroundImage:areaIcon forState:UIControlStateNormal];
+    
+    //UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
+    [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    if ([self.spatialEntity.name length] > 6){
+        self.titleLabel.numberOfLines = 2;
+    }
 }
 
 @end
