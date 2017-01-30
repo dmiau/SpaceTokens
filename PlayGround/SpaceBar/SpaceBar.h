@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "../Map/CustomMKMapView.h"
+#import "CustomMKMapView.h"
 #import "SpaceToken.h"
 #import "RangeSlider/CERangeSlider.h"
 #import "TokenCollection.h"
@@ -87,7 +87,7 @@ unsigned int spaceBarElevatorMoved:1;
 + (SpaceBar*)sharedManager;
 
 // Constructors
-- (id)initWithMapView: (MKMapView *) myMapView;
+- (id)initWithMapView: (CustomMKMapView *) myMapView;
 
 // --------------
 // SpaceToken management

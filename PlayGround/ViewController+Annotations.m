@@ -15,11 +15,12 @@
 
 #pragma mark --annotation related methods--
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(CustomPointAnnotation*)annotation
-{    
-    // Call the map annotation method
-    return [self.mapView viewForAnnotation:annotation];
-}
+// REFACTOR
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(CustomPointAnnotation*)annotation
+//{    
+//    // Call the map annotation method
+//    return [self.mapView viewForAnnotation:annotation];
+//}
 
 -(void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
     // Let the mapView to handle annotation selection

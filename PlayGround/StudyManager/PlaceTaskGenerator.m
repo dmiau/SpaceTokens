@@ -144,8 +144,10 @@
                                    targetCentroid.y - diameter/2,
                                    diameter, diameter);
     // Convert the rect to latlon and latlon span
-    MKCoordinateRegion targetRegion =
-    [mapView convertRect:targetRect toRegionFromView:mapView];
+    MKCoordinateRegion targetRegion;
+    // REFACTOR
+//    =
+//    [mapView convertRect:targetRect toRegionFromView:mapView];
     
     // Assemble the POI
     outPOI.latLon = targetRegion.center;

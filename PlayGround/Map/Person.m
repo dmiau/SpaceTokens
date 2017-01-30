@@ -95,7 +95,9 @@
     // Get the map object
     CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     
-    MKAnnotationView *myAnnotationView = [myMapView viewForAnnotation: self.annotation];
+    MKAnnotationView *myAnnotationView;
+    // REFACTOR
+    //= [myMapView viewForAnnotation: self.annotation];
     
     // Update the orientation
     UIImage *myImg = [UIImage imageNamed:@"heading.png"];

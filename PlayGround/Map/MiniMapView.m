@@ -24,7 +24,7 @@
 }
 
 
-- (void) updateBox: (MKMapView*) aMapView{
+- (void) updateBox: (CustomMKMapView*) aMapView{
     // Remove the previous box first
     if (self.boxPolyline){
         [self removeOverlay:self.boxPolyline];
@@ -74,11 +74,12 @@
 
 // Remove non-box overlay
 - (void) removeRouteOverlays{
-    for (id <MKOverlay> anOverlay in self.overlays){
-        if (anOverlay != self.boxPolyline){
-            [self removeOverlay:anOverlay];
-        }
-    }
+    // REFACTOR
+//    for (id <MKOverlay> anOverlay in self.overlays){
+//        if (anOverlay != self.boxPolyline){
+//            [self removeOverlay:anOverlay];
+//        }
+//    }
 }
 
 

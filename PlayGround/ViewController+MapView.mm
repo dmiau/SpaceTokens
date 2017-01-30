@@ -16,17 +16,32 @@
 @implementation ViewController (MapView)
 
 #pragma mark --CustomMKMapView delegate methods--
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+// This is called when the map is changed
+-(void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position{
+    [self updateSystem];
+}
+
+// This is called when the map becomes idle
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position{    
+
+    // Timer action to disable the highlight
+    NSTimer *delayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.05
+                                                       target:self
+                                                     selector:@selector(updateSystem)
+                                                     userInfo:nil repeats:NO];
+    
+}
+
+- (void)updateSystem{
     [self updateSpaceBar];
     [self updateMiniMap];
     
     // Broadcast a notification about the changing map
     NSNotification *notification = [NSNotification notificationWithName:MapUpdatedNotification
-        object:self userInfo:nil];
+                                                                 object:self userInfo:nil];
     [[ NSNotificationCenter defaultCenter] postNotification:notification];
-    
-    
 }
+
 
 // Triggers SpaceBar redraw
 - (void) updateSpaceBar{
@@ -46,17 +61,26 @@
     // Only update mini map if it is viislbe
     if (self.miniMapView.superview){
         if (self.miniMapView.syncRotation){
-            self.miniMapView.camera.heading = self.mapView.camera.heading;
+            
+            GMSCameraPosition *myCamera = self.miniMapView.camera;
+            GMSCameraPosition *myNewCamera = [GMSCameraPosition
+                                              cameraWithLatitude:myCamera.target.latitude
+                                              longitude:myCamera.target.longitude
+                                              zoom:myCamera.zoom
+                                              bearing:self.mapView.camera.bearing
+                                              viewingAngle:myCamera.viewingAngle];
+            self.miniMapView.camera = myNewCamera;
         }
         [self.miniMapView updateBox:self.mapView];
     }
 }
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
-{
-    MKOverlayRenderer* renderer =  [self.mapView rendererForOverlay:overlay];
-    return renderer;
-}
+// REFACTOR
+//- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
+//{
+//    MKOverlayRenderer* renderer =  [self.mapView rendererForOverlay:overlay];
+//    return renderer;
+//}
 
 
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

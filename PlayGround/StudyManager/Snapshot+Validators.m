@@ -64,27 +64,27 @@
     double dist = sqrt( pow(xy0.x - xy1.x, 2) + pow(xy0.y - xy1.y, 2)) + 0.1; // to resolve the calculation errors.
     passFlag = passFlag && (dist > self.rootViewController.mapView.frame.size.width * 0.8);
     
-    if (passFlag && !validatorTimer){
-        
-        // Change the color of the circle
-        MKCircleRenderer *renderer =
-        [mapView rendererForOverlay:targetCircle];
-        renderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
-        
-        validatorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                         target:self
-                                       selector:@selector(onePointCompletionAction)
-                                       userInfo:nil
-                                        repeats:NO];        
-    }else if (!passFlag){
-        // Change the color of the circle
-        MKCircleRenderer *renderer =
-        [mapView rendererForOverlay:targetCircle];
-        renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
-
-        [validatorTimer invalidate];
-        validatorTimer = nil;
-    }
+//    if (passFlag && !validatorTimer){
+//        
+//        // Change the color of the circle
+//        MKCircleRenderer *renderer =
+//        [mapView rendererForOverlay:targetCircle];
+//        renderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
+//        
+//        validatorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+//                                         target:self
+//                                       selector:@selector(onePointCompletionAction)
+//                                       userInfo:nil
+//                                        repeats:NO];        
+//    }else if (!passFlag){
+//        // Change the color of the circle
+//        MKCircleRenderer *renderer =
+//        [mapView rendererForOverlay:targetCircle];
+//        renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+//
+//        [validatorTimer invalidate];
+//        validatorTimer = nil;
+//    }
 }
 
 - (void)onePointCompletionAction{
@@ -132,27 +132,27 @@
     
     // if passed, Show the visual indication
     
-    if (passFlag && !validatorTimer){
-        
-        // Change the color of the circle
-        MKCircleRenderer *renderer = (MKCircleRenderer *)
-        [mapView rendererForOverlay:targetCircle];
-        renderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
-        
-        validatorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                          target:self
-                                                        selector:@selector(twoPointsCompletionAction)
-                                                        userInfo:nil
-                                                         repeats:NO];                
-    }else if (!passFlag){
-        // Change the color of the circle
-        MKCircleRenderer *renderer = (MKCircleRenderer *)
-        [mapView rendererForOverlay:targetCircle];
-        renderer.fillColor = [[UIColor clearColor] colorWithAlphaComponent:0.0];
-        
-        [validatorTimer invalidate];
-        validatorTimer = nil;
-    }
+//    if (passFlag && !validatorTimer){
+//        
+//        // Change the color of the circle
+//        MKCircleRenderer *renderer = (MKCircleRenderer *)
+//        [mapView rendererForOverlay:targetCircle];
+//        renderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
+//        
+//        validatorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+//                                                          target:self
+//                                                        selector:@selector(twoPointsCompletionAction)
+//                                                        userInfo:nil
+//                                                         repeats:NO];                
+//    }else if (!passFlag){
+//        // Change the color of the circle
+//        MKCircleRenderer *renderer = (MKCircleRenderer *)
+//        [mapView rendererForOverlay:targetCircle];
+//        renderer.fillColor = [[UIColor clearColor] colorWithAlphaComponent:0.0];
+//        
+//        [validatorTimer invalidate];
+//        validatorTimer = nil;
+//    }
 }
 
 - (void)twoPointsCompletionAction{

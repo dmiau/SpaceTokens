@@ -26,8 +26,6 @@
             [self.mapView setRegion: MKCoordinateRegionMake(coord,
                                                             MKCoordinateSpanMake(0.1, 0.1))];
         }
-        // set the orientation
-//        self.mapView.camera.heading = orientationInDegree;
     }
 }
 
@@ -174,12 +172,13 @@
              [NSSet setWithObject: self.spaceBar.activeRoute]];
             // Remove previous routes if any
             [self.miniMapView removeRouteOverlays];
-            
-            [self.miniMapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
+
+            // REFACTOR
+//            [self.miniMapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
         }
     }
-    
-    [self.mapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
+    // REFACTOR
+//    [self.mapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
 }
 
 - (void)removeRoute{

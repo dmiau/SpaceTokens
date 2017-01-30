@@ -166,8 +166,10 @@
     // try to dequeue an existing pin view first
     static NSString *landmarkAnnotationID = @"pointAnnotationID";
     
-    MKAnnotationView *pinView =
-    (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:landmarkAnnotationID];
+    MKAnnotationView *pinView;
+// REFACTOR
+//    =
+//    (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:landmarkAnnotationID];
     
     if (pinView == nil)
     {

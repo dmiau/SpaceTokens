@@ -36,7 +36,8 @@
     
     // Position the map to the initial condition
     MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);
-    [self.rootViewController.mapView setRegion:region animated:NO];
+    // REFACTOR
+//    [self.rootViewController.mapView setRegion:region animated:NO];
     
     // Make sure the correct route is loaded
     if (!self.rootViewController.spaceBar.activeRoute ||

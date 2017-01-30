@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01538A9F2BB2A28D93FC11D0 /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A0571391E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
@@ -244,6 +243,9 @@
 		9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A94DD091D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
 		9A94DD0A1D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
+		9A95D64E1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
+		9A95D64F1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
+		9A95D6501E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
 		9A9792E21DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9792E31DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9792E41DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
@@ -420,7 +422,6 @@
 		9AE13BA51DF0D148008612DA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9AE13BA61DF0D148008612DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AE13BA71DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
-		9AE13BA81DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
 		9AE13BAB1DF0D148008612DA /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9AE13BAC1DF0D148008612DA /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
@@ -625,6 +626,8 @@
 		9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "CustomMKMapView+MapDisplay.mm"; path = "Map/CustomMKMapView+MapDisplay.mm"; sourceTree = "<group>"; };
 		9A94DD071D9C194D00F94256 /* CustomMKMapView+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+Annotations.h"; path = "Map/CustomMKMapView+Annotations.h"; sourceTree = "<group>"; };
 		9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+Annotations.m"; path = "Map/CustomMKMapView+Annotations.m"; sourceTree = "<group>"; };
+		9A95D64C1E3D68D400674847 /* CustomMKMapView+GMSMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+GMSMapView.h"; path = "Map/CustomMKMapView+GMSMapView.h"; sourceTree = "<group>"; };
+		9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+GMSMapView.m"; path = "Map/CustomMKMapView+GMSMapView.m"; sourceTree = "<group>"; };
 		9A9792E01DFA19EB0062ED6F /* TokenCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenCollectionView.h; path = SpaceBar/TokenCollectionView.h; sourceTree = "<group>"; };
 		9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenCollectionView.m; path = SpaceBar/TokenCollectionView.m; sourceTree = "<group>"; };
 		9A9809C01E1AEFB2006D7F8D /* ArrayEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayEntity.h; path = SpaceBar/ArrayEntity.h; sourceTree = "<group>"; };
@@ -745,7 +748,6 @@
 				9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */,
 				9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */,
 				5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */,
-				01538A9F2BB2A28D93FC11D0 /* libPods-SpaceBar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,7 +767,6 @@
 				9AE13BA51DF0D148008612DA /* AVFoundation.framework in Frameworks */,
 				9AE13BA61DF0D148008612DA /* MapKit.framework in Frameworks */,
 				9AE13BA71DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */,
-				9AE13BA81DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +892,8 @@
 				9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */,
 				9A94DD071D9C194D00F94256 /* CustomMKMapView+Annotations.h */,
 				9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */,
+				9A95D64C1E3D68D400674847 /* CustomMKMapView+GMSMapView.h */,
+				9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */,
 				9A8B5E511D5D659300A32DC9 /* MiniMapView.h */,
 				9A8B5E521D5D659300A32DC9 /* MiniMapView.m */,
 			);
@@ -1798,6 +1801,7 @@
 				9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
+				9A95D64E1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
 				9A9ECD451E2BF4D3002A094E /* CustomMKPolygon.m in Sources */,
 				9A1985A61DDCEE460016696F /* PathToken.mm in Sources */,
@@ -1910,6 +1914,7 @@
 				9AFED2F61E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
 				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
+				9A95D64F1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,
 				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
 				9A9ECD461E2BF4D3002A094E /* CustomMKPolygon.m in Sources */,
 				9A1985A71DDCEE460016696F /* PathToken.mm in Sources */,
@@ -2022,6 +2027,7 @@
 				9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,
+				9A95D6501E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,
 				9AE13B931DF0D148008612DA /* tester.m in Sources */,
 				9A9ECD471E2BF4D3002A094E /* CustomMKPolygon.m in Sources */,
 				9AE13B951DF0D148008612DA /* PathToken.mm in Sources */,
@@ -2198,6 +2204,10 @@
 				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PlayGround/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
@@ -2215,6 +2225,10 @@
 				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PlayGround/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
@@ -2231,6 +2245,10 @@
 				CODE_SIGN_ENTITLEMENTS = "SpaceBar iPad.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
@@ -2247,6 +2265,10 @@
 				CODE_SIGN_ENTITLEMENTS = "SpaceBar iPad.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
@@ -2265,6 +2287,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T8L89L97Z5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/SpaceBarBeta-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dmiau.SpaceBar-Dev";
@@ -2283,6 +2309,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T8L89L97Z5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/SpaceBarBeta-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dmiau.SpaceBar-Dev";

@@ -36,6 +36,8 @@
 //---------------
 // Search Panel actions
 //---------------
+- (IBAction)debugAction:(id)sender;
+
 - (IBAction)renamingAction:(id)sender;
 
 - (IBAction)prefAction:(id)sender;

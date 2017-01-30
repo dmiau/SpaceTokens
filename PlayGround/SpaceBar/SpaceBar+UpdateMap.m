@@ -25,44 +25,39 @@
     }
 }
 
-
-
 //----------------
 // zoom-to-fit
 //----------------
 - (void) zoomMapToFitTouchSet{
     
+    
+    SpaceToken *oneAnchor;
+    
     if ([self.anchorSet count]==1){
+        oneAnchor = [self.anchorSet anyObject];
+        oneAnchor.isConstraintLineOn = YES;
+    }else if ([self.draggingSet count]==1){
+        oneAnchor = [self.draggingSet anyObject];
+        oneAnchor.isConstraintLineOn = YES;
+//        oneAnchor.isLineLayerOn = YES;
+    }
+    
+    
+    if (oneAnchor){
         //--------------
         // One anchor
         //--------------
         // Show the anchor and one desired location
-        SpaceToken *oneAnchor = [self.anchorSet anyObject];
+        
         // Turn on the debug visual
         [oneAnchor configureAppearanceForType:ANCHOR_VISIBLE];
-        oneAnchor.isConstraintLineOn = YES;
+
+        GMSCoordinateBounds *bounds = [self computerGMSBoundsForTokenSets:self.touchingSet andAnchor:oneAnchor];
+        GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate
+                                         fitBounds: bounds
+                                         withEdgeInsets: self.mapView.edgeInsets];
+        [self.mapView moveCamera: cameraUpdate];
         
-        
-        MKMapRect mapRect = [self computerBoundingPOIsForTokenSets: self.touchingSet
-                                                         andAnchor: oneAnchor];
-        [self.mapView setVisibleMapRect:mapRect edgePadding:self.mapView.edgeInsets
-                               animated:NO];
-        
-    }else if ([self.draggingSet count]==1){
-        //--------------
-        // One dragging token
-        //--------------
-        // Show the anchor and one desired location
-        SpaceToken *oneAnchor = [self.draggingSet anyObject];
-        
-        MKMapRect mapRect = [self computerBoundingPOIsForTokenSets: self.touchingSet
-                                                         andAnchor: oneAnchor];
-        
-        // Turn on the debug visual
-        oneAnchor.isLineLayerOn = YES;
-        oneAnchor.isConstraintLineOn = YES;
-        [self.mapView setVisibleMapRect:mapRect edgePadding:self.mapView.edgeInsets
-                               animated:NO];
     }else{
         //--------------
         // Zero anchor, or more than one anchor
@@ -122,7 +117,7 @@
         //----------------------
         SpaceToken *aToken = [tokenSet anyObject];
         [self.mapView snapOneCoordinate: aToken.spatialEntity.latLon toXY: aToken.mapViewXY
-                        withOrientation:self.mapView.camera.heading animated:NO];
+                        withOrientation:self.mapView.camera.bearing animated:NO];
     }else if ([tokenSet count] == 2){
         
         //----------------------
@@ -134,10 +129,10 @@
 
 
 //------------------
-// Compute the bounding box that includes an anchor and tokens
+// Compute the bounding box that includes an anchor and tokens (Google Maps version)
 //------------------
-- (MKMapRect)computerBoundingPOIsForTokenSets: (NSSet*)tokenSet
-                                       andAnchor: (SpaceToken*) anchor
+- (GMSCoordinateBounds*)computerGMSBoundsForTokenSets: (NSSet*)tokenSet
+                                    andAnchor: (SpaceToken*) anchor
 {
     // Compute the bounding POIs
     CGFloat minCGPointX, maxCGPointX, minCGPointY, maxCGPointY;
@@ -169,7 +164,7 @@
     
     // Goal: find targetedMinX, targetedMaxX, targetedMinY, targetedMaxY
     double targetedMinX, targetedMaxX, targetedMinY, targetedMaxY;
-
+    
     // find the boubdary in the x direction
     findTargetedMinMax(leftEdge, anchorCGPoint.x, rightEdge
                        , minCGPointX, maxCGPointX,
@@ -200,22 +195,44 @@
         targetedMaxY = scale * (targetedMaxY - anchorCGPoint.y) + anchorCGPoint.y;
     }
     
-    // Generate MapRect (first need to convert from CGPoint to MapPoints)
-    MKMapPoint topLeft =
-    MKMapPointForCoordinate(
-          [self.mapView convertPoint:CGPointMake(targetedMinX, targetedMinY)
-                toCoordinateFromView: self.mapView]);
     
-    MKMapPoint bottomRight =
-    MKMapPointForCoordinate(
-                            [self.mapView convertPoint:CGPointMake(targetedMaxX, targetedMaxY)
-                                  toCoordinateFromView: self.mapView]);
+//    // Generate MapRect (first need to convert from CGPoint to MapPoints)
+//    MKMapPoint topLeft =
+//    MKMapPointForCoordinate(
+//                            [self.mapView convertPoint:CGPointMake(targetedMinX, targetedMinY)
+//                                  toCoordinateFromView: self.mapView]);
+//    
+//    MKMapPoint bottomRight =
+//    MKMapPointForCoordinate(
+//                            [self.mapView convertPoint:CGPointMake(targetedMaxX, targetedMaxY)
+//                                  toCoordinateFromView: self.mapView]);
+//    
+//    MKMapRect outMapRect = MKMapRectMake(topLeft.x, topLeft.y,
+//                                         bottomRight.x - topLeft.x,
+//                                         bottomRight.y - topLeft.y);
+//    return outMapRect;
     
-    MKMapRect outMapRect = MKMapRectMake(topLeft.x, topLeft.y,
-                                      bottomRight.x - topLeft.x,
-                                      bottomRight.y - topLeft.y);
-    return outMapRect;
+    
+    CLLocationCoordinate2D northEast = [self.mapView.projection coordinateForPoint:
+                                        CGPointMake(targetedMaxX, targetedMaxY)];
+    CLLocationCoordinate2D southWest = [self.mapView.projection coordinateForPoint:
+                                        CGPointMake(targetedMinX, targetedMinY)];
+    
+    GMSCoordinateBounds *outBounds = [[GMSCoordinateBounds alloc]
+                                      initWithCoordinate: northEast
+                                      coordinate: southWest];
+    return outBounds;
+    
 }
+
+
+
+
+
+
+
+
+
 
 // This function computes the ideal targetedMin and targetedMax
 // based on the provided information

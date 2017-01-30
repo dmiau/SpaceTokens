@@ -22,9 +22,15 @@
 
 - (void)setup{    
     [self setupMapSpacebar];
-
-    [[CustomMKMapView sharedManager] camera].heading = 0;
-    
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    GMSCameraPosition *myCamera = mapView.camera;
+    GMSCameraPosition *myNewCamera = [GMSCameraPosition
+                                      cameraWithLatitude:myCamera.target.latitude
+                                      longitude:myCamera.target.longitude
+                                      zoom:myCamera.zoom
+                                      bearing:0
+                                      viewingAngle:myCamera.viewingAngle];
+    mapView.camera = myNewCamera;
     
     //------------------------
     // Set up the environment according to the condition

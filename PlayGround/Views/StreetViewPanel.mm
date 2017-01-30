@@ -61,11 +61,12 @@
     
     // Position the map and StreetView to Paris
     [self.panoView moveNearCoordinate:CLLocationCoordinate2DMake(48.857624, 2.351482)];
-     
-    [self.rootViewController.mapView
-     setRegion: MKCoordinateRegionMake
-     (CLLocationCoordinate2DMake(48.857624, 2.351482),
-                        MKCoordinateSpanMake(0.003, 0.003))];
+    
+    GMSCameraPosition *paris = [GMSCameraPosition cameraWithLatitude:48.857624
+                                                            longitude:2.351482
+                                                                 zoom:15];
+    
+    [self.rootViewController.mapView setCamera:paris];
     
     // Add the preference button
     [self.rootViewController.view addSubview: settingsButton];    
@@ -101,15 +102,12 @@
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     // Position the map and StreetView to Paris
-    [self.panoView moveNearCoordinate: mapView.centerCoordinate];
+    [self.panoView moveNearCoordinate: mapView.camera.target];
 }
 
 
 // Panorama is moved. Need to update the user's location
 - (void)panoramaView:(GMSPanoramaView *)view didMoveToPanorama:(GMSPanorama *)panorama{
-
-    self.rootViewController.mapView.customUserLocation.coordinate =
-    panorama.coordinate;
     
     // Also update the YouAreHere indicator
     [EntityDatabase sharedManager].youRHere.latLon = panorama.coordinate;

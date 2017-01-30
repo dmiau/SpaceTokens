@@ -99,7 +99,7 @@ static ViewController *instance;
     [self.mapView setRegion:initRegion];
     
     self.mapView.delegate = self;
-    self.mapView.showsCompass = YES;
+    self.mapView.settings.compassButton = true;
     
     //----------------
     // Add a mini map
@@ -108,7 +108,7 @@ static ViewController *instance;
                         CGRectMake(50, self.mapView.frame.size.height-130,
                                    130, 130)];
     [self.miniMapView setUserInteractionEnabled:YES];
-    self.miniMapView.showsCompass = NO;
+    self.miniMapView.settings.compassButton = false;
     
     //----------------
     // Add a SpaceBar
@@ -146,7 +146,7 @@ static ViewController *instance;
     [spaceBar resetInteractiveTokenStructures];
     
     // Clear all annotations
-    [self.mapView removeAnnotations: self.mapView.annotations];
+    [self.mapView clear];
     
     // Do a forced refresh if the tokenView is enabled
     TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];

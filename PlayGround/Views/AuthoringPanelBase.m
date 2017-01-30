@@ -167,8 +167,11 @@
     // Get the map object
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
-    MKCoordinateRegion coordinateRegion = [mapView convertRect:targetRectBox
-                                              toRegionFromView:mapView];
+    // REFACTOR
+    MKCoordinateRegion coordinateRegion;
+    
+//    = [mapView convertRect:targetRectBox
+//                                              toRegionFromView:mapView];
     return coordinateRegion;
 }
 

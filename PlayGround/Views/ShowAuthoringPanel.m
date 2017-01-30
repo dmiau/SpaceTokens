@@ -179,10 +179,9 @@ static ShowAuthoringPanel *instance;
     
     // Remove all overlays
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    [mapView removeOverlays:mapView.overlays];
     
     // Remove all annotations
-    [mapView removeAnnotations:mapView.annotations];
+    [mapView clear];
     
     // Reset the button
     [self.captureStartCondOutlet setTitle:@"Cap-StartCond(0)" forState:UIControlStateNormal];

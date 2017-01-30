@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+#import "CustomMKMapView.h"
 #import "AnnotationProtocol.h"
 
 @interface SpatialEntity : NSObject
@@ -31,7 +31,7 @@
 
 // MARK: Methods
 // This is to control the annotation of a map other than the regular map
-- (void)setMapAnnotationEnabled:(BOOL)flag onMap:(MKMapView*)map;
+- (void)setMapAnnotationEnabled:(BOOL)flag onMap:(CustomMKMapView*)map;
 - (double)getPointDistanceToTouch:(UITouch*)touch;
 - (id)initWithCoder:(NSCoder *)coder;
 - (void)encodeWithCoder:(NSCoder *)coder;

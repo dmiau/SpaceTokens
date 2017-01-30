@@ -40,7 +40,7 @@ static SpaceBar *sharedInstance;
 //----------------
 // initialization
 //----------------
-- (id)initWithMapView: (MKMapView *) myMapView {
+- (id)initWithMapView: (CustomMKMapView *) myMapView {
     self = [super init];
     
     // Initialize the map
@@ -252,8 +252,7 @@ static SpaceBar *sharedInstance;
 // This is useful for POI sorting on SpaceBar
 - (void) fillMapXYsForSet: (NSSet*) aSet{
     for (SpaceToken* aToken in aSet){
-        aToken.mapViewXY = [self.mapView convertCoordinate:aToken.spatialEntity.latLon
-                                             toPointToView:self.mapView];
+        aToken.mapViewXY = [self.mapView.projection pointForCoordinate:aToken.spatialEntity.latLon];
     }
 }
 

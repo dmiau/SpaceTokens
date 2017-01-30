@@ -22,7 +22,7 @@
 @class SpeechEngine;
 
 @interface ViewController : UIViewController
-<SpaceBarDelegate, MKMapViewDelegate, CustomMKMapViewDelegate>
+<SpaceBarDelegate, GMSMapViewDelegate, CustomMKMapViewDelegate>
 
 @property MainViewManager *mainViewManager;
 @property MyFileManager *myFileManager;

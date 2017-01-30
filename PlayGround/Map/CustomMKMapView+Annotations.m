@@ -24,23 +24,24 @@
 }
 
 -(void)didSelectAnnotationView:(MKAnnotationView *)view{    
-    id selectedAnnotation = view.annotation;
-    if ([view.annotation isKindOfClass:[CustomPointAnnotation class]]){
-        CustomPointAnnotation *pointAnnotation = view.annotation;
-        pointAnnotation.isHighlighted = YES;
-        pointAnnotation.isLabelOn = YES;
-    }
-    
-    // Deselect all other annotations
-    for (id annotation in [self annotations]){
-        if ((annotation != selectedAnnotation) &&
-            ([annotation isKindOfClass: [CustomPointAnnotation class]]))
-        {
-            CustomPointAnnotation *pointAnnotation = annotation;
-            pointAnnotation.isHighlighted = NO;
-            pointAnnotation.isLabelOn = NO;
-        }
-    }
+// REFACTOR
+    //    id selectedAnnotation = view.annotation;
+//    if ([view.annotation isKindOfClass:[CustomPointAnnotation class]]){
+//        CustomPointAnnotation *pointAnnotation = view.annotation;
+//        pointAnnotation.isHighlighted = YES;
+//        pointAnnotation.isLabelOn = YES;
+//    }
+//    
+//    // Deselect all other annotations
+//    for (id annotation in [self annotations]){
+//        if ((annotation != selectedAnnotation) &&
+//            ([annotation isKindOfClass: [CustomPointAnnotation class]]))
+//        {
+//            CustomPointAnnotation *pointAnnotation = annotation;
+//            pointAnnotation.isHighlighted = NO;
+//            pointAnnotation.isLabelOn = NO;
+//        }
+//    }
 }
 
 #pragma mark --Routes--
@@ -83,13 +84,14 @@
 
 
 -(void)resetAnnotations{
-    // Get all the annotations
-    for (id annotation in [self annotations]){
-        if ([annotation isKindOfClass:[CustomPointAnnotation class]]){
-            CustomPointAnnotation *pointAnnotation = annotation;
-            pointAnnotation.isHighlighted = NO;
-            pointAnnotation.isLabelOn = NO;
-        }
-    }
+// REFACTOR
+    //    // Get all the annotations
+//    for (id annotation in [self annotations]){
+//        if ([annotation isKindOfClass:[CustomPointAnnotation class]]){
+//            CustomPointAnnotation *pointAnnotation = annotation;
+//            pointAnnotation.isHighlighted = NO;
+//            pointAnnotation.isLabelOn = NO;
+//        }
+//    }
 }
 @end

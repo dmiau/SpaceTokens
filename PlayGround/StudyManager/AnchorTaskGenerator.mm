@@ -147,8 +147,14 @@ using namespace std;
         [mapView setRegion:initRegion];
         
         // Rotate the map
-        mapView.camera.heading = mapRotationInDegree[i];
-        
+        GMSCameraPosition *myCamera = mapView.camera;
+        GMSCameraPosition *myNewCamera = [GMSCameraPosition
+                        cameraWithLatitude:myCamera.target.latitude
+                        longitude:myCamera.target.longitude
+                                          zoom:myCamera.zoom
+                                          bearing:mapRotationInDegree[i]
+                                          viewingAngle:myCamera.viewingAngle];
+        mapView.camera = myNewCamera;
         
         //--------------------
         // cafe + hotel
@@ -233,9 +239,15 @@ using namespace std;
     }
     
     // Rotate the map back
-    mapView.camera.heading = 0;
-    
-    
+    GMSCameraPosition *myCamera = mapView.camera;
+    GMSCameraPosition *myNewCamera = [GMSCameraPosition
+                                      cameraWithLatitude:myCamera.target.latitude
+                                      longitude:myCamera.target.longitude
+                                      zoom:myCamera.zoom
+                                      bearing:0
+                                      viewingAngle:myCamera.viewingAngle];
+    mapView.camera = myNewCamera;
+
     return outDictionary;
     
 }

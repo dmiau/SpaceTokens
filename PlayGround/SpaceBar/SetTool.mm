@@ -67,7 +67,7 @@
     // Set up the mini map
     //----------------
     [self.miniMapView setUserInteractionEnabled:NO];
-    self.miniMapView.showsCompass = NO;
+    self.miniMapView.settings.compassButton = NO;
     
     // Make the mini map hidden by default
     [self.miniMapView setHidden:YES];
@@ -179,7 +179,7 @@
     // Set up the annotations
     //---------------
     // Clear the existing annotation
-    [self.miniMapView removeAnnotations:self.miniMapView.annotations];
+    [self.miniMapView clear];
     // Add annotations to the mini map
     for (SpatialEntity *entity in [self.arrayEntity getContent]){
         [entity setMapAnnotationEnabled:YES onMap:self.miniMapView];

@@ -98,8 +98,9 @@ template class std::vector<double>;
     
     // No need to display the annotation when there is no polyline
     if (isMapAnnotationEnabled && self.polyline){
+        // REFACTOR
         // Add the annotation
-        [mapView addOverlay:self.polyline level:MKOverlayLevelAboveRoads];
+//        [mapView addOverlay:self.polyline level:MKOverlayLevelAboveRoads];
     }else{
         // Remove the annotation
         [mapView removeOverlay: self.polyline];
@@ -129,7 +130,6 @@ template class std::vector<double>;
     // Populate the accumulatedDist structures
     //------------------
     // This chunk could potentially take some time
-    int pointIdx = 0;
     float accumulatedDist = 0;
     MKMapPoint previousMapPoint = self.polyline.points[0];
     for (int i = 0; i < pointNumber; ++i){

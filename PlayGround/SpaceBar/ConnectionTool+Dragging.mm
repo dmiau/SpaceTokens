@@ -131,7 +131,7 @@
         
         // Create a spatial entity for the destination
         POI *destinationPOI = [[POI alloc] init];
-        destinationPOI.latLon = [mapView convertPoint:touchPoint toCoordinateFromView:mapView];
+        destinationPOI.latLon = [mapView.projection coordinateForPoint:touchPoint];
         
         // Create a route
         POI *sourcePOI = counterPart.spatialEntity;

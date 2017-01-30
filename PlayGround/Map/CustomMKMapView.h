@@ -7,14 +7,11 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "GoogleMaps/GoogleMaps.h"
 
 // Forward declration
 @class SpatialEntity;
 @class Route;
-
-
-
-
 
 //==============================
 // CustomMKMapView ******Delegate
@@ -30,19 +27,12 @@
 
 
 
-
-
-
-
-
 //==============================
 // CustomMKMapView
 //==============================
-@interface CustomMKMapView : MKMapView{
-    MKMapView *hiddenMap; // for calculations
+@interface CustomMKMapView : GMSMapView{
     
     struct {
-        unsigned int regionDidChangeAnimated:1;
         unsigned int mapTouchBegin:1;
         unsigned int mapTouchMoved:1;
         unsigned int mapTouchEnded:1;
@@ -52,8 +42,8 @@
 
 + (CustomMKMapView*)sharedManager; // Singleton method
 
-@property (nonatomic, weak) id<MKMapViewDelegate, CustomMKMapViewDelegate> delegate;
-@property MKUserLocation *customUserLocation;
+@property (nonatomic, weak) id<CustomMKMapViewDelegate, GMSMapViewDelegate> delegate;
+
 
 @property UIEdgeInsets edgeInsets;// this is for the zoom-to-fit feature
 
@@ -89,4 +79,22 @@
 //==============================
 - (void)p_initGestureRecognizer;
 
+
+//==============================
+// Methods for porting to GMSMapView
+//==============================
+-(CGPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(UIView *)view;
+-(CLLocationCoordinate2D)convertPoint:(CGPoint)point toCoordinateFromView:(UIView *)view;
+- (void)addOverlay:(id<MKOverlay>)overlay;
+- (void)removeOverlay:(id<MKOverlay>)overlay;
+@property MKCoordinateRegion region;
+@property MKMapRect visibleMapRect;
+- (void)setVisibleMapRect:(MKMapRect)mapRect edgePadding:(UIEdgeInsets)insets animated:(BOOL)animate;
+- (void)addAnnotation:(id<MKAnnotation>)annotation;
+- (void)removeAnnotation:(id<MKAnnotation>)annotation;
+
+// Convenient update methods
+-(void)updateZoom:(float)newZoom;
+-(void)updateBearing:(float)newBearing;
+-(void)updateCenterCoordinates:(CLLocationCoordinate2D)newCoord;
 @end

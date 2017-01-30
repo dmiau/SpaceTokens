@@ -128,8 +128,10 @@ static AuthoringPanel *instance;
     // Get the map object
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
-    MKCoordinateRegion coordinateRegion = [mapView convertRect:targetRectBox
-                                              toRegionFromView:mapView];
+    // REFACTOR
+    MKCoordinateRegion coordinateRegion;
+//    = [mapView convertRect:targetRectBox
+//                                              toRegionFromView:mapView];
     return coordinateRegion;
 }
 
@@ -329,7 +331,7 @@ static AuthoringPanel *instance;
     
     // Remove all overlays
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    [mapView removeOverlays:mapView.overlays];
+    [mapView clear];
     
     // Remove all SpaceTokens
     [self.rootViewController.spaceBar removeAllSpaceTokens];

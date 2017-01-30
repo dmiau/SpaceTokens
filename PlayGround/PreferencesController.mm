@@ -102,13 +102,13 @@
     
     if ([label isEqualToString:@"Standard"]){
         [self.rootViewController.mainViewManager showDefaultPanel];
-        self.rootViewController.mapView.mapType = MKMapTypeStandard;
+        self.rootViewController.mapView.mapType = kGMSTypeNormal;
     }else if ([label isEqualToString:@"Hybrid"]){
         [self.rootViewController.mainViewManager showDefaultPanel];
-        self.rootViewController.mapView.mapType = MKMapTypeHybridFlyover;
+        self.rootViewController.mapView.mapType = kGMSTypeHybrid;
     }else if ([label isEqualToString:@"Satellite"]){
         [self.rootViewController.mainViewManager showDefaultPanel];
-        self.rootViewController.mapView.mapType = MKMapTypeSatelliteFlyover;
+        self.rootViewController.mapView.mapType = kGMSTypeSatellite;
     }else if ([label isEqualToString:@"StreetView"]){
         [self.rootViewController.mainViewManager
          showPanelWithType:STREETVIEWPANEL];
@@ -149,9 +149,10 @@
             // Remove previous routes if any
             [self.rootViewController.miniMapView removeRouteOverlays];
             
-            [self.rootViewController.miniMapView
-             addOverlay:self.rootViewController.spaceBar.activeRoute.polyline
-             level:MKOverlayLevelAboveRoads];
+            // REFACTOR
+//            [self.rootViewController.miniMapView
+//             addOverlay:self.rootViewController.spaceBar.activeRoute.polyline
+//             level:MKOverlayLevelAboveRoads];
         }
     }else if ([label isEqualToString:@"Off"]){
         [self.rootViewController.miniMapView removeFromSuperview];

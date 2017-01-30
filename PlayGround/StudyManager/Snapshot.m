@@ -63,8 +63,9 @@
 #pragma mark --CommonSetup--
 - (void) setupMapSpacebar{
     // Position the map to the initial condition
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);    
-    [self.rootViewController.mapView setRegion:region animated:NO];
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.latLon, self.coordSpan);
+    // REFACTOR
+//    [self.rootViewController.mapView setRegion:region animated:NO];
     
     // Set up the SpaceToken correctly
     SpaceBar *spaceBar = self.rootViewController.spaceBar;
@@ -75,7 +76,7 @@
     
     // Remove all annotations
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    [mapView removeAnnotations:mapView.annotations];
+    [mapView clear];
     
     // Add the needed annotations
     for (POI *aPOI in self.highlightedPOIs){
@@ -116,10 +117,11 @@
     targetCircle = [MKCircle circleWithCenterCoordinate:midCoord radius:meters/2]; // radius is measured in meters
     [self.rootViewController.mapView addOverlay:targetCircle];
     
-    // Change the color of the circle
-    MKCircleRenderer *renderer =
-    [self.rootViewController.mapView rendererForOverlay:completionIndicator];
-    renderer.fillColor = [[UIColor clearColor] colorWithAlphaComponent:0];
+    // REFACTOR
+//    // Change the color of the circle
+//    MKCircleRenderer *renderer =
+//    [self.rootViewController.mapView rendererForOverlay:completionIndicator];
+//    renderer.fillColor = [[UIColor clearColor] colorWithAlphaComponent:0];
 }
 
 #pragma mark --Tools--

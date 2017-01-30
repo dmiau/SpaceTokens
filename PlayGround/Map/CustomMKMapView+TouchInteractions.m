@@ -116,27 +116,9 @@
     if (self.isDebugModeOn){
         
         //----------------
-        // investigate the region corresponding to the cgrect
-        //----------------
-        //        CGRect realRect = [self convertRegion:self.region toRectToView:self];
-        //        CGRect hiddenRect = [hiddenMap convertRegion:hiddenMap.region toRectToView:hiddenMap];
-        
-        //        NSLog(@"Real rect: %@", NSStringFromCGRect(realRect));
-        //        NSLog(@"Hidden rect: %@", NSStringFromCGRect(hiddenRect));
-        
-        //----------------
         // Print out debug info
         //----------------
-        MKMapRect mapRect = self.visibleMapRect;
-        NSLog(@"MapRect Origin: (%g, %g), Size: (%g, %g)",
-              mapRect.origin.x, mapRect.origin.y,
-              mapRect.size.width, mapRect.size.height);
-        
-        //-------------------------
-        NSLog(@"real: centroid:(%g, %g), span:(%g, %g)", self.region.center.latitude,
-              self.region.center.longitude, self.region.span.latitudeDelta, self.region.span.longitudeDelta);
-        //        NSLog(@"hiddenMap: centroid:(%g, %g), span:(%g, %g)", hiddenMap.region.center.latitude,
-        //              hiddenMap.region.center.longitude, hiddenMap.region.span.latitudeDelta, hiddenMap.region.span.longitudeDelta);
+
     }
 }
 

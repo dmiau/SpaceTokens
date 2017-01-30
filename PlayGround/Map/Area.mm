@@ -29,7 +29,8 @@
     
     if (isMapAnnotationEnabled){
         // Add the annotation
-        [mapView addOverlay:self.polygon level:MKOverlayLevelAboveRoads];
+        // REFACTOR
+//        [mapView addOverlay:self.polygon level:MKOverlayLevelAboveRoads];
     }else{
         // Remove the annotation
         [mapView removeOverlay: self.polygon];

@@ -7,6 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "GoogleMaps/GoogleMaps.h"
 #include <vector>
 #include <utility>
 #import "SpatialEntity.h"
@@ -36,7 +37,7 @@ using namespace std;
 
 
 -(std::vector<std::pair<float, float>>) calculateVisibleSegmentsForMap:
-(MKMapView*) mapView;
+(GMSMapView*) mapView;
 -(void)convertPercentage: (float)percentage
                 toLatLon: (CLLocationCoordinate2D&) latLon
              orientation: (double&) degree;

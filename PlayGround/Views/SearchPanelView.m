@@ -182,12 +182,10 @@
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     CLLocationCoordinate2D northeast =
-    CLLocationCoordinate2DMake
-    (mapView.centerCoordinate.latitude - mapView.region.span.latitudeDelta/2, mapView.centerCoordinate.longitude - mapView.region.span.longitudeDelta/2);
+    mapView.projection.visibleRegion.farRight;
     
     CLLocationCoordinate2D southwest =
-    CLLocationCoordinate2DMake
-    (mapView.centerCoordinate.latitude + mapView.region.span.latitudeDelta/2, mapView.centerCoordinate.longitude + mapView.region.span.longitudeDelta/2);
+    mapView.projection.visibleRegion.nearLeft;
     
     _resultsViewController.autocompleteBounds =
     [[GMSCoordinateBounds alloc]
@@ -227,23 +225,11 @@
         // Get the map object
         CustomMKMapView *mapView = [CustomMKMapView sharedManager];
         GMSCoordinateBounds *viewport = place.viewport;
-        // Calculate a suitable region
-        MKMapPoint northEast = MKMapPointForCoordinate(viewport.northEast);
-        MKMapPoint southWest = MKMapPointForCoordinate(viewport.southWest);
         
-        MKMapRect mapRect = MKMapRectMake(southWest.x, northEast.y, northEast.x - southWest.x, southWest.y - northEast.y);
+        GMSCameraUpdate *newCamera = [GMSCameraUpdate fitBounds: place.viewport];
         
-        if (mapRect.size.width > 0 && mapRect.size.height > 0){
-            // Shift the map to show the location
-            [mapView setVisibleMapRect: mapRect
-                           edgePadding: UIEdgeInsetsMake(0, 0, 0, 0) animated:YES];
-        }else{
-            MKCoordinateRegion region =
-            MKCoordinateRegionMake(place.coordinate, MKCoordinateSpanMake(0.01, 0.01));
-            if ([CustomMKMapView validateCoordinate:region.center]){
-                [mapView setRegion:region animated:YES];
-            }
-        }
+        [mapView moveCamera: newCamera];
+
     }else{
         //----------------------
         // Use the handling block to handle the POI
@@ -270,5 +256,6 @@ didFailAutocompleteWithError:(NSError *)error {
 (GMSAutocompleteResultsViewController *)resultsController {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
+
 
 @end
