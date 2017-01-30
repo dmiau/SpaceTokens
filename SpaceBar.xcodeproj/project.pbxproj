@@ -7,37 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
-		9A0571391E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A058C851E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
-		9A058C861E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
 		9A058C871E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
 		9A0D20861E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
-		9A0D20871E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
 		9A0D20881E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
 		9A0D208B1E26FB3500191054 /* SetCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D208A1E26FB3500191054 /* SetCollectionView.m */; };
-		9A0D208C1E26FB3500191054 /* SetCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D208A1E26FB3500191054 /* SetCollectionView.m */; };
 		9A0D208D1E26FB3500191054 /* SetCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D208A1E26FB3500191054 /* SetCollectionView.m */; };
 		9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
-		9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */; };
-		9A0FEE8C1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */; };
 		9A10B51E1E312BDA0016A2EA /* Route+Appearance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A10B51D1E312BDA0016A2EA /* Route+Appearance.mm */; };
-		9A10B51F1E312BDA0016A2EA /* Route+Appearance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A10B51D1E312BDA0016A2EA /* Route+Appearance.mm */; };
 		9A10B5201E312BDA0016A2EA /* Route+Appearance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A10B51D1E312BDA0016A2EA /* Route+Appearance.mm */; };
 		9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
-		9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A177FCD1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */; };
-		9A177FCE1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */; };
 		9A177FCF1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */; };
 		9A1985A61DDCEE460016696F /* PathToken.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.mm */; };
-		9A1985A71DDCEE460016696F /* PathToken.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.mm */; };
 		9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
-		9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
-		9A22D0191D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A234B191D8A1C6D00F3EE21 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A234B1A1D8A1C6D00F3EE21 /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
 		9A234B1B1D8A1C6D00F3EE21 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
@@ -108,37 +95,25 @@
 		9A234B661D8A1C6D00F3EE21 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9A234B671D8A1C6D00F3EE21 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
-		9A246D701D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2495EC1D9929CC00A92207 /* TaskGenerator.m */; };
-		9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2495EC1D9929CC00A92207 /* TaskGenerator.m */; };
 		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
 		9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9A27222E1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
-		9A27222F1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9A2D6DEB1E23E5A900D64615 /* SetTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.mm */; };
-		9A2D6DEC1E23E5A900D64615 /* SetTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.mm */; };
 		9A2D6DED1E23E5A900D64615 /* SetTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.mm */; };
 		9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
-		9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
 		9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
-		9A3EB3B71E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
 		9A3EB3B81E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
 		9A3EB3BB1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */; };
-		9A3EB3BC1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */; };
 		9A3EB3BD1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */; };
 		9A437FB21D550C7A00F28E61 /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
-		9A437FB31D550C7A00F28E61 /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A437FB11D550C7A00F28E61 /* GameManager.mm */; };
 		9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
-		9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
-		9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
 		9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B4A1D90910400C43255 /* RecordTableViewController.m */; };
-		9A485B4C1D90910400C43255 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B4A1D90910400C43255 /* RecordTableViewController.m */; };
 		9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
-		9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
 		9A5301431C5AD6A6008D584B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
 		9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301451C5AD6A6008D584B /* AppDelegate.m */; };
 		9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.mm */; };
@@ -147,200 +122,146 @@
 		9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
 		9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
 		9A5A93561E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
-		9A5A93571E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
 		9A5A93581E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
 		9A5A935B1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
-		9A5A935C1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
 		9A5A935D1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
 		9A5A935E1E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
-		9A5A935F1E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
 		9A5A93601E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
 		9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
-		9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A5CCBAC1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
-		9A5CCBAD1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5CCBAE1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
-		9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
 		9A5DA02D1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
-		9A5DA02E1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
 		9A5DA02F1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
 		9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0311E16F2C9002A50B7 /* AreaToken.m */; };
-		9A5DA0331E16F2C9002A50B7 /* AreaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0311E16F2C9002A50B7 /* AreaToken.m */; };
 		9A5DA0341E16F2C9002A50B7 /* AreaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0311E16F2C9002A50B7 /* AreaToken.m */; };
 		9A5DA03C1E170BAC002A50B7 /* LineEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */; };
-		9A5DA03D1E170BAC002A50B7 /* LineEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */; };
 		9A5DA03E1E170BAC002A50B7 /* LineEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA03B1E170BAC002A50B7 /* LineEntity.mm */; };
 		9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62C3F61DCCD0B50048E44C /* Speech.framework */; };
 		9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
 		9A62FB831DDF7CC500245BD6 /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
-		9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A62FB821DDF7CC500245BD6 /* ConnectionTool.mm */; };
 		9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
-		9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */; };
 		9A665B061E196EC0000D8902 /* ArrayTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.mm */; };
-		9A665B071E196EC0000D8902 /* ArrayTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.mm */; };
 		9A665B081E196EC0000D8902 /* ArrayTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.mm */; };
 		9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
-		9A6F56321D9BCB490037C8A1 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
-		9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
 		9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
-		9A7594D01E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
 		9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
 		9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
-		9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
-		9A78F09E1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
-		9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A7DB27C1E14494000226D42 /* DrawingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB27B1E14494000226D42 /* DrawingView.mm */; };
-		9A7DB27D1E14494000226D42 /* DrawingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB27B1E14494000226D42 /* DrawingView.mm */; };
 		9A7DB27E1E14494000226D42 /* DrawingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB27B1E14494000226D42 /* DrawingView.mm */; };
 		9A7DB2811E145C3B00226D42 /* UIBezierPath+Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */; };
-		9A7DB2821E145C3B00226D42 /* UIBezierPath+Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */; };
 		9A7DB2831E145C3B00226D42 /* UIBezierPath+Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */; };
 		9A7DB2861E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */; };
-		9A7DB2871E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */; };
 		9A7DB2881E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */; };
 		9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
-		9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */; };
-		9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A81DBEC1D877EE3006DA5A1 /* SnapshotDetailViewController.m */; };
 		9A82A0821E09A26700B436AC /* PlaceTaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A82A0811E09A26700B436AC /* PlaceTaskGenerator.m */; };
-		9A82A0831E09A26700B436AC /* PlaceTaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A82A0811E09A26700B436AC /* PlaceTaskGenerator.m */; };
 		9A82A0841E09A26700B436AC /* PlaceTaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A82A0811E09A26700B436AC /* PlaceTaskGenerator.m */; };
 		9A82A0861E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A82A0851E0B2D9900B436AC /* AnchorInstructionView.xib */; };
-		9A82A0871E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A82A0851E0B2D9900B436AC /* AnchorInstructionView.xib */; };
 		9A82A0881E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A82A0851E0B2D9900B436AC /* AnchorInstructionView.xib */; };
 		9A82A08B1E0B2DE600B436AC /* AnchorInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A82A08A1E0B2DE600B436AC /* AnchorInstructionView.m */; };
-		9A82A08C1E0B2DE600B436AC /* AnchorInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A82A08A1E0B2DE600B436AC /* AnchorInstructionView.m */; };
 		9A82A08D1E0B2DE600B436AC /* AnchorInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A82A08A1E0B2DE600B436AC /* AnchorInstructionView.m */; };
 		9A836D391C69372C007D9520 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
 		9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
 		9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
 		9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
 		9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B5E521D5D659300A32DC9 /* MiniMapView.m */; };
-		9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8B5E521D5D659300A32DC9 /* MiniMapView.m */; };
 		9A8BCA281D343D43006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
-		9A8BCA2B1D344892006C2EDC /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
 		9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */; };
-		9A8D5E801DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */; };
 		9A8EC9E11D6112CD0012C769 /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
-		9A8EC9E21D6112CD0012C769 /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
 		9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */; };
-		9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */; };
 		9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
-		9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
 		9A90C7641DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */; };
-		9A90C7651DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */; };
 		9A90C7661DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */; };
 		9A90C7691DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */; };
-		9A90C76A1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */; };
 		9A90C76B1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */; };
 		9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
-		9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
 		9A94DD091D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
-		9A94DD0A1D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
 		9A95D64E1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
-		9A95D64F1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
 		9A95D6501E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
 		9A9792E21DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
-		9A9792E31DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9792E41DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9809C21E1AEFB2006D7F8D /* ArrayEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */; };
-		9A9809C31E1AEFB2006D7F8D /* ArrayEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */; };
 		9A9809C41E1AEFB2006D7F8D /* ArrayEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */; };
 		9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
-		9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
-		9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9A9ECD451E2BF4D3002A094E /* CustomMKPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */; };
-		9A9ECD461E2BF4D3002A094E /* CustomMKPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */; };
 		9A9ECD471E2BF4D3002A094E /* CustomMKPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */; };
 		9AA32CE51DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */; };
-		9AA32CE61DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */; };
 		9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */; };
-		9AA32CE91DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */; };
 		9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
-		9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AA57F6F1DD624D800347B1A /* SpatialEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */; };
-		9AA57F701DD624D800347B1A /* SpatialEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */; };
+		9AA5E0EB1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */; };
+		9AA5E0ED1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */; };
+		9AA5E0EF1E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */; };
+		9AA5E0F11E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */; };
+		9AA5E0F31E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */; };
+		9AA5E0F51E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */; };
+		9AA5E0F71E3FB353007D3A7B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */; };
+		9AA5E0F91E3FB353007D3A7B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */; };
+		9AA5E0FC1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */; };
+		9AA5E0FE1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */; };
+		9AA5E1081E3FB463007D3A7B /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */; };
+		9AA5E10A1E3FB463007D3A7B /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */; };
+		9AA5E10C1E3FB4FC007D3A7B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10B1E3FB4FC007D3A7B /* Accelerate.framework */; };
+		9AA5E10E1E3FB507007D3A7B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10D1E3FB507007D3A7B /* CoreData.framework */; };
+		9AA5E1101E3FB50F007D3A7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10F1E3FB50F007D3A7B /* CoreGraphics.framework */; };
+		9AA5E1121E3FB515007D3A7B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1111E3FB515007D3A7B /* CoreLocation.framework */; };
+		9AA5E1141E3FB51B007D3A7B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1131E3FB51B007D3A7B /* CoreText.framework */; };
+		9AA5E1161E3FB521007D3A7B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1151E3FB521007D3A7B /* GLKit.framework */; };
+		9AA5E1181E3FB527007D3A7B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1171E3FB527007D3A7B /* ImageIO.framework */; };
+		9AA5E11A1E3FB535007D3A7B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1191E3FB535007D3A7B /* libc++.tbd */; };
+		9AA5E11C1E3FB53B007D3A7B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E11B1E3FB53B007D3A7B /* libz.tbd */; };
+		9AA5E11E1E3FB544007D3A7B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E11D1E3FB544007D3A7B /* OpenGLES.framework */; };
+		9AA5E1201E3FB54B007D3A7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E11F1E3FB54B007D3A7B /* QuartzCore.framework */; };
+		9AA5E1221E3FB552007D3A7B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1211E3FB552007D3A7B /* SystemConfiguration.framework */; };
+		9AA5E1241E3FB558007D3A7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1231E3FB558007D3A7B /* UIKit.framework */; };
+		9AA5E1251E3FB5AF007D3A7B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10B1E3FB4FC007D3A7B /* Accelerate.framework */; };
+		9AA5E1261E3FB5B6007D3A7B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10D1E3FB507007D3A7B /* CoreData.framework */; };
+		9AA5E1271E3FB5BD007D3A7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10F1E3FB50F007D3A7B /* CoreGraphics.framework */; };
+		9AA5E1281E3FB5C3007D3A7B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1111E3FB515007D3A7B /* CoreLocation.framework */; };
+		9AA5E1291E3FB5C9007D3A7B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1131E3FB51B007D3A7B /* CoreText.framework */; };
+		9AA5E12A1E3FB5CF007D3A7B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1151E3FB521007D3A7B /* GLKit.framework */; };
+		9AA5E12B1E3FB5D5007D3A7B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1171E3FB527007D3A7B /* ImageIO.framework */; };
+		9AA5E12C1E3FB5DD007D3A7B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1191E3FB535007D3A7B /* libc++.tbd */; };
+		9AA5E12D1E3FB5E3007D3A7B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E11B1E3FB53B007D3A7B /* libz.tbd */; };
+		9AA5E12E1E3FB5E9007D3A7B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E11D1E3FB544007D3A7B /* OpenGLES.framework */; };
+		9AA5E12F1E3FB5F0007D3A7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E11F1E3FB54B007D3A7B /* QuartzCore.framework */; };
+		9AA5E1301E3FB5F7007D3A7B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1211E3FB552007D3A7B /* SystemConfiguration.framework */; };
+		9AA5E1311E3FB5FD007D3A7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1231E3FB558007D3A7B /* UIKit.framework */; };
 		9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
-		9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9AA62C051D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
-		9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* SpaceBar+Interactions.m */; };
 		9AAAA1821D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
-		9AAAA1831D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
 		9AAAA1861D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */; };
-		9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */; };
 		9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
-		9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
 		9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE092C1DECDAE800BAE14C /* AuthoringPanelBase.m */; };
-		9AAE092E1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE092C1DECDAE800BAE14C /* AuthoringPanelBase.m */; };
 		9AB2854C1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
-		9AB2854D1D88C10700773166 /* SpaceBar+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* SpaceBar+Anchors.m */; };
 		9AB3BDD91DE290B100334EF9 /* TokenCollection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3BDD81DE290B100334EF9 /* TokenCollection.mm */; };
-		9AB3BDDA1DE290B100334EF9 /* TokenCollection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3BDD81DE290B100334EF9 /* TokenCollection.mm */; };
 		9AB5AAF31DD10DBD0094996B /* ConstraintDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */; };
-		9AB5AAF41DD10DBD0094996B /* ConstraintDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */; };
 		9AB76B761D9C5C110096C444 /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B751D9C5C110096C444 /* setup.png */; };
-		9AB76B771D9C5C110096C444 /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B751D9C5C110096C444 /* setup.png */; };
 		9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */; };
-		9AB76B7A1D9C5EAC0096C444 /* grayYouRHere.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */; };
 		9ABB28101D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
-		9ABB28111D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9AC338241D63AA1C000272D9 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
-		9AC338251D63AA1C000272D9 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
 		9AC338261D63AA1C000272D9 /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
-		9AC338271D63AA1C000272D9 /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
 		9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */; };
-		9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */; };
 		9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
 		9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
 		9AC7E1A91D50E08400C2E8BE /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
-		9AC7E1AA1D50E08400C2E8BE /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
-		9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
 		9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */; };
-		9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */; };
 		9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
-		9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
 		9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
-		9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */; };
 		9ACE01591E292F9A0010F651 /* AdditionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE01581E292F9A0010F651 /* AdditionTool.mm */; };
-		9ACE015A1E292F9A0010F651 /* AdditionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE01581E292F9A0010F651 /* AdditionTool.mm */; };
 		9ACE015B1E292F9A0010F651 /* AdditionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE01581E292F9A0010F651 /* AdditionTool.mm */; };
-		9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
-		9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
-		9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
-		9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.mm */; };
-		9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301451C5AD6A6008D584B /* AppDelegate.m */; };
-		9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62F1E31C62C6BF00A39DAF /* Tools.m */; };
-		9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* SpaceBar.mm */; };
-		9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
-		9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
-		9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
-		9AD0F43B1C7CF71800AEF928 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
-		9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A836D381C69372C007D9520 /* tester.m */; };
-		9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413651C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm */; };
-		9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
-		9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A84136C1C6FB39B004DF8D1 /* Constants.m */; };
-		9AD0F4421C7CF71800AEF928 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
-		9AD0F4441C7CF71800AEF928 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
-		9AD0F4451C7CF71800AEF928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
-		9AD0F4461C7CF71800AEF928 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A53014A1C5AD6A6008D584B /* Main.storyboard */; };
-		9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
-		9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
-		9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */; };
 		9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
-		9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
-		9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
 		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
-		9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9AE13B501DF0D148008612DA /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AE13B511DF0D148008612DA /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
@@ -421,7 +342,6 @@
 		9AE13BA41DF0D148008612DA /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62C3F61DCCD0B50048E44C /* Speech.framework */; };
 		9AE13BA51DF0D148008612DA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9AE13BA61DF0D148008612DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
-		9AE13BA71DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */; };
 		9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
 		9AE13BAB1DF0D148008612DA /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9AE13BAC1DF0D148008612DA /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
@@ -437,48 +357,31 @@
 		9AE13BB61DF0D148008612DA /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */; };
 		9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */; };
-		9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */; };
 		9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
-		9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
 		9AE27CA31E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AE27CA21E08D04D006D4F31 /* AnchorTaskGenerator.mm */; };
-		9AE27CA41E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AE27CA21E08D04D006D4F31 /* AnchorTaskGenerator.mm */; };
 		9AE27CA51E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AE27CA21E08D04D006D4F31 /* AnchorTaskGenerator.mm */; };
 		9AE443B21DEB5CCC006963DC /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
-		9AE443B31DEB5CCC006963DC /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
 		9AED2A5B1E214495004F1A84 /* ToolPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AED2A5A1E214495004F1A84 /* ToolPalette.xib */; };
-		9AED2A5C1E214495004F1A84 /* ToolPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AED2A5A1E214495004F1A84 /* ToolPalette.xib */; };
 		9AED2A5D1E214495004F1A84 /* ToolPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AED2A5A1E214495004F1A84 /* ToolPalette.xib */; };
 		9AED2A601E214786004F1A84 /* ToolPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AED2A5F1E214786004F1A84 /* ToolPalette.m */; };
-		9AED2A611E214786004F1A84 /* ToolPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AED2A5F1E214786004F1A84 /* ToolPalette.m */; };
 		9AED2A621E214786004F1A84 /* ToolPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AED2A5F1E214786004F1A84 /* ToolPalette.m */; };
 		9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
-		9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDBD7C1D7DB5FE00CFAD15 /* Record.m */; };
 		9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
-		9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
 		9AF100031D57FA720063CB63 /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
-		9AF100041D57FA720063CB63 /* TaskBasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF100021D57FA720063CB63 /* TaskBasePanel.xib */; };
 		9AF2267D1C7412890051FE30 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
-		9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AF7F6A31E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
-		9AF7F6A41E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
 		9AF7F6A51E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
 		9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
-		9AFC0A681DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
-		9AFED2F11E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
 		9AFED2F21E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
 		9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2F41E0869EA007C8317 /* NSMutableArray+Tools.m */; };
-		9AFED2F61E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2F41E0869EA007C8317 /* NSMutableArray+Tools.m */; };
 		9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2F41E0869EA007C8317 /* NSMutableArray+Tools.m */; };
 		9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
-		9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFFFF11D85B85A00111E6C /* Snapshot+Validators.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C7C28C2EEBD466FC9796535 /* Pods-SpaceBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.release.xcconfig"; sourceTree = "<group>"; };
 		51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpaceBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		53C4608EBA85F4149B795060 /* Pods-SpaceBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar.debug.xcconfig"; sourceTree = "<group>"; };
 		9A0571371E0ED82E00A09E06 /* anchorInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anchorInstructions.png; sourceTree = "<group>"; };
 		9A058C841E393D030045AB0E /* areaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areaIcon.png; sourceTree = "<group>"; };
 		9A0D20851E26D40400191054 /* SetTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetTool.xib; path = SpaceBar/SetTool.xib; sourceTree = "<group>"; };
@@ -645,6 +548,25 @@
 		9AA454DE1D52D160008D4FCF /* MyFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFileManager.m; sourceTree = "<group>"; };
 		9AA57F6D1DD624D800347B1A /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpatialEntity.h; path = Map/SpatialEntity.h; sourceTree = "<group>"; };
 		9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SpatialEntity.mm; path = Map/SpatialEntity.mm; sourceTree = "<group>"; };
+		9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
+		9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
+		9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
+		9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		9AA5E10B1E3FB4FC007D3A7B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9AA5E10D1E3FB507007D3A7B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9AA5E10F1E3FB50F007D3A7B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9AA5E1111E3FB515007D3A7B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9AA5E1131E3FB51B007D3A7B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		9AA5E1151E3FB521007D3A7B /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		9AA5E1171E3FB527007D3A7B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		9AA5E1191E3FB535007D3A7B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		9AA5E11B1E3FB53B007D3A7B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9AA5E11D1E3FB544007D3A7B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9AA5E11F1E3FB54B007D3A7B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9AA5E1211E3FB552007D3A7B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9AA5E1231E3FB558007D3A7B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotDatabase.h; path = StudyManager/SnapshotDatabase.h; sourceTree = "<group>"; };
 		9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotDatabase.m; path = StudyManager/SnapshotDatabase.m; sourceTree = "<group>"; };
 		9AA617611D5635D1003CD946 /* SnapshotProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProtocol.h; path = StudyManager/SnapshotProtocol.h; sourceTree = "<group>"; };
@@ -688,7 +610,6 @@
 		9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DirectionPanel.mm; path = Views/DirectionPanel.mm; sourceTree = "<group>"; };
 		9ACE01571E292F9A0010F651 /* AdditionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdditionTool.h; path = SpaceBar/AdditionTool.h; sourceTree = "<group>"; };
 		9ACE01581E292F9A0010F651 /* AdditionTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AdditionTool.mm; path = SpaceBar/AdditionTool.mm; sourceTree = "<group>"; };
-		9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceBar iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBar copy-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBar copy-Info.plist"; sourceTree = "<absolute>"; };
 		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		9AD503311DC94303005A05D6 /* SpeechEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechEngine.h; path = ConstraintEngine/SpeechEngine.h; sourceTree = "<group>"; };
@@ -744,18 +665,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA5E1311E3FB5FD007D3A7B /* UIKit.framework in Frameworks */,
+				9AA5E1301E3FB5F7007D3A7B /* SystemConfiguration.framework in Frameworks */,
+				9AA5E12F1E3FB5F0007D3A7B /* QuartzCore.framework in Frameworks */,
+				9AA5E12E1E3FB5E9007D3A7B /* OpenGLES.framework in Frameworks */,
+				9AA5E12D1E3FB5E3007D3A7B /* libz.tbd in Frameworks */,
+				9AA5E12C1E3FB5DD007D3A7B /* libc++.tbd in Frameworks */,
+				9AA5E12B1E3FB5D5007D3A7B /* ImageIO.framework in Frameworks */,
+				9AA5E12A1E3FB5CF007D3A7B /* GLKit.framework in Frameworks */,
+				9AA5E1291E3FB5C9007D3A7B /* CoreText.framework in Frameworks */,
+				9AA5E1281E3FB5C3007D3A7B /* CoreLocation.framework in Frameworks */,
+				9AA5E1271E3FB5BD007D3A7B /* CoreGraphics.framework in Frameworks */,
+				9AA5E1261E3FB5B6007D3A7B /* CoreData.framework in Frameworks */,
+				9AA5E1251E3FB5AF007D3A7B /* Accelerate.framework in Frameworks */,
 				9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */,
+				9AA5E0EF1E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */,
 				9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */,
+				9AA5E0F31E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */,
 				9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */,
-				5BBE521983C1A585DB271172 /* libPods-SpaceBar.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AD0F4411C7CF71800AEF928 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AD0F4421C7CF71800AEF928 /* MapKit.framework in Frameworks */,
+				9AA5E0EB1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */,
+				9AA5E0FC1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,10 +692,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA5E1241E3FB558007D3A7B /* UIKit.framework in Frameworks */,
+				9AA5E1221E3FB552007D3A7B /* SystemConfiguration.framework in Frameworks */,
+				9AA5E1201E3FB54B007D3A7B /* QuartzCore.framework in Frameworks */,
+				9AA5E11E1E3FB544007D3A7B /* OpenGLES.framework in Frameworks */,
+				9AA5E11C1E3FB53B007D3A7B /* libz.tbd in Frameworks */,
+				9AA5E11A1E3FB535007D3A7B /* libc++.tbd in Frameworks */,
+				9AA5E1181E3FB527007D3A7B /* ImageIO.framework in Frameworks */,
+				9AA5E1161E3FB521007D3A7B /* GLKit.framework in Frameworks */,
+				9AA5E1141E3FB51B007D3A7B /* CoreText.framework in Frameworks */,
+				9AA5E1121E3FB515007D3A7B /* CoreLocation.framework in Frameworks */,
+				9AA5E1101E3FB50F007D3A7B /* CoreGraphics.framework in Frameworks */,
+				9AA5E10E1E3FB507007D3A7B /* CoreData.framework in Frameworks */,
+				9AA5E10C1E3FB4FC007D3A7B /* Accelerate.framework in Frameworks */,
 				9AE13BA41DF0D148008612DA /* Speech.framework in Frameworks */,
+				9AA5E0F51E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */,
+				9AA5E0ED1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */,
 				9AE13BA51DF0D148008612DA /* AVFoundation.framework in Frameworks */,
+				9AA5E0F11E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */,
+				9AA5E0FE1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */,
 				9AE13BA61DF0D148008612DA /* MapKit.framework in Frameworks */,
-				9AE13BA71DF0D148008612DA /* libPods-SpaceBar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,20 +721,24 @@
 		0143FC2420AD43B364D84109 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AA5E1231E3FB558007D3A7B /* UIKit.framework */,
+				9AA5E1211E3FB552007D3A7B /* SystemConfiguration.framework */,
+				9AA5E11F1E3FB54B007D3A7B /* QuartzCore.framework */,
+				9AA5E11D1E3FB544007D3A7B /* OpenGLES.framework */,
+				9AA5E11B1E3FB53B007D3A7B /* libz.tbd */,
+				9AA5E1191E3FB535007D3A7B /* libc++.tbd */,
+				9AA5E1171E3FB527007D3A7B /* ImageIO.framework */,
+				9AA5E1151E3FB521007D3A7B /* GLKit.framework */,
+				9AA5E1131E3FB51B007D3A7B /* CoreText.framework */,
+				9AA5E1111E3FB515007D3A7B /* CoreLocation.framework */,
+				9AA5E10F1E3FB50F007D3A7B /* CoreGraphics.framework */,
+				9AA5E10D1E3FB507007D3A7B /* CoreData.framework */,
+				9AA5E10B1E3FB4FC007D3A7B /* Accelerate.framework */,
 				9A62C3F61DCCD0B50048E44C /* Speech.framework */,
 				9A73C4101D86527200CF2BF1 /* AVFoundation.framework */,
 				51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		54F3AB5ED050702A14625E78 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				53C4608EBA85F4149B795060 /* Pods-SpaceBar.debug.xcconfig */,
-				2C7C28C2EEBD466FC9796535 /* Pods-SpaceBar.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		9A0FEE8D1DE39F7A00D4DFF1 /* Place */ = {
@@ -964,7 +913,6 @@
 				9A5301401C5AD6A6008D584B /* PlayGround */,
 				9A53013F1C5AD6A6008D584B /* Products */,
 				9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */,
-				54F3AB5ED050702A14625E78 /* Pods */,
 				0143FC2420AD43B364D84109 /* Frameworks */,
 				9A234B6E1D8A1C6D00F3EE21 /* SpaceBar copy2-Info.plist */,
 			);
@@ -974,7 +922,6 @@
 			isa = PBXGroup;
 			children = (
 				9A53013E1C5AD6A6008D584B /* SpaceBar.app */,
-				9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */,
 				9A234B6D1D8A1C6D00F3EE21 /* Test.app */,
 				9AE13BBD1DF0D148008612DA /* SpaceBarBeta.app */,
 			);
@@ -984,6 +931,8 @@
 		9A5301401C5AD6A6008D584B /* PlayGround */ = {
 			isa = PBXGroup;
 			children = (
+				9AA5E0FA1E3FB3B3007D3A7B /* GooglePlaces */,
+				9AA5E0E91E3FB2E7007D3A7B /* GoogleMaps */,
 				9AD503301DC94175005A05D6 /* Constraint Engine */,
 				9A836D361C6933B6007D9520 /* Tests */,
 				9A22D0151D22B97C009BC465 /* Map */,
@@ -1106,6 +1055,26 @@
 				9A78F09C1E0468190070AEE2 /* AuthoringView.xib */,
 			);
 			name = Authoring;
+			sourceTree = "<group>";
+		};
+		9AA5E0E91E3FB2E7007D3A7B /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */,
+				9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */,
+				9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */,
+				9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */,
+			);
+			name = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		9AA5E0FA1E3FB3B3007D3A7B /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */,
+				9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */,
+			);
+			name = GooglePlaces;
 			sourceTree = "<group>";
 		};
 		9AC338211D63A680000272D9 /* icons */ = {
@@ -1333,12 +1302,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A5301581C5AD6A6008D584B /* Build configuration list for PBXNativeTarget "SpaceBar" */;
 			buildPhases = (
-				6C445774880E504A6CC04BFA /* [CP] Check Pods Manifest.lock */,
 				9A53013A1C5AD6A6008D584B /* Sources */,
 				9A53013B1C5AD6A6008D584B /* Frameworks */,
 				9A53013C1C5AD6A6008D584B /* Resources */,
-				FBF31CA0C57E7E2329142D57 /* [CP] Embed Pods Frameworks */,
-				FACD0185EF46FAFFB57D9B6F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1349,33 +1315,13 @@
 			productReference = 9A53013E1C5AD6A6008D584B /* SpaceBar.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9AD0F42E1C7CF71800AEF928 /* SpaceBar iPad */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AD0F4491C7CF71800AEF928 /* Build configuration list for PBXNativeTarget "SpaceBar iPad" */;
-			buildPhases = (
-				9AD0F42F1C7CF71800AEF928 /* Sources */,
-				9AD0F4411C7CF71800AEF928 /* Frameworks */,
-				9AD0F4431C7CF71800AEF928 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SpaceBar iPad";
-			productName = PlayGround;
-			productReference = 9AD0F44C1C7CF71800AEF928 /* SpaceBar iPad.app */;
-			productType = "com.apple.product-type.application";
-		};
 		9AE13B4C1DF0D148008612DA /* SpaceBarBeta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AE13BBA1DF0D148008612DA /* Build configuration list for PBXNativeTarget "SpaceBarBeta" */;
 			buildPhases = (
-				9AE13B4D1DF0D148008612DA /* [CP] Check Pods Manifest.lock */,
 				9AE13B4E1DF0D148008612DA /* Sources */,
 				9AE13BA31DF0D148008612DA /* Frameworks */,
 				9AE13BA91DF0D148008612DA /* Resources */,
-				9AE13BB81DF0D148008612DA /* [CP] Embed Pods Frameworks */,
-				9AE13BB91DF0D148008612DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1407,14 +1353,6 @@
 							};
 						};
 					};
-					9AD0F42E1C7CF71800AEF928 = {
-						DevelopmentTeam = T8L89L97Z5;
-						SystemCapabilities = {
-							com.apple.iCloud = {
-								enabled = 1;
-							};
-						};
-					};
 					9AE13B4C1DF0D148008612DA = {
 						DevelopmentTeam = T8L89L97Z5;
 						ProvisioningStyle = Automatic;
@@ -1435,7 +1373,6 @@
 			projectRoot = "";
 			targets = (
 				9A53013D1C5AD6A6008D584B /* SpaceBar */,
-				9AD0F42E1C7CF71800AEF928 /* SpaceBar iPad */,
 				9AE13B4C1DF0D148008612DA /* SpaceBarBeta */,
 				9A234B161D8A1C6D00F3EE21 /* Test */,
 			);
@@ -1475,8 +1412,10 @@
 				9AC338241D63AA1C000272D9 /* heading.png in Resources */,
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
+				9AA5E1081E3FB463007D3A7B /* GooglePlaces.bundle in Resources */,
 				9A5A935E1E39365E00432972 /* setIcon.png in Resources */,
 				9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
+				9AA5E0F71E3FB353007D3A7B /* GoogleMaps.bundle in Resources */,
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 				9A058C851E393D030045AB0E /* areaIcon.png in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
@@ -1485,37 +1424,6 @@
 				9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AD0F4431C7CF71800AEF928 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AD0F4441C7CF71800AEF928 /* LaunchScreen.storyboard in Resources */,
-				9A058C861E393D030045AB0E /* areaIcon.png in Resources */,
-				9A5A935C1E39365E00432972 /* pathIcon.png in Resources */,
-				9AD0F4451C7CF71800AEF928 /* Assets.xcassets in Resources */,
-				9AD0F4461C7CF71800AEF928 /* Main.storyboard in Resources */,
-				9A6F56321D9BCB490037C8A1 /* SearchPanel.xib in Resources */,
-				9AD0F4471C7CF71800AEF928 /* RangeSlider in Resources */,
-				9AB76B7A1D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
-				9AB76B771D9C5C110096C444 /* setup.png in Resources */,
-				9A8D5E801DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
-				9A82A0871E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
-				9A0571391E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
-				9AD0F4501C7CF7F100AEF928 /* iPad.storyboard in Resources */,
-				9AF100041D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
-				9AC338271D63AA1C000272D9 /* star-128.png in Resources */,
-				9AA32CE91DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
-				9A0D20871E26D40400191054 /* SetTool.xib in Resources */,
-				9A5A93571E38FB8900432972 /* arrayIcon.png in Resources */,
-				9AC338251D63AA1C000272D9 /* heading.png in Resources */,
-				9A5A935F1E39365E00432972 /* setIcon.png in Resources */,
-				9AD0F4481C7CF71800AEF928 /* RangeSlider in Resources */,
-				9A78F09E1E0468190070AEE2 /* AuthoringView.xib in Resources */,
-				9AED2A5C1E214495004F1A84 /* ToolPalette.xib in Resources */,
-				9AE1D2A81DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1536,8 +1444,10 @@
 				9AE13BAE1DF0D148008612DA /* heading.png in Resources */,
 				9AE13BAF1DF0D148008612DA /* setup.png in Resources */,
 				9AE13BB01DF0D148008612DA /* Assets.xcassets in Resources */,
+				9AA5E10A1E3FB463007D3A7B /* GooglePlaces.bundle in Resources */,
 				9A5A93601E39365E00432972 /* setIcon.png in Resources */,
 				9AE13BB11DF0D148008612DA /* grayYouRHere.png in Resources */,
+				9AA5E0F91E3FB353007D3A7B /* GoogleMaps.bundle in Resources */,
 				9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */,
 				9A058C871E393D030045AB0E /* areaIcon.png in Resources */,
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
@@ -1550,99 +1460,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		6C445774880E504A6CC04BFA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9AE13B4D1DF0D148008612DA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9AE13BB81DF0D148008612DA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AE13BB91DF0D148008612DA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FACD0185EF46FAFFB57D9B6F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FBF31CA0C57E7E2329142D57 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaceBar/Pods-SpaceBar-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9A234B181D8A1C6D00F3EE21 /* Sources */ = {
@@ -1821,119 +1638,6 @@
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
 				9ABB28101D36795C00595A0D /* Elevator.m in Sources */,
 				9A90C7641DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AD0F42F1C7CF71800AEF928 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A246D701D55589B00888A74 /* SettingsButton.m in Sources */,
-				9AFC0A681DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
-				9A177FCE1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
-				9A0E063E1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
-				9AEDBD7E1D7DB5FE00CFAD15 /* Record.m in Sources */,
-				9A8F67EE1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
-				9AFFFFF31D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
-				9A8BCA2B1D344892006C2EDC /* POI.m in Sources */,
-				9A3EB3B71E1C77FD008FA7FA /* ArrayToken.m in Sources */,
-				9A31C1401DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
-				9A665B071E196EC0000D8902 /* ArrayTool.mm in Sources */,
-				9AD0F4301C7CF71800AEF928 /* PlayGround.xcdatamodeld in Sources */,
-				9A82A08C1E0B2DE600B436AC /* AnchorInstructionView.m in Sources */,
-				9AB3BDDA1DE290B100334EF9 /* TokenCollection.mm in Sources */,
-				9A7C1BCD1D26B894005D75CC /* ViewController+Interactions.mm in Sources */,
-				9A10B51F1E312BDA0016A2EA /* Route+Appearance.mm in Sources */,
-				9AAAA1831D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
-				9A8F67F21D3DA6D900C08CCB /* LocationTableController.m in Sources */,
-				9AD0F4321C7CF71800AEF928 /* UIButton+Extensions.m in Sources */,
-				9AD0F4331C7CF71800AEF928 /* CERangeSliderKnobLayer.m in Sources */,
-				9A90C76A1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
-				9AED2A611E214786004F1A84 /* ToolPalette.m in Sources */,
-				9A4415141D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
-				9A143B351D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
-				9A7594D01E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
-				9A0FEE8C1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
-				9AD0F4341C7CF71800AEF928 /* ViewController.mm in Sources */,
-				9A81DBEE1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
-				9AD0F4351C7CF71800AEF928 /* AppDelegate.m in Sources */,
-				9AF5F4BC1D830075001F62D6 /* AuthoringPanel.m in Sources */,
-				9A0D208C1E26FB3500191054 /* SetCollectionView.m in Sources */,
-				9AA57F701DD624D800347B1A /* SpatialEntity.mm in Sources */,
-				9A8B5E541D5D659300A32DC9 /* MiniMapView.m in Sources */,
-				9A5CCBAD1DF86D21009B56DF /* CollectionViewCell.mm in Sources */,
-				9ACD6CDE1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
-				9AD0F4361C7CF71800AEF928 /* Tools.m in Sources */,
-				9AADAD171D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */,
-				9AD0F4371C7CF71800AEF928 /* SpaceBar.mm in Sources */,
-				9ACE015A1E292F9A0010F651 /* AdditionTool.mm in Sources */,
-				9ACCEA1B1D81FB7400E145D7 /* SnapshotPlace.m in Sources */,
-				9A3EB3BC1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */,
-				9A5DA03D1E170BAC002A50B7 /* LineEntity.mm in Sources */,
-				9A9809C31E1AEFB2006D7F8D /* ArrayEntity.m in Sources */,
-				9AE1D2A61DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
-				9A1CA2B71D4671210098957A /* CustomTabController.m in Sources */,
-				9AA32CE61DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */,
-				9AE27CA41E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */,
-				9AD0F4381C7CF71800AEF928 /* CERangeSlider.m in Sources */,
-				9AF100011D57CA770063CB63 /* TaskBasePanel.m in Sources */,
-				9A75D89B1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
-				9AD503341DC94303005A05D6 /* SpeechEngine.m in Sources */,
-				9AC7E1AA1D50E08400C2E8BE /* GestureEngine.mm in Sources */,
-				9A8180D21D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
-				9AF7F6A41E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
-				9AE443B31DEB5CCC006963DC /* SnapshotShow.m in Sources */,
-				9A5D405B1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */,
-				9AD0F4391C7CF71800AEF928 /* SpaceToken.m in Sources */,
-				9AB2854D1D88C10700773166 /* SpaceBar+Anchors.m in Sources */,
-				9A8EC9E21D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
-				9AA62C061D25734200913F29 /* SpaceBar+Interactions.m in Sources */,
-				9AB5AAF41DD10DBD0094996B /* ConstraintDebugView.m in Sources */,
-				9A7DB2821E145C3B00226D42 /* UIBezierPath+Points.m in Sources */,
-				9AAAA1871D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */,
-				9AA454E01D52D160008D4FCF /* MyFileManager.m in Sources */,
-				9A48C1391D5273EA0038FBA5 /* MainViewManager.m in Sources */,
-				9A94DD0A1D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */,
-				9A22D0191D22BD9A009BC465 /* Route.mm in Sources */,
-				9ADA8F411D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
-				9A27222F1D6CB79C002AE953 /* Person.m in Sources */,
-				9ACCEA171D81EFD700E145D7 /* Snapshot.m in Sources */,
-				9A5BAD0B1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
-				9A5DA0331E16F2C9002A50B7 /* AreaToken.m in Sources */,
-				9ACCEA1F1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
-				9AAE092E1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
-				9A2D6DEC1E23E5A900D64615 /* SetTool.mm in Sources */,
-				9AA617601D5635A2003CD946 /* SnapshotDatabase.m in Sources */,
-				9AD0F43A1C7CF71800AEF928 /* SpaceBar+UpdateMap.m in Sources */,
-				9AC3382B1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
-				9A485B4C1D90910400C43255 /* RecordTableViewController.m in Sources */,
-				9AFED2F11E02F0A0007C8317 /* LeftTabController.m in Sources */,
-				9A654B1E1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
-				9A7DB2871E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
-				9A7DB27D1E14494000226D42 /* DrawingView.mm in Sources */,
-				9AFED2F61E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
-				9AD0F43B1C7CF71800AEF928 /* main.m in Sources */,
-				9A6F56361D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
-				9A95D64F1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,
-				9AD0F43C1C7CF71800AEF928 /* tester.m in Sources */,
-				9A9ECD461E2BF4D3002A094E /* CustomMKPolygon.m in Sources */,
-				9A1985A71DDCEE460016696F /* PathToken.mm in Sources */,
-				9A9AA1DF1D5694B30085FFDF /* SnapshotTableController.m in Sources */,
-				9A437FB31D550C7A00F28E61 /* GameManager.mm in Sources */,
-				9A82A0831E09A26700B436AC /* PlaceTaskGenerator.m in Sources */,
-				9A62FB841DDF7CC500245BD6 /* ConnectionTool.mm in Sources */,
-				9A2495EE1D9929CC00A92207 /* TaskGenerator.m in Sources */,
-				9AD0F43D1C7CF71800AEF928 /* SpaceBar+UpdateSet.mm in Sources */,
-				9A9792E31DFA19EB0062ED6F /* TokenCollectionView.m in Sources */,
-				9A93F9291D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
-				9AD639F41D50267C00C91F1B /* FileTableController.m in Sources */,
-				9A485B481D906BD500C43255 /* RecordDatabase.m in Sources */,
-				9A5DA02E1E16DCE1002A50B7 /* Area.mm in Sources */,
-				9AD0F43F1C7CF71800AEF928 /* CERangeSliderTrackLayer.m in Sources */,
-				9A9AA1DB1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
-				9AD0F4401C7CF71800AEF928 /* Constants.m in Sources */,
-				9ABB28111D36795C00595A0D /* Elevator.m in Sources */,
-				9A90C7651DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2198,7 +1902,6 @@
 		};
 		9A5301591C5AD6A6008D584B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53C4608EBA85F4149B795060 /* Pods-SpaceBar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
@@ -2207,6 +1910,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PlayGround",
 				);
 				INFOPLIST_FILE = PlayGround/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2219,7 +1923,6 @@
 		};
 		9A53015A1C5AD6A6008D584B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C7C28C2EEBD466FC9796535 /* Pods-SpaceBar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
@@ -2228,6 +1931,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PlayGround",
 				);
 				INFOPLIST_FILE = PlayGround/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2238,49 +1942,8 @@
 			};
 			name = Release;
 		};
-		9AD0F44A1C7CF71800AEF928 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "SpaceBar iPad.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
-			};
-			name = Debug;
-		};
-		9AD0F44B1C7CF71800AEF928 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "SpaceBar iPad.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = "SpaceBar copy-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
-			};
-			name = Release;
-		};
 		9AE13BBB1DF0D148008612DA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53C4608EBA85F4149B795060 /* Pods-SpaceBar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
@@ -2290,6 +1953,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PlayGround",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SpaceBarBeta-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2302,7 +1966,6 @@
 		};
 		9AE13BBC1DF0D148008612DA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C7C28C2EEBD466FC9796535 /* Pods-SpaceBar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
@@ -2312,6 +1975,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PlayGround",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SpaceBarBeta-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2348,15 +2012,6 @@
 			buildConfigurations = (
 				9A5301591C5AD6A6008D584B /* Debug */,
 				9A53015A1C5AD6A6008D584B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AD0F4491C7CF71800AEF928 /* Build configuration list for PBXNativeTarget "SpaceBar iPad" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AD0F44A1C7CF71800AEF928 /* Debug */,
-				9AD0F44B1C7CF71800AEF928 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
