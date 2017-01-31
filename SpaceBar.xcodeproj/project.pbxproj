@@ -24,6 +24,18 @@
 		9A177FCF1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A177FCC1DFB09A70035D056 /* SpaceToken+Dragging.m */; };
 		9A1985A61DDCEE460016696F /* PathToken.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A1985A51DDCEE460016696F /* PathToken.mm */; };
 		9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
+		9A1DB0F21E40374E00441AD5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0EF1E40374E00441AD5 /* GoogleMaps.framework */; };
+		9A1DB0F31E40374E00441AD5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0EF1E40374E00441AD5 /* GoogleMaps.framework */; };
+		9A1DB0F41E40374E00441AD5 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0F01E40374E00441AD5 /* GoogleMapsBase.framework */; };
+		9A1DB0F51E40374E00441AD5 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0F01E40374E00441AD5 /* GoogleMapsBase.framework */; };
+		9A1DB0F61E40374E00441AD5 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0F11E40374E00441AD5 /* GoogleMapsCore.framework */; };
+		9A1DB0F71E40374E00441AD5 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0F11E40374E00441AD5 /* GoogleMapsCore.framework */; };
+		9A1DB0F91E40376200441AD5 /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0F81E40376200441AD5 /* GooglePlaces.framework */; };
+		9A1DB0FA1E40376200441AD5 /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DB0F81E40376200441AD5 /* GooglePlaces.framework */; };
+		9A1DB0FC1E40378800441AD5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DB0FB1E40378800441AD5 /* GoogleMaps.bundle */; };
+		9A1DB0FD1E40378800441AD5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DB0FB1E40378800441AD5 /* GoogleMaps.bundle */; };
+		9A1DB0FF1E4037A800441AD5 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DB0FE1E4037A800441AD5 /* GooglePlaces.bundle */; };
+		9A1DB1001E4037A800441AD5 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DB0FE1E4037A800441AD5 /* GooglePlaces.bundle */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A234B191D8A1C6D00F3EE21 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A234B1A1D8A1C6D00F3EE21 /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
@@ -196,18 +208,6 @@
 		9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */; };
 		9AA454DF1D52D160008D4FCF /* MyFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA454DE1D52D160008D4FCF /* MyFileManager.m */; };
 		9AA57F6F1DD624D800347B1A /* SpatialEntity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */; };
-		9AA5E0EB1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */; };
-		9AA5E0ED1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */; };
-		9AA5E0EF1E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */; };
-		9AA5E0F11E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */; };
-		9AA5E0F31E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */; };
-		9AA5E0F51E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */; };
-		9AA5E0F71E3FB353007D3A7B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */; };
-		9AA5E0F91E3FB353007D3A7B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */; };
-		9AA5E0FC1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */; };
-		9AA5E0FE1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */; };
-		9AA5E1081E3FB463007D3A7B /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */; };
-		9AA5E10A1E3FB463007D3A7B /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */; };
 		9AA5E10C1E3FB4FC007D3A7B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10B1E3FB4FC007D3A7B /* Accelerate.framework */; };
 		9AA5E10E1E3FB507007D3A7B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10D1E3FB507007D3A7B /* CoreData.framework */; };
 		9AA5E1101E3FB50F007D3A7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E10F1E3FB50F007D3A7B /* CoreGraphics.framework */; };
@@ -408,6 +408,12 @@
 		9A1985A51DDCEE460016696F /* PathToken.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PathToken.mm; path = SpaceBar/PathToken.mm; sourceTree = "<group>"; };
 		9A1CA2B41D4671210098957A /* CustomTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabController.h; path = Views/CustomTabController.h; sourceTree = "<group>"; };
 		9A1CA2B51D4671210098957A /* CustomTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabController.m; path = Views/CustomTabController.m; sourceTree = "<group>"; };
+		9A1DB0EF1E40374E00441AD5 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		9A1DB0F01E40374E00441AD5 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
+		9A1DB0F11E40374E00441AD5 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
+		9A1DB0F81E40376200441AD5 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
+		9A1DB0FB1E40378800441AD5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		9A1DB0FE1E4037A800441AD5 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = GooglePlaces.framework/resources/GooglePlaces.bundle; sourceTree = "<group>"; };
 		9A2129F81E2DA9D8008BB5E4 /* AnnotationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationProtocol.h; path = Map/AnnotationProtocol.h; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
@@ -554,12 +560,6 @@
 		9AA454DE1D52D160008D4FCF /* MyFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFileManager.m; sourceTree = "<group>"; };
 		9AA57F6D1DD624D800347B1A /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpatialEntity.h; path = Map/SpatialEntity.h; sourceTree = "<group>"; };
 		9AA57F6E1DD624D800347B1A /* SpatialEntity.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SpatialEntity.mm; path = Map/SpatialEntity.mm; sourceTree = "<group>"; };
-		9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
-		9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
-		9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
-		9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
 		9AA5E10B1E3FB4FC007D3A7B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9AA5E10D1E3FB507007D3A7B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9AA5E10F1E3FB50F007D3A7B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -680,6 +680,7 @@
 				9AA5E1311E3FB5FD007D3A7B /* UIKit.framework in Frameworks */,
 				9AA5E1301E3FB5F7007D3A7B /* SystemConfiguration.framework in Frameworks */,
 				9AA5E12F1E3FB5F0007D3A7B /* QuartzCore.framework in Frameworks */,
+				9A1DB0F41E40374E00441AD5 /* GoogleMapsBase.framework in Frameworks */,
 				9AA5E12E1E3FB5E9007D3A7B /* OpenGLES.framework in Frameworks */,
 				9AA5E12D1E3FB5E3007D3A7B /* libz.tbd in Frameworks */,
 				9AA5E12C1E3FB5DD007D3A7B /* libc++.tbd in Frameworks */,
@@ -687,16 +688,15 @@
 				9AA5E12A1E3FB5CF007D3A7B /* GLKit.framework in Frameworks */,
 				9AA5E1291E3FB5C9007D3A7B /* CoreText.framework in Frameworks */,
 				9AA5E1281E3FB5C3007D3A7B /* CoreLocation.framework in Frameworks */,
+				9A1DB0F61E40374E00441AD5 /* GoogleMapsCore.framework in Frameworks */,
 				9AA5E1271E3FB5BD007D3A7B /* CoreGraphics.framework in Frameworks */,
 				9AA5E1261E3FB5B6007D3A7B /* CoreData.framework in Frameworks */,
 				9AA5E1251E3FB5AF007D3A7B /* Accelerate.framework in Frameworks */,
 				9A62C3F71DCCD0B50048E44C /* Speech.framework in Frameworks */,
-				9AA5E0EF1E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */,
+				9A1DB0F21E40374E00441AD5 /* GoogleMaps.framework in Frameworks */,
 				9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */,
-				9AA5E0F31E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */,
 				9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */,
-				9AA5E0EB1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */,
-				9AA5E0FC1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */,
+				9A1DB0F91E40376200441AD5 /* GooglePlaces.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,12 +718,12 @@
 				9AA5E10E1E3FB507007D3A7B /* CoreData.framework in Frameworks */,
 				9AA5E10C1E3FB4FC007D3A7B /* Accelerate.framework in Frameworks */,
 				9AE13BA41DF0D148008612DA /* Speech.framework in Frameworks */,
-				9AA5E0F51E3FB323007D3A7B /* GoogleMapsCore.framework in Frameworks */,
-				9AA5E0ED1E3FB307007D3A7B /* GoogleMapsBase.framework in Frameworks */,
 				9AE13BA51DF0D148008612DA /* AVFoundation.framework in Frameworks */,
-				9AA5E0F11E3FB318007D3A7B /* GoogleMaps.framework in Frameworks */,
-				9AA5E0FE1E3FB413007D3A7B /* GooglePlaces.framework in Frameworks */,
 				9AE13BA61DF0D148008612DA /* MapKit.framework in Frameworks */,
+				9A1DB0F71E40374E00441AD5 /* GoogleMapsCore.framework in Frameworks */,
+				9A1DB0F31E40374E00441AD5 /* GoogleMaps.framework in Frameworks */,
+				9A1DB0F51E40374E00441AD5 /* GoogleMapsBase.framework in Frameworks */,
+				9A1DB0FA1E40376200441AD5 /* GooglePlaces.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,10 +1072,10 @@
 		9AA5E0E91E3FB2E7007D3A7B /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				9AA5E0F61E3FB353007D3A7B /* GoogleMaps.bundle */,
-				9AA5E0F21E3FB323007D3A7B /* GoogleMapsCore.framework */,
-				9AA5E0EE1E3FB318007D3A7B /* GoogleMaps.framework */,
-				9AA5E0EA1E3FB307007D3A7B /* GoogleMapsBase.framework */,
+				9A1DB0FB1E40378800441AD5 /* GoogleMaps.bundle */,
+				9A1DB0EF1E40374E00441AD5 /* GoogleMaps.framework */,
+				9A1DB0F01E40374E00441AD5 /* GoogleMapsBase.framework */,
+				9A1DB0F11E40374E00441AD5 /* GoogleMapsCore.framework */,
 			);
 			name = GoogleMaps;
 			sourceTree = "<group>";
@@ -1083,8 +1083,8 @@
 		9AA5E0FA1E3FB3B3007D3A7B /* GooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
-				9AA5E1071E3FB463007D3A7B /* GooglePlaces.bundle */,
-				9AA5E0FB1E3FB413007D3A7B /* GooglePlaces.framework */,
+				9A1DB0FE1E4037A800441AD5 /* GooglePlaces.bundle */,
+				9A1DB0F81E40376200441AD5 /* GooglePlaces.framework */,
 			);
 			name = GooglePlaces;
 			sourceTree = "<group>";
@@ -1454,10 +1454,9 @@
 				9AC338241D63AA1C000272D9 /* heading.png in Resources */,
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
-				9AA5E1081E3FB463007D3A7B /* GooglePlaces.bundle in Resources */,
 				9A5A935E1E39365E00432972 /* setIcon.png in Resources */,
 				9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
-				9AA5E0F71E3FB353007D3A7B /* GoogleMaps.bundle in Resources */,
+				9A1DB0FC1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 				9A058C851E393D030045AB0E /* areaIcon.png in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
@@ -1466,6 +1465,7 @@
 				9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
+				9A1DB0FF1E4037A800441AD5 /* GooglePlaces.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1486,10 +1486,9 @@
 				9AE13BAE1DF0D148008612DA /* heading.png in Resources */,
 				9AE13BAF1DF0D148008612DA /* setup.png in Resources */,
 				9AE13BB01DF0D148008612DA /* Assets.xcassets in Resources */,
-				9AA5E10A1E3FB463007D3A7B /* GooglePlaces.bundle in Resources */,
 				9A5A93601E39365E00432972 /* setIcon.png in Resources */,
 				9AE13BB11DF0D148008612DA /* grayYouRHere.png in Resources */,
-				9AA5E0F91E3FB353007D3A7B /* GoogleMaps.bundle in Resources */,
+				9A1DB0FD1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */,
 				9A058C871E393D030045AB0E /* areaIcon.png in Resources */,
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
@@ -1498,6 +1497,7 @@
 				9AE13BB51DF0D148008612DA /* ShowAuthoringPanel.xib in Resources */,
 				9AE13BB61DF0D148008612DA /* RangeSlider in Resources */,
 				9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */,
+				9A1DB1001E4037A800441AD5 /* GooglePlaces.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
