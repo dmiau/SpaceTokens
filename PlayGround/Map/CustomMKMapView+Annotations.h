@@ -8,8 +8,14 @@
 
 #import "CustomMKMapView.h"
 
+@class CustomPointAnnotation;
+
 @interface CustomMKMapView (Annotations)
 
-
-
+// Handle annotation interactions (redirected from delegates)
+- (bool)didTapMarker:(CustomPointAnnotation *)marker;
+- (void)didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate;
+- (void)didTapPOIWithPlaceID:(NSString *)placeID
+           name:(NSString *)name
+                    location:(CLLocationCoordinate2D)location;
 @end

@@ -8,7 +8,6 @@
 
 #import "CustomPointAnnotation.h"
 #import "CustomMKMapView.h"
-#import "AnnotationCollection.h"
 
 @implementation CustomPointAnnotation{
     UILabel *aLabel;
@@ -23,8 +22,6 @@
     // Initialize the label
     aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
     
-    // Add self to AnnotationColleciton
-    [[AnnotationCollection sharedManager] addObject:self];
     self.infoWindowAnchor = CGPointMake(0.5, 0.5);
     return self;
 }
@@ -140,15 +137,6 @@
     UIGraphicsEndImageContext();
     
     return newImage;
-}
-
-
-//----------------
-// desctructor
-//----------------
--(void)dealloc {
-    //cleanup code
-    [[AnnotationCollection sharedManager] removeObject:self];
 }
 
 @end

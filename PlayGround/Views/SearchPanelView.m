@@ -201,21 +201,17 @@
  didAutocompleteWithPlace:(GMSPlace *)place {
     [self.rootViewController dismissViewControllerAnimated:YES completion:nil];
     
-//    // Do something with the selected place.
-//    NSLog(@"Place name %@", place.name);
-//    NSLog(@"Place address %@", place.formattedAddress);
-//    NSLog(@"Place attributions %@", place.attributions.string);
     
-    // Add a dropped pin
+    // Add the search result to the map
     POI *aPOI = [[POI alloc] init];
     aPOI.name = place.name;
     aPOI.latLon = place.coordinate;
+    aPOI.placeID = place.placeID;
     aPOI.annotation.pointType = dropped;
     aPOI.isMapAnnotationEnabled = YES;
-    aPOI.isEnabled = NO;
     
     // Add the restul to entityDB
-    [[EntityDatabase sharedManager] addEntity:aPOI];
+    [[EntityDatabase sharedManager] addTempEntity:aPOI];
     
     if (!self.searchHandlingBlock){
         //----------------------
@@ -224,11 +220,11 @@
         
         // Get the map object
         CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-        GMSCoordinateBounds *viewport = place.viewport;
-        
-        GMSCameraUpdate *newCamera = [GMSCameraUpdate fitBounds: place.viewport];
+        GMSCameraUpdate *newCamera = [GMSCameraUpdate fitBounds: place.viewport
+                                      withEdgeInsets:mapView.edgeInsets];
         
         [mapView moveCamera: newCamera];
+        [mapView updateCenterCoordinates:place.coordinate];
 
     }else{
         //----------------------

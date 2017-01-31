@@ -26,13 +26,16 @@
 - (id) init{
     i_entityArray = [[NSMutableArray alloc] init];
     cacheDefaultEntityArray = [[NSMutableArray alloc] init];
+    temp_entityArray = [[NSMutableArray alloc] init];
     useDefaultEntityArray = YES;
     self.youRHere = [[Person alloc] init];
     self.isYouAreHereEnabled = YES;
     return self;
 }
 
-// methods to support a temporary POI array
+
+// MARK: methods to support Game entity array
+//----------------------------------------------------------
 - (void)useGameEntityArray:(NSMutableArray*)tempArray{
     useDefaultEntityArray = NO;
     self.entityArray = tempArray;
@@ -43,9 +46,7 @@
     self.entityArray = cacheDefaultEntityArray;
 }
 
-//---------------
-// Get a list of enabled entities
-//---------------
+// MARK: Access the entity array
 -(NSMutableArray*)getEnabledEntities{
     NSMutableArray* outArray = [[NSMutableArray alloc] init];
     
@@ -71,7 +72,10 @@
 }
 
 - (NSMutableArray*)getEntityArray{
-    return i_entityArray;
+    
+    NSMutableArray *outArray = [NSMutableArray arrayWithArray:i_entityArray];
+    [outArray addObjectsFromArray:temp_entityArray];
+    return outArray;
 }
 
 - (void)addEntity:(SpatialEntity*)entity{
@@ -79,8 +83,6 @@
     // If the entity already exist, enable the entity
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF == %@", entity];
     NSArray *filteredArray = [i_entityArray filteredArrayUsingPredicate:predicate];
-    
-//    entity.isEnabled = YES;
     
     if ([filteredArray count] > 0){
         SpatialEntity *entity = [filteredArray firstObject];
@@ -93,7 +95,40 @@
     [i_entityArray removeObject:entity];
 }
 
-#pragma mark -- Save/Load --
+// MARK: Access the temporary entity array
+//----------------------------------------------------------
+- (void)addTempEntity:(SpatialEntity*)entity{
+    [temp_entityArray addObject: entity];
+}
+
+- (void)removeTempEntity:(SpatialEntity*)entity{
+    [temp_entityArray removeObject:entity];
+}
+
+- (void)cleanTempEntities{
+    
+    for (SpatialEntity *anEntity in temp_entityArray){
+        anEntity.isMapAnnotationEnabled = NO;
+    }
+    [temp_entityArray removeAllObjects];
+}
+
+
+// MARK: Annotation management
+//----------------------------------------------------------
+-(void)resetAnnotations{
+    
+    [self cleanTempEntities];
+    
+    // Get all the annotations
+    for (SpatialEntity *anEntity in [self getEntityArray]){
+            anEntity.annotation.isHighlighted = NO;
+            anEntity.annotation.isLabelOn = NO;
+    }
+}
+
+// MARK: -- Save/Load --
+//----------------------------------------------------------
 
 // saving and loading the object
 - (void)encodeWithCoder:(NSCoder *)coder {

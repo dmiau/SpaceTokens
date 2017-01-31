@@ -22,7 +22,7 @@
 // custom setter for latLon to update the annotation object
 @property CLLocationCoordinate2D latLon;
 @property MKCoordinateSpan coordSpan;
-
+@property NSString *placeID;
 
 @property BOOL isEnabled; // Whether this entity is enabled or not
 @property BOOL isMapAnnotationEnabled;

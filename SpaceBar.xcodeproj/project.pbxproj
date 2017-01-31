@@ -245,8 +245,6 @@
 		9AB5AAF31DD10DBD0094996B /* ConstraintDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */; };
 		9AB76B761D9C5C110096C444 /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B751D9C5C110096C444 /* setup.png */; };
 		9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */; };
-		9AB9B71E1E3FE81000000FB5 /* AnnotationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9B71D1E3FE81000000FB5 /* AnnotationCollection.m */; };
-		9AB9B71F1E3FE81000000FB5 /* AnnotationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9B71D1E3FE81000000FB5 /* AnnotationCollection.m */; };
 		9ABB28101D36795C00595A0D /* Elevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB280F1D36795C00595A0D /* Elevator.m */; };
 		9AC338241D63AA1C000272D9 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
 		9AC338261D63AA1C000272D9 /* star-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338231D63AA1C000272D9 /* star-128.png */; };
@@ -594,8 +592,6 @@
 		9AB5AAF21DD10DBD0094996B /* ConstraintDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstraintDebugView.m; path = ConstraintEngine/ConstraintDebugView.m; sourceTree = "<group>"; };
 		9AB76B751D9C5C110096C444 /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setup.png; path = icons/setup.png; sourceTree = "<group>"; };
 		9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grayYouRHere.png; path = icons/grayYouRHere.png; sourceTree = "<group>"; };
-		9AB9B71C1E3FE81000000FB5 /* AnnotationCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationCollection.h; path = Map/AnnotationCollection.h; sourceTree = "<group>"; };
-		9AB9B71D1E3FE81000000FB5 /* AnnotationCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnnotationCollection.m; path = Map/AnnotationCollection.m; sourceTree = "<group>"; };
 		9ABB280E1D36795C00595A0D /* Elevator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Elevator.h; path = SpaceBar/RangeSlider/Elevator.h; sourceTree = "<group>"; };
 		9ABB280F1D36795C00595A0D /* Elevator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Elevator.m; path = SpaceBar/RangeSlider/Elevator.m; sourceTree = "<group>"; };
 		9AC338221D63AA1C000272D9 /* heading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heading.png; path = icons/heading.png; sourceTree = "<group>"; };
@@ -1203,8 +1199,6 @@
 		9ACA1C431DE49F2600185CB1 /* annotations */ = {
 			isa = PBXGroup;
 			children = (
-				9AB9B71C1E3FE81000000FB5 /* AnnotationCollection.h */,
-				9AB9B71D1E3FE81000000FB5 /* AnnotationCollection.m */,
 				9A2129F81E2DA9D8008BB5E4 /* AnnotationProtocol.h */,
 				9AFB7DE81E4022FF00384959 /* point */,
 				9AFB7DE91E40230700384959 /* line */,
@@ -1658,7 +1652,6 @@
 				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9A7DB2861E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
 				9A7DB27C1E14494000226D42 /* DrawingView.mm in Sources */,
-				9AB9B71E1E3FE81000000FB5 /* AnnotationCollection.m in Sources */,
 				9AFB7DE21E401CAB00384959 /* CustomGMSPolyline.m in Sources */,
 				9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
@@ -1774,7 +1767,6 @@
 				9AE13B901DF0D148008612DA /* ViewController+Annotations.m in Sources */,
 				9A7DB2881E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
 				9A7DB27E1E14494000226D42 /* DrawingView.mm in Sources */,
-				9AB9B71F1E3FE81000000FB5 /* AnnotationCollection.m in Sources */,
 				9AFB7DE31E401CAB00384959 /* CustomGMSPolyline.m in Sources */,
 				9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,

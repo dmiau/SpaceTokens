@@ -15,6 +15,7 @@
     NSMutableArray <SpatialEntity *> *cacheDefaultEntityArray;
     BOOL useDefaultEntityArray;
     NSMutableArray <SpatialEntity *> *i_entityArray;
+    NSMutableArray <SpatialEntity *> *temp_entityArray;
 }
 
 @property NSString *name;
@@ -32,6 +33,11 @@
 - (void)addEntity:(SpatialEntity*)entity;
 - (void)removeEntity:(SpatialEntity*)entity;
 
+// Methods to access temporary entities
+- (void)addTempEntity:(SpatialEntity*)entity;
+- (void)removeTempEntity:(SpatialEntity*)entity;
+- (void)cleanTempEntities;
+
 // iCloud related methods
 - (void)debugInit; // a temporary method
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
@@ -39,5 +45,9 @@
 
 -(NSMutableArray*)getEnabledEntities;
 @property BOOL isYouAreHereEnabled;
+
+// Annotation management
+-(void)resetAnnotations;
+
 
 @end
