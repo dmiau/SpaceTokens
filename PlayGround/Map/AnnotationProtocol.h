@@ -25,6 +25,4 @@ typedef enum {
 
 @property bool isLabelOn;
 @property BOOL isHighlighted;
-
--(id)generateAnnotationView;
 @end

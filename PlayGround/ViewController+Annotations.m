@@ -16,13 +16,6 @@
 
 #pragma mark --annotation related methods--
 
-// REFACTOR
-//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(CustomPointAnnotation*)annotation
-//{    
-//    // Call the map annotation method
-//    return [self.mapView viewForAnnotation:annotation];
-//}
-
 
 -(bool)mapView:(GMSMapView *)mapView didTapMarker:(CustomPointAnnotation *)marker{
     [[AnnotationCollection sharedManager] resetAnnotations];

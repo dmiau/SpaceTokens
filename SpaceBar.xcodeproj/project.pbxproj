@@ -374,6 +374,10 @@
 		9AF5F4BB1D830075001F62D6 /* AuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */; };
 		9AF7F6A31E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
 		9AF7F6A51E2C048A004B11C6 /* CustomMKPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */; };
+		9AFB7DE21E401CAB00384959 /* CustomGMSPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7DE11E401CAB00384959 /* CustomGMSPolyline.m */; };
+		9AFB7DE31E401CAB00384959 /* CustomGMSPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7DE11E401CAB00384959 /* CustomGMSPolyline.m */; };
+		9AFB7DE61E40214B00384959 /* CustomGMSPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7DE51E40214B00384959 /* CustomGMSPolygon.m */; };
+		9AFB7DE71E40214B00384959 /* CustomGMSPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7DE51E40214B00384959 /* CustomGMSPolygon.m */; };
 		9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
 		9AFED2F21E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
@@ -645,6 +649,10 @@
 		9AF5F4BA1D830075001F62D6 /* AuthoringPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthoringPanel.m; path = Views/AuthoringPanel.m; sourceTree = "<group>"; };
 		9AF7F6A11E2C048A004B11C6 /* CustomMKPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKPolyline.h; path = Map/CustomMKPolyline.h; sourceTree = "<group>"; };
 		9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKPolyline.m; path = Map/CustomMKPolyline.m; sourceTree = "<group>"; };
+		9AFB7DE01E401CAB00384959 /* CustomGMSPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomGMSPolyline.h; path = Map/CustomGMSPolyline.h; sourceTree = "<group>"; };
+		9AFB7DE11E401CAB00384959 /* CustomGMSPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomGMSPolyline.m; path = Map/CustomGMSPolyline.m; sourceTree = "<group>"; };
+		9AFB7DE41E40214B00384959 /* CustomGMSPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomGMSPolygon.h; path = Map/CustomGMSPolygon.h; sourceTree = "<group>"; };
+		9AFB7DE51E40214B00384959 /* CustomGMSPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomGMSPolygon.m; path = Map/CustomGMSPolygon.m; sourceTree = "<group>"; };
 		9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityDatabase.h; path = Map/EntityDatabase.h; sourceTree = "<group>"; };
 		9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EntityDatabase.mm; path = Map/EntityDatabase.mm; sourceTree = "<group>"; };
 		9AFED2EE1E02F0A0007C8317 /* LeftTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftTabController.h; path = Views/LeftTabController.h; sourceTree = "<group>"; };
@@ -1198,12 +1206,9 @@
 				9AB9B71C1E3FE81000000FB5 /* AnnotationCollection.h */,
 				9AB9B71D1E3FE81000000FB5 /* AnnotationCollection.m */,
 				9A2129F81E2DA9D8008BB5E4 /* AnnotationProtocol.h */,
-				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
-				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
-				9A9ECD431E2BF4D3002A094E /* CustomMKPolygon.h */,
-				9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */,
-				9AF7F6A11E2C048A004B11C6 /* CustomMKPolyline.h */,
-				9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */,
+				9AFB7DE81E4022FF00384959 /* point */,
+				9AFB7DE91E40230700384959 /* line */,
+				9AFB7DEA1E40230E00384959 /* polygon */,
 			);
 			name = annotations;
 			sourceTree = "<group>";
@@ -1282,6 +1287,37 @@
 				9AE443B11DEB5CCC006963DC /* SnapshotShow.m */,
 			);
 			name = Show;
+			sourceTree = "<group>";
+		};
+		9AFB7DE81E4022FF00384959 /* point */ = {
+			isa = PBXGroup;
+			children = (
+				9AC338281D63AB68000272D9 /* CustomPointAnnotation.h */,
+				9AC338291D63AB68000272D9 /* CustomPointAnnotation.m */,
+			);
+			name = point;
+			sourceTree = "<group>";
+		};
+		9AFB7DE91E40230700384959 /* line */ = {
+			isa = PBXGroup;
+			children = (
+				9AF7F6A11E2C048A004B11C6 /* CustomMKPolyline.h */,
+				9AF7F6A21E2C048A004B11C6 /* CustomMKPolyline.m */,
+				9AFB7DE01E401CAB00384959 /* CustomGMSPolyline.h */,
+				9AFB7DE11E401CAB00384959 /* CustomGMSPolyline.m */,
+			);
+			name = line;
+			sourceTree = "<group>";
+		};
+		9AFB7DEA1E40230E00384959 /* polygon */ = {
+			isa = PBXGroup;
+			children = (
+				9A9ECD431E2BF4D3002A094E /* CustomMKPolygon.h */,
+				9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */,
+				9AFB7DE41E40214B00384959 /* CustomGMSPolygon.h */,
+				9AFB7DE51E40214B00384959 /* CustomGMSPolygon.m */,
+			);
+			name = polygon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1544,6 +1580,7 @@
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
 				9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
+				9AFB7DE61E40214B00384959 /* CustomGMSPolygon.m in Sources */,
 				9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */,
@@ -1622,6 +1659,7 @@
 				9A7DB2861E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
 				9A7DB27C1E14494000226D42 /* DrawingView.mm in Sources */,
 				9AB9B71E1E3FE81000000FB5 /* AnnotationCollection.m in Sources */,
+				9AFB7DE21E401CAB00384959 /* CustomGMSPolyline.m in Sources */,
 				9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
@@ -1658,6 +1696,7 @@
 				9AE13B511DF0D148008612DA /* ViewController+MapView.mm in Sources */,
 				9AE13B521DF0D148008612DA /* Record.m in Sources */,
 				9AE13B531DF0D148008612DA /* PreferencesController.mm in Sources */,
+				9AFB7DE71E40214B00384959 /* CustomGMSPolygon.m in Sources */,
 				9AE13B541DF0D148008612DA /* Snapshot+Validators.m in Sources */,
 				9AE13B551DF0D148008612DA /* PlayGround.xcdatamodeld in Sources */,
 				9A3EB3B81E1C77FD008FA7FA /* ArrayToken.m in Sources */,
@@ -1736,6 +1775,7 @@
 				9A7DB2881E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
 				9A7DB27E1E14494000226D42 /* DrawingView.mm in Sources */,
 				9AB9B71F1E3FE81000000FB5 /* AnnotationCollection.m in Sources */,
+				9AFB7DE31E401CAB00384959 /* CustomGMSPolyline.m in Sources */,
 				9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,

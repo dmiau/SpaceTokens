@@ -25,21 +25,16 @@
 
 -(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
     
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    
     if (isMapAnnotationEnabled){
-        // Add the annotation
-        // REFACTOR
-//        [mapView addOverlay:self.polygon level:MKOverlayLevelAboveRoads];
+        self.annotation.map = [CustomMKMapView sharedManager];
     }else{
-        // Remove the annotation
-        [mapView removeOverlay: self.polygon];
+        self.annotation.map = nil;
     }
 }
 
 -(void)setPolygon:(CustomMKPolygon *)polygon{
     _polygon = polygon;
-    self.annotation = polygon;
+    self.annotation = [[CustomGMSPolygon alloc] initWithMKPolygon:polygon];
 }
 
 //-----------------

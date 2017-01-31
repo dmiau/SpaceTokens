@@ -20,11 +20,10 @@
 
 -(CLLocationCoordinate2D)convertPoint:(CGPoint)point toCoordinateFromView:(UIView *)view{
 
-    if (view != self){
-        [NSException raise:@"Programming error." format:@"the view is not self (convertPoint)"];
-    }
+
+    CGPoint pointInSelfView = [view convertPoint:point toView:self];
     
-    return [self.projection coordinateForPoint: point];
+    return [self.projection coordinateForPoint: pointInSelfView];
 }
 
 

@@ -75,7 +75,10 @@ template class std::vector<double>;
         
         if (polyline.pointCount > 0){
             [self populateInternalRouteProperties];
-            self.annotation = _polyline;
+            self.annotation = [[CustomGMSPolyline alloc] initWithMKPolyline:_polyline];
+            ;
+        }else{
+            self.annotation = nil;
         }
     }
     
@@ -98,15 +101,11 @@ template class std::vector<double>;
     
     // No need to display the annotation when there is no polyline
     if (isMapAnnotationEnabled && self.polyline){
-        // REFACTOR
-        // Add the annotation
-//        [mapView addOverlay:self.polyline level:MKOverlayLevelAboveRoads];
+        self.annotation.map = mapView;
     }else{
-        // Remove the annotation
-        [mapView removeOverlay: self.polyline];
+        self.annotation.map = nil;
     }
 }
-
 
 //-----------------
 // Compute accumulatedDist structure

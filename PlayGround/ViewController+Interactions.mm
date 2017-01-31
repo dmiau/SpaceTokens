@@ -177,8 +177,8 @@
 //            [self.miniMapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
         }
     }
-    // REFACTOR
-//    [self.mapView addOverlay:aRoute.polyline level:MKOverlayLevelAboveRoads];
+    
+    aRoute.isMapAnnotationEnabled = YES;
 }
 
 - (void)removeRoute{

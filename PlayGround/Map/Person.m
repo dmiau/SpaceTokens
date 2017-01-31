@@ -95,12 +95,7 @@
     // Get the map object
     CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     
-    MKAnnotationView *myAnnotationView;
-    // REFACTOR
-    //= [myMapView viewForAnnotation: self.annotation];
-    
-    // Update the orientation
-    UIImage *myImg = [UIImage imageNamed:@"heading.png"];
+    self.annotation.icon = [UIImage imageNamed:@"heading.png"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         // Your code to run on the main queue/thread
@@ -108,8 +103,7 @@
         //-------------
         // rotate the image according to the current heading
         //-------------
-        [myAnnotationView setImage:myImg];
-        [myAnnotationView setNeedsDisplay];
+
         
         float radians = (self.headingInDegree)/180 * M_PI;
         
@@ -117,7 +111,8 @@
         //        NSLog(@"User orientation: %f", self.model->user_pos.orientation);
         
         CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, radians);
-        myAnnotationView.transform = transform;
+//        myAnnotationView.transform = transform;
+        // REFACTOR
     });
 }
 

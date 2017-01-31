@@ -75,13 +75,6 @@
     }
 }
 
-// REFACTOR
-//- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
-//{
-//    MKOverlayRenderer* renderer =  [self.mapView rendererForOverlay:overlay];
-//    return renderer;
-//}
-
 
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     

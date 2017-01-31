@@ -142,53 +142,6 @@
     return newImage;
 }
 
-//--------------
-// Generate Annotation View
-//--------------
--(MKAnnotationView *)generateAnnotationView{
-    // in case it's the user location, we already have an annotation, so just return nil
-    if ([self isKindOfClass:[MKUserLocation class]])
-    {
-        return nil;
-    }
-    
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    
-    
-    // try to dequeue an existing pin view first
-    static NSString *landmarkAnnotationID = @"pointAnnotationID";
-    
-    MKAnnotationView *pinView;
-// REFACTOR
-//    =
-//    (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:landmarkAnnotationID];
-    
-//    if (pinView == nil)
-//    {
-//        pinView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:landmarkAnnotationID];
-//    }else{
-//        // Need to clear the existing annotations
-//        for (UIView *aView in pinView.subviews){
-//            if ([aView isKindOfClass:[UILabel class]]){
-//                [aView removeFromSuperview];
-//            }
-//        }
-//    }
-//    pinView.annotation = self;
-//    
-//    if (annotationImage)
-//        pinView.image = self.icon;
-//    
-//    // Add a label to the annoation
-//    if (self.isLabelOn && aLabel){
-//        [aLabel removeFromSuperview];
-//        [pinView addSubview: aLabel];
-//    }
-//    
-//    // Make the annotation tappable
-//    [pinView setEnabled:YES];
-    return pinView;
-}
 
 //----------------
 // desctructor

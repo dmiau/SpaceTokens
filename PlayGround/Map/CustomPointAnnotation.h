@@ -16,5 +16,4 @@
 @property bool isLabelOn;
 @property BOOL isHighlighted;
 
--(MKAnnotationView *)generateAnnotationView;
 @end

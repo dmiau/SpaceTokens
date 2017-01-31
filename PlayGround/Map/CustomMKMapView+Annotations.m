@@ -13,17 +13,6 @@
 
 @implementation CustomMKMapView (Annotations)
 
-
-//------------------
-// This function is called to prepare a view for an annotation
-//------------------
-
-- (MKAnnotationView *) viewForAnnotation:(CustomPointAnnotation*)annotation
-{
-    return [annotation generateAnnotationView];
-}
-
-
 #pragma mark --Routes--
 //------------------
 // For route overlay

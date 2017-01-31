@@ -13,13 +13,14 @@
 #import "SpatialEntity.h"
 #import "ArrayEntity.h"
 #import "CustomMKPolyline.h"
+#import "CustomGMSPolyline.h"
 
 using namespace std;
 
 @interface LineEntity : ArrayEntity
 
 @property CustomMKPolyline *polyline;
-@property CustomMKPolyline *annotation;
+@property CustomGMSPolyline *annotation;
 
 // the following vectors are used to look up POI, or ROI or a path
 @property vector<double> *mapPointX;
