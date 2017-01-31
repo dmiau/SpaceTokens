@@ -9,7 +9,7 @@
 #import "SpaceBar+UpdateSet.h"
 #import "Constants.h"
 #import "Tools.h"
-#import "../Map/Person.h"
+#import "Person.h"
 #import "PathToken.h"
 #import "POI.h"
 #import "Route.h"
@@ -18,6 +18,8 @@
 #import "ViewController.h"
 #import "TokenCollection.h"
 #import "EntityDatabase.h"
+
+#import "AnnotationCollection.h"
 
 @implementation SpaceBar (UpdateSet)
 
@@ -114,7 +116,7 @@
     
     if ([self.touchingSet count]==0){
         // reset the annotation
-        [[CustomMKMapView sharedManager] resetAnnotations];
+        [[AnnotationCollection sharedManager] resetAnnotations];
     }
     
     [self.touchingSet addObject:aToken];

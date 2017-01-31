@@ -33,8 +33,8 @@
         // Check if the user touches any known entity
         for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] getEntityArray])
         {
-            if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon)) &&
-               anEntity.isEnabled && ![anEntity isKindOfClass:[ArrayEntity class]]
+            if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon))
+               && anEntity.isEnabled && ![anEntity isKindOfClass:[ArrayEntity class]]
                && anEntity.annotation.isHighlighted
                && [anEntity getPointDistanceToTouch:aTouch] < 15
                )

@@ -7,7 +7,7 @@
 //
 
 #import <MapKit/MapKit.h>
-#import "GoogleMaps/GoogleMaps.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 // Forward declration
 @class SpatialEntity;
@@ -71,9 +71,6 @@
 + (MKMapRect)MKMapRectForCoordinateRegion:(MKCoordinateRegion)region;
 + (BOOL) validateCoordinate:(CLLocationCoordinate2D) coord;
 
-// Annotation control
--(void)resetAnnotations;
-
 //==============================
 // Private Methods
 //==============================
@@ -97,4 +94,5 @@
 -(void)updateZoom:(float)newZoom;
 -(void)updateBearing:(float)newBearing;
 -(void)updateCenterCoordinates:(CLLocationCoordinate2D)newCoord;
+
 @end

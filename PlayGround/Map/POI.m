@@ -14,7 +14,7 @@
 // Custom set methods
 - (void)setLatLon:(CLLocationCoordinate2D)latLon{
     [super setLatLon:latLon];
-    self.annotation.coordinate = latLon;
+    self.annotation.position = latLon;
 }
 
 
@@ -29,11 +29,9 @@
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
     if (isMapAnnotationEnabled){
-        // Add the annotation
-        [mapView addAnnotation:self.annotation];
+        self.annotation.map = mapView;
     }else{
-        // Remove the annotation
-        [mapView removeAnnotation:self.annotation];
+        self.annotation.map = nil;
     }
 }
 

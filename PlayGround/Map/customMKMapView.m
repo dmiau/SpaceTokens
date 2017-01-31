@@ -45,7 +45,7 @@
 
     self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
     self.isDebugModeOn = NO;
-
+    
     //----------------------
     // initialize the gesture recognizer
     //----------------------

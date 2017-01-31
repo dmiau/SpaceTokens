@@ -7,7 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-#import "GoogleMaps/GoogleMaps.h"
+#import <GoogleMaps/GoogleMaps.h>
 #include <vector>
 #include <utility>
 #import "SpatialEntity.h"

@@ -7,9 +7,10 @@
 //
 
 #import <MapKit/MapKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 #import "AnnotationProtocol.h"
 
-@interface CustomPointAnnotation : MKPointAnnotation <AnnotationProtocol>
+@interface CustomPointAnnotation : GMSMarker <AnnotationProtocol>
 @property location_enum pointType;
 
 @property bool isLabelOn;

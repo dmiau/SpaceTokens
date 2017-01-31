@@ -59,8 +59,8 @@
     GMSVisibleRegion visibleRegion = self.projection.visibleRegion;
     
     MKCoordinateSpan coordSpan = MKCoordinateSpanMake(
-    visibleRegion.nearRight.latitude - visibleRegion.nearLeft.latitude,
-    visibleRegion.farRight.longitude - visibleRegion.nearRight.longitude);
+    visibleRegion.farRight.latitude - visibleRegion.nearRight.latitude,
+    visibleRegion.nearRight.longitude - visibleRegion.nearLeft.longitude);
     CLLocationCoordinate2D center = self.camera.target;
     
     MKCoordinateRegion output = MKCoordinateRegionMake(center, coordSpan);

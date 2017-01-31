@@ -7,9 +7,10 @@
 //
 
 #import "ViewController+Annotations.h"
-#import "Map/CustomPointAnnotation.h"
+#import "CustomPointAnnotation.h"
 #import <MapKit/MapKit.h>
 #import "CustomMKMapView+Annotations.h"
+#import "AnnotationCollection.h"
 
 @implementation ViewController (Annotations)
 
@@ -22,8 +23,13 @@
 //    return [self.mapView viewForAnnotation:annotation];
 //}
 
--(void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
-    // Let the mapView to handle annotation selection
-    [self.mapView didSelectAnnotationView:view];
+
+-(bool)mapView:(GMSMapView *)mapView didTapMarker:(CustomPointAnnotation *)marker{
+    [[AnnotationCollection sharedManager] resetAnnotations];
+    marker.isHighlighted = YES;
+    marker.isLabelOn = YES;
+    [mapView setSelectedMarker: marker];
+    return YES;
 }
+
 @end

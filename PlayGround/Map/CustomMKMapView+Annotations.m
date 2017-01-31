@@ -23,26 +23,6 @@
     return [annotation generateAnnotationView];
 }
 
--(void)didSelectAnnotationView:(MKAnnotationView *)view{    
-// REFACTOR
-    //    id selectedAnnotation = view.annotation;
-//    if ([view.annotation isKindOfClass:[CustomPointAnnotation class]]){
-//        CustomPointAnnotation *pointAnnotation = view.annotation;
-//        pointAnnotation.isHighlighted = YES;
-//        pointAnnotation.isLabelOn = YES;
-//    }
-//    
-//    // Deselect all other annotations
-//    for (id annotation in [self annotations]){
-//        if ((annotation != selectedAnnotation) &&
-//            ([annotation isKindOfClass: [CustomPointAnnotation class]]))
-//        {
-//            CustomPointAnnotation *pointAnnotation = annotation;
-//            pointAnnotation.isHighlighted = NO;
-//            pointAnnotation.isLabelOn = NO;
-//        }
-//    }
-}
 
 #pragma mark --Routes--
 //------------------
@@ -82,16 +62,4 @@
     }
 }
 
-
--(void)resetAnnotations{
-// REFACTOR
-    //    // Get all the annotations
-//    for (id annotation in [self annotations]){
-//        if ([annotation isKindOfClass:[CustomPointAnnotation class]]){
-//            CustomPointAnnotation *pointAnnotation = annotation;
-//            pointAnnotation.isHighlighted = NO;
-//            pointAnnotation.isLabelOn = NO;
-//        }
-//    }
-}
 @end

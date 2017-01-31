@@ -10,6 +10,6 @@
 
 @interface CustomMKMapView (Annotations)
 
--(void)didSelectAnnotationView:(MKAnnotationView *)view;
+
 
 @end

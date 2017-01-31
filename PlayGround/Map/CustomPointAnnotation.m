@@ -8,9 +8,9 @@
 
 #import "CustomPointAnnotation.h"
 #import "CustomMKMapView.h"
+#import "AnnotationCollection.h"
 
 @implementation CustomPointAnnotation{
-    UIImage *annotationImage;
     UILabel *aLabel;
 }
 
@@ -22,6 +22,10 @@
     self.pointType = LANDMARK;
     // Initialize the label
     aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
+    
+    // Add self to AnnotationColleciton
+    [[AnnotationCollection sharedManager] addObject:self];
+    self.infoWindowAnchor = CGPointMake(0.5, 0.5);
     return self;
 }
 
@@ -32,11 +36,11 @@
         //--------------------------
         // Create a custom gray dot
         //--------------------------
-        annotationImage =
+        self.icon =
         [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
 
     }else if(pointType == dropped){
-        annotationImage =
+        self.icon =
         [self generateDotImageWithColor:[UIColor purpleColor] andRadius:6];
         
     }else if(pointType == YouRHere){
@@ -45,7 +49,7 @@
         // YouRHere
         //--------------------------
         UIImage *anImg = [UIImage imageNamed:@"grayYouRHere.png"];        
-        annotationImage = [CustomPointAnnotation resizeImage:anImg                                  newSize:CGSizeMake(12, 12)];
+        self.icon = [CustomPointAnnotation resizeImage:anImg                                  newSize:CGSizeMake(12, 12)];
         
     }else if(pointType == STAR){
 
@@ -53,10 +57,10 @@
         // A star image
         //--------------------------
         UIImage *starImg = [UIImage imageNamed:@"star-128.png"];
-        annotationImage = [CustomPointAnnotation resizeImage:starImg
+        self.icon = [CustomPointAnnotation resizeImage:starImg
                                 newSize:CGSizeMake(12, 12)];
     }else{
-        annotationImage = nil;
+        self.icon = nil;
     }
 }
 
@@ -86,21 +90,14 @@
     
     if (isHighlighted){
         if (self.pointType == LANDMARK)
-            annotationImage =
+            self.icon =
             [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
     }else{
         if (self.pointType == LANDMARK)
-            annotationImage =
+            self.icon =
             [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
     }
-    // remove the current annotation from the map and add it back
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
-//    MKAnnotationView* anView = [mapView viewForAnnotation: self];
-//    [anView setNeedsDisplay];
-    
-    [mapView removeAnnotation:self];
-    [mapView addAnnotation: self];
 }
 
 -(void)setTitle:(NSString *)title{
@@ -114,11 +111,6 @@
 
 -(void)setIsLabelOn:(bool)isLabelOn{
     _isLabelOn = isLabelOn;
-    
-    // remove the current annotation from the map and add it back
-    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-    [mapView removeAnnotation:self];
-    [mapView addAnnotation: self];
 }
 
 
@@ -171,31 +163,39 @@
 //    =
 //    (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:landmarkAnnotationID];
     
-    if (pinView == nil)
-    {
-        pinView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:landmarkAnnotationID];
-    }else{
-        // Need to clear the existing annotations
-        for (UIView *aView in pinView.subviews){
-            if ([aView isKindOfClass:[UILabel class]]){
-                [aView removeFromSuperview];
-            }
-        }
-    }
-    pinView.annotation = self;
-    
-    if (annotationImage)
-        pinView.image = annotationImage;
-    
-    // Add a label to the annoation
-    if (self.isLabelOn && aLabel){
-        [aLabel removeFromSuperview];
-        [pinView addSubview: aLabel];
-    }
-    
-    // Make the annotation tappable
-    [pinView setEnabled:YES];
+//    if (pinView == nil)
+//    {
+//        pinView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:landmarkAnnotationID];
+//    }else{
+//        // Need to clear the existing annotations
+//        for (UIView *aView in pinView.subviews){
+//            if ([aView isKindOfClass:[UILabel class]]){
+//                [aView removeFromSuperview];
+//            }
+//        }
+//    }
+//    pinView.annotation = self;
+//    
+//    if (annotationImage)
+//        pinView.image = self.icon;
+//    
+//    // Add a label to the annoation
+//    if (self.isLabelOn && aLabel){
+//        [aLabel removeFromSuperview];
+//        [pinView addSubview: aLabel];
+//    }
+//    
+//    // Make the annotation tappable
+//    [pinView setEnabled:YES];
     return pinView;
+}
+
+//----------------
+// desctructor
+//----------------
+-(void)dealloc {
+    //cleanup code
+    [[AnnotationCollection sharedManager] removeObject:self];
 }
 
 @end
