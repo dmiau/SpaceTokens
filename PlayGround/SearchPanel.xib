@@ -46,20 +46,11 @@
                                 <action selector="renamingAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZhC-2w-a8W"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w10-f3-VAU">
-                            <rect key="frame" x="22" y="76" width="44" height="30"/>
-                            <state key="normal" title="debug"/>
-                            <connections>
-                                <action selector="debugAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5MF-8V-zFy"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="heh-RH-1Bd" secondAttribute="trailing" constant="15" id="5qa-Dv-Dte"/>
-                        <constraint firstAttribute="bottom" secondItem="w10-f3-VAU" secondAttribute="bottom" constant="14" id="EZP-2v-x7M"/>
                         <constraint firstAttribute="height" constant="120" id="GeN-8N-fLL"/>
-                        <constraint firstItem="w10-f3-VAU" firstAttribute="leading" secondItem="gdd-kI-rfv" secondAttribute="leading" constant="22" id="K0x-hP-iZ4"/>
                         <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="Kkg-Rx-fpr"/>
                         <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="8" id="NC2-Vc-rhW"/>
                         <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="TNs-Yu-wMA"/>

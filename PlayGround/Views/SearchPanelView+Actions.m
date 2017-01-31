@@ -303,8 +303,4 @@
     
     [[[TokenCollection sharedManager] handlingBlockArray] addObject: handlingBlock];
 }
-
-- (IBAction)debugAction:(id)sender {
-    [[SpaceBar sharedManager] updateBasedOnConstraints];
-}
 @end

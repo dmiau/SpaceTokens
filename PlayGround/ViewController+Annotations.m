@@ -25,4 +25,35 @@
     return YES;
 }
 
+- (void) mapView:(GMSMapView *) mapView
+didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate
+{
+    [[AnnotationCollection sharedManager] resetAnnotations];
+}
+
+- (void)mapView:(GMSMapView *)mapView
+didTapPOIWithPlaceID:(NSString *)placeID
+           name:(NSString *)name
+       location:(CLLocationCoordinate2D)location
+{
+    NSLog(@"You tapped %@: %@, %f/%f", name, placeID, location.latitude, location.longitude);
+}
+
+//- (void)mapView:(GMSMapView *)mapView
+//didTapPOIWithPlaceID:(NSString *)placeID
+//           name:(NSString *)name
+//       location:(CLLocationCoordinate2D)location
+//{
+//    GMSMarker *infoMarker;
+//    infoMarker = [GMSMarker markerWithPosition:location];
+//    infoMarker.snippet = placeID;
+//    infoMarker.title = name;
+//    infoMarker.opacity = 0;
+//    CGPoint pos = infoMarker.infoWindowAnchor;
+//    pos.y = 1;
+//    infoMarker.infoWindowAnchor = pos;
+//    infoMarker.map = mapView;
+//    mapView.selectedMarker = infoMarker;
+//}
+
 @end

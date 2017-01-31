@@ -54,20 +54,17 @@
 
 // Check if the protocol methods are implemetned
 - (void)setDelegate:(id<GMSMapViewDelegate>)aDelegate{
-    if (delegate != aDelegate) {
-        delegate = aDelegate;
-        [super setDelegate: aDelegate];
-        
-        _delegateRespondsTo.mapTouchBegin =
-        [delegate respondsToSelector:@selector(mapTouchBegan: withEvent:)];
-        
-        _delegateRespondsTo.mapTouchMoved =
-        [delegate respondsToSelector:@selector(mapTouchMoved: withEvent:)];
-        
-        _delegateRespondsTo.mapTouchEnded =
-        [delegate respondsToSelector:@selector(mapTouchEnded: withEvent:)];
-        
-    }
+    delegate = aDelegate;
+    [super setDelegate: aDelegate];
+    
+    _delegateRespondsTo.mapTouchBegin =
+    [delegate respondsToSelector:@selector(mapTouchBegan: withEvent:)];
+    
+    _delegateRespondsTo.mapTouchMoved =
+    [delegate respondsToSelector:@selector(mapTouchMoved: withEvent:)];
+    
+    _delegateRespondsTo.mapTouchEnded =
+    [delegate respondsToSelector:@selector(mapTouchEnded: withEvent:)];
 }
 
 
