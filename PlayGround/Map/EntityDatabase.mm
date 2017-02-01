@@ -75,6 +75,11 @@
     
     NSMutableArray *outArray = [NSMutableArray arrayWithArray:i_entityArray];
     [outArray addObjectsFromArray:temp_entityArray];
+    
+    if (self.lastHighlightedEntity){
+        [outArray addObject:self.lastHighlightedEntity];
+    }
+    
     return outArray;
 }
 
@@ -122,10 +127,25 @@
     
     // Get all the annotations
     for (SpatialEntity *anEntity in [self getEntityArray]){
-            anEntity.annotation.isHighlighted = NO;
-            anEntity.annotation.isLabelOn = NO;
+//        anEntity.isMapAnnotationEnabled = YES;
+        anEntity.annotation.isHighlighted = NO;
+        anEntity.annotation.isLabelOn = NO;
     }
 }
+
+-(SpatialEntity*)entityForAnnotation:(id)anntation{
+    SpatialEntity *result = nil;
+    
+    for (SpatialEntity *entity in [self getEntityArray]){
+        if (entity.annotation == anntation){
+            result = entity;
+            break;
+        }
+    }
+    
+    return result;
+}
+
 
 // MARK: -- Save/Load --
 //----------------------------------------------------------
@@ -142,10 +162,6 @@
     self.entityArray = [[coder decodeObjectForKey:@"entityArray"] mutableCopy];
     return self;
 }
-
-//- (NSString*)description{
-//    return @"";
-//}
 
 #pragma mark -- iCloud --
 
@@ -190,6 +206,20 @@
         NSLog(@"%@ does not exist.", fullPathFileName);
         return NO;
     }
+}
+
+- (NSString*)description{
+    NSMutableArray *lines = [NSMutableArray array];
+    [lines addObject:
+     [NSString stringWithFormat:@"entityArray #: %lu", (unsigned long)[i_entityArray count]]];
+    
+    [lines addObject:
+     [NSString stringWithFormat:@"temp_entityArray #: %lu", (unsigned long)[temp_entityArray count]]];
+    
+    [lines addObject:
+     [NSString stringWithFormat:@"lastHighlightedEntity: %@", self.lastHighlightedEntity]];
+    
+    return [lines componentsJoinedByString:@"\n"];
 }
 
 @end

@@ -20,6 +20,7 @@
 
 @property NSString *name;
 @property Person *youRHere;
+@property SpatialEntity *lastHighlightedEntity;
 
 +(EntityDatabase*)sharedManager;
 
@@ -49,5 +50,7 @@
 // Annotation management
 -(void)resetAnnotations;
 
+// Find the entity associated with the annotation
+-(SpatialEntity*)entityForAnnotation:(id)anntation;
 
 @end

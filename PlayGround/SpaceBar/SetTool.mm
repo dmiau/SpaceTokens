@@ -322,7 +322,6 @@
     // Update the line if there are more than two entities
 
     [self.arrayEntity updateSetForContentArray];
-    self.arrayEntity.isMapAnnotationEnabled = NO;
 
     [self updateView];
 }
@@ -342,7 +341,6 @@
     }
     
     [self.arrayEntity updateSetForContentArray];
-    self.arrayEntity.isMapAnnotationEnabled = NO;
     
     [self updateView];
 }

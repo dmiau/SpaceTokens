@@ -43,9 +43,6 @@
     }
     
     aSpaceToken.spatialEntity = spatialEntity;
-    
-    spatialEntity.isMapAnnotationEnabled = YES;
-    
     return aSpaceToken;
 }
 @end

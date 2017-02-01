@@ -15,6 +15,8 @@
 #import "ViewController.h"
 #import "TokenCollectionView.h"
 #import "ArrayTool.h"
+#import "EntityDatabase.h"
+#import "CustomPointAnnotation.h"
 
 @implementation AdditionTool{
     CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
@@ -192,6 +194,47 @@
             return result;
         }
     }
+    
+    //------------------------
+    // Else, check if the addition tool touches a highlighed entity
+    //------------------------
+    
+    // Get the highlighted entity
+    SpatialEntity *highlightedEntity =
+    [[EntityDatabase sharedManager] lastHighlightedEntity];
+    
+    if (!highlightedEntity){
+        return NO;
+    }
+    
+    if (highlightedEntity.annotation.isHighlighted){
+        if ([highlightedEntity.annotation isKindOfClass:[CustomPointAnnotation class]])
+        {
+            CustomPointAnnotation *pointAnnotation = highlightedEntity.annotation;
+            
+            // Get the CGPoint of the highlighted point in mapView
+            CGPoint highlightedCGPoint = [mapView.projection
+                                          pointForCoordinate: pointAnnotation.position];
+            
+            double distance = pow((touchPoint.x - highlightedCGPoint.x), 2)+
+            pow((touchPoint.y - highlightedCGPoint.y), 2);
+            
+            if (distance < 100){
+                SpaceToken *aSpaceToken =
+                [SpaceToken manufactureTokenForEntity:highlightedEntity];
+                
+                BOOL result = self.additionHandlingBlock(aSpaceToken);
+                if (result){
+                    probEnabled = NO;
+                    [lineLayer removeFromSuperlayer];
+                    movingOut = NO;
+                }
+                
+                return result;
+            }
+        }
+    }
+    
     return NO;
 }
 

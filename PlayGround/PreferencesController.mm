@@ -15,6 +15,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CustomMKMapView.h"
 #import "TokenCollection.h"
+#import "EntityDatabase.h"
 
 @implementation PreferencesController
 
@@ -190,6 +191,8 @@
     [lineArray addObject: [[CustomMKMapView sharedManager] description]];
     [lineArray addObject: [[TokenCollection sharedManager] description]];
     [lineArray addObject: [[SpaceBar sharedManager] description]];
+    [lineArray addObject: [[EntityDatabase sharedManager] description]];
+
     self.debugInfoOutlet.text = [lineArray componentsJoinedByString:@"\n"];
 }
 

@@ -305,7 +305,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     // Update the line if there are more than two entities
     if ([[self.arrayEntity getContent] count]>1){
         [self.arrayEntity updateArrayForContentArray];
-        self.arrayEntity.isMapAnnotationEnabled = YES;
     }
 }
 
@@ -377,8 +376,8 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     
     // Added to the bottom
     CGRect frame = CGRectZero;
-    frame.origin = CGPointMake(0, self.frame.size.height - 20);
-    frame.size = CGSizeMake(60, 20);
+    frame.origin = CGPointMake(0, self.frame.size.height - 40);
+    frame.size = CGSizeMake(60, 30);
     pathModeButton.frame = frame;
     [self addSubview:pathModeButton];
 }

@@ -15,6 +15,7 @@
 // Handle annotation interactions (redirected from delegates)
 - (bool)didTapMarker:(CustomPointAnnotation *)marker;
 - (void)didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate;
+- (void)didTapOverlay:(GMSOverlay *)overlay;
 - (void)didTapPOIWithPlaceID:(NSString *)placeID
            name:(NSString *)name
                     location:(CLLocationCoordinate2D)location;

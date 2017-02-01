@@ -28,6 +28,11 @@ didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate
     [self.mapView didTapAtCoordinate:coordinate];
 }
 
+- (void) mapView:(GMSMapView *)mapView
+   didTapOverlay:(GMSOverlay *)overlay{
+    [self.mapView didTapOverlay:overlay];
+}
+
 
 - (void)mapView:(GMSMapView *)mapView
 didTapPOIWithPlaceID:(NSString *)placeID

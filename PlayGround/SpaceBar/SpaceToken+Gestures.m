@@ -202,10 +202,6 @@
         //--------------
         self.spatialEntity.annotation.isHighlighted = YES;
     }
-    
-    // Forced refresh the annotation color
-    self.spatialEntity.isMapAnnotationEnabled = NO;
-    self.spatialEntity.isMapAnnotationEnabled = YES;
 }
 
 - (void)touchEnded{

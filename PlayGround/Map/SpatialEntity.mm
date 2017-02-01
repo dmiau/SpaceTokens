@@ -26,7 +26,7 @@
         _name = @"";
         _placeID = @"";
         _isEnabled = YES;
-        _isMapAnnotationEnabled = NO;
+        _isMapAnnotationEnabled = YES;
     }
     return self;
 }

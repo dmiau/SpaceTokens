@@ -18,6 +18,7 @@
 #import "MainViewManager.h"
 #import "SearchPanelView.h"
 
+
 @implementation ConnectionTool (Dragging)
 
 
@@ -211,6 +212,8 @@
         [searchBar becomeFirstResponder];        
         [self removeFromSuperview];
     }
+    
+
 }
 
 @end

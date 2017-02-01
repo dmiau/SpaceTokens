@@ -9,50 +9,14 @@
 #import "CustomMKMapView+Annotations.h"
 #import "CustomPointAnnotation.h"
 #import "CustomMKPolygon.h"
+#import "CustomGMSPolygon.h"
 #import "CustomMKPolyline.h"
+#import "CustomGMSPolyline.h"
 #import "POI.h"
 #import "EntityDatabase.h"
+#import "DMTools.h"
 
 @implementation CustomMKMapView (Annotations)
-
-#pragma mark --Routes--
-//------------------
-// For route overlay
-//------------------
-- (MKOverlayRenderer *) rendererForOverlay:(id < MKOverlay >)overlay
-{
-    if ([overlay isKindOfClass:[MKCircle class]]){
-        
-        //------------
-        // Render a circle
-        //------------
-        MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
-        //        renderer.strokeColor = [UIColor redColor];
-        renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
-        return renderer;
-    }else if ([overlay isKindOfClass:[MKPolygon class]]){
-        
-        //------------
-        // Render a polygon
-        //------------
-        MKPolygonRenderer *renderer = [[MKPolygonRenderer alloc] initWithOverlay:overlay];
-        //        renderer.strokeColor = [UIColor redColor];
-        renderer.fillColor = [[UIColor redColor]colorWithAlphaComponent:0.2];
-        return renderer;
-        
-        
-        
-        
-    }else{
-        
-        //------------
-        // Render a line
-        //------------
-        CustomMKPolyline *polylineOverlay = overlay;
-        return [polylineOverlay generateOverlayRenderer];
-    }
-}
-
 
 // MARK: Handles annotation interactions
 
@@ -63,8 +27,17 @@
         marker.isHighlighted = YES;
         marker.isLabelOn = YES;
     }
+//    [self setSelectedMarker: marker];
     
-    [self setSelectedMarker: marker];
+    SpatialEntity *matchedEntity = [[EntityDatabase sharedManager]
+                                    entityForAnnotation:marker];
+    
+    if (!matchedEntity){
+        [DMTools showAlert:@"System error." withMessage:
+         @"Matched entity was not found (didTapMarker)."];
+    }
+    
+    [EntityDatabase sharedManager].lastHighlightedEntity = matchedEntity;
     return YES;
 }
 
@@ -73,19 +46,43 @@
     [[EntityDatabase sharedManager] resetAnnotations];
 }
 
+- (void)didTapOverlay:(GMSOverlay *)overlay{
+    if ([overlay isKindOfClass:[CustomGMSPolygon class]] ||
+        [overlay isKindOfClass:[CustomGMSPolyline class]])
+    {
+        id <AnnotationProtocol> customOverlay = overlay;
+        customOverlay.isHighlighted = YES;
+    }
+    
+    SpatialEntity *matchedEntity = [[EntityDatabase sharedManager]
+                                    entityForAnnotation:overlay];
+    
+    if (!matchedEntity){
+        [DMTools showAlert:@"System error." withMessage:
+         @"Matched entity was not found (didTapOverlay)."];
+    }
+    
+    [EntityDatabase sharedManager].lastHighlightedEntity = matchedEntity;
+}
+
 - (void) didTapPOIWithPlaceID:(NSString *)placeID
            name:(NSString *)name
        location:(CLLocationCoordinate2D)location
 {
+    [[EntityDatabase sharedManager] resetAnnotations];
+    
     // Create a temporary entity
     POI *tempPOI = [[POI alloc] init];
     tempPOI.latLon = location;
     tempPOI.name = name;
     tempPOI.placeID = placeID;
     [[EntityDatabase sharedManager] addTempEntity:tempPOI];
+    tempPOI.annotation.pointType = dropped;
     tempPOI.isMapAnnotationEnabled = YES;
     tempPOI.annotation.isHighlighted = YES;
-    [self setSelectedMarker:tempPOI.annotation];
+    [EntityDatabase sharedManager].lastHighlightedEntity = tempPOI;
+    
+//    [self setSelectedMarker:tempPOI.annotation];
     
 //    infoMarker = [GMSMarker markerWithPosition:location];
 //    //    infoMarker.snippet = placeID;

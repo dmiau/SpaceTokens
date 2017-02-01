@@ -350,7 +350,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     [token removeFromSuperview];
     
     token.spatialEntity.isEnabled = NO;
-    token.spatialEntity.isMapAnnotationEnabled = NO;
     [self reloadData];
 }
 

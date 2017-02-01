@@ -21,6 +21,7 @@
     
     self.isHighlighted = NO;
     self.isLabelOn = NO;
+    self.tappable = YES;
     return self;
 }
 

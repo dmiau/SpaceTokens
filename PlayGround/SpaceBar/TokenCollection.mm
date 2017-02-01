@@ -91,7 +91,7 @@
 
 - (SpaceToken*)addTokenFromSpatialEntity:(SpatialEntity*)spatialEntity{
     SpaceToken *aSpaceToken =
-    [SpaceToken manufactureTokenForEntity:spatialEntity] ;
+    [SpaceToken manufactureTokenForEntity:spatialEntity];
     [aSpaceToken configureAppearanceForType:DOCKED];
     
     aSpaceToken.isStudyModeEnabled = self.isStudyModeEnabled;

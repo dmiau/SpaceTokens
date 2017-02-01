@@ -160,6 +160,8 @@
 		9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
 		9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
+		9A75D6541E417B5100DB045C /* DMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6531E417B5100DB045C /* DMTools.m */; };
+		9A75D6551E417B5100DB045C /* DMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6531E417B5100DB045C /* DMTools.m */; };
 		9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
@@ -492,6 +494,8 @@
 		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9A7594CD1E0DEEC50047BC66 /* TaskGenerator+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TaskGenerator+Tools.h"; path = "StudyManager/TaskGenerator+Tools.h"; sourceTree = "<group>"; };
 		9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Tools.m"; path = "StudyManager/TaskGenerator+Tools.m"; sourceTree = "<group>"; };
+		9A75D6521E417B5100DB045C /* DMTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMTools.h; path = DMTools/DMTools.h; sourceTree = "<group>"; };
+		9A75D6531E417B5100DB045C /* DMTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMTools.m; path = DMTools/DMTools.m; sourceTree = "<group>"; };
 		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
 		9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteTableController.mm; sourceTree = "<group>"; };
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
@@ -939,6 +943,7 @@
 		9A5301401C5AD6A6008D584B /* PlayGround */ = {
 			isa = PBXGroup;
 			children = (
+				9A75D6511E4179E300DB045C /* Tools */,
 				9AA5E0FA1E3FB3B3007D3A7B /* GooglePlaces */,
 				9AA5E0E91E3FB2E7007D3A7B /* GoogleMaps */,
 				9AD503301DC94175005A05D6 /* Constraint Engine */,
@@ -1009,6 +1014,15 @@
 				9A90C7611DFDB49500CDC578 /* ConnectionTool */,
 			);
 			name = Tokens;
+			sourceTree = "<group>";
+		};
+		9A75D6511E4179E300DB045C /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9A75D6521E417B5100DB045C /* DMTools.h */,
+				9A75D6531E417B5100DB045C /* DMTools.m */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 		9A7DB2791E1448E500226D42 /* SearchView */ = {
@@ -1667,6 +1681,7 @@
 				9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */,
 				9A8413661C6F8AAC004DF8D1 /* SpaceBar+UpdateSet.mm in Sources */,
 				9A9792E21DFA19EB0062ED6F /* TokenCollectionView.m in Sources */,
+				9A75D6541E417B5100DB045C /* DMTools.m in Sources */,
 				9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */,
 				9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */,
@@ -1782,6 +1797,7 @@
 				9AE13B991DF0D148008612DA /* TaskGenerator.m in Sources */,
 				9AE13B9A1DF0D148008612DA /* SpaceBar+UpdateSet.mm in Sources */,
 				9A9792E41DFA19EB0062ED6F /* TokenCollectionView.m in Sources */,
+				9A75D6551E417B5100DB045C /* DMTools.m in Sources */,
 				9AE13B9B1DF0D148008612DA /* CustomMKMapView+MapDisplay.mm in Sources */,
 				9AE13B9C1DF0D148008612DA /* FileTableController.m in Sources */,
 				9AE13B9D1DF0D148008612DA /* RecordDatabase.m in Sources */,

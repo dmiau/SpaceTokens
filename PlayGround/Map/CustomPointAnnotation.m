@@ -36,12 +36,7 @@
         self.icon =
         [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
 
-    }else if(pointType == dropped){
-        self.icon =
-        [self generateDotImageWithColor:[UIColor purpleColor] andRadius:6];
-        
-    }else if(pointType == YouRHere){
-        
+    }else if(pointType == YouRHere){        
         //--------------------------
         // YouRHere
         //--------------------------
@@ -90,9 +85,13 @@
             self.icon =
             [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
     }else{
-        if (self.pointType == LANDMARK)
+        if (self.pointType == LANDMARK){
             self.icon =
             [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
+        }else{
+            self.map = nil;
+        }
+
     }
     
 }
