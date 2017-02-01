@@ -50,6 +50,9 @@
     // initialize the gesture recognizer
     //----------------------
     [self p_initGestureRecognizer];
+    
+    // Load the information sheet
+    self.informationSheet = [[[NSBundle mainBundle] loadNibNamed:@"MapInformationSheet" owner:self options:nil] firstObject];
 }
 
 // Check if the protocol methods are implemetned

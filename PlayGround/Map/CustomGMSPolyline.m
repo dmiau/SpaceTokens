@@ -25,6 +25,12 @@
     return self;
 }
 
+-(id) init{
+    self = [super init];
+    self.tappable = YES;
+    return self;
+}
+
 //--------------
 // Setters
 //--------------

@@ -15,6 +15,7 @@
 #import "POI.h"
 #import "EntityDatabase.h"
 #import "DMTools.h"
+#import "MapInformationSheet.h"
 
 @implementation CustomMKMapView (Annotations)
 
@@ -38,15 +39,22 @@
     }
     
     [EntityDatabase sharedManager].lastHighlightedEntity = matchedEntity;
+    
+    [self.informationSheet addSheetForEntity:matchedEntity];
+    
     return YES;
 }
 
 - (void) didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate
 {
     [[EntityDatabase sharedManager] resetAnnotations];
+    [self.informationSheet removeSheet];
 }
 
 - (void)didTapOverlay:(GMSOverlay *)overlay{
+    
+    [[EntityDatabase sharedManager] resetAnnotations];
+    
     if ([overlay isKindOfClass:[CustomGMSPolygon class]] ||
         [overlay isKindOfClass:[CustomGMSPolyline class]])
     {
@@ -63,6 +71,7 @@
     }
     
     [EntityDatabase sharedManager].lastHighlightedEntity = matchedEntity;
+    [self.informationSheet addSheetForEntity:matchedEntity];
 }
 
 - (void) didTapPOIWithPlaceID:(NSString *)placeID
@@ -81,7 +90,7 @@
     tempPOI.isMapAnnotationEnabled = YES;
     tempPOI.annotation.isHighlighted = YES;
     [EntityDatabase sharedManager].lastHighlightedEntity = tempPOI;
-    
+    [self.informationSheet addSheetForEntity:tempPOI];
 //    [self setSelectedMarker:tempPOI.annotation];
     
 //    infoMarker = [GMSMarker markerWithPosition:location];
