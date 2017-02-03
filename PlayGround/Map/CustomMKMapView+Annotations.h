@@ -19,4 +19,5 @@
 - (void)didTapPOIWithPlaceID:(NSString *)placeID
            name:(NSString *)name
                     location:(CLLocationCoordinate2D)location;
+- (void)didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate;
 @end

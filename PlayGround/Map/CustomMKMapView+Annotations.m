@@ -74,6 +74,21 @@
     [self.informationSheet addSheetForEntity:matchedEntity];
 }
 
+- (void)didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
+    [[EntityDatabase sharedManager] resetAnnotations];
+    
+    // Create a temporary entity
+    POI *tempPOI = [[POI alloc] init];
+    tempPOI.latLon = coordinate;
+    tempPOI.name = @"Dropped";
+    tempPOI.placeID = @"";
+    tempPOI.annotation.pointType = dropped;
+    tempPOI.isMapAnnotationEnabled = YES;
+    tempPOI.annotation.isHighlighted = YES;
+    [EntityDatabase sharedManager].lastHighlightedEntity = tempPOI;
+    [self.informationSheet addSheetForEntity:tempPOI];
+}
+
 - (void) didTapPOIWithPlaceID:(NSString *)placeID
            name:(NSString *)name
        location:(CLLocationCoordinate2D)location
@@ -85,7 +100,6 @@
     tempPOI.latLon = location;
     tempPOI.name = name;
     tempPOI.placeID = placeID;
-    [[EntityDatabase sharedManager] addTempEntity:tempPOI];
     tempPOI.annotation.pointType = dropped;
     tempPOI.isMapAnnotationEnabled = YES;
     tempPOI.annotation.isHighlighted = YES;

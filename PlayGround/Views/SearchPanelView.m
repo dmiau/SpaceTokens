@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "CustomMKMapView.h"
+#import "MapInformationSheet.h"
 
 #import "EntityDatabase.h"
 #import "POI.h"
@@ -208,10 +209,12 @@
     aPOI.latLon = place.coordinate;
     aPOI.placeID = place.placeID;
     aPOI.annotation.pointType = dropped;
+    aPOI.annotation.isHighlighted = YES;
     aPOI.isMapAnnotationEnabled = YES;
     
-    // Add the restul to entityDB
-    [[EntityDatabase sharedManager] addTempEntity:aPOI];
+    // registered the highlighted entity
+    [EntityDatabase sharedManager].lastHighlightedEntity = aPOI;
+    [[[CustomMKMapView sharedManager] informationSheet] addSheetForEntity:aPOI];
     
     if (!self.searchHandlingBlock){
         //----------------------

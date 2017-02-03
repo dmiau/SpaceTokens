@@ -12,6 +12,13 @@
 #import "Person.h"
 #import "RouteDatabase.h"
 
+#import "PickerEntity.h"
+
+//--------------------
+// Global contants
+static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
+//--------------------
+
 @implementation EntityDatabase
 
 +(EntityDatabase*)sharedManager{
@@ -26,7 +33,6 @@
 - (id) init{
     i_entityArray = [[NSMutableArray alloc] init];
     cacheDefaultEntityArray = [[NSMutableArray alloc] init];
-    temp_entityArray = [[NSMutableArray alloc] init];
     useDefaultEntityArray = YES;
     self.youRHere = [[Person alloc] init];
     self.isYouAreHereEnabled = YES;
@@ -60,7 +66,11 @@
     if (self.isYouAreHereEnabled && useDefaultEntityArray){
         [outArray addObject:self.youRHere];
     }
-        
+    
+    // Added a picker entity
+    PickerEntity *picker = [[PickerEntity alloc] init];
+    [outArray addObject:picker];
+    
     return outArray;
 }
 
@@ -72,9 +82,17 @@
 }
 
 - (NSMutableArray*)getEntityArray{
+    return i_entityArray;
+}
+
+- (NSMutableArray<SpatialEntity*>*)getAnnotationEnabledEntityArray{
+    NSMutableArray *outArray = [NSMutableArray array];
     
-    NSMutableArray *outArray = [NSMutableArray arrayWithArray:i_entityArray];
-    [outArray addObjectsFromArray:temp_entityArray];
+    for (SpatialEntity *anEntity in i_entityArray){
+        if (anEntity.isMapAnnotationEnabled){
+            [outArray addObject:anEntity];
+        }
+    }
     
     if (self.lastHighlightedEntity){
         [outArray addObject:self.lastHighlightedEntity];
@@ -91,7 +109,25 @@
     
     if ([filteredArray count] > 0){
         SpatialEntity *entity = [filteredArray firstObject];
+        entity.isEnabled = YES;
     }else{
+        // Check if an object with the same placeID already exist
+        if ([entity.placeID length] > 2){
+            // If the entity already exist, enable the entity
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.placeID == %@", entity.placeID];
+            NSArray *filteredArray = [i_entityArray filteredArrayUsingPredicate:predicate];
+            
+            if ([filteredArray count] > 0){
+                SpatialEntity *entity = [filteredArray firstObject];
+                entity.isEnabled = YES;
+                return;
+            }
+        }
+        
+        if ([entity isKindOfClass:[POI class]]){
+            entity.annotation.pointType = LANDMARK;
+        }
+        
         [i_entityArray addObject:entity];
     }
 }
@@ -100,34 +136,15 @@
     [i_entityArray removeObject:entity];
 }
 
-// MARK: Access the temporary entity array
-//----------------------------------------------------------
-- (void)addTempEntity:(SpatialEntity*)entity{
-    [temp_entityArray addObject: entity];
-}
-
-- (void)removeTempEntity:(SpatialEntity*)entity{
-    [temp_entityArray removeObject:entity];
-}
-
-- (void)cleanTempEntities{
-    
-    for (SpatialEntity *anEntity in temp_entityArray){
-        anEntity.isMapAnnotationEnabled = NO;
-    }
-    [temp_entityArray removeAllObjects];
-}
-
-
 // MARK: Annotation management
 //----------------------------------------------------------
 -(void)resetAnnotations{
     
-    [self cleanTempEntities];
+    self.lastHighlightedEntity.isMapAnnotationEnabled = NO;
+    self.lastHighlightedEntity = nil;
     
     // Get all the annotations
     for (SpatialEntity *anEntity in [self getEntityArray]){
-//        anEntity.isMapAnnotationEnabled = YES;
         anEntity.annotation.isHighlighted = NO;
         anEntity.annotation.isLabelOn = NO;
     }
@@ -172,7 +189,7 @@
     MyFileManager *myFileManager = [MyFileManager sharedManager];
     
     NSString *dirPath = [myFileManager currentFullDirectoryPath];
-    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:@"myTest.entitydb"];
+    NSString *fileFullPath = [dirPath stringByAppendingPathComponent:TEMPLATE_DB_NAME];
     [self loadFromFile:fileFullPath];
 }
 
@@ -184,6 +201,7 @@
     
     if ([data writeToFile:fullPathFileName atomically:YES]){
         NSLog(@"%@ saved successfully!", fullPathFileName);
+        self.currentFileName = [fullPathFileName lastPathComponent];
         return YES;
     }else{
         NSLog(@"Failed to save %@", fullPathFileName);
@@ -201,6 +219,10 @@
         EntityDatabase *entityDB = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         self.name = entityDB.name;
         self.entityArray = [entityDB getEntityArray];
+        
+        // Store the current file name
+        self.currentFileName = [fullPathFileName lastPathComponent];
+        
         return YES;
     }else{
         NSLog(@"%@ does not exist.", fullPathFileName);
@@ -212,9 +234,6 @@
     NSMutableArray *lines = [NSMutableArray array];
     [lines addObject:
      [NSString stringWithFormat:@"entityArray #: %lu", (unsigned long)[i_entityArray count]]];
-    
-    [lines addObject:
-     [NSString stringWithFormat:@"temp_entityArray #: %lu", (unsigned long)[temp_entityArray count]]];
     
     [lines addObject:
      [NSString stringWithFormat:@"lastHighlightedEntity: %@", self.lastHighlightedEntity]];

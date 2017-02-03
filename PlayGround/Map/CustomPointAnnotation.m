@@ -91,9 +91,7 @@
         }else{
             self.map = nil;
         }
-
     }
-    
 }
 
 -(void)setTitle:(NSString *)title{

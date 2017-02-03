@@ -165,7 +165,7 @@
         lineLayer.strokeColor = [UIColor blueColor].CGColor;
     }
     
-    // Check if the connection tool touch any route?
+    // Check if the connection tool touch any token?
     // Get the TokenCollection object    
     
     CGPoint touchPoint = [self convertPoint:currentLocation toView:mapView];

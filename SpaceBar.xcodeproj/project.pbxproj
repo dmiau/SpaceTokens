@@ -36,6 +36,10 @@
 		9A1DB0FD1E40378800441AD5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DB0FB1E40378800441AD5 /* GoogleMaps.bundle */; };
 		9A1DB0FF1E4037A800441AD5 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DB0FE1E4037A800441AD5 /* GooglePlaces.bundle */; };
 		9A1DB1001E4037A800441AD5 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DB0FE1E4037A800441AD5 /* GooglePlaces.bundle */; };
+		9A1FDAFB1E42ABE300799DD5 /* PickerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FDAFA1E42ABE300799DD5 /* PickerEntity.m */; };
+		9A1FDAFC1E42ABE300799DD5 /* PickerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FDAFA1E42ABE300799DD5 /* PickerEntity.m */; };
+		9A1FDAFE1E42DE9000799DD5 /* pickerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A1FDAFD1E42DE9000799DD5 /* pickerIcon.png */; };
+		9A1FDAFF1E42DE9000799DD5 /* pickerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A1FDAFD1E42DE9000799DD5 /* pickerIcon.png */; };
 		9A22D0181D22BD9A009BC465 /* Route.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A22D0171D22BD9A009BC465 /* Route.mm */; };
 		9A234B191D8A1C6D00F3EE21 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A234B1A1D8A1C6D00F3EE21 /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
@@ -267,6 +271,8 @@
 		9ACE015B1E292F9A0010F651 /* AdditionTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE01581E292F9A0010F651 /* AdditionTool.mm */; };
 		9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
 		9AD639F31D50267C00C91F1B /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639F21D50267C00C91F1B /* FileTableController.m */; };
+		9AD887B21E42960F008E62E7 /* PickerToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD887B11E42960F008E62E7 /* PickerToken.m */; };
+		9AD887B31E42960F008E62E7 /* PickerToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD887B11E42960F008E62E7 /* PickerToken.m */; };
 		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9AE13B501DF0D148008612DA /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
@@ -418,6 +424,9 @@
 		9A1DB0F81E40376200441AD5 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
 		9A1DB0FB1E40378800441AD5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		9A1DB0FE1E4037A800441AD5 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = GooglePlaces.framework/resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		9A1FDAF91E42ABE300799DD5 /* PickerEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickerEntity.h; path = SpaceBar/PickerEntity.h; sourceTree = "<group>"; };
+		9A1FDAFA1E42ABE300799DD5 /* PickerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerEntity.m; path = SpaceBar/PickerEntity.m; sourceTree = "<group>"; };
+		9A1FDAFD1E42DE9000799DD5 /* pickerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerIcon.png; sourceTree = "<group>"; };
 		9A2129F81E2DA9D8008BB5E4 /* AnnotationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationProtocol.h; path = Map/AnnotationProtocol.h; sourceTree = "<group>"; };
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
@@ -631,6 +640,8 @@
 		9AD503321DC94303005A05D6 /* SpeechEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechEngine.m; path = ConstraintEngine/SpeechEngine.m; sourceTree = "<group>"; };
 		9AD639F11D50267C00C91F1B /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableController.h; sourceTree = "<group>"; };
 		9AD639F21D50267C00C91F1B /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
+		9AD887B01E42960F008E62E7 /* PickerToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickerToken.h; path = SpaceBar/PickerToken.h; sourceTree = "<group>"; };
+		9AD887B11E42960F008E62E7 /* PickerToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerToken.m; path = SpaceBar/PickerToken.m; sourceTree = "<group>"; };
 		9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIDetailViewController.h; sourceTree = "<group>"; };
 		9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIDetailViewController.m; sourceTree = "<group>"; };
 		9AE13BBD1DF0D148008612DA /* SpaceBarBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBarBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1020,6 +1031,8 @@
 				9A3EB3B41E1C77FD008FA7FA /* ArrayToken.h */,
 				9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */,
 				9A90C7611DFDB49500CDC578 /* ConnectionTool */,
+				9AD887B01E42960F008E62E7 /* PickerToken.h */,
+				9AD887B11E42960F008E62E7 /* PickerToken.m */,
 			);
 			name = Tokens;
 			sourceTree = "<group>";
@@ -1120,6 +1133,7 @@
 		9AC338211D63A680000272D9 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FDAFD1E42DE9000799DD5 /* pickerIcon.png */,
 				9A058C841E393D030045AB0E /* areaIcon.png */,
 				9A5A93551E38FB8900432972 /* arrayIcon.png */,
 				9A5A93591E39365E00432972 /* pathIcon.png */,
@@ -1266,6 +1280,8 @@
 				9A27222D1D6CB79C002AE953 /* Person.m */,
 				9A7DB2841E14762F00226D42 /* NSValue+MKMapPoint.h */,
 				9A7DB2851E14762F00226D42 /* NSValue+MKMapPoint.m */,
+				9A1FDAF91E42ABE300799DD5 /* PickerEntity.h */,
+				9A1FDAFA1E42ABE300799DD5 /* PickerEntity.m */,
 			);
 			name = entities;
 			sourceTree = "<group>";
@@ -1478,6 +1494,7 @@
 				9A82A0861E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9A0D20861E26D40400191054 /* SetTool.xib in Resources */,
 				9AC338241D63AA1C000272D9 /* heading.png in Resources */,
+				9A1FDAFE1E42DE9000799DD5 /* pickerIcon.png in Resources */,
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
 				9A5A935E1E39365E00432972 /* setIcon.png in Resources */,
@@ -1511,6 +1528,7 @@
 				9A82A0881E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9A0D20881E26D40400191054 /* SetTool.xib in Resources */,
 				9AE13BAE1DF0D148008612DA /* heading.png in Resources */,
+				9A1FDAFF1E42DE9000799DD5 /* pickerIcon.png in Resources */,
 				9AE13BAF1DF0D148008612DA /* setup.png in Resources */,
 				9AE13BB01DF0D148008612DA /* Assets.xcassets in Resources */,
 				9A5A93601E39365E00432972 /* setIcon.png in Resources */,
@@ -1606,6 +1624,7 @@
 				9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
 				9A177FCD1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
+				9A1FDAFB1E42ABE300799DD5 /* PickerEntity.m in Sources */,
 				9AEDBD7D1D7DB5FE00CFAD15 /* Record.m in Sources */,
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9AFB7DE61E40214B00384959 /* CustomGMSPolygon.m in Sources */,
@@ -1629,6 +1648,7 @@
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
 				9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
+				9AD887B21E42960F008E62E7 /* PickerToken.m in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
@@ -1723,6 +1743,7 @@
 				9AE13B501DF0D148008612DA /* EntityDatabase.mm in Sources */,
 				9A177FCF1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
 				9AE13B511DF0D148008612DA /* ViewController+MapView.mm in Sources */,
+				9A1FDAFC1E42ABE300799DD5 /* PickerEntity.m in Sources */,
 				9AE13B521DF0D148008612DA /* Record.m in Sources */,
 				9AE13B531DF0D148008612DA /* PreferencesController.mm in Sources */,
 				9AFB7DE71E40214B00384959 /* CustomGMSPolygon.m in Sources */,
@@ -1746,6 +1767,7 @@
 				9AE13B601DF0D148008612DA /* ViewController.mm in Sources */,
 				9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
 				9AE13B611DF0D148008612DA /* Route+Tools.mm in Sources */,
+				9AD887B31E42960F008E62E7 /* PickerToken.m in Sources */,
 				9AE13B621DF0D148008612DA /* AppDelegate.m in Sources */,
 				9AE13B631DF0D148008612DA /* SnapshotDetailViewController.m in Sources */,
 				9AE13B641DF0D148008612DA /* Tools.m in Sources */,

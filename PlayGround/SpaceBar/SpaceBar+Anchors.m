@@ -31,7 +31,7 @@
         
         SpatialEntity *touchedKnownEntity = nil;
         // Check if the user touches any known entity
-        for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] getEntityArray])
+        for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] getAnnotationEnabledEntityArray])
         {
             if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon))
                && anEntity.isEnabled && ![anEntity isKindOfClass:[ArrayEntity class]]

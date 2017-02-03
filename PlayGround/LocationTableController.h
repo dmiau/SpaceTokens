@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 @class ViewController;
-
+@class EntityDatabase;
 
 @interface LocationTableController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>{
-    NSArray *fileArray;
+    EntityDatabase *entityDatabase;
+    NSArray *entityFileArray;
+    
+    //this flag decides whether the snapshot file section should be expanded or collapsed
+    bool expandCollectionSection;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -23,6 +27,9 @@
 - (IBAction)orderSegmentAction:(id)sender;
 - (IBAction)saveAction:(id)sender;
 - (IBAction)reloadAction:(id)sender;
+- (IBAction)newFileAction:(id)sender;
+- (IBAction)saveAsAction:(id)sender;
+
 - (IBAction)editAction:(id)sender;
 
 @end
