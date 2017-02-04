@@ -200,6 +200,7 @@
         //--------------
         // Highlight the SpatialEntity
         //--------------
+        self.spatialEntity.isMapAnnotationEnabled = YES;
         self.spatialEntity.annotation.isHighlighted = YES;
     }
 }

@@ -101,10 +101,9 @@
     tempPOI.name = name;
     tempPOI.placeID = placeID;
     tempPOI.annotation.pointType = dropped;
-    tempPOI.isMapAnnotationEnabled = YES;
-    tempPOI.annotation.isHighlighted = YES;
-    [EntityDatabase sharedManager].lastHighlightedEntity = tempPOI;
-    [self.informationSheet addSheetForEntity:tempPOI];
+
+    [self highlightEntity:tempPOI andResetOthers:YES];
+    
 //    [self setSelectedMarker:tempPOI.annotation];
     
 //    infoMarker = [GMSMarker markerWithPosition:location];
@@ -116,6 +115,17 @@
 //    infoMarker.infoWindowAnchor = pos;
 //    infoMarker.map = mapView;
 //    mapView.selectedMarker = infoMarker;
+}
+
+- (void)highlightEntity:(SpatialEntity*)entity andResetOthers:(BOOL)resetFlag{
+    if (resetFlag){
+        [[EntityDatabase sharedManager] resetAnnotations];
+    }
+    
+    entity.isMapAnnotationEnabled = YES;
+    entity.annotation.isHighlighted = YES;
+    [EntityDatabase sharedManager].lastHighlightedEntity = entity;
+    [self.informationSheet addSheetForEntity:entity];
 }
 
 @end

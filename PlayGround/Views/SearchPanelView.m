@@ -66,13 +66,9 @@
     app.window.rootViewController;
     self.rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
     
-    self.renamingOutlet.delegate = self;
-    
     [self initSearchBar];
     
     [self initDrawingButton];
-    
-    [self addDragActionHandlingBlock];
 }
 
 //----------------------
@@ -114,13 +110,7 @@
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {    
-    
-    if (!self.renamingOutlet.isHidden){
-        if (CGRectContainsPoint(self.renamingOutlet.frame, point)){
-            return YES;
-        }
-    }
-    
+        
     // UIView will be "transparent" for touch events if we return NO
     return (point.y < topPanelHeight || point.y > self.frame.size.height - bottomPanalHeight);
 }

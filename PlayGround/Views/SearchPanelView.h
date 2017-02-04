@@ -30,15 +30,10 @@
 @property (nonatomic, copy) void (^searchHandlingBlock)(POI *destinationPOI);
 @property (weak, nonatomic) IBOutlet UIButton *drawingButton;
 
-@property (weak, nonatomic) IBOutlet UITextField *renamingOutlet;
-
 
 //---------------
 // Search Panel actions
 //---------------
-- (IBAction)debugAction:(id)sender;
-
-- (IBAction)renamingAction:(id)sender;
 
 - (IBAction)prefAction:(id)sender;
 

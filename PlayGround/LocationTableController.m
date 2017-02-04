@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "POIDetailViewController.h"
 #import "EntityDatabase.h"
+#import "CustomMKMapView+Annotations.h"
 
 #pragma mark --Entity Cell--
 //---------------------
@@ -280,14 +281,18 @@ typedef enum {COLLECTIONS, ENTITIES} sectionEnum;
         [self.myTableView reloadData];
         
     }else{
+        // Get the selected entity
+        SpatialEntity *entity = [[EntityDatabase sharedManager] getEntityArray][row_id];
         
+        CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+        
+        [[CustomMKMapView sharedManager] snapOneCoordinate:entity.latLon
+                toXY:CGPointMake(mapView.frame.size.width/2, mapView.frame.size.height/2)
+                                                  animated:NO];
+        entity.isEnabled = YES;
+        [mapView highlightEntity:entity andResetOthers:YES];
+        [self.navigationController popViewControllerAnimated:NO];
     }
-    
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        // call your completion method:
-//        [parentVC viewWillAppear:YES];
-    }];
 }
 
 
