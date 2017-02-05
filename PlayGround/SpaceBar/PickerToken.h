@@ -6,8 +6,8 @@
 //  Copyright © 2017 dmiau. All rights reserved.
 //
 
-#import "SpaceToken.h"
+#import <UIKit/UIKit.h>
 
-@interface PickerToken : SpaceToken
+@interface PickerToken : UIButton <UIGestureRecognizerDelegate>
 
 @end

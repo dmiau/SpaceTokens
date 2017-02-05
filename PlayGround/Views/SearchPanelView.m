@@ -106,7 +106,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [ViewController sharedManager].isStatusBarHidden = NO;
-    
+    [self.rootViewController updateUIPlacement];
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {    

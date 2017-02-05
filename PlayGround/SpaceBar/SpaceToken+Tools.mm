@@ -24,10 +24,6 @@
 
 #import "TokenCollectionView.h"
 
-#import "PickerToken.h"
-#import "PickerEntity.h"
-
-
 @implementation SpaceToken (Tools)
 +(SpaceToken*) manufactureTokenForEntity:(SpatialEntity*)spatialEntity{
     SpaceToken *aSpaceToken;
@@ -41,8 +37,6 @@
         aSpaceToken = [[AreaToken alloc] init];
     }else if ([spatialEntity isKindOfClass:[ArrayEntity class]]){
         aSpaceToken = [[ArrayToken alloc] init];
-    }else if([spatialEntity isKindOfClass:[PickerEntity class]]){
-        aSpaceToken = [[PickerToken alloc] init];
     }else{
         [NSException raise:@"unimplemented code path" format:@"unknown spatial entity type"];
     }

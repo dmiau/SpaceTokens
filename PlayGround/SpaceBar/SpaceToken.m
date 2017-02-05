@@ -44,41 +44,40 @@
 
 - (id) init{
     self = [super init];
+    self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
     
-    if (self){
-        self.spatialEntity = [[SpatialEntity alloc] init];
-        self.mapViewXY = CGPointMake(0, 0);
+    self.spatialEntity = [[SpatialEntity alloc] init];
+    self.mapViewXY = CGPointMake(0, 0);
         
+    // listen to several notification of interest
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(mapUpdateHandler)
+                   name:MapUpdatedNotification
+                 object:nil];
+    
+    // Appearance Initialization
+    self.isCircleLayerOn = NO;
+    self.isLineLayerOn = NO;
+    self.isConstraintLineOn = NO;
+    self.isDraggable = YES;
+    self.isStudyModeEnabled = NO;
+    
+    self.circleLayer = [CAShapeLayer layer];
+    self.lineLayer = [CAShapeLayer layer];
+    self.constraintLayer = [CAShapeLayer layer];
+    
+    hasReportedDraggingEvent = NO;
+    self.counterPart = nil;
 
-        // listen to several notification of interest
-        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-        [center addObserver:self
-                   selector:@selector(mapUpdateHandler)
-                       name:MapUpdatedNotification
-                     object:nil];
-        
-        // Appearance Initialization
-        self.isCircleLayerOn = NO;
-        self.isLineLayerOn = NO;
-        self.isConstraintLineOn = NO;
-        self.isDraggable = YES;
-        self.isStudyModeEnabled = NO;
-        
-        self.circleLayer = [CAShapeLayer layer];
-        self.lineLayer = [CAShapeLayer layer];
-        self.constraintLayer = [CAShapeLayer layer];
-        
-        hasReportedDraggingEvent = NO;
-        self.counterPart = nil;
-        self.frame = CGRectMake(0, 0, SPACE_TOKEN_WIDTH, SPACE_TOKEN_HEIGHT);
-        [self restoreDefaultStyle];
-        
-        //----------------
-        // Use gesture recognizer by default
-        //----------------
-        [self initializeGestureRecognizer];
-        self.isCustomGestureRecognizerEnabled = YES;
-    }
+    [self restoreDefaultStyle];
+    
+    //----------------
+    // Use gesture recognizer by default
+    //----------------
+    [self initializeGestureRecognizer];
+    self.isCustomGestureRecognizerEnabled = YES;
+
     return self;
 }
 

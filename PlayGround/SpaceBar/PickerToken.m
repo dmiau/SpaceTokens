@@ -7,6 +7,7 @@
 //
 
 #import "PickerToken.h"
+#import "SpaceToken.h"
 #import "WildcardGestureRecognizer.h"
 #import "TokenCollection.h"
 #import "TokenCollectionView.h"
@@ -19,6 +20,8 @@
     NSMutableArray *touchHistory;
     BOOL probEnabled;
     // The prob needs to be turn off once a token is added. This is to avoid duplicate additions.
+    
+    WildcardGestureRecognizer * tapInterceptor;
 }
 
 /*
@@ -32,20 +35,20 @@
 - (id) init{
     self = [super init];
     
-    // Remove parent's gesture recognizer
-    [self removeGestureRecognizer:tapInterceptor];
+    CGSize tokenSize = [SpaceToken getSize];
+    // The same should be the same as the size of a SpaceToken
+    self.frame = CGRectMake(0, 0, tokenSize.width, tokenSize.height);
     
-    // Change the color to orange
+    // Configure the color and style
     [self restoreDefaultStyle];
-    
-    [self initializeGestureRecognizer];
-    
     self.multipleTouchEnabled = YES;
     
     // Instantiate instance variables
     probEnabled = NO;
     isLineLayerOn = NO;
     lineLayer = [CAShapeLayer layer];
+    
+    [self initializeGestureRecognizer];
     
     return self;
 }
@@ -57,14 +60,14 @@
     [self setBackgroundColor:[[UIColor grayColor] colorWithAlphaComponent:0.4]];
     [self setBackgroundImage:pickerIcon forState:UIControlStateNormal];
     
-    //UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
-//    self.titleLabel.text = @"add";
-    
-//    [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
-//    self.titleLabel.adjustsFontSizeToFitWidth = YES;
-//    if ([self.spatialEntity.name length] > 6){
-//        self.titleLabel.numberOfLines = 2;
-//    }
+    // add drop shadow
+    self.layer.cornerRadius = 10; // this value vary as per your desire
+    self.layer.masksToBounds = NO;
+    //            self.layer.borderWidth = 1.0f;
+    self.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.layer.shadowOpacity = 0.8;
+    self.layer.shadowRadius = 12;
+    self.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
 }
 
 - (void)setSelected:(BOOL)selected{
@@ -104,11 +107,14 @@
     };
     
     tapInterceptor.delegate = self;
+    [self addGestureRecognizer:tapInterceptor];
 }
 
 
 #pragma mark -- Gesture methods --
 -(void) customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    // This is to prevent the pickertool from moving when it is being dragged
+    [[TokenCollectionView sharedManager] setScrollEnabled:NO];
     
     touchHistory = [NSMutableArray array];
     
@@ -136,11 +142,13 @@
 
 
 -(void)customTouchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [[TokenCollectionView sharedManager] setScrollEnabled:YES];
     [lineLayer removeFromSuperlayer];
     touchHistory = nil;
 }
 
 -(void)customTouchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [[TokenCollectionView sharedManager] setScrollEnabled:YES];
     [lineLayer removeFromSuperlayer];
     touchHistory = nil;
 }

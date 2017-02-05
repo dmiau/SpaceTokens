@@ -16,7 +16,11 @@
 #import "StudyManager/GameManager.h"
 #import "StudyManager/SnapshotDatabase.h"
 #import "SpeechEngine.h"
+
+
 #import "TokenCollectionView.h"
+#import "MapInformationSheet.h"
+#import "ArrayTool.h"
 
 // This is an extension (similar to a category)
 @interface ViewController ()
@@ -31,6 +35,8 @@
 //-------------------
 #define topPanelHeight 120
 #define bottomPanalHeight 40
+#define CELL_WIDTH 60
+#define CELL_HEIGHT 30
 
 //-------------------
 // ViewController
@@ -156,6 +162,37 @@ static ViewController *instance;
     // TopPanel viewWillAppaer
     [self.mainViewManager.activePanel viewWillAppear:NO];    
 }
+
+// Update the placement of GUI elements
+- (void)updateUIPlacement{
+    
+    // Get the specification of the information sheet
+    MapInformationSheet *informationSheet = self.mapView.informationSheet;
+    
+    //----------------------
+    // Update the placement of TokenCollectionView
+    //----------------------
+    TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];
+    
+    //UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
+    UIEdgeInsets tokenCollectionViewInsets = tokenCollectionView.layoutMargins;
+    CGRect newFrame= self.mapView.frame;
+    if (informationSheet.superview){
+        // The map information sheet is visible
+        newFrame.size.height = informationSheet.frame.origin.y -
+                               self.mapView.frame.origin.y;
+    }else{
+//        tokenCollectionViewInsets = UIEdgeInsetsMake(30, self.mapView.frame.size.width- CELL_WIDTH, 0, 0);
+    }
+    
+    [tokenCollectionView updateFrame:newFrame andEdgeInsets:tokenCollectionViewInsets];
+    
+    //----------------------
+    // Update the placement of ArrayTool
+    //----------------------
+    [[ArrayTool sharedManager] setFrame:newFrame];
+}
+
 
 - (void)viewDidDisappear:(BOOL)animated{
 

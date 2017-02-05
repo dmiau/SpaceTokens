@@ -64,7 +64,6 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 +(SpaceToken*)manufactureTokenForEntity:(SpatialEntity*)spatialEntity;
 +(CGSize)getSize;
 
-
 // flash the token
 - (void)flashToken;
 - (void)restoreDefaultStyle; // reset the token to default style

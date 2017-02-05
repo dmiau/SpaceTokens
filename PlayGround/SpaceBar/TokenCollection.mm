@@ -107,7 +107,12 @@
     // Collect the tokens from TokenCollection
     for (CollectionViewCell *cell in [[TokenCollectionView sharedManager] visibleCells])
     {
-        [outArray addObject: cell.spaceToken];
+        // Some of the cell might contain utility tokens (e.g., PikerToekn)
+        // We want to ignore those cells
+        if (cell.spaceToken){
+            [outArray addObject: cell.spaceToken];
+        }
+        
     }
     
     // Collect the tokens from ArrayTool

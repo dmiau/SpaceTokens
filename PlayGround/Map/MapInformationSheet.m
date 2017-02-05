@@ -40,7 +40,11 @@
     CGRect frame = CGRectMake(0, rootViewFrame.size.height-INITIAL_HEIGHT,
                               rootViewFrame.size.width, self.frame.size.height);
     self.frame = frame;
+
     [rootViewController.view addSubview:self];
+    
+    // Need to update the placement of UI elements (e.g., TokenCollectionView, ArrayTool, etc.)
+    [rootViewController updateUIPlacement];
 }
 
 -(void)addSheetForEntity:(SpatialEntity*)entity{
@@ -50,6 +54,13 @@
 
 -(void)removeSheet{
     [self removeFromSuperview];
+    
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    UINavigationController *myNavigationController =
+    app.window.rootViewController;
+    ViewController *rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
+    [rootViewController updateUIPlacement];
 }
 
 

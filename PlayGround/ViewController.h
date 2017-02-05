@@ -35,7 +35,6 @@
 // MARK: Constraint Engine
 @property SpeechEngine *speechEngine;
 
-
 // Databases
 @property EntityDatabase *entityDatabase;
 @property GameManager *gameManager;
@@ -43,6 +42,9 @@
 
 // Common access method
 + (ViewController*)sharedManager;
+
+// Update the placement of UI elements (e.g., TokenCollectionView, ArrayTool, etc.)
+- (void)updateUIPlacement;
 
 // Route related methods
 - (void)showRouteFromDatabaseWithName:(NSString*) name

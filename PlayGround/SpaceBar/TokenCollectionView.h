@@ -24,6 +24,8 @@
 +(TokenCollectionView*)sharedManager;
 
 
+-(void)updateFrame:(CGRect)frame andEdgeInsets:(UIEdgeInsets)edgeInsets;
+
 -(SpaceToken*)findSpaceTokenFromEntity:(SpatialEntity*)anEntity;
 
 -(void)addItemFromBottom:(SpatialEntity*)anEntity;

@@ -86,6 +86,8 @@
     // Draw a dot at the center
 //    CAShapeLayer *circleLayer = [CAShapeLayer layer];
 //    [circleLayer setPath:[[UIBezierPath bezierPathWithOvalInRect:CGRectMake(50, 50, 100, 100)] CGPath]];
+    
+    [self.rootViewController updateUIPlacement];
 }
 
 -(void)removePanel{

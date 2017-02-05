@@ -17,6 +17,9 @@
 #import "ArrayEntity.h"
 #import "AreaToken.h"
 
+#import "PickerEntity.h"
+#import "PickerToken.h"
+
 //-------------------
 // Parameters
 //-------------------
@@ -57,13 +60,13 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // Configure the layout object
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake
-    (0, mapView.frame.size.width- CELL_WIDTH, 0, 0);
+    (30, mapView.frame.size.width- CELL_WIDTH, 0, 0);
     
     
     // Initialize a collection view
     self =
     [[TokenCollectionView alloc] initWithFrame:mapView.frame collectionViewLayout:layout];
-    [self setTopAlignmentOffset:30];
+//    [self setTopAlignmentOffset:30];
     
     [self addDragActionHandlingBlock];
     
@@ -136,6 +139,16 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     self.dataSource = self;
     
     return self;
+}
+
+-(void)updateFrame:(CGRect)frame andEdgeInsets:(UIEdgeInsets)edgeInsets{
+    [self setFrame:frame];
+    
+    //http://stackoverflow.com/questions/22475985/calling-setcollectionviewlayoutanimated-does-not-reload-uicollectionview
+    [self setLayoutMargins:edgeInsets];
+    
+    //UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
+    [self reloadData];
 }
 
 // MARK: Gestures
@@ -268,18 +281,27 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // Generate a SpaceToken if there is none
     NSArray *contentArray = [self.arrayEntity getContent];
     SpatialEntity *spatialEntity = contentArray[row];
-    SpaceToken* aToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:spatialEntity];
-    aToken.home= self;
-    aToken.index = row;
-    cell.spaceToken = aToken;
-    [cell addSubview:aToken];
-    spatialEntity.isMapAnnotationEnabled = YES;
     
-    void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
-        token.home = self;
-        cell.spaceToken = token;
-    };
-    aToken.didCreateClone = cloneCreationHandler;
+    if ([spatialEntity isKindOfClass:[PickerEntity class]]){
+        // Generate a PickerToken (a special case)
+        PickerToken *pickerToken = [[PickerToken alloc] init];
+        cell.spaceToken = nil;
+        [cell addSubview:pickerToken];
+    }else{
+        // Generate a SpaceToken
+        SpaceToken* aToken = [[TokenCollection sharedManager] addTokenFromSpatialEntity:spatialEntity];
+        aToken.home= self;
+        aToken.index = row;
+        cell.spaceToken = aToken;
+        [cell addSubview:aToken];
+        spatialEntity.isMapAnnotationEnabled = YES;
+        
+        void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
+            token.home = self;
+            cell.spaceToken = token;
+        };
+        aToken.didCreateClone = cloneCreationHandler;
+    }
     
     return cell;
 }
