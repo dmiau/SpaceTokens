@@ -44,7 +44,6 @@
         self.icon = [CustomPointAnnotation resizeImage:anImg                                  newSize:CGSizeMake(12, 12)];
         
     }else if(pointType == STAR){
-
         //--------------------------
         // A star image
         //--------------------------

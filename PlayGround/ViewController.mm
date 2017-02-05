@@ -185,7 +185,9 @@ static ViewController *instance;
 //        tokenCollectionViewInsets = UIEdgeInsetsMake(30, self.mapView.frame.size.width- CELL_WIDTH, 0, 0);
     }
     
-    [tokenCollectionView updateFrame:newFrame andEdgeInsets:tokenCollectionViewInsets];
+//    [tokenCollectionView updateFrame:newFrame andEdgeInsets:tokenCollectionViewInsets];
+    [tokenCollectionView setFrame:newFrame];
+
     
     //----------------------
     // Update the placement of ArrayTool
