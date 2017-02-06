@@ -30,6 +30,8 @@
 
 
 // MARK: Methods
+-(BOOL)checkVisibilityOnMap:(CustomMKMapView*) mapView;
+
 // This is to control the annotation of a map other than the regular map
 - (void)setMapAnnotationEnabled:(BOOL)flag onMap:(CustomMKMapView*)map;
 - (double)getPointDistanceToTouch:(UITouch*)touch;

@@ -72,9 +72,7 @@
                 [aToken configureAppearanceForType:ANCHOR_INVISIBLE];
             }else{
                 aToken.spatialEntity = touchedKnownEntity;
-                [aToken configureAppearanceForType:ANCHOR_VISIBLE];
-                
-                
+                [aToken configureAppearanceForType:ANCHOR_VISIBLE];                                
                 self.isSpaceTokenEnabled = YES;
             }
             
@@ -148,8 +146,6 @@
                 associatedToken.appearanceType != ANCHOR_VISIBLE)
             {
                 [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
-                associatedToken.spatialEntity.isMapAnnotationEnabled = YES;
-                associatedToken.spatialEntity.annotation.isHighlighted = YES;
                 
                 // This enables the SpaceToken mode
                 NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification

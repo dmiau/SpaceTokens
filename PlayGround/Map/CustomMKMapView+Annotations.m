@@ -87,7 +87,7 @@
     tempPOI.latLon = coordinate;
     tempPOI.name = @"Dropped";
     tempPOI.placeID = @"";
-    tempPOI.annotation.pointType = dropped;
+    tempPOI.annotation.pointType = DROPPED;
     tempPOI.isMapAnnotationEnabled = YES;
     tempPOI.annotation.isHighlighted = YES;
     [EntityDatabase sharedManager].lastHighlightedEntity = tempPOI;
@@ -105,7 +105,7 @@
     tempPOI.latLon = location;
     tempPOI.name = name;
     tempPOI.placeID = placeID;
-    tempPOI.annotation.pointType = dropped;
+    tempPOI.annotation.pointType = DROPPED;
 
     [self highlightEntity:tempPOI andResetOthers:YES];
     

@@ -17,6 +17,7 @@
 #import "ArrayToken.h"
 #import "ViewController.h"
 #import "SetTool.h"
+#import "EntityDatabase.h"
 
 @implementation SpaceToken (Dragging)
 
@@ -280,8 +281,11 @@
         [self.connectionTool setHidden:NO];
         
         // Tunr on the map annotation
+        self.spatialEntity.annotation.pointType = DEFAULT_MARKER;
         self.spatialEntity.isMapAnnotationEnabled = YES;
         self.spatialEntity.annotation.isHighlighted = YES;
+        
+        [EntityDatabase sharedManager].lastHighlightedEntity = self.spatialEntity;        
     }else{
         self.isLineLayerOn = NO;
         self.isCircleLayerOn = NO;

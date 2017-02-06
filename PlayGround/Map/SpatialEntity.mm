@@ -53,6 +53,15 @@
 
 }
 
+
+//----------------
+// MARK: --Tools--
+//----------------
+
+-(BOOL)checkVisibilityOnMap:(CustomMKMapView*) mapView{
+    return [mapView.projection containsCoordinate:self.latLon];
+}
+
 //----------------
 // MARK: --Interactions--
 //----------------

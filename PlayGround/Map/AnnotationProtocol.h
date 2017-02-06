@@ -13,11 +13,11 @@ typedef enum {
     STAR,
     path,
     AREA,
-    dropped,
-    search_result,
+    DROPPED,
+    SEARCH_RESULT,
     YouRHere,
     PEOPLE,
-    answer
+    DEFAULT_MARKER
 } location_enum;
 
 @protocol AnnotationProtocol <NSObject>

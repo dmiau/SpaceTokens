@@ -146,6 +146,20 @@
     }else{
         
         //----------------------------------
+        // need to check visibility before zoom-to-fit
+        //----------------------------------
+        BOOL allVisible = YES; // Assume all are visible
+        
+        for (SpatialEntity *entity in entitySet){
+            allVisible = allVisible & [entity checkVisibilityOnMap:[CustomMKMapView sharedManager]];
+        }
+        
+        if (allVisible){
+            // No need to perform zoom-to-fit if all are visible
+            return;
+        }
+        
+        //----------------------------------
         // need to fit the entities (could be one or more)
         //----------------------------------
         SpatialEntity *anEntity = [entitySet anyObject];

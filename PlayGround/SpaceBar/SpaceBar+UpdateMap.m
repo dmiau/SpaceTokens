@@ -52,6 +52,25 @@
         // Turn on the debug visual
         [oneAnchor configureAppearanceForType:ANCHOR_VISIBLE];
 
+        
+        
+        //----------------------------------
+        // need to check visibility before zoom-to-fit
+        //----------------------------------
+        BOOL allVisible = YES; // Assume all are visible
+    
+        for (SpaceToken *aToken in self.touchingSet){
+            allVisible = allVisible & [aToken.spatialEntity checkVisibilityOnMap:[CustomMKMapView sharedManager]];
+        }
+    
+        if (allVisible){
+            return;
+        }
+        
+        //----------------------------------
+        // some of the elements are invisible, need to compute a new bounds
+        //----------------------------------
+        
         GMSCoordinateBounds *bounds = [self computerGMSBoundsForTokenSets:self.touchingSet andAnchor:oneAnchor];
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate
                                          fitBounds: bounds
@@ -134,6 +153,7 @@
 - (GMSCoordinateBounds*)computerGMSBoundsForTokenSets: (NSSet*)tokenSet
                                     andAnchor: (SpaceToken*) anchor
 {
+
     // Compute the bounding POIs
     CGFloat minCGPointX, maxCGPointX, minCGPointY, maxCGPointY;
     

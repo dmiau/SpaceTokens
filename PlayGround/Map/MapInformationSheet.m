@@ -163,7 +163,7 @@
     if (entity.annotation.pointType == STAR){
         // de-star
         [[EntityDatabase sharedManager] removeEntity:entity];
-        entity.annotation.pointType = dropped;
+        entity.annotation.pointType = DEFAULT_MARKER;
     }else{
         // star the location
         [[EntityDatabase sharedManager] addEntity:entity];

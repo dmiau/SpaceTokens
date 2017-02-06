@@ -198,7 +198,7 @@
     aPOI.name = place.name;
     aPOI.latLon = place.coordinate;
     aPOI.placeID = place.placeID;
-    aPOI.annotation.pointType = dropped;
+    aPOI.annotation.pointType = DEFAULT_MARKER;
     aPOI.annotation.isHighlighted = YES;
     aPOI.isMapAnnotationEnabled = YES;
     
