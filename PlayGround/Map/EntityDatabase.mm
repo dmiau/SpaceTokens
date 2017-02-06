@@ -101,6 +101,10 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     return outArray;
 }
 
+
+//-------------------
+// Add an entity to database
+//-------------------
 - (void)addEntity:(SpatialEntity*)entity{
     
     // If the entity already exist, enable the entity
@@ -132,7 +136,7 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     }
 }
 
-- (void)removeEntity:(SpatialEntity*)entity{
+- (void)removeEntity:(SpatialEntity*)entity{    
     [i_entityArray removeObject:entity];
 }
 

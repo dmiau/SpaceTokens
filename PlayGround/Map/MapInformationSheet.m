@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+tools.h"
+#import "EntityDatabase.h"
 
 #define INITIAL_HEIGHT 60
 
@@ -58,11 +59,7 @@
 -(void)addSheetForEntity:(SpatialEntity*)entity{
     self.spatialEntity = entity;
     [self addSheet];
-    if (entity.annotation.pointType == STAR){
-        [self.starOutlet setSelected:YES];
-    }else{
-        [self.starOutlet setSelected:NO];
-    }
+    [self updateSheet];
 }
 
 -(void)removeSheet{
@@ -76,6 +73,13 @@
     [rootViewController updateUIPlacement];
 }
 
+-(void)updateSheet{
+    if (self.spatialEntity.annotation.pointType == STAR){
+        [self.starOutlet setSelected:YES];
+    }else{
+        [self.starOutlet setSelected:NO];
+    }
+}
 
 // MARK: Setters
 //-------------------------------------
@@ -153,5 +157,18 @@
 
 
 - (IBAction)starAction:(id)sender {
+    
+    SpatialEntity *entity = self.spatialEntity;
+    
+    if (entity.annotation.pointType == STAR){
+        // de-star
+        [[EntityDatabase sharedManager] removeEntity:entity];
+        entity.annotation.pointType = dropped;
+    }else{
+        // star the location
+        [[EntityDatabase sharedManager] addEntity:entity];
+        entity.annotation.isHighlighted = YES;
+    }
+    [self updateSheet];
 }
 @end
