@@ -76,12 +76,6 @@ template class std::vector<double>;
 
 -(void)setIsMapAnnotationEnabled:(BOOL)flag{
     [super setIsMapAnnotationEnabled:flag];
-    
-    // Need to highlight all the points
-    for (SpatialEntity *anEntity in [self getContent]){
-        anEntity.annotation.isHighlighted = flag;
-        anEntity.annotation.isLabelOn = flag;
-    }
 }
 
 //----------------

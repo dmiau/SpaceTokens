@@ -14,7 +14,7 @@
 #import "DrawingView.h"
 #import "ToolPalette.h"
 #import "SetTool.h"
-
+#import "CustomMKMapView.h"
 
 #import "WildcardGestureRecognizer.h"
 
@@ -116,6 +116,12 @@
     [myNavigationController pushViewController:destinationController animated:NO];
 //    [myNavigationController presentViewController:destinationController animated:NO completion:nil];
 }
+
+
+- (IBAction)refreshAction:(id)sender {
+    [[CustomMKMapView sharedManager] refreshAnnotations];
+}
+
 
 - (IBAction)barToolAction:(id)sender {
     SpaceBar *spaceBar = [SpaceBar sharedManager];

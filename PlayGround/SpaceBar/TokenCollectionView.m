@@ -294,7 +294,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
         aToken.index = row;
         cell.spaceToken = aToken;
         [cell addSubview:aToken];
-        spatialEntity.isMapAnnotationEnabled = YES;
         
         void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
             token.home = self;

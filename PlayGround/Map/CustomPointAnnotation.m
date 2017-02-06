@@ -8,21 +8,33 @@
 
 #import "CustomPointAnnotation.h"
 #import "CustomMKMapView.h"
+#import "UIImage+tools.h"
 
 @implementation CustomPointAnnotation{
     UILabel *aLabel;
+    
+    UIImage *starImg;
+    UIImage *highlightedStarImg;
+    UIImage *grayDotImg;
+    UIImage *redDotImg;
+    UIImage *youRHereImg;
 }
-
 
 -(id)init{
     self = [super init];
     
     _isLabelOn = NO;
-    self.pointType = LANDMARK;
+    self.pointType = STAR;
     // Initialize the label
     aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
     
-    self.infoWindowAnchor = CGPointMake(0.5, 0.5);
+    // Preload all the images
+    starImg = [[UIImage imageNamed:@"star-250.png"] resize:CGSizeMake(24, 24)];
+    
+    highlightedStarImg = [[UIImage imageNamed:@"selectedStar-250.png"] resize:CGSizeMake(24, 24)];
+    grayDotImg = [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
+    redDotImg = [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
+    youRHereImg = [[UIImage imageNamed:@"grayYouRHere.png"]  resize:CGSizeMake(12, 12)];
     return self;
 }
 
@@ -33,44 +45,30 @@
         //--------------------------
         // Create a custom gray dot
         //--------------------------
-        self.icon =
-        [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
-
+        self.icon = grayDotImg;
+        self.infoWindowAnchor = CGPointMake(0.5, 0.5);
+        self.groundAnchor = CGPointMake(0.5, 0.5);
+        
     }else if(pointType == YouRHere){        
         //--------------------------
         // YouRHere
         //--------------------------
-        UIImage *anImg = [UIImage imageNamed:@"grayYouRHere.png"];        
-        self.icon = [CustomPointAnnotation resizeImage:anImg                                  newSize:CGSizeMake(12, 12)];
+        self.icon = youRHereImg;
+        self.infoWindowAnchor = CGPointMake(0.5, 0.5);
+        self.groundAnchor = CGPointMake(0.5, 0.5);
         
     }else if(pointType == STAR){
         //--------------------------
         // A star image
         //--------------------------
-        UIImage *starImg = [UIImage imageNamed:@"star-128.png"];
-        self.icon = [CustomPointAnnotation resizeImage:starImg
-                                newSize:CGSizeMake(12, 12)];
+        self.icon = starImg;
+        self.infoWindowAnchor = CGPointMake(0.5, 0.5);
+        self.groundAnchor = CGPointMake(0.5, 0.5);
     }else{
         self.icon = nil;
+        self.infoWindowAnchor = CGPointMake(0.5, 0);
+        self.groundAnchor = CGPointMake(0.5, 1);
     }
-}
-
-
--(UIImage *)generateDotImageWithColor: (UIColor *) color andRadius: (float)radius
-{
-    // Create a custom red dot
-    // http://stackoverflow.com/questions/14594782/how-can-i-make-an-uiimage-programatically
-    CGSize size = CGSizeMake(radius*2, radius*2);
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    
-    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
-    [color setFill];
-    [path fill];
-    UIImage *dotImg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return dotImg;
 }
 
 //--------------
@@ -80,13 +78,26 @@
     _isHighlighted = isHighlighted;
     
     if (isHighlighted){
-        if (self.pointType == LANDMARK)
-            self.icon =
-            [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
-    }else{
+        //-------------------
+        // highlighted
+        //-------------------
+        
         if (self.pointType == LANDMARK){
-            self.icon =
-            [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
+            self.icon = redDotImg;
+        }else if (self.pointType == STAR){
+            self.icon = highlightedStarImg;
+        }
+
+    }else{
+        
+        //-------------------
+        // normal
+        //-------------------
+        
+        if (self.pointType == LANDMARK){
+            self.icon = grayDotImg;
+        }else if (self.pointType == STAR){
+            self.icon = starImg;
         }else{
             self.map = nil;
         }
@@ -110,29 +121,21 @@
 //--------------
 // Helper method
 //--------------
-+ (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {
-    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-    CGImageRef imageRef = image.CGImage;
+-(UIImage *)generateDotImageWithColor: (UIColor *) color andRadius: (float)radius
+{
+    // Create a custom red dot
+    // http://stackoverflow.com/questions/14594782/how-can-i-make-an-uiimage-programatically
+    CGSize size = CGSizeMake(radius*2, radius*2);
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
     
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    // Set the quality level to use when rescaling
-    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
-    
-    CGContextConcatCTM(context, flipVertical);
-    // Draw into the context; this scales the image
-    CGContextDrawImage(context, newRect, imageRef);
-    
-    // Get the resized image from the context and a UIImage
-    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
-    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-    
-    CGImageRelease(newImageRef);
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
+    [color setFill];
+    [path fill];
+    UIImage *dotImg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return newImage;
+    return dotImg;
 }
 
 @end

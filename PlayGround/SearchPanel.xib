@@ -39,17 +39,26 @@
                                 <action selector="dataAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="o3i-fE-o56"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdP-UR-3cg">
+                            <rect key="frame" x="258" y="76" width="49" height="30"/>
+                            <state key="normal" title="refresh"/>
+                            <connections>
+                                <action selector="refreshAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="h4n-0g-lQ4"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="heh-RH-1Bd" secondAttribute="trailing" constant="15" id="5qa-Dv-Dte"/>
                         <constraint firstAttribute="height" constant="120" id="GeN-8N-fLL"/>
                         <constraint firstAttribute="trailing" secondItem="wnB-dK-KjN" secondAttribute="trailing" id="Kkg-Rx-fpr"/>
+                        <constraint firstItem="heh-RH-1Bd" firstAttribute="leading" secondItem="jdP-UR-3cg" secondAttribute="trailing" constant="14" id="My3-mn-2lf"/>
                         <constraint firstAttribute="bottom" secondItem="heh-RH-1Bd" secondAttribute="bottom" constant="8" id="NC2-Vc-rhW"/>
                         <constraint firstItem="wnB-dK-KjN" firstAttribute="leading" secondItem="z1d-oP-Km9" secondAttribute="trailing" constant="8" id="TNs-Yu-wMA"/>
                         <constraint firstItem="wnB-dK-KjN" firstAttribute="top" secondItem="gdd-kI-rfv" secondAttribute="top" constant="19" id="TVL-tG-w2k"/>
                         <constraint firstItem="z1d-oP-Km9" firstAttribute="top" secondItem="gdd-kI-rfv" secondAttribute="top" constant="31" id="lqs-ka-NAh"/>
                         <constraint firstItem="z1d-oP-Km9" firstAttribute="leading" secondItem="gdd-kI-rfv" secondAttribute="leading" constant="8" id="wEd-2D-aGf"/>
+                        <constraint firstAttribute="bottom" secondItem="jdP-UR-3cg" secondAttribute="bottom" constant="8" id="wa1-Hj-6pI"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnF-vO-lAG" userLabel="Bottom View">

@@ -19,6 +19,11 @@
 
 @implementation CustomMKMapView (Annotations)
 
+- (void)refreshAnnotations{
+    [self clear];
+    [[EntityDatabase sharedManager] resetAnnotations];
+}
+
 // MARK: Handles annotation interactions
 
 -(bool) didTapMarker:(CustomPointAnnotation *)marker{

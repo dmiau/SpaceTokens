@@ -13,11 +13,15 @@
 @interface MapInformationSheet : UIView <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleOutlet;
-- (IBAction)renameAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
 
 @property SpatialEntity *spatialEntity;
 
 -(void)addSheetForEntity:(SpatialEntity*)entity;
 -(void)removeSheet;
+
+// star button
+@property (weak, nonatomic) IBOutlet UIButton *starOutlet;
+- (IBAction)starAction:(id)sender;
+
 @end

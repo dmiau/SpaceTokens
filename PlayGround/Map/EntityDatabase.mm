@@ -125,7 +125,7 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
         }
         
         if ([entity isKindOfClass:[POI class]]){
-            entity.annotation.pointType = LANDMARK;
+            entity.annotation.pointType = STAR;
         }
         
         [i_entityArray addObject:entity];
@@ -145,6 +145,7 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     
     // Get all the annotations
     for (SpatialEntity *anEntity in [self getEntityArray]){
+        anEntity.isMapAnnotationEnabled = YES;
         anEntity.annotation.isHighlighted = NO;
         anEntity.annotation.isLabelOn = NO;
     }

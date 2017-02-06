@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage+tools.h"
 
 #define INITIAL_HEIGHT 60
 
@@ -26,6 +27,13 @@
     
     // Initialize the object
     self.titleOutlet.delegate = self;
+    
+    [self.starOutlet setImage:
+    [[UIImage imageNamed:@"starGray-128.png"] resize:CGSizeMake(30, 30)]
+                     forState:UIControlStateNormal];
+    [self.starOutlet setImage:
+     [[UIImage imageNamed:@"star-128.png"] resize:CGSizeMake(30, 30)]
+                     forState:UIControlStateSelected];
 }
 
 -(void)addSheet{
@@ -50,6 +58,11 @@
 -(void)addSheetForEntity:(SpatialEntity*)entity{
     self.spatialEntity = entity;
     [self addSheet];
+    if (entity.annotation.pointType == STAR){
+        [self.starOutlet setSelected:YES];
+    }else{
+        [self.starOutlet setSelected:NO];
+    }
 }
 
 -(void)removeSheet{
@@ -139,4 +152,6 @@
 }
 
 
+- (IBAction)starAction:(id)sender {
+}
 @end

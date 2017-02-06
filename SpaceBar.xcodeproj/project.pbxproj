@@ -11,6 +11,14 @@
 		9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A058C851E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
 		9A058C871E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
+		9A0CC0001E480565008F07CA /* starGray-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CBFFF1E480565008F07CA /* starGray-128.png */; };
+		9A0CC0011E480565008F07CA /* starGray-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CBFFF1E480565008F07CA /* starGray-128.png */; };
+		9A0CC0031E48084B008F07CA /* starGray-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CC0021E48084B008F07CA /* starGray-30.png */; };
+		9A0CC0041E48084B008F07CA /* starGray-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CC0021E48084B008F07CA /* starGray-30.png */; };
+		9A0CC0061E480852008F07CA /* star-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CC0051E480852008F07CA /* star-30.png */; };
+		9A0CC0071E480852008F07CA /* star-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CC0051E480852008F07CA /* star-30.png */; };
+		9A0CC00A1E480A70008F07CA /* UIImage+tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CC0091E480A70008F07CA /* UIImage+tools.m */; };
+		9A0CC00B1E480A70008F07CA /* UIImage+tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CC0091E480A70008F07CA /* UIImage+tools.m */; };
 		9A0D20861E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
 		9A0D20881E26D40400191054 /* SetTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D20851E26D40400191054 /* SetTool.xib */; };
 		9A0D208B1E26FB3500191054 /* SetCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D208A1E26FB3500191054 /* SetCollectionView.m */; };
@@ -206,6 +214,12 @@
 		9A94DD091D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
 		9A95D64E1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
 		9A95D6501E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
+		9A9604F81E47BEFB00796B98 /* selectedStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9604F71E47BEFB00796B98 /* selectedStar.png */; };
+		9A9604F91E47BEFB00796B98 /* selectedStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9604F71E47BEFB00796B98 /* selectedStar.png */; };
+		9A9604FC1E47C5E800796B98 /* selectedStar-250.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9604FA1E47C5E800796B98 /* selectedStar-250.png */; };
+		9A9604FD1E47C5E800796B98 /* selectedStar-250.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9604FA1E47C5E800796B98 /* selectedStar-250.png */; };
+		9A9604FE1E47C5E800796B98 /* star-250.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9604FB1E47C5E800796B98 /* star-250.png */; };
+		9A9604FF1E47C5E800796B98 /* star-250.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9604FB1E47C5E800796B98 /* star-250.png */; };
 		9A9792E21DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9792E41DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9809C21E1AEFB2006D7F8D /* ArrayEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */; };
@@ -400,6 +414,11 @@
 		51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpaceBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0571371E0ED82E00A09E06 /* anchorInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anchorInstructions.png; sourceTree = "<group>"; };
 		9A058C841E393D030045AB0E /* areaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areaIcon.png; sourceTree = "<group>"; };
+		9A0CBFFF1E480565008F07CA /* starGray-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGray-128.png"; sourceTree = "<group>"; };
+		9A0CC0021E48084B008F07CA /* starGray-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGray-30.png"; sourceTree = "<group>"; };
+		9A0CC0051E480852008F07CA /* star-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-30.png"; sourceTree = "<group>"; };
+		9A0CC0081E480A70008F07CA /* UIImage+tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+tools.h"; path = "DMTools/UIImage+tools.h"; sourceTree = "<group>"; };
+		9A0CC0091E480A70008F07CA /* UIImage+tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+tools.m"; path = "DMTools/UIImage+tools.m"; sourceTree = "<group>"; };
 		9A0D20851E26D40400191054 /* SetTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetTool.xib; path = SpaceBar/SetTool.xib; sourceTree = "<group>"; };
 		9A0D20891E26FB3500191054 /* SetCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCollectionView.h; path = SpaceBar/SetCollectionView.h; sourceTree = "<group>"; };
 		9A0D208A1E26FB3500191054 /* SetCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCollectionView.m; path = SpaceBar/SetCollectionView.m; sourceTree = "<group>"; };
@@ -561,6 +580,9 @@
 		9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+Annotations.m"; path = "Map/CustomMKMapView+Annotations.m"; sourceTree = "<group>"; };
 		9A95D64C1E3D68D400674847 /* CustomMKMapView+GMSMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+GMSMapView.h"; path = "Map/CustomMKMapView+GMSMapView.h"; sourceTree = "<group>"; };
 		9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+GMSMapView.m"; path = "Map/CustomMKMapView+GMSMapView.m"; sourceTree = "<group>"; };
+		9A9604F71E47BEFB00796B98 /* selectedStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectedStar.png; sourceTree = "<group>"; };
+		9A9604FA1E47C5E800796B98 /* selectedStar-250.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedStar-250.png"; sourceTree = "<group>"; };
+		9A9604FB1E47C5E800796B98 /* star-250.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-250.png"; sourceTree = "<group>"; };
 		9A9792E01DFA19EB0062ED6F /* TokenCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenCollectionView.h; path = SpaceBar/TokenCollectionView.h; sourceTree = "<group>"; };
 		9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenCollectionView.m; path = SpaceBar/TokenCollectionView.m; sourceTree = "<group>"; };
 		9A9809C01E1AEFB2006D7F8D /* ArrayEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayEntity.h; path = SpaceBar/ArrayEntity.h; sourceTree = "<group>"; };
@@ -769,6 +791,24 @@
 				51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A0CBFFD1E480517008F07CA /* SearchPanel */ = {
+			isa = PBXGroup;
+			children = (
+				9A0CC0051E480852008F07CA /* star-30.png */,
+				9A0CC0021E48084B008F07CA /* starGray-30.png */,
+				9A0CBFFF1E480565008F07CA /* starGray-128.png */,
+				9AC338231D63AA1C000272D9 /* star-128.png */,
+			);
+			name = SearchPanel;
+			sourceTree = "<group>";
+		};
+		9A0CBFFE1E480528008F07CA /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		9A0FEE8D1DE39F7A00D4DFF1 /* Place */ = {
@@ -1042,6 +1082,8 @@
 			children = (
 				9A75D6521E417B5100DB045C /* DMTools.h */,
 				9A75D6531E417B5100DB045C /* DMTools.m */,
+				9A0CC0081E480A70008F07CA /* UIImage+tools.h */,
+				9A0CC0091E480A70008F07CA /* UIImage+tools.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -1133,13 +1175,17 @@
 		9AC338211D63A680000272D9 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				9A0CBFFE1E480528008F07CA /* Map */,
+				9A0CBFFD1E480517008F07CA /* SearchPanel */,
+				9A9604FA1E47C5E800796B98 /* selectedStar-250.png */,
+				9A9604FB1E47C5E800796B98 /* star-250.png */,
 				9A1FDAFD1E42DE9000799DD5 /* pickerIcon.png */,
 				9A058C841E393D030045AB0E /* areaIcon.png */,
 				9A5A93551E38FB8900432972 /* arrayIcon.png */,
 				9A5A93591E39365E00432972 /* pathIcon.png */,
 				9A5A935A1E39365E00432972 /* setIcon.png */,
 				9AC338221D63AA1C000272D9 /* heading.png */,
-				9AC338231D63AA1C000272D9 /* star-128.png */,
+				9A9604F71E47BEFB00796B98 /* selectedStar.png */,
 				9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */,
 				9AB76B751D9C5C110096C444 /* setup.png */,
 			);
@@ -1484,11 +1530,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A5A93561E38FB8900432972 /* arrayIcon.png in Resources */,
+				9A0CC0061E480852008F07CA /* star-30.png in Resources */,
 				9AF100031D57FA720063CB63 /* TaskBasePanel.xib in Resources */,
+				9A9604F81E47BEFB00796B98 /* selectedStar.png in Resources */,
 				9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */,
 				9A5A935B1E39365E00432972 /* pathIcon.png in Resources */,
 				9AC338261D63AA1C000272D9 /* star-128.png in Resources */,
+				9A9604FC1E47C5E800796B98 /* selectedStar-250.png in Resources */,
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
+				9A0CC0001E480565008F07CA /* starGray-128.png in Resources */,
 				9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
 				9AED2A5B1E214495004F1A84 /* ToolPalette.xib in Resources */,
 				9A82A0861E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
@@ -1502,6 +1552,7 @@
 				9A1DB0FC1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
 				9A058C851E393D030045AB0E /* areaIcon.png in Resources */,
+				9A9604FE1E47C5E800796B98 /* star-250.png in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
 				9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */,
@@ -1510,6 +1561,7 @@
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 				9A1DB0FF1E4037A800441AD5 /* GooglePlaces.bundle in Resources */,
+				9A0CC0031E48084B008F07CA /* starGray-30.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,11 +1570,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A5A93581E38FB8900432972 /* arrayIcon.png in Resources */,
+				9A0CC0071E480852008F07CA /* star-30.png in Resources */,
 				9AE13BAA1DF0D148008612DA /* TaskBasePanel.xib in Resources */,
+				9A9604F91E47BEFB00796B98 /* selectedStar.png in Resources */,
 				9AE13BAB1DF0D148008612DA /* SearchPanel.xib in Resources */,
 				9A5A935D1E39365E00432972 /* pathIcon.png in Resources */,
 				9AE13BAC1DF0D148008612DA /* star-128.png in Resources */,
+				9A9604FD1E47C5E800796B98 /* selectedStar-250.png in Resources */,
 				9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */,
+				9A0CC0011E480565008F07CA /* starGray-128.png in Resources */,
 				9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
 				9AED2A5D1E214495004F1A84 /* ToolPalette.xib in Resources */,
 				9A82A0881E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
@@ -1536,6 +1592,7 @@
 				9A1DB0FD1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */,
 				9A058C871E393D030045AB0E /* areaIcon.png in Resources */,
+				9A9604FF1E47C5E800796B98 /* star-250.png in Resources */,
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
 				9AE13BB41DF0D148008612DA /* RangeSlider in Resources */,
 				9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */,
@@ -1544,6 +1601,7 @@
 				9AE13BB61DF0D148008612DA /* RangeSlider in Resources */,
 				9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */,
 				9A1DB1001E4037A800441AD5 /* GooglePlaces.bundle in Resources */,
+				9A0CC0041E48084B008F07CA /* starGray-30.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1643,6 +1701,7 @@
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9A90C7691DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
+				9A0CC00A1E480A70008F07CA /* UIImage+tools.m in Sources */,
 				9AED2A601E214786004F1A84 /* ToolPalette.m in Sources */,
 				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
@@ -1762,6 +1821,7 @@
 				9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */,
 				9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */,
 				9A90C76B1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
+				9A0CC00B1E480A70008F07CA /* UIImage+tools.m in Sources */,
 				9AED2A621E214786004F1A84 /* ToolPalette.m in Sources */,
 				9AE13B5F1DF0D148008612DA /* SpaceToken+Gestures.m in Sources */,
 				9AE13B601DF0D148008612DA /* ViewController.mm in Sources */,

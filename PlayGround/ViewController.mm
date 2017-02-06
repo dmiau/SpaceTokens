@@ -151,8 +151,8 @@ static ViewController *instance;
     SpaceBar *spaceBar = [SpaceBar sharedManager];
     [spaceBar resetInteractiveTokenStructures];
     
-    // Clear all annotations
-    [self.mapView clear];
+    // Refresh annotations
+    [self.mapView refreshAnnotations];
     
     // Do a forced refresh if the tokenView is enabled
     TokenCollectionView *tokenCollectionView = [TokenCollectionView sharedManager];

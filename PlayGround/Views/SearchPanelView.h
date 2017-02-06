@@ -37,6 +37,9 @@
 
 - (IBAction)prefAction:(id)sender;
 
+- (IBAction)refreshAction:(id)sender;
+
+
 - (IBAction)barToolAction:(id)sender;
 - (IBAction)areaToolAction:(id)sender;
 

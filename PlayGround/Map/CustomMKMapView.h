@@ -52,8 +52,7 @@
 @property BOOL isDebugModeOn;
 @property MapInformationSheet *informationSheet;
 
-//=====================
-- (void)updateHiddenMap;
+- (void)refreshAnnotations;
 
 // === (MapDisplay) ===
 // Two snapping methods

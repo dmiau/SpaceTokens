@@ -23,7 +23,6 @@
     // Find the screen coordinates of the desired point (on the hidden map),
     // and then find the needed "centroid" (on the hidden map) to be able to
     // show the desired point at the specified viewXY
-//    [self updateHiddenMap];
     
     CGPoint targetCGPoint = [self.projection pointForCoordinate:coord];
     

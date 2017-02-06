@@ -12,6 +12,7 @@
 
 @interface CustomMKMapView (Annotations)
 
+
 // Handle annotation interactions (redirected from delegates)
 - (bool)didTapMarker:(CustomPointAnnotation *)marker;
 - (void)didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate;
