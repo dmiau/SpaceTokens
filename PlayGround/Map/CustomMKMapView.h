@@ -97,4 +97,6 @@
 -(void)updateBearing:(float)newBearing;
 -(void)updateCenterCoordinates:(CLLocationCoordinate2D)newCoord;
 
+-(BOOL)containsCoordinate:(CLLocationCoordinate2D)newCoord;
+
 @end

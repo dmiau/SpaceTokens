@@ -35,11 +35,10 @@
     
     if ([self.anchorSet count]==1){
         oneAnchor = [self.anchorSet anyObject];
-        oneAnchor.isConstraintLineOn = YES;
+//        oneAnchor.isConstraintLineOn = YES;
     }else if ([self.draggingSet count]==1){
         oneAnchor = [self.draggingSet anyObject];
-        oneAnchor.isConstraintLineOn = YES;
-//        oneAnchor.isLineLayerOn = YES;
+//        oneAnchor.isConstraintLineOn = YES;
     }
     
     
@@ -51,7 +50,14 @@
         
         // Turn on the debug visual
         [oneAnchor configureAppearanceForType:ANCHOR_VISIBLE];
-
+        oneAnchor.spatialEntity.annotation.pointType = DEFAULT_MARKER;
+        
+        // Snap to the anchor first
+        // So zoom-to-fit is dynamically updated when the anchor is moved
+        [self.mapView snapOneCoordinate: oneAnchor.spatialEntity.latLon
+                                   toXY: oneAnchor.mapViewXY
+                        withOrientation:self.mapView.camera.bearing animated:NO];
+        
         
         
         //----------------------------------
@@ -93,7 +99,8 @@
         for (SpaceToken *aToken in self.anchorSet){
             [poiSet addObject:aToken.spatialEntity];
             
-            [aToken configureAppearanceForType:ANCHOR_VISIBLE];            
+            [aToken configureAppearanceForType:ANCHOR_VISIBLE];
+            aToken.spatialEntity.annotation.pointType = DEFAULT_MARKER;
             // Draw the constraint line
             aToken.isConstraintLineOn = YES;
         }
@@ -125,6 +132,7 @@
     {
         SpaceToken *anchor = [self.anchorSet anyObject];
         [anchor configureAppearanceForType:ANCHOR_VISIBLE];
+        anchor.spatialEntity.annotation.pointType = DEFAULT_MARKER;
         [self.draggingSet addObject:anchor];
     }
     

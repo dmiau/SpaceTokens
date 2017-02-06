@@ -59,7 +59,7 @@
 //----------------
 
 -(BOOL)checkVisibilityOnMap:(CustomMKMapView*) mapView{
-    return [mapView.projection containsCoordinate:self.latLon];
+    return [mapView containsCoordinate:self.latLon];
 }
 
 //----------------

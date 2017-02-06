@@ -71,6 +71,9 @@
                 aToken.spatialEntity = aPOI;
                 [aToken configureAppearanceForType:ANCHOR_INVISIBLE];
             }else{
+                //---------------
+                // There is a known entity associated with the touch already
+                //---------------
                 aToken.spatialEntity = touchedKnownEntity;
                 [aToken configureAppearanceForType:ANCHOR_VISIBLE];                                
                 self.isSpaceTokenEnabled = YES;

@@ -281,7 +281,6 @@
         [self.connectionTool setHidden:NO];
         
         // Tunr on the map annotation
-        self.spatialEntity.annotation.pointType = DEFAULT_MARKER;
         self.spatialEntity.isMapAnnotationEnabled = YES;
         self.spatialEntity.annotation.isHighlighted = YES;
         

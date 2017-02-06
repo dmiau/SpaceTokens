@@ -157,4 +157,23 @@
     self.camera = myNewCamera;
 }
 
+-(BOOL)containsCoordinate:(CLLocationCoordinate2D)newCoord{    
+    GMSVisibleRegion visibleRegion;
+    visibleRegion.farLeft = [self.projection coordinateForPoint:
+                CGPointMake(self.edgeInsets.left, self.edgeInsets.top)];
+    visibleRegion.farRight = [self.projection coordinateForPoint:
+                             CGPointMake(self.frame.size.width - self.edgeInsets.right, self.edgeInsets.top)];
+    visibleRegion.nearLeft = [self.projection coordinateForPoint:
+                             CGPointMake(self.edgeInsets.left,
+                                         self.frame.size.height-
+                                         self.edgeInsets.bottom)];
+    visibleRegion.nearRight = [self.projection coordinateForPoint:
+                             CGPointMake(self.frame.size.width - self.edgeInsets.right,
+                                         self.frame.size.height-
+                                         self.edgeInsets.bottom)];
+    
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:visibleRegion];
+    
+    return [bounds containsCoordinate:newCoord];
+}
 @end
