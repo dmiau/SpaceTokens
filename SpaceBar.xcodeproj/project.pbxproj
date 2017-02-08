@@ -138,6 +138,10 @@
 		9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
 		9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B4A1D90910400C43255 /* RecordTableViewController.m */; };
 		9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
+		9A51CEA71E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A51CEA61E4B74D6003338E2 /* CustomSearchResultViewController.m */; };
+		9A51CEA81E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A51CEA61E4B74D6003338E2 /* CustomSearchResultViewController.m */; };
+		9A51CEAA1E4B8954003338E2 /* SearchResultTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A51CEA91E4B8954003338E2 /* SearchResultTableCell.xib */; };
+		9A51CEAB1E4B8954003338E2 /* SearchResultTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A51CEA91E4B8954003338E2 /* SearchResultTableCell.xib */; };
 		9A5301431C5AD6A6008D584B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301421C5AD6A6008D584B /* main.m */; };
 		9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301451C5AD6A6008D584B /* AppDelegate.m */; };
 		9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.mm */; };
@@ -484,6 +488,9 @@
 		9A485B4A1D90910400C43255 /* RecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordTableViewController.m; sourceTree = "<group>"; };
 		9A48C1361D5273EA0038FBA5 /* MainViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewManager.h; sourceTree = "<group>"; };
 		9A48C1371D5273EA0038FBA5 /* MainViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewManager.m; sourceTree = "<group>"; };
+		9A51CEA51E4B74D6003338E2 /* CustomSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchResultViewController.h; sourceTree = "<group>"; };
+		9A51CEA61E4B74D6003338E2 /* CustomSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchResultViewController.m; sourceTree = "<group>"; };
+		9A51CEA91E4B8954003338E2 /* SearchResultTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultTableCell.xib; sourceTree = "<group>"; };
 		9A53013E1C5AD6A6008D584B /* SpaceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5301421C5AD6A6008D584B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A5301441C5AD6A6008D584B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1096,6 +1103,9 @@
 				9A90C7671DFF337E00CDC578 /* SearchPanelView+Actions.h */,
 				9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */,
 				9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */,
+				9A51CEA51E4B74D6003338E2 /* CustomSearchResultViewController.h */,
+				9A51CEA61E4B74D6003338E2 /* CustomSearchResultViewController.m */,
+				9A51CEA91E4B8954003338E2 /* SearchResultTableCell.xib */,
 				9A7DB27A1E14494000226D42 /* DrawingView.h */,
 				9A7DB27B1E14494000226D42 /* DrawingView.mm */,
 				9A7DB27F1E145C3B00226D42 /* UIBezierPath+Points.h */,
@@ -1540,6 +1550,7 @@
 				9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */,
 				9A0CC0001E480565008F07CA /* starGray-128.png in Resources */,
 				9A0571381E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
+				9A51CEAA1E4B8954003338E2 /* SearchResultTableCell.xib in Resources */,
 				9AED2A5B1E214495004F1A84 /* ToolPalette.xib in Resources */,
 				9A82A0861E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9A0D20861E26D40400191054 /* SetTool.xib in Resources */,
@@ -1580,6 +1591,7 @@
 				9AE13BAD1DF0D148008612DA /* LaunchScreen.storyboard in Resources */,
 				9A0CC0011E480565008F07CA /* starGray-128.png in Resources */,
 				9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */,
+				9A51CEAB1E4B8954003338E2 /* SearchResultTableCell.xib in Resources */,
 				9AED2A5D1E214495004F1A84 /* ToolPalette.xib in Resources */,
 				9A82A0881E0B2D9900B436AC /* AnchorInstructionView.xib in Resources */,
 				9A0D20881E26D40400191054 /* SetTool.xib in Resources */,
@@ -1700,6 +1712,7 @@
 				9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */,
 				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
+				9A51CEA71E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */,
 				9A90C7691DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
 				9A0CC00A1E480A70008F07CA /* UIImage+tools.m in Sources */,
 				9AED2A601E214786004F1A84 /* ToolPalette.m in Sources */,
@@ -1820,6 +1833,7 @@
 				9AE13B5C1DF0D148008612DA /* LocationTableController.m in Sources */,
 				9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */,
 				9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */,
+				9A51CEA81E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */,
 				9A90C76B1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
 				9A0CC00B1E480A70008F07CA /* UIImage+tools.m in Sources */,
 				9AED2A621E214786004F1A84 /* ToolPalette.m in Sources */,

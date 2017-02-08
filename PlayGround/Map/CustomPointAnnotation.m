@@ -26,7 +26,7 @@
     _isLabelOn = NO;
     self.pointType = STAR;
     // Initialize the label
-    aLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, -6, 80, 20)];
+    aLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 45, 20)];
     
     // Preload all the images
     starImg = [[UIImage imageNamed:@"star-250.png"] resize:CGSizeMake(24, 24)];
@@ -85,7 +85,11 @@
         if (self.pointType == LANDMARK){
             self.icon = redDotImg;
         }else if (self.pointType == STAR){
-            self.icon = highlightedStarImg;
+//            self.icon = highlightedStarImg;
+            UIImageView *imageView = [[UIImageView alloc] initWithImage: highlightedStarImg];
+            [imageView addSubview:aLabel];
+            [aLabel setTextColor: [UIColor redColor]];
+            self.iconView = imageView;
         }
 
     }else{
@@ -97,7 +101,10 @@
         if (self.pointType == LANDMARK){
             self.icon = grayDotImg;
         }else if (self.pointType == STAR){
-            self.icon = starImg;
+//            self.icon = starImg;
+            
+
+            self.iconView = [[UIImageView alloc] initWithImage: starImg];
         }else{
             self.map = nil;
         }
@@ -110,11 +117,14 @@
     aLabel.textColor = [UIColor blackColor];
 //    self.aLabel.alpha = 0.5;
     aLabel.text = title;
-    aLabel.adjustsFontSizeToFitWidth = NO;
+    aLabel.adjustsFontSizeToFitWidth = YES;
+    aLabel.numberOfLines = 2;
 }
 
 -(void)setIsLabelOn:(bool)isLabelOn{
     _isLabelOn = isLabelOn;
+    
+    
 }
 
 

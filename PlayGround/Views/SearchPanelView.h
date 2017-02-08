@@ -11,9 +11,10 @@
 
 @class POI;
 @class GMSAutocompleteResultsViewController;
+@class CustomSearchResultViewController;
 @class SpaceToken;
 
-@interface SearchPanelView : UIView <TopPanel>{
+@interface SearchPanelView : UIView <TopPanel, UISearchBarDelegate>{
     SpaceToken *renamedToken; // cache the token that is being renamed
 }
 
@@ -25,7 +26,8 @@
 //---------------
 @property (weak, nonatomic) IBOutlet UIView *searchPlaceHolder;
 
-@property GMSAutocompleteResultsViewController *resultsViewController;
+//@property GMSAutocompleteResultsViewController *resultsViewController;
+@property CustomSearchResultViewController *resultsViewController;
 @property UISearchController *searchController;
 @property (nonatomic, copy) void (^searchHandlingBlock)(POI *destinationPOI);
 @property (weak, nonatomic) IBOutlet UIButton *drawingButton;

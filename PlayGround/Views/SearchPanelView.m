@@ -20,7 +20,7 @@
 
 #import "TokenCollectionView.h"
 #import "SearchPanelView+Actions.h"
-
+#import "CustomSearchResultViewController.h"
 
 //-------------------
 // Parameters
@@ -28,6 +28,9 @@
 #define topPanelHeight 120
 #define bottomPanalHeight 40
 
+@interface SearchPanelView () <CustomSearchResultViewControllerDelegate>
+
+@end
 
 @implementation SearchPanelView
 
@@ -115,37 +118,9 @@
     return (point.y < topPanelHeight || point.y > self.frame.size.height - bottomPanalHeight);
 }
 
-
-#pragma mark -- button actions --
-
-- (void)initDirectionButton{
-    //------------------
-    // Add a direction button for testing
-    //------------------
-    UIButton*  directionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    directionButton.frame = CGRectMake(0, 0, 60, 20);
-    [directionButton setTitle:@"Direction" forState:UIControlStateNormal];
-    directionButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
-    [directionButton setBackgroundColor:[UIColor grayColor]];
-    [directionButton addTarget:self.rootViewController action:@selector(directionButtonAction)
-              forControlEvents:UIControlEventTouchDown];
-    
-    // add drop shadow
-    //            self.layer.cornerRadius = 8.0f;
-    directionButton.layer.masksToBounds = NO;
-    //            self.layer.borderWidth = 1.0f;
-    
-    directionButton.layer.shadowColor = [UIColor grayColor].CGColor;
-    directionButton.layer.shadowOpacity = 0.8;
-    directionButton.layer.shadowRadius = 12;
-    directionButton.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
-    self.directionButton = directionButton;
-}
-
-
 #pragma mark -- Search Initialization --
 -(void)initSearchBar{
-    _resultsViewController = [[GMSAutocompleteResultsViewController alloc] init];
+    _resultsViewController = [[CustomSearchResultViewController alloc] init];
     _resultsViewController.delegate = self;
     
     
@@ -185,11 +160,55 @@
     return YES;
 }
 
-//-------------------------------
-// Handle the user's selection
-//-------------------------------
+// MARK: Search result delegate
+- (void)didAutocompleteWithPlaces:(NSArray<GMSPlace *> *)places{
+    
+    GMSCoordinateBounds *bound = [places firstObject].viewport;
+    NSMutableArray *poiArray = [NSMutableArray array];
+    for (GMSPlace *place in places){
+        // Add the search result to the map
+        POI *aPOI = [[POI alloc] init];
+        aPOI.name = place.name;
+        aPOI.latLon = place.coordinate;
+        aPOI.placeID = place.placeID;
+        aPOI.annotation.pointType = DEFAULT_MARKER;
+        
+        aPOI.annotation.isHighlighted = YES;
+        aPOI.isMapAnnotationEnabled = YES;
+        [poiArray addObject:aPOI];
+        // registered the highlighted entity
+        [EntityDatabase sharedManager].lastHighlightedEntity = aPOI;
+        [[[CustomMKMapView sharedManager] informationSheet] addSheetForEntity:aPOI];
+        
+        bound = [bound includingBounds:place.viewport];
+    }
+
+    if (!self.searchHandlingBlock){
+        //----------------------
+        // Show the POI if the handling block is empty
+        //----------------------
+        
+        // Get the map object
+        CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+        
+        GMSCameraUpdate *newCamera = [GMSCameraUpdate fitBounds: bound
+                                                 withEdgeInsets:mapView.edgeInsets];
+        [mapView moveCamera: newCamera];
+    }else{
+        //----------------------
+        // Use the handling block to handle the POI
+        //----------------------
+        
+        self.searchHandlingBlock([poiArray firstObject]);
+        self.searchHandlingBlock = nil;
+    }
+    
+    [self.rootViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
  didAutocompleteWithPlace:(GMSPlace *)place {
+    
     [self.rootViewController dismissViewControllerAnimated:YES completion:nil];
     
     
