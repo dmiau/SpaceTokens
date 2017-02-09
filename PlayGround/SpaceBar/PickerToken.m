@@ -12,6 +12,7 @@
 #import "TokenCollection.h"
 #import "TokenCollectionView.h"
 #import "EntityDatabase.h"
+#import "HighlightedEntities.h"
 #import "CustomPointAnnotation.h"
 
 @implementation PickerToken{
@@ -245,7 +246,7 @@
     
     // Get the highlighted entity
     SpatialEntity *highlightedEntity =
-    [[EntityDatabase sharedManager] lastHighlightedEntity];
+    [[HighlightedEntities sharedManager] lastHighlightedEntity];
     
     if (!highlightedEntity){
         return NO;
@@ -267,6 +268,7 @@
                 probEnabled = NO;
                 movingOut = NO;
                 [[EntityDatabase sharedManager] addEntity:highlightedEntity];
+                
                 [[TokenCollectionView sharedManager] reloadData];
                 [lineLayer removeFromSuperlayer];
             

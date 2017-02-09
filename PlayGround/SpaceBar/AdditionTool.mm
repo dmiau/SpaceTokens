@@ -15,7 +15,7 @@
 #import "ViewController.h"
 #import "TokenCollectionView.h"
 #import "ArrayTool.h"
-#import "EntityDatabase.h"
+#import "HighlightedEntities.h"
 #import "CustomPointAnnotation.h"
 
 @implementation AdditionTool{
@@ -201,7 +201,7 @@
     
     // Get the highlighted entity
     SpatialEntity *highlightedEntity =
-    [[EntityDatabase sharedManager] lastHighlightedEntity];
+    [[HighlightedEntities sharedManager] lastHighlightedEntity];
     
     if (!highlightedEntity){
         return NO;

@@ -18,7 +18,7 @@
 #import "ViewController.h"
 #import "TokenCollection.h"
 #import "EntityDatabase.h"
-
+#import "HighlightedEntities.h"
 
 @implementation SpaceBar (UpdateSet)
 
@@ -115,7 +115,7 @@
     
     if ([self.touchingSet count]==0){
         // reset the annotation
-        [[EntityDatabase sharedManager] resetAnnotations];
+        [[HighlightedEntities sharedManager] clearHighlightedSet];
     }
     
     [self.touchingSet addObject:aToken];

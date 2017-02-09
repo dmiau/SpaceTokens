@@ -20,7 +20,7 @@
 @property NSString *name;
 @property NSString *currentFileName;
 @property Person *youRHere;
-@property SpatialEntity *lastHighlightedEntity;
+
 
 +(EntityDatabase*)sharedManager;
 
@@ -32,7 +32,6 @@
 - (NSMutableArray<SpatialEntity*>*)getEntityArray;
 
 // This return all the entities with mapAnnotation enabled
-- (NSMutableArray<SpatialEntity*>*)getAnnotationEnabledEntityArray;
 - (void)setEntityArray:(NSMutableArray<SpatialEntity *> *)newEntityArray;
 - (void)addEntity:(SpatialEntity*)entity;
 - (void)removeEntity:(SpatialEntity*)entity;
@@ -44,9 +43,6 @@
 
 -(NSMutableArray*)getEnabledEntities;
 @property BOOL isYouAreHereEnabled;
-
-// Annotation management
--(void)resetAnnotations;
 
 // Find the entity associated with the annotation
 -(SpatialEntity*)entityForAnnotation:(id)anntation;

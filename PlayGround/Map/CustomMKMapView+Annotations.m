@@ -13,6 +13,7 @@
 #import "CustomMKPolyline.h"
 #import "CustomGMSPolyline.h"
 #import "POI.h"
+#import "HighlightedEntities.h"
 #import "EntityDatabase.h"
 #import "DMTools.h"
 #import "MapInformationSheet.h"
@@ -21,13 +22,20 @@
 
 - (void)refreshAnnotations{
     [self clear];
-    [[EntityDatabase sharedManager] resetAnnotations];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
+    
+    // Add all the entities to the map
+    for (SpatialEntity *entity in [[EntityDatabase sharedManager] getEntityArray])
+    {
+        entity.isMapAnnotationEnabled = YES;
+        entity.annotation.isHighlighted = NO;
+    }
 }
 
 // MARK: Handles annotation interactions
 
 -(bool) didTapMarker:(CustomPointAnnotation *)marker{
-    [[EntityDatabase sharedManager] resetAnnotations];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
     if ([marker isKindOfClass:[CustomPointAnnotation class]]){
         marker.isHighlighted = YES;
@@ -43,22 +51,20 @@
          @"Matched entity was not found (didTapMarker)."];
     }
     
-    [EntityDatabase sharedManager].lastHighlightedEntity = matchedEntity;
-    
-    [self.informationSheet addSheetForEntity:matchedEntity];
+    [[HighlightedEntities sharedManager] addEntity: matchedEntity];
     
     return YES;
 }
 
 - (void) didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate
 {
-    [[EntityDatabase sharedManager] resetAnnotations];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     [self.informationSheet removeSheet];
 }
 
 - (void)didTapOverlay:(GMSOverlay *)overlay{
     
-    [[EntityDatabase sharedManager] resetAnnotations];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
     if ([overlay isKindOfClass:[CustomGMSPolygon class]] ||
         [overlay isKindOfClass:[CustomGMSPolyline class]])
@@ -74,13 +80,11 @@
         [DMTools showAlert:@"System error." withMessage:
          @"Matched entity was not found (didTapOverlay)."];
     }
-    
-    [EntityDatabase sharedManager].lastHighlightedEntity = matchedEntity;
-    [self.informationSheet addSheetForEntity:matchedEntity];
+    [[HighlightedEntities sharedManager] addEntity: matchedEntity];
 }
 
 - (void)didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
-    [[EntityDatabase sharedManager] resetAnnotations];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
     // Create a temporary entity
     POI *tempPOI = [[POI alloc] init];
@@ -88,17 +92,15 @@
     tempPOI.name = @"Dropped";
     tempPOI.placeID = @"";
     tempPOI.annotation.pointType = DROPPED;
-    tempPOI.isMapAnnotationEnabled = YES;
-    tempPOI.annotation.isHighlighted = YES;
-    [EntityDatabase sharedManager].lastHighlightedEntity = tempPOI;
-    [self.informationSheet addSheetForEntity:tempPOI];
+    
+    [[HighlightedEntities sharedManager] addEntity: tempPOI];
 }
 
 - (void) didTapPOIWithPlaceID:(NSString *)placeID
            name:(NSString *)name
        location:(CLLocationCoordinate2D)location
 {
-    [[EntityDatabase sharedManager] resetAnnotations];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
     // Create a temporary entity
     POI *tempPOI = [[POI alloc] init];
@@ -124,13 +126,10 @@
 
 - (void)highlightEntity:(SpatialEntity*)entity andResetOthers:(BOOL)resetFlag{
     if (resetFlag){
-        [[EntityDatabase sharedManager] resetAnnotations];
+        [[HighlightedEntities sharedManager] clearHighlightedSet];
     }
     
-    entity.isMapAnnotationEnabled = YES;
-    entity.annotation.isHighlighted = YES;
-    [EntityDatabase sharedManager].lastHighlightedEntity = entity;
-    [self.informationSheet addSheetForEntity:entity];
+    [[HighlightedEntities sharedManager] addEntity: entity];
 }
 
 @end

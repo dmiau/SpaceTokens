@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "CustomMKMapView.h"
-#import "MapInformationSheet.h"
 
 #import "EntityDatabase.h"
 #import "POI.h"
@@ -21,6 +20,8 @@
 #import "TokenCollectionView.h"
 #import "SearchPanelView+Actions.h"
 #import "CustomSearchResultViewController.h"
+
+#import "HighlightedEntities.h"
 
 //-------------------
 // Parameters
@@ -118,7 +119,7 @@
     return (point.y < topPanelHeight || point.y > self.frame.size.height - bottomPanalHeight);
 }
 
-#pragma mark -- Search Initialization --
+// MARK: -- Searchbar related stuff --
 -(void)initSearchBar{
     _resultsViewController = [[CustomSearchResultViewController alloc] init];
     _resultsViewController.delegate = self;
@@ -160,6 +161,12 @@
     return YES;
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if ([searchText length] == 0){
+        [[HighlightedEntities sharedManager] clearHIghlightedEntitiesOfType:SEARCH_RESULT];
+    }
+}
+
 // MARK: Search result delegate
 - (void)didAutocompleteWithPlaces:(NSArray<GMSPlace *> *)places{
     
@@ -171,14 +178,11 @@
         aPOI.name = place.name;
         aPOI.latLon = place.coordinate;
         aPOI.placeID = place.placeID;
-        aPOI.annotation.pointType = DEFAULT_MARKER;
+        aPOI.annotation.pointType = SEARCH_RESULT;
         
-        aPOI.annotation.isHighlighted = YES;
-        aPOI.isMapAnnotationEnabled = YES;
-        [poiArray addObject:aPOI];
-        // registered the highlighted entity
-        [EntityDatabase sharedManager].lastHighlightedEntity = aPOI;
-        [[[CustomMKMapView sharedManager] informationSheet] addSheetForEntity:aPOI];
+
+        [poiArray addObject:aPOI];        
+        [[HighlightedEntities sharedManager] addEntity:aPOI];
         
         bound = [bound includingBounds:place.viewport];
     }
@@ -217,13 +221,8 @@
     aPOI.name = place.name;
     aPOI.latLon = place.coordinate;
     aPOI.placeID = place.placeID;
-    aPOI.annotation.pointType = DEFAULT_MARKER;
-    aPOI.annotation.isHighlighted = YES;
-    aPOI.isMapAnnotationEnabled = YES;
-    
-    // registered the highlighted entity
-    [EntityDatabase sharedManager].lastHighlightedEntity = aPOI;
-    [[[CustomMKMapView sharedManager] informationSheet] addSheetForEntity:aPOI];
+    aPOI.annotation.pointType = SEARCH_RESULT;
+    [[HighlightedEntities sharedManager] addEntity:aPOI];
     
     if (!self.searchHandlingBlock){
         //----------------------

@@ -13,6 +13,7 @@
 #import "TokenCollectionView.h"
 #import "ArrayTool.h"
 #import "ArrayEntity.h"
+#import "HighlightedEntities.h"
 
 @implementation SpaceBar (Anchors)
 
@@ -29,9 +30,14 @@
         CLLocationCoordinate2D coord = [self.mapView convertPoint:mapXY
                                              toCoordinateFromView:self.mapView];
         
+        // Collect all the known entities
+        NSMutableSet *entitySet = [NSMutableSet set];
+        [entitySet addObjectsFromArray:[[EntityDatabase sharedManager] getEntityArray]];
+        [entitySet unionSet: [[HighlightedEntities sharedManager]  getHighlightedSet]];
+        
         SpatialEntity *touchedKnownEntity = nil;
         // Check if the user touches any known entity
-        for (SpatialEntity *anEntity in [[EntityDatabase sharedManager] getAnnotationEnabledEntityArray])
+        for (SpatialEntity *anEntity in entitySet)
         {
             if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon))
                && anEntity.isEnabled && ![anEntity isKindOfClass:[ArrayEntity class]]

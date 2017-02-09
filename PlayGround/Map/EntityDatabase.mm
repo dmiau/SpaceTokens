@@ -85,22 +85,6 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     return i_entityArray;
 }
 
-- (NSMutableArray<SpatialEntity*>*)getAnnotationEnabledEntityArray{
-    NSMutableArray *outArray = [NSMutableArray array];
-    
-    for (SpatialEntity *anEntity in i_entityArray){
-        if (anEntity.isMapAnnotationEnabled){
-            [outArray addObject:anEntity];
-        }
-    }
-    
-    if (self.lastHighlightedEntity){
-        [outArray addObject:self.lastHighlightedEntity];
-    }
-    
-    return outArray;
-}
-
 
 //-------------------
 // Add an entity to database
@@ -142,18 +126,7 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
 
 // MARK: Annotation management
 //----------------------------------------------------------
--(void)resetAnnotations{
-    
-    self.lastHighlightedEntity.isMapAnnotationEnabled = NO;
-    self.lastHighlightedEntity = nil;
-    
-    // Get all the annotations
-    for (SpatialEntity *anEntity in [self getEntityArray]){
-        anEntity.isMapAnnotationEnabled = YES;
-        anEntity.annotation.isHighlighted = NO;
-        anEntity.annotation.isLabelOn = NO;
-    }
-}
+
 
 -(SpatialEntity*)entityForAnnotation:(id)anntation{
     SpatialEntity *result = nil;
@@ -239,9 +212,6 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     NSMutableArray *lines = [NSMutableArray array];
     [lines addObject:
      [NSString stringWithFormat:@"entityArray #: %lu", (unsigned long)[i_entityArray count]]];
-    
-    [lines addObject:
-     [NSString stringWithFormat:@"lastHighlightedEntity: %@", self.lastHighlightedEntity]];
     
     return [lines componentsJoinedByString:@"\n"];
 }
