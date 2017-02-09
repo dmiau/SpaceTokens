@@ -253,27 +253,17 @@
     }
     
     if (highlightedEntity.annotation.isHighlighted){
-        if ([highlightedEntity.annotation isKindOfClass:[CustomPointAnnotation class]])
-        {
-            CustomPointAnnotation *pointAnnotation = highlightedEntity.annotation;
+        
+        
+        if ([highlightedEntity isEntityTouched:touch] && probEnabled){
+            probEnabled = NO;
+            movingOut = NO;
+            [[EntityDatabase sharedManager] addEntity:highlightedEntity];
             
-            // Get the CGPoint of the highlighted point in mapView
-            CGPoint highlightedCGPoint = [mapView.projection
-                                          pointForCoordinate: pointAnnotation.position];
+            [[TokenCollectionView sharedManager] reloadData];
+            [lineLayer removeFromSuperlayer];
             
-            double distance = pow((touchPoint.x - highlightedCGPoint.x), 2)+
-            pow((touchPoint.y - highlightedCGPoint.y), 2);
-            
-            if (distance < 100 && probEnabled){
-                probEnabled = NO;
-                movingOut = NO;
-                [[EntityDatabase sharedManager] addEntity:highlightedEntity];
-                
-                [[TokenCollectionView sharedManager] reloadData];
-                [lineLayer removeFromSuperlayer];
-            
-                return YES;
-            }
+            return YES;
         }
     }
     

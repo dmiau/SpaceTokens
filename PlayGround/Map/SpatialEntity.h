@@ -35,8 +35,9 @@
 // This is to control the annotation of a map other than the regular map
 - (void)setMapAnnotationEnabled:(BOOL)flag onMap:(CustomMKMapView*)map;
 
+// MARK: Check if the entity is touched
 - (double)getPointDistanceToTouch:(UITouch*)touch;
-
+- (BOOL)isEntityTouched:(UITouch*)touch;
 
 - (id)initWithCoder:(NSCoder *)coder;
 - (void)encodeWithCoder:(NSCoder *)coder;

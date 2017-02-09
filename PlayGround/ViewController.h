@@ -16,7 +16,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 @class Route;
-@class RouteDatabase;
 @class GameManager;
 @class EntityDatabase;
 @class SpeechEngine;
@@ -38,7 +37,7 @@
 // Databases
 @property EntityDatabase *entityDatabase;
 @property GameManager *gameManager;
-@property RouteDatabase *routeDatabase;
+
 
 // Common access method
 + (ViewController*)sharedManager;
@@ -47,8 +46,6 @@
 - (void)updateUIPlacement;
 
 // Route related methods
-- (void)showRouteFromDatabaseWithName:(NSString*) name
-                       zoomToOverview: (BOOL) overviewFlag;
 - (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag;
 - (void)removeRoute;
 

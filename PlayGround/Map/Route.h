@@ -26,7 +26,10 @@ typedef enum {ARRAYMODE, SETMODE, ROUTEMODE} AppeararnceMode;
 //------------------
 // properties
 //------------------
+// Route request is an aynchronized call. So a routeReadyBlock is needed,
+// so further actions can be performed when the request is received.
 @property (nonatomic, copy) void (^routeReadyBlock)();
+
 @property (nonatomic, copy) void (^appearanceChangedHandlingBlock)();
 @property NSMutableDictionary <NSNumber*, SpatialEntity*> *annotationDictionary;
 @property BOOL requestCompletionFlag;

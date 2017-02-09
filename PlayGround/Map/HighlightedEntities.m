@@ -69,9 +69,11 @@
 
 -(NSString*)description{
     NSMutableArray *lines = [NSMutableArray array];
-    
-    
-    
+    [lines addObject:[NSString stringWithFormat:@"Highlighted entity #: %lu",
+                      (unsigned long)[_highlightedSet count]]];
+    for (SpatialEntity *entity in _highlightedSet){
+        [lines addObject:entity.name];
+    }    
     return [lines componentsJoinedByString:@"\n"];
 }
 

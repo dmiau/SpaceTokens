@@ -69,6 +69,12 @@ NSString *const kTableCellNibName = @"SearchResultTableCell";
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)setAutocompleteBounds:(GMSCoordinateBounds *)autocompleteBounds{
+    _autocompleteBounds = autocompleteBounds;
+    _fetcher.autocompleteBounds = autocompleteBounds;
+}
+
 -(void)setDelegate:(id<CustomSearchResultViewControllerDelegate>)delegate{
     _delegate = delegate;
     if (_delegate != delegate){

@@ -37,10 +37,6 @@
 -(bool) didTapMarker:(CustomPointAnnotation *)marker{
     [[HighlightedEntities sharedManager] clearHighlightedSet];
     
-    if ([marker isKindOfClass:[CustomPointAnnotation class]]){
-        marker.isHighlighted = YES;
-        marker.isLabelOn = YES;
-    }
 //    [self setSelectedMarker: marker];
     
     SpatialEntity *matchedEntity = [[EntityDatabase sharedManager]
@@ -66,21 +62,15 @@
     
     [[HighlightedEntities sharedManager] clearHighlightedSet];
     
-    if ([overlay isKindOfClass:[CustomGMSPolygon class]] ||
-        [overlay isKindOfClass:[CustomGMSPolyline class]])
-    {
-        id <AnnotationProtocol> customOverlay = overlay;
-        customOverlay.isHighlighted = YES;
-    }
-    
     SpatialEntity *matchedEntity = [[EntityDatabase sharedManager]
                                     entityForAnnotation:overlay];
     
     if (!matchedEntity){
         [DMTools showAlert:@"System error." withMessage:
          @"Matched entity was not found (didTapOverlay)."];
-    }
-    [[HighlightedEntities sharedManager] addEntity: matchedEntity];
+    }else{
+        [[HighlightedEntities sharedManager] addEntity: matchedEntity];
+    }    
 }
 
 - (void)didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{

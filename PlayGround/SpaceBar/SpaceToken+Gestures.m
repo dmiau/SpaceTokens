@@ -8,6 +8,7 @@
 #import "Constants.h"
 #import "SpaceToken+Gestures.h"
 #import "WildcardGestureRecognizer.h"
+#import "HighlightedEntities.h"
 
 @implementation SpaceToken (Gestures)
 
@@ -181,7 +182,7 @@
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
-        self.spatialEntity.annotation.isHighlighted = NO;
+        
         
     }else{
         self.selected = YES;
@@ -196,12 +197,6 @@
         NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
                                                                      object:self userInfo:nil];
         [[ NSNotificationCenter defaultCenter] postNotification:notification];
-        
-        //--------------
-        // Highlight the SpatialEntity
-        //--------------
-        self.spatialEntity.isMapAnnotationEnabled = YES;
-        self.spatialEntity.annotation.isHighlighted = YES;
     }
 }
 

@@ -161,86 +161,6 @@
             </objects>
             <point key="canvasLocation" x="1581" y="-847"/>
         </scene>
-        <!--Routes-->
-        <scene sceneID="clQ-Yk-4AY">
-            <objects>
-                <viewController id="YJ2-sW-9Rh" customClass="RouteTableController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AJB-vw-7SX"/>
-                        <viewControllerLayoutGuide type="bottom" id="JIu-SF-icP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lhy-U9-LK2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZX-wM-LWU">
-                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Save" id="AEd-lx-0Nb">
-                                        <connections>
-                                            <action selector="saveAction:" destination="YJ2-sW-9Rh" id="rSB-2h-btR"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Reload" id="3qN-vK-zxB">
-                                        <connections>
-                                            <action selector="reloadAction:" destination="YJ2-sW-9Rh" id="Ps2-Vg-mEa"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Clear" id="ewi-jJ-E6D">
-                                        <connections>
-                                            <action selector="clearAction:" destination="YJ2-sW-9Rh" id="2c1-qa-mbw"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="38" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moc-OC-X9A">
-                                <rect key="frame" x="0.0" y="40" width="600" height="467"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeCell" textLabel="4rX-iB-4lA" rowHeight="38" style="IBUITableViewCellStyleDefault" id="D1g-t8-P4G">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="38"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D1g-t8-P4G" id="1Hi-Cw-vrg">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="37.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4rX-iB-4lA">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="37.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="YJ2-sW-9Rh" id="1hc-iC-DYW"/>
-                                    <outlet property="delegate" destination="YJ2-sW-9Rh" id="0LH-Gi-vZr"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="moc-OC-X9A" secondAttribute="trailing" id="3Yn-vf-ML8"/>
-                            <constraint firstItem="xZX-wM-LWU" firstAttribute="leading" secondItem="Lhy-U9-LK2" secondAttribute="leading" id="Dmc-ct-zqy"/>
-                            <constraint firstItem="JIu-SF-icP" firstAttribute="top" secondItem="xZX-wM-LWU" secondAttribute="bottom" id="Oqg-ih-ER0"/>
-                            <constraint firstItem="moc-OC-X9A" firstAttribute="top" secondItem="AJB-vw-7SX" secondAttribute="bottom" constant="20" id="SQ3-xi-2iR"/>
-                            <constraint firstAttribute="trailing" secondItem="xZX-wM-LWU" secondAttribute="trailing" id="gyQ-J1-ew1"/>
-                            <constraint firstItem="xZX-wM-LWU" firstAttribute="top" secondItem="moc-OC-X9A" secondAttribute="bottom" id="rDg-Dg-LnA"/>
-                            <constraint firstItem="moc-OC-X9A" firstAttribute="leading" secondItem="Lhy-U9-LK2" secondAttribute="leading" id="znF-Cc-PnT"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Routes" id="aJm-2f-9wB"/>
-                    <connections>
-                        <outlet property="myTableView" destination="moc-OC-X9A" id="uwH-Sg-7fy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hfo-Gm-NvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="138" y="1919"/>
-        </scene>
         <!--Files-->
         <scene sceneID="r96-QB-qO9">
             <objects>
@@ -677,7 +597,6 @@
                         <segue destination="bfX-jC-fod" kind="relationship" relationship="viewControllers" id="s1i-U0-S1i"/>
                         <segue destination="tDC-Kg-SX0" kind="relationship" relationship="viewControllers" id="yr2-uI-ub7"/>
                         <segue destination="UcY-aI-hme" kind="relationship" relationship="viewControllers" id="tzg-IH-Jy8"/>
-                        <segue destination="YJ2-sW-9Rh" kind="relationship" relationship="viewControllers" id="FvD-n3-cGY"/>
                         <segue destination="RwE-cL-saO" kind="relationship" relationship="viewControllers" id="BD7-gY-hVT"/>
                     </connections>
                 </tabBarController>

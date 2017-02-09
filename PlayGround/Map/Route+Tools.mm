@@ -9,6 +9,7 @@
 #import "Route+Tools.h"
 #import "POI.h"
 #import "EntityDatabase.h"
+#import "HighlightedEntities.h"
 #import "TokenCollectionView.h"
 #import <vector>
 
@@ -21,16 +22,14 @@ using namespace std;
     Route *aRoute = [[Route alloc] init];
     [aRoute setContent: [NSMutableArray arrayWithObjects:source, destination, nil]];
     void(^completionBlock)(void) = ^{
-        // Push the newly created route into the entity database
-        EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
-        [entityDatabase addEntity:aRoute];
-        aRoute.isMapAnnotationEnabled = YES;
+        
         NSLog(@"Direction response received!");
         NSLog(@"Rooute: %@ added.", aRoute.name);
         
-        // Update the collection view
+        // Push the newly created route into the entity database
         [[EntityDatabase sharedManager] addEntity:aRoute];
-        [[TokenCollectionView sharedManager] reloadData];
+        // Newly created route should be highlighted
+        [[HighlightedEntities sharedManager] addEntity:aRoute];
     };
     aRoute.routeReadyBlock = completionBlock;
     [aRoute requestRouteWithSource:source Destination:destination];

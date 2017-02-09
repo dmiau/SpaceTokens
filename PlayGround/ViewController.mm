@@ -10,7 +10,6 @@
 #import "ViewController.h"
 #import "tester.h"
 #import "Map/Route.h"
-#import "Map/RouteDatabase.h"
 #import "EntityDatabase.h"
 #import "Map/MiniMapView.h"
 #import "StudyManager/GameManager.h"
@@ -65,12 +64,6 @@ static ViewController *instance;
     //----------------
     self.myFileManager = [MyFileManager sharedManager];
     self.myFileManager.directorPartialPath = @"test";
-    
-    //----------------
-    // Initialize a Route DB
-    //----------------
-    self.routeDatabase = [RouteDatabase sharedManager];
-    [self.routeDatabase reloadRouteDB];    
     
     //----------------
     // Initialize an Entity DB

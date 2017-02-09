@@ -17,6 +17,7 @@
 #import "ArrayEntity.h"
 #import "AdditionTool.h"
 #import "PathToken.h"
+#import "EntityDatabase.h"
 
 typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
@@ -385,7 +386,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 - (void)pathModeButtonAction{
     NSLog(@"Path mode button is pressed.");
     Route *aRoute = self.arrayEntity;
-    self.arrayEntity.isMapAnnotationEnabled = NO;
+
     if (arrayToolMode == ArrayMode){
         // Switching to PathMode
         arrayToolMode = PathMode;
@@ -400,7 +401,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         aRoute.appearanceMode = ROUTEMODE;
         [aRoute updateRouteForContentArray];
     }else{
-        
         // Disable the scroll bar
         [[ViewController sharedManager] removeRoute];
         // Switching to ArrayMode
@@ -408,7 +408,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         aRoute.appearanceMode = ARRAYMODE;
         [aRoute updateArrayForContentArray];
     }
-    self.arrayEntity.isMapAnnotationEnabled = YES;
     [self reloadData];
 }
 

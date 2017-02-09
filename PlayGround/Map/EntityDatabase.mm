@@ -10,9 +10,10 @@
 #import "SpatialEntity.h"
 #import "MyFileManager.h"
 #import "Person.h"
-#import "RouteDatabase.h"
+#import "Route.h"
 
 #import "PickerEntity.h"
+#import "HighlightedEntities.h"
 
 //--------------------
 // Global contants
@@ -117,11 +118,17 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
         }
         
         [i_entityArray addObject:entity];
+        
+        // All entities in EntityDatabase appear on the map by default
+        entity.isMapAnnotationEnabled = YES;
     }
 }
 
 - (void)removeEntity:(SpatialEntity*)entity{    
     [i_entityArray removeObject:entity];
+    
+    [[HighlightedEntities sharedManager] removeEntity:entity];
+    entity.isMapAnnotationEnabled = NO;
 }
 
 // MARK: Annotation management

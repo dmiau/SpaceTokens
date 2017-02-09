@@ -25,7 +25,7 @@
         _tag = @"";
         _name = @"";
         _placeID = @"";
-        _isEnabled = YES;
+        _isEnabled = NO;
         _isMapAnnotationEnabled = YES;
     }
     return self;
@@ -83,6 +83,14 @@
     double distanceSquare = pow(entityPoint.x - touchPoint.x, 2) +
     pow(entityPoint.y - touchPoint.y, 2);        
     return sqrt(distanceSquare);
+}
+
+- (BOOL)isEntityTouched:(UITouch*)touch{
+    if ([self getPointDistanceToTouch:touch] < 15){
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 //----------------

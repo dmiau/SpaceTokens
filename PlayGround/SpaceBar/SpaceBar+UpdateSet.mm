@@ -119,11 +119,14 @@
     }
     
     [self.touchingSet addObject:aToken];
+    [[HighlightedEntities sharedManager] addEntity:
+     aToken.spatialEntity];
 }
 
 - (void)removeTokenFromTouchingSet: (SpaceToken*) aToken
 {
     [self.touchingSet removeObject:aToken];
+    [[HighlightedEntities sharedManager] removeEntity:aToken.spatialEntity];
 }
 
 - (void)clearAllTouchedTokens{
@@ -132,6 +135,7 @@
     }
     
     [self.touchingSet removeAllObjects];
+    
 }
 
 @end

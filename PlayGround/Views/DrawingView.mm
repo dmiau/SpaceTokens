@@ -16,6 +16,7 @@
 #import "TokenCollectionView.h"
 #include <algorithm>
 #import "ToolPalette.h"
+#import "HighlightedEntities.h"
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM () == UIUserInterfaceIdiomPad)
 
@@ -145,10 +146,8 @@ using namespace std;
         // Push the newly created route into the entity database
         EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
         [entityDatabase addEntity:newEntity];
-        newEntity.isMapAnnotationEnabled = YES;
-        newEntity.annotation.isHighlighted = YES;
-        // Update the collection view
-        [[TokenCollectionView sharedManager] addItemFromBottom:newEntity];
+        [[HighlightedEntities sharedManager] addEntity:newEntity];
+        
     }
     
     // Clear the path

@@ -39,15 +39,6 @@
     // REFACTOR
 //    [self.rootViewController.mapView setRegion:region animated:NO];
     
-    // Make sure the correct route is loaded
-    if (!self.rootViewController.spaceBar.activeRoute ||
-        self.rootViewController.spaceBar.activeRoute.name != self.routeID)
-    {
-        [self.rootViewController showRouteFromDatabaseWithName:self.routeID
-                                                zoomToOverview:NO];
-        
-        // The above should take care of SpaceToken configurations
-    }
     
 
 //    [self.rootViewController.mainViewManager showPanelWithType:TASKCHECKING];

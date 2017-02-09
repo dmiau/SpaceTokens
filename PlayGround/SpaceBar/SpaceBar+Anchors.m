@@ -40,9 +40,9 @@
         for (SpatialEntity *anEntity in entitySet)
         {
             if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon))
-               && anEntity.isEnabled && ![anEntity isKindOfClass:[ArrayEntity class]]
+               && ![anEntity isKindOfClass:[ArrayEntity class]]
                && anEntity.annotation.isHighlighted
-               && [anEntity getPointDistanceToTouch:aTouch] < 15
+               && [anEntity isEntityTouched:aTouch]
                )
             {
                 touchedKnownEntity = anEntity;

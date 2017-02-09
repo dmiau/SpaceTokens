@@ -7,7 +7,9 @@
 //
 
 #import "ViewController+Interactions.h"
-#import "Map/RouteDatabase.h"
+#import "Route.h"
+#import "EntityDatabase.h"
+#import "HighlightedEntities.h"
 
 @implementation ViewController (Interactions)
 
@@ -119,28 +121,6 @@
     }
 }
 
-//-----------------
-// Show routes from database
-//-----------------
-- (void)showRouteFromDatabaseWithName:(NSString*) name
-                       zoomToOverview: (BOOL) overviewFlag
-{
-    
-    Route *aRoute = self.routeDatabase.routeDictionary[name];
-    if (aRoute){
-        [self showRoute:aRoute zoomToOverview: overviewFlag];
-    }else{
-        NSString *message = [NSString stringWithFormat:@"Route: %@ cannot be found.", name];
-        // A route with the name does not exist, throw a warning
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Route not found."
-                                                        message:message
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
 //-----------------------
 // Display a route on the map
 //-----------------------
@@ -178,14 +158,14 @@
         }
     }
     
-    aRoute.isMapAnnotationEnabled = YES;
+    [[EntityDatabase sharedManager] addEntity:aRoute];
+    [[HighlightedEntities sharedManager] addEntity:aRoute];
 }
 
 - (void)removeRoute{
     // Remove the previous route if there is any
     if (self.spaceBar.activeRoute){
-        [self.mapView removeOverlay:
-         self.spaceBar.activeRoute.polyline];
+        [[EntityDatabase sharedManager] removeEntity:self.spaceBar.activeRoute];        
         self.spaceBar.activeRoute = nil;
     }
     [self.spaceBar removeRouteAnnotations];

@@ -16,6 +16,7 @@
 #import "CustomMKMapView.h"
 #import "TokenCollection.h"
 #import "EntityDatabase.h"
+#import "HighlightedEntities.h"
 
 @implementation PreferencesController
 
@@ -192,7 +193,7 @@
     [lineArray addObject: [[TokenCollection sharedManager] description]];
     [lineArray addObject: [[SpaceBar sharedManager] description]];
     [lineArray addObject: [[EntityDatabase sharedManager] description]];
-
+    [lineArray addObject: [[HighlightedEntities sharedManager] description]];
     self.debugInfoOutlet.text = [lineArray componentsJoinedByString:@"\n"];
 }
 

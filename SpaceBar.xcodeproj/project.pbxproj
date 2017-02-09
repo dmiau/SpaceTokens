@@ -76,7 +76,6 @@
 		9A234B341D8A1C6D00F3EE21 /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A234B351D8A1C6D00F3EE21 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9A234B361D8A1C6D00F3EE21 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
-		9A234B371D8A1C6D00F3EE21 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A234B381D8A1C6D00F3EE21 /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9A234B391D8A1C6D00F3EE21 /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
 		9A234B3A1D8A1C6D00F3EE21 /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
@@ -91,7 +90,6 @@
 		9A234B451D8A1C6D00F3EE21 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9A234B461D8A1C6D00F3EE21 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9A234B471D8A1C6D00F3EE21 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
-		9A234B481D8A1C6D00F3EE21 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A234B491D8A1C6D00F3EE21 /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
 		9A234B4A1D8A1C6D00F3EE21 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
 		9A234B4B1D8A1C6D00F3EE21 /* SpaceBar+UpdateMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8413681C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m */; };
@@ -157,7 +155,6 @@
 		9A5A935D1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
 		9A5A935E1E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
 		9A5A93601E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
-		9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9A5CCBAC1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5CCBAE1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5D405A1D3D2D7600CC91BE /* SpaceBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* SpaceBar+Annotations.mm */; };
@@ -180,7 +177,6 @@
 		9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
 		9A75D6541E417B5100DB045C /* DMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6531E417B5100DB045C /* DMTools.m */; };
 		9A75D6551E417B5100DB045C /* DMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6531E417B5100DB045C /* DMTools.m */; };
-		9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
@@ -328,7 +324,6 @@
 		9AE13B701DF0D148008612DA /* ShowAuthoringPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32CE41DEDD6D200D16738 /* ShowAuthoringPanel.m */; };
 		9AE13B711DF0D148008612DA /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9AE13B721DF0D148008612DA /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
-		9AE13B731DF0D148008612DA /* RouteTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */; };
 		9AE13B741DF0D148008612DA /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
 		9AE13B751DF0D148008612DA /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9AE13B761DF0D148008612DA /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
@@ -347,7 +342,6 @@
 		9AE13B841DF0D148008612DA /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
 		9AE13B851DF0D148008612DA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9AE13B871DF0D148008612DA /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
-		9AE13B881DF0D148008612DA /* RouteDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */; };
 		9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
 		9AE13B8A1DF0D148008612DA /* AuthoringPanelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE092C1DECDAE800BAE14C /* AuthoringPanelBase.m */; };
 		9AE13B8B1DF0D148008612DA /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
@@ -510,8 +504,6 @@
 		9A5A93551E38FB8900432972 /* arrayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrayIcon.png; sourceTree = "<group>"; };
 		9A5A93591E39365E00432972 /* pathIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pathIcon.png; sourceTree = "<group>"; };
 		9A5A935A1E39365E00432972 /* setIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setIcon.png; sourceTree = "<group>"; };
-		9A5BAD081D53949D006EDB81 /* RouteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteDatabase.h; path = Map/RouteDatabase.h; sourceTree = "<group>"; };
-		9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RouteDatabase.mm; path = Map/RouteDatabase.mm; sourceTree = "<group>"; };
 		9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = SpaceBar/CollectionViewCell.h; sourceTree = "<group>"; };
 		9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CollectionViewCell.mm; path = SpaceBar/CollectionViewCell.mm; sourceTree = "<group>"; };
 		9A5D40581D3D2D7600CC91BE /* SpaceBar+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceBar+Annotations.h"; path = "SpaceBar/SpaceBar+Annotations.h"; sourceTree = "<group>"; };
@@ -539,8 +531,6 @@
 		9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Tools.m"; path = "StudyManager/TaskGenerator+Tools.m"; sourceTree = "<group>"; };
 		9A75D6521E417B5100DB045C /* DMTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMTools.h; path = DMTools/DMTools.h; sourceTree = "<group>"; };
 		9A75D6531E417B5100DB045C /* DMTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMTools.m; path = DMTools/DMTools.m; sourceTree = "<group>"; };
-		9A75D8981D54C20B0071F6A6 /* RouteTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableController.h; sourceTree = "<group>"; };
-		9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteTableController.mm; sourceTree = "<group>"; };
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
@@ -1292,8 +1282,6 @@
 				9A8F67EB1D3DA65200C08CCB /* PreferencesController.h */,
 				9AD639F11D50267C00C91F1B /* FileTableController.h */,
 				9AD639F21D50267C00C91F1B /* FileTableController.m */,
-				9A75D8981D54C20B0071F6A6 /* RouteTableController.h */,
-				9A75D8991D54C20B0071F6A6 /* RouteTableController.mm */,
 				9A1CA2B41D4671210098957A /* CustomTabController.h */,
 				9A1CA2B51D4671210098957A /* CustomTabController.m */,
 				9AFED2EE1E02F0A0007C8317 /* LeftTabController.h */,
@@ -1334,8 +1322,6 @@
 				9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */,
 				9A10B51C1E312BDA0016A2EA /* Route+Appearance.h */,
 				9A10B51D1E312BDA0016A2EA /* Route+Appearance.mm */,
-				9A5BAD081D53949D006EDB81 /* RouteDatabase.h */,
-				9A5BAD091D53949D006EDB81 /* RouteDatabase.mm */,
 				9A5DA02B1E16DCE1002A50B7 /* Area.h */,
 				9A5DA02C1E16DCE1002A50B7 /* Area.mm */,
 				9A27222C1D6CB79C002AE953 /* Person.h */,
@@ -1657,7 +1643,6 @@
 				9A234B341D8A1C6D00F3EE21 /* CustomTabController.m in Sources */,
 				9A234B351D8A1C6D00F3EE21 /* WildcardGestureRecognizer.m in Sources */,
 				9A234B361D8A1C6D00F3EE21 /* TaskBasePanel.m in Sources */,
-				9A234B371D8A1C6D00F3EE21 /* RouteTableController.mm in Sources */,
 				9A234B381D8A1C6D00F3EE21 /* GestureEngine.mm in Sources */,
 				9A234B391D8A1C6D00F3EE21 /* SpaceToken.m in Sources */,
 				9A234B3A1D8A1C6D00F3EE21 /* SpaceBar+Annotations.mm in Sources */,
@@ -1672,7 +1657,6 @@
 				9A234B451D8A1C6D00F3EE21 /* POIDetailViewController.m in Sources */,
 				9A234B461D8A1C6D00F3EE21 /* Person.m in Sources */,
 				9A234B471D8A1C6D00F3EE21 /* Snapshot.m in Sources */,
-				9A234B481D8A1C6D00F3EE21 /* RouteDatabase.mm in Sources */,
 				9A234B491D8A1C6D00F3EE21 /* CustomMKMapView+Tools.m in Sources */,
 				9A234B4A1D8A1C6D00F3EE21 /* SnapshotDatabase.m in Sources */,
 				9A234B4B1D8A1C6D00F3EE21 /* SpaceBar+UpdateMap.m in Sources */,
@@ -1751,7 +1735,6 @@
 				9AE27CA31E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */,
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */,
-				9A75D89A1D54C20B0071F6A6 /* RouteTableController.mm in Sources */,
 				9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */,
 				9AC7E1A91D50E08400C2E8BE /* GestureEngine.mm in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
@@ -1772,7 +1755,6 @@
 				9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */,
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
-				9A5BAD0A1D53949D006EDB81 /* RouteDatabase.mm in Sources */,
 				9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
@@ -1873,7 +1855,6 @@
 				9AE27CA51E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */,
 				9AE13B711DF0D148008612DA /* WildcardGestureRecognizer.m in Sources */,
 				9AE13B721DF0D148008612DA /* TaskBasePanel.m in Sources */,
-				9AE13B731DF0D148008612DA /* RouteTableController.mm in Sources */,
 				9AE13B741DF0D148008612DA /* SpeechEngine.m in Sources */,
 				9AE13B751DF0D148008612DA /* GestureEngine.mm in Sources */,
 				9AE13B761DF0D148008612DA /* SpaceToken.m in Sources */,
@@ -1894,7 +1875,6 @@
 				9AE13B841DF0D148008612DA /* POIDetailViewController.m in Sources */,
 				9AE13B851DF0D148008612DA /* Person.m in Sources */,
 				9AE13B871DF0D148008612DA /* Snapshot.m in Sources */,
-				9AE13B881DF0D148008612DA /* RouteDatabase.mm in Sources */,
 				9A5DA0341E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */,
 				9AE13B8A1DF0D148008612DA /* AuthoringPanelBase.m in Sources */,
