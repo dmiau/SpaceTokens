@@ -21,6 +21,8 @@
     [self updateSystem];
 }
 
+
+
 // This is called when the map becomes idle
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position{    
 
@@ -29,7 +31,6 @@
                                                        target:self
                                                      selector:@selector(updateSystem)
                                                      userInfo:nil repeats:NO];
-    
 }
 
 - (void)updateSystem{

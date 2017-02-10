@@ -35,7 +35,6 @@
 // MARK: Handles annotation interactions
 
 -(bool) didTapMarker:(CustomPointAnnotation *)marker{
-    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
 //    [self setSelectedMarker: marker];
     
@@ -54,13 +53,12 @@
 
 - (void) didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate
 {
-    [[HighlightedEntities sharedManager] clearHighlightedSet];
+    [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:
+     SEARCH_RESULT];
     [self.informationSheet removeSheet];
 }
 
 - (void)didTapOverlay:(GMSOverlay *)overlay{
-    
-    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
     SpatialEntity *matchedEntity = [[EntityDatabase sharedManager]
                                     entityForAnnotation:overlay];
@@ -74,7 +72,6 @@
 }
 
 - (void)didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
-    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
     // Create a temporary entity
     POI *tempPOI = [[POI alloc] init];
@@ -90,7 +87,6 @@
            name:(NSString *)name
        location:(CLLocationCoordinate2D)location
 {
-    [[HighlightedEntities sharedManager] clearHighlightedSet];
     
     // Create a temporary entity
     POI *tempPOI = [[POI alloc] init];
@@ -99,7 +95,7 @@
     tempPOI.placeID = placeID;
     tempPOI.annotation.pointType = DROPPED;
 
-    [self highlightEntity:tempPOI andResetOthers:YES];
+     [[HighlightedEntities sharedManager] addEntity: tempPOI];
     
 //    [self setSelectedMarker:tempPOI.annotation];
     
@@ -112,14 +108,6 @@
 //    infoMarker.infoWindowAnchor = pos;
 //    infoMarker.map = mapView;
 //    mapView.selectedMarker = infoMarker;
-}
-
-- (void)highlightEntity:(SpatialEntity*)entity andResetOthers:(BOOL)resetFlag{
-    if (resetFlag){
-        [[HighlightedEntities sharedManager] clearHighlightedSet];
-    }
-    
-    [[HighlightedEntities sharedManager] addEntity: entity];
 }
 
 @end

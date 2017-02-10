@@ -52,7 +52,7 @@
     // listen to several notification of interest
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
-               selector:@selector(mapUpdateHandler)
+               selector:@selector(tokenUIUpdateHandler)
                    name:MapUpdatedNotification
                  object:nil];
     
@@ -261,7 +261,7 @@
     self.appearanceType = type;    
 }
 
-- (void)mapUpdateHandler{
+- (void)tokenUIUpdateHandler{
     if (self.selected){
         [self updatePOILine];
     }

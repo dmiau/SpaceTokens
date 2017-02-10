@@ -27,4 +27,5 @@
 
 -(void)clearHighlightedSet;
 -(void)clearHIghlightedEntitiesOfType:(location_enum)pointType;
+-(void)clearAllHIghlightedEntitiesButType:(location_enum)pointType;
 @end

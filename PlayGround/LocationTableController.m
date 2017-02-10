@@ -12,6 +12,7 @@
 #import "POIDetailViewController.h"
 #import "EntityDatabase.h"
 #import "CustomMKMapView+Annotations.h"
+#import "Person.h"
 
 #pragma mark --Entity Cell--
 //---------------------
@@ -154,7 +155,7 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
 // Prepare the section
 //----------------
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -163,8 +164,12 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
             return [entityFileArray count];
         else
             return 0;
-    }else{
+    }else if (section ==ENTITIES){
+        
         return [[[EntityDatabase sharedManager] getEntityArray] count];
+    }else{
+        // Person
+        return 1;
     }
     
 }
@@ -180,9 +185,9 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
     NSArray *list;
     
     if (entityDatabase.currentFileName){
-        list = @[@"EntityDB files", entityDatabase.currentFileName];
+        list = @[@"EntityDB files", entityDatabase.currentFileName, @"Person"];
     }else{
-        list = @[@"EntityDB files", @"No file found"];
+        list = @[@"EntityDB files", @"No file found", @"Person"];
     }
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
@@ -242,12 +247,20 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
         cell.textLabel.text = entityFileArray[i];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", i];
         
-    }else{
+    }else if (section_id == ENTITIES){
         [cell.mySwitch setHidden:NO];
         // Configure Cell
         SpatialEntity *entity = [[EntityDatabase sharedManager] getEntityArray][i];
         cell.textLabel.text = entity.name;
         cell.spatialEntity = entity;
+        
+        cell.mySwitch.on = cell.spatialEntity.isEnabled;
+    }else{
+        [cell.mySwitch setHidden:NO];
+        // Configure Cell
+        Person *person = [EntityDatabase sharedManager].youRHere;
+        cell.textLabel.text = person.name;
+        cell.spatialEntity = person;
         
         cell.mySwitch.on = cell.spatialEntity.isEnabled;
     }
@@ -272,7 +285,7 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
         expandCollectionSection = false;
         [self.myTableView reloadData];
         
-    }else{
+    }else if (section_id == ENTITIES){
         // Get the selected entity
         SpatialEntity *entity = [[EntityDatabase sharedManager] getEntityArray][row_id];
         
@@ -300,8 +313,7 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
     int i = [indexPath row];
     int section_id = [indexPath section];
     
-    if (section_id ==COLLECTIONS){
-    }else{
+    if (section_id ==ENTITIES){
         // Perform segue
         [self performSegueWithIdentifier:@"POIDetailVC"
                                   sender:[[EntityDatabase sharedManager] getEntityArray][i]];
@@ -330,11 +342,10 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
     int i = [indexPath row];
     int section_id = [indexPath section];
     
-    if (section_id ==COLLECTIONS){
-        return NO;
-    }else{
+    if (section_id ==ENTITIES){
         return YES;
     }
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
@@ -374,7 +385,7 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
         
         [self updateEntityFileList];
         [self.myTableView reloadData];
-    }else{
+    }else if (section_id == ENTITIES){
         // If row is deleted, remove it from the list.
         if (editingStyle == UITableViewCellEditingStyleDelete) {
             int i = [indexPath row];

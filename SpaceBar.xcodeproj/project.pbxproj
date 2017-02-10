@@ -11,6 +11,8 @@
 		9A05713A1E0ED82E00A09E06 /* anchorInstructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0571371E0ED82E00A09E06 /* anchorInstructions.png */; };
 		9A058C851E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
 		9A058C871E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
+		9A0B40881E4D5587004413B4 /* CollectionInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */; };
+		9A0B40891E4D5587004413B4 /* CollectionInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */; };
 		9A0CC0001E480565008F07CA /* starGray-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CBFFF1E480565008F07CA /* starGray-128.png */; };
 		9A0CC0011E480565008F07CA /* starGray-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CBFFF1E480565008F07CA /* starGray-128.png */; };
 		9A0CC0031E48084B008F07CA /* starGray-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CC0021E48084B008F07CA /* starGray-30.png */; };
@@ -414,6 +416,7 @@
 		51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpaceBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0571371E0ED82E00A09E06 /* anchorInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anchorInstructions.png; sourceTree = "<group>"; };
 		9A058C841E393D030045AB0E /* areaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areaIcon.png; sourceTree = "<group>"; };
+		9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionInformationSheet.xib; path = Map/CollectionInformationSheet.xib; sourceTree = "<group>"; };
 		9A0CBFFF1E480565008F07CA /* starGray-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGray-128.png"; sourceTree = "<group>"; };
 		9A0CC0021E48084B008F07CA /* starGray-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGray-30.png"; sourceTree = "<group>"; };
 		9A0CC0051E480852008F07CA /* star-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-30.png"; sourceTree = "<group>"; };
@@ -1126,6 +1129,7 @@
 				9A8F8D2B1E4243E600B2B0A3 /* MapInformationSheet.xib */,
 				9A8F8D2E1E42465200B2B0A3 /* MapInformationSheet.h */,
 				9A8F8D2F1E42465200B2B0A3 /* MapInformationSheet.m */,
+				9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */,
 			);
 			name = sheets;
 			sourceTree = "<group>";
@@ -1551,6 +1555,7 @@
 				9AB76B761D9C5C110096C444 /* setup.png in Resources */,
 				9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */,
 				9A5A935E1E39365E00432972 /* setIcon.png in Resources */,
+				9A0B40881E4D5587004413B4 /* CollectionInformationSheet.xib in Resources */,
 				9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
 				9A1DB0FC1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
@@ -1592,6 +1597,7 @@
 				9AE13BAF1DF0D148008612DA /* setup.png in Resources */,
 				9AE13BB01DF0D148008612DA /* Assets.xcassets in Resources */,
 				9A5A93601E39365E00432972 /* setIcon.png in Resources */,
+				9A0B40891E4D5587004413B4 /* CollectionInformationSheet.xib in Resources */,
 				9AE13BB11DF0D148008612DA /* grayYouRHere.png in Resources */,
 				9A1DB0FD1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */,
