@@ -28,8 +28,10 @@
 - (void)useGameEntityArray:(NSMutableArray*)tempArray;
 - (void)removeGameEntityArray;
 
-// Methods to access entities
+// Methods to get entities
 - (NSMutableArray<SpatialEntity*>*)getEntityArray;
+- (NSMutableArray*)getEnabledEntities;
+
 
 // This return all the entities with mapAnnotation enabled
 - (void)setEntityArray:(NSMutableArray<SpatialEntity *> *)newEntityArray;
@@ -41,8 +43,7 @@
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
 
--(NSMutableArray*)getEnabledEntities;
-@property BOOL isYouAreHereEnabled;
+
 
 // Find the entity associated with the annotation
 -(SpatialEntity*)entityForAnnotation:(id)anntation;

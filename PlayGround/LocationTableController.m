@@ -130,15 +130,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
-    // Update SpaceToken order control
-    if (self.rootViewController.spaceBar.isAutoOrderSpaceTokenEnabled){
-        self.orderSegmentOutlet.selectedSegmentIndex = 0;
-    }else{
-        self.orderSegmentOutlet.selectedSegmentIndex = 1;
-    }
-    
-    
+
     [self.navigationController setNavigationBarHidden:NO];
     [self.myTableView reloadData];
 }
@@ -155,7 +147,7 @@
 
 
 #pragma mark -----Table View Data Source Methods-----
-typedef enum {COLLECTIONS, ENTITIES} sectionEnum;
+typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
 
 
 //----------------
@@ -419,13 +411,6 @@ typedef enum {COLLECTIONS, ENTITIES} sectionEnum;
 }
 
 #pragma mark --Save/Reload--
-- (IBAction)orderSegmentAction:(UISegmentedControl*)sender {
-    if (sender.selectedSegmentIndex == 0){
-        self.rootViewController.spaceBar.isAutoOrderSpaceTokenEnabled = YES;
-    }else{
-        self.rootViewController.spaceBar.isAutoOrderSpaceTokenEnabled = NO;
-    }
-}
 
 - (IBAction)saveAction:(id)sender {
     [self saveWithFilename:[[EntityDatabase sharedManager] currentFileName]];

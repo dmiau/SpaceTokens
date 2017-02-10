@@ -31,8 +31,9 @@
     if (!self.spatialEntity ||
         ![self.spatialEntity isKindOfClass:[Route class]])
     {
-        [self setBackgroundColor:[UIColor orangeColor]];
+        [self setBackgroundColor:[UIColor grayColor]];
     }else{
+        [self setBackgroundColor:[UIColor grayColor]];
         UIImage *arrayIcon = [UIImage imageNamed:@"arrayIcon"];
         UIImage *pathIcon = [UIImage imageNamed:@"pathIcon"];
         UIImage *setIcon = [UIImage imageNamed:@"setIcon"];
@@ -40,15 +41,15 @@
         Route *aRoute = self.spatialEntity;
         switch (aRoute.appearanceMode) {
             case ARRAYMODE:
-                [self setBackgroundColor:[[UIColor purpleColor] colorWithAlphaComponent:0.5]];
+                
                 [self setBackgroundImage:arrayIcon forState:UIControlStateNormal];
                 break;
             case SETMODE:
-                [self setBackgroundColor:[UIColor brownColor]];
+                
                 [self setBackgroundImage:setIcon forState:UIControlStateNormal];
                 break;
             case ROUTEMODE:
-                [self setBackgroundColor:[UIColor orangeColor]];
+                
                 [self setBackgroundImage:pathIcon forState:UIControlStateNormal];
                 break;
             default:

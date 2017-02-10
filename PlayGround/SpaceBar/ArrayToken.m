@@ -25,7 +25,7 @@
     self = [super init];
     
     // Change the color to orange
-    [self setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.5]];
+    [self setBackgroundColor:[UIColor grayColor]];
     self.frame = CGRectMake(0, 0, ARRAY_TOKEN_WIDTH, ARRAY_TOKEN_HEIGHT);
 
     return self;

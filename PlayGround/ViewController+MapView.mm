@@ -38,7 +38,7 @@
     
     // Broadcast a notification about the changing map
     NSNotification *notification = [NSNotification notificationWithName:MapUpdatedNotification
-                                                                 object:self userInfo:nil];
+                                    object:self userInfo:nil];
     [[ NSNotificationCenter defaultCenter] postNotification:notification];
 }
 

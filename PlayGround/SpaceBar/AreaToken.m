@@ -30,7 +30,7 @@
 - (void)restoreDefaultStyle{
     UIImage *areaIcon = [UIImage imageNamed:@"areaIcon"];
     
-    [self setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
+    [self setBackgroundColor:[UIColor grayColor]];
     [self setBackgroundImage:areaIcon forState:UIControlStateNormal];
     
     //UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);

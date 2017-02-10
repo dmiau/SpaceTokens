@@ -435,18 +435,18 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jz0-E0-mAf">
-                                <rect key="frame" x="-4" y="113" width="383" height="461"/>
+                                <rect key="frame" x="-4" y="49" width="383" height="525"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTableCell" textLabel="hva-zP-2kz" style="IBUITableViewCellStyleDefault" id="wvx-04-IBL">
                                         <rect key="frame" x="0.0" y="28" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wvx-04-IBL" id="wQG-At-MDu">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hva-zP-2kz">
-                                                    <rect key="frame" x="15" y="0.0" width="353" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="353" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -461,24 +461,8 @@
                                     <outlet property="delegate" destination="bfX-jC-fod" id="8aw-pP-xa0"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vgW-5M-Fod">
-                                <rect key="frame" x="211" y="119" width="82" height="29"/>
-                                <segments>
-                                    <segment title="On"/>
-                                    <segment title="Off"/>
-                                </segments>
-                                <connections>
-                                    <action selector="orderSegmentAction:" destination="bfX-jC-fod" eventType="valueChanged" id="A9w-eg-h62"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-order SpaceTokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i99-zy-ZRI">
-                                <rect key="frame" x="9" y="79" width="190" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4w-il-8qv">
-                                <rect key="frame" x="335" y="70" width="30" height="30"/>
+                                <rect key="frame" x="329" y="20" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editAction:" destination="bfX-jC-fod" eventType="touchUpInside" id="Nzm-m0-k7T"/>
@@ -487,33 +471,27 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="N4w-il-8qv" firstAttribute="top" secondItem="gvL-K7-fVe" secondAttribute="bottom" constant="50" id="17Q-oH-WLB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VaN-kG-v8U" secondAttribute="trailing" constant="-20" id="3wA-KH-D6D"/>
-                            <constraint firstItem="vgW-5M-Fod" firstAttribute="top" secondItem="gvL-K7-fVe" secondAttribute="bottom" constant="55" id="4pp-MF-PU6"/>
-                            <constraint firstItem="jz0-E0-mAf" firstAttribute="leading" secondItem="HZe-dP-dh8" secondAttribute="leadingMargin" constant="-20" id="Lho-rn-4c0"/>
-                            <constraint firstItem="VaN-kG-v8U" firstAttribute="top" secondItem="jz0-E0-mAf" secondAttribute="bottom" id="WeG-Sh-evs"/>
-                            <constraint firstItem="i99-zy-ZRI" firstAttribute="leading" secondItem="HZe-dP-dh8" secondAttribute="leadingMargin" constant="-7" id="WmE-yV-GQd"/>
+                            <constraint firstItem="jz0-E0-mAf" firstAttribute="trailing" secondItem="VaN-kG-v8U" secondAttribute="trailing" id="I6I-Fg-thI"/>
+                            <constraint firstItem="N4w-il-8qv" firstAttribute="trailing" secondItem="HZe-dP-dh8" secondAttribute="trailingMargin" id="KQY-JM-iH7"/>
+                            <constraint firstItem="N4w-il-8qv" firstAttribute="top" secondItem="gvL-K7-fVe" secondAttribute="bottom" id="U0U-SB-8fW"/>
+                            <constraint firstItem="jz0-E0-mAf" firstAttribute="top" secondItem="gvL-K7-fVe" secondAttribute="bottom" constant="29" id="VtW-FV-gpk"/>
                             <constraint firstItem="VaN-kG-v8U" firstAttribute="leading" secondItem="HZe-dP-dh8" secondAttribute="leadingMargin" constant="-20" id="a4y-qR-OjU"/>
                             <constraint firstItem="cii-8g-S8f" firstAttribute="top" secondItem="VaN-kG-v8U" secondAttribute="bottom" id="aWC-EA-QBc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jz0-E0-mAf" secondAttribute="trailing" constant="-20" id="cF8-NA-spf"/>
-                            <constraint firstItem="VaN-kG-v8U" firstAttribute="top" secondItem="jz0-E0-mAf" secondAttribute="bottom" id="dcW-Ca-p7H"/>
-                            <constraint firstItem="jz0-E0-mAf" firstAttribute="top" secondItem="vgW-5M-Fod" secondAttribute="bottom" constant="10" id="kVg-w7-lTO"/>
-                            <constraint firstItem="vgW-5M-Fod" firstAttribute="leading" secondItem="i99-zy-ZRI" secondAttribute="trailing" constant="8" id="qi8-VU-p2F"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="N4w-il-8qv" secondAttribute="trailing" constant="-6" id="zhE-TW-uAS"/>
-                            <constraint firstItem="i99-zy-ZRI" firstAttribute="top" secondItem="gvL-K7-fVe" secondAttribute="bottom" constant="59" id="zm1-oo-oI9"/>
+                            <constraint firstItem="jz0-E0-mAf" firstAttribute="leading" secondItem="VaN-kG-v8U" secondAttribute="leading" id="mXQ-kN-k5j"/>
+                            <constraint firstItem="jz0-E0-mAf" firstAttribute="bottom" secondItem="VaN-kG-v8U" secondAttribute="top" id="xvZ-I0-S03"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Entities" id="Ub1-TK-IJn"/>
                     <connections>
                         <outlet property="editOutlet" destination="N4w-il-8qv" id="RI0-6K-hoc"/>
                         <outlet property="myTableView" destination="jz0-E0-mAf" id="oId-nK-gLK"/>
-                        <outlet property="orderSegmentOutlet" destination="vgW-5M-Fod" id="kot-MS-415"/>
                         <segue destination="3dh-Fd-G6l" kind="show" identifier="POIDetailVC" id="Y5L-gc-RkD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsH-iE-Hqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="395"/>
+            <point key="canvasLocation" x="1877.5999999999999" y="394.45277361319341"/>
         </scene>
         <!--Recrods-->
         <scene sceneID="ycK-rw-sfw">
@@ -684,7 +662,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xzk-jW-pOr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xzk-jW-pOr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

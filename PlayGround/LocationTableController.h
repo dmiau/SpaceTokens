@@ -22,9 +22,7 @@
 
 @property ViewController* rootViewController;
 @property (weak, nonatomic) IBOutlet UIButton *editOutlet;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *orderSegmentOutlet;
 
-- (IBAction)orderSegmentAction:(id)sender;
 - (IBAction)saveAction:(id)sender;
 - (IBAction)reloadAction:(id)sender;
 - (IBAction)newFileAction:(id)sender;

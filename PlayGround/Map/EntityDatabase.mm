@@ -36,9 +36,11 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     cacheDefaultEntityArray = [[NSMutableArray alloc] init];
     useDefaultEntityArray = YES;
     self.youRHere = [[Person alloc] init];
-    self.isYouAreHereEnabled = YES;
+    self.youRHere.isEnabled = YES;
     return self;
 }
+
+
 
 
 // MARK: methods to support Game entity array
@@ -64,7 +66,7 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     }
     
     // Decide if youAreHere should be added
-    if (self.isYouAreHereEnabled && useDefaultEntityArray){
+    if (self.youRHere.isEnabled && useDefaultEntityArray){
         [outArray addObject:self.youRHere];
     }
     

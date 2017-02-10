@@ -269,7 +269,6 @@
     if (self.isConstraintLineOn){
         [self updateConstraintLine];
     }
-    
 }
 
 

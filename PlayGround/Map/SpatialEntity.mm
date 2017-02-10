@@ -86,6 +86,10 @@
 }
 
 - (BOOL)isEntityTouched:(UITouch*)touch{
+    
+    // Alternatively, one can look into this method
+    // CGPathContainsPoint
+    
     if ([self getPointDistanceToTouch:touch] < 15){
         return YES;
     }else{
