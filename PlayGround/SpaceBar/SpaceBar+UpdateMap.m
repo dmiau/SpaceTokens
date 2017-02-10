@@ -69,7 +69,7 @@
             allVisible = allVisible & [aToken.spatialEntity checkVisibilityOnMap:[CustomMKMapView sharedManager]];
         }
     
-        if (allVisible){
+        if (allVisible && self.mapView.camera.zoom > 10 ){
             return;
         }
         

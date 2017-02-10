@@ -23,8 +23,7 @@
         }
         return;
     }
-    
-    
+        
     routeSegmentArray = [NSMutableArray array];
     
     // Interate over each pair to get pari-wise routes

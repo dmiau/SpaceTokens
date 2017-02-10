@@ -133,23 +133,6 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     entity.isMapAnnotationEnabled = NO;
 }
 
-// MARK: Annotation management
-//----------------------------------------------------------
-
-
--(SpatialEntity*)entityForAnnotation:(id)anntation{
-    SpatialEntity *result = nil;
-    
-    for (SpatialEntity *entity in [self getEntityArray]){
-        if (entity.annotation == anntation){
-            result = entity;
-            break;
-        }
-    }
-    
-    return result;
-}
-
 
 // MARK: -- Save/Load --
 //----------------------------------------------------------

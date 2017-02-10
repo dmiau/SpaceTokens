@@ -43,9 +43,4 @@
 -(bool)saveDatatoFileWithName: (NSString*) fullPathFileName;
 -(bool)loadFromFile:(NSString*) fullPathFileName;
 
-
-
-// Find the entity associated with the annotation
--(SpatialEntity*)entityForAnnotation:(id)anntation;
-
 @end

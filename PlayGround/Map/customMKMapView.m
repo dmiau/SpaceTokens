@@ -8,7 +8,7 @@
 
 #import "CustomMKMapView.h"
 #include <stdlib.h>
-
+#import "InformationSheetManager.h"
 
 @implementation CustomMKMapView
 
@@ -52,7 +52,7 @@
     [self p_initGestureRecognizer];
     
     // Load the information sheet
-    self.informationSheet = [[[NSBundle mainBundle] loadNibNamed:@"MapInformationSheet" owner:self options:nil] firstObject];
+    self.informationSheetManager = [[InformationSheetManager alloc] init];
 }
 
 // Check if the protocol methods are implemetned

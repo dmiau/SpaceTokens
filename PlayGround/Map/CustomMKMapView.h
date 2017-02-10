@@ -13,7 +13,7 @@
 // Forward declration
 @class SpatialEntity;
 @class Route;
-@class MapInformationSheet;
+@class InformationSheetManager;
 
 //==============================
 // CustomMKMapView ******Delegate
@@ -50,7 +50,7 @@
 @property UIEdgeInsets edgeInsets;// this is for the zoom-to-fit feature
 
 @property BOOL isDebugModeOn;
-@property MapInformationSheet *informationSheet;
+@property InformationSheetManager *informationSheetManager;
 
 - (void)refreshAnnotations;
 

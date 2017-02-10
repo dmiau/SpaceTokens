@@ -84,6 +84,7 @@ using namespace std;
                    self.name);
              
              // There could be multiple routes
+             // For now I will save one only
              for (MKRoute *route in response.routes)
              {
                  // Populate a route
@@ -91,14 +92,15 @@ using namespace std;
                                   polylineWithPoints:route.polyline.points
                                   count:route.polyline.pointCount];
                  
+                 self.transportType = route.transportType;
+                 self.distance = route.distance;
+                 self.expectedTravelTime = route.expectedTravelTime;
+                 
                  self.requestCompletionFlag = YES;
                  if (self.routeReadyBlock){
                      self.routeReadyBlock();
                      self.routeReadyBlock = nil;
                  }
-                 
-                 // There could be multiple routes. Should I store them all?
-                 // For now I will save one only
                  break;
              }
          }
@@ -114,9 +116,6 @@ using namespace std;
     [self setContent: [entityArray mutableCopy]];
     [self updateRouteForContentArray];
 }
-
-
-
 
 
 -(void)assembleMutliSegmentRoute{

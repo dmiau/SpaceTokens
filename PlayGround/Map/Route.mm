@@ -177,5 +177,42 @@ template class std::vector<double>;
     return self;
 }
 
+// MARK: Debug
+- (NSString*)description{
+    NSMutableArray *lines = [NSMutableArray array];
+    [lines addObject:[NSString stringWithFormat:@"Route name: %@", self.name]];
+    
+    if ([routeSegmentArray count] == 0){
+        [lines addObject:[NSString stringWithFormat:@"Transportation type: %@",
+                          [self transportationTypeToString:self.transportType]]];
+        [lines addObject:[NSString stringWithFormat:@"Travel time (mins): %.2f", self.expectedTravelTime/60]];
+        [lines addObject:[NSString stringWithFormat:@"Travel distance (meters): %.2f", self.distance]];
+    }else{
+        for (Route *aRoute in routeSegmentArray){
+            [lines addObject:[aRoute description]];
+        }
+    }
+    
+    return [lines componentsJoinedByString:@"\n"];
+}
+
+-(NSString*)transportationTypeToString:(MKDirectionsTransportType)transportType{
+    NSString *output;
+    switch (transportType) {
+        case MKDirectionsTransportTypeAutomobile:
+            output = @"Car";
+            break;
+        case MKDirectionsTransportTypeWalking:
+            output = @"Walking";
+            break;
+        case MKDirectionsTransportTypeTransit:
+            output = @"Transit";
+            break;
+        case MKDirectionsTransportTypeAny:
+            output = @"Any";
+            break;
+    }
+    return output;
+}
 
 @end

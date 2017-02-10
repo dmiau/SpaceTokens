@@ -21,6 +21,4 @@
            name:(NSString *)name
                     location:(CLLocationCoordinate2D)location;
 - (void)didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate;
-
-- (void)highlightEntity:(SpatialEntity*)entity andResetOthers:(BOOL)resetFlag;
 @end

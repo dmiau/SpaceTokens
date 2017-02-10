@@ -20,7 +20,7 @@ typedef enum {ARRAYMODE, SETMODE, ROUTEMODE} AppeararnceMode;
 
 #pragma mark RouteInterface
 @interface Route : LineEntity{
-    NSMutableArray *routeSegmentArray; // This is to support the mutli-destination feature
+    NSMutableArray <Route*> *routeSegmentArray; // This is to support the mutli-destination feature
 }
 
 //------------------
@@ -31,9 +31,15 @@ typedef enum {ARRAYMODE, SETMODE, ROUTEMODE} AppeararnceMode;
 @property (nonatomic, copy) void (^routeReadyBlock)();
 
 @property (nonatomic, copy) void (^appearanceChangedHandlingBlock)();
+
+
 @property NSMutableDictionary <NSNumber*, SpatialEntity*> *annotationDictionary;
 @property BOOL requestCompletionFlag;
 @property AppeararnceMode appearanceMode;
+
+@property MKDirectionsTransportType transportType;
+@property CLLocationDistance distance;
+@property NSTimeInterval expectedTravelTime;
 
 //------------------
 // methods
@@ -45,11 +51,15 @@ typedef enum {ARRAYMODE, SETMODE, ROUTEMODE} AppeararnceMode;
 //------------------
 // tools
 //------------------
+// This requests a route and add it to EntityDatabase
 + (void) addRouteWithSource:(POI*) source Destination:(POI*) destination;
 
 // Create route with multiple points
 -(void)requestRouteFromEntities: (NSArray *)entityArray;
 
+
+// Array, set and route are all represented by Route, so the appearance type needs
+// to be modified.
 -(void)updateRouteForContentArray;
 -(void)updateArrayForContentArray;
 -(void)updateSetForContentArray;

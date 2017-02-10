@@ -9,7 +9,7 @@
 #import "HighlightedEntities.h"
 #import "SpatialEntity.h"
 #import "CustomMKMapView.h"
-#import "MapInformationSheet.h"
+#import "InformationSheetManager.h"
 
 @implementation HighlightedEntities
 
@@ -44,7 +44,7 @@
     self.lastHighlightedEntity = entity;
     entity.isMapAnnotationEnabled = YES;
     entity.annotation.isHighlighted = YES;
-    [[[CustomMKMapView sharedManager] informationSheet]
+    [[[CustomMKMapView sharedManager] informationSheetManager]
      addSheetForEntity:entity];
 }
 

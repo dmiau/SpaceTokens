@@ -13,6 +13,12 @@
 		9A058C871E393D030045AB0E /* areaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A058C841E393D030045AB0E /* areaIcon.png */; };
 		9A0B40881E4D5587004413B4 /* CollectionInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */; };
 		9A0B40891E4D5587004413B4 /* CollectionInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */; };
+		9A0B408C1E4D5736004413B4 /* PointInformationSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B408B1E4D5736004413B4 /* PointInformationSheet.m */; };
+		9A0B408D1E4D5736004413B4 /* PointInformationSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B408B1E4D5736004413B4 /* PointInformationSheet.m */; };
+		9A0B40901E4D5A67004413B4 /* InformationSheetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B408F1E4D5A67004413B4 /* InformationSheetManager.m */; };
+		9A0B40911E4D5A67004413B4 /* InformationSheetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B408F1E4D5A67004413B4 /* InformationSheetManager.m */; };
+		9A0B40941E4D5CE4004413B4 /* CollectionInformationSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B40931E4D5CE4004413B4 /* CollectionInformationSheet.m */; };
+		9A0B40951E4D5CE4004413B4 /* CollectionInformationSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B40931E4D5CE4004413B4 /* CollectionInformationSheet.m */; };
 		9A0CC0001E480565008F07CA /* starGray-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CBFFF1E480565008F07CA /* starGray-128.png */; };
 		9A0CC0011E480565008F07CA /* starGray-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CBFFF1E480565008F07CA /* starGray-128.png */; };
 		9A0CC0031E48084B008F07CA /* starGray-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CC0021E48084B008F07CA /* starGray-30.png */; };
@@ -206,8 +212,8 @@
 		9A8EC9E11D6112CD0012C769 /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
 		9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */; };
 		9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
-		9A8F8D2C1E4243E600B2B0A3 /* MapInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8F8D2B1E4243E600B2B0A3 /* MapInformationSheet.xib */; };
-		9A8F8D2D1E4243E600B2B0A3 /* MapInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8F8D2B1E4243E600B2B0A3 /* MapInformationSheet.xib */; };
+		9A8F8D2C1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8F8D2B1E4243E600B2B0A3 /* PointInformationSheet.xib */; };
+		9A8F8D2D1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8F8D2B1E4243E600B2B0A3 /* PointInformationSheet.xib */; };
 		9A8F8D301E42465200B2B0A3 /* MapInformationSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F8D2F1E42465200B2B0A3 /* MapInformationSheet.m */; };
 		9A8F8D311E42465200B2B0A3 /* MapInformationSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F8D2F1E42465200B2B0A3 /* MapInformationSheet.m */; };
 		9A90C7641DFE146500CDC578 /* ConnectionTool+Dragging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7631DFE146500CDC578 /* ConnectionTool+Dragging.mm */; };
@@ -417,6 +423,12 @@
 		9A0571371E0ED82E00A09E06 /* anchorInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anchorInstructions.png; sourceTree = "<group>"; };
 		9A058C841E393D030045AB0E /* areaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areaIcon.png; sourceTree = "<group>"; };
 		9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionInformationSheet.xib; path = Map/CollectionInformationSheet.xib; sourceTree = "<group>"; };
+		9A0B408A1E4D5736004413B4 /* PointInformationSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointInformationSheet.h; path = Map/PointInformationSheet.h; sourceTree = "<group>"; };
+		9A0B408B1E4D5736004413B4 /* PointInformationSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointInformationSheet.m; path = Map/PointInformationSheet.m; sourceTree = "<group>"; };
+		9A0B408E1E4D5A67004413B4 /* InformationSheetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InformationSheetManager.h; path = Map/InformationSheetManager.h; sourceTree = "<group>"; };
+		9A0B408F1E4D5A67004413B4 /* InformationSheetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InformationSheetManager.m; path = Map/InformationSheetManager.m; sourceTree = "<group>"; };
+		9A0B40921E4D5CE4004413B4 /* CollectionInformationSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionInformationSheet.h; path = Map/CollectionInformationSheet.h; sourceTree = "<group>"; };
+		9A0B40931E4D5CE4004413B4 /* CollectionInformationSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionInformationSheet.m; path = Map/CollectionInformationSheet.m; sourceTree = "<group>"; };
 		9A0CBFFF1E480565008F07CA /* starGray-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGray-128.png"; sourceTree = "<group>"; };
 		9A0CC0021E48084B008F07CA /* starGray-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGray-30.png"; sourceTree = "<group>"; };
 		9A0CC0051E480852008F07CA /* star-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-30.png"; sourceTree = "<group>"; };
@@ -571,7 +583,7 @@
 		9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreferencesController.mm; sourceTree = "<group>"; };
 		9A8F67EF1D3DA6D900C08CCB /* LocationTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableController.h; sourceTree = "<group>"; };
 		9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableController.m; sourceTree = "<group>"; };
-		9A8F8D2B1E4243E600B2B0A3 /* MapInformationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapInformationSheet.xib; path = Map/MapInformationSheet.xib; sourceTree = "<group>"; };
+		9A8F8D2B1E4243E600B2B0A3 /* PointInformationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PointInformationSheet.xib; path = Map/PointInformationSheet.xib; sourceTree = "<group>"; };
 		9A8F8D2E1E42465200B2B0A3 /* MapInformationSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapInformationSheet.h; path = Map/MapInformationSheet.h; sourceTree = "<group>"; };
 		9A8F8D2F1E42465200B2B0A3 /* MapInformationSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapInformationSheet.m; path = Map/MapInformationSheet.m; sourceTree = "<group>"; };
 		9A90C7621DFE146500CDC578 /* ConnectionTool+Dragging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ConnectionTool+Dragging.h"; path = "SpaceBar/ConnectionTool+Dragging.h"; sourceTree = "<group>"; };
@@ -1126,9 +1138,15 @@
 		9A8F8D2A1E4243C600B2B0A3 /* sheets */ = {
 			isa = PBXGroup;
 			children = (
-				9A8F8D2B1E4243E600B2B0A3 /* MapInformationSheet.xib */,
+				9A0B408E1E4D5A67004413B4 /* InformationSheetManager.h */,
+				9A0B408F1E4D5A67004413B4 /* InformationSheetManager.m */,
 				9A8F8D2E1E42465200B2B0A3 /* MapInformationSheet.h */,
 				9A8F8D2F1E42465200B2B0A3 /* MapInformationSheet.m */,
+				9A0B408A1E4D5736004413B4 /* PointInformationSheet.h */,
+				9A0B408B1E4D5736004413B4 /* PointInformationSheet.m */,
+				9A8F8D2B1E4243E600B2B0A3 /* PointInformationSheet.xib */,
+				9A0B40921E4D5CE4004413B4 /* CollectionInformationSheet.h */,
+				9A0B40931E4D5CE4004413B4 /* CollectionInformationSheet.m */,
 				9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */,
 			);
 			name = sheets;
@@ -1564,7 +1582,7 @@
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
 				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
 				9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */,
-				9A8F8D2C1E4243E600B2B0A3 /* MapInformationSheet.xib in Resources */,
+				9A8F8D2C1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */,
 				9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
@@ -1606,7 +1624,7 @@
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
 				9AE13BB41DF0D148008612DA /* RangeSlider in Resources */,
 				9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */,
-				9A8F8D2D1E4243E600B2B0A3 /* MapInformationSheet.xib in Resources */,
+				9A8F8D2D1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */,
 				9AE13BB51DF0D148008612DA /* ShowAuthoringPanel.xib in Resources */,
 				9AE13BB61DF0D148008612DA /* RangeSlider in Resources */,
 				9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */,
@@ -1687,6 +1705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */,
+				9A0B408C1E4D5736004413B4 /* PointInformationSheet.m in Sources */,
 				9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
 				9A177FCD1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
 				9A0E063D1D54FCB800E5722D /* ViewController+MapView.mm in Sources */,
@@ -1715,6 +1734,7 @@
 				9A4415131D6F67E800576CB4 /* SpaceToken+Gestures.m in Sources */,
 				9A5301491C5AD6A6008D584B /* ViewController.mm in Sources */,
 				9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
+				9A0B40901E4D5A67004413B4 /* InformationSheetManager.m in Sources */,
 				9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9AD887B21E42960F008E62E7 /* PickerToken.m in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
@@ -1762,6 +1782,7 @@
 				9A27222E1D6CB79C002AE953 /* Person.m in Sources */,
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */,
+				9A0B40941E4D5CE4004413B4 /* CollectionInformationSheet.m in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
 				9A2D6DEB1E23E5A900D64615 /* SetTool.mm in Sources */,
@@ -1807,6 +1828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */,
+				9A0B408D1E4D5736004413B4 /* PointInformationSheet.m in Sources */,
 				9AE13B501DF0D148008612DA /* EntityDatabase.mm in Sources */,
 				9A177FCF1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
 				9AE13B511DF0D148008612DA /* ViewController+MapView.mm in Sources */,
@@ -1835,6 +1857,7 @@
 				9AE13B5F1DF0D148008612DA /* SpaceToken+Gestures.m in Sources */,
 				9AE13B601DF0D148008612DA /* ViewController.mm in Sources */,
 				9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */,
+				9A0B40911E4D5A67004413B4 /* InformationSheetManager.m in Sources */,
 				9AE13B611DF0D148008612DA /* Route+Tools.mm in Sources */,
 				9AD887B31E42960F008E62E7 /* PickerToken.m in Sources */,
 				9AE13B621DF0D148008612DA /* AppDelegate.m in Sources */,
@@ -1882,6 +1905,7 @@
 				9AE13B851DF0D148008612DA /* Person.m in Sources */,
 				9AE13B871DF0D148008612DA /* Snapshot.m in Sources */,
 				9A5DA0341E16F2C9002A50B7 /* AreaToken.m in Sources */,
+				9A0B40951E4D5CE4004413B4 /* CollectionInformationSheet.m in Sources */,
 				9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */,
 				9AE13B8A1DF0D148008612DA /* AuthoringPanelBase.m in Sources */,
 				9A2D6DED1E23E5A900D64615 /* SetTool.mm in Sources */,

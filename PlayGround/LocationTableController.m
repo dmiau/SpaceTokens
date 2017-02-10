@@ -12,6 +12,7 @@
 #import "POIDetailViewController.h"
 #import "EntityDatabase.h"
 #import "CustomMKMapView+Annotations.h"
+#import "HighlightedEntities.h"
 #import "Person.h"
 
 #pragma mark --Entity Cell--
@@ -294,8 +295,8 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
         [[CustomMKMapView sharedManager] snapOneCoordinate:entity.latLon
                 toXY:CGPointMake(mapView.frame.size.width/2, mapView.frame.size.height/2)
                                                   animated:NO];
-        entity.isEnabled = YES;
-        [mapView highlightEntity:entity andResetOthers:YES];
+        [[HighlightedEntities sharedManager] addEntity:entity];
+        
         [self.navigationController popViewControllerAnimated:NO];
     }
 }

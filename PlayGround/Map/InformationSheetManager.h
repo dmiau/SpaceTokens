@@ -1,22 +1,19 @@
 //
-//  MapInformationSheet.h
+//  InformationSheetManager.h
 //  SpaceBar
 //
-//  Created by Daniel on 2/1/17.
+//  Created by dmiau on 2/9/17.
 //  Copyright © 2017 dmiau. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-
 @class SpatialEntity;
+@class MapInformationSheet;
 
-@interface MapInformationSheet : UIView <UITextFieldDelegate>
+@interface InformationSheetManager : NSObject
 
-@property SpatialEntity *spatialEntity;
+@property MapInformationSheet *activeSheet;
 
 -(void)addSheetForEntity:(SpatialEntity*)entity;
 -(void)removeSheet;
-
--(void)updateSheet;
-
 @end

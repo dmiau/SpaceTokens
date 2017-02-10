@@ -16,7 +16,7 @@
 #import "HighlightedEntities.h"
 #import "EntityDatabase.h"
 #import "DMTools.h"
-#import "MapInformationSheet.h"
+#import "InformationSheetManager.h"
 
 @implementation CustomMKMapView (Annotations)
 
@@ -38,15 +38,14 @@
     
 //    [self setSelectedMarker: marker];
     
-    SpatialEntity *matchedEntity = [[EntityDatabase sharedManager]
-                                    entityForAnnotation:marker];
+    SpatialEntity *matchedEntity = [self entityForAnnotation:marker];
     
     if (!matchedEntity){
         [DMTools showAlert:@"System error." withMessage:
          @"Matched entity was not found (didTapMarker)."];
+    }else{
+        [[HighlightedEntities sharedManager] addEntity: matchedEntity];
     }
-    
-    [[HighlightedEntities sharedManager] addEntity: matchedEntity];
     
     return YES;
 }
@@ -55,13 +54,12 @@
 {
     [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:
      SEARCH_RESULT];
-    [self.informationSheet removeSheet];
+    [self.informationSheetManager removeSheet];
 }
 
 - (void)didTapOverlay:(GMSOverlay *)overlay{
     
-    SpatialEntity *matchedEntity = [[EntityDatabase sharedManager]
-                                    entityForAnnotation:overlay];
+    SpatialEntity *matchedEntity = [self entityForAnnotation:overlay];
     
     if (!matchedEntity){
         [DMTools showAlert:@"System error." withMessage:
@@ -108,6 +106,27 @@
 //    infoMarker.infoWindowAnchor = pos;
 //    infoMarker.map = mapView;
 //    mapView.selectedMarker = infoMarker;
+}
+
+-(SpatialEntity*)entityForAnnotation:(id)anntation{
+    SpatialEntity *result = nil;
+    
+    // Search EntityDatabase first
+    for (SpatialEntity *entity in [[EntityDatabase sharedManager] getEntityArray]){
+        if (entity.annotation == anntation){
+            result = entity;
+            return result;
+        }
+    }
+    
+    // Search HighlightedEntities first
+    for (SpatialEntity *entity in [[HighlightedEntities sharedManager] getHighlightedSet]){
+        if (entity.annotation == anntation){
+            result = entity;
+            return result;
+        }
+    }
+    return result;
 }
 
 @end

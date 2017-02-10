@@ -25,16 +25,6 @@
     self.layer.shadowOffset = CGSizeMake(0, -1);
     self.layer.shadowRadius = 3;
     self.layer.shadowOpacity = 0.4;
-    
-    // Initialize the object
-    self.titleOutlet.delegate = self;
-    
-    [self.starOutlet setImage:
-    [[UIImage imageNamed:@"starGray-128.png"] resize:CGSizeMake(30, 30)]
-                     forState:UIControlStateNormal];
-    [self.starOutlet setImage:
-     [[UIImage imageNamed:@"star-128.png"] resize:CGSizeMake(30, 30)]
-                     forState:UIControlStateSelected];
 }
 
 -(void)addSheet{
@@ -74,19 +64,9 @@
 }
 
 -(void)updateSheet{
-    if (self.spatialEntity.annotation.pointType == STAR){
-        [self.starOutlet setSelected:YES];
-    }else{
-        [self.starOutlet setSelected:NO];
-    }
+    
 }
 
-// MARK: Setters
-//-------------------------------------
--(void)setSpatialEntity:(SpatialEntity *)spatialEntity{
-    _spatialEntity = spatialEntity;
-    self.titleOutlet.text = spatialEntity.name;
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -109,32 +89,7 @@
 
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    //---------------
-    // Rename a token
-    //---------------
-    self.spatialEntity.name = self.titleOutlet.text;
-    
-    // Find all the tokens with the same spatial entity
-    for (SpaceToken *token in [[TokenCollection sharedManager] getTokenArray]){
-        if (token.spatialEntity == self.spatialEntity){
-            [token
-             setTitle: self.titleOutlet.text
-             forState: UIControlStateNormal];
-        }
-    }
-    
-    [self.titleOutlet resignFirstResponder];
-    
-    // Need to shift the panel down
-    CGRect superFrame = self.superview.frame;
-    CGRect frame = CGRectMake(0, superFrame.size.height - INITIAL_HEIGHT,
-                              self.frame.size.width, self.frame.size.height);
-    self.frame = frame;
 
-    return YES;
-}
 
 
 // MARK: view movement
@@ -156,19 +111,5 @@
 }
 
 
-- (IBAction)starAction:(id)sender {
-    
-    SpatialEntity *entity = self.spatialEntity;
-    
-    if (entity.annotation.pointType == STAR){
-        // de-star
-        [[EntityDatabase sharedManager] removeEntity:entity];
-        entity.annotation.pointType = DEFAULT_MARKER;
-    }else{
-        // star the location
-        [[EntityDatabase sharedManager] addEntity:entity];
-        entity.annotation.isHighlighted = YES;
-    }
-    [self updateSheet];
-}
+
 @end

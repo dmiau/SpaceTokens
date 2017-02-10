@@ -18,6 +18,7 @@
 
 
 #import "TokenCollectionView.h"
+#import "InformationSheetManager.h"
 #import "MapInformationSheet.h"
 #import "ArrayTool.h"
 
@@ -160,7 +161,8 @@ static ViewController *instance;
 - (void)updateUIPlacement{
     
     // Get the specification of the information sheet
-    MapInformationSheet *informationSheet = self.mapView.informationSheet;
+    MapInformationSheet *informationSheet =
+    self.mapView.informationSheetManager.activeSheet;
     
     //----------------------
     // Update the placement of TokenCollectionView

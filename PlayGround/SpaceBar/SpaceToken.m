@@ -12,7 +12,7 @@
 #import "CustomPointAnnotation.h"
 #import "Person.h"
 #import "CustomMKMapView.h"
-#import "MapInformationSheet.h"
+#import "InformationSheetManager.h"
 
 #import "TokenCollectionView.h"
 
@@ -160,7 +160,7 @@
 
         // Populate the information sheet
         CustomMKMapView *mapView = [CustomMKMapView sharedManager];
-        [mapView.informationSheet addSheetForEntity:self.spatialEntity];
+        [mapView.informationSheetManager addSheetForEntity:self.spatialEntity];
         
     }else{
         [self restoreDefaultStyle];
