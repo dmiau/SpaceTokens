@@ -8,10 +8,10 @@
 
 #import "LineEntity.h"
 #import "CustomMKPolygon.h"
-#import "CustomGMSPolygon.h"
+#import "CustomGMSPolyline.h"
 
 @interface Area : LineEntity
 
 @property CustomMKPolygon *polygon;
-@property CustomGMSPolygon *annotation;
+@property CustomGMSPolyline *annotation;
 @end

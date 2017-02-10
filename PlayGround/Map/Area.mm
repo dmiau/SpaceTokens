@@ -23,18 +23,21 @@
     return self;
 }
 
--(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
-    
+-(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{    
     if (isMapAnnotationEnabled){
         self.annotation.map = [CustomMKMapView sharedManager];
     }else{
+        self.annotation.isFilled = NO;
         self.annotation.map = nil;
     }
 }
 
 -(void)setPolygon:(CustomMKPolygon *)polygon{
     _polygon = polygon;
-    self.annotation = [[CustomGMSPolygon alloc] initWithMKPolygon:polygon];
+    self.annotation.isFilled = NO;
+    self.annotation.map = nil;
+    self.annotation = nil;
+    self.annotation = [[CustomGMSPolyline alloc] initWithMKPolygon:polygon];
 }
 
 //-----------------

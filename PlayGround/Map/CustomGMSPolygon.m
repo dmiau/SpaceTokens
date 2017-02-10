@@ -7,9 +7,9 @@
 //
 
 #import "CustomGMSPolygon.h"
+#import "CustomGMSPolyline.h"
 
 @implementation CustomGMSPolygon
-
 -(id)initWithMKPolygon:(MKPolygon*) mkPolygon{
     
     GMSMutablePath *path = [GMSMutablePath path];
@@ -31,12 +31,12 @@
     _isHighlighted = isHighlighted;
     
     if (isHighlighted){
-        self.strokeWidth = 2;
-        self.strokeColor = [UIColor blueColor];
+//        self.strokeWidth = 2;
+//        self.strokeColor = [UIColor blueColor];
         self.fillColor = [UIColor colorWithRed:0.5 green:0 blue:0 alpha:0.3];
     }else{
-        self.strokeWidth = 1;
-        self.strokeColor = [UIColor grayColor];
+//        self.strokeWidth = 1;
+//        self.strokeColor = [UIColor grayColor];
         self.fillColor = [UIColor colorWithRed:0.25 green:0 blue:0 alpha:0.05];
     }
 }

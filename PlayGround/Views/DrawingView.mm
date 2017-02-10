@@ -129,25 +129,30 @@ using namespace std;
         
         SpatialEntity *newEntity;
         if (!isArea){
-            // Create a route
+            //------------------
+            // Baking a sketched line
+            //------------------
             Route *aRoute = [[Route alloc] initWithMKMapPointArray:mapPointArray];
+            aRoute.name = @"sketchedLine";
             newEntity = aRoute;
         }else{
+            //------------------
+            // Baking a sketched area
+            //------------------
             
-            // Close the path
+            // First need to close the path
             CGPoint aPoint = [[pointArray firstObject] CGPointValue];
             CLLocationCoordinate2D coord = [mapView convertPoint:aPoint toCoordinateFromView:self];
             [mapPointArray addObject:[NSValue valueWithMKMapPoint:MKMapPointForCoordinate(coord)]];
             
             Area *anArea = [[Area alloc] initWithMKMapPointArray:mapPointArray];
+            anArea.name = @"sketchedArea";
             newEntity = anArea;
         }
         
         // Push the newly created route into the entity database
-        EntityDatabase *entityDatabase = [EntityDatabase sharedManager];
-        [entityDatabase addEntity:newEntity];
+        [[EntityDatabase sharedManager] addEntity:newEntity];
         [[HighlightedEntities sharedManager] addEntity:newEntity];
-        
     }
     
     // Clear the path

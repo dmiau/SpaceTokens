@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+tools.h"
 #import "EntityDatabase.h"
+#import "Route.h"
 
 
 #define INITIAL_HEIGHT 60
@@ -35,6 +36,14 @@
     self.titleOutlet.text = self.spatialEntity.name;
 
     self.detailTextView.text = self.spatialEntity.description;
+    
+    if ([self.spatialEntity isKindOfClass:[Route class]]){
+        Route *aRoute = self.spatialEntity;
+        self.quickInfoOutlet.text = [NSString stringWithFormat:@"%.2f mins, %.2f meters",
+                                     aRoute.expectedTravelTime/60, aRoute.distance];
+    }else{
+        self.quickInfoOutlet.text = @"";
+    }
 }
 
 // MARK: Setters

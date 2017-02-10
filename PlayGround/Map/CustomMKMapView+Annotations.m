@@ -8,10 +8,6 @@
 
 #import "CustomMKMapView+Annotations.h"
 #import "CustomPointAnnotation.h"
-#import "CustomMKPolygon.h"
-#import "CustomGMSPolygon.h"
-#import "CustomMKPolyline.h"
-#import "CustomGMSPolyline.h"
 #import "POI.h"
 #import "HighlightedEntities.h"
 #import "EntityDatabase.h"

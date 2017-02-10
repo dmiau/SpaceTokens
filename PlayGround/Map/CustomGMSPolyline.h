@@ -13,7 +13,8 @@
 @property location_enum pointType;
 @property bool isLabelOn;
 @property BOOL isHighlighted;
+@property BOOL isFilled;
 
 -(id)initWithMKPolyline:(MKPolyline*) mkPolyline;
-
+-(id)initWithMKPolygon:(MKPolygon*) mkPolygon;
 @end

@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *titleOutlet;
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
+@property (weak, nonatomic) IBOutlet UITextView *quickInfoOutlet;
 
 // star button
 @property (weak, nonatomic) IBOutlet UIButton *starOutlet;

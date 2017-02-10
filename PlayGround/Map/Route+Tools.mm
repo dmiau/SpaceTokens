@@ -137,13 +137,22 @@ using namespace std;
     
     int accumulatedCount = 0;
     NSMutableDictionary <NSNumber*, SpatialEntity*> *indexEntityDictionary = [NSMutableDictionary dictionary];
+    
+    NSTimeInterval totalTime = 0;
+    CLLocationDistance totalDistance = 0;
     for (Route *aRoute in routeSegmentArray){
         pointCountVector.push_back(aRoute.polyline.pointCount);
         pointsArray.push_back(aRoute.polyline.points);
         
         indexEntityDictionary[@(accumulatedCount)] = [[aRoute getContent] firstObject];
         accumulatedCount += aRoute.polyline.pointCount;
+        
+        totalTime += aRoute.expectedTravelTime;
+        totalDistance += aRoute.distance;
     }
+    self.expectedTravelTime = totalTime;
+    self.distance = totalDistance;
+    
     MKMapPoint *accumulatedMapPoints = new MKMapPoint[accumulatedCount];
     indexEntityDictionary[@(accumulatedCount-1)] =
     [[(Route*)[routeSegmentArray lastObject] getContent] lastObject];
