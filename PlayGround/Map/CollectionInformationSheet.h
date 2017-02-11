@@ -18,4 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *starOutlet;
 - (IBAction)starAction:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *collectionModeOutlet;
+- (IBAction)collectionModeAction:(id)sender;
+
 @end

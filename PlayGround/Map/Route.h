@@ -16,7 +16,7 @@
 using namespace std;
 @class POI;
 
-typedef enum {ARRAYMODE, SETMODE, ROUTEMODE} AppeararnceMode;
+typedef enum {SETMODE, ARRAYMODE, ROUTEMODE} AppeararnceMode;
 
 #pragma mark RouteInterface
 @interface Route : LineEntity{
@@ -54,13 +54,4 @@ typedef enum {ARRAYMODE, SETMODE, ROUTEMODE} AppeararnceMode;
 // This requests a route and add it to EntityDatabase
 + (void) addRouteWithSource:(POI*) source Destination:(POI*) destination;
 
-// Create route with multiple points
--(void)requestRouteFromEntities: (NSArray *)entityArray;
-
-
-// Array, set and route are all represented by Route, so the appearance type needs
-// to be modified.
--(void)updateRouteForContentArray;
--(void)updateArrayForContentArray;
--(void)updateSetForContentArray;
 @end

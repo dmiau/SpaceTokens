@@ -9,6 +9,7 @@
 #import "CustomPointAnnotation.h"
 #import "CustomMKMapView.h"
 #import "UIImage+tools.h"
+#import "StarIconGenerator.h"
 
 @implementation CustomPointAnnotation{
     UILabel *aLabel;
@@ -29,14 +30,27 @@
     aLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 45, 20)];
     
     // Preload all the images
-    starImg = [[UIImage imageNamed:@"star-250.png"] resize:CGSizeMake(24, 24)];
+    StarIconGenerator *starGenerator = [[StarIconGenerator alloc] init];
+    starGenerator.isMarkerOn = NO;
+    starImg = [starGenerator generateIcon];
     
-    highlightedStarImg = [[UIImage imageNamed:@"selectedStar-250.png"] resize:CGSizeMake(24, 24)];
+    starGenerator.isMarkerOn = YES;
+    highlightedStarImg = [starGenerator generateIcon];
     grayDotImg = [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
     redDotImg = [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
     youRHereImg = [[UIImage imageNamed:@"grayYouRHere.png"]  resize:CGSizeMake(12, 12)];
+
+    // Backup
+//    starImg = [[UIImage imageNamed:@"star-250.png"] resize:CGSizeMake(24, 24)];
+//    
+//    highlightedStarImg = [[UIImage imageNamed:@"selectedStar-250.png"] resize:CGSizeMake(24, 24)];
+//    grayDotImg = [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
+//    redDotImg = [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
+//    youRHereImg = [[UIImage imageNamed:@"grayYouRHere.png"]  resize:CGSizeMake(12, 12)];
+    
     return self;
 }
+
 
 -(void)setPointType:(location_enum)pointType{
     _pointType = pointType;

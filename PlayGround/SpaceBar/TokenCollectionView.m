@@ -338,18 +338,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
 
 // MARK: Insert
 
--(void)addItemFromBottom:(SpatialEntity*)anEntity{    
-
-    // This code is problemmatic...
-    //    [self.arrayEntity insertObject:anEntity
-//                           atIndex:[[self.arrayEntity getContent] count]-2];
-//    [self.arrayEntity updateBoundingMapRect];
-//    
-//    NSUInteger index = [[self.arrayEntity getContent] count]  -2;
-//    NSArray *indexPaths = [NSArray
-//                           arrayWithObject:
-//                           [NSIndexPath indexPathForRow:index inSection:0]];
-//    [self insertItemsAtIndexPaths:indexPaths];
+-(void)addItemFromBottom:(SpatialEntity*)anEntity{
     
     [[EntityDatabase sharedManager] addEntity:anEntity];
     anEntity.isEnabled = YES;

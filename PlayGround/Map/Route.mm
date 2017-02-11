@@ -14,6 +14,7 @@
 #include <cmath>
 #include "NSValue+MKMapPoint.h"
 #include "CustomMKPolyline.h"
+#include "Route+Appearance.h"
 
 using namespace std;
 
@@ -67,16 +68,23 @@ template class std::vector<double>;
 //----------------
 -(void)setAppearanceMode:(AppeararnceMode)appearanceMode{
     _appearanceMode = appearanceMode;
+    
+    switch (self.appearanceMode) {
+        case ARRAYMODE:
+            [self updateArrayForContentArray];
+            break;
+        case SETMODE:
+            [self updateSetForContentArray];
+            break;
+        case ROUTEMODE:
+            [self updateRouteForContentArray];
+            break;
+    }
+    
     if (self.appearanceChangedHandlingBlock){
         self.appearanceChangedHandlingBlock();
     }
 }
-
--(void)setIsMapAnnotationEnabled:(BOOL)flag{
-    [super setIsMapAnnotationEnabled:flag];
-}
-
-
 
 //----------------
 // MARK: -- Save the route --

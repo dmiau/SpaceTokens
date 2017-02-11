@@ -41,6 +41,8 @@
         Route *aRoute = self.spatialEntity;
         self.quickInfoOutlet.text = [NSString stringWithFormat:@"%.2f mins, %.2f meters",
                                      aRoute.expectedTravelTime/60, aRoute.distance];
+        
+        self.collectionModeOutlet.selectedSegmentIndex = aRoute.appearanceMode;
     }else{
         self.quickInfoOutlet.text = @"";
     }
@@ -88,6 +90,7 @@
     return YES;
 }
 
+// MARK: Button actions
 - (IBAction)starAction:(id)sender {
     SpatialEntity *entity = self.spatialEntity;
     if ([self.starOutlet.titleLabel.text isEqualToString: @"remove"]){
@@ -99,6 +102,14 @@
     }
 
     [self updateSheet];
+}
+
+- (IBAction)collectionModeAction:(id)sender {
+    if (![self.spatialEntity isKindOfClass:[Route class]])
+        return;
+    
+    Route *aRoute = self.spatialEntity;
+    aRoute.appearanceMode = (AppeararnceMode)self.collectionModeOutlet.selectedSegmentIndex;
 }
 
 

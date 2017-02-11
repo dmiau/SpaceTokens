@@ -11,9 +11,8 @@
 #import "Route+Tools.h"
 
 @implementation Route (Appearance)
+
 -(void)updateRouteForContentArray{
-    
-    self.appearanceMode = ROUTEMODE;
         
     if ([contentArray count] < 2){
         self.polyline = nil;
@@ -49,13 +48,10 @@
         aRoute.routeReadyBlock = complectionAction;
         [aRoute requestRouteWithSource:(POI*)source Destination:(POI*)destination];
     }
-
 }
 
 -(void)updateArrayForContentArray{
     // Remove the current annotation if there is any
-    
-    self.appearanceMode = ARRAYMODE;
     self.isMapAnnotationEnabled = NO;
     // No polyline for Array
     self.polyline = nil;
@@ -64,8 +60,6 @@
 
 -(void)updateSetForContentArray{
     // Remove the current annotation if there is any
-    
-    self.appearanceMode = SETMODE;
     self.isMapAnnotationEnabled = NO;
     // No polyline for Array
     self.polyline = nil;

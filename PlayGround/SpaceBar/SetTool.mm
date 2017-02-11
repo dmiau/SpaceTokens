@@ -321,8 +321,6 @@
     
     // Update the line if there are more than two entities
 
-    [self.arrayEntity updateSetForContentArray];
-
     [self updateView];
 }
 
@@ -339,8 +337,6 @@
     }else{
         [self.arrayEntity removeObject:token.spatialEntity];
     }
-    
-    [self.arrayEntity updateSetForContentArray];
     
     [self updateView];
 }

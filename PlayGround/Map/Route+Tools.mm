@@ -108,16 +108,6 @@ using namespace std;
      }];
 }
 
-
--(void)requestRouteFromEntities: (NSArray *)entityArray{
-    
-    // Remove the current annotation if there is any
-    self.isMapAnnotationEnabled = NO;
-    [self setContent: [entityArray mutableCopy]];
-    [self updateRouteForContentArray];
-}
-
-
 -(void)assembleMutliSegmentRoute{
     BOOL allCompletionFlag = true;
     
@@ -149,6 +139,9 @@ using namespace std;
         
         totalTime += aRoute.expectedTravelTime;
         totalDistance += aRoute.distance;
+        
+        // Show no annotations for temporary route!
+        aRoute.isMapAnnotationEnabled = NO;
     }
     self.expectedTravelTime = totalTime;
     self.distance = totalDistance;

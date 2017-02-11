@@ -43,7 +43,7 @@ template class std::vector<double>;
     self.annotation = [[CustomGMSPolyline alloc] init];
     self.polyline = polyline;
     self.name = @"unNamedLine";
-    
+    self.isMapAnnotationEnabled = NO;
     return self;
 }
 

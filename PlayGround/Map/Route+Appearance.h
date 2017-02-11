@@ -10,4 +10,8 @@
 
 @interface Route (Appearance)
 
+-(void)updateRouteForContentArray;
+-(void)updateArrayForContentArray;
+-(void)updateSetForContentArray;
+
 @end
