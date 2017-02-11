@@ -145,6 +145,8 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
+    [[HighlightedEntities sharedManager] clearHIghlightedEntitiesOfType:SEARCH_RESULT];
+    
     // Specify the search bias to the current visible map area
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
@@ -181,7 +183,7 @@
         aPOI.annotation.pointType = SEARCH_RESULT;
         
 
-        [poiArray addObject:aPOI];        
+        [poiArray addObject:aPOI];
         [[HighlightedEntities sharedManager] addEntity:aPOI];
         
         bound = [bound includingBounds:place.viewport];

@@ -152,6 +152,7 @@ using namespace std;
         
         // Push the newly created route into the entity database
         [[EntityDatabase sharedManager] addEntity:newEntity];
+        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
         [[HighlightedEntities sharedManager] addEntity:newEntity];
     }
     

@@ -37,9 +37,9 @@
 // This return all the entities with mapAnnotation enabled
 - (void)addEntity:(SpatialEntity*)entity{
     
-    // Need to reset annotation based on type
-    [self resetAnnotationBasedOnCurrentEntity: entity];
-        
+//    // Need to reset annotation based on type
+//    [self resetAnnotationBasedOnCurrentEntity: entity];
+    
     [_highlightedSet addObject:entity];
     self.lastHighlightedEntity = entity;
     entity.isMapAnnotationEnabled = YES;

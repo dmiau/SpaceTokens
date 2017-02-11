@@ -40,6 +40,7 @@
         [DMTools showAlert:@"System error." withMessage:
          @"Matched entity was not found (didTapMarker)."];
     }else{
+        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
         [[HighlightedEntities sharedManager] addEntity: matchedEntity];
     }
     
@@ -61,6 +62,7 @@
         [DMTools showAlert:@"System error." withMessage:
          @"Matched entity was not found (didTapOverlay)."];
     }else{
+        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
         [[HighlightedEntities sharedManager] addEntity: matchedEntity];
     }    
 }
@@ -73,7 +75,7 @@
     tempPOI.name = @"Dropped";
     tempPOI.placeID = @"";
     tempPOI.annotation.pointType = DROPPED;
-    
+    [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
     [[HighlightedEntities sharedManager] addEntity: tempPOI];
 }
 
@@ -88,8 +90,9 @@
     tempPOI.name = name;
     tempPOI.placeID = placeID;
     tempPOI.annotation.pointType = DROPPED;
-
-     [[HighlightedEntities sharedManager] addEntity: tempPOI];
+    
+    [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+    [[HighlightedEntities sharedManager] addEntity: tempPOI];
     
 //    [self setSelectedMarker:tempPOI.annotation];
     

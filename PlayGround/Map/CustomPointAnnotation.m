@@ -44,10 +44,7 @@
 //    starImg = [[UIImage imageNamed:@"star-250.png"] resize:CGSizeMake(24, 24)];
 //    
 //    highlightedStarImg = [[UIImage imageNamed:@"selectedStar-250.png"] resize:CGSizeMake(24, 24)];
-//    grayDotImg = [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
-//    redDotImg = [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
-//    youRHereImg = [[UIImage imageNamed:@"grayYouRHere.png"]  resize:CGSizeMake(12, 12)];
-    
+
     return self;
 }
 
@@ -76,6 +73,13 @@
         // A star image
         //--------------------------
         self.icon = starImg;
+        self.infoWindowAnchor = CGPointMake(0.5, 0.5);
+        self.groundAnchor = CGPointMake(0.5, 0.5);
+    }else if(pointType == SEARCH_RESULT){
+        //--------------------------
+        // Search result (red dot)
+        //--------------------------
+        self.icon = redDotImg;
         self.infoWindowAnchor = CGPointMake(0.5, 0.5);
         self.groundAnchor = CGPointMake(0.5, 0.5);
     }else{
@@ -111,14 +115,12 @@
         //-------------------
         // normal
         //-------------------
-        
+//        self.pointType = self.pointType;
         if (self.pointType == LANDMARK){
             self.icon = grayDotImg;
         }else if (self.pointType == STAR){
-//            self.icon = starImg;
-            
-
-            self.iconView = [[UIImageView alloc] initWithImage: starImg];
+            self.iconView = nil;
+            self.icon = starImg;
         }else{
             self.map = nil;
         }
