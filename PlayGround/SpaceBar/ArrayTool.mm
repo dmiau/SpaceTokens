@@ -14,15 +14,13 @@
 #import "Route.h"
 #import "ViewController.h"
 
-#import "ArrayEntity.h"
 #import "AdditionTool.h"
 #import "PathToken.h"
 #import "EntityDatabase.h"
 
-typedef enum {ArrayMode, PathMode} ArrayToolMode;
+
 
 @implementation ArrayTool{
-    ArrayToolMode arrayToolMode;
     AdditionTool *additionTool;
     int counter;
 }
@@ -58,7 +56,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     self.tokenWidth = 60;
     [self setTopAlignmentOffset:0];
     
-    arrayToolMode = ArrayMode;
+    self.arrayToolMode = ArrayMode;
     counter = 0;
     self.arrayEntity = [[Route alloc] init];
     self.arrayEntity.name = [NSString stringWithFormat:@"AC-%d", counter++];
@@ -155,7 +153,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
     
-    if (arrayToolMode == ArrayMode){
+    if (self.arrayToolMode == ArrayMode){
         if ((point.x < self.tokenWidth)
             &&(point.y > 0)){
             return YES;
@@ -163,7 +161,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
             return NO;
         }
         
-    }else if (arrayToolMode == PathMode){
+    }else if (self.arrayToolMode == PathMode){
         if (CGRectContainsPoint(self.masterToken.frame, point)){
             return YES;
         }else{
@@ -179,7 +177,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 -(void)setArrayEntity:(Route *)arrayEntity{
     [super setArrayEntity:arrayEntity];
 }
-
 
 #pragma mark <UICollectionViewDataSource>
 // TODO: need to implement a viewWillAppear
@@ -197,7 +194,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
     
     NSInteger outCount;
-    if (arrayToolMode == ArrayMode){
+    if (self.arrayToolMode == ArrayMode){
         outCount = [[self.arrayEntity getContent] count];
     }else{
         outCount = 0;
@@ -226,7 +223,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     }else{
         // This part is called when a token is provided as a candidate to the master token
         
-        if (![token.spatialEntity isKindOfClass:[ArrayEntity class]]){
+        if (![token.spatialEntity isKindOfClass:[Route class]]){
             return NO;
         }
         
@@ -236,6 +233,12 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
         self.arrayEntity = self.masterToken.spatialEntity;
     }
     self.masterToken.home = self;
+    
+    [self configureToolModeBasedOnMaster];
+    
+    // Observe the master token
+    [self.arrayEntity addObserver:self forKeyPath:@"dirtyFlag"
+                          options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     // Set up the frame
     CGRect masterFrame = CGRectMake(0, 20,
@@ -254,17 +257,32 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     };
     self.masterToken.didCreateClone = cloneCreationHandler;
     
-    // After the route is updated, its annotation needs to be updated, too.
-    void (^requestCompletionBlock)(void)=^{
-        // Show the annotation after the route is ready
-        self.arrayEntity.isMapAnnotationEnabled = YES;
-    };
-    self.arrayEntity.routeReadyBlock = requestCompletionBlock;
-    
     [self reloadData];
     return YES;
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"dirtyFlag"] && object == self.arrayEntity)
+    {
+        [self configureToolModeBasedOnMaster];
+    }
+}
+
+-(void)configureToolModeBasedOnMaster{
+    // Configure the bar mode
+    Route *aRoute = self.arrayEntity;
+    if (aRoute.appearanceMode == ROUTEMODE ||
+        aRoute.appearanceMode == SKETCHEDROUTE)
+    {
+        self.arrayToolMode = PathMode;
+        [[ViewController sharedManager] showRoute:aRoute
+                                   zoomToOverview:YES];
+    }else{
+        [[ViewController sharedManager] removeRoute];
+        self.arrayToolMode = ArrayMode;
+    }
+    [self reloadData];
+}
 
 //------------------
 // Insert a token
@@ -306,6 +324,8 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
     // Depending on the token, different things need to be done
     if (token.spatialEntity == self.arrayEntity){
         // masterToken is removed
+        
+        [self.arrayEntity removeObserver:self forKeyPath:@"dirtyFlag"];
         
         // Remove the annotation before the master token is removed
         self.arrayEntity.isMapAnnotationEnabled = NO;

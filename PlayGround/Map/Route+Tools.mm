@@ -29,7 +29,7 @@ using namespace std;
         // Push the newly created route into the entity database
         [[EntityDatabase sharedManager] addEntity:aRoute];
         // Newly created route should be highlighted
-        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+        [[HighlightedEntities sharedManager] clearHighlightedSet];
         [[HighlightedEntities sharedManager] addEntity:aRoute];
     };
     aRoute.routeReadyBlock = completionBlock;
@@ -193,6 +193,7 @@ using namespace std;
     if (self.routeReadyBlock){
         self.routeReadyBlock();
     }
+    self.dirtyFlag = @0;
 }
 
 

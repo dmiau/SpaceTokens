@@ -8,6 +8,7 @@
 
 #import "PathToken.h"
 #import "Route.h"
+#import "SpaceToken+Tools.h"
 
 @implementation PathToken
 
@@ -81,5 +82,12 @@
     [self restoreDefaultStyle];
 }
 
-
+- (void)setSelected:(BOOL)selected{
+    [super setSelected:selected];
+    
+    if (self.appearanceType == SETMODE ){
+        // Put the child tokens into touching set?
+        
+    }
+}
 @end

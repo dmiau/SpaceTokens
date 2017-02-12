@@ -145,7 +145,7 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    [[HighlightedEntities sharedManager] clearHIghlightedEntitiesOfType:SEARCH_RESULT];
+    [[EntityDatabase sharedManager] removeEntitiesOfType:SEARCH_RESULT];
     
     // Specify the search bias to the current visible map area
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
@@ -165,7 +165,7 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if ([searchText length] == 0){
-        [[HighlightedEntities sharedManager] clearHIghlightedEntitiesOfType:SEARCH_RESULT];
+        [[EntityDatabase sharedManager] removeEntitiesOfType:SEARCH_RESULT];
     }
 }
 
@@ -182,10 +182,8 @@
         aPOI.placeID = place.placeID;
         aPOI.annotation.pointType = SEARCH_RESULT;
         
-
         [poiArray addObject:aPOI];
-        [[HighlightedEntities sharedManager] addEntity:aPOI];
-        
+        [[EntityDatabase sharedManager] addEntity:aPOI];        
         bound = [bound includingBounds:place.viewport];
     }
 
@@ -224,7 +222,7 @@
     aPOI.latLon = place.coordinate;
     aPOI.placeID = place.placeID;
     aPOI.annotation.pointType = SEARCH_RESULT;
-    [[HighlightedEntities sharedManager] addEntity:aPOI];
+    [[EntityDatabase sharedManager] addEntity:aPOI];
     
     if (!self.searchHandlingBlock){
         //----------------------

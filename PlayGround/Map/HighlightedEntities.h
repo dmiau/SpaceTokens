@@ -17,8 +17,6 @@
 
 +(HighlightedEntities*)sharedManager;
 
-@property SpatialEntity *lastHighlightedEntity;
-
 // Methods to access entities
 - (NSMutableSet<SpatialEntity*>*)getHighlightedSet;
 // This return all the entities with mapAnnotation enabled
@@ -26,6 +24,5 @@
 - (void)removeEntity:(SpatialEntity*)entity;
 
 -(void)clearHighlightedSet;
--(void)clearHIghlightedEntitiesOfType:(location_enum)pointType;
--(void)clearAllHIghlightedEntitiesButType:(location_enum)pointType;
+
 @end

@@ -296,7 +296,7 @@ typedef enum {COLLECTIONS, ENTITIES, PERSON} sectionEnum;
                 toXY:CGPointMake(mapView.frame.size.width/2, mapView.frame.size.height/2)
                                                   animated:NO];
         
-        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+        [[HighlightedEntities sharedManager] clearHighlightedSet];
         [[HighlightedEntities sharedManager] addEntity:entity];
         
         [self.navigationController popViewControllerAnimated:NO];

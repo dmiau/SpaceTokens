@@ -113,6 +113,6 @@
         [[EntityDatabase sharedManager] addEntity:entity];
         entity.annotation.isHighlighted = YES;
     }
-    [self updateSheet];
+    entity.dirtyFlag = @0;
 }
 @end

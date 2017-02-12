@@ -55,6 +55,7 @@
     self.isMapAnnotationEnabled = NO;
     // No polyline for Array
     self.polyline = nil;
+    self.dirtyFlag = @0;
 }
 
 
@@ -63,6 +64,7 @@
     self.isMapAnnotationEnabled = NO;
     // No polyline for Array
     self.polyline = nil;
+    self.dirtyFlag = @0;
 }
 
 @end

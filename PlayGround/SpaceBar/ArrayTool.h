@@ -13,6 +13,7 @@
 @class ArrayEntity;
 @class PathToken;
 @class Route;
+typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 @interface ArrayTool : TokenCollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -21,5 +22,5 @@
 @property Route* arrayEntity;
 
 @property PathToken *masterToken;
-
+@property ArrayToolMode arrayToolMode;
 @end

@@ -37,11 +37,7 @@
 // This return all the entities with mapAnnotation enabled
 - (void)addEntity:(SpatialEntity*)entity{
     
-//    // Need to reset annotation based on type
-//    [self resetAnnotationBasedOnCurrentEntity: entity];
-    
     [_highlightedSet addObject:entity];
-    self.lastHighlightedEntity = entity;
     entity.isMapAnnotationEnabled = YES;
     entity.annotation.isHighlighted = YES;
     [[[CustomMKMapView sharedManager] informationSheetManager]
@@ -56,39 +52,12 @@
 
 // MARK: Clear the annotation
 //---------------------------
-// based on the current entity, we need to reset the annotation differently
--(void)resetAnnotationBasedOnCurrentEntity:(SpatialEntity*) entity{
-    // Currently, we clear all annotation except the search
-    [self clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
-}
 
--(void)clearHighlightedSet{
-    self.lastHighlightedEntity = nil;
-    
+-(void)clearHighlightedSet{    
     // Get all the annotations
     for (SpatialEntity *anEntity in [_highlightedSet copy]){
-        [self removeEntity:anEntity];
-    }
-}
-
--(void)clearHIghlightedEntitiesOfType:(location_enum)pointType{
-    // Get all the annotations
-    for (SpatialEntity *anEntity in [_highlightedSet copy]){
-        if (anEntity.annotation.pointType == pointType &&
-            !anEntity.isAnchor){
+        if (!anEntity.isAnchor)
             [self removeEntity:anEntity];
-        }
-    }
-}
-
--(void)clearAllHIghlightedEntitiesButType:(location_enum)pointType{
-    // Get all the annotations
-    for (SpatialEntity *anEntity in [_highlightedSet copy]){
-        if (anEntity.annotation.pointType != pointType
-            && !anEntity.isAnchor)
-        {
-            [self removeEntity:anEntity];
-        }
     }
 }
 

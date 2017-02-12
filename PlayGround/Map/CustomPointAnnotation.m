@@ -10,14 +10,20 @@
 #import "CustomMKMapView.h"
 #import "UIImage+tools.h"
 #import "StarIconGenerator.h"
+#import "DiskGenerator.h"
 
 @implementation CustomPointAnnotation{
     UILabel *aLabel;
     
     UIImage *starImg;
     UIImage *highlightedStarImg;
+    
     UIImage *grayDotImg;
+    UIImage *highlightedGrayDotImg;
+    
     UIImage *redDotImg;
+    UIImage *highlightedRedDotImg;
+    
     UIImage *youRHereImg;
 }
 
@@ -36,15 +42,25 @@
     
     starGenerator.isMarkerOn = YES;
     highlightedStarImg = [starGenerator generateIcon];
-    grayDotImg = [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
-    redDotImg = [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
+    
+    DiskGenerator *diskGenerator = [[DiskGenerator alloc] init];
+    diskGenerator.diskStyle = GRAYDISK;
+    grayDotImg = [diskGenerator generateIcon];
+    
+    diskGenerator.diskStyle = REDDISK;
+    redDotImg = [diskGenerator generateIcon];
+    diskGenerator.isMarkerOn = YES;
+    highlightedRedDotImg = [diskGenerator generateIcon];
+    
     youRHereImg = [[UIImage imageNamed:@"grayYouRHere.png"]  resize:CGSizeMake(12, 12)];
 
     // Backup
 //    starImg = [[UIImage imageNamed:@"star-250.png"] resize:CGSizeMake(24, 24)];
 //    
 //    highlightedStarImg = [[UIImage imageNamed:@"selectedStar-250.png"] resize:CGSizeMake(24, 24)];
-
+//    grayDotImg = [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
+//    redDotImg = [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
+    
     return self;
 }
 
@@ -87,6 +103,8 @@
         self.infoWindowAnchor = CGPointMake(0.5, 0);
         self.groundAnchor = CGPointMake(0.5, 1);
     }
+    
+    self.isHighlighted = self.isHighlighted; // reflect the highlight status
 }
 
 //--------------
@@ -108,6 +126,8 @@
             [imageView addSubview:aLabel];
             [aLabel setTextColor: [UIColor redColor]];
             self.iconView = imageView;
+        }else if (self.pointType == SEARCH_RESULT){
+            self.icon = highlightedRedDotImg;
         }
 
     }else{
@@ -121,6 +141,8 @@
         }else if (self.pointType == STAR){
             self.iconView = nil;
             self.icon = starImg;
+        }else if (self.pointType == SEARCH_RESULT){
+            self.icon = redDotImg;
         }else{
             self.map = nil;
         }
@@ -142,28 +164,6 @@
     
     
 }
-
-
-//--------------
-// Helper method
-//--------------
--(UIImage *)generateDotImageWithColor: (UIColor *) color andRadius: (float)radius
-{
-    // Create a custom red dot
-    // http://stackoverflow.com/questions/14594782/how-can-i-make-an-uiimage-programatically
-    CGSize size = CGSizeMake(radius*2, radius*2);
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    
-    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
-    [color setFill];
-    [path fill];
-    UIImage *dotImg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return dotImg;
-}
-
 @end
 
 

@@ -116,7 +116,7 @@
     
     if ([self.touchingSet count]==0){
         // reset the annotation
-        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+        [[HighlightedEntities sharedManager] clearHighlightedSet];
     }
     
     [self.touchingSet addObject:aToken];

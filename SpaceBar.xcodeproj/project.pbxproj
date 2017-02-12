@@ -184,6 +184,8 @@
 		9A665B081E196EC0000D8902 /* ArrayTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A665B051E196EC0000D8902 /* ArrayTool.mm */; };
 		9A6F56311D9BCB490037C8A1 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */; };
 		9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */; };
+		9A70F1381E50D5AC00F9177A /* DiskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A70F1371E50D5AC00F9177A /* DiskGenerator.m */; };
+		9A70F1391E50D5AC00F9177A /* DiskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A70F1371E50D5AC00F9177A /* DiskGenerator.m */; };
 		9A73C4111D86527200CF2BF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A73C4101D86527200CF2BF1 /* AVFoundation.framework */; };
 		9A7594CF1E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
 		9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
@@ -548,6 +550,8 @@
 		9A6F56301D9BCB490037C8A1 /* SearchPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchPanel.xib; sourceTree = "<group>"; };
 		9A6F56331D9BCC6E0037C8A1 /* SearchPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPanelView.h; path = Views/SearchPanelView.h; sourceTree = "<group>"; };
 		9A6F56341D9BCC6E0037C8A1 /* SearchPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPanelView.m; path = Views/SearchPanelView.m; sourceTree = "<group>"; };
+		9A70F1361E50D5AC00F9177A /* DiskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiskGenerator.h; path = Map/DiskGenerator.h; sourceTree = "<group>"; };
+		9A70F1371E50D5AC00F9177A /* DiskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiskGenerator.m; path = Map/DiskGenerator.m; sourceTree = "<group>"; };
 		9A73C4101D86527200CF2BF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9A7594CD1E0DEEC50047BC66 /* TaskGenerator+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TaskGenerator+Tools.h"; path = "StudyManager/TaskGenerator+Tools.h"; sourceTree = "<group>"; };
 		9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Tools.m"; path = "StudyManager/TaskGenerator+Tools.m"; sourceTree = "<group>"; };
@@ -975,6 +979,8 @@
 				9A6355611E4F96A800123A60 /* default_marker.png */,
 				9A63555D1E4F96A200123A60 /* StarIconGenerator.h */,
 				9A63555E1E4F96A200123A60 /* StarIconGenerator.m */,
+				9A70F1361E50D5AC00F9177A /* DiskGenerator.h */,
+				9A70F1371E50D5AC00F9177A /* DiskGenerator.m */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -1810,6 +1816,7 @@
 				9A8413691C6F8ACE004DF8D1 /* SpaceBar+UpdateMap.m in Sources */,
 				9AC3382A1D63AB68000272D9 /* CustomPointAnnotation.m in Sources */,
 				9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */,
+				9A70F1381E50D5AC00F9177A /* DiskGenerator.m in Sources */,
 				9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9A654B1D1D6A28C10016044C /* ViewController+Annotations.m in Sources */,
 				9A7DB2861E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,
@@ -1934,6 +1941,7 @@
 				9AE13B8C1DF0D148008612DA /* SpaceBar+UpdateMap.m in Sources */,
 				9AE13B8D1DF0D148008612DA /* CustomPointAnnotation.m in Sources */,
 				9AE13B8E1DF0D148008612DA /* RecordTableViewController.m in Sources */,
+				9A70F1391E50D5AC00F9177A /* DiskGenerator.m in Sources */,
 				9AFED2F21E02F0A0007C8317 /* LeftTabController.m in Sources */,
 				9AE13B901DF0D148008612DA /* ViewController+Annotations.m in Sources */,
 				9A7DB2881E14762F00226D42 /* NSValue+MKMapPoint.m in Sources */,

@@ -40,7 +40,7 @@
         [DMTools showAlert:@"System error." withMessage:
          @"Matched entity was not found (didTapMarker)."];
     }else{
-        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+        [[HighlightedEntities sharedManager] clearHighlightedSet];
         [[HighlightedEntities sharedManager] addEntity: matchedEntity];
     }
     
@@ -49,8 +49,7 @@
 
 - (void) didTapAtCoordinate:	(CLLocationCoordinate2D) coordinate
 {
-    [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:
-     SEARCH_RESULT];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     [self.informationSheetManager removeSheet];
 }
 
@@ -62,7 +61,7 @@
         [DMTools showAlert:@"System error." withMessage:
          @"Matched entity was not found (didTapOverlay)."];
     }else{
-        [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+        [[HighlightedEntities sharedManager] clearHighlightedSet];
         [[HighlightedEntities sharedManager] addEntity: matchedEntity];
     }    
 }
@@ -75,7 +74,7 @@
     tempPOI.name = @"Dropped";
     tempPOI.placeID = @"";
     tempPOI.annotation.pointType = DROPPED;
-    [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     [[HighlightedEntities sharedManager] addEntity: tempPOI];
 }
 
@@ -91,7 +90,7 @@
     tempPOI.placeID = placeID;
     tempPOI.annotation.pointType = DROPPED;
     
-    [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     [[HighlightedEntities sharedManager] addEntity: tempPOI];
     
 //    [self setSelectedMarker:tempPOI.annotation];

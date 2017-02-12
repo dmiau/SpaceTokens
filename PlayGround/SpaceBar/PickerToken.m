@@ -244,20 +244,15 @@
     // Else, check if the addition tool touches a highlighed entity
     //------------------------
     
-    // Get the highlighted entity
-    SpatialEntity *highlightedEntity =
-    [[HighlightedEntities sharedManager] lastHighlightedEntity];
+    NSSet *highlightedSet = [[HighlightedEntities sharedManager] getHighlightedSet];
     
-    if (!highlightedEntity){
-        return NO;
-    }
-    
-    if (highlightedEntity.annotation.isHighlighted){
-        
-        
+    for (SpatialEntity *highlightedEntity in highlightedSet){
         if ([highlightedEntity isEntityTouched:touch] && probEnabled){
             probEnabled = NO;
             movingOut = NO;
+            highlightedEntity.annotation.pointType = STAR;
+            highlightedEntity.dirtyFlag = @0;
+            highlightedEntity.isEnabled = YES;
             [[EntityDatabase sharedManager] addEntity:highlightedEntity];
             
             [[TokenCollectionView sharedManager] reloadData];

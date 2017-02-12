@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AnnotationProtocol.h"
 
 @class SpatialEntity;
 @class Person;
@@ -37,6 +38,7 @@
 - (void)setEntityArray:(NSMutableArray<SpatialEntity *> *)newEntityArray;
 - (void)addEntity:(SpatialEntity*)entity;
 - (void)removeEntity:(SpatialEntity*)entity;
+- (void)removeEntitiesOfType:(location_enum)pointType;
 
 // iCloud related methods
 - (void)debugInit; // a temporary method

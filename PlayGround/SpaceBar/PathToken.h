@@ -13,4 +13,5 @@
 
 @property SpatialEntity* spatialEntity;
 
+
 @end

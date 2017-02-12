@@ -200,26 +200,14 @@
     //------------------------
     
     // Get the highlighted entity
-    SpatialEntity *highlightedEntity =
-    [[HighlightedEntities sharedManager] lastHighlightedEntity];
+    NSSet *highlightedSet = [[HighlightedEntities sharedManager] getHighlightedSet];
     
-    if (!highlightedEntity){
-        return NO;
-    }
-    
-    if (highlightedEntity.annotation.isHighlighted){
+    for (SpatialEntity *highlightedEntity in highlightedSet)
+    {
         if ([highlightedEntity.annotation isKindOfClass:[CustomPointAnnotation class]])
         {
-            CustomPointAnnotation *pointAnnotation = highlightedEntity.annotation;
             
-            // Get the CGPoint of the highlighted point in mapView
-            CGPoint highlightedCGPoint = [mapView.projection
-                                          pointForCoordinate: pointAnnotation.position];
-            
-            double distance = pow((touchPoint.x - highlightedCGPoint.x), 2)+
-            pow((touchPoint.y - highlightedCGPoint.y), 2);
-            
-            if (distance < 100){
+            if ([highlightedEntity isEntityTouched:touch]){
                 SpaceToken *aSpaceToken =
                 [SpaceToken manufactureTokenForEntity:highlightedEntity];
                 

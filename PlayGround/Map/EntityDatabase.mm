@@ -119,11 +119,11 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
             }
         }
         
-        if ([entity isKindOfClass:[POI class]]){
-            entity.annotation.pointType = STAR;
-            entity.dirtyFlag = @0;
-        }
-        
+//        if ([entity isKindOfClass:[POI class]]){
+//            entity.annotation.pointType = STAR;
+//            entity.dirtyFlag = @0;
+//        }
+//        entity.dirtyFlag = @0;
         [i_entityArray addObject:entity];
         
         // All entities in EntityDatabase appear on the map by default
@@ -138,6 +138,14 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
     entity.isMapAnnotationEnabled = NO;
 }
 
+-(void)removeEntitiesOfType:(location_enum)pointType{
+    // Get all the annotations
+    for (SpatialEntity *anEntity in [i_entityArray copy]){
+        if (anEntity.annotation.pointType == pointType){
+            [self removeEntity:anEntity];
+        }
+    }
+}
 
 // MARK: -- Save/Load --
 //----------------------------------------------------------

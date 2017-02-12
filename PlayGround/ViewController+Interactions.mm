@@ -159,7 +159,7 @@
     }
     
     [[EntityDatabase sharedManager] addEntity:aRoute];
-    [[HighlightedEntities sharedManager] clearAllHIghlightedEntitiesButType:SEARCH_RESULT];
+    [[HighlightedEntities sharedManager] clearHighlightedSet];
     [[HighlightedEntities sharedManager] addEntity:aRoute];
 }
 

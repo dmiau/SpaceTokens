@@ -112,8 +112,9 @@ static SpaceBar *sharedInstance;
         [self.gestureEngine setUserInteractionEnabled:YES];
         [self.sliderContainer setUserInteractionEnabled: NO];
     }else{
-        [self.mapView addSubview:self.annotationView];
         [self.mapView addSubview:self.sliderContainer];
+        [self.mapView addSubview:self.annotationView];
+        [self.annotationView setUserInteractionEnabled:NO];
         [self.mapView addSubview:self.gestureEngine];
     }
 }
