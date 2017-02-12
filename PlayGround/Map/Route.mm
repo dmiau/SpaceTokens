@@ -45,7 +45,7 @@ template class std::vector<double>;
 - (id)initWithMKMapPointArray: (NSArray*) mapPointArray{
     
     self = [super initWithMKMapPointArray:mapPointArray];
-    self.appearanceMode = ROUTEMODE;
+    self.appearanceMode = SKETCHEDROUTE;
     // Construct source and destination
     POI *sourcePOI = [[POI alloc] init];
     sourcePOI.name = @"source";
@@ -78,6 +78,9 @@ template class std::vector<double>;
             break;
         case ROUTEMODE:
             [self updateRouteForContentArray];
+            break;
+        case SKETCHEDROUTE:
+            // Do nothing
             break;
     }
     

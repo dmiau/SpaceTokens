@@ -40,12 +40,30 @@
     }
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+
+    if([keyPath isEqualToString:@"dirtyFlag"] && object == self.spatialEntity)
+    {
+        [self updateSheet];
+    }
+}
+
 // MARK: Setters
 //-------------------------------------
-//-(void)setSpatialEntity:(SpatialEntity *)spatialEntity{
-//    _spatialEntity = spatialEntity;
-//    self.titleOutlet.text = spatialEntity.name;
-//}
+-(void)setSpatialEntity:(SpatialEntity *)spatialEntity{
+
+    // Remove the previous observer
+    if (self.spatialEntity){
+        [self.spatialEntity removeObserver:self forKeyPath:@"dirtyFlag"];
+    }
+    
+    [super setSpatialEntity:spatialEntity];
+    
+    // Add a new observer
+    [spatialEntity addObserver:self forKeyPath:@"dirtyFlag" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context:nil];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

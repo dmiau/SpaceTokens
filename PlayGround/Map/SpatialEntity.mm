@@ -26,7 +26,9 @@
         _name = @"";
         _placeID = @"";
         _isEnabled = NO;
+        _isAnchor = NO;
         _isMapAnnotationEnabled = YES;
+        _dirtyFlag = @0;
     }
     return self;
 }

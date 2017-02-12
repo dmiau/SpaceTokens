@@ -62,6 +62,7 @@
     self.isConstraintLineOn = NO;
     self.isDraggable = YES;
     self.isStudyModeEnabled = NO;
+    self.dirtyFlag = @0;
     
     self.circleLayer = [CAShapeLayer layer];
     self.lineLayer = [CAShapeLayer layer];
@@ -77,7 +78,7 @@
     //----------------
     [self initializeGestureRecognizer];
     self.isCustomGestureRecognizerEnabled = YES;
-
+    
     return self;
 }
 

@@ -23,8 +23,10 @@
 @property CLLocationCoordinate2D latLon;
 @property MKCoordinateSpan coordSpan;
 @property NSString *placeID;
+@property NSNumber *dirtyFlag;
 
 @property BOOL isEnabled; // Whether this entity is enabled or not
+@property BOOL isAnchor; // Specify whether the entity is under a finger or not
 @property BOOL isMapAnnotationEnabled;
 @property (weak) id linkedObj; // a POI can be linked another object,
 

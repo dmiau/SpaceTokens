@@ -50,7 +50,6 @@
         
         // Turn on the debug visual
         [oneAnchor configureAppearanceForType:ANCHOR_VISIBLE];
-        oneAnchor.spatialEntity.annotation.pointType = DEFAULT_MARKER;
         
         // Snap to the anchor first
         // So zoom-to-fit is dynamically updated when the anchor is moved
@@ -100,7 +99,6 @@
             [poiSet addObject:aToken.spatialEntity];
             
             [aToken configureAppearanceForType:ANCHOR_VISIBLE];
-            aToken.spatialEntity.annotation.pointType = DEFAULT_MARKER;
             // Draw the constraint line
             aToken.isConstraintLineOn = YES;
         }
@@ -132,7 +130,6 @@
     {
         SpaceToken *anchor = [self.anchorSet anyObject];
         [anchor configureAppearanceForType:ANCHOR_VISIBLE];
-        anchor.spatialEntity.annotation.pointType = DEFAULT_MARKER;
         [self.draggingSet addObject:anchor];
     }
     

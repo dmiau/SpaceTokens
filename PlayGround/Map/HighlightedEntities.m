@@ -55,6 +55,7 @@
 
 
 // MARK: Clear the annotation
+//---------------------------
 // based on the current entity, we need to reset the annotation differently
 -(void)resetAnnotationBasedOnCurrentEntity:(SpatialEntity*) entity{
     // Currently, we clear all annotation except the search
@@ -73,7 +74,8 @@
 -(void)clearHIghlightedEntitiesOfType:(location_enum)pointType{
     // Get all the annotations
     for (SpatialEntity *anEntity in [_highlightedSet copy]){
-        if (anEntity.annotation.pointType == pointType){
+        if (anEntity.annotation.pointType == pointType &&
+            !anEntity.isAnchor){
             [self removeEntity:anEntity];
         }
     }
@@ -82,7 +84,9 @@
 -(void)clearAllHIghlightedEntitiesButType:(location_enum)pointType{
     // Get all the annotations
     for (SpatialEntity *anEntity in [_highlightedSet copy]){
-        if (anEntity.annotation.pointType != pointType){
+        if (anEntity.annotation.pointType != pointType
+            && !anEntity.isAnchor)
+        {
             [self removeEntity:anEntity];
         }
     }
@@ -90,6 +94,7 @@
 
 
 // MARK: Debug
+//---------------------------
 -(NSString*)description{
     NSMutableArray *lines = [NSMutableArray array];
     [lines addObject:[NSString stringWithFormat:@"Highlighted entity #: %lu",

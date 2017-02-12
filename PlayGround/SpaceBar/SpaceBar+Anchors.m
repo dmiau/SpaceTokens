@@ -87,6 +87,7 @@
             
             if (self.isSpaceTokenEnabled){
                 [self.anchorSet addObject:aToken];
+                aToken.spatialEntity.isAnchor = YES;
                 [self.draggingSet addObject:aToken];
             }else{
                 [self.anchorCandidateSet addObject:aToken];
@@ -185,6 +186,7 @@
     // remove the anchor from the dragging set
     [self.draggingSet removeObject:aToken];
     [aToken removeFromSuperview];
+    aToken.spatialEntity.isAnchor = NO;
     [self.anchorSet removeObject:aToken];
     [self.anchorCandidateSet removeObject:aToken];
     aToken = nil;

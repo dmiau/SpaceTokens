@@ -25,7 +25,7 @@
     self = [super init];
     
     _isLabelOn = NO;
-    self.pointType = STAR;
+    self.pointType = DEFAULT_MARKER;
     // Initialize the label
     aLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 45, 20)];
     

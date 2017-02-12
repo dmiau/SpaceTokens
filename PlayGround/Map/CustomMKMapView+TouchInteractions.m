@@ -85,7 +85,9 @@
 
 //     //Let the gesture layer to handle the gesture
 //     [gestureView addGestureRecognizer:tapInterceptor];
+    
 }
+
 
 #pragma mark --gesture recognizer--
 //-----------------------------
@@ -187,6 +189,7 @@
 //        }
 //        return YES;
 //    }
+//    return YES;
 //}
 
 @end

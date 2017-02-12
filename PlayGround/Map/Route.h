@@ -16,7 +16,7 @@
 using namespace std;
 @class POI;
 
-typedef enum {SETMODE, ARRAYMODE, ROUTEMODE} AppeararnceMode;
+typedef enum {SETMODE, ARRAYMODE, ROUTEMODE, SKETCHEDROUTE} AppeararnceMode;
 
 #pragma mark RouteInterface
 @interface Route : LineEntity{

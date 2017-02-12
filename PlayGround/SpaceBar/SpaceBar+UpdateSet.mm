@@ -56,6 +56,7 @@
     NSSet *tempSet = [NSSet setWithSet:self.anchorCandidateSet];
     for (SpaceToken *aToken in tempSet){
         [self.anchorSet addObject:aToken];
+        aToken.spatialEntity.isAnchor = YES;
         [self.draggingSet addObject:aToken];
         [self.anchorCandidateSet removeObject:aToken];
     }

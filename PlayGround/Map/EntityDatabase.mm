@@ -82,6 +82,10 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
         cacheDefaultEntityArray = [newEntityArray mutableCopy];
     }
     i_entityArray = [newEntityArray mutableCopy];
+    
+    for (SpatialEntity *anEntiy in i_entityArray){
+        anEntiy.annotation.pointType = STAR;
+    }
 }
 
 - (NSMutableArray*)getEntityArray{
@@ -117,6 +121,7 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
         
         if ([entity isKindOfClass:[POI class]]){
             entity.annotation.pointType = STAR;
+            entity.dirtyFlag = @0;
         }
         
         [i_entityArray addObject:entity];

@@ -36,6 +36,7 @@
                         <segment title="collection"/>
                         <segment title="ordered"/>
                         <segment title="route"/>
+                        <segment title="sketchedRoute"/>
                     </segments>
                     <connections>
                         <action selector="collectionModeAction:" destination="iN0-l3-epB" eventType="valueChanged" id="Qi3-El-D8n"/>

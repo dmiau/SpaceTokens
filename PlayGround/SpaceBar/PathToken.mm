@@ -52,6 +52,9 @@
                 
                 [self setBackgroundImage:pathIcon forState:UIControlStateNormal];
                 break;
+            case SKETCHEDROUTE:
+                [self setBackgroundImage:pathIcon forState:UIControlStateNormal];
+                break;
             default:
                 break;
         }
