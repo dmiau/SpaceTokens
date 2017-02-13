@@ -15,8 +15,10 @@
 // Map mode segment control
 - (IBAction)mapStyleSegmentControl:(id)sender;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentControl;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *miniMapOutlet;
-- (IBAction)miniMapAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *longPressSegmentOutlet;
+- (IBAction)longPressSegmentAction:(id)sender;
+
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *syncMiniMapRotationOutlet;
 - (IBAction)syncMiniMapRotationAction:(id)sender;
@@ -25,9 +27,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *appModeSegmentControlOutlet;
 - (IBAction)appModeSegmentControl:(id)sender;
 
-// Cam segment control
-@property (weak, nonatomic) IBOutlet UISegmentedControl *camSegmentOutlet;
-- (IBAction)camSegmentAction:(id)sender;
 
 // Debug info.
 @property (weak, nonatomic) IBOutlet UITextView *debugInfoOutlet;

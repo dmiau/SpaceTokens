@@ -42,9 +42,9 @@ didTapPOIWithPlaceID:(NSString *)placeID
     [self.mapView didTapPOIWithPlaceID:placeID name:name location:location];
 }
 
-//- (void) mapView:(GMSMapView *) 	mapView
-//didLongPressAtCoordinate:(CLLocationCoordinate2D) 	coordinate{
-//    [self.mapView didLongPressAtCoordinate:coordinate];
-//}
+- (void) mapView:(GMSMapView *) 	mapView
+didLongPressAtCoordinate:(CLLocationCoordinate2D) 	coordinate{
+    [self.mapView didLongPressAtCoordinate:coordinate];
+}
 
 @end

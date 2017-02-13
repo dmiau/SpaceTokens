@@ -416,6 +416,10 @@
 		9AFB7DE31E401CAB00384959 /* CustomGMSPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7DE11E401CAB00384959 /* CustomGMSPolyline.m */; };
 		9AFB7DE61E40214B00384959 /* CustomGMSPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7DE51E40214B00384959 /* CustomGMSPolygon.m */; };
 		9AFB7DE71E40214B00384959 /* CustomGMSPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7DE51E40214B00384959 /* CustomGMSPolygon.m */; };
+		9AFB8D681E51462300D501BE /* personIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFB8D671E51462200D501BE /* personIcon.png */; };
+		9AFB8D691E51462300D501BE /* personIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFB8D671E51462200D501BE /* personIcon.png */; };
+		9AFB8D6C1E51465400D501BE /* PersonToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB8D6B1E51465400D501BE /* PersonToken.m */; };
+		9AFB8D6D1E51465400D501BE /* PersonToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB8D6B1E51465400D501BE /* PersonToken.m */; };
 		9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AFED2F01E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
 		9AFED2F21E02F0A0007C8317 /* LeftTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFED2EF1E02F0A0007C8317 /* LeftTabController.m */; };
@@ -720,6 +724,9 @@
 		9AFB7DE11E401CAB00384959 /* CustomGMSPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomGMSPolyline.m; path = Map/CustomGMSPolyline.m; sourceTree = "<group>"; };
 		9AFB7DE41E40214B00384959 /* CustomGMSPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomGMSPolygon.h; path = Map/CustomGMSPolygon.h; sourceTree = "<group>"; };
 		9AFB7DE51E40214B00384959 /* CustomGMSPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomGMSPolygon.m; path = Map/CustomGMSPolygon.m; sourceTree = "<group>"; };
+		9AFB8D671E51462200D501BE /* personIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon.png; sourceTree = "<group>"; };
+		9AFB8D6A1E51465400D501BE /* PersonToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonToken.h; path = SpaceBar/PersonToken.h; sourceTree = "<group>"; };
+		9AFB8D6B1E51465400D501BE /* PersonToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonToken.m; path = SpaceBar/PersonToken.m; sourceTree = "<group>"; };
 		9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityDatabase.h; path = Map/EntityDatabase.h; sourceTree = "<group>"; };
 		9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EntityDatabase.mm; path = Map/EntityDatabase.mm; sourceTree = "<group>"; };
 		9AFED2EE1E02F0A0007C8317 /* LeftTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftTabController.h; path = Views/LeftTabController.h; sourceTree = "<group>"; };
@@ -823,6 +830,7 @@
 		9A0CBFFD1E480517008F07CA /* SearchPanel */ = {
 			isa = PBXGroup;
 			children = (
+				9AFB8D671E51462200D501BE /* personIcon.png */,
 				9A0CC0051E480852008F07CA /* star-30.png */,
 				9A0CC0021E48084B008F07CA /* starGray-30.png */,
 				9A0CBFFF1E480565008F07CA /* starGray-128.png */,
@@ -1109,6 +1117,8 @@
 				9A5DA0311E16F2C9002A50B7 /* AreaToken.m */,
 				9A3EB3B41E1C77FD008FA7FA /* ArrayToken.h */,
 				9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */,
+				9AFB8D6A1E51465400D501BE /* PersonToken.h */,
+				9AFB8D6B1E51465400D501BE /* PersonToken.m */,
 				9A90C7611DFDB49500CDC578 /* ConnectionTool */,
 				9AD887B01E42960F008E62E7 /* PickerToken.h */,
 				9AD887B11E42960F008E62E7 /* PickerToken.m */,
@@ -1602,6 +1612,7 @@
 				9AB76B791D9C5EAC0096C444 /* grayYouRHere.png in Resources */,
 				9A1DB0FC1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */,
+				9AFB8D681E51462300D501BE /* personIcon.png in Resources */,
 				9A058C851E393D030045AB0E /* areaIcon.png in Resources */,
 				9A9604FE1E47C5E800796B98 /* star-250.png in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
@@ -1645,6 +1656,7 @@
 				9AE13BB11DF0D148008612DA /* grayYouRHere.png in Resources */,
 				9A1DB0FD1E40378800441AD5 /* GoogleMaps.bundle in Resources */,
 				9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */,
+				9AFB8D691E51462300D501BE /* personIcon.png in Resources */,
 				9A058C871E393D030045AB0E /* areaIcon.png in Resources */,
 				9A9604FF1E47C5E800796B98 /* star-250.png in Resources */,
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
@@ -1844,6 +1856,7 @@
 				9A63555F1E4F96A200123A60 /* StarIconGenerator.m in Sources */,
 				9A5DA02D1E16DCE1002A50B7 /* Area.mm in Sources */,
 				9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */,
+				9AFB8D6C1E51465400D501BE /* PersonToken.m in Sources */,
 				9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */,
 				9A84136D1C6FB39B004DF8D1 /* Constants.m in Sources */,
 				9ABB28101D36795C00595A0D /* Elevator.m in Sources */,
@@ -1969,6 +1982,7 @@
 				9A6355601E4F96A200123A60 /* StarIconGenerator.m in Sources */,
 				9A5DA02F1E16DCE1002A50B7 /* Area.mm in Sources */,
 				9AE13B9F1DF0D148008612DA /* CERangeSliderTrackLayer.m in Sources */,
+				9AFB8D6D1E51465400D501BE /* PersonToken.m in Sources */,
 				9AE13BA01DF0D148008612DA /* SnapshotChecking.m in Sources */,
 				9AE13BA11DF0D148008612DA /* Constants.m in Sources */,
 				9AE13BA21DF0D148008612DA /* Elevator.m in Sources */,

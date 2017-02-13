@@ -99,39 +99,51 @@ static NSString *const TEMPLATE_DB_NAME = @"default.entitydb";
 - (void)addEntity:(SpatialEntity*)entity{
     
     // If the entity already exist, enable the entity
+    // (add the entity as a SpaceToken)
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF == %@", entity];
     NSArray *filteredArray = [i_entityArray filteredArrayUsingPredicate:predicate];
     
     if ([filteredArray count] > 0){
         SpatialEntity *entity = [filteredArray firstObject];
-        entity.isEnabled = YES;
-    }else{
-        // Check if an object with the same placeID already exist
-        if ([entity.placeID length] > 2){
-            // If the entity already exist, enable the entity
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.placeID == %@", entity.placeID];
-            NSArray *filteredArray = [i_entityArray filteredArrayUsingPredicate:predicate];
-            
-            if ([filteredArray count] > 0){
-                SpatialEntity *entity = [filteredArray firstObject];
-                entity.isEnabled = YES;
-                return;
-            }
-        }
         
-//        if ([entity isKindOfClass:[POI class]]){
-//            entity.annotation.pointType = STAR;
-//            entity.dirtyFlag = @0;
-//        }
-//        entity.dirtyFlag = @0;
+        
+        [i_entityArray removeObject:entity];
         [i_entityArray addObject:entity];
-        
-        // All entities in EntityDatabase appear on the map by default
-        entity.isMapAnnotationEnabled = YES;
+        entity.isEnabled = YES;
+        return;
     }
+    
+    // Check if the entity with the same place ID exist
+    if ([entity.placeID length] > 2){
+        // If the entity already exist, enable the entity
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.placeID == %@", entity.placeID];
+        NSArray *filteredArray = [i_entityArray filteredArrayUsingPredicate:predicate];
+        
+        if ([filteredArray count] > 0){
+            SpatialEntity *entity = [filteredArray firstObject];
+            
+            [i_entityArray removeObject:entity];
+            [i_entityArray addObject:entity];
+            entity.isEnabled = YES;
+            return;
+        }
+    }
+    
+    
+    [i_entityArray addObject:entity];
+    if (entity.annotation.pointType != SEARCH_RESULT){
+        entity.annotation.pointType = STAR;
+        if ([entity isKindOfClass:[POI class]]){
+            entity.dirtyFlag = @0;
+        }
+    }
+    
+    // All entities in EntityDatabase appear on the map by default
+    entity.isMapAnnotationEnabled = YES;
+
 }
 
-- (void)removeEntity:(SpatialEntity*)entity{    
+- (void)removeEntity:(SpatialEntity*)entity{
     [i_entityArray removeObject:entity];
     
     [[HighlightedEntities sharedManager] removeEntity:entity];

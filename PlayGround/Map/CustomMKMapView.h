@@ -28,7 +28,6 @@
 @end
 
 
-
 //==============================
 // CustomMKMapView
 //==============================
@@ -48,6 +47,8 @@
 
 
 @property UIEdgeInsets edgeInsets;// this is for the zoom-to-fit feature
+
+@property BOOL isLongPressEnabled;
 
 @property BOOL isDebugModeOn;
 @property InformationSheetManager *informationSheetManager;

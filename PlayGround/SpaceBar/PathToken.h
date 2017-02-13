@@ -8,10 +8,10 @@
 
 #import "ArrayToken.h"
 
-
+@class Route;
 @interface PathToken : ArrayToken
 
-@property SpatialEntity* spatialEntity;
+@property Route* spatialEntity;
 
 
 @end

@@ -215,30 +215,33 @@
     
     CGPoint touchPoint = [self convertPoint:currentLocation toView:mapView];
     CGPoint previoustouchPoint = [self convertPoint:previousLocation toView:mapView];
-//    for (SpaceToken *aToken in [[TokenCollection sharedManager] getTokenArray]){
-//        
-//        // Convert buttonFrame to be in mapView
-//        CGRect buttonInMapView = [aToken.superview convertRect:aToken.frame toView:mapView];
-//        
-//        // Make sure the route creation tool is only triggered once
-//        if (CGRectContainsPoint(buttonInMapView, touchPoint)
-//            &&
-//            !CGRectContainsPoint(buttonInMapView, previoustouchPoint)
-//            && probEnabled)
-//        {
-////            if (!self.additionHandlingBlock)
-////                return NO;
-////            
-////            BOOL result = self.additionHandlingBlock(aToken);
-////            if (result){
-////                probEnabled = NO;
-////                [lineLayer removeFromSuperlayer];
-////                movingOut = NO;
-////            }
-////            
-////            return result;
-//        }
-//    }
+    
+    
+    for (SpaceToken *aToken in [[TokenCollection sharedManager] getTokenArray]){
+        
+        // Convert buttonFrame to be in mapView
+        CGRect buttonInMapView = [aToken.superview convertRect:aToken.frame toView:mapView];
+        
+        // Make sure the route creation tool is only triggered once
+        if (CGRectContainsPoint(buttonInMapView, touchPoint)
+            &&
+            !CGRectContainsPoint(buttonInMapView, previoustouchPoint)
+            && probEnabled)
+        {
+            SpatialEntity *entity = aToken.spatialEntity;
+            probEnabled = NO;
+            movingOut = NO;
+            entity.annotation.pointType = STAR;
+            entity.dirtyFlag = @0;
+            entity.isEnabled = YES;
+            [[EntityDatabase sharedManager] addEntity:entity];
+            
+            [[TokenCollectionView sharedManager] reloadData];
+            [lineLayer removeFromSuperlayer];
+            
+            return YES;
+        }
+    }
     
     //------------------------
     // Else, check if the addition tool touches a highlighed entity
@@ -264,6 +267,8 @@
     
     return NO;
 }
+
+
 
 
 @end

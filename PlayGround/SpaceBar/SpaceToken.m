@@ -10,7 +10,7 @@
 #import "UIButton+Extensions.h"
 #import "Constants.h"
 #import "CustomPointAnnotation.h"
-#import "Person.h"
+#import "PersonToken.h"
 #import "CustomMKMapView.h"
 #import "InformationSheetManager.h"
 
@@ -154,7 +154,8 @@
         self.backgroundColor = [UIColor redColor];
 
         // Only shows the line if self is a point token
-        if ([self isMemberOfClass:[SpaceToken class]]){
+        if ([self isMemberOfClass:[SpaceToken class]]
+            || [self isMemberOfClass:[PersonToken class]]){
             [[self layer] addSublayer:self.lineLayer];
             [self updatePOILine];
         }
@@ -166,27 +167,13 @@
     }else{
         [self restoreDefaultStyle];
         
-        if ([self isMemberOfClass:[SpaceToken class]]){
+        if ([self isMemberOfClass:[SpaceToken class]]
+            || [self isMemberOfClass:[PersonToken class]]){
             [self.lineLayer removeFromSuperlayer];
         }
     }
     
-    // A SpaceToken may be linked to a dynamic locaiton, such as a person
-    if ([self.spatialEntity isKindOfClass:[Person class]]){
-        Person *aPerson = (Person*)self.spatialEntity;
-        if (selected){
-            aPerson.updateFlag = YES;
-        }else{
-            // http://stackoverflow.com/questions/14924892/nstimer-with-anonymous-function-block
-            int64_t delayInSeconds = 5; // Your Game Interval as mentioned above by you
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                // Update your label here.
-                aPerson.updateFlag = NO;
-            });
-        }
-    }
+
 }
 
 -(void)setIsCustomGestureRecognizerEnabled:(BOOL)isCustomGestureRecognizerEnabled{

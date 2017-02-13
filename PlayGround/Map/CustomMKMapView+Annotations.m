@@ -13,6 +13,7 @@
 #import "EntityDatabase.h"
 #import "DMTools.h"
 #import "InformationSheetManager.h"
+#import "Person.h"
 
 @implementation CustomMKMapView (Annotations)
 
@@ -66,14 +67,21 @@
     }    
 }
 
+
+//---------------------
+// Long press
+//---------------------
 - (void)didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
     
+    if (!self.isLongPressEnabled)
+        return;
+    
     // Create a temporary entity
-    POI *tempPOI = [[POI alloc] init];
+    Person *tempPOI = [[Person alloc] init];
     tempPOI.latLon = coordinate;
-    tempPOI.name = @"Dropped";
+    tempPOI.name = @"Person";
     tempPOI.placeID = @"";
-    tempPOI.annotation.pointType = DROPPED;
+    tempPOI.annotation.pointType = PEOPLE;
     [[HighlightedEntities sharedManager] clearHighlightedSet];
     [[HighlightedEntities sharedManager] addEntity: tempPOI];
 }

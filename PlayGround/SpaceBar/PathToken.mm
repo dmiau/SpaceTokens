@@ -9,8 +9,12 @@
 #import "PathToken.h"
 #import "Route.h"
 #import "SpaceToken+Tools.h"
+#import "SpaceBar.h"
+#import "Constants.h"
 
-@implementation PathToken
+@implementation PathToken{
+    NSMutableArray <SpaceToken*> *_tempChildrenTokenArray;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -23,6 +27,7 @@
 - (id) init{
     self = [super init];
     self.spatialEntity = [[Route alloc] init];
+    _tempChildrenTokenArray = [NSMutableArray array];
     [self restoreDefaultStyle];
     return self;
 }
@@ -85,9 +90,40 @@
 - (void)setSelected:(BOOL)selected{
     [super setSelected:selected];
     
-    if (self.appearanceType == SETMODE ){
+    if (self.spatialEntity.appearanceMode == SETMODE ){
         // Put the child tokens into touching set?
-        
+        if (selected){
+            [self genTempChildrenTokenArray];
+            [self addChildrenEntitiesToTouchingSet];
+        }else{
+            [self removeChildrenEntitiesFromTouchingSet];
+        }
     }
 }
+
+-(void)genTempChildrenTokenArray{
+    [self removeChildrenEntitiesFromTouchingSet];
+    [_tempChildrenTokenArray removeAllObjects];
+    for (SpatialEntity *entity in  [self.spatialEntity getContent]){
+        SpaceToken *token = [SpaceToken manufactureTokenForEntity:entity];
+        [_tempChildrenTokenArray addObject:token];
+    }
+}
+
+-(void)addChildrenEntitiesToTouchingSet{
+    for (SpaceToken *token in _tempChildrenTokenArray){
+        NSNotification *notification = [NSNotification notificationWithName:AddToTouchingSetNotification
+            object:token userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    }
+}
+
+-(void)removeChildrenEntitiesFromTouchingSet{
+    for (SpaceToken *token in _tempChildrenTokenArray){
+        NSNotification *notification = [NSNotification notificationWithName:RemoveFromTouchingSetNotification
+            object:token userInfo:nil];
+        [[ NSNotificationCenter defaultCenter] postNotification:notification];
+    }
+}
+
 @end

@@ -76,11 +76,10 @@
     }
     self.appModeSegmentControlOutlet.selectedSegmentIndex = selectionIndex;
     
-    // Update the status of the mini map
-    if (!self.rootViewController.miniMapView.superview){
-        self.miniMapOutlet.selectedSegmentIndex = 0;
+    if (self.rootViewController.mapView.isLongPressEnabled){
+        self.longPressSegmentOutlet.selectedSegmentIndex = 1;
     }else{
-        self.miniMapOutlet.selectedSegmentIndex = 1;
+        self.longPressSegmentOutlet.selectedSegmentIndex = 0;
     }
     
     if (self.rootViewController.miniMapView.syncRotation){
@@ -133,33 +132,6 @@
         self.rootViewController.gameManager.gameManagerStatus = AUTHORING;
     }
 }
-- (IBAction)miniMapAction:(id)sender {
-    
-    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    NSString *label = [segmentedControl
-                       titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
-    
-    if ([label isEqualToString:@"On"]){
-        [self.rootViewController.mapView addSubview: self.rootViewController.miniMapView];
-        
-        // Add the route if there is an active route
-        
-        if (self.rootViewController.spaceBar.activeRoute){
-            [self.rootViewController.miniMapView zoomToFitEntities:
-             [NSSet setWithObject:self.rootViewController.spaceBar.activeRoute]];
-             
-            // Remove previous routes if any
-            [self.rootViewController.miniMapView removeRouteOverlays];
-            
-            // REFACTOR
-//            [self.rootViewController.miniMapView
-//             addOverlay:self.rootViewController.spaceBar.activeRoute.polyline
-//             level:MKOverlayLevelAboveRoads];
-        }
-    }else if ([label isEqualToString:@"Off"]){
-        [self.rootViewController.miniMapView removeFromSuperview];
-    }
-}
 
 - (IBAction)syncMiniMapRotationAction:(id)sender {
     
@@ -173,19 +145,7 @@
         self.rootViewController.miniMapView.syncRotation = YES;
     }
 }
-- (IBAction)camSegmentAction:(UISegmentedControl*)sender {
-    static AVCaptureVideoPreviewLayer *previewLayer;
-    if (sender.selectedSegmentIndex == 1){
-        AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];;
-        previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-        UIView *aView = self.rootViewController.mapView;
-        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
-        [aView.layer addSublayer:previewLayer];
-    }else{
-        [previewLayer removeFromSuperlayer];
-    }
-    
-}
+
 
 -(void)displayDebugInfo{
     NSMutableArray *lineArray = [NSMutableArray array];
@@ -197,4 +157,8 @@
     self.debugInfoOutlet.text = [lineArray componentsJoinedByString:@"\n"];
 }
 
+- (IBAction)longPressSegmentAction:(id)sender {
+    self.rootViewController.mapView.isLongPressEnabled =
+    !self.rootViewController.mapView.isLongPressEnabled;
+}
 @end

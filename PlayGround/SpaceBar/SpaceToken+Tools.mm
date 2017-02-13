@@ -18,6 +18,7 @@
 #import "Route.h"
 #import "Area.h"
 #import "ArrayEntity.h"
+#import "PersonToken.h"
 #import "PathToken.h"
 #import "AreaToken.h"
 #import "ArrayToken.h"
@@ -28,9 +29,10 @@
 +(SpaceToken*) manufactureTokenForEntity:(SpatialEntity*)spatialEntity{
     SpaceToken *aSpaceToken;
 
-    if ([spatialEntity isKindOfClass:[POI class]] ||
-        [spatialEntity isKindOfClass:[Person class]]){
+    if ([spatialEntity isMemberOfClass:[POI class]]){
         aSpaceToken = [[SpaceToken alloc] init];
+    }else if ([spatialEntity isKindOfClass:[Person class]]){
+        aSpaceToken = [[PersonToken alloc] init];
     }else if ([spatialEntity isKindOfClass:[Route class]]){
         aSpaceToken = [[PathToken alloc] init];
     }else if ([spatialEntity isKindOfClass:[Area class]]){

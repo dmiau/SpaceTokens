@@ -112,6 +112,7 @@
         // star the location
         [[EntityDatabase sharedManager] addEntity:entity];
         entity.annotation.isHighlighted = YES;
+        
     }
     entity.dirtyFlag = @0;
 }

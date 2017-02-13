@@ -131,7 +131,9 @@
 }
 
 - (void)clearAllTouchedTokens{
-    for (SpaceToken* aToken in self.touchingSet){
+    // The content of the set may be changing when a token is deselected
+    // e.g., selecting and deselecting a PathToken changing the content of the set
+    for (SpaceToken* aToken in [self.touchingSet copy]){
         aToken.selected = NO;
     }
     
