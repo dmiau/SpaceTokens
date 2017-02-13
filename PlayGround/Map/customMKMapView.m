@@ -45,6 +45,7 @@
 
     self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
     self.isDebugModeOn = NO;
+    self.isLongPressEnabled = NO;
     
     //----------------------
     // initialize the gesture recognizer
