@@ -16,12 +16,12 @@
 
 - (void) fillDraggingMapXYs{
     for(SpaceToken* anItem in self.draggingSet) {
-        if (anItem.appearanceType != ANCHOR_VISIBLE
-            || anItem.appearanceType != ANCHOR_INVISIBLE)
-        {
+//        if (anItem.appearanceType != ANCHOR_VISIBLE
+//            || anItem.appearanceType != ANCHOR_INVISIBLE)
+//        {
             SpaceToken* aMark = (SpaceToken*)anItem;
             aMark.mapViewXY = aMark.center;
-        }
+//        }
     }
 }
 

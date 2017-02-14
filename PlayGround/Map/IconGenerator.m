@@ -9,6 +9,12 @@
 #import "IconGenerator.h"
 
 @implementation IconGenerator
+-(id)init{
+    self = [super init];
+    
+    
+    return self;
+}
 
 
 // Empty implementation

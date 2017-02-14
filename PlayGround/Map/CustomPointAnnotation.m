@@ -112,29 +112,41 @@
 -(void)setIsHighlighted:(BOOL)isHighlighted{
     _isHighlighted = isHighlighted;
     
-    self.iconGenerator.isMarkerOn = isHighlighted;
     
-    if (isHighlighted){
-        //-------------------
-        // highlighted
-        //-------------------
-        if (self.iconGenerator){
-            UIImageView *imageView = [[UIImageView alloc]
-                                      initWithImage: [self.iconGenerator generateIcon]];
-            [imageView addSubview:aLabel];
-            self.iconView = imageView;
-            [aLabel setTextColor: [UIColor redColor]];
-        }
-    }else{
-        
-        //-------------------
-        // normal
-        //-------------------
+    
+    if (self.pointType == YouRHere){
         self.iconView = nil;
-        if (self.iconGenerator){
-            self.icon = [self.iconGenerator generateIcon];
+        self.iconGenerator.isMarkerOn = NO;
+        if (isHighlighted){
+            self.iconGenerator.fillColor = [UIColor blueColor];
         }else{
-            self.map = nil;
+            self.iconGenerator.fillColor = [UIColor grayColor];
+        }
+        self.icon = [self.iconGenerator generateIcon];
+    }else{
+        self.iconGenerator.isMarkerOn = isHighlighted;
+        if (isHighlighted){
+            //-------------------
+            // highlighted
+            //-------------------
+            if (self.iconGenerator){
+                UIImageView *imageView = [[UIImageView alloc]
+                                          initWithImage: [self.iconGenerator generateIcon]];
+                [imageView addSubview:aLabel];
+                self.iconView = imageView;
+                [aLabel setTextColor: [UIColor redColor]];
+            }
+        }else{
+            
+            //-------------------
+            // normal
+            //-------------------
+            self.iconView = nil;
+            if (self.iconGenerator){
+                self.icon = [self.iconGenerator generateIcon];
+            }else{
+                self.map = nil;
+            }
         }
     }
 }

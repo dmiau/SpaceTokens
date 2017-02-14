@@ -30,10 +30,18 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPl-e9-Rgx">
-                    <rect key="frame" x="233" y="8" width="30" height="30"/>
+                    <rect key="frame" x="219" y="8" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <connections>
                         <action selector="starAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ovj-SI-J9Y"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88j-JO-Dfw">
+                    <rect key="frame" x="257" y="8" width="102" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="add token"/>
+                    <connections>
+                        <action selector="tokenButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="k87-cj-G25"/>
                     </connections>
                 </button>
             </subviews>
@@ -44,6 +52,7 @@
                 <outlet property="detailTextView" destination="XxJ-fe-rVI" id="nNw-bd-DC1"/>
                 <outlet property="starOutlet" destination="IPl-e9-Rgx" id="sRY-Xy-bv4"/>
                 <outlet property="titleOutlet" destination="Prf-yo-Lg6" id="adO-2R-FoA"/>
+                <outlet property="tokenButtonOutlet" destination="88j-JO-Dfw" id="0oa-9E-TpW"/>
             </connections>
             <point key="canvasLocation" x="12.5" y="148"/>
         </view>

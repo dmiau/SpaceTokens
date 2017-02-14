@@ -17,4 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *starOutlet;
 - (IBAction)starAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *tokenButtonOutlet;
+
+- (IBAction)tokenButtonAction:(id)sender;
+
+
 @end

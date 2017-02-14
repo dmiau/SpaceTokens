@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+tools.h"
 #import "EntityDatabase.h"
+#import "TokenCollectionView.h"
 
 #define INITIAL_HEIGHT 60
 @implementation PointInformationSheet
@@ -35,8 +36,28 @@
     self.titleOutlet.text = self.spatialEntity.name;
     if (self.spatialEntity.annotation.pointType == STAR){
         [self.starOutlet setSelected:YES];
+        [self.tokenButtonOutlet setHidden:NO];
+        
     }else{
         [self.starOutlet setSelected:NO];
+        [self.tokenButtonOutlet setHidden:YES];
+    }
+    [self updateTokenButton];
+}
+
+- (IBAction)tokenButtonAction:(id)sender {
+    self.spatialEntity.isEnabled =
+    !self.spatialEntity.isEnabled;
+    [[TokenCollectionView sharedManager] reloadData];
+    [self updateTokenButton];
+}
+
+-(void)updateTokenButton{
+    if (self.spatialEntity.isEnabled){
+        [self.tokenButtonOutlet setTitle:@"remove token" forState:UIControlStateNormal];
+    }else{
+        [self.tokenButtonOutlet setTitle:@"save token" forState:UIControlStateNormal];
+        [self.tokenButtonOutlet setHidden:YES];
     }
 }
 
@@ -108,6 +129,8 @@
         // de-star
         [[EntityDatabase sharedManager] removeEntity:entity];
         entity.annotation.pointType = DEFAULT_MARKER;
+        entity.isEnabled = NO;
+        [self updateTokenButton];
     }else{
         // star the location
         [[EntityDatabase sharedManager] addEntity:entity];
@@ -116,4 +139,5 @@
     }
     entity.dirtyFlag = @0;
 }
+
 @end

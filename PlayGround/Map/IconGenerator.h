@@ -20,6 +20,7 @@
 
 @property BOOL isMarkerOn;
 @property BOOL isDotOn;
+@property BOOL isOutlineOn;
 
 -(UIImage*)generateIcon;
 -(void)resetDefaultStyle;

@@ -33,7 +33,7 @@
 
 -(void)setUpdateFlag:(BOOL)updateFlag{
     _updateFlag = updateFlag;
-    
+    self.isMapAnnotationEnabled = YES;
     if (_updateFlag){
         // Turn on the location flag
         // for iOS 8, specific user level permission is required,
@@ -49,12 +49,12 @@
         
         [locationManager startUpdatingLocation];
         [locationManager startUpdatingHeading];
-        self.isMapAnnotationEnabled = YES;
+        self.annotation.isHighlighted = YES;
     }else{
         // Stop Location Manager
         [locationManager stopUpdatingLocation];
         [locationManager stopUpdatingHeading];
-        self.isMapAnnotationEnabled = NO;
+        self.annotation.isHighlighted = NO;
     }
 }
 
@@ -85,9 +85,9 @@
 - (void)locationManager:(CLLocationManager *)manager
        didUpdateHeading:(CLHeading *)newHeading
 {
-    self.headingInDegree = [newHeading trueHeading];
-    // heading is in degree
-    [self updateMapAnnotation];
+//    self.headingInDegree = [newHeading trueHeading];
+//    // heading is in degree
+//    [self updateMapAnnotation];
 }
 
 
@@ -95,7 +95,7 @@
     // Get the map object
     CustomMKMapView *myMapView = [CustomMKMapView sharedManager];
     
-    self.annotation.icon = [UIImage imageNamed:@"heading.png"];
+//    self.annotation.icon = [UIImage imageNamed:@"heading.png"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         // Your code to run on the main queue/thread

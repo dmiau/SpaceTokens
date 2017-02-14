@@ -224,10 +224,10 @@ static SpaceBar *sharedInstance;
         [self fillMapXYsForSet:[NSSet setWithArray:tokenArray]];
     }
     
+    [self fillDraggingMapXYs];
     if ([self.draggingSet count] > 0
         && [self.touchingSet count] == 0)
-    {
-        [self fillDraggingMapXYs];
+    {        
         [self updateMapToFitPOIPreferences:self.draggingSet];
     }else{
         if ([self.touchingSet count] > 0){
