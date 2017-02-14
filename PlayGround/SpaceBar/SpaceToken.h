@@ -32,7 +32,6 @@ typedef enum {DOCKED, DRAGGING, ANCHOR_VISIBLE, ANCHOR_INVISIBLE} TokenAppearanc
 
 // Touch related properties
 @property BOOL isCustomGestureRecognizerEnabled;
-@property NSNumber *dirtyFlag; // For KVO (for other components to observe this object)
 
 @property (weak) UITouch *touch; // to keep tracking of UITouch
 

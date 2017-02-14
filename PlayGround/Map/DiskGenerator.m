@@ -15,9 +15,9 @@
     
     // Initialize parameters
     self.canvasSize = CGSizeMake(50, 50);
-    self.diskDiameter = 10;
+    self.iconDiameter = 10;
     self.outlineThinkness = 2;
-    self.fillColorArray = [NSMutableArray array];
+    self.fillColor= [UIColor redColor];
     
     [self resetDefaultStyle];
     return self;
@@ -33,12 +33,10 @@
     
     switch (diskStyle) {
         case GRAYDISK:
-            [self.fillColorArray removeAllObjects];
-            [self.fillColorArray addObject:[UIColor grayColor]];
+            self.fillColor = [UIColor grayColor];
             break;
         case REDDISK:
-            [self.fillColorArray removeAllObjects];
-            [self.fillColorArray addObject:[UIColor redColor]];
+            self.fillColor = [UIColor redColor];
             break;
     }
 }
@@ -68,11 +66,11 @@
 }
 
 -(void)drawDisk{
-    UIColor *color = [self.fillColorArray firstObject];
+    UIColor *color = self.fillColor;
     
     // Create a custom red dot
     // http://stackoverflow.com/questions/14594782/how-can-i-make-an-uiimage-programatically
-    float radius = self.diskDiameter/2;
+    float radius = self.iconDiameter/2;
     CGSize size = CGSizeMake(radius*2, radius*2);
     CGRect rect = CGRectMake(self.canvasSize.width/2 - radius,
                              self.canvasSize.height/2 - radius,

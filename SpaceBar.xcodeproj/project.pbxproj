@@ -227,6 +227,8 @@
 		9A90C7691DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */; };
 		9A90C76B1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */; };
 		9A93F9281D3016690012638A /* CustomMKMapView+MapDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */; };
+		9A945E911E52627400DDC731 /* IconGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A945E901E52627400DDC731 /* IconGenerator.m */; };
+		9A945E921E52627400DDC731 /* IconGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A945E901E52627400DDC731 /* IconGenerator.m */; };
 		9A94DD091D9C194D00F94256 /* CustomMKMapView+Annotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */; };
 		9A95D64E1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
 		9A95D6501E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */; };
@@ -607,6 +609,8 @@
 		9A90C7681DFF337E00CDC578 /* SearchPanelView+Actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SearchPanelView+Actions.m"; path = "Views/SearchPanelView+Actions.m"; sourceTree = "<group>"; };
 		9A93F9261D3016690012638A /* CustomMKMapView+MapDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+MapDisplay.h"; path = "Map/CustomMKMapView+MapDisplay.h"; sourceTree = "<group>"; };
 		9A93F9271D3016690012638A /* CustomMKMapView+MapDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "CustomMKMapView+MapDisplay.mm"; path = "Map/CustomMKMapView+MapDisplay.mm"; sourceTree = "<group>"; };
+		9A945E8F1E52627400DDC731 /* IconGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IconGenerator.h; path = Map/IconGenerator.h; sourceTree = "<group>"; };
+		9A945E901E52627400DDC731 /* IconGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IconGenerator.m; path = Map/IconGenerator.m; sourceTree = "<group>"; };
 		9A94DD071D9C194D00F94256 /* CustomMKMapView+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+Annotations.h"; path = "Map/CustomMKMapView+Annotations.h"; sourceTree = "<group>"; };
 		9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+Annotations.m"; path = "Map/CustomMKMapView+Annotations.m"; sourceTree = "<group>"; };
 		9A95D64C1E3D68D400674847 /* CustomMKMapView+GMSMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+GMSMapView.h"; path = "Map/CustomMKMapView+GMSMapView.h"; sourceTree = "<group>"; };
@@ -985,6 +989,8 @@
 			isa = PBXGroup;
 			children = (
 				9A6355611E4F96A800123A60 /* default_marker.png */,
+				9A945E8F1E52627400DDC731 /* IconGenerator.h */,
+				9A945E901E52627400DDC731 /* IconGenerator.m */,
 				9A63555D1E4F96A200123A60 /* StarIconGenerator.h */,
 				9A63555E1E4F96A200123A60 /* StarIconGenerator.m */,
 				9A70F1361E50D5AC00F9177A /* DiskGenerator.h */,
@@ -1752,6 +1758,7 @@
 				9A8F67ED1D3DA65200C08CCB /* PreferencesController.mm in Sources */,
 				9AFB7DE61E40214B00384959 /* CustomGMSPolygon.m in Sources */,
 				9AFFFFF21D85B85A00111E6C /* Snapshot+Validators.m in Sources */,
+				9A945E911E52627400DDC731 /* IconGenerator.m in Sources */,
 				9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */,
 				9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */,
@@ -1878,6 +1885,7 @@
 				9AE13B531DF0D148008612DA /* PreferencesController.mm in Sources */,
 				9AFB7DE71E40214B00384959 /* CustomGMSPolygon.m in Sources */,
 				9AE13B541DF0D148008612DA /* Snapshot+Validators.m in Sources */,
+				9A945E921E52627400DDC731 /* IconGenerator.m in Sources */,
 				9AE13B551DF0D148008612DA /* PlayGround.xcdatamodeld in Sources */,
 				9A3EB3B81E1C77FD008FA7FA /* ArrayToken.m in Sources */,
 				9AE13B561DF0D148008612DA /* CustomMKMapView+TouchInteractions.m in Sources */,

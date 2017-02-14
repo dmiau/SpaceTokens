@@ -10,10 +10,14 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "AnnotationProtocol.h"
 
+@class IconGenerator;
+
 @interface CustomPointAnnotation : GMSMarker <AnnotationProtocol>
 @property location_enum pointType;
 
 @property bool isLabelOn;
 @property BOOL isHighlighted;
+@property UIColor *iconColor;
+@property IconGenerator *iconGenerator;
 
 @end

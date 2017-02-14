@@ -14,7 +14,7 @@
     
     // Initialize parameters
     self.canvasSize = CGSizeMake(50, 50);
-    self.starDiameter = 20;
+    self.iconDiameter = 20;
     self.outlineThinkness = 2;
     self.dotColor = [UIColor redColor];
     
@@ -47,11 +47,11 @@
 
     // generate the outline star
     [self drawStarWithColor:self.outlineColor andDiameter:
-     self.starDiameter];
+     self.iconDiameter];
     
     // generate the inner star
     [self drawStarWithColor:self.fillColor andDiameter:
-     self.starDiameter - self.outlineThinkness * 2];
+     self.iconDiameter - self.outlineThinkness * 2];
     
     if (self.isMarkerOn){
         //-------------
@@ -107,7 +107,7 @@
 -(void)drawDotWithColor:(UIColor*) color{
     // Create a custom red dot
     // http://stackoverflow.com/questions/14594782/how-can-i-make-an-uiimage-programatically
-    float radius = self.starDiameter * 0.10;
+    float radius = self.iconDiameter * 0.10;
     CGSize size = CGSizeMake(radius*2, radius*2);
     CGRect rect = CGRectMake(self.canvasSize.width/2 - radius,
                              self.canvasSize.height/2 - radius,

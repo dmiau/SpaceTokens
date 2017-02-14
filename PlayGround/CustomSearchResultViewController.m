@@ -43,7 +43,7 @@ NSString *const kTableCellNibName = @"SearchResultTableCell";
     
     // Create the fetcher.
     _fetcher = [[GMSAutocompleteFetcher alloc] initWithBounds:bounds
-                                                       filter:filter];
+                                                       filter:nil];
     _fetcher.delegate = self;
     
     

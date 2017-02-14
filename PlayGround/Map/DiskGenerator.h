@@ -7,21 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IconGenerator.h"
 
 typedef enum {REDDISK, GRAYDISK} DISKSTYLE;
 
-@interface DiskGenerator : NSObject
-@property NSMutableArray *fillColorArray;
-@property UIColor *outlineColor;
+@interface DiskGenerator : IconGenerator
 
-@property CGSize canvasSize;
-@property float diskDiameter;
-@property float outlineThinkness;
 @property DISKSTYLE diskStyle;
-@property BOOL isMarkerOn;
-@property BOOL isDotOn;
 
--(UIImage*)generateIcon;
--(void)resetDefaultStyle;
 
 @end

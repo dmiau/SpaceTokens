@@ -35,6 +35,8 @@
     // Initialize the label
     aLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 45, 20)];
     
+    
+    
     // Preload all the images
     StarIconGenerator *starGenerator = [[StarIconGenerator alloc] init];
     starGenerator.isMarkerOn = NO;
@@ -53,14 +55,6 @@
     highlightedRedDotImg = [diskGenerator generateIcon];
     
     youRHereImg = [[UIImage imageNamed:@"grayYouRHere.png"]  resize:CGSizeMake(12, 12)];
-
-    // Backup
-//    starImg = [[UIImage imageNamed:@"star-250.png"] resize:CGSizeMake(24, 24)];
-//    
-//    highlightedStarImg = [[UIImage imageNamed:@"selectedStar-250.png"] resize:CGSizeMake(24, 24)];
-//    grayDotImg = [self generateDotImageWithColor:[UIColor grayColor] andRadius:6];
-//    redDotImg = [self generateDotImageWithColor:[UIColor redColor] andRadius:6];
-    
     return self;
 }
 
@@ -72,36 +66,41 @@
         //--------------------------
         // Create a custom gray dot
         //--------------------------
-        self.icon = grayDotImg;
-        self.infoWindowAnchor = CGPointMake(0.5, 0.5);
-        self.groundAnchor = CGPointMake(0.5, 0.5);
-        
+        self.iconGenerator = [[DiskGenerator alloc] init];
+        self.iconGenerator.fillColor = [UIColor grayColor];
     }else if(pointType == YouRHere){        
         //--------------------------
         // YouRHere
         //--------------------------
-        self.icon = youRHereImg;
-        self.infoWindowAnchor = CGPointMake(0.5, 0.5);
-        self.groundAnchor = CGPointMake(0.5, 0.5);
-        
+        self.iconGenerator = [[DiskGenerator alloc] init];
+        self.iconGenerator.fillColor = [UIColor blueColor];
+
     }else if(pointType == STAR){
         //--------------------------
         // A star image
         //--------------------------
-        self.icon = starImg;
-        self.infoWindowAnchor = CGPointMake(0.5, 0.5);
-        self.groundAnchor = CGPointMake(0.5, 0.5);
+        self.iconGenerator = [[StarIconGenerator alloc] init];
+
     }else if(pointType == SEARCH_RESULT){
         //--------------------------
         // Search result (red dot)
         //--------------------------
-        self.icon = redDotImg;
+        self.iconGenerator = [[DiskGenerator alloc] init];
+        self.iconGenerator.fillColor = [UIColor redColor];
+
+    }else{
+        self.iconGenerator = nil;
+
+    }
+    
+    if (self.iconGenerator){
+        self.iconGenerator.isMarkerOn = self.isHighlighted;
         self.infoWindowAnchor = CGPointMake(0.5, 0.5);
         self.groundAnchor = CGPointMake(0.5, 0.5);
     }else{
-        self.icon = nil;
         self.infoWindowAnchor = CGPointMake(0.5, 0);
         self.groundAnchor = CGPointMake(0.5, 1);
+        self.icon = nil;
     }
     
     self.isHighlighted = self.isHighlighted; // reflect the highlight status
@@ -113,36 +112,27 @@
 -(void)setIsHighlighted:(BOOL)isHighlighted{
     _isHighlighted = isHighlighted;
     
+    self.iconGenerator.isMarkerOn = isHighlighted;
+    
     if (isHighlighted){
         //-------------------
         // highlighted
         //-------------------
-        
-        if (self.pointType == LANDMARK){
-            self.icon = redDotImg;
-        }else if (self.pointType == STAR){
-//            self.icon = highlightedStarImg;
-            UIImageView *imageView = [[UIImageView alloc] initWithImage: highlightedStarImg];
+        if (self.iconGenerator){
+            UIImageView *imageView = [[UIImageView alloc]
+                                      initWithImage: [self.iconGenerator generateIcon]];
             [imageView addSubview:aLabel];
-            [aLabel setTextColor: [UIColor redColor]];
             self.iconView = imageView;
-        }else if (self.pointType == SEARCH_RESULT){
-            self.icon = highlightedRedDotImg;
+            [aLabel setTextColor: [UIColor redColor]];
         }
-
     }else{
         
         //-------------------
         // normal
         //-------------------
-//        self.pointType = self.pointType;
-        if (self.pointType == LANDMARK){
-            self.icon = grayDotImg;
-        }else if (self.pointType == STAR){
-            self.iconView = nil;
-            self.icon = starImg;
-        }else if (self.pointType == SEARCH_RESULT){
-            self.icon = redDotImg;
+        self.iconView = nil;
+        if (self.iconGenerator){
+            self.icon = [self.iconGenerator generateIcon];
         }else{
             self.map = nil;
         }
@@ -161,8 +151,6 @@
 
 -(void)setIsLabelOn:(bool)isLabelOn{
     _isLabelOn = isLabelOn;
-    
-    
 }
 @end
 

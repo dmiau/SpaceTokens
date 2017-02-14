@@ -18,6 +18,8 @@
 #import "HighlightedEntities.h"
 #import "CustomPointAnnotation.h"
 
+#import "Area.h"
+
 @implementation AdditionTool{
     CAShapeLayer *lineLayer; // shows the line connecting the SpaceToken and the actual location
     BOOL isLineLayerOn;
@@ -204,7 +206,11 @@
     
     for (SpatialEntity *highlightedEntity in highlightedSet)
     {
-        if ([highlightedEntity.annotation isKindOfClass:[CustomPointAnnotation class]])
+        
+        //-------------
+        // Addition Tool should snap everything except an area (at least for now)
+        //-------------
+        if (![highlightedEntity isKindOfClass:[Area class]])
         {
             
             if ([highlightedEntity isEntityTouched:touch]){
@@ -220,6 +226,8 @@
                 
                 return result;
             }
+            
+            
         }
     }
     

@@ -7,22 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IconGenerator.h"
 
 typedef enum {YELLOWSTAR, REDSTAR} STARSTYLE;
 
-@interface StarIconGenerator : NSObject
-
-@property UIColor *fillColor;
-@property UIColor *outlineColor;
-@property UIColor *dotColor;
-
-@property CGSize canvasSize;
-@property float starDiameter;
-@property float outlineThinkness;
+@interface StarIconGenerator : IconGenerator
 @property STARSTYLE starStyle;
-@property BOOL isMarkerOn;
 @property BOOL isDotOn;
 
--(UIImage*)generateIcon;
--(void)resetDefaultStyle;
 @end
