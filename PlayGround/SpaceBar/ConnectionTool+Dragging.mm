@@ -12,6 +12,7 @@
 #import "TokenCollection.h"
 #import "POI.h"
 #import "Route.h"
+#import "EntityDatabase.h"
 
 #import "CustomMKMapView.h"
 #import "ViewController.h"
@@ -134,6 +135,9 @@
         POI *destinationPOI = [[POI alloc] init];
         destinationPOI.latLon = [mapView.projection coordinateForPoint:touchPoint];
         destinationPOI.name = @"UnknownPOI";
+        
+        // Store the destination into the database
+        [[EntityDatabase sharedManager] addEntity:destinationPOI];
         
         // Create a route
         POI *sourcePOI = counterPart.spatialEntity;

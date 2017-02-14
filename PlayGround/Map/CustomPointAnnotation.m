@@ -81,6 +81,13 @@
         //--------------------------
         self.iconGenerator = [[StarIconGenerator alloc] init];
 
+    }else if(pointType == TOKENSTAR){
+        //--------------------------
+        // A star image
+        //--------------------------
+        self.iconGenerator = [[StarIconGenerator alloc] init];
+        self.iconGenerator.isOutlineOn = YES;
+        
     }else if(pointType == SEARCH_RESULT){
         //--------------------------
         // Search result (red dot)

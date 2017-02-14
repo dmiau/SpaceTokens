@@ -13,6 +13,7 @@
 #import "UIImage+tools.h"
 #import "EntityDatabase.h"
 #import "TokenCollectionView.h"
+#import "StarIconGenerator.h"
 
 #define INITIAL_HEIGHT 60
 @implementation PointInformationSheet
@@ -35,9 +36,29 @@
 -(void)updateSheet{
     self.titleOutlet.text = self.spatialEntity.name;
     if (self.spatialEntity.annotation.pointType == STAR){
+        StarIconGenerator *starGenerator = [[StarIconGenerator alloc] init];
+        starGenerator.iconDiameter = 45;
+        starGenerator.isMarkerOn = NO;
+        starGenerator.isOutlineOn = NO;
+        UIImage *starImg = [starGenerator generateIcon];
+        [self.starOutlet setImage:starImg
+                         forState:UIControlStateSelected];
+        
         [self.starOutlet setSelected:YES];
         [self.tokenButtonOutlet setHidden:NO];
+    }else if (self.spatialEntity.annotation.pointType == TOKENSTAR){
+        // Generate a star image
+        StarIconGenerator *starGenerator = [[StarIconGenerator alloc] init];
+        starGenerator.iconDiameter = 45;
+        starGenerator.outlineThinkness = 4;
+        starGenerator.isMarkerOn = NO;
+        starGenerator.isOutlineOn = YES;
+        UIImage *starImg = [starGenerator generateIcon];
+        [self.starOutlet setImage:starImg
+                         forState:UIControlStateSelected];
         
+        [self.starOutlet setSelected:YES];
+        [self.tokenButtonOutlet setHidden:NO];
     }else{
         [self.starOutlet setSelected:NO];
         [self.tokenButtonOutlet setHidden:YES];
@@ -49,7 +70,7 @@
     self.spatialEntity.isEnabled =
     !self.spatialEntity.isEnabled;
     [[TokenCollectionView sharedManager] reloadData];
-    [self updateTokenButton];
+    [self updateSheet];
 }
 
 -(void)updateTokenButton{
@@ -125,7 +146,9 @@
     
     SpatialEntity *entity = self.spatialEntity;
     
-    if (entity.annotation.pointType == STAR){
+    if (entity.annotation.pointType == STAR
+        || entity.annotation.pointType == TOKENSTAR)
+    {
         // de-star
         [[EntityDatabase sharedManager] removeEntity:entity];
         entity.annotation.pointType = DEFAULT_MARKER;

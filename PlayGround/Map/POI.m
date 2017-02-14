@@ -45,4 +45,16 @@
     }
 }
 
+-(void)setIsEnabled:(BOOL)isEnabled{
+    [super setIsEnabled:isEnabled];
+    
+    if (isEnabled){
+        self.annotation.pointType = TOKENSTAR;
+    }else if (!isEnabled && self.isMapAnnotationEnabled){
+        self.annotation.pointType = STAR;
+    }else{
+        self.annotation.pointType= DEFAULT_MARKER;
+    }
+}
+
 @end

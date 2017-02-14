@@ -111,6 +111,7 @@
                 }else if ( [structureForRemoval isKindOfClass:[TokenCollectionView class]] )
                 {
                     [[TokenCollectionView sharedManager] removeToken:self];
+
                 }else if([structureForRemoval isKindOfClass:[SetTool class]]){
                     [[SetTool sharedManager] removeToken:self];
                 }else{

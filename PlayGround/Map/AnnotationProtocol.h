@@ -11,6 +11,7 @@
 typedef enum {
     LANDMARK,
     STAR,
+    TOKENSTAR,
     path,
     AREA,
     DROPPED,

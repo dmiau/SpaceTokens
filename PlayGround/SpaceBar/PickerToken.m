@@ -253,10 +253,9 @@
         if ([highlightedEntity isEntityTouched:touch] && probEnabled){
             probEnabled = NO;
             movingOut = NO;
-            highlightedEntity.annotation.pointType = STAR;
-            highlightedEntity.dirtyFlag = @0;
-            highlightedEntity.isEnabled = YES;
             [[EntityDatabase sharedManager] addEntity:highlightedEntity];
+            highlightedEntity.isEnabled = YES;
+            highlightedEntity.dirtyFlag = @0;
             
             [[TokenCollectionView sharedManager] reloadData];
             [lineLayer removeFromSuperlayer];

@@ -25,6 +25,7 @@
 -(void)resetDefaultStyle{
     self.isMarkerOn = NO;
     self.isDotOn = NO;
+    self.isOutlineOn = NO;
     self.starStyle = YELLOWSTAR;
 }
 
@@ -41,6 +42,16 @@
             break;
     }
 }
+
+-(void)setIsOutlineOn:(BOOL)isOutlineOn{
+    [super setIsOutlineOn:isOutlineOn];
+    if (self.isOutlineOn){
+        self.outlineColor = [UIColor redColor];
+    }else{
+        self.outlineColor = [UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1];
+    }
+}
+
 
 -(UIImage*)generateIcon{
     UIGraphicsBeginImageContext(self.canvasSize);

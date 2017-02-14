@@ -295,6 +295,8 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
         cell.spaceToken = aToken;
         [cell addSubview:aToken];
         
+        spatialEntity.annotation.pointType = TOKENSTAR;
+        
         void (^cloneCreationHandler)(SpaceToken* token) = ^(SpaceToken* token){
             token.home = self;
             cell.spaceToken = token;
@@ -368,6 +370,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     [token removeFromSuperview];
     
     token.spatialEntity.isEnabled = NO;
+    token.spatialEntity.dirtyFlag = @0;
     [self reloadData];
 }
 
