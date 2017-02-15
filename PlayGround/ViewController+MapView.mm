@@ -12,6 +12,7 @@
 #import <MapKit/MapKit.h>
 #import "Constants.h"
 #import "CustomPointAnnotation.h"
+#import "HighlightedEntities.h"
 
 @implementation ViewController (MapView)
 
@@ -78,10 +79,14 @@
 
 
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
     
+    if ([self.spaceBar.touchingSet count] > 0){
+        // We want to keep the highlight a bit longer after the selected SpaceToken is deselected.
+        [HighlightedEntities sharedManager].skipClearingHighlightRequestCount = 1;
+    }
     // Remove all the touched SpaceTokens
     [self.spaceBar clearAllTouchedTokens];
-    
 
     // Put the touch into a watch mechanism
     [self.spaceBar addAnchorForTouches: touches];

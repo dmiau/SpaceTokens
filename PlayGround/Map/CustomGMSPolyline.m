@@ -69,11 +69,11 @@
     _isHighlighted = isHighlighted;
     
     if (isHighlighted){
-        self.strokeWidth = 5;
-        self.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+        self.strokeWidth = 8;
+        self.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.8];
     }else{
         self.strokeWidth = 4;
-        self.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
+        self.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
     }
     
     if (self.isFilled){

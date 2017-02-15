@@ -26,6 +26,7 @@
 -(id)init{
     self = [super init];
     _highlightedSet = [NSMutableSet set];
+    _skipClearingHighlightRequestCount = 0;
     return self;
 }
 
@@ -53,7 +54,13 @@
 // MARK: Clear the annotation
 //---------------------------
 
--(void)clearHighlightedSet{    
+-(void)clearHighlightedSet{
+    
+    if (_skipClearingHighlightRequestCount > 0){
+        _skipClearingHighlightRequestCount -= _skipClearingHighlightRequestCount;
+        return;
+    }
+    
     // Get all the annotations
     for (SpatialEntity *anEntity in [_highlightedSet copy]){
         if (!anEntity.isAnchor)

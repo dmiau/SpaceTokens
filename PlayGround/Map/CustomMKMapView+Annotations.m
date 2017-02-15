@@ -94,6 +94,12 @@
     // Create a temporary entity
     POI *tempPOI = [[POI alloc] init];
     tempPOI.latLon = location;
+    
+    // Need to shorten long names
+    if ([name length] >16){
+        name = [NSString stringWithFormat:@"%@...", [name substringToIndex:13]];
+    }
+    
     tempPOI.name = name;
     tempPOI.placeID = placeID;
     tempPOI.annotation.pointType = DROPPED;

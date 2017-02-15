@@ -15,6 +15,12 @@
     NSMutableSet <SpatialEntity *> *_highlightedSet;
 }
 
+@property int skipClearingHighlightRequestCount;
+// In some cases, we may want to keep the highlighted items a bit logner,
+// so we use this variable to specify how many highlight claering requests
+// need to be skipped.
+
+
 +(HighlightedEntities*)sharedManager;
 
 // Methods to access entities

@@ -154,6 +154,8 @@
         entity.annotation.pointType = DEFAULT_MARKER;
         entity.isEnabled = NO;
         [self updateTokenButton];
+        // Need to update the token list after de-star
+        [[TokenCollectionView sharedManager] reloadData];
     }else{
         // star the location
         [[EntityDatabase sharedManager] addEntity:entity];
