@@ -17,6 +17,7 @@
 #import "ArrayTool.h"
 #import "HighlightedEntities.h"
 #import "CustomPointAnnotation.h"
+#import "EntityDatabase.h"
 
 #import "Area.h"
 
@@ -214,6 +215,7 @@
         {
             
             if ([highlightedEntity isEntityTouched:touch]){
+                
                 SpaceToken *aSpaceToken =
                 [SpaceToken manufactureTokenForEntity:highlightedEntity];
                 
@@ -223,7 +225,7 @@
                     [lineLayer removeFromSuperlayer];
                     movingOut = NO;
                 }
-                
+                [[EntityDatabase sharedManager] addEntity:highlightedEntity];                
                 return result;
             }
             

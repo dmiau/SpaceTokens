@@ -13,6 +13,7 @@
 #import "POI.h"
 #import "Route.h"
 #import "EntityDatabase.h"
+#import "HighlightedEntities.h"
 
 #import "CustomMKMapView.h"
 #import "ViewController.h"
@@ -184,9 +185,29 @@
 
             }
             
-            break;
+            return;
         }
     }
+
+    //------------------------
+    // Else, check if the connection tool touches a highlighted entity
+    //------------------------
+    NSSet *highlightedSet = [[HighlightedEntities sharedManager] getHighlightedSet];
+    
+    for (SpatialEntity *highlightedEntity in highlightedSet){
+        if ([highlightedEntity isEntityTouched:touch]){
+            [[EntityDatabase sharedManager] addEntity:highlightedEntity];
+
+            // Create a route
+            POI *sourcePOI = counterPart.spatialEntity;
+            POI *destinationPOI = highlightedEntity;
+            [Route addRouteWithSource:sourcePOI Destination:destinationPOI];
+
+            [self removeFromSuperview];
+            return;
+        }
+    }
+    
     
     //------------------------
     // Else, check if the connection tool touches the search tool
@@ -218,7 +239,6 @@
         [self removeFromSuperview];
     }
     
-
 }
 
 @end
