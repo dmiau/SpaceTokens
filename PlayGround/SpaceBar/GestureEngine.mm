@@ -165,7 +165,7 @@
                 Route *aRoute = (Route*)aToken.spatialEntity;
                 // Load the route to the bar tool
                 [[ViewController sharedManager] showRoute:aRoute
-                                    zoomToOverview:YES];
+                                    zoomToOverview:NO];
                 
                 [lineLayer removeFromSuperlayer];
             }

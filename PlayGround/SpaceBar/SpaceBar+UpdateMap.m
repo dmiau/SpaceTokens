@@ -90,8 +90,11 @@
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate
                                          fitBounds: bounds
                                          withEdgeInsets: self.mapView.edgeInsets];
-        [self.mapView moveCamera: cameraUpdate];
-        
+        if (self.mapView.isMapStable){
+            [self.mapView animateToCameraUpdate:cameraUpdate];
+        }else{
+            [self.mapView moveCamera: cameraUpdate];
+        }
     }else{
         //--------------
         // Zero anchor, or more than one anchor

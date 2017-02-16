@@ -46,6 +46,8 @@
     self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
     self.isDebugModeOn = NO;
     self.isLongPressEnabled = NO;
+    self.isMapStable = YES;
+    self.transportType = MKDirectionsTransportTypeWalking;
     
     //----------------------
     // initialize the gesture recognizer
@@ -54,6 +56,42 @@
     
     // Load the information sheet
     self.informationSheetManager = [[InformationSheetManager alloc] init];
+    
+    
+    //-----------------
+    // Initialize a hidden map
+    //-----------------
+    hiddenMap = [[GMSMapView alloc] init];
+    hiddenMap.translatesAutoresizingMaskIntoConstraints = NO;
+    hiddenMap.mapType = self.mapType;
+    [self addSubview:hiddenMap];
+    [hiddenMap setUserInteractionEnabled:NO];
+    //    [hiddenMap setAlpha:0.5];
+    [hiddenMap setHidden:YES];
+    
+    //-----------------
+    // Constraints
+    //-----------------
+    NSMutableDictionary *viewDictionary = [[NSMutableDictionary alloc] init];
+    viewDictionary[@"hiddenMap"] = hiddenMap;
+    viewDictionary[@"realMap"] = self;
+    
+    NSMutableArray *constraintStringArray = [[NSMutableArray alloc] init];
+    [constraintStringArray addObject:@"H:[hiddenMap(==realMap)]"];
+    [constraintStringArray addObject:@"V:[hiddenMap(==realMap)]"];
+    [constraintStringArray addObject:@"V:|-0-[hiddenMap]-0-|"];
+    [constraintStringArray addObject:@"H:|-0-[hiddenMap]-0-|"];
+    
+    NSMutableArray *constraints = [[NSMutableArray alloc] init];
+    
+    for (NSString *constraintString in constraintStringArray){
+        [constraints addObjectsFromArray:
+         [NSLayoutConstraint constraintsWithVisualFormat:constraintString
+                                                 options:0 metrics:nil
+                                                   views:viewDictionary]];
+    }
+    
+    [self addConstraints:constraints];
 }
 
 // Check if the protocol methods are implemetned

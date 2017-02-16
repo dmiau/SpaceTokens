@@ -95,6 +95,11 @@
     POI *tempPOI = [[POI alloc] init];
     tempPOI.latLon = location;
     
+    // Get rid of the leading "The"
+    if([name containsString:@"The "]){
+        name = [name stringByReplacingOccurrencesOfString:@"The " withString:@""];
+    }
+    
     // Need to shorten long names
     if ([name length] >16){
         name = [NSString stringWithFormat:@"%@...", [name substringToIndex:13]];
@@ -129,6 +134,11 @@
             result = entity;
             return result;
         }
+    }
+    
+    Person *youRHere = [EntityDatabase sharedManager].youRHere;
+    if (youRHere.annotation == anntation){
+        return youRHere;
     }
     
     // Search HighlightedEntities first

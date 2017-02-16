@@ -17,8 +17,14 @@
 @implementation ViewController (MapView)
 
 #pragma mark --CustomMKMapView delegate methods--
+-(void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture{
+//    self.mapView.isMapStable = NO;
+}
+
+
 // This is called when the map is changed
 -(void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position{
+    self.mapView.isMapStable = NO;
     [self updateSystem];
 }
 
@@ -26,13 +32,14 @@
 
 // This is called when the map becomes idle
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position{    
-
+    self.mapView.isMapStable = YES;
     // Timer action to disable the highlight
     NSTimer *delayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.05
                                                        target:self
                                                      selector:@selector(updateSystem)
                                                      userInfo:nil repeats:NO];
 }
+
 
 - (void)updateSystem{
     [self updateSpaceBar];

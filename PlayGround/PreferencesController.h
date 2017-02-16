@@ -16,10 +16,15 @@
 - (IBAction)mapStyleSegmentControl:(id)sender;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentControl;
 
+// Long press control
 @property (weak, nonatomic) IBOutlet UISegmentedControl *longPressSegmentOutlet;
 - (IBAction)longPressSegmentAction:(id)sender;
 
+// Transportation type
+@property (weak, nonatomic) IBOutlet UISegmentedControl *transportTypeOutlet;
+- (IBAction)transportTypeAction:(id)sender;
 
+// Sync map rotation
 @property (weak, nonatomic) IBOutlet UISegmentedControl *syncMiniMapRotationOutlet;
 - (IBAction)syncMiniMapRotationAction:(id)sender;
 

@@ -39,6 +39,8 @@
         unsigned int mapTouchEnded:1;
     } _delegateRespondsTo;
     
+    // hidden map is used for calculating various parameters
+    GMSMapView *hiddenMap;
 }
 
 + (CustomMKMapView*)sharedManager; // Singleton method
@@ -51,6 +53,8 @@
 @property BOOL isLongPressEnabled;
 
 @property BOOL isDebugModeOn;
+@property BOOL isMapStable;
+@property MKDirectionsTransportType transportType;
 @property InformationSheetManager *informationSheetManager;
 
 - (void)refreshAnnotations;
@@ -99,5 +103,7 @@
 -(void)updateCenterCoordinates:(CLLocationCoordinate2D)newCoord;
 
 -(BOOL)containsCoordinate:(CLLocationCoordinate2D)newCoord;
+
+-(void)animateToCameraUpdate: (GMSCameraUpdate*) cameraUpdate; // Override the default camera method to include animation
 
 @end

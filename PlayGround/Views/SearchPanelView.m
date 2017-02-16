@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "CustomMKMapView.h"
+#import "SpaceBar.h"
 
 #import "EntityDatabase.h"
 #import "POI.h"
@@ -172,6 +173,10 @@
 // MARK: Search result delegate
 - (void)didAutocompleteWithPlaces:(NSArray<GMSPlace *> *)places{
     
+    // Remove all the touched SpaceTokens
+    [[SpaceBar sharedManager] clearAllTouchedTokens];
+    
+    
     GMSCoordinateBounds *bound = [places firstObject].viewport;
     NSMutableArray *poiArray = [NSMutableArray array];
     for (GMSPlace *place in places){
@@ -197,7 +202,7 @@
         
         GMSCameraUpdate *newCamera = [GMSCameraUpdate fitBounds: bound
                                                  withEdgeInsets:mapView.edgeInsets];
-        [mapView moveCamera: newCamera];
+        [mapView animateToCameraUpdate: newCamera];
     }else{
         //----------------------
         // Use the handling block to handle the POI
@@ -215,6 +220,8 @@
     
     [self.rootViewController dismissViewControllerAnimated:YES completion:nil];
     
+    // Remove all the touched SpaceTokens
+    [[SpaceBar sharedManager] clearAllTouchedTokens];
     
     // Add the search result to the map
     POI *aPOI = [[POI alloc] init];
@@ -234,7 +241,7 @@
         GMSCameraUpdate *newCamera = [GMSCameraUpdate fitBounds: place.viewport
                                       withEdgeInsets:mapView.edgeInsets];
         
-        [mapView moveCamera: newCamera];
+        [mapView animateToCameraUpdate: newCamera];
         [mapView updateCenterCoordinates:place.coordinate];
 
     }else{

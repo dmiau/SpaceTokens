@@ -79,7 +79,7 @@
     GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate
                         fitBounds: [self coordinateBoundsForMapRect:mapRect]
                                                 withEdgeInsets: insets];
-    [self moveCamera: cameraUpdate];
+    [self animateToCameraUpdate: cameraUpdate];
 }
 
 
@@ -176,4 +176,11 @@
     
     return [bounds containsCoordinate:newCoord];
 }
+
+-(void)animateToCameraUpdate:(GMSCameraUpdate *)cameraUpdate{
+    // apply the change to the hidden map
+    [hiddenMap moveCamera:cameraUpdate];
+    [self animateToCameraPosition:hiddenMap.camera];
+}
+
 @end

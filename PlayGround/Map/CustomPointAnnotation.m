@@ -90,10 +90,11 @@
         
     }else if(pointType == SEARCH_RESULT){
         //--------------------------
-        // Search result (red dot)
+        // Search result (color dot)
         //--------------------------
         self.iconGenerator = [[DiskGenerator alloc] init];
-        self.iconGenerator.fillColor = [UIColor redColor];
+        self.iconGenerator.iconDiameter = 12;
+        self.iconGenerator.fillColor = [UIColor colorWithRed:226.0/255.0 green:107.0/255.0 blue:254.0/255.0 alpha:1.0];
 
     }else{
         self.iconGenerator = nil;

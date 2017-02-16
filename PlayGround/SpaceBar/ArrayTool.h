@@ -23,4 +23,6 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 
 @property PathToken *masterToken;
 @property ArrayToolMode arrayToolMode;
+
+-(void)resetTool;
 @end

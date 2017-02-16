@@ -55,7 +55,8 @@ using namespace std;
     [endMapItem setName:destination.name];
     request.destination = endMapItem;
     
-    
+    // Use the transportation type specified in the map
+    request.transportType = [CustomMKMapView sharedManager].transportType;
     request.requestsAlternateRoutes = YES;
     MKDirections *directions =
     [[MKDirections alloc] initWithRequest:request];

@@ -150,6 +150,13 @@
 }
 
 
+- (void)resetTool{
+    // Remove the master token
+    if (self.masterToken){
+        [self removeToken:self.masterToken];
+    }
+}
+
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
     
@@ -324,7 +331,6 @@
     // Depending on the token, different things need to be done
     if (token.spatialEntity == self.arrayEntity){
         // masterToken is removed
-        
         [self.arrayEntity removeObserver:self forKeyPath:@"dirtyFlag"];
         
         // Remove the annotation before the master token is removed

@@ -87,6 +87,8 @@
         spaceBar.isBarToolHidden = YES;
         mapView.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
         arrayTool.isVisible = NO;
+        
+        [arrayTool resetTool];
     }
 }
 

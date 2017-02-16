@@ -82,6 +82,23 @@
         self.longPressSegmentOutlet.selectedSegmentIndex = 0;
     }
     
+    // TransportType segment control
+    MKDirectionsTransportType transportType = self.rootViewController.mapView.transportType;
+    switch (transportType) {
+        case MKDirectionsTransportTypeAutomobile:
+            self.transportTypeOutlet.selectedSegmentIndex = 0;
+            break;
+        case MKDirectionsTransportTypeWalking:
+            self.transportTypeOutlet.selectedSegmentIndex = 1;
+            break;
+        case MKDirectionsTransportTypeTransit:
+            self.transportTypeOutlet.selectedSegmentIndex = 2;
+            break;
+        case MKDirectionsTransportTypeAny:
+            self.transportTypeOutlet.selectedSegmentIndex = 3;
+            break;
+    }
+    
     if (self.rootViewController.miniMapView.syncRotation){
         self.syncMiniMapRotationOutlet.selectedSegmentIndex = 1;
     }else{
@@ -160,5 +177,25 @@
 - (IBAction)longPressSegmentAction:(id)sender {
     self.rootViewController.mapView.isLongPressEnabled =
     !self.rootViewController.mapView.isLongPressEnabled;
+}
+
+
+- (IBAction)transportTypeAction:(id)sender {
+    MKDirectionsTransportType transportType;
+    switch (self.transportTypeOutlet.selectedSegmentIndex) {
+        case 0:
+            transportType = MKDirectionsTransportTypeAutomobile;
+            break;
+        case 1:
+            transportType = MKDirectionsTransportTypeWalking;
+            break;
+        case 2:
+            transportType = MKDirectionsTransportTypeTransit;
+            break;
+        case 3:
+            transportType = MKDirectionsTransportTypeAny;
+            break;
+    }
+    self.rootViewController.mapView.transportType = transportType;
 }
 @end
