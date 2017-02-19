@@ -207,6 +207,9 @@
         // The button was dragged.
         //------------------------
         hasReportedDraggingEvent = NO;
+        
+        
+        self.spatialEntity.isAnchor = NO;
         [self.lineLayer removeFromSuperlayer];
         [self removeFromSuperview];
         NSNotification *notification = [NSNotification notificationWithName:RemoveFromDraggingSetNotification

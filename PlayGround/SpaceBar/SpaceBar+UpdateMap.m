@@ -34,22 +34,21 @@
     
     SpaceToken *oneAnchor;
     
-    if ([self.draggingSet count]==1){
-        oneAnchor = [self.draggingSet anyObject];
-        [self.anchorSet addObject:oneAnchor];
-        oneAnchor.spatialEntity.isAnchor = YES;
-//        [self.draggingSet removeObject:oneAnchor];
-    }
-        
+//    if ([self.draggingSet count]==1){
+//        oneAnchor = [self.draggingSet anyObject];
+//        [self.anchorSet addObject:oneAnchor];
+//        oneAnchor.spatialEntity.isAnchor = YES;
+////        [self.draggingSet removeObject:oneAnchor];
+//    }
+    
     if ([self.anchorSet count]==1){
         oneAnchor = [self.anchorSet anyObject];
         oneAnchor.isConstraintLineOn = YES;
+    }else if ([self.draggingSet count]==1){
+        oneAnchor = [self.draggingSet anyObject];
+        oneAnchor.spatialEntity.isAnchor = YES;
+        oneAnchor.isConstraintLineOn = YES;
     }
-    
-//    else if ([self.draggingSet count]==1){
-//        oneAnchor = [self.draggingSet anyObject];
-////        oneAnchor.isConstraintLineOn = YES;
-//    }
     
     
     if (oneAnchor){
@@ -78,7 +77,7 @@
             allVisible = allVisible & [aToken.spatialEntity checkVisibilityOnMap:[CustomMKMapView sharedManager]];
         }
     
-        if (allVisible && self.mapView.camera.zoom > 10 ){
+        if (allVisible && self.mapView.camera.zoom > 12 ){
             return;
         }
         

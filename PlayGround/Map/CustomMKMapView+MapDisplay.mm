@@ -154,7 +154,7 @@
             allVisible = allVisible & [entity checkVisibilityOnMap:[CustomMKMapView sharedManager]];
         }
         
-        if (allVisible && self.camera.zoom > 10){
+        if (allVisible && self.camera.zoom > 12){
             // No need to perform zoom-to-fit if all are visible
             return;
         }
