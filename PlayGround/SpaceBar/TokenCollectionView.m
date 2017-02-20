@@ -60,7 +60,7 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // Configure the layout object
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake
-    (30, mapView.frame.size.width- CELL_WIDTH, 0, 0);
+    (50, mapView.frame.size.width- CELL_WIDTH, 0, 0);
     
     
     // Initialize a collection view

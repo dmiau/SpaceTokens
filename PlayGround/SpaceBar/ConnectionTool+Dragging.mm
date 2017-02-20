@@ -73,6 +73,15 @@
         // Change the appearance
         [[self layer] addSublayer: lineLayer];
         [self setBackgroundColor:[UIColor clearColor]];
+        
+      
+        
+        // Add a message label
+        messageLabel = [[UILabel alloc] init];
+        messageLabel.text = @"Hello";
+        messageLabel.frame = CGRectMake(-70, 30, 70, 20);
+        messageLabel.adjustsFontSizeToFitWidth = YES;
+        [self addSubview:messageLabel];
     }
     
     CGPoint locationInView = [touch locationInView:self.superview];
@@ -103,11 +112,30 @@
         
         
     }
+    //-----------------------
+    // Calculate and show the distance
+    //-----------------------
+    [self showDistance:touch];
     
     //-----------------------
     // Check if the tool tip touches anything
     //-----------------------
     [self connectionTipProbing:touch];
+}
+
+
+//-----------------------
+// Calculate and show the distance
+//-----------------------
+-(void)showDistance:(UITouch *) touch{
+    CGPoint locationInView = [touch locationInView:self.superview];
+    CustomMKMapView *mapView = [CustomMKMapView sharedManager];
+    CLLocationCoordinate2D coord = [mapView.projection coordinateForPoint:locationInView];
+    
+    // Calculate the distance
+    CLLocationDistance dist =
+    GMSGeometryDistance (counterPart.spatialEntity.latLon, coord);
+    messageLabel.text = [NSString stringWithFormat:@"%.0f m", dist];
 }
 
 //-----------------------
@@ -195,7 +223,11 @@
     NSSet *highlightedSet = [[HighlightedEntities sharedManager] getHighlightedSet];
     
     for (SpatialEntity *highlightedEntity in highlightedSet){
-        if ([highlightedEntity isEntityTouched:touch]){
+        
+        // Currently connection tool can only be used to connect to a POI
+        if ([highlightedEntity isEntityTouched:touch]
+            && [highlightedEntity isMemberOfClass:[POI class]])
+        {
             [[EntityDatabase sharedManager] addEntity:highlightedEntity];
 
             // Create a route

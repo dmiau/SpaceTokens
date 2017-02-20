@@ -17,6 +17,8 @@
     SpaceToken *counterPart;
     NSMutableArray <NSLayoutConstraint*> *constraintsArray;
     BOOL hasReportedDraggingEvent;
+    
+    UILabel *messageLabel;
 }
 
 @property BOOL isLineLayerOn;

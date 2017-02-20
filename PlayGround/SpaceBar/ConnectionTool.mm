@@ -17,8 +17,8 @@
 
 
 #define CONNECTION_TOOL_WIDTH 60
-#define CONNECTION_TOOL_HEIGHT 40
-#define CONNECTION_TOOL_OFFSET 50
+#define CONNECTION_TOOL_HEIGHT 50
+#define CONNECTION_TOOL_OFFSET 60
 
 @interface ConnectionTool ()
 
@@ -60,7 +60,7 @@
     self.frame = CGRectMake(0, 0, CONNECTION_TOOL_WIDTH, CONNECTION_TOOL_HEIGHT);
     [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [self.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    self.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.5];
+    self.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.8];
     
     return self;
 }
@@ -80,7 +80,13 @@
     if ([spaceToken.spatialEntity.name length] > 8){
         self.titleLabel.numberOfLines = 2;
     }
-        
+
+    // add drop shadow
+    self.layer.cornerRadius = 20; // this value vary as per your desire
+    self.layer.masksToBounds = NO;
+    //            self.layer.borderWidth = 1.0f;
+    
+    
     // Need to attach to tokenCollectionView, not the SpaceToken,
     // so Connection Tool can be touched when SpaceToken is touched
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];

@@ -114,6 +114,22 @@
 
 #pragma mark -- Gesture methods --
 -(void) customTouchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    
+    // If there is only one highlighted object, add the object directly
+    NSSet *highlightedSet = [[HighlightedEntities sharedManager] getHighlightedSet];
+    
+    if ([highlightedSet count] ==1){
+        SpatialEntity *highlightedEntity = [highlightedSet anyObject];
+        [[EntityDatabase sharedManager] addEntity:highlightedEntity];
+        highlightedEntity.isEnabled = YES;
+        highlightedEntity.dirtyFlag = @0;
+        
+        [[TokenCollectionView sharedManager] reloadData];
+        return;
+    }
+    
+    
     // This is to prevent the pickertool from moving when it is being dragged
     [[TokenCollectionView sharedManager] setScrollEnabled:NO];
     
@@ -124,6 +140,7 @@
     probEnabled = YES;
     CGPoint touchPoint = [touch locationInView:self];
     [touchHistory addObject: [NSNumber valueWithCGPoint:touchPoint]];
+
 }
 
 -(void)customTouchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
