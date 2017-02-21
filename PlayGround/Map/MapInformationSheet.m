@@ -12,8 +12,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+tools.h"
 #import "EntityDatabase.h"
+#import "CollectionInformationSheet.h"
 
-#define INITIAL_HEIGHT 60
+#define INITIAL_HEIGHT 50
 
 @implementation MapInformationSheet
 
@@ -36,9 +37,18 @@
     ViewController *rootViewController = [myNavigationController.viewControllers objectAtIndex:0];
     
     CGRect rootViewFrame = rootViewController.view.frame;
-    CGRect frame = CGRectMake(0, rootViewFrame.size.height-INITIAL_HEIGHT,
-                              rootViewFrame.size.width, self.frame.size.height);
-    self.frame = frame;
+    
+    if ([self isMemberOfClass:[CollectionInformationSheet class]]){
+        CGRect frame = CGRectMake(0, rootViewFrame.size.height-INITIAL_HEIGHT - 30,
+                                  rootViewFrame.size.width, self.frame.size.height);
+        self.frame = frame;
+    }else{
+        CGRect frame = CGRectMake(0, rootViewFrame.size.height-INITIAL_HEIGHT,
+                                  rootViewFrame.size.width, self.frame.size.height);
+        self.frame = frame;
+    }
+    
+
 
     [rootViewController.view addSubview:self];
     

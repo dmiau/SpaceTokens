@@ -23,7 +23,8 @@
     return self;
 }
 
--(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{    
+-(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
+    [super setIsMapAnnotationEnabled:isMapAnnotationEnabled];
     if (isMapAnnotationEnabled){
         self.annotation.map = [CustomMKMapView sharedManager];
     }else{

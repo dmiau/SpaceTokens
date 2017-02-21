@@ -28,6 +28,7 @@
 
 @implementation SpaceToken{
     NSTimer *tokenFlashTimer;
+    NSTimer *loopUpdateTimer;
 }
 
 /*
@@ -163,6 +164,7 @@
         CustomMKMapView *mapView = [CustomMKMapView sharedManager];
         [mapView.informationSheetManager addSheetForEntity:self.spatialEntity];
         
+        [self startUpdateLoop];
     }else{
         [self restoreDefaultStyle];
         
@@ -170,6 +172,7 @@
             || [self isMemberOfClass:[PersonToken class]]){
             [self.lineLayer removeFromSuperlayer];
         }
+        [self cancelUpdateLoop];
     }
     
 
@@ -258,6 +261,17 @@
     }
 }
 
+-(void)startUpdateLoop{
+    // Timer action to disable the highlight
+    loopUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.02
+                                                       target:self
+                                                     selector:@selector(tokenUIUpdateHandler)
+                                                     userInfo:nil repeats:YES];
+}
+
+-(void)cancelUpdateLoop{
+    [loopUpdateTimer invalidate];
+}
 
 - (void)updatePOILine{
     // draw the line

@@ -15,7 +15,7 @@
 #import "Route.h"
 
 
-#define INITIAL_HEIGHT 60
+#define INITIAL_HEIGHT 80
 @implementation CollectionInformationSheet
 
 -(void)awakeFromNib{
@@ -26,6 +26,32 @@
     
     [self.starOutlet setTitle:@"remove" forState:UIControlStateNormal];
 }
+
+// MARK: Setters
+//-------------------------------------
+-(void)setSpatialEntity:(SpatialEntity *)spatialEntity{
+    
+    // Remove the previous observer
+    if (self.spatialEntity){
+        [self.spatialEntity removeObserver:self forKeyPath:@"dirtyFlag"];
+    }
+    
+    [super setSpatialEntity:spatialEntity];
+    
+    // Add a new observer
+    [spatialEntity addObserver:self forKeyPath:@"dirtyFlag" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context:nil];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    
+    if([keyPath isEqualToString:@"dirtyFlag"] && object == self.spatialEntity)
+    {
+        [self updateSheet];
+    }
+}
+
 
 -(void)addSheetForEntity:(SpatialEntity*)entity{
     [super addSheetForEntity:entity];
@@ -39,12 +65,17 @@
     
     if ([self.spatialEntity isKindOfClass:[Route class]]){
         Route *aRoute = self.spatialEntity;
-        self.quickInfoOutlet.text = [NSString stringWithFormat:@"%.2f mins, %.2f meters",
+        self.quickInfoOutlet.text = [NSString stringWithFormat:@"%.2f mins, %.0f (m)",
                                      aRoute.expectedTravelTime/60, aRoute.distance];
         
         self.collectionModeOutlet.selectedSegmentIndex = aRoute.appearanceMode;
     }else{
         self.quickInfoOutlet.text = @"";
+    }
+    
+    if (!self.spatialEntity.isMapAnnotationEnabled){
+        // Don't show the sheet if the entity is invisible
+        [self removeSheet];
     }
 }
 
@@ -94,8 +125,14 @@
 - (IBAction)starAction:(id)sender {
     SpatialEntity *entity = self.spatialEntity;
     if ([self.starOutlet.titleLabel.text isEqualToString: @"remove"]){
+        
+        // Find the tokens associated with the entity
+        
+        
+        
         [[EntityDatabase sharedManager] removeEntity:entity];
         [self.starOutlet setTitle:@"save" forState:UIControlStateNormal];
+        [self removeSheet];
     }else{
         [[EntityDatabase sharedManager] addEntity:entity];
         [self.starOutlet setTitle:@"remove" forState:UIControlStateNormal];

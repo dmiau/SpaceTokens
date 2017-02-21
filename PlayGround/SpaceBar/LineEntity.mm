@@ -96,6 +96,7 @@ template class std::vector<double>;
 
 
 -(void)setIsMapAnnotationEnabled:(BOOL)isMapAnnotationEnabled{
+    [super setIsMapAnnotationEnabled:isMapAnnotationEnabled];
     
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     

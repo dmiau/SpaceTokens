@@ -90,8 +90,8 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
             if (![self findSpaceTokenFromEntity:token.spatialEntity])
             {
                 NSLog(@"Insert from dragging");
+                token.spatialEntity.isEnabled = YES;
                 [self insertToken:token];
-                
             }else{
                 // The item already exists on Collection View
                 
@@ -361,8 +361,6 @@ NSString *CellID = @"cellID";                          // UICollectionViewCell s
     // Create a new SpaceToken based on anchor
     // (Need to insert to entity database directly)
     [[EntityDatabase sharedManager] addEntity:token.spatialEntity];
-    
-    
     [self reloadData];
 }
 

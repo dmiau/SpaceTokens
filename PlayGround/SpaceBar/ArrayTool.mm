@@ -335,9 +335,11 @@
         
         // Remove the annotation before the master token is removed
         self.arrayEntity.isMapAnnotationEnabled = NO;
+        self.arrayEntity.dirtyFlag = @0;
         self.arrayEntity = [[Route alloc] init];
         self.arrayEntity.name = [NSString stringWithFormat:@"AC-%d", counter++];
         self.arrayEntity.appearanceMode = SETMODE;
+        
     }else{
         [self.arrayEntity removeObjectAtIndex:i];
     }
