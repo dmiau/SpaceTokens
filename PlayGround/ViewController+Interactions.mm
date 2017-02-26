@@ -17,6 +17,7 @@
 - (void)spaceBarOnePointTouched:(float)percentage{
     
     if (self.spaceBar.activeRoute){
+        [[HighlightedEntities sharedManager] addEntity:self.spaceBar.activeRoute];
         CLLocationCoordinate2D coord;
         double orientationInDegree;
         
@@ -39,6 +40,7 @@
 -(void)spaceBarTwoPointsTouchedLow:(float)low high:(float)high{
 
     if (self.spaceBar.activeRoute){
+        [[HighlightedEntities sharedManager] addEntity:self.spaceBar.activeRoute];
         // look up the coordinates
         CLLocationCoordinate2D coord1, coord2;
         CGPoint xy1, xy2;
@@ -98,7 +100,9 @@
 - (void)spaceBarElevatorMovedLow:(float) low
                             high: (float) high
                    fromLowToHigh:(bool)directionFlag
-{    
+{
+    [[HighlightedEntities sharedManager] addEntity:self.spaceBar.activeRoute];
+    
     CLLocationCoordinate2D anchor; double orientation1;
     CLLocationCoordinate2D target; double orientation2;
     

@@ -53,9 +53,29 @@
 -(void)updateArrayForContentArray{
     // Remove the current annotation if there is any
     self.isMapAnnotationEnabled = NO;
-    // No polyline for Array
+    
+
     self.polyline = nil;
-    self.dirtyFlag = @0;
+    
+    // Use lines to visualize the order
+    int pointCoutnt = [contentArray count];
+    MKMapPoint *accumulatedMapPoints = new MKMapPoint[pointCoutnt];
+    // Interate over each pair to get pari-wise routes
+    for (int i = 0; i < [contentArray count]; i++){
+        SpatialEntity *entity = contentArray[i];
+        
+        if (![entity isKindOfClass:[POI class]]){
+            [self notAnPOIAlert:entity];
+            return;
+        }
+        accumulatedMapPoints[i] = MKMapPointForCoordinate(entity.latLon);
+    }
+    
+    CustomMKPolyline *polyline = [CustomMKPolyline polylineWithPoints:accumulatedMapPoints
+                        count:pointCoutnt];
+    delete[] accumulatedMapPoints;
+    self.polyline = polyline;
+    self.isMapAnnotationEnabled = YES;
 }
 
 
@@ -64,7 +84,6 @@
     self.isMapAnnotationEnabled = NO;
     // No polyline for Array
     self.polyline = nil;
-    self.dirtyFlag = @0;
 }
 
 @end

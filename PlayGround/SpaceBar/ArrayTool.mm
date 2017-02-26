@@ -10,6 +10,7 @@
 
 #import "TokenCollection.h"
 #import "CustomMKMapView.h"
+#import "InformationSheetManager.h"
 #import "SpaceBar.h"
 #import "Route.h"
 #import "ViewController.h"
@@ -35,7 +36,11 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
 }
 
 +(void)resetSharedInstace{
+    if (sharedInstance){
+        [sharedInstance resetTool];
+    }
     sharedInstance = nil;
+    [[[CustomMKMapView sharedManager] informationSheetManager] removeSheet];
 }
 
 // Overwrite super's initSingleton method
@@ -265,6 +270,9 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
     };
     self.masterToken.didCreateClone = cloneCreationHandler;
     
+    [[[CustomMKMapView sharedManager] informationSheetManager]
+     addSheetForEntity:self.arrayEntity];
+    
     [self reloadData];
     return YES;
 }
@@ -297,6 +305,14 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
 //------------------
 -(void) insertToken: (SpaceToken*) token{
     
+    // This allows users to pick up a route directly
+    if ([[self.arrayEntity getContent] count] == 0
+        && [token isKindOfClass:[PathToken class]])
+    {
+        [self insertMaster:token];
+        return;
+    }
+    
     SpatialEntity *anEntity = token.spatialEntity;
     
     if ([anEntity isKindOfClass:[ArrayEntity class]]){
@@ -304,6 +320,12 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
          addObjectsFromArray: [(ArrayEntity*)anEntity getContent]];
     }else{
         [self.arrayEntity addObject:token.spatialEntity];
+    }
+    
+    // This allows users to create rouate more quickly
+    if ([[self.arrayEntity getContent] count] > 1){
+        [[[CustomMKMapView sharedManager] informationSheetManager]
+         addSheetForEntity:self.arrayEntity];
     }
     
     // refresh the token panel
@@ -340,7 +362,7 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
         self.arrayEntity = [[Route alloc] init];
         self.arrayEntity.name = [NSString stringWithFormat:@"AC-%d", counter++];
         self.arrayEntity.appearanceMode = SETMODE;
-        
+        [self configureToolModeBasedOnMaster];
     }else{
         [self.arrayEntity removeObjectAtIndex:i];
     }

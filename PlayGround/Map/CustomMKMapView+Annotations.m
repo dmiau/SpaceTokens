@@ -59,8 +59,9 @@
     SpatialEntity *matchedEntity = [self entityForAnnotation:overlay];
     
     if (!matchedEntity){
-        [DMTools showAlert:@"System error." withMessage:
-         @"Matched entity was not found (didTapOverlay)."];
+        // Disable the warning message for the study
+//        [DMTools showAlert:@"System error." withMessage:
+//         @"Matched entity was not found (didTapOverlay)."];
     }else{
         [[HighlightedEntities sharedManager] clearHighlightedSet];
         [[HighlightedEntities sharedManager] addEntity: matchedEntity];

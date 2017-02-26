@@ -29,6 +29,7 @@ template class std::vector<double>;
 -(id)init{
     self = [super init];
     self.appearanceMode = ROUTEMODE;
+    [self addObserver:self forKeyPath:@"dirtyFlag" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     return self;
 }
 
@@ -83,9 +84,20 @@ template class std::vector<double>;
             // Do nothing
             break;
     }
+    self.dirtyFlag = @0;
     
     if (self.appearanceChangedHandlingBlock){
         self.appearanceChangedHandlingBlock();
+    }
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"dirtyFlag"] && object == self)
+    {
+        if (self.appearanceMode == ARRAYMODE){
+            [self updateArrayForContentArray];
+        }
+        
     }
 }
 
@@ -149,4 +161,8 @@ template class std::vector<double>;
     return output;
 }
 
+
+-(void)dealloc{
+    [self removeObserver:self forKeyPath:@"dirtyFlag"];
+}
 @end

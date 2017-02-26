@@ -124,9 +124,13 @@
                 [aToken configureAppearanceForType:ANCHOR_INVISIBLE];                
             }else{
                 // User touches a random area.
-                // All the highlighted entity should be cleared.
                 
-                [[HighlightedEntities sharedManager] clearHighlightedSet];
+                if ([self.anchorSet count] > 0){
+                    // All the highlighted entity should be cleared.
+                    // (only when there is an active anchor)
+                    [[HighlightedEntities sharedManager] clearHighlightedSet];
+                }
+                
                 // Create a POI for the anchor
                 POI* aPOI = [[POI alloc] init];
                 aPOI.latLon = coord;
@@ -213,22 +217,22 @@
             
             // Depending on the pressure, we may need to turn a ANCHOR_INVISIBLE
             // to a ANCHOR_VISIBLE and enable the SpaceToken mode
-            if ([aTouch force] > 0.5*[aTouch maximumPossibleForce] &&
-                associatedToken.appearanceType != ANCHOR_VISIBLE)
-            {
-                [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
-                
-                // This enables the SpaceToken mode
-                NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
-                                                                             object:associatedToken userInfo:nil];
-                [[ NSNotificationCenter defaultCenter] postNotification:notification];
-                
-                // Add the anchor to collection view
-                [[EntityDatabase sharedManager] addEntity:associatedToken.spatialEntity];
-                
-                [[TokenCollectionView sharedManager] addItemFromBottom:associatedToken.spatialEntity];
-                
-            }
+//            if ([aTouch force] > 0.5*[aTouch maximumPossibleForce] &&
+//                associatedToken.appearanceType != ANCHOR_VISIBLE)
+//            {
+//                [associatedToken configureAppearanceForType:ANCHOR_VISIBLE];
+//                
+//                // This enables the SpaceToken mode
+//                NSNotification *notification = [NSNotification notificationWithName:AddToDraggingSetNotification
+//                                                                             object:associatedToken userInfo:nil];
+//                [[ NSNotificationCenter defaultCenter] postNotification:notification];
+//                
+//                // Add the anchor to collection view
+//                [[EntityDatabase sharedManager] addEntity:associatedToken.spatialEntity];
+//                
+//                [[TokenCollectionView sharedManager] addItemFromBottom:associatedToken.spatialEntity];
+//                
+//            }
             
         }
     }

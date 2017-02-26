@@ -94,6 +94,7 @@
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
+    self.dirtyFlag = @0;
 }
 
 -(void)addObject:(id)object{
@@ -102,6 +103,7 @@
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
+    self.dirtyFlag = @0;
 }
 
 -(void)addObjectsFromArray:(NSArray*)objects{
@@ -110,6 +112,7 @@
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
+    self.dirtyFlag = @0;
 }
 
 -(void)removeObject:(id)object{
@@ -118,6 +121,7 @@
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
+    self.dirtyFlag = @0;
 }
 
 -(void)removeObjectAtIndex:(NSUInteger)index{
@@ -126,6 +130,7 @@
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
+    self.dirtyFlag = @0;
 }
 
 -(NSArray <SpatialEntity*> *)getContent{
@@ -139,6 +144,7 @@
     if (self.contentUpdatedBlock){
         self.contentUpdatedBlock();
     }
+    self.dirtyFlag = @0;
 }
 
 - (NSString*) description{
