@@ -15,6 +15,21 @@
 #import "ArrayEntity.h"
 #import "HighlightedEntities.h"
 
+// This object records the information associated with an anchor touch.
+// The information will be used to classify a tap event later on
+@interface AnchorTouchInfo : NSObject
+@property UITouch *touch;
+@property CGPoint originalPoint;
+@property NSDate *startTime;
+@property SpatialEntity *touchedEntity;
+@end
+
+
+@implementation AnchorTouchInfo
+// empty implementation
+@end
+
+
 @implementation SpaceBar (Anchors)
 
 // Add anchors to the candidateArray first, move anchors to anchorSet when
@@ -35,8 +50,8 @@
         [entitySet addObjectsFromArray:[[EntityDatabase sharedManager] getEntityArray]];
         [entitySet unionSet: [[HighlightedEntities sharedManager]  getHighlightedSet]];
         
-        SpatialEntity *touchedKnownEntity = nil;
-        // Check if the user touches any known entity
+        SpatialEntity *touchedHighlightedEntity = nil;
+        // Check if the user touches any known (highlighted) entity
         for (SpatialEntity *anEntity in entitySet)
         {
             if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon))
@@ -45,10 +60,27 @@
                && [anEntity isEntityTouched:aTouch]
                )
             {
-                touchedKnownEntity = anEntity;
+                touchedHighlightedEntity = anEntity;
                 break;
             }
         }
+        
+        // Check if the user touches any known (but unhighlighted) entity
+        SpatialEntity *touchedKnownUnHighlightedEntity = nil;
+        // Check if the user touches any known entity
+        for (SpatialEntity *anEntity in entitySet)
+        {
+            if(MKMapRectContainsPoint(self.mapView.visibleMapRect, MKMapPointForCoordinate(anEntity.latLon))
+               && ![anEntity isKindOfClass:[ArrayEntity class]]
+               && !anEntity.annotation.isHighlighted
+               && [anEntity isEntityTouched:aTouch]
+               )
+            {
+                touchedKnownUnHighlightedEntity = anEntity;
+                break;
+            }
+        }
+        
         
         // Check if the touch is already associated with any anchor
         // Do nothing if there is an anchor associated with the given touch
@@ -68,7 +100,33 @@
             // Add the anchor to the map
             [self.mapView addSubview:aToken];
             
-            if (!touchedKnownEntity){
+            if (touchedHighlightedEntity){
+                // The user touches a highlighted entity.
+                // Anchor should be on in this case
+                aToken.spatialEntity = touchedHighlightedEntity;
+                [aToken configureAppearanceForType:ANCHOR_VISIBLE];
+                self.isSpaceTokenEnabled = YES;
+            }else if (touchedKnownUnHighlightedEntity){
+                // The user touches a known (but unhighlighed) entity.
+                // Store the information into the structure.
+                // This entity should be highlighted if it turns out is a
+                // tap event.
+                
+                // Add the touch info to anchorTouchInfoDictionary
+                AnchorTouchInfo *touchInfor = [[AnchorTouchInfo alloc] init];
+                touchInfor.touch = aTouch;
+                touchInfor.originalPoint = [aTouch locationInView:self.mapView];
+                touchInfor.touchedEntity = touchedKnownUnHighlightedEntity;
+                touchInfor.startTime = [NSDate date];
+                [self.anchorTouchInfoArray addObject:touchInfor];
+
+                aToken.spatialEntity = touchedKnownUnHighlightedEntity;
+                [aToken configureAppearanceForType:ANCHOR_INVISIBLE];                
+            }else{
+                // User touches a random area.
+                // All the highlighted entity should be cleared.
+                
+                [[HighlightedEntities sharedManager] clearHighlightedSet];
                 // Create a POI for the anchor
                 POI* aPOI = [[POI alloc] init];
                 aPOI.latLon = coord;
@@ -76,13 +134,6 @@
                 aPOI.coordSpan = self.mapView.region.span;
                 aToken.spatialEntity = aPOI;
                 [aToken configureAppearanceForType:ANCHOR_INVISIBLE];
-            }else{
-                //---------------
-                // There is a known entity associated with the touch already
-                //---------------
-                aToken.spatialEntity = touchedKnownEntity;
-                [aToken configureAppearanceForType:ANCHOR_VISIBLE];                                
-                self.isSpaceTokenEnabled = YES;
             }
             
             if (self.isSpaceTokenEnabled){
@@ -96,8 +147,6 @@
     }
 }
 
-
-
 - (SpaceToken*) findRelatedToAnchor:(UITouch*) touch{
     SpaceToken *foundToken = nil;
     for (SpaceToken *aToken in self.anchorSet){
@@ -110,6 +159,18 @@
             return aToken;
     }
     return foundToken;
+}
+
+// Returns the AnchorTouchInfo object related to touch
+-(AnchorTouchInfo*)findAnchorTouchInfo:(UITouch*) touch{
+    AnchorTouchInfo* output = nil;
+    for (AnchorTouchInfo* touchInfo in self.anchorTouchInfoArray){
+        if (touchInfo.touch == touch){
+            output = touchInfo;
+            break;
+        }
+    }
+    return output;
 }
 
 - (void) updateAnchorForTouches:(NSSet<UITouch *> *)touches
@@ -189,6 +250,27 @@
     aToken.spatialEntity.isAnchor = NO;
     [self.anchorSet removeObject:aToken];
     [self.anchorCandidateSet removeObject:aToken];
+    
+    // Check if the removing anchor resulted in a tap
+    AnchorTouchInfo *touchInfo = [self findAnchorTouchInfo:aToken.touch];
+    if (touchInfo){
+        NSLog(@"touchInfo found!");
+        
+        // Cacluate the distance
+        CGPoint currentPoint = [aToken.touch locationInView:self.mapView];
+        double dist = pow((touchInfo.originalPoint.x - currentPoint.x), 2) +
+        pow((touchInfo.originalPoint.y - currentPoint.y), 2);
+        
+        double elapsedTime = [touchInfo.startTime timeIntervalSinceNow];
+        
+        if (elapsedTime < 0.3 && dist < 225){
+            [[HighlightedEntities sharedManager] clearHighlightedSet];
+            // Tap the point
+            [[HighlightedEntities sharedManager] addEntity:touchInfo.touchedEntity];
+        }
+    }
+    
+    
     aToken = nil;
 }
 
@@ -200,6 +282,8 @@
     for (SpaceToken *aToken in self.anchorCandidateSet){
         [self removeAnchor: aToken];
     }
+    
+    [self.anchorTouchInfoArray removeAllObjects];
 }
 
 @end

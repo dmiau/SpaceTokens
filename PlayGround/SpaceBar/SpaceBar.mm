@@ -150,6 +150,7 @@ static SpaceBar *sharedInstance;
     self.draggingSet = [[NSMutableSet alloc] init];        
     self.anchorSet = [[NSMutableSet alloc] init];
     self.anchorCandidateSet = [[NSMutableSet alloc] init];
+    self.anchorTouchInfoArray = [NSMutableArray array];
         
     self.isConstrainEngineON = YES;
     

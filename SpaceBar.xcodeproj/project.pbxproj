@@ -144,8 +144,8 @@
 		9A485B471D906BD500C43255 /* RecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B461D906BD500C43255 /* RecordDatabase.m */; };
 		9A485B4B1D90910400C43255 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A485B4A1D90910400C43255 /* RecordTableViewController.m */; };
 		9A48C1381D5273EA0038FBA5 /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A48C1371D5273EA0038FBA5 /* MainViewManager.m */; };
-		9A4A57271E4BFCFA004BA2A6 /* HighlightedEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.m */; };
-		9A4A57281E4BFCFA004BA2A6 /* HighlightedEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.m */; };
+		9A4A57271E4BFCFA004BA2A6 /* HighlightedEntities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.mm */; };
+		9A4A57281E4BFCFA004BA2A6 /* HighlightedEntities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.mm */; };
 		9A51CEA71E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A51CEA61E4B74D6003338E2 /* CustomSearchResultViewController.m */; };
 		9A51CEA81E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A51CEA61E4B74D6003338E2 /* CustomSearchResultViewController.m */; };
 		9A51CEAA1E4B8954003338E2 /* SearchResultTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A51CEA91E4B8954003338E2 /* SearchResultTableCell.xib */; };
@@ -512,7 +512,7 @@
 		9A48C1361D5273EA0038FBA5 /* MainViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewManager.h; sourceTree = "<group>"; };
 		9A48C1371D5273EA0038FBA5 /* MainViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewManager.m; sourceTree = "<group>"; };
 		9A4A57251E4BFCFA004BA2A6 /* HighlightedEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightedEntities.h; path = Map/HighlightedEntities.h; sourceTree = "<group>"; };
-		9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightedEntities.m; path = Map/HighlightedEntities.m; sourceTree = "<group>"; };
+		9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HighlightedEntities.mm; path = Map/HighlightedEntities.mm; sourceTree = "<group>"; };
 		9A51CEA51E4B74D6003338E2 /* CustomSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchResultViewController.h; sourceTree = "<group>"; };
 		9A51CEA61E4B74D6003338E2 /* CustomSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchResultViewController.m; sourceTree = "<group>"; };
 		9A51CEA91E4B8954003338E2 /* SearchResultTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultTableCell.xib; sourceTree = "<group>"; };
@@ -1371,7 +1371,7 @@
 				9AFC0A651DDA35DB001B11CC /* EntityDatabase.h */,
 				9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */,
 				9A4A57251E4BFCFA004BA2A6 /* HighlightedEntities.h */,
-				9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.m */,
+				9A4A57261E4BFCFA004BA2A6 /* HighlightedEntities.mm */,
 				9A8BCA261D343D43006C2EDC /* POI.h */,
 				9A8BCA271D343D43006C2EDC /* POI.m */,
 				9A9809C01E1AEFB2006D7F8D /* ArrayEntity.h */,
@@ -1789,7 +1789,7 @@
 				9A0D208B1E26FB3500191054 /* SetCollectionView.m in Sources */,
 				9AA57F6F1DD624D800347B1A /* SpatialEntity.mm in Sources */,
 				9A8B5E531D5D659300A32DC9 /* MiniMapView.m in Sources */,
-				9A4A57271E4BFCFA004BA2A6 /* HighlightedEntities.m in Sources */,
+				9A4A57271E4BFCFA004BA2A6 /* HighlightedEntities.mm in Sources */,
 				9A5CCBAC1DF86D21009B56DF /* CollectionViewCell.mm in Sources */,
 				9ACD6CDD1D352E8600E3BF9C /* DirectionPanel.mm in Sources */,
 				9AC36DC61C5FF4690037210F /* SpaceBar.mm in Sources */,
@@ -1916,7 +1916,7 @@
 				9A0D208D1E26FB3500191054 /* SetCollectionView.m in Sources */,
 				9AE13B661DF0D148008612DA /* SpatialEntity.mm in Sources */,
 				9AE13B681DF0D148008612DA /* MiniMapView.m in Sources */,
-				9A4A57281E4BFCFA004BA2A6 /* HighlightedEntities.m in Sources */,
+				9A4A57281E4BFCFA004BA2A6 /* HighlightedEntities.mm in Sources */,
 				9A5CCBAE1DF86D21009B56DF /* CollectionViewCell.mm in Sources */,
 				9AE13B691DF0D148008612DA /* DirectionPanel.mm in Sources */,
 				9AE13B6A1DF0D148008612DA /* SpaceBar.mm in Sources */,

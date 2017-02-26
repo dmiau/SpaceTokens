@@ -18,6 +18,7 @@ typedef enum {ArrayMode, PathMode} ArrayToolMode;
 @interface ArrayTool : TokenCollectionView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 +(ArrayTool*)sharedManager;
++(void)resetSharedInstace; //this is to reset the shared instance
 
 @property Route* arrayEntity;
 

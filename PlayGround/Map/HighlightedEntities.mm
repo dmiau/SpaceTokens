@@ -11,6 +11,9 @@
 #import "CustomMKMapView.h"
 #import "InformationSheetManager.h"
 
+#import "Route.h"
+#import "POI.h"
+
 @implementation HighlightedEntities
 
 // MARK: Initialization
@@ -41,8 +44,30 @@
     [_highlightedSet addObject:entity];
     entity.isMapAnnotationEnabled = YES;
     entity.annotation.isHighlighted = YES;
-    [[[CustomMKMapView sharedManager] informationSheetManager]
-     addSheetForEntity:entity];
+    
+    // Show a collection information sheet if multiple items are highlighted
+    if([entity isMemberOfClass:[Route class]]){
+        [[[CustomMKMapView sharedManager] informationSheetManager]
+         addSheetForEntity:entity];
+    }else if( [_highlightedSet count]==1){
+        [[[CustomMKMapView sharedManager] informationSheetManager]
+         addSheetForEntity:entity];
+    }else{
+        //-------------------
+        // More than one item is highlighted
+        //-------------------
+        Route *tempRoute = [[Route alloc] init];
+        tempRoute.name = [NSString stringWithFormat:@"%lu items", (unsigned long)[_highlightedSet count]];
+        tempRoute.appearanceMode = SETMODE;
+        for (SpatialEntity* anEntity in _highlightedSet){
+            if ([anEntity isMemberOfClass:[POI class]]){
+                [tempRoute addObject:anEntity];
+            }
+        }
+
+        [[[CustomMKMapView sharedManager] informationSheetManager]
+         addSheetForEntity:tempRoute];
+    }
 }
 
 - (void)removeEntity:(SpatialEntity*)entity{

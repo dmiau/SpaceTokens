@@ -19,7 +19,11 @@
     if (self.spaceBar.activeRoute){
         CLLocationCoordinate2D coord;
         double orientationInDegree;
-                
+        
+        if (percentage > 1 || percentage < 0){
+            NSLog(@"spaceBarOnePointTouched: %f", percentage);
+        }
+        
         [self.spaceBar.activeRoute convertPercentage: percentage
                              toLatLon: coord orientation:orientationInDegree];
         
@@ -41,7 +45,9 @@
         double orientationInDegree;
         
         //======== 1st point =========
-        
+        if (low > 1 || low < 0){
+            NSLog(@"spaceBarTwoPointsTouchedLow: (low) %f", low);
+        }
         [self.spaceBar.activeRoute convertPercentage: low
                              toLatLon: coord1 orientation:orientationInDegree];
         
@@ -50,6 +56,9 @@
         
         
         //======== 2nd point =========
+        if (high > 1 || high < 0){
+            NSLog(@"spaceBarTwoPointsTouchedLow: (high) %f", high);
+        }
         [self.spaceBar.activeRoute convertPercentage: high
                              toLatLon: coord2 orientation:orientationInDegree];
         
@@ -92,6 +101,9 @@
 {    
     CLLocationCoordinate2D anchor; double orientation1;
     CLLocationCoordinate2D target; double orientation2;
+    
+    low = ABS(low); // This is necessary because sometimes we could get -0.0 (not sure why)
+    high = ABS(high);
     if (directionFlag){
         
         //----------------------------
@@ -101,7 +113,13 @@
         
         // The bottom one (lower value) should be the anchor
         // find the (lat, lon) of the bottom one
+        if (low > 1 || low < 0){
+            NSLog(@"spaceBarElevatorMovedLow: (low) %f", low);
+        }
         [self.spaceBar.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
+        if (high > 1 || high < 0){
+            NSLog(@"spaceBarElevatorMovedLow: (high) %f", high);
+        }
         [self.spaceBar.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:target
@@ -113,7 +131,14 @@
         // Move from high to low
         // The map is anchored on the bottom
         //----------------------------
+        if (high > 1 || high < 0){
+            NSLog(@"spaceBarElevatorMovedLow: (high) %f", high);
+        }
         [self.spaceBar.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
+        
+        if (low > 1 || low < 0){
+            NSLog(@"spaceBarElevatorMovedLow: (low) %f", low);
+        }
         [self.spaceBar.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:anchor                                                                          toB:target];

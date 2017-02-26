@@ -73,9 +73,14 @@
         self.quickInfoOutlet.text = @"";
     }
     
-    if (!self.spatialEntity.isMapAnnotationEnabled){
-        // Don't show the sheet if the entity is invisible
-        [self removeSheet];
+    if ([self.spatialEntity isMemberOfClass:[Route class]]){
+        Route *aRoute = self.spatialEntity;
+        if (aRoute.appearanceMode == ROUTEMODE &&
+            !aRoute.isMapAnnotationEnabled)
+        {
+            // Don't show the sheet if the entity is invisible
+            [self removeSheet];
+        }
     }
 }
 
@@ -146,7 +151,14 @@
         return;
     
     Route *aRoute = self.spatialEntity;
+    
     aRoute.appearanceMode = (AppeararnceMode)self.collectionModeOutlet.selectedSegmentIndex;
+    aRoute.isMapAnnotationEnabled = YES;
+    
+    if (aRoute.appearanceMode == ROUTEMODE){
+        // A user might turn a tempRoute object into a route
+        [[EntityDatabase sharedManager] addEntity:aRoute];
+    }
 }
 
 

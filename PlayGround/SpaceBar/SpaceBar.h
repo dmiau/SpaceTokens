@@ -73,6 +73,8 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property BOOL isAnchorAllowed;
 @property NSMutableSet <SpaceToken*> *anchorCandidateSet;
 @property NSMutableSet <SpaceToken*> *anchorSet;
+@property NSMutableArray *anchorTouchInfoArray; // a structure to detect whether an anchor touch is a tap
+
 @property BOOL isMultipleTokenSelectionEnabled;
 
 

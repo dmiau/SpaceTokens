@@ -88,7 +88,8 @@
         mapView.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
         arrayTool.isVisible = NO;
         
-        [arrayTool resetTool];
+        // Reset the ArrayTool completedly when the ArrayTool is closed
+        [ArrayTool resetSharedInstace];
     }
 }
 

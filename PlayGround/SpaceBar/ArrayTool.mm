@@ -24,17 +24,18 @@
     AdditionTool *additionTool;
     int counter;
 }
-
+static ArrayTool *sharedInstance = nil; // Move the share instance out so it can be reset
 
 +(ArrayTool*)sharedManager{
-    static ArrayTool *sharedInstance = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+
+    if (!sharedInstance){
         sharedInstance = [[ArrayTool alloc] initSingleton];
-    });
-    
+    }
     return sharedInstance;
+}
+
++(void)resetSharedInstace{
+    sharedInstance = nil;
 }
 
 // Overwrite super's initSingleton method
@@ -127,7 +128,7 @@
         CGPoint tokenPoint = [touch locationInView:self];
         
         // Check if the touch is in the master token insertion zone
-        if (tokenPoint.x < self.tokenWidth * 0.5 &&
+        if (tokenPoint.x < self.tokenWidth * 0.6 &&
             tokenPoint.y < 60)
         {
             [self insertMaster:token];
@@ -135,7 +136,7 @@
         }
         
         // Check if the touch is in the general token insertion zone
-        if (tokenPoint.x < self.tokenWidth * 0.5 &&
+        if (tokenPoint.x < self.tokenWidth * 0.6 &&
             tokenPoint.y > 60)
         {
             [self insertToken:token];
