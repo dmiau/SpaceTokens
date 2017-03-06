@@ -290,9 +290,12 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
     if (aRoute.appearanceMode == ROUTEMODE ||
         aRoute.appearanceMode == SKETCHEDROUTE)
     {
-        self.arrayToolMode = PathMode;
-        [[ViewController sharedManager] showRoute:aRoute
-                                   zoomToOverview:YES];
+        if (aRoute.requestCompletionFlag){
+            // Only show the SpaceBar when the route is ready.
+            self.arrayToolMode = PathMode;
+            [[ViewController sharedManager] showRoute:aRoute
+                                       zoomToOverview:YES];
+        }
     }else{
         [[ViewController sharedManager] removeRoute];
         self.arrayToolMode = ArrayMode;
@@ -353,12 +356,15 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
     
     // Depending on the token, different things need to be done
     if (token.spatialEntity == self.arrayEntity){
+        
+        if (self.arrayEntity.appearanceMode == ARRAYMODE){
+            // Remove the connected lines before resetting the tool.
+            self.arrayEntity.appearanceMode = SETMODE;
+        }
+        
         // masterToken is removed
         [self.arrayEntity removeObserver:self forKeyPath:@"dirtyFlag"];
         
-        // Remove the annotation before the master token is removed
-        self.arrayEntity.isMapAnnotationEnabled = NO;
-        self.arrayEntity.dirtyFlag = @0;
         self.arrayEntity = [[Route alloc] init];
         self.arrayEntity.name = [NSString stringWithFormat:@"AC-%d", counter++];
         self.arrayEntity.appearanceMode = SETMODE;

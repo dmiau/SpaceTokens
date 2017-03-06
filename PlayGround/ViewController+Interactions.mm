@@ -195,7 +195,7 @@
 - (void)removeRoute{
     // Remove the previous route if there is any
     if (self.spaceBar.activeRoute){
-        [[EntityDatabase sharedManager] removeEntity:self.spaceBar.activeRoute];        
+//        [[EntityDatabase sharedManager] removeEntity:self.spaceBar.activeRoute];        
         self.spaceBar.activeRoute = nil;
     }
     [self.spaceBar removeRouteAnnotations];

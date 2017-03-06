@@ -122,6 +122,8 @@ using namespace std;
     if (!allCompletionFlag)
         return;
     
+    self.requestCompletionFlag = YES;
+    
     // Assemble the route (glue all the polylines into a long polyline)
     // Make a long MKMapPoint array
     vector<NSUInteger> pointCountVector;

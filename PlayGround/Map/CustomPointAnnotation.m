@@ -120,9 +120,10 @@
 -(void)setIsHighlighted:(BOOL)isHighlighted{
     _isHighlighted = isHighlighted;
     
-    
-    
     if (self.pointType == YouRHere){
+        //------------
+        //YouRHere
+        //------------
         self.iconView = nil;
         self.iconGenerator.isMarkerOn = NO;
         if (isHighlighted){
@@ -144,8 +145,20 @@
                 self.iconView = imageView;
                 [aLabel setTextColor: [UIColor redColor]];
             }
+        }else if (self.isLabelOn){
+            //-------------------
+            // normal (but with label on)
+            //-------------------
+            if (self.iconGenerator){
+                UIImageView *imageView = [[UIImageView alloc]
+                                          initWithImage: [self.iconGenerator generateIcon]];
+                [imageView addSubview:aLabel];
+                self.iconView = imageView;
+                [aLabel setTextColor: [UIColor redColor]];
+            }else{
+                self.map = nil;
+            }
         }else{
-            
             //-------------------
             // normal
             //-------------------
@@ -171,6 +184,16 @@
 
 -(void)setIsLabelOn:(bool)isLabelOn{
     _isLabelOn = isLabelOn;
+    
+    if (_isLabelOn && !self.isHighlighted){
+        UIImageView *imageView = [[UIImageView alloc]
+                                  initWithImage: [self.iconGenerator generateIcon]];
+        [imageView addSubview:aLabel];
+        self.iconView = imageView;
+        [aLabel setTextColor: [UIColor redColor]];
+    }else{
+        self.icon = [self.iconGenerator generateIcon];
+    }
 }
 @end
 

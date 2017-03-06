@@ -90,7 +90,8 @@
 - (void)setSelected:(BOOL)selected{
     [super setSelected:selected];
     
-    if (self.spatialEntity.appearanceMode == SETMODE ){
+    if (self.spatialEntity.appearanceMode == SETMODE)
+    {
         // Put the child tokens into touching set?
         if (selected){
             [self genTempChildrenTokenArray];

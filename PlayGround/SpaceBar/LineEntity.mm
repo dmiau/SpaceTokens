@@ -83,6 +83,25 @@ template class std::vector<double>;
     }
     
     self.isMapAnnotationEnabled = cachedAnnotationStatus;
+    [self updateChildrenLabels];
+}
+
+-(void)updateChildrenLabels{
+    BOOL labelFlag;
+    if (self.annotation.map){
+        // Turn on lable for each child entity
+        labelFlag = YES;
+    }else{
+        // Turn off lable for each child entity
+        labelFlag = NO;
+    }
+    
+    for (SpatialEntity *anEntity in contentArray){
+        if ([anEntity isKindOfClass:[POI class]]){
+            CustomPointAnnotation *pointAnnotation = anEntity.annotation;
+            pointAnnotation.isLabelOn = labelFlag;
+        }
+    }
 }
 
 
@@ -106,6 +125,7 @@ template class std::vector<double>;
     }else{
         self.annotation.map = nil;
     }
+    
 }
 
 //-----------------
