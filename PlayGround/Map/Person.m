@@ -31,6 +31,10 @@
     return self;
 }
 
+
+
+
+
 -(void)setUpdateFlag:(BOOL)updateFlag{
     _updateFlag = updateFlag;
     self.isMapAnnotationEnabled = YES;
