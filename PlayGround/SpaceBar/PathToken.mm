@@ -96,6 +96,7 @@
         if (selected){
             [self genTempChildrenTokenArray];
             [self addChildrenEntitiesToTouchingSet];
+            
         }else{
             [self removeChildrenEntitiesFromTouchingSet];
         }

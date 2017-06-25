@@ -23,8 +23,9 @@
     
     // Initialize the object
     self.titleOutlet.delegate = self;
-    
     [self.starOutlet setTitle:@"remove" forState:UIControlStateNormal];
+    
+
 }
 
 // MARK: Setters
@@ -43,6 +44,11 @@
                        context:nil];
 }
 
+
+
+// MARK: Sheet updates
+//-------------------------------------
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     
@@ -56,6 +62,10 @@
 -(void)addSheetForEntity:(SpatialEntity*)entity{
     [super addSheetForEntity:entity];
     [self.starOutlet setTitle:@"remove" forState:UIControlStateNormal];
+}
+
+-(void)removeSheet{
+    [super removeSheet];
 }
 
 -(void)updateSheet{        
@@ -84,20 +94,6 @@
     }
 }
 
-// MARK: Setters
-//-------------------------------------
-//-(void)setSpatialEntity:(SpatialEntity *)spatialEntity{
-//    _spatialEntity = spatialEntity;
-//    self.titleOutlet.text = spatialEntity.name;
-//}
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -152,13 +148,26 @@
     
     Route *aRoute = self.spatialEntity;
     
-    aRoute.appearanceMode = (AppeararnceMode)self.collectionModeOutlet.selectedSegmentIndex;
+    switch (self.collectionModeOutlet.selectedSegmentIndex) {
+        case 0:
+            // COLLECTION
+            aRoute.appearanceMode = ARRAYMODE;
+            break;
+        case 1:
+            // ROUTE
+            aRoute.appearanceMode = ROUTEMODE;
+            break;
+        default:
+            break;
+    }
+    
     aRoute.isMapAnnotationEnabled = YES;
     
     if (aRoute.appearanceMode == ROUTEMODE){
         // A user might turn a tempRoute object into a route
         [[EntityDatabase sharedManager] addEntity:aRoute];
     }
+    
 }
 
 

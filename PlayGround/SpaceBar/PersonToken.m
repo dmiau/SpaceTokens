@@ -44,25 +44,27 @@
 
 - (void)setSelected:(BOOL)selected{
     
-    
-    // A SpaceToken may be linked to a dynamic locaiton, such as a person
-    Person *aPerson = (Person*)self.spatialEntity;
-    
-    
-    if (selected){
-        aPerson.updateFlag = YES;
-        aPerson.annotation.pointType = YouRHere;
-    }else{
-        // http://stackoverflow.com/questions/14924892/nstimer-with-anonymous-function-block
-        int64_t delayInSeconds = 5; // Your Game Interval as mentioned above by you
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    if ([self.spatialEntity isKindOfClass:[Person class]]){
+        // A SpaceToken may be linked to a dynamic locaiton, such as a person
+        Person *aPerson = (Person*)self.spatialEntity;
         
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            // Update your label here.
-            aPerson.updateFlag = NO;
-        });
+        
+        if (selected){
+            aPerson.updateFlag = YES;
+            aPerson.annotation.pointType = YouRHere;
+        }else{
+            // http://stackoverflow.com/questions/14924892/nstimer-with-anonymous-function-block
+            int64_t delayInSeconds = 5; // Your Game Interval as mentioned above by you
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                // Update your label here.
+                aPerson.updateFlag = NO;
+            });
+        }
+    }else{
+        NSLog(@"Something is wrong...");
     }
-
     
     [super setSelected:selected];
 }

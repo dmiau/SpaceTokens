@@ -20,7 +20,6 @@
 #import "EntityDatabase.h"
 
 
-
 @implementation ArrayTool{
     AdditionTool *additionTool;
     int counter;
@@ -273,6 +272,7 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
     [[[CustomMKMapView sharedManager] informationSheetManager]
      addSheetForEntity:self.arrayEntity];
     
+        
     [self reloadData];
     return YES;
 }
@@ -329,6 +329,7 @@ static ArrayTool *sharedInstance = nil; // Move the share instance out so it can
     if ([[self.arrayEntity getContent] count] > 1){
         [[[CustomMKMapView sharedManager] informationSheetManager]
          addSheetForEntity:self.arrayEntity];
+        
     }
     
     // refresh the token panel

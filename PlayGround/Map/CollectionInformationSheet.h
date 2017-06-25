@@ -19,6 +19,9 @@
 - (IBAction)starAction:(id)sender;
 
 
+
+
+// Collection Segment Control
 @property (weak, nonatomic) IBOutlet UISegmentedControl *collectionModeOutlet;
 - (IBAction)collectionModeAction:(id)sender;
 
