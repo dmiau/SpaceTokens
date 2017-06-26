@@ -154,7 +154,10 @@ static ViewController *instance;
         [tokenCollectionView reloadData];
     
     // TopPanel viewWillAppaer
-    [self.mainViewManager.activePanel viewWillAppear:NO];    
+    [self.mainViewManager.activePanel viewWillAppear:NO];
+    
+    // Execute the debugging code
+    [self runDebuggingCode];
 }
 
 // Update the placement of GUI elements

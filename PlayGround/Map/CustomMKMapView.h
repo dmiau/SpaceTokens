@@ -106,4 +106,11 @@
 
 -(void)animateToCameraUpdate: (GMSCameraUpdate*) cameraUpdate; // Override the default camera method to include animation
 
+//==============================
+// Map information display
+//==============================
+@property UITextView *informationView;
+-(void)showInformationView:(NSString*) info;
+-(void)removeInformationView;
+
 @end

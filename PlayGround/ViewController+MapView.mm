@@ -97,6 +97,9 @@
 
     // Put the touch into a watch mechanism
     [self.spaceBar addAnchorForTouches: touches];
+    
+    // Reset the map information dialog
+    [[CustomMKMapView sharedManager] removeInformationView];
 }
 
 - (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

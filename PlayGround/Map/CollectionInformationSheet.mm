@@ -14,6 +14,8 @@
 #import "EntityDatabase.h"
 #import "Route.h"
 
+#import "SpaceBar.h" // Needed to decide the status of collection segement control
+
 
 #define INITIAL_HEIGHT 80
 @implementation CollectionInformationSheet
@@ -62,6 +64,10 @@
 -(void)addSheetForEntity:(SpatialEntity*)entity{
     [super addSheetForEntity:entity];
     [self.starOutlet setTitle:@"remove" forState:UIControlStateNormal];
+    
+    // Depending on the status of SpaceBar, turn on/off of the segment control
+    [self.collectionModeOutlet setHidden:
+    [SpaceBar sharedManager].isBarToolHidden];
 }
 
 -(void)removeSheet{
@@ -77,8 +83,23 @@
         Route *aRoute = self.spatialEntity;
         self.quickInfoOutlet.text = [NSString stringWithFormat:@"%.2f mins, %.0f (m)",
                                      aRoute.expectedTravelTime/60, aRoute.distance];
+        // Update collection segment control
+        switch (aRoute.appearanceMode) {
+            case ARRAYMODE:
+            case SETMODE:
+                // Both modes are considered as collection
+                self.collectionModeOutlet.selectedSegmentIndex = 0;
+                break;
+            case ROUTEMODE:
+                // ROUTE
+                self.collectionModeOutlet.selectedSegmentIndex = 1;
+                break;
+            default:
+                self.collectionModeOutlet.selectedSegmentIndex = 1;
+                break;
+        }
         
-        self.collectionModeOutlet.selectedSegmentIndex = aRoute.appearanceMode;
+    
     }else{
         self.quickInfoOutlet.text = @"";
     }
@@ -151,7 +172,7 @@
     switch (self.collectionModeOutlet.selectedSegmentIndex) {
         case 0:
             // COLLECTION
-            aRoute.appearanceMode = ARRAYMODE;
+            aRoute.appearanceMode = SETMODE;
             break;
         case 1:
             // ROUTE

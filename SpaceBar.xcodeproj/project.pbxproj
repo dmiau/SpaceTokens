@@ -145,6 +145,8 @@
 		9A53014F1C5AD6A6008D584B /* PlayGround.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */; };
 		9A5301511C5AD6A6008D584B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
 		9A5301541C5AD6A6008D584B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */; };
+		9A564CEC1F014A0E00DDEEE6 /* ViewController+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A564CEB1F014A0E00DDEEE6 /* ViewController+Debug.m */; };
+		9A564CED1F014A0E00DDEEE6 /* ViewController+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A564CEB1F014A0E00DDEEE6 /* ViewController+Debug.m */; };
 		9A5A93561E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
 		9A5A93581E38FB8900432972 /* arrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93551E38FB8900432972 /* arrayIcon.png */; };
 		9A5A935B1E39365E00432972 /* pathIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A93591E39365E00432972 /* pathIcon.png */; };
@@ -306,6 +308,8 @@
 		9AD887B21E42960F008E62E7 /* PickerToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD887B11E42960F008E62E7 /* PickerToken.m */; };
 		9AD887B31E42960F008E62E7 /* PickerToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD887B11E42960F008E62E7 /* PickerToken.m */; };
 		9ADA8F401D79F9B400DCF1B4 /* POIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */; };
+		9ADFCE901F00460E0030328D /* CustomMKMapView+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFCE8F1F00460E0030328D /* CustomMKMapView+Debug.m */; };
+		9ADFCE911F00460E0030328D /* CustomMKMapView+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFCE8F1F00460E0030328D /* CustomMKMapView+Debug.m */; };
 		9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9AE13B501DF0D148008612DA /* EntityDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0A661DDA35DB001B11CC /* EntityDatabase.mm */; };
 		9AE13B511DF0D148008612DA /* ViewController+MapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */; };
@@ -521,6 +525,8 @@
 		9A5301501C5AD6A6008D584B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A5301531C5AD6A6008D584B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A564CEA1F014A0E00DDEEE6 /* ViewController+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Debug.h"; sourceTree = "<group>"; };
+		9A564CEB1F014A0E00DDEEE6 /* ViewController+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Debug.m"; sourceTree = "<group>"; };
 		9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SpaceBar iPad.entitlements"; sourceTree = "<group>"; };
 		9A5A93551E38FB8900432972 /* arrayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrayIcon.png; sourceTree = "<group>"; };
 		9A5A93591E39365E00432972 /* pathIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pathIcon.png; sourceTree = "<group>"; };
@@ -701,6 +707,8 @@
 		9AD887B11E42960F008E62E7 /* PickerToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerToken.m; path = SpaceBar/PickerToken.m; sourceTree = "<group>"; };
 		9ADA8F3E1D79F9B400DCF1B4 /* POIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIDetailViewController.h; sourceTree = "<group>"; };
 		9ADA8F3F1D79F9B400DCF1B4 /* POIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIDetailViewController.m; sourceTree = "<group>"; };
+		9ADFCE8E1F00460E0030328D /* CustomMKMapView+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+Debug.h"; path = "Map/CustomMKMapView+Debug.h"; sourceTree = "<group>"; };
+		9ADFCE8F1F00460E0030328D /* CustomMKMapView+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+Debug.m"; path = "Map/CustomMKMapView+Debug.m"; sourceTree = "<group>"; };
 		9AE13BBD1DF0D148008612DA /* SpaceBarBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBarBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE13BBE1DF0D148008612DA /* SpaceBarBeta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBarBeta-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBarBeta-Info.plist"; sourceTree = "<absolute>"; };
 		9AE1D2A21DD39E2D0092B1D4 /* PlaceInstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceInstructionView.h; path = StudyManager/PlaceInstructionView.h; sourceTree = "<group>"; };
@@ -953,6 +961,8 @@
 				9A94DD081D9C194D00F94256 /* CustomMKMapView+Annotations.m */,
 				9A95D64C1E3D68D400674847 /* CustomMKMapView+GMSMapView.h */,
 				9A95D64D1E3D68D400674847 /* CustomMKMapView+GMSMapView.m */,
+				9ADFCE8E1F00460E0030328D /* CustomMKMapView+Debug.h */,
+				9ADFCE8F1F00460E0030328D /* CustomMKMapView+Debug.m */,
 				9A8B5E511D5D659300A32DC9 /* MiniMapView.h */,
 				9A8B5E521D5D659300A32DC9 /* MiniMapView.m */,
 			);
@@ -1311,6 +1321,8 @@
 				9A0E063C1D54FCB800E5722D /* ViewController+MapView.mm */,
 				9A654B1B1D6A28C10016044C /* ViewController+Annotations.h */,
 				9A654B1C1D6A28C10016044C /* ViewController+Annotations.m */,
+				9A564CEA1F014A0E00DDEEE6 /* ViewController+Debug.h */,
+				9A564CEB1F014A0E00DDEEE6 /* ViewController+Debug.m */,
 				9AA454DD1D52D160008D4FCF /* MyFileManager.h */,
 				9AA454DE1D52D160008D4FCF /* MyFileManager.m */,
 			);
@@ -1828,6 +1840,7 @@
 				9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */,
 				9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9A0B40941E4D5CE4004413B4 /* CollectionInformationSheet.mm in Sources */,
+				9A564CEC1F014A0E00DDEEE6 /* ViewController+Debug.m in Sources */,
 				9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */,
 				9AAE092D1DECDAE800BAE14C /* AuthoringPanelBase.m in Sources */,
 				9A2D6DEB1E23E5A900D64615 /* SetTool.mm in Sources */,
@@ -1842,6 +1855,7 @@
 				9A7DB27C1E14494000226D42 /* DrawingView.mm in Sources */,
 				9AFB7DE21E401CAB00384959 /* CustomGMSPolyline.m in Sources */,
 				9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
+				9ADFCE901F00460E0030328D /* CustomMKMapView+Debug.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
 				9A95D64E1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,
@@ -1955,6 +1969,7 @@
 				9AE13B871DF0D148008612DA /* Snapshot.m in Sources */,
 				9A5DA0341E16F2C9002A50B7 /* AreaToken.m in Sources */,
 				9A0B40951E4D5CE4004413B4 /* CollectionInformationSheet.mm in Sources */,
+				9A564CED1F014A0E00DDEEE6 /* ViewController+Debug.m in Sources */,
 				9AE13B891DF0D148008612DA /* CustomMKMapView+Tools.m in Sources */,
 				9AE13B8A1DF0D148008612DA /* AuthoringPanelBase.m in Sources */,
 				9A2D6DED1E23E5A900D64615 /* SetTool.mm in Sources */,
@@ -1969,6 +1984,7 @@
 				9A7DB27E1E14494000226D42 /* DrawingView.mm in Sources */,
 				9AFB7DE31E401CAB00384959 /* CustomGMSPolyline.m in Sources */,
 				9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
+				9ADFCE911F00460E0030328D /* CustomMKMapView+Debug.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,
 				9A95D6501E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,

@@ -49,5 +49,9 @@
 - (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag;
 - (void)removeRoute;
 
+
+// Debug
+- (void)runDebuggingCode;
+
 @end
 

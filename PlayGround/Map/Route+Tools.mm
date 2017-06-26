@@ -12,6 +12,7 @@
 #import "HighlightedEntities.h"
 #import "TokenCollectionView.h"
 #import <vector>
+#import "CustomMKMapView.h"
 
 using namespace std;
 
@@ -31,6 +32,10 @@ using namespace std;
         // Newly created route should be highlighted
         [[HighlightedEntities sharedManager] clearHighlightedSet];
         [[HighlightedEntities sharedManager] addEntity:aRoute];
+        
+        // Display the basic information of a route to a user
+        [[CustomMKMapView sharedManager] showInformationView:
+         [aRoute description]];
     };
     aRoute.routeReadyBlock = completionBlock;
     [aRoute requestRouteWithSource:source Destination:destination];
@@ -105,6 +110,7 @@ using namespace std;
                  }
                  break;
              }
+             
          }
          
      }];
