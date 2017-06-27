@@ -32,14 +32,30 @@
     
     float horizontalPosition = percentage * (self.sliderContainer.frame.size.height - 2 * self.sliderContainer.trackPaddingInPoints) + self.sliderContainer.trackPaddingInPoints;
     
-    // Add the source label
+    // Padding the two ends
+    if (percentage < 0.0001){
+        horizontalPosition += 4;
+    }else if (percentage > 0.99){
+        horizontalPosition -= 8;
+    }
+    
+    // Add a label
     UILabel *myLabel = [[UILabel alloc] initWithFrame:
-                                 CGRectMake(0, horizontalPosition - 15
-                                            , 80, 30)];
+                                 CGRectMake(15, horizontalPosition - 15
+                                            , 90, 45)];
     myLabel.text = name;
     [myLabel setTextColor:[UIColor blackColor]];
+    
     [myLabel setBackgroundColor:[UIColor clearColor]];
-    [myLabel setFont: [UIFont fontWithName:@"Trebuchet MS" size:14.0f]];
+    
+    [myLabel setFont: [UIFont fontWithName:@"Trebuchet MS" size:16.0f]];
+    
+    // Make the label two lines if necessary
+    myLabel.adjustsFontSizeToFitWidth = YES;
+    if ([myLabel.text length] > 8){
+        myLabel.numberOfLines = 2;
+    }
+    
     return myLabel;
 }
 

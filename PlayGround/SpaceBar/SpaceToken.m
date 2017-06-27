@@ -223,15 +223,16 @@
             self.isLineLayerOn = NO;
             self.isCircleLayerOn = NO;
             
-            // add drop shadow
+            // Round the corner
             self.layer.cornerRadius = 10; // this value vary as per your desire
             self.layer.masksToBounds = NO;
 //            self.layer.borderWidth = 1.0f;
             
-            self.layer.shadowColor = [UIColor grayColor].CGColor;
-            self.layer.shadowOpacity = 0.8;
-            self.layer.shadowRadius = 12;
-            self.layer.shadowOffset = CGSizeMake(12.0f, 12.0f);
+            // add drop shadow
+            self.layer.shadowColor = [UIColor blackColor].CGColor;
+            self.layer.shadowOpacity = 0.7f;
+            self.layer.shadowRadius = 3.0f;
+            self.layer.shadowOffset = CGSizeMake(3.0f, 3.0f);
         
             break;
         case DRAGGING:
