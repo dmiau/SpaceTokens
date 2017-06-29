@@ -11,7 +11,7 @@
 #import "TokenCollection.h"
 #import "CustomMKMapView.h"
 #import "InformationSheetManager.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 #import "Route.h"
 #import "ViewController.h"
 

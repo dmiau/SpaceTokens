@@ -6,7 +6,7 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "SpaceBar+Anchors.h"
+#import "NavTools+Anchors.h"
 #import "POI.h"
 #import "EntityDatabase.h"
 #import "Constants.h"

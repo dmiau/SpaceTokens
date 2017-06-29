@@ -6,7 +6,7 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "SpaceBar.h"
+#import "NavTools.h"
 #import "Constants.h"
 #import "CERangeSlider.h"
 #import "GestureEngine.h"

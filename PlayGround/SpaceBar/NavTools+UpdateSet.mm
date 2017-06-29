@@ -6,7 +6,7 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "SpaceBar+UpdateSet.h"
+#import "NavTools+UpdateSet.h"
 #import "Constants.h"
 #import "Tools.h"
 #import "Person.h"

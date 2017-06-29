@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "CustomMKMapView.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 
 #import "EntityDatabase.h"
 #import "POI.h"

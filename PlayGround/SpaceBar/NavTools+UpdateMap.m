@@ -6,7 +6,7 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "SpaceBar+UpdateMap.h"
+#import "NavTools+UpdateMap.h"
 #import "POI.h"
 
 @implementation SpaceBar (UpdateMap)

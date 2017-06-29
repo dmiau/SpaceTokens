@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "SpaceBar/SpaceBar.h"
+#import "NavTools.h"
 #import "Map/CustomMKMapView.h"
 #import "Map/MiniMapView.h"
 #import "MainViewManager.h"

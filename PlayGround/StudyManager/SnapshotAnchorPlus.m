@@ -13,7 +13,7 @@
 #import "Constants.h"
 #import "Record.h"
 #import "GameManager.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 #import "AnchorInstructionView.h"
 #import "TokenCollection.h"
 

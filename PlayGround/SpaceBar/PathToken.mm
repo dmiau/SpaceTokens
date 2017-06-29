@@ -9,7 +9,7 @@
 #import "PathToken.h"
 #import "Route.h"
 #import "SpaceToken+Tools.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 #import "Constants.h"
 
 @implementation PathToken{

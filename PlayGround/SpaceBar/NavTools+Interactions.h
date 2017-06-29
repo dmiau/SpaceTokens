@@ -6,7 +6,7 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "SpaceBar.h"
+#import "NavTools.h"
 
 @interface SpaceBar (Interactions)
 

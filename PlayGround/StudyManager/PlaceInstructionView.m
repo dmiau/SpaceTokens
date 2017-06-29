@@ -9,7 +9,7 @@
 #import "PlaceInstructionView.h"
 #import "SnapshotPlace.h"
 #import "AppDelegate.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 
 @implementation PlaceInstructionView
 

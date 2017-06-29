@@ -6,7 +6,7 @@
 //  Copyright © 2016 dmiau. All rights reserved.
 //
 
-#import "SpaceBar+Annotations.h"
+#import "NavTools+Annotations.h"
 #import "Route.h"
 #import "POI.h"
 

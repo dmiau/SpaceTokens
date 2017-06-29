@@ -7,7 +7,7 @@
 //
 
 #import "GestureEngine.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 #import "TokenCollection.h"
 #import "CustomMKMapView.h"
 #import "Route.h"

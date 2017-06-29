@@ -14,7 +14,7 @@
 #import "EntityDatabase.h"
 #import "Route.h"
 
-#import "SpaceBar.h" // Needed to decide the status of collection segement control
+#import "NavTools.h" // Needed to decide the status of collection segement control
 
 
 #define INITIAL_HEIGHT 80

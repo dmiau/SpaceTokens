@@ -9,7 +9,7 @@
 #import "AnchorInstructionView.h"
 #import "SnapshotAnchorPlus.h"
 #import "AppDelegate.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 
 @implementation AnchorInstructionView
 

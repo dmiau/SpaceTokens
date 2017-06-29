@@ -7,7 +7,7 @@
 //
 
 #import "WildcardGestureRecognizer.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 
 //http://stackoverflow.com/questions/1049889/how-to-intercept-touches-events-on-a-mkmapview-or-uiwebview-objects
 

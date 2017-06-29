@@ -8,7 +8,7 @@
 
 #import "ConnectionTool+Dragging.h"
 #import "SpaceToken.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 #import "TokenCollection.h"
 #import "POI.h"
 #import "Route.h"

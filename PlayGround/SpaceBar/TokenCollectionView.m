@@ -12,7 +12,7 @@
 #import "SpatialEntity.h"
 #import "TokenCollection.h"
 #import "CustomMKMapView.h"
-#import "SpaceBar.h"
+#import "NavTools.h"
 #import "ViewController.h"
 #import "ArrayEntity.h"
 #import "AreaToken.h"
