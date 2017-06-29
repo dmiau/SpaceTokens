@@ -123,6 +123,8 @@
 		9A2D6DEB1E23E5A900D64615 /* SetTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.mm */; };
 		9A2D6DED1E23E5A900D64615 /* SetTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.mm */; };
 		9A31C13F1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */; };
+		9A3923C81F03083F005B6D69 /* scratchStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3923C71F03083F005B6D69 /* scratchStoryBoard.storyboard */; };
+		9A3923C91F03083F005B6D69 /* scratchStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3923C71F03083F005B6D69 /* scratchStoryBoard.storyboard */; };
 		9A3EB3B61E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
 		9A3EB3B81E1C77FD008FA7FA /* ArrayToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */; };
 		9A3EB3BB1E1C7AEE008FA7FA /* SpaceToken+Tools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3EB3BA1E1C7AEE008FA7FA /* SpaceToken+Tools.mm */; };
@@ -181,6 +183,10 @@
 		9A7594D11E0DEEC50047BC66 /* TaskGenerator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */; };
 		9A75D6541E417B5100DB045C /* DMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6531E417B5100DB045C /* DMTools.m */; };
 		9A75D6551E417B5100DB045C /* DMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75D6531E417B5100DB045C /* DMTools.m */; };
+		9A75E36B1F05601600A88BA2 /* ScreenShotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E36A1F05601600A88BA2 /* ScreenShotTableController.m */; };
+		9A75E36C1F05601600A88BA2 /* ScreenShotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E36A1F05601600A88BA2 /* ScreenShotTableController.m */; };
+		9A75E3701F057EED00A88BA2 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E36F1F057EED00A88BA2 /* ImageViewController.m */; };
+		9A75E3711F057EED00A88BA2 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E36F1F057EED00A88BA2 /* ImageViewController.m */; };
 		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
@@ -494,6 +500,7 @@
 		9A2D6DEA1E23E5A900D64615 /* SetTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SetTool.mm; path = SpaceBar/SetTool.mm; sourceTree = "<group>"; };
 		9A31C13D1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+TouchInteractions.h"; path = "Map/CustomMKMapView+TouchInteractions.h"; sourceTree = "<group>"; };
 		9A31C13E1DEC9A5F00CF4D4E /* CustomMKMapView+TouchInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+TouchInteractions.m"; path = "Map/CustomMKMapView+TouchInteractions.m"; sourceTree = "<group>"; };
+		9A3923C71F03083F005B6D69 /* scratchStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = scratchStoryBoard.storyboard; path = Views/scratchStoryBoard.storyboard; sourceTree = "<group>"; };
 		9A3EB3B41E1C77FD008FA7FA /* ArrayToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayToken.h; path = SpaceBar/ArrayToken.h; sourceTree = "<group>"; };
 		9A3EB3B51E1C77FD008FA7FA /* ArrayToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayToken.m; path = SpaceBar/ArrayToken.m; sourceTree = "<group>"; };
 		9A3EB3B91E1C7AEE008FA7FA /* SpaceToken+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Tools.h"; path = "SpaceBar/SpaceToken+Tools.h"; sourceTree = "<group>"; };
@@ -563,6 +570,10 @@
 		9A7594CE1E0DEEC50047BC66 /* TaskGenerator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TaskGenerator+Tools.m"; path = "StudyManager/TaskGenerator+Tools.m"; sourceTree = "<group>"; };
 		9A75D6521E417B5100DB045C /* DMTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMTools.h; path = DMTools/DMTools.h; sourceTree = "<group>"; };
 		9A75D6531E417B5100DB045C /* DMTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMTools.m; path = DMTools/DMTools.m; sourceTree = "<group>"; };
+		9A75E3691F05601600A88BA2 /* ScreenShotTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotTableController.h; sourceTree = "<group>"; };
+		9A75E36A1F05601600A88BA2 /* ScreenShotTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotTableController.m; sourceTree = "<group>"; };
+		9A75E36E1F057EED00A88BA2 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		9A75E36F1F057EED00A88BA2 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
@@ -1153,6 +1164,17 @@
 			name = Tools;
 			sourceTree = "<group>";
 		};
+		9A75E36D1F057E6E00A88BA2 /* ScreenShot */ = {
+			isa = PBXGroup;
+			children = (
+				9A75E3691F05601600A88BA2 /* ScreenShotTableController.h */,
+				9A75E36A1F05601600A88BA2 /* ScreenShotTableController.m */,
+				9A75E36E1F057EED00A88BA2 /* ImageViewController.h */,
+				9A75E36F1F057EED00A88BA2 /* ImageViewController.m */,
+			);
+			name = ScreenShot;
+			sourceTree = "<group>";
+		};
 		9A7DB2791E1448E500226D42 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,6 +1326,7 @@
 				9A53014A1C5AD6A6008D584B /* Main.storyboard */,
 				9A5301521C5AD6A6008D584B /* LaunchScreen.storyboard */,
 				9AD0F44E1C7CF7F100AEF928 /* iPad.storyboard */,
+				9A3923C71F03083F005B6D69 /* scratchStoryBoard.storyboard */,
 				9AC7E1AB1D51162C00C2E8BE /* RootViewPanels */,
 			);
 			name = View;
@@ -1349,6 +1372,7 @@
 		9AC7E1AC1D51164600C2E8BE /* SeguePanels */ = {
 			isa = PBXGroup;
 			children = (
+				9A75E36D1F057E6E00A88BA2 /* ScreenShot */,
 				9ACA58E11DEF32E2001EDB1D /* EntityTable */,
 				9ACA58E21DEF32EC001EDB1D /* Game(Snapshot) Table */,
 				9A8F67EC1D3DA65200C08CCB /* PreferencesController.mm */,
@@ -1639,6 +1663,7 @@
 				9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9A8F8D2C1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */,
 				9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
+				9A3923C81F03083F005B6D69 /* scratchStoryBoard.storyboard in Resources */,
 				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 				9A0CC0031E48084B008F07CA /* starGray-30.png in Resources */,
@@ -1683,6 +1708,7 @@
 				9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9A8F8D2D1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */,
 				9AE13BB51DF0D148008612DA /* ShowAuthoringPanel.xib in Resources */,
+				9A3923C91F03083F005B6D69 /* scratchStoryBoard.storyboard in Resources */,
 				9AE13BB61DF0D148008612DA /* RangeSlider in Resources */,
 				9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */,
 				9A0CC0041E48084B008F07CA /* starGray-30.png in Resources */,
@@ -1761,6 +1787,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */,
+				9A75E36B1F05601600A88BA2 /* ScreenShotTableController.m in Sources */,
 				9A0B408C1E4D5736004413B4 /* PointInformationSheet.m in Sources */,
 				9AFC0A671DDA35DB001B11CC /* EntityDatabase.mm in Sources */,
 				9A177FCD1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
@@ -1857,6 +1884,7 @@
 				9AFED2F51E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9ADFCE901F00460E0030328D /* CustomMKMapView+Debug.m in Sources */,
 				9A5301431C5AD6A6008D584B /* main.m in Sources */,
+				9A75E3701F057EED00A88BA2 /* ImageViewController.m in Sources */,
 				9A6F56351D9BCC6E0037C8A1 /* SearchPanelView.m in Sources */,
 				9A95D64E1E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,
 				9A836D391C69372C007D9520 /* tester.m in Sources */,
@@ -1890,6 +1918,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AE13B4F1DF0D148008612DA /* SettingsButton.m in Sources */,
+				9A75E36C1F05601600A88BA2 /* ScreenShotTableController.m in Sources */,
 				9A0B408D1E4D5736004413B4 /* PointInformationSheet.m in Sources */,
 				9AE13B501DF0D148008612DA /* EntityDatabase.mm in Sources */,
 				9A177FCF1DFB09A70035D056 /* SpaceToken+Dragging.m in Sources */,
@@ -1986,6 +2015,7 @@
 				9AFED2F71E0869EA007C8317 /* NSMutableArray+Tools.m in Sources */,
 				9ADFCE911F00460E0030328D /* CustomMKMapView+Debug.m in Sources */,
 				9AE13B911DF0D148008612DA /* main.m in Sources */,
+				9A75E3711F057EED00A88BA2 /* ImageViewController.m in Sources */,
 				9AE13B921DF0D148008612DA /* SearchPanelView.m in Sources */,
 				9A95D6501E3D68D400674847 /* CustomMKMapView+GMSMapView.m in Sources */,
 				9AE13B931DF0D148008612DA /* tester.m in Sources */,

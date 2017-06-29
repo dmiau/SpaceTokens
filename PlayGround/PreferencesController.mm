@@ -105,6 +105,8 @@
         self.syncMiniMapRotationOutlet.selectedSegmentIndex = 0;
     }
     
+    // Update the screen capture switch
+    [self.screenCaptureSwitchOutlet setOn: !self.rootViewController.screenCaptureButton.isHidden];
     
     // Display debug info
     [self displayDebugInfo];
@@ -197,5 +199,13 @@
             break;
     }
     self.rootViewController.mapView.transportType = transportType;
+}
+
+// Screen Capture Switch Action
+- (IBAction)screenCaptureSwtichAction:(id)sender {
+    [self.rootViewController.screenCaptureButton setHidden:
+    !self.rootViewController.screenCaptureButton.isHidden];
+    
+    [self.screenCaptureSwitchOutlet setOn: !self.rootViewController.screenCaptureButton.isHidden];
 }
 @end

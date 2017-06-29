@@ -52,6 +52,7 @@
 
 // Debug
 - (void)runDebuggingCode;
+@property UIButton *screenCaptureButton; // This is the screen capture button above the map
 
 @end
 

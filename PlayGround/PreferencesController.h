@@ -35,5 +35,7 @@
 
 // Debug info.
 @property (weak, nonatomic) IBOutlet UITextView *debugInfoOutlet;
+@property (weak, nonatomic) IBOutlet UISwitch *screenCaptureSwitchOutlet;
+- (IBAction)screenCaptureSwtichAction:(id)sender;
 
 @end

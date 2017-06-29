@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "ViewController.h"
+#import "ViewController+Debug.h"
 #import "tester.h"
 #import "Map/Route.h"
 #import "EntityDatabase.h"
@@ -130,7 +131,12 @@ static ViewController *instance;
     //----------------
     // Initialize SpeechRecognizer
     //----------------
-    self.speechEngine = [[SpeechEngine alloc] init];    
+    self.speechEngine = [[SpeechEngine alloc] init];
+    
+    //----------------
+    // Initialize Debug UI
+    //----------------
+    [self initDebugUI];
 }
 
 - (void)setIsStatusBarHidden:(BOOL)isStatusBarHidden{

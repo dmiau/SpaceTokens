@@ -10,4 +10,7 @@
 
 @interface ViewController (Debug)
 
+- (void) initDebugUI;
+
+
 @end
