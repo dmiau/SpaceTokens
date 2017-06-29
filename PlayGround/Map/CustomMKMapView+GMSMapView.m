@@ -1,6 +1,6 @@
 //
 //  CustomMKMapView+GMSMapView.m
-//  SpaceBar
+//  NavTools
 //
 //  Created by Daniel on 1/28/17.
 //  Copyright © 2017 dmiau. All rights reserved.

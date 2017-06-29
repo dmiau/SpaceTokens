@@ -1,6 +1,6 @@
 //
 //  ConnectionTool+Dragging.m
-//  SpaceBar
+//  NavTools
 //
 //  Created by dmiau on 12/11/16.
 //  Copyright © 2016 dmiau. All rights reserved.

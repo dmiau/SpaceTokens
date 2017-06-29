@@ -1,6 +1,6 @@
 //
 //  MainViewManager.m
-//  SpaceBar
+//  NavTools
 //
 //  Created by Daniel on 8/3/16.
 //  Copyright © 2016 dmiau. All rights reserved.

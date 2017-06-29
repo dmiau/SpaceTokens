@@ -1,6 +1,6 @@
 //
 //  ImageViewController.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by Daniel on 6/29/17.
 //  Copyright © 2017 dmiau. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  SearchPanelView+Actions.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by dmiau on 12/12/16.
 //  Copyright © 2016 dmiau. All rights reserved.

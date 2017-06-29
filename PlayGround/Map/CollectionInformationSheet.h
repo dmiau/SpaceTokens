@@ -1,6 +1,6 @@
 //
 //  CollectionInformationSheet.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by dmiau on 2/9/17.
 //  Copyright © 2017 dmiau. All rights reserved.

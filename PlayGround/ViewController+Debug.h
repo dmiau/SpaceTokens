@@ -1,6 +1,6 @@
 //
 //  ViewController+Debug.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by dmiau on 6/26/17.
 //  Copyright © 2017 dmiau. All rights reserved.

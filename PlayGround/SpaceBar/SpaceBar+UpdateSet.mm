@@ -1,6 +1,6 @@
 //
-//  SpaceBar+UpdateSet.m
-//  SpaceBar
+//  NavTools+UpdateSet.m
+//  NavTools
 //
 //  Created by dmiau on 2/13/16.
 //  Copyright © 2016 dmiau. All rights reserved.

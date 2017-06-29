@@ -1,6 +1,6 @@
 //
 //  Snapshot+Validators.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by Daniel on 9/11/16.
 //  Copyright © 2016 dmiau. All rights reserved.

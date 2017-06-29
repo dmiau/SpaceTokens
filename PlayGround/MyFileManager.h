@@ -1,6 +1,6 @@
 //
 //  MyFileManager.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by dmiau on 8/3/16.
 //  Copyright © 2016 dmiau. All rights reserved.

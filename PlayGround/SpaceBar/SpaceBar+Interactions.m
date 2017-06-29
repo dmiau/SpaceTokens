@@ -1,6 +1,6 @@
 //
-//  SpaceBar+Interactions.m
-//  SpaceBar
+//  NavTools+Interactions.m
+//  NavTools
 //
 //  Created by Daniel on 6/30/16.
 //  Copyright © 2016 dmiau. All rights reserved.

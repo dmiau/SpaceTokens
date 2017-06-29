@@ -1,6 +1,6 @@
 //
 //  ToolPalette.m
-//  SpaceBar
+//  NavTools
 //
 //  Created by dmiau on 1/7/17.
 //  Copyright © 2017 dmiau. All rights reserved.

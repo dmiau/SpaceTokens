@@ -1,6 +1,6 @@
 //
 //  CustomMKMapView+MapDisplay.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by dmiau on 7/8/16.
 //  Copyright © 2016 dmiau. All rights reserved.

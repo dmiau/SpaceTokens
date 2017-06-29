@@ -1,6 +1,6 @@
 //
 //  MiniMapView.h
-//  SpaceBar
+//  NavTools
 //
 //  Created by Daniel on 8/11/16.
 //  Copyright © 2016 dmiau. All rights reserved.
