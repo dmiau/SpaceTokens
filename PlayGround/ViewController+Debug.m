@@ -19,14 +19,15 @@
     UIButton *screenCaptureButton = self.screenCaptureButton;
     
     // https://stackoverflow.com/questions/8733104/objective-c-property-instance-variable-in-category#
-    screenCaptureButton.frame = CGRectMake(255, 400, 90, 60);
+    // Add the button to the toolbar so the drawing tool won't block the button
+    screenCaptureButton.frame = CGRectMake(255, self.view.frame.size.height - 40, 90, 40);
     
     [screenCaptureButton addTarget: self
               action: @selector(capturedButtonClicked:)
     forControlEvents: UIControlEventTouchUpInside];
     
-    
-    [[CustomMKMapView sharedManager] addSubview:screenCaptureButton];
+    // Add this to the gobal view?
+    [self.view addSubview:screenCaptureButton];
     
     // Customize the style of the button
     screenCaptureButton.backgroundColor = [UIColor grayColor];
