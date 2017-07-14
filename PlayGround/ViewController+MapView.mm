@@ -54,15 +54,15 @@
 
 // Triggers SpaceBar redraw
 - (void) updateSpaceBar{
-    if (self.spaceBar.activeRoute){
+    if (self.navTools.activeRoute){
         std::vector<std::pair<float, float>> elevatorResutls =
-        [self.spaceBar.activeRoute calculateVisibleSegmentsForMap:self.mapView];
+        [self.navTools.activeRoute calculateVisibleSegmentsForMap:self.mapView];
         
         float temp[2];
         temp[0] = elevatorResutls[0].first;
         temp[1] = elevatorResutls.back().second; //TODO: fix this
         // for now I can only display one elevator
-        [self.spaceBar updateElevatorFromPercentagePair:temp];
+        [self.navTools updateElevatorFromPercentagePair:temp];
     }
 }
 
@@ -88,15 +88,15 @@
 - (void) mapTouchBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 
     
-    if ([self.spaceBar.touchingSet count] > 0){
+    if ([self.navTools.touchingSet count] > 0){
         // We want to keep the highlight a bit longer after the selected SpaceToken is deselected.
         [HighlightedEntities sharedManager].skipClearingHighlightRequestCount = 1;
     }
     // Remove all the touched SpaceTokens
-    [self.spaceBar clearAllTouchedTokens];
+    [self.navTools clearAllTouchedTokens];
 
     // Put the touch into a watch mechanism
-    [self.spaceBar addAnchorForTouches: touches];
+    [self.navTools addAnchorForTouches: touches];
     
     // Reset the map information dialog
     [[CustomMKMapView sharedManager] removeInformationView];
@@ -104,14 +104,14 @@
 
 - (void) mapTouchMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 
-    [self.spaceBar updateAnchorForTouches: touches];
+    [self.navTools updateAnchorForTouches: touches];
 }
 
 - (void) mapTouchEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     // Remove all the touched SpaceTokens
-    [self.spaceBar clearAllTouchedTokens];
+    [self.navTools clearAllTouchedTokens];
     
-    [self.spaceBar removeAnchorForTouches:touches];
+    [self.navTools removeAnchorForTouches:touches];
 }
 
 @end

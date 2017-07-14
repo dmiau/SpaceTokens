@@ -114,10 +114,10 @@ static ViewController *instance;
     //----------------
     // Add a NavTools
     //----------------
-    _spaceBar = [[NavTools alloc] initWithMapView:_mapView];
-    self.spaceBar.spaceBarMode = TOKENONLY;
-    self.spaceBar.smallValueOnTopOfBar = YES;
-    self.spaceBar.delegate = self;
+    _navTools = [[NavTools alloc] initWithMapView:_mapView];
+    self.navTools.spaceBarMode = TOKENONLY;
+    self.navTools.smallValueOnTopOfBar = YES;
+    self.navTools.delegate = self;
     
     //----------------
     // Initialize MainViewManager
@@ -148,8 +148,8 @@ static ViewController *instance;
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
     
-    NavTools *spaceBar = [NavTools sharedManager];
-    [spaceBar resetInteractiveTokenStructures];
+    NavTools *navTools = [NavTools sharedManager];
+    [navTools resetInteractiveTokenStructures];
     
     // Refresh annotations
     [self.mapView refreshAnnotations];

@@ -58,18 +58,18 @@
 
 - (void)addPanel{
     [self.rootViewController.view addSubview:self];
-    self.rootViewController.spaceBar.spaceBarMode = PATH;
+    self.rootViewController.navTools.spaceBarMode = PATH;
 }
 
 - (void)removePanel{
     // Do some clean up
     // Remove route annotation and the route
     [self.rootViewController.mapView removeOverlay:
-     self.rootViewController.spaceBar.activeRoute.polyline];
-    self.rootViewController.spaceBar.activeRoute = nil;
+     self.rootViewController.navTools.activeRoute.polyline];
+    self.rootViewController.navTools.activeRoute = nil;
     
     // Reset Spacebar
-    [self.rootViewController.spaceBar resetSpaceBar];
+    [self.rootViewController.navTools resetSpaceBar];
     [self removeFromSuperview];
 }
 

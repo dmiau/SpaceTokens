@@ -84,11 +84,11 @@
     [self.rootViewController removeRoute];
     
     // Reset the SpaceBar interaction environment
-    [self.rootViewController.spaceBar resetInteractiveTokenStructures];
+    [self.rootViewController.navTools resetInteractiveTokenStructures];
     
     // Show the SpaceToken dock
     ((TokenCollectionView*)[TokenCollectionView sharedManager]).isVisible = YES;
-    self.rootViewController.spaceBar.spaceBarMode = TOKENONLY;
+    self.rootViewController.navTools.spaceBarMode = TOKENONLY;
     
     self.frame = self.rootViewController.view.frame;
     

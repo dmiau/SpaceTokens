@@ -69,9 +69,9 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             [self terminateActiveSnapshot];
             
             // Turn off the game
-            rootViewController.spaceBar.isStudyModeEnabled = NO;
-            rootViewController.spaceBar.isAnchorAllowed = YES;
-            rootViewController.spaceBar.isMultipleTokenSelectionEnabled = YES;
+            rootViewController.navTools.isStudyModeEnabled = NO;
+            rootViewController.navTools.isAnchorAllowed = YES;
+            rootViewController.navTools.isMultipleTokenSelectionEnabled = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = NO;
                         
             // set the EntityDatabase to use the normal entityArray
@@ -82,12 +82,12 @@ NSString *const GameCleanupNotification = @"GameCleanupNotification";
             break;
         case STUDY:
             // Turn on the game
-            rootViewController.spaceBar.isStudyModeEnabled = YES;
+            rootViewController.navTools.isStudyModeEnabled = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = YES;
             [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;
         case DEMO:
-            rootViewController.spaceBar.isStudyModeEnabled = YES;
+            rootViewController.navTools.isStudyModeEnabled = YES;
             [TokenCollection sharedManager].isStudyModeEnabled = YES;
             [mainViewManager showPanelWithType: TASKBASEPANEL];
             break;

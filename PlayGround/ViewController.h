@@ -27,7 +27,7 @@
 @property MyFileManager *myFileManager;
 @property CustomMKMapView *mapView;
 @property MiniMapView *miniMapView;
-@property NavTools *spaceBar;
+@property NavTools *navTools;
 @property GMSPanoramaView *panoView; //cache a pointer to the StreetView object
 @property BOOL isStatusBarHidden;
 

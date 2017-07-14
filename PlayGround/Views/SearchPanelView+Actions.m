@@ -70,13 +70,13 @@
 
 
 - (IBAction)barToolAction:(id)sender {
-    NavTools *spaceBar = [NavTools sharedManager];
+    NavTools *navTools = [NavTools sharedManager];
     ArrayTool *arrayTool = [ArrayTool sharedManager];
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     
-    if (spaceBar.isBarToolHidden){
+    if (navTools.isBarToolHidden){
         // Turn ON the bar tool
-        spaceBar.isBarToolHidden = NO;
+        navTools.isBarToolHidden = NO;
         arrayTool.isVisible = YES;
         
         // Adjust map padding
@@ -84,7 +84,7 @@
         [arrayTool reloadData];
     }else{
         // Turn OFF the bar tool
-        spaceBar.isBarToolHidden = YES;
+        navTools.isBarToolHidden = YES;
         mapView.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 70);
         arrayTool.isVisible = NO;
         

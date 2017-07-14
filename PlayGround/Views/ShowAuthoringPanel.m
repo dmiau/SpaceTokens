@@ -190,7 +190,7 @@ static ShowAuthoringPanel *instance;
     drop_poi_type = DISTRACTOR;
     
     // Remove all SpaceTokens
-    [self.rootViewController.spaceBar removeAllSpaceTokens];
+    [self.rootViewController.navTools removeAllSpaceTokens];
     [((TokenCollectionView*)[TokenCollectionView sharedManager]) reloadData];
 }
 

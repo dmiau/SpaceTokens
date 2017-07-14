@@ -16,8 +16,8 @@
 // The following two are SpaceBar delegate method
 - (void)spaceBarOnePointTouched:(float)percentage{
     
-    if (self.spaceBar.activeRoute){
-        [[HighlightedEntities sharedManager] addEntity:self.spaceBar.activeRoute];
+    if (self.navTools.activeRoute){
+        [[HighlightedEntities sharedManager] addEntity:self.navTools.activeRoute];
         CLLocationCoordinate2D coord;
         double orientationInDegree;
         
@@ -25,7 +25,7 @@
             NSLog(@"spaceBarOnePointTouched: %f", percentage);
         }
         
-        [self.spaceBar.activeRoute convertPercentage: percentage
+        [self.navTools.activeRoute convertPercentage: percentage
                              toLatLon: coord orientation:orientationInDegree];
         
         if ([CustomMKMapView validateCoordinate:coord]){
@@ -39,8 +39,8 @@
 // Two points are touched.
 -(void)spaceBarTwoPointsTouchedLow:(float)low high:(float)high{
 
-    if (self.spaceBar.activeRoute){
-        [[HighlightedEntities sharedManager] addEntity:self.spaceBar.activeRoute];
+    if (self.navTools.activeRoute){
+        [[HighlightedEntities sharedManager] addEntity:self.navTools.activeRoute];
         // look up the coordinates
         CLLocationCoordinate2D coord1, coord2;
         CGPoint xy1, xy2;
@@ -50,7 +50,7 @@
         if (low > 1 || low < 0){
             NSLog(@"spaceBarTwoPointsTouchedLow: (low) %f", low);
         }
-        [self.spaceBar.activeRoute convertPercentage: low
+        [self.navTools.activeRoute convertPercentage: low
                              toLatLon: coord1 orientation:orientationInDegree];
         
         // find the (x, y) coordinates based on the current orientation
@@ -61,7 +61,7 @@
         if (high > 1 || high < 0){
             NSLog(@"spaceBarTwoPointsTouchedLow: (high) %f", high);
         }
-        [self.spaceBar.activeRoute convertPercentage: high
+        [self.navTools.activeRoute convertPercentage: high
                              toLatLon: coord2 orientation:orientationInDegree];
         
         xy2 = [self.mapView convertCoordinate:coord2 toPointToView:self.mapView];
@@ -101,7 +101,7 @@
                             high: (float) high
                    fromLowToHigh:(bool)directionFlag
 {
-    [[HighlightedEntities sharedManager] addEntity:self.spaceBar.activeRoute];
+    [[HighlightedEntities sharedManager] addEntity:self.navTools.activeRoute];
     
     CLLocationCoordinate2D anchor; double orientation1;
     CLLocationCoordinate2D target; double orientation2;
@@ -120,11 +120,11 @@
         if (low > 1 || low < 0){
             NSLog(@"spaceBarElevatorMovedLow: (low) %f", low);
         }
-        [self.spaceBar.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
+        [self.navTools.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
         if (high > 1 || high < 0){
             NSLog(@"spaceBarElevatorMovedLow: (high) %f", high);
         }
-        [self.spaceBar.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
+        [self.navTools.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:target
                                 toB:anchor];
@@ -138,12 +138,12 @@
         if (high > 1 || high < 0){
             NSLog(@"spaceBarElevatorMovedLow: (high) %f", high);
         }
-        [self.spaceBar.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
+        [self.navTools.activeRoute convertPercentage:high toLatLon:anchor orientation:orientation1];
         
         if (low > 1 || low < 0){
             NSLog(@"spaceBarElevatorMovedLow: (low) %f", low);
         }
-        [self.spaceBar.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
+        [self.navTools.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:anchor                                                                          toB:target];
         [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
@@ -156,20 +156,20 @@
 - (void)showRoute:(Route*) aRoute zoomToOverview: (BOOL) overviewFlag{
     
     // Remove the previous route if there is any
-    if (self.spaceBar.activeRoute){
+    if (self.navTools.activeRoute){
         [self.mapView removeOverlay:
-         self.spaceBar.activeRoute.polyline];
-        self.spaceBar.activeRoute = nil;
+         self.navTools.activeRoute.polyline];
+        self.navTools.activeRoute = nil;
     }
 
     // Show the new route
-    self.spaceBar.activeRoute = aRoute;
+    self.navTools.activeRoute = aRoute;
     // Remove old annotations and add new ones
-    [self.spaceBar removeRouteAnnotations];
-    [self.spaceBar addAnnotationsFromRoute:self.spaceBar.activeRoute];
+    [self.navTools removeRouteAnnotations];
+    [self.navTools addAnnotationsFromRoute:self.navTools.activeRoute];
     
     // Only enable SpaceBar after a route is added
-    self.spaceBar.spaceBarMode = PATH;
+    self.navTools.spaceBarMode = PATH;
     
     if (overviewFlag){
         // Show the entire route
@@ -178,7 +178,7 @@
         // If the mini map is on, zoom the map to fit the entire route
         if (self.miniMapView.superview){            
             [self.miniMapView zoomToFitEntities:
-             [NSSet setWithObject: self.spaceBar.activeRoute]];
+             [NSSet setWithObject: self.navTools.activeRoute]];
             // Remove previous routes if any
             [self.miniMapView removeRouteOverlays];
 
@@ -194,14 +194,14 @@
 
 - (void)removeRoute{
     // Remove the previous route if there is any
-    if (self.spaceBar.activeRoute){
-//        [[EntityDatabase sharedManager] removeEntity:self.spaceBar.activeRoute];        
-        self.spaceBar.activeRoute = nil;
+    if (self.navTools.activeRoute){
+//        [[EntityDatabase sharedManager] removeEntity:self.navTools.activeRoute];        
+        self.navTools.activeRoute = nil;
     }
-    [self.spaceBar removeRouteAnnotations];
+    [self.navTools removeRouteAnnotations];
     
     // Reset Spacebar
-    [self.spaceBar resetSpaceBar];
+    [self.navTools resetSpaceBar];
 }
 
 

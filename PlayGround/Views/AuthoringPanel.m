@@ -334,7 +334,7 @@ static AuthoringPanel *instance;
     [mapView clear];
     
     // Remove all SpaceTokens
-    [self.rootViewController.spaceBar removeAllSpaceTokens];
+    [self.rootViewController.navTools removeAllSpaceTokens];
 }
 
 

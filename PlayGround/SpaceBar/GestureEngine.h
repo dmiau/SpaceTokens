@@ -12,9 +12,9 @@
 
 @interface GestureEngine : UIControl
 
-@property NavTools *spaceBar;
+@property NavTools *navTools;
 
 
-- (id)initWithSpaceBar:(NavTools*) spaceBar;
+- (id)initWithSpaceBar:(NavTools*) navTools;
 
 @end

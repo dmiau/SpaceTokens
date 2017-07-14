@@ -23,16 +23,16 @@
 //--------------------------------
 // Initializations
 //--------------------------------
-- (id)initWithSpaceBar:(NavTools*) spaceBar{
+- (id)initWithSpaceBar:(NavTools*) navTools{
 
     // Make the detection area bigger
-    CGRect detectionFrame = spaceBar.frame;
+    CGRect detectionFrame = navTools.frame;
     
     self = [super initWithFrame:detectionFrame];
     if (self) {
         
         // Enable multitouch control
-        self.spaceBar = spaceBar;
+        self.navTools = navTools;
         self.multipleTouchEnabled = YES;
         
         // Instantiate instance variables
@@ -82,12 +82,12 @@
     
     // Assume there is only one touch
     UITouch *aTouch = [touches anyObject];
-    CGPoint touchPoint = [aTouch locationInView:self.spaceBar.mapView];
+    CGPoint touchPoint = [aTouch locationInView:self.navTools.mapView];
     CGPoint previoustouchPoint =
-                [aTouch previousLocationInView:self.spaceBar.mapView];
+                [aTouch previousLocationInView:self.navTools.mapView];
     
     // Iterate over SpaceTokens and perform hittest
-    for (SpaceToken *aToken in [self.spaceBar.tokenCollection getTokenArray]){
+    for (SpaceToken *aToken in [self.navTools.tokenCollection getTokenArray]){
         
         CGRect buttonFrame = aToken.frame;
         if (CGRectContainsPoint(buttonFrame, touchPoint) &&
@@ -188,10 +188,10 @@
     
     if (currentLocation.x < 5 && previousLocation.x > 5){
         // Remove the line
-        self.spaceBar.activeRoute = nil;
+        self.navTools.activeRoute = nil;
         
         // Reset Spacebar
-        [self.spaceBar resetSpaceBar];
+        [self.navTools resetSpaceBar];
         return YES;
     }else{
         return NO;

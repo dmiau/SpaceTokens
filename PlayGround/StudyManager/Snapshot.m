@@ -68,8 +68,8 @@
 //    [self.rootViewController.mapView setRegion:region animated:NO];
     
     // Set up the SpaceToken correctly
-    NavTools *spaceBar = self.rootViewController.spaceBar;
-    [spaceBar removeAllSpaceTokens];
+    NavTools *navTools = self.rootViewController.navTools;
+    [navTools removeAllSpaceTokens];
     TokenCollectionView* tokenCollectionView = [TokenCollectionView sharedManager];
     tokenCollectionView.isVisible = YES;
     [tokenCollectionView reloadData];
@@ -143,7 +143,7 @@
     self.rootViewController.mapView.userInteractionEnabled = YES;
     
     //Reset SpaceTokens, as a pre-caution
-    [self.rootViewController.spaceBar removeAllSpaceTokens];
+    [self.rootViewController.navTools removeAllSpaceTokens];
     
     // Remove the overlays
     [self.rootViewController.mapView removeOverlay: targetCircle];
