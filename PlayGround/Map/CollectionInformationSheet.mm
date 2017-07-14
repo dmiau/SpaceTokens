@@ -67,7 +67,7 @@
     
     // Depending on the status of SpaceBar, turn on/off of the segment control
     [self.collectionModeOutlet setHidden:
-    [SpaceBar sharedManager].isBarToolHidden];
+    [NavTools sharedManager].isBarToolHidden];
 }
 
 -(void)removeSheet{

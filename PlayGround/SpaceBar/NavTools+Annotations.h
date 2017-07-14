@@ -8,6 +8,6 @@
 
 #import "NavTools.h"
 
-@interface SpaceBar (Annotations)
+@interface NavTools (Annotations)
 
 @end

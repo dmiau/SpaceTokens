@@ -23,7 +23,7 @@
 //--------------------------------
 // Initializations
 //--------------------------------
-- (id)initWithSpaceBar:(SpaceBar*) spaceBar{
+- (id)initWithSpaceBar:(NavTools*) spaceBar{
 
     // Make the detection area bigger
     CGRect detectionFrame = spaceBar.frame;

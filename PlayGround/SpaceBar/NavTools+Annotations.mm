@@ -10,7 +10,7 @@
 #import "Route.h"
 #import "POI.h"
 
-@implementation SpaceBar (Annotations)
+@implementation NavTools (Annotations)
 - (void) addAnnotationsFromRoute:(Route *) route{
     
     // Add all the annotations

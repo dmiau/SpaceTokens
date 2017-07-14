@@ -36,11 +36,11 @@
     // Set up the environment according to the condition
     //------------------------
     if (self.condition == CONTROL){
-        [[SpaceBar sharedManager] setIsAnchorAllowed: NO];
-        [SpaceBar sharedManager].isMultipleTokenSelectionEnabled = NO;
+        [[NavTools sharedManager] setIsAnchorAllowed: NO];
+        [NavTools sharedManager].isMultipleTokenSelectionEnabled = NO;
     }else{
-        [[SpaceBar sharedManager] setIsAnchorAllowed: YES];
-        [SpaceBar sharedManager].isMultipleTokenSelectionEnabled = YES;
+        [[NavTools sharedManager] setIsAnchorAllowed: YES];
+        [NavTools sharedManager].isMultipleTokenSelectionEnabled = YES;
     }
     
     // Turn on the labels

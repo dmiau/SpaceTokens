@@ -112,9 +112,9 @@ static ViewController *instance;
     self.miniMapView.settings.compassButton = false;
     
     //----------------
-    // Add a SpaceBar
+    // Add a NavTools
     //----------------
-    _spaceBar = [[SpaceBar alloc] initWithMapView:_mapView];
+    _spaceBar = [[NavTools alloc] initWithMapView:_mapView];
     self.spaceBar.spaceBarMode = TOKENONLY;
     self.spaceBar.smallValueOnTopOfBar = YES;
     self.spaceBar.delegate = self;
@@ -148,7 +148,7 @@ static ViewController *instance;
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
     
-    SpaceBar *spaceBar = [SpaceBar sharedManager];
+    NavTools *spaceBar = [NavTools sharedManager];
     [spaceBar resetInteractiveTokenStructures];
     
     // Refresh annotations

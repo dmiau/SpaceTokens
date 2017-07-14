@@ -30,7 +30,7 @@
 @end
 
 
-@implementation SpaceBar (Anchors)
+@implementation NavTools (Anchors)
 
 // Add anchors to the candidateArray first, move anchors to anchorSet when
 // SpaceToken mode is enabled.

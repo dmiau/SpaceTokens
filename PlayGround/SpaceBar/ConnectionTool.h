@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class SpaceToken;
-@class SpaceBar;
+@class NavTools;
 
 @interface ConnectionTool : UIButton{
     CGPoint initialTouchLocationInView;

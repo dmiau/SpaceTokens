@@ -70,7 +70,7 @@
 
 
 - (IBAction)barToolAction:(id)sender {
-    SpaceBar *spaceBar = [SpaceBar sharedManager];
+    NavTools *spaceBar = [NavTools sharedManager];
     ArrayTool *arrayTool = [ArrayTool sharedManager];
     CustomMKMapView *mapView = [CustomMKMapView sharedManager];
     

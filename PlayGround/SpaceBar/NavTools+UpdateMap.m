@@ -9,7 +9,7 @@
 #import "NavTools+UpdateMap.h"
 #import "POI.h"
 
-@implementation SpaceBar (UpdateMap)
+@implementation NavTools (UpdateMap)
 
 // fillDraggingMapXYs should only apply to SpaceTokens
 // Note that a draggingSet could contain ANCHORs or SpaceTokens

@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class SpaceBar;
+@class NavTools;
 
 @interface GestureEngine : UIControl
 
-@property SpaceBar *spaceBar;
+@property NavTools *spaceBar;
 
 
-- (id)initWithSpaceBar:(SpaceBar*) spaceBar;
+- (id)initWithSpaceBar:(NavTools*) spaceBar;
 
 @end

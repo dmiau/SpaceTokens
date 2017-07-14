@@ -68,7 +68,7 @@
 //    [self.rootViewController.mapView setRegion:region animated:NO];
     
     // Set up the SpaceToken correctly
-    SpaceBar *spaceBar = self.rootViewController.spaceBar;
+    NavTools *spaceBar = self.rootViewController.spaceBar;
     [spaceBar removeAllSpaceTokens];
     TokenCollectionView* tokenCollectionView = [TokenCollectionView sharedManager];
     tokenCollectionView.isVisible = YES;

@@ -20,7 +20,7 @@
 #import "EntityDatabase.h"
 #import "HighlightedEntities.h"
 
-@implementation SpaceBar (UpdateSet)
+@implementation NavTools (UpdateSet)
 
 #pragma mark -- Handle notifications ---
 

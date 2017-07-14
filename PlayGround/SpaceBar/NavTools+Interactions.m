@@ -9,7 +9,7 @@
 #import "NavTools+Interactions.h"
 
 
-@implementation SpaceBar (Interactions)
+@implementation NavTools (Interactions)
 
 //-----------------------
 // delegate methods of CERangeSliderDelegate

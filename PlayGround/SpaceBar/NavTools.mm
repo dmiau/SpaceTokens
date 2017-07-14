@@ -18,7 +18,7 @@
 
 
 // SpaceBar extension
-@interface SpaceBar ()
+@interface NavTools ()
 {
     NSTimer *iv_updateUITimer;
 }
@@ -26,11 +26,11 @@
 
 @end
 
-@implementation SpaceBar
+@implementation NavTools
 
-static SpaceBar *sharedInstance;
+static NavTools *sharedInstance;
 
-+(SpaceBar*)sharedManager{    
++(NavTools*)sharedManager{    
     if (!sharedInstance){
         [NSException raise:@"Programming error." format:@"Attempt to access uninitialized SpaceBar object."];
     }

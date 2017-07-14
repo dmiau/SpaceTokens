@@ -170,7 +170,7 @@
     NSMutableArray *lineArray = [NSMutableArray array];
     [lineArray addObject: [[CustomMKMapView sharedManager] description]];
     [lineArray addObject: [[TokenCollection sharedManager] description]];
-    [lineArray addObject: [[SpaceBar sharedManager] description]];
+    [lineArray addObject: [[NavTools sharedManager] description]];
     [lineArray addObject: [[EntityDatabase sharedManager] description]];
     [lineArray addObject: [[HighlightedEntities sharedManager] description]];
     self.debugInfoOutlet.text = [lineArray componentsJoinedByString:@"\n"];

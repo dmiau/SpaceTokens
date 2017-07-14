@@ -174,7 +174,7 @@
 - (void)didAutocompleteWithPlaces:(NSArray<GMSPlace *> *)places{
     
     // Remove all the touched SpaceTokens
-    [[SpaceBar sharedManager] clearAllTouchedTokens];
+    [[NavTools sharedManager] clearAllTouchedTokens];
     
     
     GMSCoordinateBounds *bound = [places firstObject].viewport;
@@ -221,7 +221,7 @@
     [self.rootViewController dismissViewControllerAnimated:YES completion:nil];
     
     // Remove all the touched SpaceTokens
-    [[SpaceBar sharedManager] clearAllTouchedTokens];
+    [[NavTools sharedManager] clearAllTouchedTokens];
     
     // Add the search result to the map
     POI *aPOI = [[POI alloc] init];

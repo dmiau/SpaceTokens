@@ -19,7 +19,7 @@
 
 #pragma mark - SpaceBarProtocol
 //--------------------------------------------------------
-// SpaceBar (delegate)
+// NavTools (delegate)
 //--------------------------------------------------------
 @protocol SpaceBarDelegate <NSObject>
 
@@ -38,7 +38,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 //--------------------------------------------------------
 // SpaceBar
 //--------------------------------------------------------
-@interface SpaceBar : NSObject <CERangeSliderDelegate>
+@interface NavTools : NSObject <CERangeSliderDelegate>
 
 @property BOOL isBarToolHidden;
 @property BOOL isStudyModeEnabled;
@@ -86,7 +86,7 @@ unsigned int spaceBarTwoPointsTouched:1;
 unsigned int spaceBarElevatorMoved:1;
 } delegateRespondsTo;
 
-+ (SpaceBar*)sharedManager;
++ (NavTools*)sharedManager;
 
 // Constructors
 - (id)initWithMapView: (CustomMKMapView *) myMapView;

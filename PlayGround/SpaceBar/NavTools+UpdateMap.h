@@ -8,6 +8,6 @@
 
 #import "NavTools.h"
 
-@interface SpaceBar (UpdateMap)
+@interface NavTools (UpdateMap)
 
 @end
