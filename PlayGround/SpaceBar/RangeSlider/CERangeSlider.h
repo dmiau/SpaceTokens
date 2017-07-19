@@ -46,8 +46,6 @@ typedef enum {MAP, STREETVIEW} PathBarMode;
 
 @property (nonatomic) UIColor* trackHighlightColour;
 
-@property (nonatomic) UIColor* knobColour;
-
 // Style Control
 @property float trackPaddingInPoints;
 

@@ -67,7 +67,6 @@
 		9A234B201D8A1C6D00F3EE21 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9A234B211D8A1C6D00F3EE21 /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
 		9A234B231D8A1C6D00F3EE21 /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
-		9A234B251D8A1C6D00F3EE21 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9A234B261D8A1C6D00F3EE21 /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9A234B281D8A1C6D00F3EE21 /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9A234B291D8A1C6D00F3EE21 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.mm */; };
@@ -126,10 +125,7 @@
 		9A234B671D8A1C6D00F3EE21 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2495EC1D9929CC00A92207 /* TaskGenerator.m */; };
-		9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
-		9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9A26CB291C7BCCE500E46662 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* CERangeSlider.m */; };
-		9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9A26CB2B1C7BCCE500E46662 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */; };
 		9A27222E1D6CB79C002AE953 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A27222D1D6CB79C002AE953 /* Person.m */; };
 		9A2D6DEB1E23E5A900D64615 /* SetTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D6DEA1E23E5A900D64615 /* SetTool.mm */; };
@@ -329,7 +325,6 @@
 		9AE13B591DF0D148008612DA /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2267C1C7412890051FE30 /* UIButton+Extensions.m */; };
 		9AE13B5A1DF0D148008612DA /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
 		9AE13B5C1DF0D148008612DA /* LocationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8F67F01D3DA6D900C08CCB /* LocationTableController.m */; };
-		9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */; };
 		9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A143B331D2AF56E001EE841 /* CustomMKMapView.m */; };
 		9AE13B5F1DF0D148008612DA /* SpaceToken+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4415121D6F67E800576CB4 /* SpaceToken+Gestures.m */; };
 		9AE13B601DF0D148008612DA /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5301481C5AD6A6008D584B /* ViewController.mm */; };
@@ -404,9 +399,7 @@
 		9AE13BB11DF0D148008612DA /* grayYouRHere.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB76B781D9C5EAC0096C444 /* grayYouRHere.png */; };
 		9AE13BB21DF0D148008612DA /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
 		9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A53014A1C5AD6A6008D584B /* Main.storyboard */; };
-		9AE13BB41DF0D148008612DA /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
 		9AE13BB51DF0D148008612DA /* ShowAuthoringPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32CE71DEDE86200D16738 /* ShowAuthoringPanel.xib */; };
-		9AE13BB61DF0D148008612DA /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D5E7E1DCD3FF600025FF9 /* ConstraintDebugView.xib */; };
 		9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */; };
 		9AE1D2A71DD39E2D0092B1D4 /* PlaceInstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */; };
@@ -496,8 +489,6 @@
 		9A26CB1D1C7BCBF400E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
 		9A26CB231C7BCCE500E46662 /* CERangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSlider.h; path = SpaceBar/RangeSlider/CERangeSlider.h; sourceTree = "<group>"; };
 		9A26CB241C7BCCE500E46662 /* CERangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSlider.m; path = SpaceBar/RangeSlider/CERangeSlider.m; sourceTree = "<group>"; };
-		9A26CB251C7BCCE500E46662 /* CERangeSliderKnobLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSliderKnobLayer.h; path = SpaceBar/RangeSlider/CERangeSliderKnobLayer.h; sourceTree = "<group>"; };
-		9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderKnobLayer.m; path = SpaceBar/RangeSlider/CERangeSliderKnobLayer.m; sourceTree = "<group>"; };
 		9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CERangeSliderTrackLayer.h; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.h; sourceTree = "<group>"; };
 		9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CERangeSliderTrackLayer.m; path = SpaceBar/RangeSlider/CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
 		9A27222C1D6CB79C002AE953 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Map/Person.h; sourceTree = "<group>"; };
@@ -980,19 +971,17 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		9A26CB2C1C7BCCF400E46662 /* Track */ = {
+		9A26CB2C1C7BCCF400E46662 /* SpaceBar */ = {
 			isa = PBXGroup;
 			children = (
 				9A26CB231C7BCCE500E46662 /* CERangeSlider.h */,
 				9A26CB241C7BCCE500E46662 /* CERangeSlider.m */,
-				9A26CB251C7BCCE500E46662 /* CERangeSliderKnobLayer.h */,
-				9A26CB261C7BCCE500E46662 /* CERangeSliderKnobLayer.m */,
 				9A26CB271C7BCCE500E46662 /* CERangeSliderTrackLayer.h */,
 				9A26CB281C7BCCE500E46662 /* CERangeSliderTrackLayer.m */,
 				9ABB280E1D36795C00595A0D /* Elevator.h */,
 				9ABB280F1D36795C00595A0D /* Elevator.m */,
 			);
-			name = Track;
+			name = SpaceBar;
 			sourceTree = "<group>";
 		};
 		9A31C1411DEC9A6700CF4D4E /* TouchInteractions */ = {
@@ -1294,7 +1283,7 @@
 			children = (
 				9A5CCBA71DF86C2E009B56DF /* CollectionView */,
 				9A5CCBB21DF8A95F009B56DF /* Tokens */,
-				9A26CB2C1C7BCCF400E46662 /* Track */,
+				9A26CB2C1C7BCCF400E46662 /* SpaceBar */,
 				9AC36DC41C5FF4690037210F /* NavTools.h */,
 				9AC36DC51C5FF4690037210F /* NavTools.mm */,
 				9AB2854A1D88C10700773166 /* NavTools+Anchors.h */,
@@ -1659,12 +1648,10 @@
 				9A058C851E393D030045AB0E /* areaIcon.png in Resources */,
 				9A9604FE1E47C5E800796B98 /* star-250.png in Resources */,
 				9A53014C1C5AD6A6008D584B /* Main.storyboard in Resources */,
-				9A26CB1E1C7BCBF400E46662 /* RangeSlider in Resources */,
 				9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9A8F8D2C1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */,
 				9AA32CE81DEDE86200D16738 /* ShowAuthoringPanel.xib in Resources */,
 				9A3923C81F03083F005B6D69 /* scratchStoryBoard.storyboard in Resources */,
-				9A26CB191C7BC4DE00E46662 /* RangeSlider in Resources */,
 				9A8D5E7F1DCD3FF600025FF9 /* ConstraintDebugView.xib in Resources */,
 				9A0CC0031E48084B008F07CA /* starGray-30.png in Resources */,
 			);
@@ -1704,12 +1691,10 @@
 				9A058C871E393D030045AB0E /* areaIcon.png in Resources */,
 				9A9604FF1E47C5E800796B98 /* star-250.png in Resources */,
 				9AE13BB31DF0D148008612DA /* Main.storyboard in Resources */,
-				9AE13BB41DF0D148008612DA /* RangeSlider in Resources */,
 				9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */,
 				9A8F8D2D1E4243E600B2B0A3 /* PointInformationSheet.xib in Resources */,
 				9AE13BB51DF0D148008612DA /* ShowAuthoringPanel.xib in Resources */,
 				9A3923C91F03083F005B6D69 /* scratchStoryBoard.storyboard in Resources */,
-				9AE13BB61DF0D148008612DA /* RangeSlider in Resources */,
 				9AE13BB71DF0D148008612DA /* ConstraintDebugView.xib in Resources */,
 				9A0CC0041E48084B008F07CA /* starGray-30.png in Resources */,
 			);
@@ -1732,7 +1717,6 @@
 				9A234B201D8A1C6D00F3EE21 /* UIButton+Extensions.m in Sources */,
 				9A234B211D8A1C6D00F3EE21 /* SnapshotAnchorPlus.m in Sources */,
 				9A234B231D8A1C6D00F3EE21 /* LocationTableController.m in Sources */,
-				9A234B251D8A1C6D00F3EE21 /* CERangeSliderKnobLayer.m in Sources */,
 				9A234B261D8A1C6D00F3EE21 /* CustomMKMapView.m in Sources */,
 				9A234B281D8A1C6D00F3EE21 /* SpaceToken+Gestures.m in Sources */,
 				9A234B291D8A1C6D00F3EE21 /* ViewController.mm in Sources */,
@@ -1809,7 +1793,6 @@
 				9A10B51E1E312BDA0016A2EA /* Route+Appearance.mm in Sources */,
 				9AAAA1821D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */,
 				9A8F67F11D3DA6D900C08CCB /* LocationTableController.m in Sources */,
-				9A26CB2A1C7BCCE500E46662 /* CERangeSliderKnobLayer.m in Sources */,
 				9A143B341D2AF56E001EE841 /* CustomMKMapView.m in Sources */,
 				9A51CEA71E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */,
 				9A90C7691DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,
@@ -1940,7 +1923,6 @@
 				9A10B5201E312BDA0016A2EA /* Route+Appearance.mm in Sources */,
 				9AE13B5A1DF0D148008612DA /* SnapshotAnchorPlus.m in Sources */,
 				9AE13B5C1DF0D148008612DA /* LocationTableController.m in Sources */,
-				9AE13B5D1DF0D148008612DA /* CERangeSliderKnobLayer.m in Sources */,
 				9AE13B5E1DF0D148008612DA /* CustomMKMapView.m in Sources */,
 				9A51CEA81E4B74D6003338E2 /* CustomSearchResultViewController.m in Sources */,
 				9A90C76B1DFF337E00CDC578 /* SearchPanelView+Actions.m in Sources */,

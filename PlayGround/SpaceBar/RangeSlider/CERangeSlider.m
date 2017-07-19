@@ -8,7 +8,6 @@
 
 #import "CERangeSlider.h"
 #import <QuartzCore/QuartzCore.h>
-//#import "CERangeSliderKnobLayer.h"
 #import "CERangeSliderTrackLayer.h"
 #import "Elevator.h"
 
@@ -18,8 +17,6 @@
 {
     CERangeSliderTrackLayer* _trackLayer;
     Elevator* _elevator;
-//    CERangeSliderKnobLayer* _upperKnobLayer;
-//    CERangeSliderKnobLayer* _lowerKnobLayer;
     
     float _useableTrackLength;
     CGPoint _previousTouchPoint;
@@ -47,8 +44,6 @@ GENERATE_SETTER(trackColour, UIColor*, setTrackColour, redrawLayers)
 
 GENERATE_SETTER(curvatiousness, float, setCurvatiousness, redrawLayers)
 
-GENERATE_SETTER(knobColour, UIColor*, setKnobColour, redrawLayers)
-
 GENERATE_SETTER(trackPaddingInPoints, float, setTrackPaddingInPoints, redrawLayers)
 
 GENERATE_SETTER(maximumValue, float, setMaximumValue, setLayerFrames)
@@ -75,8 +70,6 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 
 - (void) redrawLayers
 {
-//    [_upperKnobLayer setNeedsDisplay];
-//    [_lowerKnobLayer setNeedsDisplay];
     [_trackLayer setNeedsDisplay];
 }
 
@@ -90,7 +83,6 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
     if (self) {
         _trackHighlightColour = [UIColor colorWithRed:0.0 green:0.45 blue:0.94 alpha:1.0];
         _trackColour = [UIColor colorWithWhite:0.6 alpha:0.5];
-        _knobColour = [UIColor whiteColor];
         _curvatiousness = 1.0;
         
         // Initialization code
