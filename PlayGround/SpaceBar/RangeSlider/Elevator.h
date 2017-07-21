@@ -8,11 +8,11 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-@class CERangeSlider;
+@class PathBar;
 
 @interface Elevator : CALayer
 
-@property CERangeSlider* sliderContainer;
+@property PathBar* sliderContainer;
 
 @property (nonatomic) float upperValue;
 

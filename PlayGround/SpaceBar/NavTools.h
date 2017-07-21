@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomMKMapView.h"
 #import "SpaceToken.h"
-#import "RangeSlider/CERangeSlider.h"
+#import "RangeSlider/PathBar.h"
 #import "TokenCollection.h"
 
 @class Route;
@@ -38,7 +38,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 //--------------------------------------------------------
 // SpaceBar
 //--------------------------------------------------------
-@interface NavTools : NSObject <CERangeSliderDelegate>
+@interface NavTools : NSObject <PathBarDelegate>
 
 @property BOOL isBarToolHidden;
 @property BOOL isStudyModeEnabled;
@@ -50,7 +50,7 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property TokenCollectionView *tokenCollectionView;
 @property TokenCollection *tokenCollection;
 
-@property CERangeSlider* sliderContainer;
+@property PathBar* sliderContainer;
 @property GestureEngine *gestureEngine;
 
 @property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior

@@ -1,21 +1,21 @@
 //
-//  CERangeSlider.m
-//  CERangeSlider
+//  PathBar.m
+//  PathBar
 //
 //  Created by Colin Eberhardt on 22/03/2013.
 //  Copyright (c) 2013 Colin Eberhardt. All rights reserved.
 //
 
-#import "CERangeSlider.h"
+#import "PathBar.h"
 #import <QuartzCore/QuartzCore.h>
-#import "CERangeSliderTrackLayer.h"
+#import "PathBarTrackLayer.h"
 #import "Elevator.h"
 
 #define BOUND(VALUE, LOWER, UPPER)	MIN(MAX(VALUE, LOWER), UPPER)
 
-@implementation CERangeSlider
+@implementation PathBar
 {
-    CERangeSliderTrackLayer* _trackLayer;
+    PathBarTrackLayer* _trackLayer;
     Elevator* _elevator;
     
     float _useableTrackLength;
@@ -54,7 +54,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 //
 //GENERATE_SETTER(upperValue, float, setUpperValue, setLayerFrames)
 
-- (void)setDelegate:(id <CERangeSliderDelegate>)aDelegate {
+- (void)setDelegate:(id <PathBarDelegate>)aDelegate {
     if (_delegate != aDelegate) {
         _delegate = aDelegate;
         
@@ -72,6 +72,8 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
 {
     [_trackLayer setNeedsDisplay];
 }
+
+
 
 
 //--------------------------------
@@ -100,7 +102,7 @@ GENERATE_SETTER(minimumValue, float, setMinimumValue, setLayerFrames)
         _trackTouchingSet = [[NSMutableSet alloc] init];
         
         // Initialize the track layer
-        _trackLayer = [[CERangeSliderTrackLayer alloc] init];
+        _trackLayer = [[PathBarTrackLayer alloc] init];
         _trackLayer.slider = self;
         _trackLayer.userInteractionEnabled = NO;
         _trackLayer.backgroundColor =[UIColor clearColor];

@@ -8,7 +8,7 @@
 
 #import "NavTools.h"
 #import "Constants.h"
-#import "CERangeSlider.h"
+#import "PathBar.h"
 #import "GestureEngine.h"
 #import "TokenCollectionView.h"
 #import "ViewController.h"
@@ -63,7 +63,7 @@ static NavTools *sharedInstance;
     
     
     // Init the slider
-    self.sliderContainer = [[CERangeSlider alloc] initWithFrame:self.frame];
+    self.sliderContainer = [[PathBar alloc] initWithFrame:self.frame];
     self.sliderContainer.delegate = self;
     self.sliderContainer.trackPaddingInPoints = 60; //pad the top and bottom
     

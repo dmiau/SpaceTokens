@@ -1,6 +1,6 @@
 //
-//  CERangeSlider.h
-//  CERangeSlider
+//  PathBar.h
+//  PathBar
 //
 //  Created by Colin Eberhardt on 22/03/2013.
 //  Copyright (c) 2013 Colin Eberhardt. All rights reserved.
@@ -11,7 +11,7 @@
 //-----------------
 // Delegate
 //-----------------
-@protocol CERangeSliderDelegate <NSObject>
+@protocol PathBarDelegate <NSObject>
 - (void) privateSliderOnePointTouched:(double)percentage;
 - (void) privateSliderTwoPOintsTouchedLow:(double) percentageLow high:(double)percentageHigh;
 - (void) privateSliderElevatorMovedLow:(double) percentageLow high:(double)percentageHigh
@@ -24,9 +24,9 @@ typedef enum {MAP, STREETVIEW} PathBarMode;
 //-----------------
 // Class definition
 //-----------------
-@interface CERangeSlider : UIControl
+@interface PathBar : UIControl
 
-@property (nonatomic, weak) id <CERangeSliderDelegate> delegate;
+@property (nonatomic, weak) id <PathBarDelegate> delegate;
 
 @property (nonatomic) float maximumValue;
 

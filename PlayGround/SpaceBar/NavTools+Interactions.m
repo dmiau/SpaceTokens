@@ -12,7 +12,7 @@
 @implementation NavTools (Interactions)
 
 //-----------------------
-// delegate methods of CERangeSliderDelegate
+// delegate methods of PathBarDelegate
 - (void) privateSliderOnePointTouched: (double) percentage{
     
     if (self.delegateRespondsTo.spaceBarOnePointTouched){

@@ -1,15 +1,15 @@
 //
-//  CERangeSliderTrackLayer.m
-//  CERangeSlider
+//  PathBarTrackLayer.m
+//  PathBar
 //
 //  Created by Colin Eberhardt on 24/03/2013.
 //  Copyright (c) 2013 Colin Eberhardt. All rights reserved.
 //
 
-#import "CERangeSliderTrackLayer.h"
-#import "CERangeSlider.h"
+#import "PathBarTrackLayer.h"
+#import "PathBar.h"
 
-@implementation CERangeSliderTrackLayer
+@implementation PathBarTrackLayer
 
 - (void)drawRect:(CGRect)rect
 //- (void)drawInContext:(CGContextRef)ctx
