@@ -83,7 +83,6 @@
 		9A234B341D8A1C6D00F3EE21 /* CustomTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1CA2B51D4671210098957A /* CustomTabController.m */; };
 		9A234B351D8A1C6D00F3EE21 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9A234B361D8A1C6D00F3EE21 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
-		9A234B381D8A1C6D00F3EE21 /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9A234B391D8A1C6D00F3EE21 /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
 		9A234B3C1D8A1C6D00F3EE21 /* NavTools+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* NavTools+Anchors.m */; };
 		9A234B3D1D8A1C6D00F3EE21 /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
@@ -298,7 +297,6 @@
 		9AC36DC61C5FF4690037210F /* NavTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DC51C5FF4690037210F /* NavTools.mm */; };
 		9AC36DC81C5FF9660037210F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC36DC71C5FF9660037210F /* MapKit.framework */; };
 		9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
-		9AC7E1A91D50E08400C2E8BE /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9ACCEA161D81EFD700E145D7 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA151D81EFD700E145D7 /* Snapshot.m */; };
 		9ACCEA1A1D81FB7400E145D7 /* SnapshotPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */; };
 		9ACCEA1E1D821FEE00E145D7 /* CustomMKMapView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCEA1D1D821FEE00E145D7 /* CustomMKMapView+Tools.m */; };
@@ -346,7 +344,6 @@
 		9AE13B711DF0D148008612DA /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8180D01D2DD45100F4D0C2 /* WildcardGestureRecognizer.m */; };
 		9AE13B721DF0D148008612DA /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
 		9AE13B741DF0D148008612DA /* SpeechEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD503321DC94303005A05D6 /* SpeechEngine.m */; };
-		9AE13B751DF0D148008612DA /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9AE13B761DF0D148008612DA /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
 		9AE13B771DF0D148008612DA /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
 		9AE13B7A1DF0D148008612DA /* NavTools+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* NavTools+Anchors.m */; };
@@ -686,8 +683,6 @@
 		9AC36DC71C5FF9660037210F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9AC36DD01C60087B0037210F /* SpaceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceToken.h; path = SpaceBar/SpaceToken.h; sourceTree = "<group>"; };
 		9AC36DD11C60087B0037210F /* SpaceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceToken.m; path = SpaceBar/SpaceToken.m; sourceTree = "<group>"; };
-		9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GestureEngine.h; path = SpaceBar/GestureEngine.h; sourceTree = "<group>"; };
-		9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GestureEngine.mm; path = SpaceBar/GestureEngine.mm; sourceTree = "<group>"; };
 		9ACCEA151D81EFD700E145D7 /* Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Snapshot.m; path = StudyManager/Snapshot.m; sourceTree = "<group>"; };
 		9ACCEA181D81FB7400E145D7 /* SnapshotPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotPlace.h; path = StudyManager/SnapshotPlace.h; sourceTree = "<group>"; };
 		9ACCEA191D81FB7400E145D7 /* SnapshotPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotPlace.m; path = StudyManager/SnapshotPlace.m; sourceTree = "<group>"; };
@@ -1294,8 +1289,6 @@
 				9A8413681C6F8ACE004DF8D1 /* NavTools+UpdateMap.m */,
 				9A8413641C6F8AAC004DF8D1 /* NavTools+UpdateSet.h */,
 				9A8413651C6F8AAC004DF8D1 /* NavTools+UpdateSet.mm */,
-				9AC7E1A71D50E08400C2E8BE /* GestureEngine.h */,
-				9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */,
 				9A62F1E21C62C6BF00A39DAF /* Tools.h */,
 				9A62F1E31C62C6BF00A39DAF /* Tools.m */,
 				9A84136C1C6FB39B004DF8D1 /* Constants.m */,
@@ -1731,7 +1724,6 @@
 				9A234B341D8A1C6D00F3EE21 /* CustomTabController.m in Sources */,
 				9A234B351D8A1C6D00F3EE21 /* WildcardGestureRecognizer.m in Sources */,
 				9A234B361D8A1C6D00F3EE21 /* TaskBasePanel.m in Sources */,
-				9A234B381D8A1C6D00F3EE21 /* GestureEngine.mm in Sources */,
 				9A234B391D8A1C6D00F3EE21 /* SpaceToken.m in Sources */,
 				9A234B3C1D8A1C6D00F3EE21 /* NavTools+Anchors.m in Sources */,
 				9A234B3D1D8A1C6D00F3EE21 /* StreetViewPanel.mm in Sources */,
@@ -1827,7 +1819,6 @@
 				9A8180D11D2DD45100F4D0C2 /* WildcardGestureRecognizer.m in Sources */,
 				9AF100001D57CA770063CB63 /* TaskBasePanel.m in Sources */,
 				9AD503331DC94303005A05D6 /* SpeechEngine.m in Sources */,
-				9AC7E1A91D50E08400C2E8BE /* GestureEngine.mm in Sources */,
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9AF7F6A31E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
 				9AE443B21DEB5CCC006963DC /* SnapshotShow.m in Sources */,
@@ -1957,7 +1948,6 @@
 				9AE13B711DF0D148008612DA /* WildcardGestureRecognizer.m in Sources */,
 				9AE13B721DF0D148008612DA /* TaskBasePanel.m in Sources */,
 				9AE13B741DF0D148008612DA /* SpeechEngine.m in Sources */,
-				9AE13B751DF0D148008612DA /* GestureEngine.mm in Sources */,
 				9AE13B761DF0D148008612DA /* SpaceToken.m in Sources */,
 				9AF7F6A51E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
 				9AE13B771DF0D148008612DA /* SnapshotShow.m in Sources */,

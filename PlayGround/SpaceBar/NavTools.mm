@@ -9,7 +9,6 @@
 #import "NavTools.h"
 #import "Constants.h"
 #import "PathBar.h"
-#import "GestureEngine.h"
 #import "TokenCollectionView.h"
 #import "ViewController.h"
 #import "ArrayTool.h"
@@ -65,9 +64,6 @@ static NavTools *sharedInstance;
     self.sliderContainer.delegate = self;
 
     
-    // Add the gesture engine
-    self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
-    
     self.isBarToolHidden = YES;
     self.isStudyModeEnabled = NO;
     self.isMultipleTokenSelectionEnabled = YES;
@@ -99,17 +95,13 @@ static NavTools *sharedInstance;
         
         [self.sliderContainer removeFromSuperview];
         [self.sliderContainer removeRouteAnnotations];
-        [self.gestureEngine removeFromSuperview];
-        
-        
+
         self.activeRoute = nil;
         // Reset Spacebar
         [self resetSpaceBar];
-        [self.gestureEngine setUserInteractionEnabled:YES];
         [self.sliderContainer setUserInteractionEnabled: NO];
     }else{
         [self.mapView addSubview:self.sliderContainer];
-        [self.mapView addSubview:self.gestureEngine];
     }
 }
 
@@ -118,7 +110,6 @@ static NavTools *sharedInstance;
     _frame = frame;
     self.sliderContainer.frame = frame;
     [self.sliderContainer setLayerFrames]; //redraw the layer
-    self.gestureEngine.frame = frame;
 }
 
 // Initialize common parts among all display types
@@ -179,11 +170,9 @@ static NavTools *sharedInstance;
     if (spaceBarMode == TOKENONLY){
         // SpaceToken only mode
         [self.sliderContainer removeRouteAnnotations];
-        [self.gestureEngine setUserInteractionEnabled:YES];
         [self.sliderContainer setUserInteractionEnabled: NO];
     }else{
         // Path mode
-        [self.gestureEngine setUserInteractionEnabled:NO];
         [self.sliderContainer setUserInteractionEnabled: YES];
     }
 }

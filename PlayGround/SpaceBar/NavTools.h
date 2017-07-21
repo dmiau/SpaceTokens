@@ -13,7 +13,6 @@
 #import "TokenCollection.h"
 
 @class Route;
-@class GestureEngine;
 @class TokenCollectionView;
 @class ArrayTool;
 
@@ -37,7 +36,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property TokenCollection *tokenCollection;
 
 @property PathBar* sliderContainer;
-@property GestureEngine *gestureEngine;
 
 
 // Cache the active route object
