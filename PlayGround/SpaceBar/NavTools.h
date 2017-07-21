@@ -17,20 +17,7 @@
 @class TokenCollectionView;
 @class ArrayTool;
 
-#pragma mark - SpaceBarProtocol
-//--------------------------------------------------------
-// NavTools (delegate)
-//--------------------------------------------------------
-@protocol SpaceBarDelegate <NSObject>
 
-// SpaceToken delegate methods
-
-
-// SpaceBar delegate methods
-- (void)spaceBarOnePointTouched:(float) percentage;
-- (void)spaceBarTwoPointsTouchedLow:(float) low high: (float) high;
-- (void)spaceBarElevatorMovedLow:(float) low high: (float) high fromLowToHigh: (bool) flag;
-@end
 
 #pragma mark - SpaceBarInterface
 typedef enum {TOKENONLY, PATH} SpaceBarMode;
@@ -44,7 +31,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property BOOL isStudyModeEnabled;
 @property SpaceBarMode spaceBarMode;
 @property CGRect frame;
-@property (nonatomic, weak) id <SpaceBarDelegate> delegate;
 @property (weak) CustomMKMapView *mapView;
 
 @property TokenCollectionView *tokenCollectionView;
@@ -53,7 +39,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property PathBar* sliderContainer;
 @property GestureEngine *gestureEngine;
 
-@property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
 // Cache the active route object
 @property Route* activeRoute;
@@ -78,14 +63,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 @property BOOL isMultipleTokenSelectionEnabled;
 
 
-// Use bit field to track if delegate is set properly
-//http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/
-@property  struct {
-unsigned int spaceBarOnePointTouched:1;
-unsigned int spaceBarTwoPointsTouched:1;
-unsigned int spaceBarElevatorMoved:1;
-} delegateRespondsTo;
-
 + (NavTools*)sharedManager;
 
 // Constructors
@@ -105,17 +82,12 @@ unsigned int spaceBarElevatorMoved:1;
 - (void)updateBasedOnConstraints;
 
 
-// --------------
-// Implemented in annotation category
-// --------------
-@property UIView *annotationView;
-- (void) addAnnotationsFromRoute:(Route *) route;
-- (void) removeRouteAnnotations;
+
 
 // --------------
 // Implemented in Interactions category
 // --------------
-- (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
+
 - (void) addAnchorForTouches:(NSSet<UITouch *> *)touches;
 - (void) updateAnchorForTouches: (NSSet<UITouch *> *)touches;
 - (void) removeAnchorForTouches: (NSSet<UITouch *> *)touches;

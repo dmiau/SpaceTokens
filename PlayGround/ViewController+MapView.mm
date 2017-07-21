@@ -62,7 +62,7 @@
         temp[0] = elevatorResutls[0].first;
         temp[1] = elevatorResutls.back().second; //TODO: fix this
         // for now I can only display one elevator
-        [self.navTools updateElevatorFromPercentagePair:temp];
+        [self.navTools.sliderContainer updateElevatorFromPercentagePair:temp];
     }
 }
 

@@ -21,7 +21,7 @@
 @class SpeechEngine;
 
 @interface ViewController : UIViewController
-<SpaceBarDelegate, GMSMapViewDelegate, CustomMKMapViewDelegate>
+<PathBarDelegate, GMSMapViewDelegate, CustomMKMapViewDelegate>
 
 @property MainViewManager *mainViewManager;
 @property MyFileManager *myFileManager;

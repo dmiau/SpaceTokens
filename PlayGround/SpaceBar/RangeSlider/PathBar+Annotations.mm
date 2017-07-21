@@ -1,16 +1,17 @@
 //
-//  NavTools+Annotations.m
-//  NavTools
+//  PathBar+Annotations.m
+//  SpaceBar
 //
-//  Created by Daniel on 7/18/16.
-//  Copyright © 2016 dmiau. All rights reserved.
+//  Created by Daniel on 7/21/17.
+//  Copyright © 2017 dmiau. All rights reserved.
 //
 
-#import "NavTools+Annotations.h"
+#import "PathBar+Annotations.h"
 #import "Route.h"
 #import "POI.h"
 
-@implementation NavTools (Annotations)
+@implementation PathBar (Annotations)
+
 - (void) addAnnotationsFromRoute:(Route *) route{
     
     // Add all the annotations
@@ -30,7 +31,7 @@
         percentage = 1-percentage;
     }
     
-    float horizontalPosition = percentage * (self.sliderContainer.frame.size.height - 2 * self.sliderContainer.trackPaddingInPoints) + self.sliderContainer.trackPaddingInPoints;
+    float horizontalPosition = percentage * (self.frame.size.height - 2 * self.trackPaddingInPoints) + self.trackPaddingInPoints;
     
     // Padding the two ends
     if (percentage < 0.0001){
@@ -41,8 +42,8 @@
     
     // Add a label
     UILabel *myLabel = [[UILabel alloc] initWithFrame:
-                                 CGRectMake(15, horizontalPosition - 15
-                                            , 90, 45)];
+                        CGRectMake(15, horizontalPosition - 15
+                                   , 90, 45)];
     myLabel.text = name;
     [myLabel setTextColor:[UIColor blackColor]];
     
@@ -63,4 +64,5 @@
     [[self.annotationView subviews]
      makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
+
 @end

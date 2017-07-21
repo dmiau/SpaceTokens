@@ -85,8 +85,6 @@
 		9A234B361D8A1C6D00F3EE21 /* TaskBasePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1FFFF1D57CA770063CB63 /* TaskBasePanel.m */; };
 		9A234B381D8A1C6D00F3EE21 /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9A234B391D8A1C6D00F3EE21 /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
-		9A234B3A1D8A1C6D00F3EE21 /* NavTools+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* NavTools+Annotations.mm */; };
-		9A234B3B1D8A1C6D00F3EE21 /* NavTools+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* NavTools+Interactions.m */; };
 		9A234B3C1D8A1C6D00F3EE21 /* NavTools+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* NavTools+Anchors.m */; };
 		9A234B3D1D8A1C6D00F3EE21 /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
 		9A234B3E1D8A1C6D00F3EE21 /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
@@ -165,7 +163,6 @@
 		9A5A93601E39365E00432972 /* setIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A935A1E39365E00432972 /* setIcon.png */; };
 		9A5CCBAC1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
 		9A5CCBAE1DF86D21009B56DF /* CollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */; };
-		9A5D405A1D3D2D7600CC91BE /* NavTools+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* NavTools+Annotations.mm */; };
 		9A5DA02D1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
 		9A5DA02F1E16DCE1002A50B7 /* Area.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA02C1E16DCE1002A50B7 /* Area.mm */; };
 		9A5DA0321E16F2C9002A50B7 /* AreaToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5DA0311E16F2C9002A50B7 /* AreaToken.m */; };
@@ -195,6 +192,10 @@
 		9A75E36C1F05601600A88BA2 /* ScreenShotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E36A1F05601600A88BA2 /* ScreenShotTableController.m */; };
 		9A75E3701F057EED00A88BA2 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E36F1F057EED00A88BA2 /* ImageViewController.m */; };
 		9A75E3711F057EED00A88BA2 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E36F1F057EED00A88BA2 /* ImageViewController.m */; };
+		9A7667E81F225E5400840AB7 /* PathBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7667E71F225E5400840AB7 /* PathBar+Interactions.m */; };
+		9A7667E91F225E5400840AB7 /* PathBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7667E71F225E5400840AB7 /* PathBar+Interactions.m */; };
+		9A7667EC1F22709500840AB7 /* PathBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7667EB1F22709500840AB7 /* PathBar+Annotations.mm */; };
+		9A7667ED1F22709500840AB7 /* PathBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7667EB1F22709500840AB7 /* PathBar+Annotations.mm */; };
 		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A78F09F1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
@@ -281,7 +282,6 @@
 		9AA5E1301E3FB5F7007D3A7B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1211E3FB552007D3A7B /* SystemConfiguration.framework */; };
 		9AA5E1311E3FB5FD007D3A7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA5E1231E3FB558007D3A7B /* UIKit.framework */; };
 		9AA6175F1D5635A2003CD946 /* SnapshotDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */; };
-		9AA62C051D25734200913F29 /* NavTools+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* NavTools+Interactions.m */; };
 		9AAAA1821D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */; };
 		9AAAA1861D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAA1851D7C70EA003F4AA3 /* SnapshotDatabase+Debug.m */; };
 		9AADAD161D57AB7400A96AE2 /* SnapshotProgress.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AADAD151D57AB7400A96AE2 /* SnapshotProgress.mm */; };
@@ -349,8 +349,6 @@
 		9AE13B751DF0D148008612DA /* GestureEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7E1A81D50E08400C2E8BE /* GestureEngine.mm */; };
 		9AE13B761DF0D148008612DA /* SpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC36DD11C60087B0037210F /* SpaceToken.m */; };
 		9AE13B771DF0D148008612DA /* SnapshotShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE443B11DEB5CCC006963DC /* SnapshotShow.m */; };
-		9AE13B781DF0D148008612DA /* NavTools+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D40591D3D2D7600CC91BE /* NavTools+Annotations.mm */; };
-		9AE13B791DF0D148008612DA /* NavTools+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62C041D25734200913F29 /* NavTools+Interactions.m */; };
 		9AE13B7A1DF0D148008612DA /* NavTools+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2854B1D88C10700773166 /* NavTools+Anchors.m */; };
 		9AE13B7B1DF0D148008612DA /* StreetViewPanel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A8EC9E01D6112CD0012C769 /* StreetViewPanel.mm */; };
 		9AE13B7C1DF0D148008612DA /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BCA271D343D43006C2EDC /* POI.m */; };
@@ -537,8 +535,6 @@
 		9A5A935A1E39365E00432972 /* setIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setIcon.png; sourceTree = "<group>"; };
 		9A5CCBA81DF86D21009B56DF /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = SpaceBar/CollectionViewCell.h; sourceTree = "<group>"; };
 		9A5CCBA91DF86D21009B56DF /* CollectionViewCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CollectionViewCell.mm; path = SpaceBar/CollectionViewCell.mm; sourceTree = "<group>"; };
-		9A5D40581D3D2D7600CC91BE /* NavTools+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NavTools+Annotations.h"; path = "SpaceBar/NavTools+Annotations.h"; sourceTree = "<group>"; };
-		9A5D40591D3D2D7600CC91BE /* NavTools+Annotations.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "NavTools+Annotations.mm"; path = "SpaceBar/NavTools+Annotations.mm"; sourceTree = "<group>"; };
 		9A5DA02B1E16DCE1002A50B7 /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Area.h; path = Map/Area.h; sourceTree = "<group>"; };
 		9A5DA02C1E16DCE1002A50B7 /* Area.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Area.mm; path = Map/Area.mm; sourceTree = "<group>"; };
 		9A5DA0301E16F2C9002A50B7 /* AreaToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AreaToken.h; path = SpaceBar/AreaToken.h; sourceTree = "<group>"; };
@@ -571,6 +567,10 @@
 		9A75E36A1F05601600A88BA2 /* ScreenShotTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotTableController.m; sourceTree = "<group>"; };
 		9A75E36E1F057EED00A88BA2 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		9A75E36F1F057EED00A88BA2 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		9A7667E31F225D1500840AB7 /* PathBar+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PathBar+Interactions.h"; path = "SpaceBar/RangeSlider/PathBar+Interactions.h"; sourceTree = "<group>"; };
+		9A7667E71F225E5400840AB7 /* PathBar+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PathBar+Interactions.m"; path = "SpaceBar/RangeSlider/PathBar+Interactions.m"; sourceTree = "<group>"; };
+		9A7667EA1F22709500840AB7 /* PathBar+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PathBar+Annotations.h"; path = "SpaceBar/RangeSlider/PathBar+Annotations.h"; sourceTree = "<group>"; };
+		9A7667EB1F22709500840AB7 /* PathBar+Annotations.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "PathBar+Annotations.mm"; path = "SpaceBar/RangeSlider/PathBar+Annotations.mm"; sourceTree = "<group>"; };
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
@@ -659,8 +659,6 @@
 		9AA6175D1D5635A2003CD946 /* SnapshotDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotDatabase.h; path = StudyManager/SnapshotDatabase.h; sourceTree = "<group>"; };
 		9AA6175E1D5635A2003CD946 /* SnapshotDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotDatabase.m; path = StudyManager/SnapshotDatabase.m; sourceTree = "<group>"; };
 		9AA617611D5635D1003CD946 /* SnapshotProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotProtocol.h; path = StudyManager/SnapshotProtocol.h; sourceTree = "<group>"; };
-		9AA62C031D25734200913F29 /* NavTools+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NavTools+Interactions.h"; path = "SpaceBar/NavTools+Interactions.h"; sourceTree = "<group>"; };
-		9AA62C041D25734200913F29 /* NavTools+Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NavTools+Interactions.m"; path = "SpaceBar/NavTools+Interactions.m"; sourceTree = "<group>"; };
 		9AAAA1801D7C6BEE003F4AA3 /* SnapshotAnchorPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotAnchorPlus.h; path = StudyManager/SnapshotAnchorPlus.h; sourceTree = "<group>"; };
 		9AAAA1811D7C6BEE003F4AA3 /* SnapshotAnchorPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotAnchorPlus.m; path = StudyManager/SnapshotAnchorPlus.m; sourceTree = "<group>"; };
 		9AAAA1841D7C70EA003F4AA3 /* SnapshotDatabase+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SnapshotDatabase+Debug.h"; path = "StudyManager/SnapshotDatabase+Debug.h"; sourceTree = "<group>"; };
@@ -976,6 +974,10 @@
 			children = (
 				9A26CB231C7BCCE500E46662 /* PathBar.h */,
 				9A26CB241C7BCCE500E46662 /* PathBar.m */,
+				9A7667EA1F22709500840AB7 /* PathBar+Annotations.h */,
+				9A7667EB1F22709500840AB7 /* PathBar+Annotations.mm */,
+				9A7667E31F225D1500840AB7 /* PathBar+Interactions.h */,
+				9A7667E71F225E5400840AB7 /* PathBar+Interactions.m */,
 				9A26CB271C7BCCE500E46662 /* PathBarTrackLayer.h */,
 				9A26CB281C7BCCE500E46662 /* PathBarTrackLayer.m */,
 				9ABB280E1D36795C00595A0D /* Elevator.h */,
@@ -1288,10 +1290,6 @@
 				9AC36DC51C5FF4690037210F /* NavTools.mm */,
 				9AB2854A1D88C10700773166 /* NavTools+Anchors.h */,
 				9AB2854B1D88C10700773166 /* NavTools+Anchors.m */,
-				9A5D40581D3D2D7600CC91BE /* NavTools+Annotations.h */,
-				9A5D40591D3D2D7600CC91BE /* NavTools+Annotations.mm */,
-				9AA62C031D25734200913F29 /* NavTools+Interactions.h */,
-				9AA62C041D25734200913F29 /* NavTools+Interactions.m */,
 				9A8413671C6F8ACE004DF8D1 /* NavTools+UpdateMap.h */,
 				9A8413681C6F8ACE004DF8D1 /* NavTools+UpdateMap.m */,
 				9A8413641C6F8AAC004DF8D1 /* NavTools+UpdateSet.h */,
@@ -1735,8 +1733,6 @@
 				9A234B361D8A1C6D00F3EE21 /* TaskBasePanel.m in Sources */,
 				9A234B381D8A1C6D00F3EE21 /* GestureEngine.mm in Sources */,
 				9A234B391D8A1C6D00F3EE21 /* SpaceToken.m in Sources */,
-				9A234B3A1D8A1C6D00F3EE21 /* NavTools+Annotations.mm in Sources */,
-				9A234B3B1D8A1C6D00F3EE21 /* NavTools+Interactions.m in Sources */,
 				9A234B3C1D8A1C6D00F3EE21 /* NavTools+Anchors.m in Sources */,
 				9A234B3D1D8A1C6D00F3EE21 /* StreetViewPanel.mm in Sources */,
 				9A234B3E1D8A1C6D00F3EE21 /* POI.m in Sources */,
@@ -1804,6 +1800,7 @@
 				9A0B40901E4D5A67004413B4 /* InformationSheetManager.m in Sources */,
 				9A0FEE8B1DE35CD200D4DFF1 /* Route+Tools.mm in Sources */,
 				9AD887B21E42960F008E62E7 /* PickerToken.m in Sources */,
+				9A7667EC1F22709500840AB7 /* PathBar+Annotations.mm in Sources */,
 				9A5301461C5AD6A6008D584B /* AppDelegate.m in Sources */,
 				9A81DBED1D877EE3006DA5A1 /* SnapshotDetailViewController.m in Sources */,
 				9A62F1E41C62C6BF00A39DAF /* Tools.m in Sources */,
@@ -1823,6 +1820,7 @@
 				9A5DA03C1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9A9809C21E1AEFB2006D7F8D /* ArrayEntity.m in Sources */,
 				9AE1D2A51DD39E2D0092B1D4 /* PlaceInstructionView.m in Sources */,
+				9A7667E81F225E5400840AB7 /* PathBar+Interactions.m in Sources */,
 				9A1CA2B61D4671210098957A /* CustomTabController.m in Sources */,
 				9AA32CE51DEDD6D200D16738 /* ShowAuthoringPanel.m in Sources */,
 				9AE27CA31E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */,
@@ -1833,8 +1831,6 @@
 				9AC36DD21C60087B0037210F /* SpaceToken.m in Sources */,
 				9AF7F6A31E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
 				9AE443B21DEB5CCC006963DC /* SnapshotShow.m in Sources */,
-				9A5D405A1D3D2D7600CC91BE /* NavTools+Annotations.mm in Sources */,
-				9AA62C051D25734200913F29 /* NavTools+Interactions.m in Sources */,
 				9AB2854C1D88C10700773166 /* NavTools+Anchors.m in Sources */,
 				9A8EC9E11D6112CD0012C769 /* StreetViewPanel.mm in Sources */,
 				9A8BCA281D343D43006C2EDC /* POI.m in Sources */,
@@ -1934,6 +1930,7 @@
 				9A0B40911E4D5A67004413B4 /* InformationSheetManager.m in Sources */,
 				9AE13B611DF0D148008612DA /* Route+Tools.mm in Sources */,
 				9AD887B31E42960F008E62E7 /* PickerToken.m in Sources */,
+				9A7667ED1F22709500840AB7 /* PathBar+Annotations.mm in Sources */,
 				9AE13B621DF0D148008612DA /* AppDelegate.m in Sources */,
 				9AE13B631DF0D148008612DA /* SnapshotDetailViewController.m in Sources */,
 				9AE13B641DF0D148008612DA /* Tools.m in Sources */,
@@ -1953,6 +1950,7 @@
 				9A5DA03E1E170BAC002A50B7 /* LineEntity.mm in Sources */,
 				9A9809C41E1AEFB2006D7F8D /* ArrayEntity.m in Sources */,
 				9AE13B6E1DF0D148008612DA /* PlaceInstructionView.m in Sources */,
+				9A7667E91F225E5400840AB7 /* PathBar+Interactions.m in Sources */,
 				9AE13B6F1DF0D148008612DA /* CustomTabController.m in Sources */,
 				9AE13B701DF0D148008612DA /* ShowAuthoringPanel.m in Sources */,
 				9AE27CA51E08D04D006D4F31 /* AnchorTaskGenerator.mm in Sources */,
@@ -1963,8 +1961,6 @@
 				9AE13B761DF0D148008612DA /* SpaceToken.m in Sources */,
 				9AF7F6A51E2C048A004B11C6 /* CustomMKPolyline.m in Sources */,
 				9AE13B771DF0D148008612DA /* SnapshotShow.m in Sources */,
-				9AE13B781DF0D148008612DA /* NavTools+Annotations.mm in Sources */,
-				9AE13B791DF0D148008612DA /* NavTools+Interactions.m in Sources */,
 				9AE13B7A1DF0D148008612DA /* NavTools+Anchors.m in Sources */,
 				9AE13B7B1DF0D148008612DA /* StreetViewPanel.mm in Sources */,
 				9AE13B7C1DF0D148008612DA /* POI.m in Sources */,

@@ -22,6 +22,7 @@
 #import "InformationSheetManager.h"
 #import "MapInformationSheet.h"
 #import "ArrayTool.h"
+#import "PathBar.h"
 
 // This is an extension (similar to a category)
 @interface ViewController ()
@@ -116,8 +117,10 @@ static ViewController *instance;
     //----------------
     _navTools = [[NavTools alloc] initWithMapView:_mapView];
     self.navTools.spaceBarMode = TOKENONLY;
-    self.navTools.smallValueOnTopOfBar = YES;
-    self.navTools.delegate = self;
+    
+    // Set PathBar delegate to self
+    [PathBar sharedManager].delegate = self;
+    [PathBar sharedManager].smallValueOnTopOfBar = YES;
     
     //----------------
     // Initialize MainViewManager

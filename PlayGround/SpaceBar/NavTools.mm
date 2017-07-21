@@ -57,18 +57,13 @@ static NavTools *sharedInstance;
                         SPACEBAR_WIDTH,
                         self.mapView.frame.size.height);
     
-    // Init an annotation view to hold annotations
-    self.annotationView = [[UIView alloc] initWithFrame:self.frame];
-    self.annotationView.backgroundColor = [UIColor clearColor];
+
     
     
     // Init the slider
-    self.sliderContainer = [[PathBar alloc] initWithFrame:self.frame];
+    self.sliderContainer = [PathBar sharedManager];
     self.sliderContainer.delegate = self;
-    self.sliderContainer.trackPaddingInPoints = 60; //pad the top and bottom
-    
-    
-    self.sliderContainer.curvatiousness = 0.0;
+
     
     // Add the gesture engine
     self.gestureEngine = [[GestureEngine alloc] initWithSpaceBar:self];
@@ -101,11 +96,12 @@ static NavTools *sharedInstance;
     _isBarToolHidden = isBarToolHidden;
     
     if (isBarToolHidden){
-        [self.annotationView removeFromSuperview];
+        
         [self.sliderContainer removeFromSuperview];
+        [self.sliderContainer removeRouteAnnotations];
         [self.gestureEngine removeFromSuperview];
         
-        [self removeRouteAnnotations];
+        
         self.activeRoute = nil;
         // Reset Spacebar
         [self resetSpaceBar];
@@ -113,8 +109,6 @@ static NavTools *sharedInstance;
         [self.sliderContainer setUserInteractionEnabled: NO];
     }else{
         [self.mapView addSubview:self.sliderContainer];
-        [self.mapView addSubview:self.annotationView];
-        [self.annotationView setUserInteractionEnabled:NO];
         [self.mapView addSubview:self.gestureEngine];
     }
 }
@@ -122,23 +116,9 @@ static NavTools *sharedInstance;
 // Change the size of the frame
 - (void)setFrame:(CGRect)frame{
     _frame = frame;
-    self.annotationView.frame = frame;
     self.sliderContainer.frame = frame;
     [self.sliderContainer setLayerFrames]; //redraw the layer
     self.gestureEngine.frame = frame;
-}
-
-- (void)setDelegate:(id <SpaceBarDelegate>)aDelegate {
-    if (_delegate != aDelegate) {
-        _delegate = aDelegate;
-        
-        _delegateRespondsTo.spaceBarOnePointTouched =
-        [_delegate respondsToSelector:@selector(spaceBarOnePointTouched:)];
-        _delegateRespondsTo.spaceBarTwoPointsTouched =
-        [_delegate respondsToSelector:@selector(spaceBarTwoPointsTouchedLow:high:)];
-        _delegateRespondsTo.spaceBarElevatorMoved =
-        [_delegate respondsToSelector:@selector(spaceBarElevatorMovedLow: high: fromLowToHigh:)];
-    }
 }
 
 // Initialize common parts among all display types
@@ -153,8 +133,6 @@ static NavTools *sharedInstance;
     self.anchorTouchInfoArray = [NSMutableArray array];
         
     self.isConstrainEngineON = YES;
-    
-    self.smallValueOnTopOfBar = YES;
 
     self.isAutoOrderSpaceTokenEnabled = YES;
     
@@ -200,7 +178,7 @@ static NavTools *sharedInstance;
 - (void)setSpaceBarMode:(SpaceBarMode)spaceBarMode{
     if (spaceBarMode == TOKENONLY){
         // SpaceToken only mode
-        [self removeRouteAnnotations];
+        [self.sliderContainer removeRouteAnnotations];
         [self.gestureEngine setUserInteractionEnabled:YES];
         [self.sliderContainer setUserInteractionEnabled: NO];
     }else{
@@ -263,7 +241,7 @@ static NavTools *sharedInstance;
     // The valid range of lowerValue and upperValue of the elevator should be [0, 1]
     // Setting the lowerValue and upperValue to be both -1 will make the elevator invisible
     float temp[2] = {nanf(""), nanf("")};
-    [self updateElevatorFromPercentagePair:temp];
+    [self.sliderContainer updateElevatorFromPercentagePair:temp];
 }
 
 

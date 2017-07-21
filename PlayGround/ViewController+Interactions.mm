@@ -165,8 +165,8 @@
     // Show the new route
     self.navTools.activeRoute = aRoute;
     // Remove old annotations and add new ones
-    [self.navTools removeRouteAnnotations];
-    [self.navTools addAnnotationsFromRoute:self.navTools.activeRoute];
+    [self.navTools.sliderContainer removeRouteAnnotations];
+    [self.navTools.sliderContainer addAnnotationsFromRoute:self.navTools.activeRoute];
     
     // Only enable SpaceBar after a route is added
     self.navTools.spaceBarMode = PATH;
@@ -198,7 +198,7 @@
 //        [[EntityDatabase sharedManager] removeEntity:self.navTools.activeRoute];        
         self.navTools.activeRoute = nil;
     }
-    [self.navTools removeRouteAnnotations];
+    [self.navTools.sliderContainer removeRouteAnnotations];
     
     // Reset Spacebar
     [self.navTools resetSpaceBar];

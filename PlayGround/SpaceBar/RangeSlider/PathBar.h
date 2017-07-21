@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-//-----------------
-// Delegate
-//-----------------
+
+@class PathBarTrackLayer;
+@class Elevator;
+@class Route;
+
+#pragma mark - SpaceBarProtocol
+//--------------------------------------------------------
+// NavTools (delegate)
+//--------------------------------------------------------
 @protocol PathBarDelegate <NSObject>
-- (void) privateSliderOnePointTouched:(double)percentage;
-- (void) privateSliderTwoPOintsTouchedLow:(double) percentageLow high:(double)percentageHigh;
-- (void) privateSliderElevatorMovedLow:(double) percentageLow high:(double)percentageHigh
-                                                        fromLowToHigh: (bool)directionFlag;
+// PathBar delegate methods
+- (void)spaceBarOnePointTouched:(float) percentage;
+- (void)spaceBarTwoPointsTouchedLow:(float) low high: (float) high;
+- (void)spaceBarElevatorMovedLow:(float) low high: (float) high fromLowToHigh: (bool) flag;
 @end
 
 typedef enum {MAP, STREETVIEW} PathBarMode;
@@ -51,8 +57,39 @@ typedef enum {MAP, STREETVIEW} PathBarMode;
 
 @property PathBarMode pathBarMode;
 
+
+@property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
+
+// Use bit field to track if delegate is set properly
+//http://www.ios-blog.co.uk/tutorials/objective-c/how-to-create-an-objective-c-delegate/
+@property struct {
+unsigned int spaceBarOnePointTouched:1;
+unsigned int spaceBarTwoPointsTouched:1;
+unsigned int spaceBarElevatorMoved:1;
+} delegateRespondsTo;
+
+
+@property PathBarTrackLayer* trackLayer;
+@property Elevator* elevator;
+@property float useableTrackLength;
+@property CGPoint previousTouchPoint;
+
+
++ (PathBar*)sharedManager; // Singleton initilization method
+
 - (void) setLayerFrames;
 
 // Interface for outside to update the elevator
-- (void) updateElevatorPercentageLow: (double)low high:(double)high;
+- (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;
+
+
+// --------------
+// Implemented in annotation category
+// --------------
+@property UIView *annotationView;
+- (void) addAnnotationsFromRoute:(Route *) route;
+- (void) removeRouteAnnotations;
+
+
+
 @end
