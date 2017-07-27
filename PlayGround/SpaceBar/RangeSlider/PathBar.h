@@ -13,12 +13,11 @@
 @class Elevator;
 @class Route;
 
-#pragma mark - SpaceBarProtocol
+#pragma mark - PathBarProtocol
 //--------------------------------------------------------
-// NavTools (delegate)
+// PathBar delegate methods
 //--------------------------------------------------------
 @protocol PathBarDelegate <NSObject>
-// PathBar delegate methods
 - (void)spaceBarOnePointTouched:(float) percentage;
 - (void)spaceBarTwoPointsTouchedLow:(float) low high: (float) high;
 - (void)spaceBarElevatorMovedLow:(float) low high: (float) high fromLowToHigh: (bool) flag;
@@ -57,6 +56,7 @@ typedef enum {MAP, STREETVIEW} PathBarMode;
 
 @property PathBarMode pathBarMode;
 
+- (void) setLayerFrames;
 
 @property bool smallValueOnTopOfBar; //by default the small value is on top, user can use this flag to flip the default behavior
 
@@ -77,7 +77,6 @@ unsigned int spaceBarElevatorMoved:1;
 
 + (PathBar*)sharedManager; // Singleton initilization method
 
-- (void) setLayerFrames;
 
 // Interface for outside to update the elevator
 - (void) updateElevatorFromPercentagePair: (float[2]) percentagePair;

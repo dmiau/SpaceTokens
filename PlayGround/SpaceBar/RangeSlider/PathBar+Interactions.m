@@ -188,13 +188,6 @@
         
         // Update the elevator and the map
         [self updateElevatorThenMap];
-        
-        //        [CATransaction begin];
-        //        [CATransaction setDisableActions:YES] ;
-        //
-        //        [self setLayerFrames];
-        //
-        //        [CATransaction commit];
     }
     
     [self sendActionsForControlEvents:UIControlEventValueChanged];

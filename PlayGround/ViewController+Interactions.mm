@@ -108,6 +108,8 @@
     
     low = ABS(low); // This is necessary because sometimes we could get -0.0 (not sure why)
     high = ABS(high);
+    
+    
     if (directionFlag){
         
         //----------------------------
@@ -115,20 +117,33 @@
         // The map is anchored on top
         //----------------------------
         
-        // The bottom one (lower value) should be the anchor
-        // find the (lat, lon) of the bottom one
+        // The top one (lower value) should be the anchor
+        // find the (lat, lon) of the top one
         if (low > 1 || low < 0){
             NSLog(@"spaceBarElevatorMovedLow: (low) %f", low);
         }
         [self.navTools.activeRoute convertPercentage:low toLatLon:anchor orientation:orientation1];
+        
         if (high > 1 || high < 0){
             NSLog(@"spaceBarElevatorMovedLow: (high) %f", high);
         }
         [self.navTools.activeRoute convertPercentage:high toLatLon:target orientation:orientation2];
+        
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:target
                                 toB:anchor];
-        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree animated:NO];
+        
+        // Need to add a margin if high is an end point
+        if (high > 0.97){
+            // Scroll to the end, the anchor should be anchored on the bottom
+            [self.mapView snapOneCoordinate:target toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height - 100) withOrientation:degree animated:NO];
+        }else{
+            
+            // Normal case:
+            // The map is ahchored on top
+            [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, 0) withOrientation:degree animated:NO];
+        }
+
     }else{
         
         //----------------------------
@@ -146,7 +161,17 @@
         [self.navTools.activeRoute convertPercentage:low toLatLon:target orientation:orientation2];
         // Compute the orientation from anchor to target
         CLLocationDirection degree = [CustomMKMapView computeOrientationFromA:anchor                                                                          toB:target];
-        [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
+        
+        
+        // Need to add a margin if low is an end point
+        if (low < 0.01){
+            // Scroll to the end, the anchor should be anchored on the top
+            [self.mapView snapOneCoordinate:target toXY:CGPointMake(self.mapView.frame.size.width/2, 100) withOrientation:degree animated:NO];
+        }else{
+            // Normal case:
+            // The map is ahchored on the bottom (when scrolling from the bottom to the top)
+            [self.mapView snapOneCoordinate:anchor toXY:CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height) withOrientation:degree animated:NO];
+        }
     }
 }
 

@@ -80,8 +80,6 @@ typedef enum {TOKENONLY, PATH} SpaceBarMode;
 - (void)updateBasedOnConstraints;
 
 
-
-
 // --------------
 // Implemented in Interactions category
 // --------------
