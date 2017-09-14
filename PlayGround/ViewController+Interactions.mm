@@ -66,20 +66,6 @@
         
         xy2 = [self.mapView convertCoordinate:coord2 toPointToView:self.mapView];
         
-        
-//        // based on the constraints, calculate the map
-//        
-//        // figure out which one is on top
-//        // xy1 should be on top of xy2, if not, swap
-//        if (xy1.y < xy2.y){
-//            // swap
-//            CGPoint tempCGPoint = xy1;
-//            CLLocationCoordinate2D tempCoord = coord1;
-//            
-//            xy1 = xy2; coord1 = coord2;
-//            xy2 = tempCGPoint; coord2 = tempCoord;
-//        }
-        
         // calculate the differences and find the logest axis
         
         CLLocationCoordinate2D coords[2];

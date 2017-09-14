@@ -184,12 +184,28 @@ static ViewController *instance;
     //UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
     UIEdgeInsets tokenCollectionViewInsets = tokenCollectionView.layoutMargins;
     CGRect newFrame= self.mapView.frame;
+    
+    // Get the current edgeInsets
+    UIEdgeInsets originalMapEdgeInsets = self.mapView.edgeInsets;
     if (informationSheet.superview){
         // The map information sheet is visible
         newFrame.size.height = informationSheet.frame.origin.y -
                                self.mapView.frame.origin.y;
+        
+        // Map edgeInsets should be adjusted accordingly
+        self.mapView.edgeInsets =
+        UIEdgeInsetsMake(originalMapEdgeInsets.top, originalMapEdgeInsets.left,
+                         self.view.frame.size.height -
+                         informationSheet.frame.origin.y - 40 + 5,
+                         originalMapEdgeInsets.right);
+        // The height of the toolbar is 40
     }else{
-//        tokenCollectionViewInsets = UIEdgeInsetsMake(30, self.mapView.frame.size.width- CELL_WIDTH, 0, 0);
+        
+        self.mapView.edgeInsets =
+        UIEdgeInsetsMake(originalMapEdgeInsets.top, originalMapEdgeInsets.left,
+                         70,
+                         originalMapEdgeInsets.right);
+
     }
     
 //    [tokenCollectionView updateFrame:newFrame andEdgeInsets:tokenCollectionViewInsets];

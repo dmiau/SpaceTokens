@@ -74,7 +74,7 @@
 }
 
 -(void)updateSheet{
-    
+    // This is the "virtual" function (objective-c does not really have virtual functions). Derived classes will implement their versions of the function.
 }
 
 

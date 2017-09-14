@@ -20,7 +20,7 @@
     
     // https://stackoverflow.com/questions/8733104/objective-c-property-instance-variable-in-category#
     // Add the button to the toolbar so the drawing tool won't block the button
-    screenCaptureButton.frame = CGRectMake(255, self.view.frame.size.height - 40, 90, 40);
+    screenCaptureButton.frame = CGRectMake(255, self.view.frame.size.height - 120, 90, 120);
     
     [screenCaptureButton addTarget: self
               action: @selector(capturedButtonClicked:)
