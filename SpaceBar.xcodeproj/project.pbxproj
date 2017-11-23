@@ -246,6 +246,7 @@
 		9A9792E41DFA19EB0062ED6F /* TokenCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */; };
 		9A9809C21E1AEFB2006D7F8D /* ArrayEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */; };
 		9A9809C41E1AEFB2006D7F8D /* ArrayEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */; };
+		9A9A15AD1FC73DF600AB7DF6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9A15AC1FC73DF600AB7DF6 /* CloudKit.framework */; };
 		9A9AA1DA1D567B7A0085FFDF /* SnapshotChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */; };
 		9A9AA1DE1D5694B30085FFDF /* SnapshotTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AA1DD1D5694B30085FFDF /* SnapshotTableController.m */; };
 		9A9ECD451E2BF4D3002A094E /* CustomMKPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ECD441E2BF4D3002A094E /* CustomMKPolygon.m */; };
@@ -571,6 +572,7 @@
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
+		9A7C4BA21FC6ECB1002BE047 /* SpaceBarBeta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpaceBarBeta.entitlements; sourceTree = "<group>"; };
 		9A7DB27A1E14494000226D42 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView.h; path = Views/DrawingView.h; sourceTree = "<group>"; };
 		9A7DB27B1E14494000226D42 /* DrawingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DrawingView.mm; path = Views/DrawingView.mm; sourceTree = "<group>"; };
 		9A7DB27F1E145C3B00226D42 /* UIBezierPath+Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Points.h"; path = "Views/UIBezierPath+Points.h"; sourceTree = "<group>"; };
@@ -627,6 +629,7 @@
 		9A9792E11DFA19EB0062ED6F /* TokenCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenCollectionView.m; path = SpaceBar/TokenCollectionView.m; sourceTree = "<group>"; };
 		9A9809C01E1AEFB2006D7F8D /* ArrayEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayEntity.h; path = SpaceBar/ArrayEntity.h; sourceTree = "<group>"; };
 		9A9809C11E1AEFB2006D7F8D /* ArrayEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayEntity.m; path = SpaceBar/ArrayEntity.m; sourceTree = "<group>"; };
+		9A9A15AC1FC73DF600AB7DF6 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		9A9AA1D81D567B7A0085FFDF /* SnapshotChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnapshotChecking.h; path = StudyManager/SnapshotChecking.h; sourceTree = "<group>"; };
 		9A9AA1D91D567B7A0085FFDF /* SnapshotChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnapshotChecking.m; path = StudyManager/SnapshotChecking.m; sourceTree = "<group>"; };
 		9A9AA1DC1D5694B30085FFDF /* SnapshotTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotTableController.h; sourceTree = "<group>"; };
@@ -785,6 +788,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9A15AD1FC73DF600AB7DF6 /* CloudKit.framework in Frameworks */,
 				9A17CD301F059992004559C3 /* GooglePlaces.framework in Frameworks */,
 				9A17CD291F0597A1004559C3 /* GoogleMaps.framework in Frameworks */,
 				9A17CD2A1F0597A3004559C3 /* GoogleMapsBase.framework in Frameworks */,
@@ -814,6 +818,7 @@
 		0143FC2420AD43B364D84109 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A9A15AC1FC73DF600AB7DF6 /* CloudKit.framework */,
 				9AA5E1231E3FB558007D3A7B /* UIKit.framework */,
 				9AA5E1211E3FB552007D3A7B /* SystemConfiguration.framework */,
 				9AA5E11F1E3FB54B007D3A7B /* QuartzCore.framework */,
@@ -1038,6 +1043,7 @@
 		9A5301351C5AD6A6008D584B = {
 			isa = PBXGroup;
 			children = (
+				9A7C4BA21FC6ECB1002BE047 /* SpaceBarBeta.entitlements */,
 				9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */,
 				9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */,
 				9AC36DC71C5FF9660037210F /* MapKit.framework */,
@@ -1046,6 +1052,7 @@
 				9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */,
 				0143FC2420AD43B364D84109 /* Frameworks */,
 				9A234B6E1D8A1C6D00F3EE21 /* SpaceBar copy2-Info.plist */,
+				9A7C4BA11FC6EBB9002BE047 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1159,6 +1166,15 @@
 				9A75E36F1F057EED00A88BA2 /* ImageViewController.m */,
 			);
 			name = ScreenShot;
+			sourceTree = "<group>";
+		};
+		9A7C4BA11FC6EBB9002BE047 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9A26CB1D1C7BCBF400E46662 /* RangeSlider */,
+				9A26CB181C7BC4DE00E46662 /* RangeSlider */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		9A7DB2791E1448E500226D42 /* SearchView */ = {
@@ -1564,8 +1580,16 @@
 						};
 					};
 					9AE13B4C1DF0D148008612DA = {
-						DevelopmentTeam = T8L89L97Z5;
+						DevelopmentTeam = ZW2ULQ7FDF;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2204,10 +2228,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SpaceBarBeta.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = T8L89L97Z5;
+				DEVELOPMENT_TEAM = ZW2ULQ7FDF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2215,7 +2239,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SpaceBarBeta-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dmiau.SpaceBar-Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceTokens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2226,10 +2250,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SpaceBarBeta.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = T8L89L97Z5;
+				DEVELOPMENT_TEAM = ZW2ULQ7FDF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2237,7 +2261,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SpaceBarBeta-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dmiau.SpaceBar-Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceTokens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
