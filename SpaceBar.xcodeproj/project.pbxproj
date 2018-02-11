@@ -118,8 +118,6 @@
 		9A234B631D8A1C6D00F3EE21 /* heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC338221D63AA1C000272D9 /* heading.png */; };
 		9A234B641D8A1C6D00F3EE21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5301501C5AD6A6008D584B /* Assets.xcassets */; };
 		9A234B651D8A1C6D00F3EE21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A53014A1C5AD6A6008D584B /* Main.storyboard */; };
-		9A234B661D8A1C6D00F3EE21 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB1D1C7BCBF400E46662 /* RangeSlider */; };
-		9A234B671D8A1C6D00F3EE21 /* RangeSlider in Resources */ = {isa = PBXBuildFile; fileRef = 9A26CB181C7BC4DE00E46662 /* RangeSlider */; };
 		9A246D6F1D55589B00888A74 /* SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A246D6E1D55589B00888A74 /* SettingsButton.m */; };
 		9A2495ED1D9929CC00A92207 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2495EC1D9929CC00A92207 /* TaskGenerator.m */; };
 		9A26CB291C7BCCE500E46662 /* PathBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A26CB241C7BCCE500E46662 /* PathBar.m */; };
@@ -476,13 +474,10 @@
 		9A22D0161D22BD9A009BC465 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Map/Route.h; sourceTree = "<group>"; };
 		9A22D0171D22BD9A009BC465 /* Route.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Route.mm; path = Map/Route.mm; sourceTree = "<group>"; };
 		9A234B6D1D8A1C6D00F3EE21 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A234B6E1D8A1C6D00F3EE21 /* SpaceBar copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBar copy2-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBar copy2-Info.plist"; sourceTree = "<absolute>"; };
 		9A246D6D1D55589B00888A74 /* SettingsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsButton.h; path = Views/SettingsButton.h; sourceTree = "<group>"; };
 		9A246D6E1D55589B00888A74 /* SettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsButton.m; path = Views/SettingsButton.m; sourceTree = "<group>"; };
 		9A2495EB1D9929CC00A92207 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = StudyManager/TaskGenerator.h; sourceTree = "<group>"; };
 		9A2495EC1D9929CC00A92207 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskGenerator.m; path = StudyManager/TaskGenerator.m; sourceTree = "<group>"; };
-		9A26CB181C7BC4DE00E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
-		9A26CB1D1C7BCBF400E46662 /* RangeSlider */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RangeSlider; path = /Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/PlayGround/SpaceBar/RangeSlider; sourceTree = "<absolute>"; };
 		9A26CB231C7BCCE500E46662 /* PathBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathBar.h; path = SpaceBar/RangeSlider/PathBar.h; sourceTree = "<group>"; };
 		9A26CB241C7BCCE500E46662 /* PathBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathBar.m; path = SpaceBar/RangeSlider/PathBar.m; sourceTree = "<group>"; };
 		9A26CB271C7BCCE500E46662 /* PathBarTrackLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathBarTrackLayer.h; path = SpaceBar/RangeSlider/PathBarTrackLayer.h; sourceTree = "<group>"; };
@@ -695,7 +690,6 @@
 		9ACD6CDC1D352E8600E3BF9C /* DirectionPanel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DirectionPanel.mm; path = Views/DirectionPanel.mm; sourceTree = "<group>"; };
 		9ACE01571E292F9A0010F651 /* AdditionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdditionTool.h; path = SpaceBar/AdditionTool.h; sourceTree = "<group>"; };
 		9ACE01581E292F9A0010F651 /* AdditionTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AdditionTool.mm; path = SpaceBar/AdditionTool.mm; sourceTree = "<group>"; };
-		9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBar copy-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBar copy-Info.plist"; sourceTree = "<absolute>"; };
 		9AD0F44F1C7CF7F100AEF928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		9AD503311DC94303005A05D6 /* SpeechEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechEngine.h; path = ConstraintEngine/SpeechEngine.h; sourceTree = "<group>"; };
 		9AD503321DC94303005A05D6 /* SpeechEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechEngine.m; path = ConstraintEngine/SpeechEngine.m; sourceTree = "<group>"; };
@@ -708,7 +702,6 @@
 		9ADFCE8E1F00460E0030328D /* CustomMKMapView+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CustomMKMapView+Debug.h"; path = "Map/CustomMKMapView+Debug.h"; sourceTree = "<group>"; };
 		9ADFCE8F1F00460E0030328D /* CustomMKMapView+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CustomMKMapView+Debug.m"; path = "Map/CustomMKMapView+Debug.m"; sourceTree = "<group>"; };
 		9AE13BBD1DF0D148008612DA /* SpaceBarBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceBarBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AE13BBE1DF0D148008612DA /* SpaceBarBeta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpaceBarBeta-Info.plist"; path = "/Users/daniel_miau/Dropbox/Projects/SpaceBar/PlayGround/SpaceBarBeta-Info.plist"; sourceTree = "<absolute>"; };
 		9AE1D2A21DD39E2D0092B1D4 /* PlaceInstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceInstructionView.h; path = StudyManager/PlaceInstructionView.h; sourceTree = "<group>"; };
 		9AE1D2A31DD39E2D0092B1D4 /* PlaceInstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceInstructionView.m; path = StudyManager/PlaceInstructionView.m; sourceTree = "<group>"; };
 		9AE1D2A41DD39E2D0092B1D4 /* PlaceInstructionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceInstructionView.xib; path = StudyManager/PlaceInstructionView.xib; sourceTree = "<group>"; };
@@ -1049,9 +1042,7 @@
 				9AC36DC71C5FF9660037210F /* MapKit.framework */,
 				9A5301401C5AD6A6008D584B /* PlayGround */,
 				9A53013F1C5AD6A6008D584B /* Products */,
-				9AD0F44D1C7CF71800AEF928 /* SpaceBar copy-Info.plist */,
 				0143FC2420AD43B364D84109 /* Frameworks */,
-				9A234B6E1D8A1C6D00F3EE21 /* SpaceBar copy2-Info.plist */,
 				9A7C4BA11FC6EBB9002BE047 /* Recovered References */,
 			);
 			sourceTree = "<group>";
@@ -1083,7 +1074,6 @@
 				9A5301441C5AD6A6008D584B /* AppDelegate.h */,
 				9A5301501C5AD6A6008D584B /* Assets.xcassets */,
 				9A5301551C5AD6A6008D584B /* Info.plist */,
-				9AE13BBE1DF0D148008612DA /* SpaceBarBeta-Info.plist */,
 				9A53014D1C5AD6A6008D584B /* PlayGround.xcdatamodeld */,
 				9A5301411C5AD6A6008D584B /* Supporting Files */,
 			);
@@ -1171,8 +1161,6 @@
 		9A7C4BA11FC6EBB9002BE047 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				9A26CB1D1C7BCBF400E46662 /* RangeSlider */,
-				9A26CB181C7BC4DE00E46662 /* RangeSlider */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1624,8 +1612,6 @@
 				9A234B631D8A1C6D00F3EE21 /* heading.png in Resources */,
 				9A234B641D8A1C6D00F3EE21 /* Assets.xcassets in Resources */,
 				9A234B651D8A1C6D00F3EE21 /* Main.storyboard in Resources */,
-				9A234B661D8A1C6D00F3EE21 /* RangeSlider in Resources */,
-				9A234B671D8A1C6D00F3EE21 /* RangeSlider in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
