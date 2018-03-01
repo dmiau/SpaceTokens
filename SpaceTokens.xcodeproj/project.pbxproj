@@ -212,7 +212,6 @@
 		9A0FEE8A1DE35CD200D4DFF1 /* Route+Tools.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "Route+Tools.mm"; path = "Map/Route+Tools.mm"; sourceTree = "<group>"; };
 		9A10B51C1E312BDA0016A2EA /* Route+Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Route+Appearance.h"; path = "Map/Route+Appearance.h"; sourceTree = "<group>"; };
 		9A10B51D1E312BDA0016A2EA /* Route+Appearance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "Route+Appearance.mm"; path = "Map/Route+Appearance.mm"; sourceTree = "<group>"; };
-		9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpaceBar.entitlements; sourceTree = "<group>"; };
 		9A143B321D2AF56E001EE841 /* CustomMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMKMapView.h; path = Map/CustomMKMapView.h; sourceTree = "<group>"; };
 		9A143B331D2AF56E001EE841 /* CustomMKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMKMapView.m; path = Map/CustomMKMapView.m; sourceTree = "<group>"; };
 		9A177FCB1DFB09A70035D056 /* SpaceToken+Dragging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SpaceToken+Dragging.h"; path = "SpaceBar/SpaceToken+Dragging.h"; sourceTree = "<group>"; };
@@ -757,7 +756,6 @@
 			isa = PBXGroup;
 			children = (
 				9A7AB4EB2048B62100E6AB0B /* SpaceTokens.entitlements */,
-				9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */,
 				9AC36DC71C5FF9660037210F /* MapKit.framework */,
 				9A5301401C5AD6A6008D584B /* PlayGround */,
 				9A53013F1C5AD6A6008D584B /* Products */,
