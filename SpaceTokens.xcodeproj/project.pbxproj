@@ -86,6 +86,7 @@
 		9A7667E81F225E5400840AB7 /* PathBar+Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7667E71F225E5400840AB7 /* PathBar+Interactions.m */; };
 		9A7667EC1F22709500840AB7 /* PathBar+Annotations.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7667EB1F22709500840AB7 /* PathBar+Annotations.mm */; };
 		9A78F09D1E0468190070AEE2 /* AuthoringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A78F09C1E0468190070AEE2 /* AuthoringView.xib */; };
+		9A7AB4EC2048B63000E6AB0B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9A15AC1FC73DF600AB7DF6 /* CloudKit.framework */; };
 		9A7C1BCC1D26B894005D75CC /* ViewController+Interactions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */; };
 		9A7DB27C1E14494000226D42 /* DrawingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB27B1E14494000226D42 /* DrawingView.mm */; };
 		9A7DB2811E145C3B00226D42 /* UIBezierPath+Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DB2801E145C3B00226D42 /* UIBezierPath+Points.m */; };
@@ -188,7 +189,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpaceBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0571371E0ED82E00A09E06 /* anchorInstructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anchorInstructions.png; sourceTree = "<group>"; };
 		9A058C841E393D030045AB0E /* areaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areaIcon.png; sourceTree = "<group>"; };
 		9A0B40871E4D5587004413B4 /* CollectionInformationSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionInformationSheet.xib; path = Map/CollectionInformationSheet.xib; sourceTree = "<group>"; };
@@ -281,7 +281,6 @@
 		9A5301551C5AD6A6008D584B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A564CEA1F014A0E00DDEEE6 /* ViewController+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Debug.h"; sourceTree = "<group>"; };
 		9A564CEB1F014A0E00DDEEE6 /* ViewController+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Debug.m"; sourceTree = "<group>"; };
-		9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SpaceBar iPad.entitlements"; sourceTree = "<group>"; };
 		9A5A93551E38FB8900432972 /* arrayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrayIcon.png; sourceTree = "<group>"; };
 		9A5A93591E39365E00432972 /* pathIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pathIcon.png; sourceTree = "<group>"; };
 		9A5A935A1E39365E00432972 /* setIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setIcon.png; sourceTree = "<group>"; };
@@ -324,9 +323,9 @@
 		9A7667EA1F22709500840AB7 /* PathBar+Annotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PathBar+Annotations.h"; path = "SpaceBar/RangeSlider/PathBar+Annotations.h"; sourceTree = "<group>"; };
 		9A7667EB1F22709500840AB7 /* PathBar+Annotations.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "PathBar+Annotations.mm"; path = "SpaceBar/RangeSlider/PathBar+Annotations.mm"; sourceTree = "<group>"; };
 		9A78F09C1E0468190070AEE2 /* AuthoringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthoringView.xib; path = Views/AuthoringView.xib; sourceTree = "<group>"; };
+		9A7AB4EB2048B62100E6AB0B /* SpaceTokens.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpaceTokens.entitlements; sourceTree = "<group>"; };
 		9A7C1BCA1D26B894005D75CC /* ViewController+Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Interactions.h"; sourceTree = "<group>"; };
 		9A7C1BCB1D26B894005D75CC /* ViewController+Interactions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Interactions.mm"; sourceTree = "<group>"; };
-		9A7C4BA21FC6ECB1002BE047 /* SpaceBarBeta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpaceBarBeta.entitlements; sourceTree = "<group>"; };
 		9A7DB27A1E14494000226D42 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView.h; path = Views/DrawingView.h; sourceTree = "<group>"; };
 		9A7DB27B1E14494000226D42 /* DrawingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DrawingView.mm; path = Views/DrawingView.mm; sourceTree = "<group>"; };
 		9A7DB27F1E145C3B00226D42 /* UIBezierPath+Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Points.h"; path = "Views/UIBezierPath+Points.h"; sourceTree = "<group>"; };
@@ -503,6 +502,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A7AB4EC2048B63000E6AB0B /* CloudKit.framework in Frameworks */,
 				9AA5E1311E3FB5FD007D3A7B /* UIKit.framework in Frameworks */,
 				9AA5E1301E3FB5F7007D3A7B /* SystemConfiguration.framework in Frameworks */,
 				9AA5E12F1E3FB5F0007D3A7B /* QuartzCore.framework in Frameworks */,
@@ -548,7 +548,6 @@
 				9AA5E10B1E3FB4FC007D3A7B /* Accelerate.framework */,
 				9A62C3F61DCCD0B50048E44C /* Speech.framework */,
 				9A73C4101D86527200CF2BF1 /* AVFoundation.framework */,
-				51A6CF8F783C6C872011A7BD /* libPods-SpaceBar.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -757,8 +756,7 @@
 		9A5301351C5AD6A6008D584B = {
 			isa = PBXGroup;
 			children = (
-				9A7C4BA21FC6ECB1002BE047 /* SpaceBarBeta.entitlements */,
-				9A56B7DE1D4E4F0E00A14B02 /* SpaceBar iPad.entitlements */,
+				9A7AB4EB2048B62100E6AB0B /* SpaceTokens.entitlements */,
 				9A12C0531D4BFE7500D4060A /* SpaceBar.entitlements */,
 				9AC36DC71C5FF9660037210F /* MapKit.framework */,
 				9A5301401C5AD6A6008D584B /* PlayGround */,
@@ -1236,6 +1234,9 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = ZW2ULQ7FDF;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -1569,7 +1570,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SpaceTokens.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZW2ULQ7FDF;
@@ -1580,7 +1581,7 @@
 				);
 				INFOPLIST_FILE = PlayGround/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceTokens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1591,7 +1592,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SpaceBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SpaceTokens.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZW2ULQ7FDF;
@@ -1602,7 +1603,7 @@
 				);
 				INFOPLIST_FILE = PlayGround/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceBar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmiau.SpaceTokens;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
